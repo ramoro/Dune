@@ -1,0 +1,4 @@
+/home/ramiro/Escritorio/Dune/build/CMakeFiles/rebuild_cache.dir
+/home/ramiro/Escritorio/Dune/build/CMakeFiles/edit_cache.dir
+/home/ramiro/Escritorio/Dune/build/CMakeFiles/sdldemo.dir
+/home/ramiro/Escritorio/Dune/build/CMakeFiles/main.dir

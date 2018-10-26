@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11 -Werror -Wall -pedantic  -rdynamic CMakeFiles/main.dir/src/main.cpp.o  -o main 

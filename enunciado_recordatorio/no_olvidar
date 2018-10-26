@@ -1,0 +1,41 @@
+**Tiempo durante el cual generan energia las trampas de aire, la genera el objeto desde adnetro
+o se le agrega al jugador desde afuera?
+
+**LOs edificios se destrutyen desde afuera?
+
+**Puntos de estructura y dimensiones predefinidos de la refineria??
+
+**el desviador trasnforma las unidades a formar parte del equipo enemigo.
+
+**tanque sonico dania incluso a unidades aliadas con sus ondas sonicas.
+
+**el tanque devastador al ser destruido explota daniando a todo aquel que este cerca.
+
+**GUSANO : no comer gente que no este en arena. que salga algo cada tanto tiempo
+y coma en un determinado radio o cuadrado.
+
+**definir dist a la cual empeiza a disparar o cambie de estado, en preparacion para disparar.
+
+**como hacer el tema de creaciond e unidades, dsitribucion en espacio, sin pisarse :
+
+**Si la cantidad de energía proporcionada por las Trampas de Viento es menor de la requerida por el resto de
+los edificios, los tiempos de las construcciones de los edificios, vehículos y el entrenamiento de nuevas
+unidades se verán seriamente extendidos, proporcionalmente a la deuda energética.
+
+**rango explosion destruccion de tanque: que se pueda elegir en config
+
+
+**FALTA DEL MODELO:
+	-ataque/destruccion de unidades y vehiculos
+	-creacion de unidades de ataque y vehiculos
+	-reaccion especial de ciertos vehiculos al ser destruidos
+	-conversion al otro equipo de una unidad por parte de un vehiculo
+	-movimiento de la cosechadora recolectando especia
+	-movimiento de unidades y vehiculos
+	-persecucion o actividad de disparo sin moverse	
+	-velocidades de vehiculos y unidades, y velocidad de creacion segun energia
+	-gusano que aparece cada tanto
+	-pulir A*
+	-parser Config
+	-ver que ahcer si se quiere atacar a un edificio o unidad movible amiga
+	
