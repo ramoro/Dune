@@ -28,15 +28,16 @@ posicion_central, int id_tipo_edificio) {
 	//FabricaLigera edificio(contador_ids_edificios, id_jugador,
 	//posicion_central);
 	if(!mapa.verificar_terreno_alrededores(posicion_central, 
-	ptr_edificio->obtener_altura(), 
-	ptr_edificio->obtener_base(), "roca")) return false;
-	
-	if (!mapa.agregar_objeto(ptr_edificio, contador_ids_edificios,
-	posicion_central)) return false;
+	ptr_edificio->obtener_altura(), ptr_edificio->obtener_base(),
+	 "roca")) return false;
 
-	if (!(jugadores.at(id_jugador).agregar_edificio(ptr_edificio, 
-	contador_ids_edificios, id_tipo_edificio))) {
-		mapa.eliminar_objeto(contador_ids_edificios);
+		if (!(jugadores.at(id_jugador).agregar_edificio(ptr_edificio, 
+	contador_ids_edificios, id_tipo_edificio))) return false;
+
+	if (!mapa.agregar_objeto(ptr_edificio, contador_ids_edificios,
+	posicion_central)) {
+		(jugadores.at(id_jugador)).eliminar_edificio(contador_ids_edificios,
+		id_tipo_edificio);
 		return false;
 	}
 	contador_ids_edificios++;

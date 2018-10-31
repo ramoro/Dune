@@ -17,8 +17,7 @@ class BuscadorMejorCamino {
 		devuelta tiene el camino de manera que empieza desde el top
 		de la pila.*/
 		std::stack<Nodo> buscar_mejor_camino(Mapa &mapa, 
-		std::pair<int, int> &pos_inicial, std::pair<int, int> &pos_final,
-		int id_tipo_unidad);
+		std::pair<int, int> &pos_inicial, std::pair<int, int> &pos_final);
 
 	private:
 		/*Recibe un vector de nodos y lo recorre deleteando el padre

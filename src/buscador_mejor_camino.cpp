@@ -2,8 +2,9 @@
 #include "buscador_mejor_camino.h"
 #include <iostream>
 
-#define LIMITE_TIPO_INFANTERIAS 3
-//FALTA VERIFICAR QUE EL ESPACIOA DODNE ME MUEVO NO ESTE OCUPADO
+//FALTA VERIFICAR QUE EL ESPACIOA DODNE ME MUEVO NO ESTE OCUPADO Y QUE
+//SI ES CIMA SOLO PUEDE PASAR UNIDADES DE INFANTERIA
+//USAR ALGO COMO DEFINE PARA LAS 8 DIRECCIONES (TYPEDEF SEGUN FEDE)
 
 void BuscadorMejorCamino::delete_vector_nodos(std::vector<Nodo> nodos) {
   for (std::vector<Nodo>::iterator it = nodos.begin(); it != nodos.end();
@@ -15,8 +16,7 @@ void BuscadorMejorCamino::delete_vector_nodos(std::vector<Nodo> nodos) {
 }
 
 std::stack<Nodo> BuscadorMejorCamino::buscar_mejor_camino(Mapa &mapa, 
-std::pair<int, int> &pos_inicial, std::pair<int, int> &pos_final,
-int id_tipo_unidad) {
+std::pair<int, int> &pos_inicial, std::pair<int, int> &pos_final) {
 	Nodo nodo_inicio(NULL, pos_inicial);
 	nodo_inicio.poner_valor_g(0);
 	nodo_inicio.poner_valor_h(0);
@@ -90,8 +90,7 @@ int id_tipo_unidad) {
   			//Evaluo el terreno y unidad para ver si puede pasar por 
   			//esa posicion
   			if ((mapa.pedir_terreno_coordenada(posicion_adyacente) == 
-  			"precipicio") || (mapa.pedir_terreno_coordenada(posicion_adyacente)
-  			== "cima" && id_tipo_unidad > LIMITE_TIPO_INFANTERIAS)) {
+  			"precipicio")) {
   				continue;
   			}
   			Nodo *nodo_aux = new Nodo(nodo_evaluado);

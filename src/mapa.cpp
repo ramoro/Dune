@@ -106,6 +106,13 @@ std::pair<int, int> centro_objeto1, int base_objeto1, int altura_objeto1) {
 	return objetivos;
 }
 
+/*void Mapa::marcar_coordenadas_ocupadas(std::pair<int, int> pos_central, 
+int altura, int base) {
+	std::pair<int, int> inicio((pos_central.first + altura/2) - (altura - 1), 
+	(pos_central.second + base/2) - (base - 1));
+	//for (int i = 0; i <)
+}*/
+
 bool Mapa::agregar_objeto(std::shared_ptr<ObjetoDune> objeto, int id_objeto, 
 std::pair<int, int> centro) {
 	bool lugar_valido = false;
@@ -118,6 +125,7 @@ std::pair<int, int> centro) {
 	if (objetos_en_espacio.empty()) {
 		coordenadas[centro.first][centro.second].poner_objeto(objeto);
 		mapa_ids_objetos.insert(std::pair<int, ObjetoDune>(id_objeto, *objeto));
+		//marcar_coordenadas_ocupadas(centro, altura_objeto1, base_objeto1);
 		lugar_valido = true;
 	}
 	return lugar_valido;

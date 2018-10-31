@@ -4,7 +4,7 @@ project(modelo_dune)
 
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Werror -Wall -pedantic")
 
-add_library(sdldemo
+add_library(sdldemo STATIC
  src/Armas/arma.cpp
  src/Armas/arma.h
  src/Armas/canion.cpp
@@ -71,6 +71,14 @@ add_library(sdldemo
  src/Edificios/cuartel.h
  src/Edificios/palacio.cpp
  src/Edificios/palacio.h
+)
+set(CMAKE_BUILD_TYPE Debug)
+# Agrego la carpeta con los headers autogenerados a los includes
+message("Agregando '${PROJECT_BINARY_DIR}' como directorio de includes")
+include_directories(${PROJECT_BINARY_DIR})
+
+add_executable (main
+ src/main.cpp  
  src/objeto_dune.cpp
  src/objeto_dune.h
  src/coordenada.cpp
@@ -81,16 +89,12 @@ add_library(sdldemo
  src/mapa.h
  src/partida.cpp
  src/partida.h
-)
-
-# Agrego la carpeta con los headers autogenerados a los includes
-message("Agregando '${PROJECT_BINARY_DIR}' como directorio de includes")
-include_directories(${PROJECT_BINARY_DIR})
-
-add_executable (main
- src/main.cpp  
+ src/buscador_mejor_camino.cpp
+ src/buscador_mejor_camino.h
+ src/nodo.cpp
+ src/nodo.h
 )
 
 
-target_link_libraries(main)
+target_link_libraries(main sdldemo)
 

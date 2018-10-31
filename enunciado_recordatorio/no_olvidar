@@ -24,11 +24,12 @@ unidades se verán seriamente extendidos, proporcionalmente a la deuda energéti
 
 **rango explosion destruccion de tanque: que se pueda elegir en config
 
+**hardcodie el dinero inicial de un jugador
 
 **FALTA DEL MODELO:
 	-ataque/destruccion de unidades y vehiculos
 	-creacion de unidades de ataque y vehiculos
-	-reaccion especial de ciertos vehiculos al ser destruidos
+	-reaccion especial de ciertos vehiculos al ser destruidos 
 	-conversion al otro equipo de una unidad por parte de un vehiculo
 	-movimiento de la cosechadora recolectando especia
 	-movimiento de unidades y vehiculos
@@ -37,5 +38,46 @@ unidades se verán seriamente extendidos, proporcionalmente a la deuda energéti
 	-gusano que aparece cada tanto
 	-pulir A*
 	-parser Config
-	-ver que ahcer si se quiere atacar a un edificio o unidad movible amiga
-	
+-me fijo si esta en map edificios, sie sta, saco edificio le pido el tipo y resto uno en edifs tipos
+**PARA ESTA SEMANA:
+-creacion unidades ataque y vehiculos
+-expansion gusano y explosion tanque
+-movimiento y lo pedido por eze
+-pulir A*
+-preguntar por cmake, corro main importando partida y falla
+-preguntar por las fabricas y su devolucion de objeto por movimiento, falla valgrind o segm. 
+fault por el vector de armas que muere
+-tanque sonico, que onda las ondas
+
+*VER TEMA MOVIMIENTO, VALGRIND SE QUEJA, SEGMENTATION FAULT PORQUE MUERE EL VECTOR DE ARMAS. QUE PASA!!!?????
+
+**forma mas eficiente para evitar preguntar a cada jugador si la unidad es suya y asi sacarsela?
+
+**preguntar por performance algoritmo expansion, y que partida y mapa tengan tantos metodos
+
+**que significa que un edificio sea de 3x3? ocupa mas espacio en el mapa? mas coordeanadas?
+
+**como hacer define de vector de pares de direcciones
+
+**ver el tema de reducir la velocidad cuando caminan por las dunas.
+
+**implementacion preguntar tipos de edificios q reuiqere unidad poco objetoso??? o cuando se ataca preguntar si el tipo es del tanque que cambia de equipo la unidad y asi cambiarla luego de haber atacado. o preguntar de que tipo es la unidad q destruis para saber si hay explosion
+ de tanque o no
+
+**esta bien cuando pongo edificio o cuando sale gusano preguntarle a las esquinas de que terreno son? alcanza con esa verificacion?
+
+**preguntarle a cada unidad donde esta cada vez que quiero poner edificio o sacar gusano ?? y si unidad esta adentro del espacio dodne se quiere poner el edificio?
+
+**llenar cada coordenada con su terreno o tener listas para cada terreno y su centro, base, altura?
+
+**como verifico si una coordenada esta ocupada en el A* si yo solo tengo guardado en el mapa los objetos con sus posiciones centrales?
+
+**en sv como saber q msje va a que partida>??
+
+**mover, atacar, mover y atacar? cuantps comandos?
+
+**config de edificios terrenos y eso la levanta el cliente tambien o el sv le pasa la data?
+
+state pattern, observer pattern (para pregutnar al taqneu cuando ataca o estados de unidades si estan
+atacando, moviendose, etc. USar polimorfismo)
+
