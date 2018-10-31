@@ -2,6 +2,7 @@
 #define REFINERIA_H
 
 #include "edificio.h"
+#include <utility>
 
 /*Clase que representa a una refineria en el mundo de Dune.
 En ella las cosechadoras depositan la especia recolectada y
@@ -11,7 +12,7 @@ class Refineria: public Edificio{
 		int capacidad;
 	public:
 		/*Constructor de la clase.*/
-		Refineria();
+		Refineria(int id, int id_duenio, std::pair<int, int> centro);
 
 		/*Recibe una cantidad de especia y se la almacena en la refineria. 
 		Se devuelve 0 si entro toda la especia en la refineria. Se devuelve

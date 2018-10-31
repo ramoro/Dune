@@ -1,3 +1,17 @@
+#include "partida.h"
+#include "UnidadesMovibles/raider.h"
+#include "UnidadesMovibles/fabrica_unidades_movibles.h"
+#include "UnidadesMovibles/unidad_movible.h"
+#include "mapa.h"
+#include "buscador_mejor_camino.h"
+#include <iostream>
+#include "nodo.h"
+#include <vector>
+#include <stack>
+#include <cmath>
+#include <iostream>
+
+#define POSICION_INHABILITADA 1
 
 /*int main() {
 	//parametros
@@ -163,5 +177,27 @@
 }*/
 
 int main() {
-  return 1;
+ Partida partida;
+  partida.agregar_jugador("je");
+  partida.agregar_jugador("asd");
+  bool agregado = partida.agregar_edificio(0, std::pair<int, int>(400,400), 4);
+  int danio = partida.atacar_edificio(0, 5, 0);
+  std::cout << danio << agregado << std::endl;
+  //std::cout << agregado;
+  //Mapa mapa;
+  //std::pair<int, int> objetivo = mapa.desenterrar_gusano();
+  //std::cout << objetivo.first << " " << objetivo.second << std::endl;
 }
+
+/*int main() {
+  Mapa mapa;
+  BuscadorMejorCamino buscador;
+  std::pair<int ,int> inicio(0, 0);
+  std::pair<int, int> final(3, 1);
+  buscador.buscar_mejor_camino(mapa, inicio, final, 3);
+  Partida partida();
+  partida.agregar_jugador("harkonnen");
+  std::pair<int, int> centro(100, 100);
+  bool agregado = partida.agregar_edificio(0, centro, 0);
+  std::cout << agregado << std::endl;
+}*/

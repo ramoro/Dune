@@ -1027,13 +1027,40 @@ src/UnidadesMovibles/unidad_movible.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.s
 .PHONY : src/UnidadesMovibles/unidad_movible.cpp.s
 
+src/buscador_mejor_camino.o: src/buscador_mejor_camino.cpp.o
+
+.PHONY : src/buscador_mejor_camino.o
+
+# target to build an object file
+src/buscador_mejor_camino.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o
+.PHONY : src/buscador_mejor_camino.cpp.o
+
+src/buscador_mejor_camino.i: src/buscador_mejor_camino.cpp.i
+
+.PHONY : src/buscador_mejor_camino.i
+
+# target to preprocess a source file
+src/buscador_mejor_camino.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.i
+.PHONY : src/buscador_mejor_camino.cpp.i
+
+src/buscador_mejor_camino.s: src/buscador_mejor_camino.cpp.s
+
+.PHONY : src/buscador_mejor_camino.s
+
+# target to generate assembly for a file
+src/buscador_mejor_camino.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.s
+.PHONY : src/buscador_mejor_camino.cpp.s
+
 src/coordenada.o: src/coordenada.cpp.o
 
 .PHONY : src/coordenada.o
 
 # target to build an object file
 src/coordenada.cpp.o:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/coordenada.cpp.o
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/coordenada.cpp.o
 .PHONY : src/coordenada.cpp.o
 
 src/coordenada.i: src/coordenada.cpp.i
@@ -1042,7 +1069,7 @@ src/coordenada.i: src/coordenada.cpp.i
 
 # target to preprocess a source file
 src/coordenada.cpp.i:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/coordenada.cpp.i
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/coordenada.cpp.i
 .PHONY : src/coordenada.cpp.i
 
 src/coordenada.s: src/coordenada.cpp.s
@@ -1051,7 +1078,7 @@ src/coordenada.s: src/coordenada.cpp.s
 
 # target to generate assembly for a file
 src/coordenada.cpp.s:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/coordenada.cpp.s
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/coordenada.cpp.s
 .PHONY : src/coordenada.cpp.s
 
 src/jugador.o: src/jugador.cpp.o
@@ -1060,7 +1087,7 @@ src/jugador.o: src/jugador.cpp.o
 
 # target to build an object file
 src/jugador.cpp.o:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/jugador.cpp.o
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/jugador.cpp.o
 .PHONY : src/jugador.cpp.o
 
 src/jugador.i: src/jugador.cpp.i
@@ -1069,7 +1096,7 @@ src/jugador.i: src/jugador.cpp.i
 
 # target to preprocess a source file
 src/jugador.cpp.i:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/jugador.cpp.i
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/jugador.cpp.i
 .PHONY : src/jugador.cpp.i
 
 src/jugador.s: src/jugador.cpp.s
@@ -1078,7 +1105,7 @@ src/jugador.s: src/jugador.cpp.s
 
 # target to generate assembly for a file
 src/jugador.cpp.s:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/jugador.cpp.s
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/jugador.cpp.s
 .PHONY : src/jugador.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -1114,7 +1141,7 @@ src/mapa.o: src/mapa.cpp.o
 
 # target to build an object file
 src/mapa.cpp.o:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/mapa.cpp.o
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/mapa.cpp.o
 .PHONY : src/mapa.cpp.o
 
 src/mapa.i: src/mapa.cpp.i
@@ -1123,7 +1150,7 @@ src/mapa.i: src/mapa.cpp.i
 
 # target to preprocess a source file
 src/mapa.cpp.i:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/mapa.cpp.i
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/mapa.cpp.i
 .PHONY : src/mapa.cpp.i
 
 src/mapa.s: src/mapa.cpp.s
@@ -1132,8 +1159,35 @@ src/mapa.s: src/mapa.cpp.s
 
 # target to generate assembly for a file
 src/mapa.cpp.s:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/mapa.cpp.s
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/mapa.cpp.s
 .PHONY : src/mapa.cpp.s
+
+src/nodo.o: src/nodo.cpp.o
+
+.PHONY : src/nodo.o
+
+# target to build an object file
+src/nodo.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/nodo.cpp.o
+.PHONY : src/nodo.cpp.o
+
+src/nodo.i: src/nodo.cpp.i
+
+.PHONY : src/nodo.i
+
+# target to preprocess a source file
+src/nodo.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/nodo.cpp.i
+.PHONY : src/nodo.cpp.i
+
+src/nodo.s: src/nodo.cpp.s
+
+.PHONY : src/nodo.s
+
+# target to generate assembly for a file
+src/nodo.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/nodo.cpp.s
+.PHONY : src/nodo.cpp.s
 
 src/objeto_dune.o: src/objeto_dune.cpp.o
 
@@ -1141,7 +1195,7 @@ src/objeto_dune.o: src/objeto_dune.cpp.o
 
 # target to build an object file
 src/objeto_dune.cpp.o:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/objeto_dune.cpp.o
 .PHONY : src/objeto_dune.cpp.o
 
 src/objeto_dune.i: src/objeto_dune.cpp.i
@@ -1150,7 +1204,7 @@ src/objeto_dune.i: src/objeto_dune.cpp.i
 
 # target to preprocess a source file
 src/objeto_dune.cpp.i:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.i
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/objeto_dune.cpp.i
 .PHONY : src/objeto_dune.cpp.i
 
 src/objeto_dune.s: src/objeto_dune.cpp.s
@@ -1159,7 +1213,7 @@ src/objeto_dune.s: src/objeto_dune.cpp.s
 
 # target to generate assembly for a file
 src/objeto_dune.cpp.s:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.s
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/objeto_dune.cpp.s
 .PHONY : src/objeto_dune.cpp.s
 
 src/partida.o: src/partida.cpp.o
@@ -1168,7 +1222,7 @@ src/partida.o: src/partida.cpp.o
 
 # target to build an object file
 src/partida.cpp.o:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/partida.cpp.o
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/partida.cpp.o
 .PHONY : src/partida.cpp.o
 
 src/partida.i: src/partida.cpp.i
@@ -1177,7 +1231,7 @@ src/partida.i: src/partida.cpp.i
 
 # target to preprocess a source file
 src/partida.cpp.i:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/partida.cpp.i
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/partida.cpp.i
 .PHONY : src/partida.cpp.i
 
 src/partida.s: src/partida.cpp.s
@@ -1186,7 +1240,7 @@ src/partida.s: src/partida.cpp.s
 
 # target to generate assembly for a file
 src/partida.cpp.s:
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/partida.cpp.s
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/partida.cpp.s
 .PHONY : src/partida.cpp.s
 
 # Help Target
@@ -1298,6 +1352,9 @@ help:
 	@echo "... src/UnidadesMovibles/unidad_movible.o"
 	@echo "... src/UnidadesMovibles/unidad_movible.i"
 	@echo "... src/UnidadesMovibles/unidad_movible.s"
+	@echo "... src/buscador_mejor_camino.o"
+	@echo "... src/buscador_mejor_camino.i"
+	@echo "... src/buscador_mejor_camino.s"
 	@echo "... src/coordenada.o"
 	@echo "... src/coordenada.i"
 	@echo "... src/coordenada.s"
@@ -1310,6 +1367,9 @@ help:
 	@echo "... src/mapa.o"
 	@echo "... src/mapa.i"
 	@echo "... src/mapa.s"
+	@echo "... src/nodo.o"
+	@echo "... src/nodo.i"
+	@echo "... src/nodo.s"
 	@echo "... src/objeto_dune.o"
 	@echo "... src/objeto_dune.i"
 	@echo "... src/objeto_dune.s"

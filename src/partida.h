@@ -3,10 +3,12 @@
 
 #include <utility>
 #include <map>
+#include <vector>
 #include "jugador.h"
 #include "mapa.h"
 #include "Edificios/fabrica_edificios.h"
 #include "UnidadesMovibles/fabrica_unidades_movibles.h"
+#include "buscador_mejor_camino.h"
 
 /*Clase que representa a una partida de Dune.*/
 class Partida {
@@ -17,22 +19,23 @@ class Partida {
 		FabricaUnidadesMovibles fabrica_unidades_movibles;
 		int contador_ids_jugadores;
 		int contador_ids_edificios;
+		int contador_ids_unidades_movibles;
+		BuscadorMejorCamino buscador_mejor_camino;
 
 	public:
 		/*Constructor de la clase.*/
 		Partida();
 
 		/*Recibe un string con un nombre y agregar a la partida un Jugador
-		con ese nombre. Si el nombre esta en uso devuelve false. True en caso
-		contrario.QUE HACER CON ESTO__??*/
-		void agregar_jugador();
+		con ese nombre.*/
+		void agregar_jugador(std::string nombre_jugador);
 
 		/*Agrega un edificio segun el id de tipo pasado, asociado al id pasado
 		por parametro, asignado al jugador con el id pasado por parametro 
 		y en la posicion tambien pasada por parametro. Devuelve true si se pudo
 		ubicar el edificio. False en caso contario.*/
-		bool agregar_edificio(int nombre_jugador, std::pair<int, int>
-		posicion, int id_tipo_edificio);
+		bool agregar_edificio(int id_jugador, std::pair<int, int>
+		posicion_central, int id_tipo_edificio);
 
 		/*Recibe el id del jugador atacado, el id del tipo de unidad movible que ataca
 		y el id del edificio atacado. Devuelve el danio provocado por la unidad o en 
@@ -44,6 +47,10 @@ class Partida {
 		edificio y le devuelve al jugador con el id recibido la mitad de
 		lo que cuesta construir el edificio.*/
 		void autodemoler_edificio(int id_jugador, int id_edificio);
+
+		/*Devuelve un vector de pares de ints con el id de la unidad comida y
+		el id del jugador duenio de la unidad.*/
+		std::vector<std::pair<int, int>> generar_gusano();
 };
 
 #endif 

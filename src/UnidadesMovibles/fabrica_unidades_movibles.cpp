@@ -23,40 +23,52 @@
 #define DEVASTADOR 9
 #define COSECHADORA 10
 
-UnidadMovible&& FabricaUnidadesMovibles::crear_unidad_movible
-(int id_tipo_unidad_movible) {
+std::shared_ptr<UnidadMovible> FabricaUnidadesMovibles::
+crear_unidad_movible(int id_tipo_unidad_movible, int id, 
+int id_duenio, std::pair<int, int> centro) {
 	if(id_tipo_unidad_movible == INFANTERIA_LIGERA) {
-		InfanteriaLigera infanteria_ligera;
-		return std::move(infanteria_ligera);
+		std::shared_ptr<InfanteriaLigera> infanteria_ligera(
+		new InfanteriaLigera(id, id_duenio, centro));
+		return infanteria_ligera;
 	} else if (id_tipo_unidad_movible == INFANTERIA_PESADA) {
-		InfanteriaPesada infanteria_pesada;
-		return std::move(infanteria_pesada);
+		std::shared_ptr<InfanteriaPesada> infanteria_pesada(
+		new InfanteriaPesada(id, id_duenio, centro));
+		return infanteria_pesada;
 	} else if (id_tipo_unidad_movible == FREMEN) {
-		Fremen fremen;
-		return std::move(fremen);
+		std::shared_ptr<Fremen> fremen(
+		new Fremen(id, id_duenio, centro));
+		return fremen;
 	} else if (id_tipo_unidad_movible == SARDAUKAR) {
-		Sardaukar sardaukar;
-		return std::move(sardaukar);
+		std::shared_ptr<Sardaukar> sardaukar(new 
+		Sardaukar(id, id_duenio, centro));
+		return sardaukar;
 	} else if (id_tipo_unidad_movible == TRIKE) {
-		Trike trike;
-		return std::move(trike);
+		std::shared_ptr<Trike> trike(
+		new Trike(id, id_duenio, centro));
+		return trike;
 	} else if (id_tipo_unidad_movible == RAIDER) {
-		Raider raider;
-		return std::move(raider);
+		std::shared_ptr<Raider> raider(
+		new Raider(id, id_duenio, centro));
+		return raider;
 	} else if (id_tipo_unidad_movible == TANQUE) {
-		Tanque tanque;
-		return std::move(tanque);
+		std::shared_ptr<Tanque> tanque(
+		new Tanque(id, id_duenio, centro));
+		return tanque;
 	} else if (id_tipo_unidad_movible == TANQUE_SONICO) {
-		TanqueSonico tanque_sonico;
-		return std::move(tanque_sonico);
+		std::shared_ptr<TanqueSonico> tanque_sonico(
+		new TanqueSonico(id, id_duenio, centro));
+		return tanque_sonico;
 	} else if (id_tipo_unidad_movible == DESVIADOR) {
-		Desviador desviador;
-		return std::move(desviador);
+		std::shared_ptr<Desviador> desviador(
+		new Desviador(id, id_duenio, centro));
+		return desviador;
 	} else if (id_tipo_unidad_movible == DEVASTADOR) {
-		Devastador devastador;
-		return std::move(devastador);
+		std::shared_ptr<Devastador> devastador(
+		new Devastador(id, id_duenio, centro));
+		return devastador;
 	} else {
-		Cosechadora cosechadora;
-		return std::move(cosechadora);
+		std::shared_ptr<Cosechadora> cosechadora(
+		new Cosechadora(id, id_duenio, centro));
+		return cosechadora;
 	}
 }

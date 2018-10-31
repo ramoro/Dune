@@ -849,126 +849,6 @@ CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o.provides: CMakeFiles/sdldemo.
 CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o.provides.build: CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o
 
 
-CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o: CMakeFiles/sdldemo.dir/flags.make
-CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o: ../src/objeto_dune.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o -c /home/ramiro/Escritorio/Dune/src/objeto_dune.cpp
-
-CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ramiro/Escritorio/Dune/src/objeto_dune.cpp > CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.i
-
-CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ramiro/Escritorio/Dune/src/objeto_dune.cpp -o CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.s
-
-CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o.requires:
-
-.PHONY : CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o.requires
-
-CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o.provides: CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o.requires
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o.provides.build
-.PHONY : CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o.provides
-
-CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o.provides.build: CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o
-
-
-CMakeFiles/sdldemo.dir/src/coordenada.cpp.o: CMakeFiles/sdldemo.dir/flags.make
-CMakeFiles/sdldemo.dir/src/coordenada.cpp.o: ../src/coordenada.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/sdldemo.dir/src/coordenada.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sdldemo.dir/src/coordenada.cpp.o -c /home/ramiro/Escritorio/Dune/src/coordenada.cpp
-
-CMakeFiles/sdldemo.dir/src/coordenada.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sdldemo.dir/src/coordenada.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ramiro/Escritorio/Dune/src/coordenada.cpp > CMakeFiles/sdldemo.dir/src/coordenada.cpp.i
-
-CMakeFiles/sdldemo.dir/src/coordenada.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sdldemo.dir/src/coordenada.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ramiro/Escritorio/Dune/src/coordenada.cpp -o CMakeFiles/sdldemo.dir/src/coordenada.cpp.s
-
-CMakeFiles/sdldemo.dir/src/coordenada.cpp.o.requires:
-
-.PHONY : CMakeFiles/sdldemo.dir/src/coordenada.cpp.o.requires
-
-CMakeFiles/sdldemo.dir/src/coordenada.cpp.o.provides: CMakeFiles/sdldemo.dir/src/coordenada.cpp.o.requires
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/coordenada.cpp.o.provides.build
-.PHONY : CMakeFiles/sdldemo.dir/src/coordenada.cpp.o.provides
-
-CMakeFiles/sdldemo.dir/src/coordenada.cpp.o.provides.build: CMakeFiles/sdldemo.dir/src/coordenada.cpp.o
-
-
-CMakeFiles/sdldemo.dir/src/jugador.cpp.o: CMakeFiles/sdldemo.dir/flags.make
-CMakeFiles/sdldemo.dir/src/jugador.cpp.o: ../src/jugador.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/sdldemo.dir/src/jugador.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sdldemo.dir/src/jugador.cpp.o -c /home/ramiro/Escritorio/Dune/src/jugador.cpp
-
-CMakeFiles/sdldemo.dir/src/jugador.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sdldemo.dir/src/jugador.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ramiro/Escritorio/Dune/src/jugador.cpp > CMakeFiles/sdldemo.dir/src/jugador.cpp.i
-
-CMakeFiles/sdldemo.dir/src/jugador.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sdldemo.dir/src/jugador.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ramiro/Escritorio/Dune/src/jugador.cpp -o CMakeFiles/sdldemo.dir/src/jugador.cpp.s
-
-CMakeFiles/sdldemo.dir/src/jugador.cpp.o.requires:
-
-.PHONY : CMakeFiles/sdldemo.dir/src/jugador.cpp.o.requires
-
-CMakeFiles/sdldemo.dir/src/jugador.cpp.o.provides: CMakeFiles/sdldemo.dir/src/jugador.cpp.o.requires
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/jugador.cpp.o.provides.build
-.PHONY : CMakeFiles/sdldemo.dir/src/jugador.cpp.o.provides
-
-CMakeFiles/sdldemo.dir/src/jugador.cpp.o.provides.build: CMakeFiles/sdldemo.dir/src/jugador.cpp.o
-
-
-CMakeFiles/sdldemo.dir/src/mapa.cpp.o: CMakeFiles/sdldemo.dir/flags.make
-CMakeFiles/sdldemo.dir/src/mapa.cpp.o: ../src/mapa.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/sdldemo.dir/src/mapa.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sdldemo.dir/src/mapa.cpp.o -c /home/ramiro/Escritorio/Dune/src/mapa.cpp
-
-CMakeFiles/sdldemo.dir/src/mapa.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sdldemo.dir/src/mapa.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ramiro/Escritorio/Dune/src/mapa.cpp > CMakeFiles/sdldemo.dir/src/mapa.cpp.i
-
-CMakeFiles/sdldemo.dir/src/mapa.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sdldemo.dir/src/mapa.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ramiro/Escritorio/Dune/src/mapa.cpp -o CMakeFiles/sdldemo.dir/src/mapa.cpp.s
-
-CMakeFiles/sdldemo.dir/src/mapa.cpp.o.requires:
-
-.PHONY : CMakeFiles/sdldemo.dir/src/mapa.cpp.o.requires
-
-CMakeFiles/sdldemo.dir/src/mapa.cpp.o.provides: CMakeFiles/sdldemo.dir/src/mapa.cpp.o.requires
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/mapa.cpp.o.provides.build
-.PHONY : CMakeFiles/sdldemo.dir/src/mapa.cpp.o.provides
-
-CMakeFiles/sdldemo.dir/src/mapa.cpp.o.provides.build: CMakeFiles/sdldemo.dir/src/mapa.cpp.o
-
-
-CMakeFiles/sdldemo.dir/src/partida.cpp.o: CMakeFiles/sdldemo.dir/flags.make
-CMakeFiles/sdldemo.dir/src/partida.cpp.o: ../src/partida.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/sdldemo.dir/src/partida.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sdldemo.dir/src/partida.cpp.o -c /home/ramiro/Escritorio/Dune/src/partida.cpp
-
-CMakeFiles/sdldemo.dir/src/partida.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sdldemo.dir/src/partida.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ramiro/Escritorio/Dune/src/partida.cpp > CMakeFiles/sdldemo.dir/src/partida.cpp.i
-
-CMakeFiles/sdldemo.dir/src/partida.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sdldemo.dir/src/partida.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ramiro/Escritorio/Dune/src/partida.cpp -o CMakeFiles/sdldemo.dir/src/partida.cpp.s
-
-CMakeFiles/sdldemo.dir/src/partida.cpp.o.requires:
-
-.PHONY : CMakeFiles/sdldemo.dir/src/partida.cpp.o.requires
-
-CMakeFiles/sdldemo.dir/src/partida.cpp.o.provides: CMakeFiles/sdldemo.dir/src/partida.cpp.o.requires
-	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/partida.cpp.o.provides.build
-.PHONY : CMakeFiles/sdldemo.dir/src/partida.cpp.o.provides
-
-CMakeFiles/sdldemo.dir/src/partida.cpp.o.provides.build: CMakeFiles/sdldemo.dir/src/partida.cpp.o
-
-
 # Object files for target sdldemo
 sdldemo_OBJECTS = \
 "CMakeFiles/sdldemo.dir/src/Armas/arma.cpp.o" \
@@ -1003,12 +883,7 @@ sdldemo_OBJECTS = \
 "CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o" \
 "CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o" \
 "CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o" \
-"CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o" \
-"CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o" \
-"CMakeFiles/sdldemo.dir/src/coordenada.cpp.o" \
-"CMakeFiles/sdldemo.dir/src/jugador.cpp.o" \
-"CMakeFiles/sdldemo.dir/src/mapa.cpp.o" \
-"CMakeFiles/sdldemo.dir/src/partida.cpp.o"
+"CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o"
 
 # External object files for target sdldemo
 sdldemo_EXTERNAL_OBJECTS =
@@ -1046,14 +921,9 @@ libsdldemo.a: CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o
 libsdldemo.a: CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o
 libsdldemo.a: CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o
 libsdldemo.a: CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o
-libsdldemo.a: CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o
-libsdldemo.a: CMakeFiles/sdldemo.dir/src/coordenada.cpp.o
-libsdldemo.a: CMakeFiles/sdldemo.dir/src/jugador.cpp.o
-libsdldemo.a: CMakeFiles/sdldemo.dir/src/mapa.cpp.o
-libsdldemo.a: CMakeFiles/sdldemo.dir/src/partida.cpp.o
 libsdldemo.a: CMakeFiles/sdldemo.dir/build.make
 libsdldemo.a: CMakeFiles/sdldemo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Linking CXX static library libsdldemo.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Linking CXX static library libsdldemo.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/sdldemo.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sdldemo.dir/link.txt --verbose=$(VERBOSE)
 
@@ -1095,11 +965,6 @@ CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/Edificios/fabrica_li
 CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o.requires
 CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o.requires
 CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o.requires
-CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o.requires
-CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/coordenada.cpp.o.requires
-CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/jugador.cpp.o.requires
-CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/mapa.cpp.o.requires
-CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/partida.cpp.o.requires
 
 .PHONY : CMakeFiles/sdldemo.dir/requires
 

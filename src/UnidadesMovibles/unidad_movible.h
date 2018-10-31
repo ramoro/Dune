@@ -5,6 +5,7 @@
 #include "../Armas/arma.h"
 #include <string>
 #include <vector>
+#include <utility>
 
 /*Clase abstracta que representa una unidad movible en el mundo de Dune
 que puede ser tanto un vehiculo como una unidad de infanteria.*/
@@ -20,11 +21,16 @@ class UnidadMovible: public ObjetoDune {
 	public:
 		/*Constructor de la clase.*/
 		UnidadMovible(int rango, int velocidad, 
-		float tiempo_cracion, int costo_dinero, int vida);
+		float tiempo_cracion, int costo_dinero, int vida, 
+		int id, int id_duenio, int base, int altura, std::pair<int, int> 
+		centro);
 
 		/*Recibe un string con el objetivo al que esta atacando
 		la unidad y devuelve el danio que le realiza al objetivo.*/
 		int pedir_danio(std::string objetivo);
+
+		/*Constructor por movimiento.*/
+		//explicit UnidadMovible(UnidadMovible&& other);
 };
 
 #endif 

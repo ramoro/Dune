@@ -32,11 +32,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o"
   "CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o"
   "CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o"
-  "CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o"
-  "CMakeFiles/sdldemo.dir/src/coordenada.cpp.o"
-  "CMakeFiles/sdldemo.dir/src/jugador.cpp.o"
-  "CMakeFiles/sdldemo.dir/src/mapa.cpp.o"
-  "CMakeFiles/sdldemo.dir/src/partida.cpp.o"
   "libsdldemo.pdb"
   "libsdldemo.a"
 )

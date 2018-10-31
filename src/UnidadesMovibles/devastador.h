@@ -2,6 +2,7 @@
 #define DEVASTADOR_H
 
 #include "unidad_movible.h"
+#include <utility>
 
 /*Clase que representa una unidad de un devastador en el mundo de Dune.
 Es un tanque altamente blindado que al ser destruido explota daniando
@@ -12,7 +13,9 @@ class Devastador: public UnidadMovible {
 		
 	public:
 		/*Constructor de la clase.*/
-		Devastador();
+		Devastador(int id, int id_duenio, std::pair<int, int> centro);
+
+		void armar();
 };
 
 #endif

@@ -196,36 +196,3 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o: ../src/Unidade
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o: ../src/objeto_dune.h
 
-CMakeFiles/sdldemo.dir/src/coordenada.cpp.o: ../src/Terrenos/terreno.h
-CMakeFiles/sdldemo.dir/src/coordenada.cpp.o: ../src/coordenada.cpp
-CMakeFiles/sdldemo.dir/src/coordenada.cpp.o: ../src/coordenada.h
-CMakeFiles/sdldemo.dir/src/coordenada.cpp.o: ../src/objeto_dune.h
-
-CMakeFiles/sdldemo.dir/src/jugador.cpp.o: ../src/Edificios/edificio.h
-CMakeFiles/sdldemo.dir/src/jugador.cpp.o: ../src/jugador.cpp
-CMakeFiles/sdldemo.dir/src/jugador.cpp.o: ../src/jugador.h
-CMakeFiles/sdldemo.dir/src/jugador.cpp.o: ../src/objeto_dune.h
-
-CMakeFiles/sdldemo.dir/src/mapa.cpp.o: ../src/Terrenos/no_especia.h
-CMakeFiles/sdldemo.dir/src/mapa.cpp.o: ../src/Terrenos/terreno.h
-CMakeFiles/sdldemo.dir/src/mapa.cpp.o: ../src/coordenada.h
-CMakeFiles/sdldemo.dir/src/mapa.cpp.o: ../src/mapa.cpp
-CMakeFiles/sdldemo.dir/src/mapa.cpp.o: ../src/mapa.h
-CMakeFiles/sdldemo.dir/src/mapa.cpp.o: ../src/objeto_dune.h
-
-CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o: ../src/objeto_dune.cpp
-CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o: ../src/objeto_dune.h
-
-CMakeFiles/sdldemo.dir/src/partida.cpp.o: ../src/Armas/arma.h
-CMakeFiles/sdldemo.dir/src/partida.cpp.o: ../src/Edificios/edificio.h
-CMakeFiles/sdldemo.dir/src/partida.cpp.o: ../src/Edificios/fabrica_edificios.h
-CMakeFiles/sdldemo.dir/src/partida.cpp.o: ../src/Terrenos/terreno.h
-CMakeFiles/sdldemo.dir/src/partida.cpp.o: ../src/UnidadesMovibles/fabrica_unidades_movibles.h
-CMakeFiles/sdldemo.dir/src/partida.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
-CMakeFiles/sdldemo.dir/src/partida.cpp.o: ../src/coordenada.h
-CMakeFiles/sdldemo.dir/src/partida.cpp.o: ../src/jugador.h
-CMakeFiles/sdldemo.dir/src/partida.cpp.o: ../src/mapa.h
-CMakeFiles/sdldemo.dir/src/partida.cpp.o: ../src/objeto_dune.h
-CMakeFiles/sdldemo.dir/src/partida.cpp.o: ../src/partida.cpp
-CMakeFiles/sdldemo.dir/src/partida.cpp.o: ../src/partida.h
-

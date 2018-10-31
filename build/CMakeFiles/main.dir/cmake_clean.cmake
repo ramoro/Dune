@@ -1,5 +1,12 @@
 file(REMOVE_RECURSE
   "CMakeFiles/main.dir/src/main.cpp.o"
+  "CMakeFiles/main.dir/src/objeto_dune.cpp.o"
+  "CMakeFiles/main.dir/src/coordenada.cpp.o"
+  "CMakeFiles/main.dir/src/jugador.cpp.o"
+  "CMakeFiles/main.dir/src/mapa.cpp.o"
+  "CMakeFiles/main.dir/src/partida.cpp.o"
+  "CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o"
+  "CMakeFiles/main.dir/src/nodo.cpp.o"
   "main.pdb"
   "main"
 )

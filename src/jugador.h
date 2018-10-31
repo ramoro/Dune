@@ -4,22 +4,27 @@
 #include <utility>
 #include <map>
 #include <vector>
+#include <memory>
 #include "Edificios/edificio.h"
 
 /*Clase que representa a un jugador.*/
 class Jugador {
 	private:
-		std::map<int, Edificio*> edificios;
+		std::map<int, std::shared_ptr<Edificio>> edificios;
 		std::map<int, int> edificios_por_tipo;
 		int dinero;
+		std::string casa;
 		//mapa de unidades movibles
 
 	public:
+		/*Constructor de la clase.*/
+		Jugador(std::string casa);
+
 		/*Recibe un puntero a un edificio, el id del edificio y el id
 		del tipo de edificio al que corresponde. Se lo agregar al jugador
 		en caso de tener el dinero suficiente para crearlo y devuelve true.
 		En caso de no alcanzar con el dinero no se lo crea y devuelve false.*/
-		bool agregar_edificio(Edificio* edificio, int id_edificio,
+		bool agregar_edificio(std::shared_ptr<Edificio> edificio, int id_edificio,
 		int id_tipo_edificio);
 
 		/*Recibe el id del edificio y el id del tipo del edificio y los usa

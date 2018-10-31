@@ -2,6 +2,7 @@
 #define TRAMPA_AIRE_H
 
 #include "edificio.h"
+#include <utility>
 
 /*Clase que representa a una trampa de aire en el mundo de Dune.
 Son turbinas eolicas que generan energia.*/
@@ -11,7 +12,7 @@ class TrampaAire: public Edificio{
 		int energia_generada;
 	public:
 		/*Constructor de la clase.*/
-		TrampaAire();
+		TrampaAire(int id, int id_duenio, std::pair<int, int> centro);
 };
 
 #endif 

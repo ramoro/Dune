@@ -196,36 +196,3 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.cpp
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
-CMakeFiles/sdldemo.dir/src/coordenada.cpp.o
- /home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
- /home/ramiro/Escritorio/Dune/src/coordenada.cpp
- /home/ramiro/Escritorio/Dune/src/coordenada.h
- /home/ramiro/Escritorio/Dune/src/objeto_dune.h
-CMakeFiles/sdldemo.dir/src/jugador.cpp.o
- /home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
- /home/ramiro/Escritorio/Dune/src/jugador.cpp
- /home/ramiro/Escritorio/Dune/src/jugador.h
- /home/ramiro/Escritorio/Dune/src/objeto_dune.h
-CMakeFiles/sdldemo.dir/src/mapa.cpp.o
- /home/ramiro/Escritorio/Dune/src/Terrenos/no_especia.h
- /home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
- /home/ramiro/Escritorio/Dune/src/coordenada.h
- /home/ramiro/Escritorio/Dune/src/mapa.cpp
- /home/ramiro/Escritorio/Dune/src/mapa.h
- /home/ramiro/Escritorio/Dune/src/objeto_dune.h
-CMakeFiles/sdldemo.dir/src/objeto_dune.cpp.o
- /home/ramiro/Escritorio/Dune/src/objeto_dune.cpp
- /home/ramiro/Escritorio/Dune/src/objeto_dune.h
-CMakeFiles/sdldemo.dir/src/partida.cpp.o
- /home/ramiro/Escritorio/Dune/src/Armas/arma.h
- /home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
- /home/ramiro/Escritorio/Dune/src/Edificios/fabrica_edificios.h
- /home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
- /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
- /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
- /home/ramiro/Escritorio/Dune/src/coordenada.h
- /home/ramiro/Escritorio/Dune/src/jugador.h
- /home/ramiro/Escritorio/Dune/src/mapa.h
- /home/ramiro/Escritorio/Dune/src/objeto_dune.h
- /home/ramiro/Escritorio/Dune/src/partida.cpp
- /home/ramiro/Escritorio/Dune/src/partida.h

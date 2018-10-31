@@ -2,6 +2,7 @@
 #define COSECHADORA_H
 
 #include "unidad_movible.h"
+#include <utility>
 
 /*Clase que representa una unidad de una cosechadora en el mundo de Dune.
 Es la unica unidad que puede recolectar la especia encontrada en las
@@ -12,7 +13,7 @@ class Cosechadora: public UnidadMovible {
 		
 	public:
 		/*Constructor de la clase.*/
-		Cosechadora();
+		Cosechadora(int id, int id_duenio, std::pair<int, int> centro);
 };
 
 #endif

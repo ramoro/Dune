@@ -6,7 +6,7 @@
 Coordenada::Coordenada(int estado, Terreno terreno): estado(estado), 
 terreno(terreno) {}
 
-bool Coordenada::poner_objeto(ObjetoDune *objeto_dune) {
+bool Coordenada::poner_objeto(std::shared_ptr<ObjetoDune> objeto_dune) {
 	if (estado == OCUPADA) {
 		return false;
 	} else {
@@ -23,4 +23,13 @@ std::string Coordenada::obtener_terreno() {
 void Coordenada::sacar_objeto() {
 	objeto = NULL;
 	estado = VACIA;
+}
+
+bool Coordenada::esta_ocupada() {
+	if(estado == OCUPADA) return true;
+	return false;
+}
+
+int Coordenada::obtener_id_objeto_contenido() {
+	return objeto->pedir_id();
 }

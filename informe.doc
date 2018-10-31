@@ -1,0 +1,54 @@
+﻿PRIMERA SEMANA
+Búsqueda de que es el algoritmo A*, búsqueda de diferentes implementaciones y observación de su funcionamiento.
+Implementación del algoritmo.
+
+SEGUNDA SEMANA
+Comienzo de la implementación del modelo. Creación de todas las clases fácilmente identificables como los vehículos, terrenos,
+armas y unidades movibles (que integran tanto a los vehículos como a las unidades de infantería ya que comparten los mismos atributos
+o características). Modelo pensado como una partida que tiene jugadores y un mapa. EL mapa esta conformado por coordenadas donde se guarda
+el centro de los objetos. Los jugadores a su vez conocen lo que tienen y la cantidad de edificios según el tipo de edificio que es para así
+luego saber que edificios tiene a la hora de crear unidades ya que no solo se tiene que verificar que tenga los edificios correctos sino tambien cuantos tiene de cada uno para acelerar los entrenamientos de las unidades.
+Implementacion de creacion de edificios, ubicandolos en el mapa y verificando que se puedan poner, e implementacion de ataque de edificios,
+teniendo en cuenta su destruccion obviamente.
+Creacion de factorys o fbricas de objetos (para los edificios y unidades movibles)
+
+TERCER SEMANA
+Arreglos necesarios. Gusano de arena que sale a comer. Makelist para el modelo y así poder tener todo dividido en diferentes carpetas
+para una mejor organización. Refinación del algoritmo A*.
+*Establecimiento PROTOCOLO*
+Envío del mapa:
+-Edificios: 'e', id_edificio, id_tipo_edificio, id_duenio, base, altura, centro_x, centro_y
+-Terrenos:'t', id_tipo_terreno, base, altura, centro_x, centro_y
+
+Codigos establecidos para los tipos diferentes de edificios, unidades movibles y terrenos:
+Edificios :
+CENTRO_CONSTRUCCION 0
+TRAMPA_AIRE 1
+REFINERIA 2
+SILO 3
+FABRICA_LIGERA 4
+FABRICA_PESADA 5
+CUARTEL 6
+PALACIO 7
+
+Unidades Movibles:
+INFANTERIA_LIGERA 0
+INFANTERIA_PESADA 1
+FREMEN 2
+SARDAUKAR 3
+TRIKE 4
+RAIDER 5
+TANQUE 6
+TANQUE_SONICO 7
+DESVIADOR 8
+DEVASTADOR 9
+COSECHADORA 10
+
+Terrenos:
+ROCA 0
+DUNA 1
+ARENA 2
+ESPECIA 3
+CIMA 4
+PRECIPICIO 6
+

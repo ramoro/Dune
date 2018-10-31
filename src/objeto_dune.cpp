@@ -1,6 +1,8 @@
 #include "objeto_dune.h"
 
-ObjetoDune::ObjetoDune(int vida, int costo): vida(vida), costo_dinero(costo){}
+ObjetoDune::ObjetoDune(int vida, int costo, int id, int id_duenio, int base,
+int altura, std::pair<int, int> centro): vida(vida), costo_dinero(costo), 
+id(id), id_duenio(id_duenio), base(base), altura(altura), centro(centro) {}
 
 int ObjetoDune::reducir_vida(int danio) {
 	vida -= danio;
@@ -13,4 +15,24 @@ int ObjetoDune::obtener_costo() {
 
 int ObjetoDune::pedir_id_tipo() {
 	return id_tipo;
+}
+
+int ObjetoDune::pedir_id() {
+	return id;
+}
+
+int ObjetoDune::pedir_id_duenio() {
+	return id_duenio;
+}
+
+int ObjetoDune::obtener_base() {
+	return base;
+}
+
+int ObjetoDune::obtener_altura() {
+	return altura;
+}
+
+std::pair<int, int> ObjetoDune::obtener_centro() {
+	return centro;
 }

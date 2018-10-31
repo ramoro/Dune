@@ -1,6 +1,8 @@
 #ifndef OBJETO_DUNE_H
 #define OBJETO_DUNE_H
 
+#include <utility>
+
 
 /*Clase abstracta que representa a un objeto del mundo dune que puede
 ser tanto un edificio como una unidad movible (vehiculos y 
@@ -9,13 +11,19 @@ class ObjetoDune {
 	private:
 		int vida;
 		int costo_dinero;
+		int id;
+		int id_duenio;
+		int base;
+		int altura;
+		std::pair<int, int> centro;
 
 	protected:
 		int id_tipo;
 
 	public:
 		/*Constructor de la clase.*/
-		ObjetoDune(int vida, int costo);
+		ObjetoDune(int vida, int costo, int id, int id_duenio, int base, 
+		int altura, std::pair<int, int> centro);
 
 		/*Recibe el danio a disminuirle a la vida del objeto y devuelve
 		la vida restante que le queda. En caso de devolver 0 o un numero
@@ -31,6 +39,21 @@ class ObjetoDune {
 		Por ejemplo dentro de los edificios todas las Refinerias se 
 		identifican con un id.*/
 		int pedir_id_tipo();
+
+		/*Devuelve el id unico del objeto.*/
+		int pedir_id();
+
+		/*Devuelve el id del jugador que posee el objeto.*/
+		int pedir_id_duenio();
+
+		/*Devuelve el ancho del objeto.*/
+		int obtener_base();
+
+		/*Devuelve la altura del objeto.*/
+		int obtener_altura();
+
+		/*Devuelve el la posicion del centro del objeto.*/
+		std::pair<int, int> obtener_centro();
 };
 
 #endif

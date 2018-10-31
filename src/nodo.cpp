@@ -1,10 +1,5 @@
 #include "nodo.h"
-#include <vector>
-#include <stack>
-#include <cmath>
-#include <iostream>
 
-#define POSICION_INHABILITADA 1
  
 Nodo::Nodo(Nodo *nodo_padre, const std::pair<int,int> &pos) : 
 	padre(nodo_padre), posicion(pos) {}
@@ -54,23 +49,3 @@ Nodo::Nodo(const Nodo &otro) {
 	posicion = otro.posicion;
 	padre = otro.padre;
 }
-
-
-/*int main() {
-	//parametros
-	std::pair<int ,int> inicio(0, 0);
-	std::vector<std::vector<int>> mapa;
-	std::pair<int, int> final(2, 0);
-	//fin parametros
-
-	Nodo nodo_inicial(NULL, inicio);
-	Nodo nodo_evaluado = nodo_inicial;
-  	Nodo nodo_aux = nodo_evaluado;
-  	Nodo nodo_nuevo(&nodo_aux, std::pair<int, int>(1,0));
-
-  	nodo_evaluado = nodo_nuevo;
-  	Nodo nodo_aux2 = nodo_evaluado;
-  	Nodo nodo_nuevo2(&nodo_aux2, std::pair<int, int>(2,0));
-
-
-}*/

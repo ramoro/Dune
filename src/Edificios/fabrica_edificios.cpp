@@ -17,30 +17,40 @@
 #define CUARTEL 6
 #define PALACIO 7
 
-Edificio&& FabricaEdificios::crear_edificio(int id_tipo_edificio) {
+std::shared_ptr<Edificio> FabricaEdificios::crear_edificio(
+int id_tipo_edificio, int id, int id_duenio, 
+std::pair<int, int> centro) {
 	if(id_tipo_edificio == CENTRO_CONSTRUCCION) {
-		CentroConstruccion centro_construccion;
-		return std::move(centro_construccion);
+		std::shared_ptr<CentroConstruccion> centro_construccion(new 
+		CentroConstruccion(id, id_duenio, centro));
+		return centro_construccion;
 	} else if (id_tipo_edificio == TRAMPA_AIRE) {
-		TrampaAire trampa_aire;
-		return std::move(trampa_aire);
+		std::shared_ptr<TrampaAire> trampa_aire(new 
+		TrampaAire(id, id_duenio, centro));
+		return trampa_aire;
 	} else if (id_tipo_edificio == REFINERIA) {
-		Refineria refineria;
-		return std::move(refineria);
+		std::shared_ptr<Refineria> refineria(new 
+		Refineria(id, id_duenio, centro));
+		return refineria;
 	} else if (id_tipo_edificio == SILO) {
-		Silo silo;
-		return std::move(silo);
+		std::shared_ptr<Silo> silo(new 
+		Silo(id, id_duenio, centro));
+		return silo;
 	} else if (id_tipo_edificio == FABRICA_LIGERA) {
-		FabricaLigera fabrica_ligera;
-		return std::move(fabrica_ligera);
+		std::shared_ptr<FabricaLigera> fabrica_ligera(new 
+		FabricaLigera(id, id_duenio, centro));
+		return fabrica_ligera;
 	} else if (id_tipo_edificio == FABRICA_PESADA) {
-		FabricaPesada fabrica_pesada;
-		return std::move(fabrica_pesada);
+		std::shared_ptr<FabricaPesada> fabrica_pesada(new 
+		FabricaPesada(id, id_duenio, centro));
+		return fabrica_pesada;
 	} else if (id_tipo_edificio == CUARTEL) {
-		Cuartel cuartel;
-		return std::move(cuartel);
+		std::shared_ptr<Cuartel> cuartel(new 
+		Cuartel(id, id_duenio, centro));
+		return cuartel;
 	} else {
-		Palacio palacio;
-		return std::move(palacio);
+		std::shared_ptr<Palacio> palacio(new 
+		Palacio(id, id_duenio, centro));
+		return palacio;
 	}
 }

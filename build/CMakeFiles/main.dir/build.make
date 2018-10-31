@@ -81,17 +81,200 @@ CMakeFiles/main.dir/src/main.cpp.o.provides: CMakeFiles/main.dir/src/main.cpp.o.
 CMakeFiles/main.dir/src/main.cpp.o.provides.build: CMakeFiles/main.dir/src/main.cpp.o
 
 
+CMakeFiles/main.dir/src/objeto_dune.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/objeto_dune.cpp.o: ../src/objeto_dune.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/src/objeto_dune.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/objeto_dune.cpp.o -c /home/ramiro/Escritorio/Dune/src/objeto_dune.cpp
+
+CMakeFiles/main.dir/src/objeto_dune.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/objeto_dune.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ramiro/Escritorio/Dune/src/objeto_dune.cpp > CMakeFiles/main.dir/src/objeto_dune.cpp.i
+
+CMakeFiles/main.dir/src/objeto_dune.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/objeto_dune.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ramiro/Escritorio/Dune/src/objeto_dune.cpp -o CMakeFiles/main.dir/src/objeto_dune.cpp.s
+
+CMakeFiles/main.dir/src/objeto_dune.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/src/objeto_dune.cpp.o.requires
+
+CMakeFiles/main.dir/src/objeto_dune.cpp.o.provides: CMakeFiles/main.dir/src/objeto_dune.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/objeto_dune.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/src/objeto_dune.cpp.o.provides
+
+CMakeFiles/main.dir/src/objeto_dune.cpp.o.provides.build: CMakeFiles/main.dir/src/objeto_dune.cpp.o
+
+
+CMakeFiles/main.dir/src/coordenada.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/coordenada.cpp.o: ../src/coordenada.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/src/coordenada.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/coordenada.cpp.o -c /home/ramiro/Escritorio/Dune/src/coordenada.cpp
+
+CMakeFiles/main.dir/src/coordenada.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/coordenada.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ramiro/Escritorio/Dune/src/coordenada.cpp > CMakeFiles/main.dir/src/coordenada.cpp.i
+
+CMakeFiles/main.dir/src/coordenada.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/coordenada.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ramiro/Escritorio/Dune/src/coordenada.cpp -o CMakeFiles/main.dir/src/coordenada.cpp.s
+
+CMakeFiles/main.dir/src/coordenada.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/src/coordenada.cpp.o.requires
+
+CMakeFiles/main.dir/src/coordenada.cpp.o.provides: CMakeFiles/main.dir/src/coordenada.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/coordenada.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/src/coordenada.cpp.o.provides
+
+CMakeFiles/main.dir/src/coordenada.cpp.o.provides.build: CMakeFiles/main.dir/src/coordenada.cpp.o
+
+
+CMakeFiles/main.dir/src/jugador.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/jugador.cpp.o: ../src/jugador.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/src/jugador.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/jugador.cpp.o -c /home/ramiro/Escritorio/Dune/src/jugador.cpp
+
+CMakeFiles/main.dir/src/jugador.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/jugador.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ramiro/Escritorio/Dune/src/jugador.cpp > CMakeFiles/main.dir/src/jugador.cpp.i
+
+CMakeFiles/main.dir/src/jugador.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/jugador.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ramiro/Escritorio/Dune/src/jugador.cpp -o CMakeFiles/main.dir/src/jugador.cpp.s
+
+CMakeFiles/main.dir/src/jugador.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/src/jugador.cpp.o.requires
+
+CMakeFiles/main.dir/src/jugador.cpp.o.provides: CMakeFiles/main.dir/src/jugador.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/jugador.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/src/jugador.cpp.o.provides
+
+CMakeFiles/main.dir/src/jugador.cpp.o.provides.build: CMakeFiles/main.dir/src/jugador.cpp.o
+
+
+CMakeFiles/main.dir/src/mapa.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/mapa.cpp.o: ../src/mapa.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/src/mapa.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/mapa.cpp.o -c /home/ramiro/Escritorio/Dune/src/mapa.cpp
+
+CMakeFiles/main.dir/src/mapa.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/mapa.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ramiro/Escritorio/Dune/src/mapa.cpp > CMakeFiles/main.dir/src/mapa.cpp.i
+
+CMakeFiles/main.dir/src/mapa.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/mapa.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ramiro/Escritorio/Dune/src/mapa.cpp -o CMakeFiles/main.dir/src/mapa.cpp.s
+
+CMakeFiles/main.dir/src/mapa.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/src/mapa.cpp.o.requires
+
+CMakeFiles/main.dir/src/mapa.cpp.o.provides: CMakeFiles/main.dir/src/mapa.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/mapa.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/src/mapa.cpp.o.provides
+
+CMakeFiles/main.dir/src/mapa.cpp.o.provides.build: CMakeFiles/main.dir/src/mapa.cpp.o
+
+
+CMakeFiles/main.dir/src/partida.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/partida.cpp.o: ../src/partida.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/src/partida.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/partida.cpp.o -c /home/ramiro/Escritorio/Dune/src/partida.cpp
+
+CMakeFiles/main.dir/src/partida.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/partida.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ramiro/Escritorio/Dune/src/partida.cpp > CMakeFiles/main.dir/src/partida.cpp.i
+
+CMakeFiles/main.dir/src/partida.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/partida.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ramiro/Escritorio/Dune/src/partida.cpp -o CMakeFiles/main.dir/src/partida.cpp.s
+
+CMakeFiles/main.dir/src/partida.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/src/partida.cpp.o.requires
+
+CMakeFiles/main.dir/src/partida.cpp.o.provides: CMakeFiles/main.dir/src/partida.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/partida.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/src/partida.cpp.o.provides
+
+CMakeFiles/main.dir/src/partida.cpp.o.provides.build: CMakeFiles/main.dir/src/partida.cpp.o
+
+
+CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o: ../src/buscador_mejor_camino.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o -c /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.cpp
+
+CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.cpp > CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.i
+
+CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.cpp -o CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.s
+
+CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o.requires
+
+CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o.provides: CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o.provides
+
+CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o.provides.build: CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o
+
+
+CMakeFiles/main.dir/src/nodo.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/nodo.cpp.o: ../src/nodo.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/main.dir/src/nodo.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/nodo.cpp.o -c /home/ramiro/Escritorio/Dune/src/nodo.cpp
+
+CMakeFiles/main.dir/src/nodo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/nodo.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ramiro/Escritorio/Dune/src/nodo.cpp > CMakeFiles/main.dir/src/nodo.cpp.i
+
+CMakeFiles/main.dir/src/nodo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/nodo.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ramiro/Escritorio/Dune/src/nodo.cpp -o CMakeFiles/main.dir/src/nodo.cpp.s
+
+CMakeFiles/main.dir/src/nodo.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/src/nodo.cpp.o.requires
+
+CMakeFiles/main.dir/src/nodo.cpp.o.provides: CMakeFiles/main.dir/src/nodo.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/nodo.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/src/nodo.cpp.o.provides
+
+CMakeFiles/main.dir/src/nodo.cpp.o.provides.build: CMakeFiles/main.dir/src/nodo.cpp.o
+
+
 # Object files for target main
 main_OBJECTS = \
-"CMakeFiles/main.dir/src/main.cpp.o"
+"CMakeFiles/main.dir/src/main.cpp.o" \
+"CMakeFiles/main.dir/src/objeto_dune.cpp.o" \
+"CMakeFiles/main.dir/src/coordenada.cpp.o" \
+"CMakeFiles/main.dir/src/jugador.cpp.o" \
+"CMakeFiles/main.dir/src/mapa.cpp.o" \
+"CMakeFiles/main.dir/src/partida.cpp.o" \
+"CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o" \
+"CMakeFiles/main.dir/src/nodo.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/src/main.cpp.o
+main: CMakeFiles/main.dir/src/objeto_dune.cpp.o
+main: CMakeFiles/main.dir/src/coordenada.cpp.o
+main: CMakeFiles/main.dir/src/jugador.cpp.o
+main: CMakeFiles/main.dir/src/mapa.cpp.o
+main: CMakeFiles/main.dir/src/partida.cpp.o
+main: CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o
+main: CMakeFiles/main.dir/src/nodo.cpp.o
 main: CMakeFiles/main.dir/build.make
+main: libsdldemo.a
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -100,6 +283,13 @@ CMakeFiles/main.dir/build: main
 .PHONY : CMakeFiles/main.dir/build
 
 CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/main.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/objeto_dune.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/coordenada.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/jugador.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/mapa.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/partida.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/nodo.cpp.o.requires
 
 .PHONY : CMakeFiles/main.dir/requires
 

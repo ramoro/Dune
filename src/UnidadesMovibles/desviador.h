@@ -10,7 +10,7 @@ jugador.*/
 class Desviador: public UnidadMovible {
 	public:
 		/*Constructor de la clase.*/
-		Desviador();
+		Desviador(int id, int id_duenio, std::pair<int, int> centro);
 };
 
 #endif

@@ -7,6 +7,9 @@
 class Terreno {
 	private:
 		std::string material;
+		std::pair<int, int> centro;
+		int base;
+		int altura;
 
 	public:
 		/*Constructor de la clase.*/

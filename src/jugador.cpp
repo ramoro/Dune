@@ -1,12 +1,16 @@
 #include "jugador.h"
 
-bool Jugador::agregar_edificio(Edificio* edificio, int id_edificio,
-int id_tipo_edificio) {
+Jugador::Jugador(std::string casa): casa(casa) {
+	dinero = 1000; //INICIO DE DINERO DE UN JUGADOR -->HACER SETEABLE
+}
+
+bool Jugador::agregar_edificio(std::shared_ptr<Edificio> edificio, 
+int id_edificio, int id_tipo_edificio) {
 	int costo = edificio->obtener_costo();
 	if (costo > dinero) return false;
 	else {
 		reducir_dinero(costo);
-		edificios.insert(std::pair<int, Edificio*>(id_edificio, 
+		edificios.insert(std::pair<int, std::shared_ptr<Edificio>>(id_edificio, 
 		edificio));
 		if (edificios_por_tipo.count(id_tipo_edificio) > 0) {
 			(edificios_por_tipo.at(id_tipo_edificio))++;
