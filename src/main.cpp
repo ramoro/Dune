@@ -175,7 +175,7 @@
 
 	}
 }*/
-
+/*
 int main() {
  Partida partida;
   partida.agregar_jugador("je");
@@ -189,15 +189,18 @@ int main() {
   //std::cout << objetivo.first << " " << objetivo.second << std::endl;
 }
 
-/*int main() {
+*/int main() {
   Mapa mapa;
+
   BuscadorMejorCamino buscador;
   std::pair<int ,int> inicio(0, 0);
-  std::pair<int, int> final(3, 1);
-  buscador.buscar_mejor_camino(mapa, inicio, final, 3);
-  Partida partida();
+  std::pair<int, int> final(5, 5);
+  buscador.buscar_mejor_camino(mapa, inicio, final);
+  Partida partida;
   partida.agregar_jugador("harkonnen");
-  std::pair<int, int> centro(100, 100);
-  bool agregado = partida.agregar_edificio(0, centro, 0);
-  std::cout << agregado << std::endl;
-}*/
+  //std::cout << partida.agregar_unidad(0,2, std::pair<int, int>(100,100), 5) << std::endl;
+  std::cout << partida.agregar_edificio(0, std::pair<int, int>(400,400), 4) << std::endl;
+  for (int i = 0; i < 26 ; i++){
+    std::cout << partida.agregar_unidad(0,0,5) << std::endl;
+  }
+}

@@ -1,6 +1,7 @@
 #include "mapa.h"
 #include "Terrenos/no_especia.h"
 #include <stdlib.h> 
+#include <iostream>
 
 #define DIMENSION_EXPANSION_BASE 3 //significa que lo minimo que se expande
 //la explosion del tanque o el gusano es en un cuadrado de 3x3
@@ -56,6 +57,7 @@ int altura, int base, std::string terreno) {
 std::vector<std::pair<int, int>> Mapa::buscar_objetos_en_alrededores(
 std::pair<int, int> centro_objeto1, int base_objeto1, int altura_objeto1) {
 	std::vector<std::pair<int, int>> objetivos;
+	/*
 	for (std::map<int, ObjetoDune>::iterator it = mapa_ids_objetos.begin();
 	it != mapa_ids_objetos.end(); ++it) {
 		std::pair<int, int> centro_objeto2 = (it->second).obtener_centro();
@@ -103,6 +105,7 @@ std::pair<int, int> centro_objeto1, int base_objeto1, int altura_objeto1) {
 			continue;
 		}
 	}
+	*/
 	return objetivos;
 }
 
@@ -159,6 +162,62 @@ std::pair<int, int> Mapa::obtener_posicion_objeto(int id_objeto) {
 	return (mapa_ids_objetos.at(id_objeto)).obtener_centro();
 }
 
+bool Mapa::ubicar_unidad(int id_edificio, std::pair<int, int> &centro_unidad) {
+	std::pair<int, int> pos_edificio = obtener_posicion_objeto(id_edificio);
+	int rango_x = (mapa_ids_objetos.at(id_edificio)).obtener_base();
+	int rango_y = (mapa_ids_objetos.at(id_edificio)).obtener_altura();
+	std::pair<int, int> pos_inicial;
+	pos_inicial.first = pos_edificio.first - (rango_x/2) - 1 ;
+	pos_inicial.second = pos_edificio.second + (rango_y/2) + 1; 
+	if (recorrer_horizontal(pos_inicial,rango_x)){
+		centro_unidad = pos_inicial;
+		return true;
+	}
+	pos_inicial.second--;
+	if (recorrer_vertical(pos_inicial,rango_y)){
+		centro_unidad = pos_inicial;
+		return true;
+	}
+	pos_inicial.second-= rango_y;
+	pos_inicial.first++;
+	if (recorrer_horizontal(pos_inicial,rango_x)){
+		centro_unidad = pos_inicial;
+		return true;
+	}
+	pos_inicial.first+= rango_x;
+	pos_inicial.second+= rango_y + 1; 
+	if (recorrer_vertical(pos_inicial,rango_y)){
+		centro_unidad = pos_inicial;
+		return true;
+	}
+	return false;
+}
+
+bool Mapa::recorrer_horizontal(std::pair<int, int> &pos_inicial, int rango) {
+	std::pair<int, int> pos_return(pos_inicial);
+  	std::cout << "pos_inicial " << pos_return.first << " " << pos_return.second << std::endl;
+	for (int horizontal = 0; horizontal <= rango; horizontal++){
+		if (!esta_ocupada_coordenada(pos_return)){
+			pos_inicial = pos_return;
+			return true;
+		}
+		pos_return.first++;
+	}
+	return false;
+}
+bool Mapa::recorrer_vertical(std::pair<int, int> &pos_inicial, int rango) {
+	std::pair<int, int> pos_return(pos_inicial);
+  	std::cout << "pos_inicial " << pos_return.first << " " << pos_return.second << std::endl;
+	for (int horizontal = 0; horizontal <= rango; horizontal++){
+		if (!esta_ocupada_coordenada(pos_return)){
+			pos_inicial = pos_return;
+			return true;
+		}
+		pos_return.second--;
+	}
+	return false;
+}
+
 std::vector<std::pair<int, int>> Mapa::desenterrar_gusano() {
 	int fila_random;
 	int columna_random;
@@ -197,4 +256,8 @@ unsigned int Mapa::pedir_limite_columnas() {
 
 std::string Mapa::pedir_terreno_coordenada(std::pair<int, int> posicion) {
 	return coordenadas[posicion.first][posicion.second].obtener_terreno();
+}
+
+bool Mapa::esta_ocupada_coordenada(std::pair<int, int> posicion) {
+	return coordenadas[posicion.first][posicion.second].esta_ocupada();
 }

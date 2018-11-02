@@ -68,6 +68,13 @@ class Mapa {
 		Coordenada con esa posicion.*/
 		std::string pedir_terreno_coordenada(std::pair<int, int> posicion);
 
+		bool esta_ocupada_coordenada(std::pair<int, int> posicion);
+
+		bool ubicar_unidad(int id_edificio, std::pair<int, int> &centro_unidad);
+
+		bool recorrer_horizontal(std::pair<int, int> &pos_inicial, int rango);
+		bool recorrer_vertical(std::pair<int, int> &pos_inicial, int rango);
+
 		Mapa();
 
 	private:

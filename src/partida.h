@@ -51,6 +51,10 @@ class Partida {
 		/*Devuelve un vector de pares de ints con el id de la unidad comida y
 		el id del jugador duenio de la unidad.*/
 		std::vector<std::pair<int, int>> generar_gusano();
+		/*Recibe el id del jugador y el id de la unidad a crear, devuelve
+		true si cumple todas las condiciones y se crea, false si no*/
+		bool agregar_unidad(int id_jugador,int id_edificio,int id_tipo_unidad);
+
 };
 
 #endif 

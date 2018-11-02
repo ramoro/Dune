@@ -89,10 +89,16 @@ std::pair<int, int> &pos_inicial, std::pair<int, int> &pos_final) {
 
   			//Evaluo el terreno y unidad para ver si puede pasar por 
   			//esa posicion
-  			if ((mapa.pedir_terreno_coordenada(posicion_adyacente) == 
-  			"precipicio")) {
+  			if (mapa.pedir_terreno_coordenada(posicion_adyacente) == 
+  			"precipicio" ) {
+          std::cout << "Precipicio " << posicion_adyacente.first << " " << posicion_adyacente.second << std::endl;
   				continue;
   			}
+
+        if (mapa.esta_ocupada_coordenada(posicion_adyacente)) {
+          std::cout << "Esta ocupada " << posicion_adyacente.first << " " << posicion_adyacente.second << std::endl;
+          continue;
+        }
   			Nodo *nodo_aux = new Nodo(nodo_evaluado);
   			Nodo nodo_nuevo(nodo_aux, posicion_adyacente);
   			nodos_hijos.push_back(nodo_nuevo);

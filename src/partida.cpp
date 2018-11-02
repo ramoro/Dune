@@ -4,6 +4,7 @@
 #include "UnidadesMovibles/raider.h"
 #include "Edificios/fabrica_ligera.h"
 #include <memory>
+#include <iostream>
 
 #define OBJETO_MUERTO -1 //CODIGO PARA ENVIAR POR PROTOCOLO INDICANDO 
 //QUE OBJ MURIO
@@ -40,6 +41,7 @@ posicion_central, int id_tipo_edificio) {
 		id_tipo_edificio);
 		return false;
 	}
+	 std::cout << "ID edificio " << contador_ids_edificios << std::endl;
 	contador_ids_edificios++;
 	return true;
 }
@@ -67,6 +69,28 @@ void Partida::autodemoler_edificio(int id_jugador, int id_edificio) {
 	jugadores.at(id_jugador).aumentar_dinero(costo_edificio / 2);
 }
 
+bool Partida::agregar_unidad(int id_jugador,int id_edificio, int id_tipo_unidad) {
+	std::pair<int,int> posicion_central;
+	if (!mapa.ubicar_unidad(id_edificio,posicion_central)) return false;
+	std::cout << "unidad en x " << posicion_central.first << " y " << posicion_central.second << std::endl;
+ 	std::shared_ptr<UnidadMovible> ptr_unidad = fabrica_unidades_movibles.crear_unidad_movible(
+	5, id_jugador, contador_ids_unidades_movibles, posicion_central);
+	if(!mapa.verificar_terreno_alrededores(posicion_central, 
+	ptr_unidad->obtener_altura(), ptr_unidad->obtener_base(),
+	 "roca")) return false;
+
+	if (!(jugadores.at(id_jugador).agregar_unidad(ptr_unidad, 
+	contador_ids_unidades_movibles, id_tipo_unidad))) return false;
+
+	if (!mapa.agregar_objeto(ptr_unidad, contador_ids_unidades_movibles,
+	posicion_central)) {
+		(jugadores.at(id_jugador)).eliminar_unidad(contador_ids_unidades_movibles,
+		id_tipo_unidad);
+		return false;
+	}
+	contador_ids_unidades_movibles++;
+	return true;
+}
 /*int Partida::crear_unidad_movible(int id_jugador, int id_tipo_unidad,
 	int id_edificio) {
 	//UnidadMovible unidad = fabrica_unidades_movibles.
