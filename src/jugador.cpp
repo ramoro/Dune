@@ -1,6 +1,15 @@
 #include "jugador.h"
 #include <iostream>
 
+#define CENTRO_CONSTRUCCION 0
+#define TRAMPA_AIRE 1
+#define REFINERIA 2
+#define SILO 3
+#define FABRICA_LIGERA 4
+#define FABRICA_PESADA 5
+#define CUARTEL 6
+#define PALACIO 7
+
 Jugador::Jugador(std::string casa): casa(casa) {
 	dinero = 100000000; //INICIO DE DINERO DE UN JUGADOR -->HACER SETEABLE
 }
@@ -62,13 +71,35 @@ void Jugador::aumentar_dinero(int valor) {
 
 bool Jugador::existe_edificio(int id_unidad) {
 	switch(id_unidad){
-	    case 0: 
+		case 0:
+	    case 1: if (edificios_por_tipo.count(CUARTEL)== 0){
+	    			std::cout << "No existe edificio con id 6" << std::endl;
+	    			return false;
+			    }
+			    break;
+	    case 2: 
+	    case 3: if ((edificios_por_tipo.count(CUARTEL) == 0) && (edificios_por_tipo.count(PALACIO) == 0)){
+	    			std::cout << "No existe edificio con id 6 o 7" << std::endl;
+	    			return false;
+			    }
+			    break;
 	    break;
-	    case 1: 
-	    break;
-	    //en caso de querer crear un raider debe existir una fabrica ligera
-	    case 5: if (edificios_por_tipo.count(4) == 0){
+	    case 4:
+	    case 5: if (edificios_por_tipo.count(FABRICA_LIGERA) == 0){
 	    			std::cout << "No existe edificio con id 4" << std::endl;
+	    			return false;
+			    }
+			    break;
+		case 6:
+		case 10: if (edificios_por_tipo.count(FABRICA_PESADA) == 0){
+	    			std::cout << "No existe edificio con id 5" << std::endl;
+	    			return false;
+			    }
+			    break;    
+		case 7:
+	    case 8:
+	    case 9: if ((edificios_por_tipo.count(FABRICA_PESADA) == 0) && (edificios_por_tipo.count(PALACIO) == 0)){
+	    			std::cout << "No existe edificio con id 5 o 7" << std::endl;
 	    			return false;
 			    }
 			    break;
