@@ -164,56 +164,59 @@ std::pair<int, int> Mapa::obtener_posicion_objeto(int id_objeto) {
 
 bool Mapa::ubicar_unidad(int id_edificio, std::pair<int, int> &centro_unidad) {
 	std::pair<int, int> pos_edificio = obtener_posicion_objeto(id_edificio);
+	
+	//esto deberiamos tomarlo de algun lado, definir donde
+	int base_unidad = 1;
+	int altura_unidad = 2;
+
 	int rango_x = (mapa_ids_objetos.at(id_edificio)).obtener_base();
 	int rango_y = (mapa_ids_objetos.at(id_edificio)).obtener_altura();
 	std::pair<int, int> pos_inicial;
-	pos_inicial.first = pos_edificio.first - (rango_x/2) - 1 ;
-	pos_inicial.second = pos_edificio.second + (rango_y/2) + 1; 
-	if (recorrer_horizontal(pos_inicial,rango_x)){
+	pos_inicial.first = pos_edificio.first - (rango_x/2) - (base_unidad/2) - 1 ;
+	pos_inicial.second = pos_edificio.second + (rango_y/2) + (altura_unidad/2) + 1; 
+	if (recorrer_horizontal(pos_inicial,rango_x,base_unidad)){
 		centro_unidad = pos_inicial;
 		return true;
 	}
-	pos_inicial.second--;
-	if (recorrer_vertical(pos_inicial,rango_y)){
+	pos_inicial.second-=altura_unidad;
+	if (recorrer_vertical(pos_inicial,rango_y,altura_unidad)){
 		centro_unidad = pos_inicial;
 		return true;
 	}
 	pos_inicial.second-= rango_y;
-	pos_inicial.first++;
-	if (recorrer_horizontal(pos_inicial,rango_x)){
+	pos_inicial.first+=base_unidad;
+	if (recorrer_horizontal(pos_inicial,rango_x,base_unidad)){
 		centro_unidad = pos_inicial;
 		return true;
 	}
 	pos_inicial.first+= rango_x;
-	pos_inicial.second+= rango_y + 1; 
-	if (recorrer_vertical(pos_inicial,rango_y)){
+	pos_inicial.second+= rango_y + altura_unidad; 
+	if (recorrer_vertical(pos_inicial,rango_y,altura_unidad)){
 		centro_unidad = pos_inicial;
 		return true;
 	}
 	return false;
 }
 
-bool Mapa::recorrer_horizontal(std::pair<int, int> &pos_inicial, int rango) {
+bool Mapa::recorrer_horizontal(std::pair<int, int> &pos_inicial, int rango,int base) {
 	std::pair<int, int> pos_return(pos_inicial);
-  	std::cout << "pos_inicial " << pos_return.first << " " << pos_return.second << std::endl;
-	for (int horizontal = 0; horizontal <= rango; horizontal++){
+	for (; pos_return.first <= pos_inicial.first + rango;){
 		if (!esta_ocupada_coordenada(pos_return)){
 			pos_inicial = pos_return;
 			return true;
 		}
-		pos_return.first++;
+		pos_return.first+=base;
 	}
 	return false;
 }
-bool Mapa::recorrer_vertical(std::pair<int, int> &pos_inicial, int rango) {
+bool Mapa::recorrer_vertical(std::pair<int, int> &pos_inicial, int rango,int altura) {
 	std::pair<int, int> pos_return(pos_inicial);
-  	std::cout << "pos_inicial " << pos_return.first << " " << pos_return.second << std::endl;
-	for (int horizontal = 0; horizontal <= rango; horizontal++){
+	for (; pos_return.second >= pos_inicial.second - rango;){
 		if (!esta_ocupada_coordenada(pos_return)){
 			pos_inicial = pos_return;
 			return true;
 		}
-		pos_return.second--;
+		pos_return.second-=altura;
 	}
 	return false;
 }

@@ -189,6 +189,7 @@ int main() {
   //std::cout << objetivo.first << " " << objetivo.second << std::endl;
 }
 
+//MAIN NACHO
 */int main() {
   Mapa mapa;
 
@@ -200,7 +201,7 @@ int main() {
   partida.agregar_jugador("harkonnen");
   //std::cout << partida.agregar_unidad(0,2, std::pair<int, int>(100,100), 5) << std::endl;
   std::cout << partida.agregar_edificio(0, std::pair<int, int>(400,400), 4) << std::endl;
-  for (int i = 0; i < 26 ; i++){
+  for (int i = 0; i < 24 ; i++){
     std::cout << partida.agregar_unidad(0,0,5) << std::endl;
   }
 }

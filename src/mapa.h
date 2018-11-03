@@ -68,12 +68,26 @@ class Mapa {
 		Coordenada con esa posicion.*/
 		std::string pedir_terreno_coordenada(std::pair<int, int> posicion);
 
+		/*Devuelve true si coordenada en la posicion pasada esta ocupada*/
 		bool esta_ocupada_coordenada(std::pair<int, int> posicion);
 
+		/*Recibe el id del edificio seleccionado que va a crear las unidades,
+		y la posicion donde va a guardar el centro de la unidad creada. Devuelve
+		 true o false si encontro una posicion valida para crear la unidad alrededor
+		 del edificio*/
 		bool ubicar_unidad(int id_edificio, std::pair<int, int> &centro_unidad);
 
-		bool recorrer_horizontal(std::pair<int, int> &pos_inicial, int rango);
-		bool recorrer_vertical(std::pair<int, int> &pos_inicial, int rango);
+		/*Devuelve true si encontro una posicion valida para poner la unidad.
+		 Lo que hace es recorrer horizontalmente hacia la derecha desde la pos inicial pasada
+		 hasta el rango que se establece buscando un espacio donde pueda meter 
+		 una unidad de un tamanio con la base pasada.*/
+		bool recorrer_horizontal(std::pair<int, int> &pos_inicial, int rango,int base);
+
+		/*Devuelve true si encontro una posicion valida para poner la unidad.
+		 Lo que hace es recorrer verticalmete hacia arriba desde la pos inicial pasada
+		 hasta el rango que se establece buscando un espacio donde pueda meter 
+		 una unidad de un tamanio con la base pasada.*/
+		bool recorrer_vertical(std::pair<int, int> &pos_inicial, int rango,int altura);
 
 		Mapa();
 
