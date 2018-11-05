@@ -7,6 +7,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/src/partida.cpp.o"
   "CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o"
   "CMakeFiles/main.dir/src/nodo.cpp.o"
+  "CMakeFiles/main.dir/src/observador.cpp.o"
   "main.pdb"
   "main"
 )

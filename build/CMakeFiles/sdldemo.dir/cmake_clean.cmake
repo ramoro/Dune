@@ -22,6 +22,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o"
   "CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o"
   "CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o"
+  "CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o"
+  "CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o"
   "CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o"
   "CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o"
   "CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o"

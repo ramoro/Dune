@@ -5,48 +5,55 @@
 #include <map>
 #include <vector>
 #include <memory>
-#include "Edificios/edificio.h"
-#include "UnidadesMovibles/unidad_movible.h"
-#include "UnidadesMovibles/raider.h"
+#include "observador.h"
+class UnidadMovible;
+class Edificio;
 
 /*Clase que representa a un jugador.*/
 class Jugador {
 	private:
-		std::map<int, std::shared_ptr<Edificio>> edificios;
 		std::map<int, int> edificios_por_tipo;
 		int dinero;
 		std::string casa;
-		std::map<int, std::shared_ptr<UnidadMovible>> unidades;
-		std::map<int, int> unidades_por_tipo;
+		int capacidad_especia;
+		int capacidad_especia_disponible;
+		int energia_disponible;
 
 	public:
 		/*Constructor de la clase.*/
 		Jugador(std::string casa);
 
-		/*Recibe un puntero a un edificio, el id del edificio y el id
-		del tipo de edificio al que corresponde. Se lo agregar al jugador
-		en caso de tener el dinero suficiente para crearlo y devuelve true.
-		En caso de no alcanzar con el dinero no se lo crea y devuelve false.*/
-		bool agregar_edificio(std::shared_ptr<Edificio> edificio, int id_edificio,
-		int id_tipo_edificio);
+		/*Recibe un puntero a un objeto Dune. Se lo agregar al jugador
+		sacandole el dinero correspondiente.*/
+		void agregar_edificio(Edificio* objeto, 
+		int id_objeto, std::pair<int, int> centro);
 
-		/*Recibe el id del edificio y el id del tipo del edificio y los usa
-		ambos para borrar el edificio tanto del mapa de edificios como del mapa
-		que contiene la cantidad de edificios por cada tipo que existe.*/
-		void eliminar_edificio(int id_edificio, int id_tipo_edificio);
+		/*Devuelve true si el edificio se puede agregar al jugador, false
+		en caso contrario.*/
+		bool agregado_edificio(ObjetoDune* objeto);
 
-		void eliminar_unidad(int id_edificio, int id_tipo_edificio);
+		/*Recibe objeto/edificio a eliminar y lo elimina
+		sacandose el aporte energetico que generaba el edificio.*/
+		void eliminar_edificio(Edificio *edificio);
 
 		/*Recibe una determinada cantidad de dinero y se la aumenta al
 		jugador.*/
 		void aumentar_dinero(int valor);
 
+		/*Recibe un numero con la capacidad de especia a aumentarle al jugador
+		y se la aumenta.*/
+		void aumentar_capacidad_especia(int capacidad);
 
-		bool agregar_unidad(std::shared_ptr<UnidadMovible> unidad, int id_unidad,
-		int id_tipo_unidad);
-		/*Recibe el id de la unidad a crear y se fija que exista el edificio requerido
-		para poder crear la misma*/
-		bool existe_edificio(int id_unidad);
+		/*Recibe un numero a reducir de capacidad para almacenar
+		especias y se lo reduce. Tambien le reduce la capacidad
+		disponible, la cual a lo sumo puede quedar en cero, jamas
+		en negativo.*/
+		void reducir_capacidad_especia(int cap_a_reducir); 
+
+		/*Recibe una puntero a una unidad movible y devuelve true
+		si el jugador posee los requisitos para asignarsele esa
+		nueva unidad. False en caso contrario.*/
+		bool agregada_unidad(UnidadMovible* unidad);
 
 	private:
 		/*Recibe un valor y se lo resta al dinero del jugador.*/

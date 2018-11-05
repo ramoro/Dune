@@ -51,6 +51,10 @@ add_library(sdldemo STATIC
  src/UnidadesMovibles/fremen.h
  src/UnidadesMovibles/sardaukar.cpp
  src/UnidadesMovibles/sardaukar.h
+ src/UnidadesMovibles/vehiculo.cpp
+ src/UnidadesMovibles/vehiculo.h
+ src/UnidadesMovibles/unidad_infanteria.cpp
+ src/UnidadesMovibles/unidad_infanteria.h
  src/Edificios/edificio.cpp
  src/Edificios/edificio.h
  src/Edificios/fabrica_edificios.cpp
@@ -93,6 +97,8 @@ add_executable (main
  src/buscador_mejor_camino.h
  src/nodo.cpp
  src/nodo.h
+ src/observador.cpp
+ src/observador.h
 )
 
 

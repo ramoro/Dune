@@ -36,7 +36,9 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/tanque.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque.cpp.o"
   "/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/tanque_sonico.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque_sonico.cpp.o"
   "/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/trike.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/sdldemo.dir/src/UnidadesMovibles/trike.cpp.o"
+  "/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o"
   "/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o"
+  "/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -19,6 +19,7 @@ para una mejor organización. Refinación del algoritmo A*.
 Envío del mapa:
 -Edificios: 'e', id_edificio, id_tipo_edificio, id_duenio, base, altura, centro_x, centro_y
 -Terrenos:'t', id_tipo_terreno, base, altura, centro_x, centro_y
+-Para cortar: ‘s’
 
 Codigos establecidos para los tipos diferentes de edificios, unidades movibles y terrenos:
 Edificios :

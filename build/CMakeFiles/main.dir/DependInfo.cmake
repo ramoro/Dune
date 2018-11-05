@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ramiro/Escritorio/Dune/src/mapa.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/main.dir/src/mapa.cpp.o"
   "/home/ramiro/Escritorio/Dune/src/nodo.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/main.dir/src/nodo.cpp.o"
   "/home/ramiro/Escritorio/Dune/src/objeto_dune.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/main.dir/src/objeto_dune.cpp.o"
+  "/home/ramiro/Escritorio/Dune/src/observador.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/main.dir/src/observador.cpp.o"
   "/home/ramiro/Escritorio/Dune/src/partida.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/main.dir/src/partida.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

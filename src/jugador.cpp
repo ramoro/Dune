@@ -1,53 +1,26 @@
 #include "jugador.h"
-#include <iostream>
-
-#define CENTRO_CONSTRUCCION 0
-#define TRAMPA_AIRE 1
-#define REFINERIA 2
-#define SILO 3
-#define FABRICA_LIGERA 4
-#define FABRICA_PESADA 5
-#define CUARTEL 6
-#define PALACIO 7
+#include "Edificios/edificio.h"
+#include "UnidadesMovibles/unidad_movible.h"
 
 Jugador::Jugador(std::string casa): casa(casa) {
 	dinero = 100000000; //INICIO DE DINERO DE UN JUGADOR -->HACER SETEABLE
+	capacidad_especia = 0;
+	capacidad_especia_disponible = 0;
 }
 
-bool Jugador::agregar_edificio(std::shared_ptr<Edificio> edificio, 
-int id_edificio, int id_tipo_edificio) {
-	int costo = edificio->obtener_costo();
-	if (costo > dinero) return false;
-	else {
-		reducir_dinero(costo);
-		edificios.insert(std::pair<int, std::shared_ptr<Edificio>>(id_edificio, 
-		edificio));
-		if (edificios_por_tipo.count(id_tipo_edificio) > 0) {
-			(edificios_por_tipo.at(id_tipo_edificio))++;
-		} else {
-			edificios_por_tipo.insert(std::pair<int, 
-			int>(id_tipo_edificio, 1));
-		}
-		return true;
-	}
-}
-
-bool Jugador::agregar_unidad(std::shared_ptr<UnidadMovible> unidad, 
-int id_unidad, int id_tipo_unidad) {
-	int costo = unidad->obtener_costo();
-	if (costo > dinero) return false;
-	if (!existe_edificio(id_tipo_unidad)) return false;
-	else {
-		reducir_dinero(costo);
-		unidades.insert(std::pair<int, std::shared_ptr<UnidadMovible>>(id_unidad, 
-		unidad));
-		if (unidades_por_tipo.count(id_tipo_unidad) > 0) {
-			(unidades_por_tipo.at(id_tipo_unidad))++;
-		} else {
-			unidades_por_tipo.insert(std::pair<int, 
-			int>(id_tipo_unidad, 1));
-		}
-		return true;
+void Jugador::agregar_edificio(Edificio* edificio, 
+int id_objeto, std::pair<int, int> centro) {
+	//int costo = edificio->obtener_costo();
+	//if (costo > dinero) return false;
+	reducir_dinero(edificio->obtener_costo());
+	energia_disponible += edificio->obtener_aporte_energetico();
+	//edificios.insert(std::pair<int, std::shared_ptr<Edificio>>(id_edificio, 
+	//edificio));
+	if (edificios_por_tipo.count(edificio->pedir_id_tipo()) > 0) {
+		(edificios_por_tipo.at(edificio->pedir_id_tipo()))++;
+	} else {
+		edificios_por_tipo.insert(std::pair<int, 
+		int>(edificio->pedir_id_tipo(), 1));
 	}
 }
 
@@ -55,55 +28,50 @@ void Jugador::reducir_dinero(int valor) {
 	dinero -= valor;
 }
 
-void Jugador::eliminar_edificio(int id_edificio, int id_tipo_edificio) {
-	edificios.erase(id_edificio);
-	(edificios_por_tipo.at(id_tipo_edificio))--;
-}
-
-void Jugador::eliminar_unidad(int id_unidad, int id_tipo_unidad) {
-	unidades.erase(id_unidad);
-	(unidades_por_tipo.at(id_tipo_unidad))--;
+void Jugador::eliminar_edificio(Edificio *edificio) {
+	//edificios.erase(id_edificio);
+	energia_disponible -= edificio->obtener_aporte_energetico();
+	(edificios_por_tipo.at(edificio->pedir_id_tipo()))--;
 }
 
 void Jugador::aumentar_dinero(int valor) {
 	dinero += valor;
 }
 
-bool Jugador::existe_edificio(int id_unidad) {
-	switch(id_unidad){
-		case 0:
-	    case 1: if (edificios_por_tipo.count(CUARTEL)== 0){
-	    			std::cout << "No existe edificio con id 6" << std::endl;
-	    			return false;
-			    }
-			    break;
-	    case 2: 
-	    case 3: if ((edificios_por_tipo.count(CUARTEL) == 0) && (edificios_por_tipo.count(PALACIO) == 0)){
-	    			std::cout << "No existe edificio con id 6 o 7" << std::endl;
-	    			return false;
-			    }
-			    break;
-	    break;
-	    case 4:
-	    case 5: if (edificios_por_tipo.count(FABRICA_LIGERA) == 0){
-	    			std::cout << "No existe edificio con id 4" << std::endl;
-	    			return false;
-			    }
-			    break;
-		case 6:
-		case 10: if (edificios_por_tipo.count(FABRICA_PESADA) == 0){
-	    			std::cout << "No existe edificio con id 5" << std::endl;
-	    			return false;
-			    }
-			    break;    
-		case 7:
-	    case 8:
-	    case 9: if ((edificios_por_tipo.count(FABRICA_PESADA) == 0) && (edificios_por_tipo.count(PALACIO) == 0)){
-	    			std::cout << "No existe edificio con id 5 o 7" << std::endl;
-	    			return false;
-			    }
-			    break;
-	    default: return false;
-	}
+bool Jugador::agregado_edificio(ObjetoDune* objeto) {
+	if (objeto->obtener_costo() > dinero) return false;
 	return true;
+}
+
+void Jugador::aumentar_capacidad_especia(int capacidad) {
+	capacidad_especia += capacidad;
+	capacidad_especia_disponible += capacidad;
+}
+
+void Jugador::reducir_capacidad_especia(int cap_a_reducir) {
+	capacidad_especia -= cap_a_reducir;
+	if (capacidad_especia_disponible - cap_a_reducir < 0) {
+		capacidad_especia_disponible = 0;
+	} else {
+		capacidad_especia_disponible -= cap_a_reducir;
+	}
+}
+
+bool Jugador::agregada_unidad(UnidadMovible* unidad) {
+	if (unidad->obtener_costo() > dinero) return false;
+	bool creacion = true;
+	std::vector<int> edificios_necesitados = unidad->
+	obtener_edificios_necesarios();
+	for (std::vector<int>::iterator it = edificios_necesitados.begin();
+	it != edificios_necesitados.end(); ++it) {
+		if (edificios_por_tipo.count(*it) <= 0) {
+			creacion = false;
+			break;
+		}
+		if (edificios_por_tipo.at(*it) == 0) {
+			creacion = false;
+			break;
+		}
+	}
+	return creacion;
 }

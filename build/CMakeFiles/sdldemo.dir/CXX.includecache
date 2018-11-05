@@ -91,12 +91,24 @@ utility
 /home/ramiro/Escritorio/Dune/src/Edificios/edificio.cpp
 edificio.h
 /home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
+../observador.h
+/home/ramiro/Escritorio/Dune/src/observador.h
 
 /home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
 utility
 -
+memory
+-
 ../objeto_dune.h
 /home/ramiro/Escritorio/Dune/src/objeto_dune.h
+../jugador.h
+/home/ramiro/Escritorio/Dune/src/jugador.h
+../mapa.h
+/home/ramiro/Escritorio/Dune/src/mapa.h
+../UnidadesMovibles/unidad_movible.h
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+../UnidadesMovibles/fabrica_unidades_movibles.h
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
 
 /home/ramiro/Escritorio/Dune/src/Edificios/fabrica_edificios.cpp
 fabrica_edificios.h
@@ -225,8 +237,8 @@ cosechadora.h
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/cosechadora.h
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/cosechadora.h
-unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+vehiculo.h
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
 utility
 -
 
@@ -237,8 +249,10 @@ desviador.h
 /home/ramiro/Escritorio/Dune/src/Armas/lanza_misiles.h
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/desviador.h
-unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+vehiculo.h
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+vector
+-
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/devastador.cpp
 devastador.h
@@ -247,9 +261,11 @@ devastador.h
 /home/ramiro/Escritorio/Dune/src/Armas/canion_plasma.h
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/devastador.h
-unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+vehiculo.h
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
 utility
+-
+vector
 -
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.cpp
@@ -295,9 +311,11 @@ fremen.h
 /home/ramiro/Escritorio/Dune/src/Armas/rifle_asalto.h
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fremen.h
-unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+unidad_infanteria.h
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
 utility
+-
+vector
 -
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/infanteria_ligera.cpp
@@ -307,9 +325,11 @@ infanteria_ligera.h
 /home/ramiro/Escritorio/Dune/src/Armas/rifle_asalto.h
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/infanteria_ligera.h
-unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+unidad_infanteria.h
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
 utility
+-
+vector
 -
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/infanteria_pesada.cpp
@@ -319,9 +339,11 @@ infanteria_pesada.h
 /home/ramiro/Escritorio/Dune/src/Armas/lanza_misiles.h
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/infanteria_pesada.h
-unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+unidad_infanteria.h
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
 utility
+-
+vector
 -
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/raider.cpp
@@ -331,9 +353,11 @@ raider.h
 /home/ramiro/Escritorio/Dune/src/Armas/canion_22mm.h
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/raider.h
-unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+vehiculo.h
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
 utility
+-
+vector
 -
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/sardaukar.cpp
@@ -345,9 +369,11 @@ sardaukar.h
 /home/ramiro/Escritorio/Dune/src/Armas/lanza_misiles.h
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/sardaukar.h
-unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+unidad_infanteria.h
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
 utility
+-
+vector
 -
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/tanque.cpp
@@ -357,9 +383,11 @@ tanque.h
 /home/ramiro/Escritorio/Dune/src/Armas/canion.h
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/tanque.h
-unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+vehiculo.h
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
 utility
+-
+vector
 -
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/tanque_sonico.cpp
@@ -369,9 +397,11 @@ tanque_sonico.h
 /home/ramiro/Escritorio/Dune/src/Armas/onda_sonido.h
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/tanque_sonico.h
-unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+vehiculo.h
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
 utility
+-
+vector
 -
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/trike.cpp
@@ -381,9 +411,21 @@ trike.h
 /home/ramiro/Escritorio/Dune/src/Armas/rifle_asalto.h
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/trike.h
+vehiculo.h
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+utility
+-
+vector
+-
+
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.cpp
+unidad_infanteria.h
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
+
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
 unidad_movible.h
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
-utility
+memory
 -
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.cpp
@@ -391,12 +433,18 @@ unidad_movible.h
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
 stdlib.h
 -
+iostream
+-
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
 ../objeto_dune.h
 /home/ramiro/Escritorio/Dune/src/objeto_dune.h
 ../Armas/arma.h
 /home/ramiro/Escritorio/Dune/src/Armas/arma.h
+../jugador.h
+/home/ramiro/Escritorio/Dune/src/jugador.h
+../mapa.h
+/home/ramiro/Escritorio/Dune/src/mapa.h
 string
 -
 vector
@@ -404,7 +452,67 @@ vector
 utility
 -
 
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.cpp
+vehiculo.h
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+unidad_movible.h
+/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+memory
+-
+
+/home/ramiro/Escritorio/Dune/src/coordenada.h
+objeto_dune.h
+/home/ramiro/Escritorio/Dune/src/objeto_dune.h
+Terrenos/terreno.h
+/home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
+string
+-
+memory
+-
+
+/home/ramiro/Escritorio/Dune/src/jugador.h
+utility
+-
+map
+-
+vector
+-
+memory
+-
+observador.h
+/home/ramiro/Escritorio/Dune/src/observador.h
+
+/home/ramiro/Escritorio/Dune/src/mapa.h
+vector
+-
+utility
+-
+map
+-
+string
+-
+memory
+-
+objeto_dune.h
+/home/ramiro/Escritorio/Dune/src/objeto_dune.h
+coordenada.h
+/home/ramiro/Escritorio/Dune/src/coordenada.h
+observador.h
+/home/ramiro/Escritorio/Dune/src/observador.h
+
 /home/ramiro/Escritorio/Dune/src/objeto_dune.h
 utility
 -
+vector
+-
+
+/home/ramiro/Escritorio/Dune/src/observador.h
+utility
+-
+memory
+-
+objeto_dune.h
+/home/ramiro/Escritorio/Dune/src/objeto_dune.h
 

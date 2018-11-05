@@ -1,7 +1,7 @@
 #include "mapa.h"
 #include "Terrenos/no_especia.h"
-#include <stdlib.h> 
-#include <iostream>
+#include <stdlib.h>
+#include <iostream> 
 
 #define DIMENSION_EXPANSION_BASE 3 //significa que lo minimo que se expande
 //la explosion del tanque o el gusano es en un cuadrado de 3x3
@@ -28,13 +28,33 @@ Mapa::Mapa() {
 		coordenadas.push_back(fila);
 	}
 }
-bool Mapa::verificar_terreno_alrededores(std::pair<int, int> centro, 
-int altura, int base, std::string terreno) {
+
+std::vector<int> Mapa::buscar_unidades_alrededor(std::pair<int, int>
+centro_unidad, int altura, int base, bool verificar_asentamiento) {
+	std::vector<int> unidades_alrededor;
+
+	for (std::map<int, ObjetoDune>::iterator it = 
+	mapa_ids_objetos.begin(); it != mapa_ids_objetos.end(); ++it) {
+		if ((((it->second).obtener_centro()).first <= (centro_unidad.first + 
+		(altura / 2)) && ((it->second).obtener_centro()).first >= 
+		(centro_unidad.first - (altura/ 2))) && 
+		((centro_unidad.second <= ((it->second).obtener_centro()).second + 
+		(base / 2)) && ((it->second).obtener_centro()).second >= 
+		(centro_unidad.second - (base/ 2)))) {
+			if (it->second.obtener_centro() == centro_unidad) continue;
+			unidades_alrededor.push_back(it->first);
+			if (verificar_asentamiento) break;
+		}
+	}
+	return unidades_alrededor;
+}
+
+bool Mapa::verificar_terreno_alrededor(std::pair<int, int> centro, 
+int altura, int base, std::string terreno, bool gusano) {
 	bool terreno_adecuado = true;
 	std::vector<std::pair<int, int>> direcs_verificacion = {{0, base/2},
 	{0, -(base/2)}, {altura/2,0}, {-(altura/2), 0}, {altura/2, -(base/2)},
 	{-(altura/2), base/2}, {-(altura/2), -(base/2)}, {altura/2, base/2}};
-
 	for (std::vector<std::pair<int, int>>::iterator it = 
 	direcs_verificacion.begin(); it != direcs_verificacion.end(); ++it) {
 		if ((centro.first + ((*it).first)) > (int)(coordenadas.size() - 1) || 
@@ -42,96 +62,63 @@ int altura, int base, std::string terreno) {
   		> (int)(coordenadas[coordenadas.size() - 1]).size() || 
   		(centro.second + ((*it).second)) < 0) {
 			terreno_adecuado = false;
-			break;
   		}
-
+  		
   		if (coordenadas[centro.first + (*it).first]
   		[centro.second + (*it).second].obtener_terreno() != terreno) {
   			terreno_adecuado = false;
   			break;
   		}
+  		//provisorio
+  		if (!gusano) {
+  			if (coordenadas[centro.first + (*it).first]
+  			[centro.second + (*it).second].esta_ocupada()) {
+  				terreno_adecuado = false;
+  				break;
+  			}
+  		}
 	}
 	return terreno_adecuado;
 }
 
-std::vector<std::pair<int, int>> Mapa::buscar_objetos_en_alrededores(
-std::pair<int, int> centro_objeto1, int base_objeto1, int altura_objeto1) {
-	std::vector<std::pair<int, int>> objetivos;
-	/*
-	for (std::map<int, ObjetoDune>::iterator it = mapa_ids_objetos.begin();
-	it != mapa_ids_objetos.end(); ++it) {
-		std::pair<int, int> centro_objeto2 = (it->second).obtener_centro();
-		int base_objeto2 = (it->second).obtener_base();
-		int altura_objeto2 = (it->second).obtener_altura();
-		//verifico que existencia de una unidad o edificio en las
-		//esquinas superiores asi como en el medio
-		if ((centro_objeto2.first + (altura_objeto2 / 2)) > 
-		(centro_objeto1.first - (altura_objeto1 / 2))) {
-			if ((centro_objeto2.second - (base_objeto2 / 2)) <
-			(centro_objeto1.second + (base_objeto1 / 2)) || 
-			(centro_objeto2.second + (base_objeto2 / 2)) > 
-			(centro_objeto1.second - (base_objeto1 / 2))) {
-				std::pair<int, int> objetivo((it->second).pedir_id(), 
-				(it->second).pedir_id_duenio());
-				objetivos.push_back(objetivo);
-				continue;
-			}
-		//verifico existencia parte de una unidad o edificio en las esquinas
-		//inferiores		
-		} else if ((centro_objeto2.first - (altura_objeto2 / 2) < 
-		(centro_objeto1.first + (altura_objeto1 / 2)))) {
-			if ((centro_objeto2.second - (base_objeto2 / 2)) <
-			(centro_objeto1.second + (base_objeto1 / 2)) || 
-			(centro_objeto2.second + (base_objeto2 / 2)) > 
-			(centro_objeto1.second - (base_objeto1 / 2))) {
-				std::pair<int, int> objetivo((it->second).pedir_id(), 
-				(it->second).pedir_id_duenio());
-				objetivos.push_back(objetivo);
-				continue;
-			}
-		}
-
-		//verifico que no haya ninguna unidad o edificio dentro del espacio
-		//donde se quiere poner el objeto
-		if ((centro_objeto2.first <= (centro_objeto1.first + 
-		(altura_objeto1 / 2)) && centro_objeto2.first >= 
-		(centro_objeto1.first - (altura_objeto1 / 2))) && 
-		((centro_objeto2.second <= (centro_objeto1.second + 
-		(base_objeto1 / 2)) && centro_objeto2.second >= 
-		(centro_objeto1.second - (base_objeto1 / 2))))) {
-			std::pair<int, int> objetivo((it->second).pedir_id(), 
-			(it->second).pedir_id_duenio());
-			objetivos.push_back(objetivo);
-			continue;
-		}
-	}
-	*/
-	return objetivos;
-}
-
-/*void Mapa::marcar_coordenadas_ocupadas(std::pair<int, int> pos_central, 
-int altura, int base) {
+void Mapa::marcar_estado_coordenadas_alrededor(std::pair<int, int> pos_central, 
+int altura, int base, bool ocupar) {
 	std::pair<int, int> inicio((pos_central.first + altura/2) - (altura - 1), 
 	(pos_central.second + base/2) - (base - 1));
-	//for (int i = 0; i <)
-}*/
+	for (int i = 0; i < altura; i++) {
+		for (int j = 0; j < base; j++) {
+			//ignoro el centro ya que ya le agregue el objeto antes
+			if (inicio.first == pos_central.first && inicio.second == 
+			pos_central.second) {
+				inicio.second++;
+				continue;
+			}
+			
+			//esto del if dsp se podria reemplazar con un metodo de la coord
+			//que le invierta el estado nomas
+			if (ocupar){
+				coordenadas[inicio.first][inicio.second].
+				marcar_como_ocupada();
+			} else {
+				coordenadas[inicio.first][inicio.second].
+				marcar_como_desocupada();
+			}
+			inicio.second++;
+		}
+		inicio.second -= base;
+		inicio.first++;
+	}
+}
 
-bool Mapa::agregar_objeto(std::shared_ptr<ObjetoDune> objeto, int id_objeto, 
-std::pair<int, int> centro) {
-	bool lugar_valido = false;
+void Mapa::agregar_objeto(ObjetoDune* objeto, int id_objeto, 
+std::pair<int, int> &centro) {
 	int base_objeto1 = objeto->obtener_base();
 	int altura_objeto1 = objeto->obtener_altura();
-
-	std::vector<std::pair<int, int>> objetos_en_espacio = 
-	buscar_objetos_en_alrededores(centro, altura_objeto1, base_objeto1);
-
-	if (objetos_en_espacio.empty()) {
-		coordenadas[centro.first][centro.second].poner_objeto(objeto);
-		mapa_ids_objetos.insert(std::pair<int, ObjetoDune>(id_objeto, *objeto));
-		//marcar_coordenadas_ocupadas(centro, altura_objeto1, base_objeto1);
-		lugar_valido = true;
-	}
-	return lugar_valido;
+	coordenadas[centro.first][centro.second].poner_objeto(objeto);
+	mapa_ids_objetos.insert(std::pair<int, 
+	ObjetoDune>(id_objeto, *objeto));
+	marcar_estado_coordenadas_alrededor(centro, altura_objeto1, base_objeto1, 
+	true);
 }
 
 int Mapa::pedir_id_tipo_objeto(int id_objeto) {
@@ -139,86 +126,21 @@ int Mapa::pedir_id_tipo_objeto(int id_objeto) {
 }
 
 void Mapa::eliminar_objeto(int id_objeto) {
-	std::pair<int, int> posicion_objeto = obtener_posicion_objeto(id_objeto);
+	std::pair<int, int> centro_objeto = (mapa_ids_objetos.at(id_objeto)).
+	obtener_centro();
+	int altura_objeto = (mapa_ids_objetos.at(id_objeto)).
+	obtener_altura();
+	int base_objeto = (mapa_ids_objetos.at(id_objeto)).
+	obtener_base();
+	marcar_estado_coordenadas_alrededor(centro_objeto, altura_objeto,
+	base_objeto, false);
 	mapa_ids_objetos.erase(id_objeto);
-	coordenadas[posicion_objeto.first][posicion_objeto.second].
+	coordenadas[centro_objeto.first][centro_objeto.second].
 	sacar_objeto();
-}
-
-bool Mapa::daniar_objeto(int danio, int id_objeto) {
-	if ((mapa_ids_objetos.at(id_objeto)).reducir_vida(danio) <= 0) {
-		eliminar_objeto(id_objeto);
-		return true;
-	} else {
-		return false;
-	}
 }
 
 int Mapa::pedir_costo_objeto(int id_objeto) {
 	return (mapa_ids_objetos.at(id_objeto)).obtener_costo();
-}
-
-std::pair<int, int> Mapa::obtener_posicion_objeto(int id_objeto) {
-	return (mapa_ids_objetos.at(id_objeto)).obtener_centro();
-}
-
-bool Mapa::ubicar_unidad(int id_edificio, std::pair<int, int> &centro_unidad) {
-	std::pair<int, int> pos_edificio = obtener_posicion_objeto(id_edificio);
-	
-	//esto deberiamos tomarlo de algun lado, definir donde
-	int base_unidad = 1;
-	int altura_unidad = 2;
-
-	int rango_x = (mapa_ids_objetos.at(id_edificio)).obtener_base();
-	int rango_y = (mapa_ids_objetos.at(id_edificio)).obtener_altura();
-	std::pair<int, int> pos_inicial;
-	pos_inicial.first = pos_edificio.first - (rango_x/2) - (base_unidad/2) - 1 ;
-	pos_inicial.second = pos_edificio.second + (rango_y/2) + (altura_unidad/2) + 1; 
-	if (recorrer_horizontal(pos_inicial,rango_x,base_unidad)){
-		centro_unidad = pos_inicial;
-		return true;
-	}
-	pos_inicial.second-=altura_unidad;
-	if (recorrer_vertical(pos_inicial,rango_y,altura_unidad)){
-		centro_unidad = pos_inicial;
-		return true;
-	}
-	pos_inicial.second-= rango_y;
-	pos_inicial.first+=base_unidad;
-	if (recorrer_horizontal(pos_inicial,rango_x,base_unidad)){
-		centro_unidad = pos_inicial;
-		return true;
-	}
-	pos_inicial.first+= rango_x;
-	pos_inicial.second+= rango_y + altura_unidad; 
-	if (recorrer_vertical(pos_inicial,rango_y,altura_unidad)){
-		centro_unidad = pos_inicial;
-		return true;
-	}
-	return false;
-}
-
-bool Mapa::recorrer_horizontal(std::pair<int, int> &pos_inicial, int rango,int base) {
-	std::pair<int, int> pos_return(pos_inicial);
-	for (; pos_return.first <= pos_inicial.first + rango;){
-		if (!esta_ocupada_coordenada(pos_return)){
-			pos_inicial = pos_return;
-			return true;
-		}
-		pos_return.first+=base;
-	}
-	return false;
-}
-bool Mapa::recorrer_vertical(std::pair<int, int> &pos_inicial, int rango,int altura) {
-	std::pair<int, int> pos_return(pos_inicial);
-	for (; pos_return.second >= pos_inicial.second - rango;){
-		if (!esta_ocupada_coordenada(pos_return)){
-			pos_inicial = pos_return;
-			return true;
-		}
-		pos_return.second-=altura;
-	}
-	return false;
 }
 
 std::vector<std::pair<int, int>> Mapa::desenterrar_gusano() {
@@ -231,11 +153,11 @@ std::vector<std::pair<int, int>> Mapa::desenterrar_gusano() {
 		columna_random = rand() % coordenadas.size();
 
 		std::pair<int, int> posicion_centro(fila_random, columna_random);
-		bool es_arena = verificar_terreno_alrededores(posicion_centro,
-		ALTO_COMIDA_GUSANO, ANCHO_COMIDA_GUSANO, "arena");
+		bool es_arena = verificar_terreno_alrededor(posicion_centro,
+		ALTO_COMIDA_GUSANO, ANCHO_COMIDA_GUSANO, "arena", true);
 		if (es_arena) {
-			objetivos = buscar_objetos_en_alrededores(posicion_centro, 
-			ANCHO_COMIDA_GUSANO, ALTO_COMIDA_GUSANO);
+			//objetivos = buscar_objetos_en_alrededores(posicion_centro, 
+			//ANCHO_COMIDA_GUSANO, ALTO_COMIDA_GUSANO);
 			if (!objetivos.empty()) {
 				espacio_valido = true;
 			}
@@ -261,6 +183,109 @@ std::string Mapa::pedir_terreno_coordenada(std::pair<int, int> posicion) {
 	return coordenadas[posicion.first][posicion.second].obtener_terreno();
 }
 
+bool Mapa::agregado_edificio(ObjetoDune* objeto) {
+	std::pair<int, int> posicion_central = objeto->obtener_centro();
+	bool terreno_valido;
+	std::vector<int> unidades_alrededor; 
+	terreno_valido = verificar_terreno_alrededor(posicion_central, 
+	objeto->obtener_altura(), objeto->obtener_base(), "roca", false);
+	//verifico que no haya ninguna unidad o edificio dentro del espacio
+	//donde se quiere poner el objeto
+	unidades_alrededor = buscar_unidades_alrededor(posicion_central, 
+	objeto->obtener_altura(), objeto->obtener_base(), true);
+	if(terreno_valido && unidades_alrededor.empty()) {
+		return true;
+	}
+	return false;
+	//FALTA ANALIZAR CASO BORDE SI SE METEN EN EL DIOME PERO
+	//NO ENTERAMENTE (NO CON EL CENTRO)
+}
+
+/*void Mapa::agregar_edificio(ObjetoDune* objeto, 
+int id_objeto, std::pair<int, int> &centro) {
+	agregar_objeto(objeto, id_objeto, centro);
+}*/
+
+std::pair<int,int> Mapa::pedir_cercania(int id, int id_objetivo) {
+	std::pair<int, int> centro_unidad = (mapa_ids_objetos.at(id)).
+	obtener_centro();
+	std::pair<int, int> centro_objetivo = (mapa_ids_objetos.at(
+	id_objetivo).obtener_centro());
+
+	return std::pair<int, int> (abs(centro_unidad.first - 
+	centro_objetivo.first), abs(centro_unidad.second - 
+	centro_objetivo.second));
+}
+
+void Mapa::cambiar_equipo(int id_unidad_a_cambiar, int id_nuevo_duenio) {
+	(mapa_ids_objetos.at(id_unidad_a_cambiar)).asignar_duenio(id_nuevo_duenio);
+}
+
 bool Mapa::esta_ocupada_coordenada(std::pair<int, int> posicion) {
 	return coordenadas[posicion.first][posicion.second].esta_ocupada();
+}
+
+bool Mapa::recorrer_horizontal(std::pair<int, int> &pos_inicial, int rango, 
+int base) {
+	std::pair<int, int> pos_return(pos_inicial);
+	for (; pos_return.first <= pos_inicial.first + rango;){
+		if (!esta_ocupada_coordenada(pos_return)){
+			pos_inicial = pos_return;
+			return true;
+		}
+		pos_return.first+=base;
+	}
+	return false;
+}
+
+bool Mapa::recorrer_vertical(std::pair<int, int> &pos_inicial, int rango, 
+int altura) {
+	std::pair<int, int> pos_return(pos_inicial);
+	for (; pos_return.second >= pos_inicial.second - rango;){
+		if (!esta_ocupada_coordenada(pos_return)){
+			pos_inicial = pos_return;
+			return true;
+		}
+		pos_return.second-=altura;
+	}
+	return false;
+}
+
+bool Mapa::ubicar_unidad(int id_edificio, std::pair<int, int> &centro_unidad) {
+	std::pair<int, int> pos_edificio = (mapa_ids_objetos.at(id_edificio)).
+	obtener_centro();
+
+	//esto deberiamos tomarlo de algun lado, definir donde
+	int base_unidad = 1;
+	int altura_unidad = 2;
+
+	int rango_x = (mapa_ids_objetos.at(id_edificio)).obtener_base();
+	int rango_y = (mapa_ids_objetos.at(id_edificio)).obtener_altura();
+	std::pair<int, int> pos_inicial;
+	pos_inicial.first = pos_edificio.first - (rango_x/2) - 
+	(base_unidad/2) - 1 ;
+	pos_inicial.second = pos_edificio.second + (rango_y/2) + 
+	(altura_unidad/2) + 1; 
+	if (recorrer_horizontal(pos_inicial,rango_x,base_unidad)){
+		centro_unidad = pos_inicial;
+		return true;
+	}
+	pos_inicial.second-=altura_unidad;
+	if (recorrer_vertical(pos_inicial,rango_y,altura_unidad)){
+		centro_unidad = pos_inicial;
+		return true;
+	}
+	pos_inicial.second-= rango_y;
+	pos_inicial.first+=base_unidad;
+	if (recorrer_horizontal(pos_inicial,rango_x,base_unidad)){
+		centro_unidad = pos_inicial;
+		return true;
+	}
+	pos_inicial.first+= rango_x;
+	pos_inicial.second+= rango_y + altura_unidad; 
+	if (recorrer_vertical(pos_inicial,rango_y,altura_unidad)){
+		centro_unidad = pos_inicial;
+		return true;
+	}
+	return false;
 }

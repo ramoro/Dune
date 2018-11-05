@@ -36,3 +36,7 @@ int ObjetoDune::obtener_altura() {
 std::pair<int, int> ObjetoDune::obtener_centro() {
 	return centro;
 }
+
+void ObjetoDune::asignar_duenio(int id_nuevo_duenio) {
+	id_duenio = id_nuevo_duenio;
+}

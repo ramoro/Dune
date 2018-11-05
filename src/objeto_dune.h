@@ -2,7 +2,7 @@
 #define OBJETO_DUNE_H
 
 #include <utility>
-
+#include <vector>
 
 /*Clase abstracta que representa a un objeto del mundo dune que puede
 ser tanto un edificio como una unidad movible (vehiculos y 
@@ -10,15 +10,16 @@ unidades de ataque).*/
 class ObjetoDune {
 	private:
 		int vida;
+
+
+	protected:
 		int costo_dinero;
 		int id;
+		int id_tipo;
 		int id_duenio;
 		int base;
 		int altura;
 		std::pair<int, int> centro;
-
-	protected:
-		int id_tipo;
 
 	public:
 		/*Constructor de la clase.*/
@@ -54,6 +55,10 @@ class ObjetoDune {
 
 		/*Devuelve el la posicion del centro del objeto.*/
 		std::pair<int, int> obtener_centro();
+
+		/*Recibe un id de un jugador y le asigna como duenio
+		al objeto el jugador pasado por parametro.*/
+		void asignar_duenio(int id_nuevo_duenio);
 };
 
 #endif

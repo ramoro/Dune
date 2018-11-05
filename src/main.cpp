@@ -1,7 +1,4 @@
 #include "partida.h"
-#include "UnidadesMovibles/raider.h"
-#include "UnidadesMovibles/fabrica_unidades_movibles.h"
-#include "UnidadesMovibles/unidad_movible.h"
 #include "mapa.h"
 #include "buscador_mejor_camino.h"
 #include <iostream>
@@ -175,33 +172,47 @@
 
 	}
 }*/
-/*
-int main() {
+
+/*int main() {
  Partida partida;
   partida.agregar_jugador("je");
   partida.agregar_jugador("asd");
-  bool agregado = partida.agregar_edificio(0, std::pair<int, int>(400,400), 4);
-  int danio = partida.atacar_edificio(0, 5, 0);
-  std::cout << danio << agregado << std::endl;
-  //std::cout << agregado;
+  bool agregado1 = partida.agregar_edificio(0, std::pair<int, int>(7,3), 0);
+  bool agregado2 = partida.agregar_edificio(1, std::pair<int, int>(8,4), 0);
+  bool agregado3 = partida.agregar_edificio(0, std::pair<int, int>(5,5), 0);
+  int danio = partida.atacar_objeto(0, 5, 0);
+  //std::cout << danio << agregado << std::endl;
+  std::cout << agregado1 << agregado2 << agregado3 << danio << std::endl;
   //Mapa mapa;
   //std::pair<int, int> objetivo = mapa.desenterrar_gusano();
   //std::cout << objetivo.first << " " << objetivo.second << std::endl;
-}
+}*/
 
-//MAIN NACHO
-*/int main() {
+/*int main() {
   Mapa mapa;
-
   BuscadorMejorCamino buscador;
   std::pair<int ,int> inicio(0, 0);
-  std::pair<int, int> final(5, 5);
+  std::pair<int, int> final(3, 1);
   buscador.buscar_mejor_camino(mapa, inicio, final);
+  Partida partida();
+  partida.agregar_jugador("harkonnen");
+  std::pair<int, int> centro(100, 100);
+  bool agregado = partida.agregar_edificio(0, centro, 0);
+  std::cout << agregado << std::endl;
+}*/
+
+//MAIN NACHO
+/*int main() {
   Partida partida;
   partida.agregar_jugador("harkonnen");
-  //std::cout << partida.agregar_unidad(0,2, std::pair<int, int>(100,100), 5) << std::endl;
+  std::pair<int, int> centro(100, 100);
+  bool agregado = partida.agregar_edificio(0, centro, 0);
+  std::cout << agregado << std::endl;
+  std::pair<int, std::pair<int ,int>> nueva_unidad = partida.agregar_unidad_movible(2,0);
+  std::cout << nueva_unidad.first << std::endl;
   std::cout << partida.agregar_edificio(0, std::pair<int, int>(400,400), 4) << std::endl;
-  for (int i = 0; i < 24 ; i++){
-    std::cout << partida.agregar_unidad(0,0,5) << std::endl;
+  for (int i = 0; i < 24 ; i++) {
+    std::pair<int, std::pair<int, int>> nueva_unidad = partida.agregar_unidad_movible(5,0);
+    std::cout << nueva_unidad.first << std::endl;
   }
-}
+}*/

@@ -16,9 +16,14 @@ class Cuartel: public Edificio{
 		de la casa a la que pertenece.*/
 		Cuartel(int id, int id_duenio, std::pair<int, int> centro);
 		
-		/*Recibe un string con el nombre de la infanteria a crear
-		y la crea. Devuelve la unidad por movimiento.*/
-		void crear_infanteria(std::string nombre_infanteria);
+		/*Devuelve true si el cuartel fue agregado al juego.
+		False en caso contrario.*/
+		virtual bool agregar_al_juego(Mapa &mapa, Jugador &jugador, int id_edificio, 
+		int id_tipo_edificio);
+
+		/*Recibe el mapa y el jugador que posee el edificio y se lo
+		elimina de ambos a este.*/
+		virtual void destruir(Mapa &mapa, Jugador &jugador);
 };
 
 #endif 

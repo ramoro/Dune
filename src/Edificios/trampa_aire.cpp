@@ -4,8 +4,16 @@
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 TrampaAire::TrampaAire(int id, int id_duenio, std::pair<int, int> centro) : 
-	Edificio(0, 800, std::pair<int, int>(3, 3), 500, id, id_duenio, 300, 300, 
-	centro) {
-		energia_generada = 500;
+	Edificio(500, 800, 500, id, id_duenio, 1, 1, centro) {
 		id_tipo = ID_TRAMPA_AIRE;
 	}
+
+bool TrampaAire::agregar_al_juego(Mapa &mapa, Jugador &jugador, 
+int id_edificio, int id_tipo_edificio) {
+	return Edificio::agregar(mapa, jugador, id_edificio,
+	id_tipo_edificio);
+}
+
+void TrampaAire::destruir(Mapa &mapa, Jugador &jugador) {
+	Edificio::eliminar(mapa, jugador);
+}

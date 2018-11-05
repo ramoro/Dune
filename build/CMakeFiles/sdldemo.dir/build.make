@@ -609,9 +609,57 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o.provides: CMakeFiles
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o.provides.build: CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o
 
 
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o: CMakeFiles/sdldemo.dir/flags.make
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o: ../src/UnidadesMovibles/vehiculo.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o -c /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.cpp
+
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.cpp > CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.i
+
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.cpp -o CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.s
+
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o.requires:
+
+.PHONY : CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o.requires
+
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o.provides: CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o.requires
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o.provides.build
+.PHONY : CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o.provides
+
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o.provides.build: CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o
+
+
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o: CMakeFiles/sdldemo.dir/flags.make
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o: ../src/UnidadesMovibles/unidad_infanteria.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o -c /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.cpp
+
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.cpp > CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.i
+
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.cpp -o CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.s
+
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o.requires:
+
+.PHONY : CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o.requires
+
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o.provides: CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o.requires
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o.provides.build
+.PHONY : CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o.provides
+
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o.provides.build: CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o
+
+
 CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o: CMakeFiles/sdldemo.dir/flags.make
 CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o: ../src/Edificios/edificio.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o -c /home/ramiro/Escritorio/Dune/src/Edificios/edificio.cpp
 
 CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.i: cmake_force
@@ -635,7 +683,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o.provides.build: CMakeFiles/s
 
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o: CMakeFiles/sdldemo.dir/flags.make
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o: ../src/Edificios/fabrica_edificios.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o -c /home/ramiro/Escritorio/Dune/src/Edificios/fabrica_edificios.cpp
 
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.i: cmake_force
@@ -659,7 +707,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o.provides.build: CMa
 
 CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o: CMakeFiles/sdldemo.dir/flags.make
 CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o: ../src/Edificios/centro_construccion.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o -c /home/ramiro/Escritorio/Dune/src/Edificios/centro_construccion.cpp
 
 CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.i: cmake_force
@@ -683,7 +731,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o.provides.build: C
 
 CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o: CMakeFiles/sdldemo.dir/flags.make
 CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o: ../src/Edificios/refineria.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o -c /home/ramiro/Escritorio/Dune/src/Edificios/refineria.cpp
 
 CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.i: cmake_force
@@ -707,7 +755,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o: CMakeFiles/sdldemo.dir/flags.make
 CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o: ../src/Edificios/trampa_aire.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o -c /home/ramiro/Escritorio/Dune/src/Edificios/trampa_aire.cpp
 
 CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.i: cmake_force
@@ -731,7 +779,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o.provides.build: CMakeFile
 
 CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o: CMakeFiles/sdldemo.dir/flags.make
 CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o: ../src/Edificios/silo.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o -c /home/ramiro/Escritorio/Dune/src/Edificios/silo.cpp
 
 CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.i: cmake_force
@@ -755,7 +803,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o.provides.build: CMakeFiles/sdlde
 
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o: CMakeFiles/sdldemo.dir/flags.make
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o: ../src/Edificios/fabrica_ligera.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o -c /home/ramiro/Escritorio/Dune/src/Edificios/fabrica_ligera.cpp
 
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.i: cmake_force
@@ -779,7 +827,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o.provides.build: CMakeF
 
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o: CMakeFiles/sdldemo.dir/flags.make
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o: ../src/Edificios/fabrica_pesada.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o -c /home/ramiro/Escritorio/Dune/src/Edificios/fabrica_pesada.cpp
 
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.i: cmake_force
@@ -803,7 +851,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o.provides.build: CMakeF
 
 CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o: CMakeFiles/sdldemo.dir/flags.make
 CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o: ../src/Edificios/cuartel.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o -c /home/ramiro/Escritorio/Dune/src/Edificios/cuartel.cpp
 
 CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.i: cmake_force
@@ -827,7 +875,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o.provides.build: CMakeFiles/sd
 
 CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o: CMakeFiles/sdldemo.dir/flags.make
 CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o: ../src/Edificios/palacio.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o -c /home/ramiro/Escritorio/Dune/src/Edificios/palacio.cpp
 
 CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.i: cmake_force
@@ -874,6 +922,8 @@ sdldemo_OBJECTS = \
 "CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o" \
 "CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o" \
 "CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o" \
+"CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o" \
+"CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o" \
 "CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o" \
 "CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o" \
 "CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o" \
@@ -911,6 +961,8 @@ libsdldemo.a: CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_ligera.cpp.
 libsdldemo.a: CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o
 libsdldemo.a: CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o
 libsdldemo.a: CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o
+libsdldemo.a: CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o
+libsdldemo.a: CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o
 libsdldemo.a: CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o
 libsdldemo.a: CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o
 libsdldemo.a: CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o
@@ -923,7 +975,7 @@ libsdldemo.a: CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o
 libsdldemo.a: CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o
 libsdldemo.a: CMakeFiles/sdldemo.dir/build.make
 libsdldemo.a: CMakeFiles/sdldemo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Linking CXX static library libsdldemo.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Linking CXX static library libsdldemo.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/sdldemo.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sdldemo.dir/link.txt --verbose=$(VERBOSE)
 
@@ -955,6 +1007,8 @@ CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/UnidadesMovibles/inf
 CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o.requires
 CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o.requires
 CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o.requires
+CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o.requires
+CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o.requires
 CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o.requires
 CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o.requires
 CMakeFiles/sdldemo.dir/requires: CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o.requires

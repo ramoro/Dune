@@ -35,7 +35,6 @@ unidades se verán seriamente extendidos, proporcionalmente a la deuda energéti
 	-movimiento de unidades y vehiculos
 	-persecucion o actividad de disparo sin moverse	
 	-velocidades de vehiculos y unidades, y velocidad de creacion segun energia
-	-gusano que aparece cada tanto
 	-pulir A*
 	-parser Config
 -me fijo si esta en map edificios, sie sta, saco edificio le pido el tipo y resto uno en edifs tipos
@@ -51,11 +50,7 @@ fault por el vector de armas que muere
 
 *VER TEMA MOVIMIENTO, VALGRIND SE QUEJA, SEGMENTATION FAULT PORQUE MUERE EL VECTOR DE ARMAS. QUE PASA!!!?????
 
-**forma mas eficiente para evitar preguntar a cada jugador si la unidad es suya y asi sacarsela?
-
-**preguntar por performance algoritmo expansion, y que partida y mapa tengan tantos metodos
-
-**que significa que un edificio sea de 3x3? ocupa mas espacio en el mapa? mas coordeanadas?
+**que significa que un edificio sea de 3x3? ocupa mas espacio en el mapa? mas coordeanadas? YO LO HICE COMO SI FUESEN BASE ALTURA 300 300
 
 **como hacer define de vector de pares de direcciones
 
@@ -64,13 +59,6 @@ fault por el vector de armas que muere
 **implementacion preguntar tipos de edificios q reuiqere unidad poco objetoso??? o cuando se ataca preguntar si el tipo es del tanque que cambia de equipo la unidad y asi cambiarla luego de haber atacado. o preguntar de que tipo es la unidad q destruis para saber si hay explosion
  de tanque o no
 
-**esta bien cuando pongo edificio o cuando sale gusano preguntarle a las esquinas de que terreno son? alcanza con esa verificacion?
-
-**preguntarle a cada unidad donde esta cada vez que quiero poner edificio o sacar gusano ?? y si unidad esta adentro del espacio dodne se quiere poner el edificio?
-
-**llenar cada coordenada con su terreno o tener listas para cada terreno y su centro, base, altura?
-
-**como verifico si una coordenada esta ocupada en el A* si yo solo tengo guardado en el mapa los objetos con sus posiciones centrales?
 
 **en sv como saber q msje va a que partida>??
 
@@ -81,3 +69,15 @@ fault por el vector de armas que muere
 state pattern, observer pattern (para pregutnar al taqneu cuando ataca o estados de unidades si estan
 atacando, moviendose, etc. USar polimorfismo)
 
+**EDIFICIOS TIENEN RANGO DE SEPARACION PARA PONERSE
+
+*EL modelo esta hecho para q se verifique que si una punta de una unidad esta dentro del lugar dodne quiero poner el edificio no se pueda
+pero al explotar un tanque o atacar con odnas sonicas si unidad esta en la puntita no pierde vida.
+
+**en el config tambien va el rango de ataque, es decir desde cuantos cuadrados una unidad puede empezar a atacar
+
+**VER EL TEMA DE VERIFICACION DE UNIDADES AL PONER UN EDIFICIO SI ES QEU ESTAN NO DENTRO PERO TOCANDO DENTRO DEL MEDIO
+
+**que es preferible, que cada vez que se ataque partida pregunte a todos sus jugadores si perdio o que el
+metodo de destruir edificio devuelva un bool indicando si se destruyo el centro piola o no? enviar al protocolo
+el vector <id, vida> y si es <id, -1> es porq ese es el centro piola y fue destruido.

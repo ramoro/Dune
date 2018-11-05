@@ -1000,6 +1000,33 @@ src/UnidadesMovibles/trike.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/UnidadesMovibles/trike.cpp.s
 .PHONY : src/UnidadesMovibles/trike.cpp.s
 
+src/UnidadesMovibles/unidad_infanteria.o: src/UnidadesMovibles/unidad_infanteria.cpp.o
+
+.PHONY : src/UnidadesMovibles/unidad_infanteria.o
+
+# target to build an object file
+src/UnidadesMovibles/unidad_infanteria.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o
+.PHONY : src/UnidadesMovibles/unidad_infanteria.cpp.o
+
+src/UnidadesMovibles/unidad_infanteria.i: src/UnidadesMovibles/unidad_infanteria.cpp.i
+
+.PHONY : src/UnidadesMovibles/unidad_infanteria.i
+
+# target to preprocess a source file
+src/UnidadesMovibles/unidad_infanteria.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.i
+.PHONY : src/UnidadesMovibles/unidad_infanteria.cpp.i
+
+src/UnidadesMovibles/unidad_infanteria.s: src/UnidadesMovibles/unidad_infanteria.cpp.s
+
+.PHONY : src/UnidadesMovibles/unidad_infanteria.s
+
+# target to generate assembly for a file
+src/UnidadesMovibles/unidad_infanteria.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.s
+.PHONY : src/UnidadesMovibles/unidad_infanteria.cpp.s
+
 src/UnidadesMovibles/unidad_movible.o: src/UnidadesMovibles/unidad_movible.cpp.o
 
 .PHONY : src/UnidadesMovibles/unidad_movible.o
@@ -1026,6 +1053,33 @@ src/UnidadesMovibles/unidad_movible.s: src/UnidadesMovibles/unidad_movible.cpp.s
 src/UnidadesMovibles/unidad_movible.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.s
 .PHONY : src/UnidadesMovibles/unidad_movible.cpp.s
+
+src/UnidadesMovibles/vehiculo.o: src/UnidadesMovibles/vehiculo.cpp.o
+
+.PHONY : src/UnidadesMovibles/vehiculo.o
+
+# target to build an object file
+src/UnidadesMovibles/vehiculo.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o
+.PHONY : src/UnidadesMovibles/vehiculo.cpp.o
+
+src/UnidadesMovibles/vehiculo.i: src/UnidadesMovibles/vehiculo.cpp.i
+
+.PHONY : src/UnidadesMovibles/vehiculo.i
+
+# target to preprocess a source file
+src/UnidadesMovibles/vehiculo.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.i
+.PHONY : src/UnidadesMovibles/vehiculo.cpp.i
+
+src/UnidadesMovibles/vehiculo.s: src/UnidadesMovibles/vehiculo.cpp.s
+
+.PHONY : src/UnidadesMovibles/vehiculo.s
+
+# target to generate assembly for a file
+src/UnidadesMovibles/vehiculo.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.s
+.PHONY : src/UnidadesMovibles/vehiculo.cpp.s
 
 src/buscador_mejor_camino.o: src/buscador_mejor_camino.cpp.o
 
@@ -1216,6 +1270,33 @@ src/objeto_dune.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/objeto_dune.cpp.s
 .PHONY : src/objeto_dune.cpp.s
 
+src/observador.o: src/observador.cpp.o
+
+.PHONY : src/observador.o
+
+# target to build an object file
+src/observador.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/observador.cpp.o
+.PHONY : src/observador.cpp.o
+
+src/observador.i: src/observador.cpp.i
+
+.PHONY : src/observador.i
+
+# target to preprocess a source file
+src/observador.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/observador.cpp.i
+.PHONY : src/observador.cpp.i
+
+src/observador.s: src/observador.cpp.s
+
+.PHONY : src/observador.s
+
+# target to generate assembly for a file
+src/observador.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/observador.cpp.s
+.PHONY : src/observador.cpp.s
+
 src/partida.o: src/partida.cpp.o
 
 .PHONY : src/partida.o
@@ -1349,9 +1430,15 @@ help:
 	@echo "... src/UnidadesMovibles/trike.o"
 	@echo "... src/UnidadesMovibles/trike.i"
 	@echo "... src/UnidadesMovibles/trike.s"
+	@echo "... src/UnidadesMovibles/unidad_infanteria.o"
+	@echo "... src/UnidadesMovibles/unidad_infanteria.i"
+	@echo "... src/UnidadesMovibles/unidad_infanteria.s"
 	@echo "... src/UnidadesMovibles/unidad_movible.o"
 	@echo "... src/UnidadesMovibles/unidad_movible.i"
 	@echo "... src/UnidadesMovibles/unidad_movible.s"
+	@echo "... src/UnidadesMovibles/vehiculo.o"
+	@echo "... src/UnidadesMovibles/vehiculo.i"
+	@echo "... src/UnidadesMovibles/vehiculo.s"
 	@echo "... src/buscador_mejor_camino.o"
 	@echo "... src/buscador_mejor_camino.i"
 	@echo "... src/buscador_mejor_camino.s"
@@ -1373,6 +1460,9 @@ help:
 	@echo "... src/objeto_dune.o"
 	@echo "... src/objeto_dune.i"
 	@echo "... src/objeto_dune.s"
+	@echo "... src/observador.o"
+	@echo "... src/observador.i"
+	@echo "... src/observador.s"
 	@echo "... src/partida.o"
 	@echo "... src/partida.i"
 	@echo "... src/partida.s"
