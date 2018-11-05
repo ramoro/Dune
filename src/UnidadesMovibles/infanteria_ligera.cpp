@@ -19,3 +19,10 @@ std::vector<int> InfanteriaLigera::atacar_objetivo(Mapa &mapa,
 int id_objetivo) {
 	return UnidadMovible::atacar(mapa, id_objetivo);
 }
+
+std::vector<std::pair<int, int>> InfanteriaLigera::matar(Mapa &mapa) { 
+	UnidadMovible::eliminar(mapa);
+	std::vector<std::pair<int, int>> vecinos_afectados;
+	return vecinos_afectados;
+}
+

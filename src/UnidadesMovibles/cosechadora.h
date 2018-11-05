@@ -18,6 +18,11 @@ class Cosechadora: public Vehiculo {
 		/*Recibe el mapa y el id del objeto y devuelve todas las unidades
 		afectadas por su ataque.*/
 		virtual std::vector<int> atacar_objetivo(Mapa &mapa, int id_objetivo);
+
+		/*Recibe un mapa, mata a la unidad y la remueve del mapa. Devuelve
+		un vector con pares (id_duenio, vida_restante) segun si la unidad
+		afecto unidades vecinas al morir.*/
+		virtual std::vector<std::pair<int, int>> matar(Mapa &mapa);
 };
 
 #endif

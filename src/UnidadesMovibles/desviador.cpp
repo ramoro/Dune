@@ -20,3 +20,9 @@ std::vector<int> Desviador::atacar_objetivo(Mapa &mapa, int id_objetivo) {
 	mapa.cambiar_equipo(id_objetivo, this->id_duenio);
 	return objetivos;
 }
+
+std::vector<std::pair<int, int>> Desviador::matar(Mapa &mapa) { 
+	UnidadMovible::eliminar(mapa);
+	std::vector<std::pair<int, int>> vecinos_afectados;
+	return vecinos_afectados;
+}

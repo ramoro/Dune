@@ -173,7 +173,7 @@
 	}
 }*/
 
-/*int main() {
+int main() {
  Partida partida;
   partida.agregar_jugador("je");
   partida.agregar_jugador("asd");
@@ -186,7 +186,7 @@
   //Mapa mapa;
   //std::pair<int, int> objetivo = mapa.desenterrar_gusano();
   //std::cout << objetivo.first << " " << objetivo.second << std::endl;
-}*/
+}
 
 /*int main() {
   Mapa mapa;

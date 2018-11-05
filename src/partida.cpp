@@ -42,7 +42,7 @@ int id_objeto_atacado) {
 	5, 0, 3, std::pair<int, int>(0,0));
 	std::vector<int> unidades_afectadas = unidad->atacar_objetivo(mapa, 
 	id_objeto_atacado);
-	/*std::vector<int, int> ids_vidas;
+	/*std::vector<std::pair<int, int>> ids_vidas;
 	for (std::vector<int>::iterator it = unidades_afectadas.begin(); 
 	it != unidades_afectadas.end(); ++it) {
 		int vida_restante;
@@ -52,8 +52,14 @@ int id_objeto_atacado) {
 			jugadores.at((edificios.at(*it)).pedir_id_duenio()));
 		} else {
 			vida_restante =(unidades_movibles.at(*it))->daniar(unidad);
-			if (vida_restante <= 0) (unidades_movibles.at(*it))->matar(mapa,
-			jugadores.at((unidades_movibles.at(*it)).pedir_id_duenio()));
+			if (vida_restante <= 0) {
+				std::vector<int, int> vecinos_afectados = (unidades_movibles.at(*it))->matar(mapa);
+				if (!vecinos_afectados.empty()) {
+					ejecutar_ataque();
+				} else {
+					return;
+				}
+			}
 		}
 		ids_vidas.push_back(std::pair<int, int>(*it, vida_restante);
 	}*/
@@ -67,7 +73,6 @@ void Partida::autodemoler_edificio(int id_edificio) {
 
 std::pair<int, std::pair<int,int>> Partida::agregar_unidad_movible(
 int id_tipo_unidad, int id_edificio) {
-	edificios.at(id_edificio);
 	edificios.at(id_edificio)->
 	pedir_id_duenio();
 	std::pair<int, int> pos_unidad_nueva = (edificios.at(id_edificio))->

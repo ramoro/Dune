@@ -49,7 +49,7 @@ class UnidadMovible: public ObjetoDune {
 		virtual int daniar(std::shared_ptr<UnidadMovible> unidad_atacante) = 0;
 
 		/*Metodo virtual puro que mata a la unidad movible y la saca del juego.*/
-		//virtual std::vector<std::pair<int, int>> matar(Mapa &mapa) = 0;
+		virtual std::vector<std::pair<int, int>> matar(Mapa &mapa) = 0;
 
 		/*Recibe el mapa del juego y elimina el objeto del mapa.*/
 		void eliminar(Mapa &mapa);

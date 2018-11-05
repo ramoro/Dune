@@ -35,10 +35,10 @@ int UnidadMovible::daniar(std::shared_ptr<UnidadMovible> unidad_atacante) {
 	return 0;
 }
 
-/*std::vector<std::pair<int, int>> UnidadMovible::matar(Mapa &mapa) {
+std::vector<std::pair<int, int>> UnidadMovible::matar(Mapa &mapa) {
 	std::vector<std::pair<int, int>> aux;
 	return aux;
-}*/
+}
 
 void UnidadMovible::eliminar(Mapa &mapa) {
 	mapa.eliminar_objeto(this->id);

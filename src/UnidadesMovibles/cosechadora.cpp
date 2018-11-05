@@ -16,3 +16,9 @@ std::vector<int> Cosechadora::atacar_objetivo(Mapa &mapa, int id_objetivo) {
 	return objetivos;
 }
 
+std::vector<std::pair<int, int>> Cosechadora::matar(Mapa &mapa) { 
+	UnidadMovible::eliminar(mapa);
+	std::vector<std::pair<int, int>> vecinos_afectados;
+	return vecinos_afectados;
+}
+

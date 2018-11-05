@@ -21,3 +21,9 @@ Sardaukar::Sardaukar(int id, int id_duenio, std::pair<int, int> centro) :
 std::vector<int> Sardaukar::atacar_objetivo(Mapa &mapa, int id_objetivo) {
 	return UnidadMovible::atacar(mapa, id_objetivo);
 }
+
+std::vector<std::pair<int, int>> Sardaukar::matar(Mapa &mapa) { 
+	UnidadMovible::eliminar(mapa);
+	std::vector<std::pair<int, int>> vecinos_afectados;
+	return vecinos_afectados;
+}

@@ -22,3 +22,9 @@ std::vector<int> TanqueSonico::atacar_objetivo(Mapa &mapa, int id_objetivo) {
 	return mapa.buscar_unidades_alrededor(this->centro, this->altura,
 	this->base, false);
 }
+
+std::vector<std::pair<int, int>> TanqueSonico::matar(Mapa &mapa) { 
+	UnidadMovible::eliminar(mapa);
+	std::vector<std::pair<int, int>> vecinos_afectados;
+	return vecinos_afectados;
+}
