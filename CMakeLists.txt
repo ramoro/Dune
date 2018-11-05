@@ -19,6 +19,8 @@ add_library(sdldemo STATIC
  src/Armas/onda_sonido.h
  src/Armas/rifle_asalto.cpp
  src/Armas/rifle_asalto.h
+ src/Armas/explosion.cpp
+ src/Armas/explosion.h
  src/Terrenos/terreno.cpp
  src/Terrenos/terreno.h
  src/Terrenos/especia.cpp

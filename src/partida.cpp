@@ -36,12 +36,11 @@ posicion_central, int id_tipo_edificio) {
 	return agregado;
 }
 
-int Partida::atacar_objeto(int id_jugador_atacado, int id_tipo_unidad_atacante, 
-int id_objeto_atacado) {
-	std::shared_ptr<UnidadMovible> unidad = fabrica_unidades_movibles.crear_unidad_movible(
-	5, 0, 3, std::pair<int, int>(0,0));
-	std::vector<int> unidades_afectadas = unidad->atacar_objetivo(mapa, 
-	id_objeto_atacado);
+int Partida::atacar_objeto(int id_unidad_atacante, int id_objeto_atacado) {
+	//std::shared_ptr<UnidadMovible> unidad = fabrica_unidades_movibles.crear_unidad_movible(
+	//5, 0, 3, std::pair<int, int>(0,0));
+	std::vector<int> unidades_afectadas = (unidades_movibles.
+	at(id_unidad_atacante))->atacar_objetivo(mapa, id_objeto_atacado);
 	/*std::vector<std::pair<int, int>> ids_vidas;
 	for (std::vector<int>::iterator it = unidades_afectadas.begin(); 
 	it != unidades_afectadas.end(); ++it) {
@@ -49,13 +48,14 @@ int id_objeto_atacado) {
 		if (edificios.count(*it) > 0) {
 			vida_restante = (edificios.at(*it))->daniar(unidad);
 			if (vida_restante <= 0) (edificios.at(*it))->destruir(mapa, 
-			jugadores.at((edificios.at(*it)).pedir_id_duenio()));
+			jugadores.at((edificios.at(*it)).pedir_id_duenio())); eliminar edificios de mapa edificios
 		} else {
 			vida_restante =(unidades_movibles.at(*it))->daniar(unidad);
 			if (vida_restante <= 0) {
 				std::vector<int, int> vecinos_afectados = (unidades_movibles.at(*it))->matar(mapa);
+				eliminar unidad de mapa unidades
 				if (!vecinos_afectados.empty()) {
-					ejecutar_ataque();
+					ejecutar_ataque(std::vector<int> unidades afectadas, UnidadMovible*atacante, ids_vidas);
 				} else {
 					return;
 				}

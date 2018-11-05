@@ -38,11 +38,11 @@ class Partida {
 		bool agregar_edificio(int id_jugador, std::pair<int, int>
 		posicion_central, int id_tipo_edificio);
 
-		/*Recibe el id del jugador atacado, el id del tipo de unidad movible que ataca
+		/*Recibe el id del tipo de unidad movible que ataca
 		y el id del objeto atacado. Devuelve el danio provocado por la unidad o en 
 		caso de destruir el objeto devuelve un 0. Si devuelve un -1 significa
 		que el objeto no puede atacar.*/
-		int atacar_objeto(int id_jugador_atacado, int id_tipo_unidad_atacante, 
+		int atacar_objeto(int id_tipo_unidad_atacante, 
 		int id_objeto_atacado);
 
 		/*Recibe un id de un edificio. Elimina el 

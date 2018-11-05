@@ -180,7 +180,7 @@ int main() {
   bool agregado1 = partida.agregar_edificio(0, std::pair<int, int>(7,3), 0);
   bool agregado2 = partida.agregar_edificio(1, std::pair<int, int>(8,4), 0);
   bool agregado3 = partida.agregar_edificio(0, std::pair<int, int>(5,5), 0);
-  int danio = partida.atacar_objeto(0, 5, 0);
+  int danio = partida.atacar_objeto(5, 0);
   //std::cout << danio << agregado << std::endl;
   std::cout << agregado1 << agregado2 << agregado3 << danio << std::endl;
   //Mapa mapa;

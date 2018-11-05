@@ -121,10 +121,6 @@ std::pair<int, int> &centro) {
 	true);
 }
 
-int Mapa::pedir_id_tipo_objeto(int id_objeto) {
-	return (mapa_ids_objetos.at(id_objeto)).pedir_id_tipo();
-}
-
 void Mapa::eliminar_objeto(int id_objeto) {
 	std::pair<int, int> centro_objeto = (mapa_ids_objetos.at(id_objeto)).
 	obtener_centro();
@@ -137,10 +133,6 @@ void Mapa::eliminar_objeto(int id_objeto) {
 	mapa_ids_objetos.erase(id_objeto);
 	coordenadas[centro_objeto.first][centro_objeto.second].
 	sacar_objeto();
-}
-
-int Mapa::pedir_costo_objeto(int id_objeto) {
-	return (mapa_ids_objetos.at(id_objeto)).obtener_costo();
 }
 
 std::vector<std::pair<int, int>> Mapa::desenterrar_gusano() {

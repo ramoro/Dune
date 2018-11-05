@@ -45,14 +45,6 @@ class Mapa {
 		donde se encuentra ubicado.*/
 		void eliminar_objeto(int id_objeto);
 
-		/*Recibe una id de un objeto y devuelve el id del tipo al que
-		pertenece.*/
-		int pedir_id_tipo_objeto(int id_objeto);
-
-		/*Recibe el id de un objeto y devuelve la cantidad de dinero
-		que conlleva producirlo.*/
-		int pedir_costo_objeto(int id_objeto);
-
 		/*Elige un lugar random para hacer emerger al gusano de arena
 		y devuelve un vector con pares de lista (id unidad comida, id duenio de
 		la unidad).*/

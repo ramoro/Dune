@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ramiro/Escritorio/Dune/src/Armas/canion.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/sdldemo.dir/src/Armas/canion.cpp.o"
   "/home/ramiro/Escritorio/Dune/src/Armas/canion_22mm.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/sdldemo.dir/src/Armas/canion_22mm.cpp.o"
   "/home/ramiro/Escritorio/Dune/src/Armas/canion_plasma.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/sdldemo.dir/src/Armas/canion_plasma.cpp.o"
+  "/home/ramiro/Escritorio/Dune/src/Armas/explosion.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/sdldemo.dir/src/Armas/explosion.cpp.o"
   "/home/ramiro/Escritorio/Dune/src/Armas/lanza_misiles.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/sdldemo.dir/src/Armas/lanza_misiles.cpp.o"
   "/home/ramiro/Escritorio/Dune/src/Armas/onda_sonido.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/sdldemo.dir/src/Armas/onda_sonido.cpp.o"
   "/home/ramiro/Escritorio/Dune/src/Armas/rifle_asalto.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/sdldemo.dir/src/Armas/rifle_asalto.cpp.o"

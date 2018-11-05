@@ -16,6 +16,10 @@ CMakeFiles/sdldemo.dir/src/Armas/canion_plasma.cpp.o: ../src/Armas/arma.h
 CMakeFiles/sdldemo.dir/src/Armas/canion_plasma.cpp.o: ../src/Armas/canion_plasma.cpp
 CMakeFiles/sdldemo.dir/src/Armas/canion_plasma.cpp.o: ../src/Armas/canion_plasma.h
 
+CMakeFiles/sdldemo.dir/src/Armas/explosion.cpp.o: ../src/Armas/arma.h
+CMakeFiles/sdldemo.dir/src/Armas/explosion.cpp.o: ../src/Armas/explosion.cpp
+CMakeFiles/sdldemo.dir/src/Armas/explosion.cpp.o: ../src/Armas/explosion.h
+
 CMakeFiles/sdldemo.dir/src/Armas/lanza_misiles.cpp.o: ../src/Armas/arma.h
 CMakeFiles/sdldemo.dir/src/Armas/lanza_misiles.cpp.o: ../src/Armas/lanza_misiles.cpp
 CMakeFiles/sdldemo.dir/src/Armas/lanza_misiles.cpp.o: ../src/Armas/lanza_misiles.h
@@ -203,6 +207,7 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/desviador.cpp.o: ../src/observador.h
 
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o: ../src/Armas/arma.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o: ../src/Armas/canion_plasma.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o: ../src/Armas/explosion.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o: ../src/Terrenos/terreno.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o: ../src/UnidadesMovibles/devastador.cpp
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o: ../src/UnidadesMovibles/devastador.h

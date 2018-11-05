@@ -42,6 +42,16 @@ canion_plasma.h
 arma.h
 /home/ramiro/Escritorio/Dune/src/Armas/arma.h
 
+/home/ramiro/Escritorio/Dune/src/Armas/explosion.cpp
+explosion.h
+/home/ramiro/Escritorio/Dune/src/Armas/explosion.h
+string
+-
+
+/home/ramiro/Escritorio/Dune/src/Armas/explosion.h
+arma.h
+/home/ramiro/Escritorio/Dune/src/Armas/arma.h
+
 /home/ramiro/Escritorio/Dune/src/Armas/lanza_misiles.cpp
 lanza_misiles.h
 /home/ramiro/Escritorio/Dune/src/Armas/lanza_misiles.h
@@ -259,6 +269,8 @@ devastador.h
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/devastador.h
 ../Armas/canion_plasma.h
 /home/ramiro/Escritorio/Dune/src/Armas/canion_plasma.h
+../Armas/explosion.h
+/home/ramiro/Escritorio/Dune/src/Armas/explosion.h
 
 /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/devastador.h
 vehiculo.h

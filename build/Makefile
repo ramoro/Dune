@@ -244,6 +244,33 @@ src/Armas/canion_plasma.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/Armas/canion_plasma.cpp.s
 .PHONY : src/Armas/canion_plasma.cpp.s
 
+src/Armas/explosion.o: src/Armas/explosion.cpp.o
+
+.PHONY : src/Armas/explosion.o
+
+# target to build an object file
+src/Armas/explosion.cpp.o:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/Armas/explosion.cpp.o
+.PHONY : src/Armas/explosion.cpp.o
+
+src/Armas/explosion.i: src/Armas/explosion.cpp.i
+
+.PHONY : src/Armas/explosion.i
+
+# target to preprocess a source file
+src/Armas/explosion.cpp.i:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/Armas/explosion.cpp.i
+.PHONY : src/Armas/explosion.cpp.i
+
+src/Armas/explosion.s: src/Armas/explosion.cpp.s
+
+.PHONY : src/Armas/explosion.s
+
+# target to generate assembly for a file
+src/Armas/explosion.cpp.s:
+	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/Armas/explosion.cpp.s
+.PHONY : src/Armas/explosion.cpp.s
+
 src/Armas/lanza_misiles.o: src/Armas/lanza_misiles.cpp.o
 
 .PHONY : src/Armas/lanza_misiles.o
@@ -1346,6 +1373,9 @@ help:
 	@echo "... src/Armas/canion_plasma.o"
 	@echo "... src/Armas/canion_plasma.i"
 	@echo "... src/Armas/canion_plasma.s"
+	@echo "... src/Armas/explosion.o"
+	@echo "... src/Armas/explosion.i"
+	@echo "... src/Armas/explosion.s"
 	@echo "... src/Armas/lanza_misiles.o"
 	@echo "... src/Armas/lanza_misiles.i"
 	@echo "... src/Armas/lanza_misiles.s"

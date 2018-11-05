@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/sdldemo.dir/src/Armas/lanza_misiles.cpp.o"
   "CMakeFiles/sdldemo.dir/src/Armas/onda_sonido.cpp.o"
   "CMakeFiles/sdldemo.dir/src/Armas/rifle_asalto.cpp.o"
+  "CMakeFiles/sdldemo.dir/src/Armas/explosion.cpp.o"
   "CMakeFiles/sdldemo.dir/src/Terrenos/terreno.cpp.o"
   "CMakeFiles/sdldemo.dir/src/Terrenos/especia.cpp.o"
   "CMakeFiles/sdldemo.dir/src/Terrenos/no_especia.cpp.o"

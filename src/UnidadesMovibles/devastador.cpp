@@ -1,5 +1,6 @@
 #include "devastador.h"
 #include "../Armas/canion_plasma.h"
+#include "../Armas/explosion.h"
 
 #define ID_DEVASTADOR 9 //para usarlo en el protocolo
 
@@ -23,6 +24,9 @@ int id_objetivo) {
 
 std::vector<std::pair<int, int>> Devastador::matar(Mapa &mapa) { 
 	UnidadMovible::eliminar(mapa);
+	armas.clear();
+	Explosion explosion;
+	armas.push_back(Explosion(explosion));
 	std::vector<std::pair<int, int>> vecinos_afectados;
 	return vecinos_afectados;
 }

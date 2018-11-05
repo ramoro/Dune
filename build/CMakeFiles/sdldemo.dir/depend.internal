@@ -16,6 +16,10 @@ CMakeFiles/sdldemo.dir/src/Armas/canion_plasma.cpp.o
  /home/ramiro/Escritorio/Dune/src/Armas/arma.h
  /home/ramiro/Escritorio/Dune/src/Armas/canion_plasma.cpp
  /home/ramiro/Escritorio/Dune/src/Armas/canion_plasma.h
+CMakeFiles/sdldemo.dir/src/Armas/explosion.cpp.o
+ /home/ramiro/Escritorio/Dune/src/Armas/arma.h
+ /home/ramiro/Escritorio/Dune/src/Armas/explosion.cpp
+ /home/ramiro/Escritorio/Dune/src/Armas/explosion.h
 CMakeFiles/sdldemo.dir/src/Armas/lanza_misiles.cpp.o
  /home/ramiro/Escritorio/Dune/src/Armas/arma.h
  /home/ramiro/Escritorio/Dune/src/Armas/lanza_misiles.cpp
@@ -204,6 +208,7 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/desviador.cpp.o
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o
  /home/ramiro/Escritorio/Dune/src/Armas/arma.h
  /home/ramiro/Escritorio/Dune/src/Armas/canion_plasma.h
+ /home/ramiro/Escritorio/Dune/src/Armas/explosion.h
  /home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/devastador.cpp
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/devastador.h
