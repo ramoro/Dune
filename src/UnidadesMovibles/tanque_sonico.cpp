@@ -18,13 +18,16 @@ TanqueSonico::TanqueSonico(int id, int id_duenio, std::pair<int, int> centro) :
 	}
 
 std::vector<int> TanqueSonico::atacar_objetivo(Mapa &mapa, int id_objetivo) {
-	UnidadMovible::atacar(mapa, id_objetivo);
-	return mapa.buscar_unidades_alrededor(this->centro, this->altura,
-	this->base, false);
+	std::vector<int> objetivos = UnidadMovible::atacar(mapa, id_objetivo);
+	if (!objetivos.empty()) {
+		return mapa.buscar_unidades_alrededor(this->centro, this->altura,
+		this->base, false);
+	}
+	return objetivos;
 }
 
-std::vector<std::pair<int, int>> TanqueSonico::matar(Mapa &mapa) { 
+std::vector<int> TanqueSonico::matar(Mapa &mapa) { 
 	UnidadMovible::eliminar(mapa);
-	std::vector<std::pair<int, int>> vecinos_afectados;
+	std::vector<int> vecinos_afectados;
 	return vecinos_afectados;
 }

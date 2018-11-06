@@ -177,12 +177,17 @@ int main() {
  Partida partida;
   partida.agregar_jugador("je");
   partida.agregar_jugador("asd");
-  bool agregado1 = partida.agregar_edificio(0, std::pair<int, int>(7,3), 0);
-  bool agregado2 = partida.agregar_edificio(1, std::pair<int, int>(8,4), 0);
-  bool agregado3 = partida.agregar_edificio(0, std::pair<int, int>(5,5), 0);
-  int danio = partida.atacar_objeto(5, 0);
+  bool agregado1 = partida.agregar_edificio(0, std::pair<int, int>(7,3), 6);
+  //bool agregado2 = partida.agregar_edificio(1, std::pair<int, int>(8,4), 0);
+  //bool agregado3 = partida.agregar_edificio(0, std::pair<int, int>(5,5), 0);
+  std::pair<int, std::pair<int,int>> nueva_unidad = partida.agregar_unidad_movible(0, 0);
+  std::vector<std::pair<int ,int>> unidades_afectadas = partida.atacar_objeto(1, 0);
   //std::cout << danio << agregado << std::endl;
-  std::cout << agregado1 << agregado2 << agregado3 << danio << std::endl;
+  std::cout << agregado1 << std::endl;
+  std:: cout << nueva_unidad.first << std::endl;
+  if (!unidades_afectadas.empty()) {
+    std::cout << "piola " << std::endl;
+  }
   //Mapa mapa;
   //std::pair<int, int> objetivo = mapa.desenterrar_gusano();
   //std::cout << objetivo.first << " " << objetivo.second << std::endl;

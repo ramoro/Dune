@@ -17,9 +17,9 @@ class InfanteriaPesada: public UnidadInfanteria {
 		virtual std::vector<int> atacar_objetivo(Mapa &mapa, int id_objetivo);
 
 		/*Recibe un mapa, mata a la unidad y la remueve del mapa. Devuelve
-		un vector con pares (id_duenio, vida_restante) segun si la unidad
+		un vector con el id de las unidades afectadas segun si la unidad
 		afecto unidades vecinas al morir.*/
-		virtual std::vector<std::pair<int, int>> matar(Mapa &mapa);
+		virtual std::vector<int> matar(Mapa &mapa);
 };
 
 #endif

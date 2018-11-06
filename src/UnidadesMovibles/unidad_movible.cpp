@@ -2,6 +2,8 @@
 #include <stdlib.h> 
 #include <iostream>
 
+#define NO_AGREGADA -1
+
 UnidadMovible::UnidadMovible(int rango, int velocidad, 
 float tiempo_creacion, int costo_dinero, int vida, int id, int id_duenio,
 int base, int altura, std::pair<int, int> centro) :
@@ -16,12 +18,11 @@ int UnidadMovible::pedir_danio(std::string objetivo) {
 std::vector<int> UnidadMovible::atacar(Mapa &mapa,
 int id_objetivo) {
 	std::pair<int, int> cercania = mapa.pedir_cercania(this->id, id_objetivo);
+	std::vector<int> objetivo;
 	if (cercania.first > this->rango_ataque_fila && cercania.second > 
 	this->rango_ataque_columna) {
-		//mapa.mover_unidad(this, id_objetivo); aca se desmarca las coordenadas que ocupaba
-		//la unidad, se la mueve con A* y se marcan las nuevas coordenadas	
+		return objetivo;
 	}
-	std::vector<int> objetivo;
 	objetivo.push_back(id_objetivo);
 	return objetivo;
 }
@@ -35,8 +36,8 @@ int UnidadMovible::daniar(std::shared_ptr<UnidadMovible> unidad_atacante) {
 	return 0;
 }
 
-std::vector<std::pair<int, int>> UnidadMovible::matar(Mapa &mapa) {
-	std::vector<std::pair<int, int>> aux;
+std::vector<int> UnidadMovible::matar(Mapa &mapa) {
+	std::vector<int> aux;
 	return aux;
 }
 
@@ -48,15 +49,16 @@ std::vector<int> UnidadMovible::obtener_edificios_necesarios() {
 	return ids_tipos_edificios_necesarios;
 }
 
-std::pair<int, int> UnidadMovible::agregar(Mapa &mapa, Jugador 
+bool UnidadMovible::agregar(Mapa &mapa, Jugador 
 &jugador) {
 	if (!jugador.agregada_unidad(this)) {
-		std::pair<int, int> unidad_no_creada(-1, -1);
-		return unidad_no_creada;
+		(this->centro).first = NO_AGREGADA;
+		(this->centro).second = NO_AGREGADA;
+		return false;
 	}
 
 	std::cout << "unidad en x " << (this->centro).first << " y " << (this->centro).second << std::endl;
 	mapa.agregar_objeto(this, this->id,
 	this->centro);
-	return this->centro;
+	return true;
 }

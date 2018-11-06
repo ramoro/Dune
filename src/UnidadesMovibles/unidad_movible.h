@@ -49,7 +49,7 @@ class UnidadMovible: public ObjetoDune {
 		virtual int daniar(std::shared_ptr<UnidadMovible> unidad_atacante) = 0;
 
 		/*Metodo virtual puro que mata a la unidad movible y la saca del juego.*/
-		virtual std::vector<std::pair<int, int>> matar(Mapa &mapa) = 0;
+		virtual std::vector<int> matar(Mapa &mapa) = 0;
 
 		/*Recibe el mapa del juego y elimina el objeto del mapa.*/
 		void eliminar(Mapa &mapa);
@@ -59,9 +59,9 @@ class UnidadMovible: public ObjetoDune {
 		std::vector<int> obtener_edificios_necesarios();
 
 		/*Recibe el mapa del juego y el jugador duenio de la unidad
-		y devuelve la posicion donde la unidad fue agregada.
-		En caso de no haber podido ser agregada se devuelve un (-1, -1).*/
-		std::pair<int, int> agregar(Mapa &mapa, Jugador 
+		y trata de agregarla. Devuelve true si la agrego, false en caso
+		contrario.*/
+		bool agregar(Mapa &mapa, Jugador 
 		&jugador);
 };
 

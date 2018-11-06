@@ -18,8 +18,8 @@ std::vector<int> Trike::atacar_objetivo(Mapa &mapa, int id_objetivo) {
 	return UnidadMovible::atacar(mapa, id_objetivo);
 }
 
-std::vector<std::pair<int, int>> Trike::matar(Mapa &mapa) { 
+std::vector<int> Trike::matar(Mapa &mapa) { 
 	UnidadMovible::eliminar(mapa);
-	std::vector<std::pair<int, int>> vecinos_afectados;
+	std::vector<int> vecinos_afectados;
 	return vecinos_afectados;
 }

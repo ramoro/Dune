@@ -58,17 +58,17 @@ void Edificio::autodemoler(Mapa &mapa, Jugador &jugador) {
 	jugador.aumentar_dinero(porcentaje_recuperacion * this->costo_dinero);
 }
 
-std::pair<int, int> Edificio::agregar_unidad(Mapa &mapa, Jugador &jugador,
-int id_tipo_unidad, int id_unidad) {
+std::shared_ptr<UnidadMovible> Edificio::agregar_unidad(Mapa &mapa, 
+Jugador &jugador, int id_tipo_unidad, int id_unidad) {
 	std::pair<int,int> posicion_central;
-	if (!mapa.ubicar_unidad(this->id, posicion_central)) {
-		std::pair<int, int> unidad_no_creada(-1, -1);
-		return unidad_no_creada;
-	}
 
 	std::shared_ptr<UnidadMovible> ptr_unidad = fabrica_unidades_movibles.
-	crear_unidad_movible(id_tipo_unidad, this->id_duenio, id_unidad, 
+	crear_unidad_movible(id_tipo_unidad, id_unidad, this->id_duenio, 
 	posicion_central);
-	return ptr_unidad->agregar(mapa, jugador);
+	if (!mapa.ubicar_unidad(this->id, posicion_central)) {
+		
+	}
 	
+	ptr_unidad->agregar(mapa, jugador);
+	return ptr_unidad;
 }

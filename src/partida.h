@@ -39,11 +39,11 @@ class Partida {
 		posicion_central, int id_tipo_edificio);
 
 		/*Recibe el id del tipo de unidad movible que ataca
-		y el id del objeto atacado. Devuelve el danio provocado por la unidad o en 
-		caso de destruir el objeto devuelve un 0. Si devuelve un -1 significa
-		que el objeto no puede atacar.*/
-		int atacar_objeto(int id_tipo_unidad_atacante, 
-		int id_objeto_atacado);
+		y el id del objeto atacado. Devuelve un vector de pares.
+		Cada par con el id de la unidad afectada y la vida que le
+		queda luego de ser atacada.*/
+		std::vector<std::pair<int, int>> atacar_objeto(
+		int id_tipo_unidad_atacante, int id_objeto_atacado);
 
 		/*Recibe un id de un edificio. Elimina el 
 		edificio y le devuelve al jugador con el id recibido un porcentaje
@@ -60,6 +60,15 @@ class Partida {
 		/*Devuelve un vector de pares de ints con el id de la unidad comida y
 		el id del jugador duenio de la unidad.*/
 		std::vector<std::pair<int, int>> generar_gusano();
+
+	private:
+		/*Metodo recursivo que recibe un vector con el id de los objetos
+		afectados por el ataque de una unidad, un puntero al atacante y
+		un vector de pares (id, vida restante) que sera llenado con
+		los objetos afectados por el ataque.*/
+		void ejecutar_ataque(std::vector<int> objetos_afectados, 
+		std::shared_ptr<UnidadMovible> atacante, std::vector<std::pair
+		<int, int>> &ids_vidas); 
 };
 
 #endif 

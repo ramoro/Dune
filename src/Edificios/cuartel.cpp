@@ -4,7 +4,7 @@
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Cuartel::Cuartel(int id, int id_duenio, std::pair<int, int> centro) :
-	Edificio(-100, 300, 300, id, id_duenio, 300, 200, centro) {
+	Edificio(-100, 300, 300, id, id_duenio, 3, 2, centro) {
 		id_tipo = CUARTEL;
 	}
 

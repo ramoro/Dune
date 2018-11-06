@@ -17,12 +17,14 @@ Desviador::Desviador(int id, int id_duenio, std::pair<int, int> centro) :
 
 std::vector<int> Desviador::atacar_objetivo(Mapa &mapa, int id_objetivo) {
 	std::vector<int> objetivos = UnidadMovible::atacar(mapa, id_objetivo);
-	mapa.cambiar_equipo(id_objetivo, this->id_duenio);
+	if (!objetivos.empty()) {
+		mapa.cambiar_equipo(id_objetivo, this->id_duenio);
+	}
 	return objetivos;
 }
 
-std::vector<std::pair<int, int>> Desviador::matar(Mapa &mapa) { 
+std::vector<int> Desviador::matar(Mapa &mapa) { 
 	UnidadMovible::eliminar(mapa);
-	std::vector<std::pair<int, int>> vecinos_afectados;
+	std::vector<int> vecinos_afectados;
 	return vecinos_afectados;
 }

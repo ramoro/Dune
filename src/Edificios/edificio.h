@@ -59,9 +59,9 @@ class Edificio: public ObjetoDune {
 		/*Recibe el mapa del juego y el jugador duenio del edificio
 		y crea una unidad segun el id del tipo y asignandole la id_unidad
 		tambien pasados por parametro y la agrega tanto al jugador como 
-		al mapa.*/
-		std::pair<int, int> agregar_unidad(Mapa &mapa, Jugador &jugador,
-		int id_tipo_unidad, int id_unidad);
+		al mapa. Devuelve un puntero a la unidad creada.*/
+		std::shared_ptr<UnidadMovible> agregar_unidad(Mapa &mapa, 
+		Jugador &jugador, int id_tipo_unidad, int id_unidad) ;
 };
 
 #endif

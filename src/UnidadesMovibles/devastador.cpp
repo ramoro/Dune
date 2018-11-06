@@ -22,11 +22,11 @@ int id_objetivo) {
 	return UnidadMovible::atacar(mapa, id_objetivo);
 }
 
-std::vector<std::pair<int, int>> Devastador::matar(Mapa &mapa) { 
+std::vector<int> Devastador::matar(Mapa &mapa) { 
 	UnidadMovible::eliminar(mapa);
 	armas.clear();
 	Explosion explosion;
 	armas.push_back(Explosion(explosion));
-	std::vector<std::pair<int, int>> vecinos_afectados;
-	return vecinos_afectados;
+	return mapa.buscar_unidades_alrededor(this->centro, this->altura,
+	this->base, false);
 }
