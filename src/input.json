@@ -204,7 +204,7 @@
 		"bonificacion_danio_vehiculos": 0
 	},
 	"Jugadores": {
-		"dinero_inicial": 100000,
+		"dinero": 10000000,
 		"porcentaje_dinero_recuperado_edificios": 0.5
 	},
 	"Gusano": {

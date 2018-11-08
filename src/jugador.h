@@ -6,6 +6,8 @@
 #include <vector>
 #include <memory>
 #include "observador.h"
+#include "root.h"
+
 class UnidadMovible;
 class Edificio;
 
@@ -21,7 +23,7 @@ class Jugador {
 
 	public:
 		/*Constructor de la clase.*/
-		Jugador(std::string casa);
+		Jugador(std::string casa, Root &root);
 
 		/*Recibe un puntero a un objeto Dune. Se lo agregar al jugador
 		sacandole el dinero correspondiente.*/

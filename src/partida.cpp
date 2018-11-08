@@ -13,8 +13,8 @@ Partida::Partida() {
 	contador_ids_objetos = 0;
 }
 
-void Partida::agregar_jugador(std::string casa_jugador) {
-	Jugador jugador(casa_jugador);
+void Partida::agregar_jugador(std::string casa_jugador,Root &root) {
+	Jugador jugador(casa_jugador,root);
 	jugadores.insert(std::pair<int, Jugador>(contador_ids_jugadores, 
 	jugador));
 	contador_ids_jugadores++;

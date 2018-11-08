@@ -216,17 +216,14 @@ int main() {
 //MAIN NACHO
 int main() {
   Root json("../src/input.json");
-  Json::Value aux= json["ClassA"]["teststringA"];
-  std::cout << "aux " << aux << "\n\n";
-
   Partida partida;
-  partida.agregar_jugador("harkonnen");
+  partida.agregar_jugador("harkonnen",json);
   //std::pair<int, int> centro(100, 100);
   //bool agregado = partida.agregar_edificio(0, centro, 0);
   //std::cout << agregado << std::endl;
   //std::pair<int, std::pair<int ,int>> nueva_unidad = partida.agregar_unidad_movible(2,0);
   //std::cout << "ID nueva unidad " << nueva_unidad.first << std::endl;
-  partida.agregar_edificio(0, std::pair<int, int>(400,400), 4,json);
+  partida.agregar_edificio(0, std::pair<int, int>(400,400), 4);
   for (int i = 0; i < 2 ; i++) {
     std::pair<int, std::pair<int, int>> nueva_unidad = partida.agregar_unidad_movible(15,0);
     std::cout << "ID nueva unidad " << nueva_unidad.first << std::endl;
