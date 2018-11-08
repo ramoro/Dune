@@ -32,6 +32,7 @@ CMakeFiles/main.dir/src/jugador.cpp.o: ../src/mapa.h
 CMakeFiles/main.dir/src/jugador.cpp.o: ../src/nodo.h
 CMakeFiles/main.dir/src/jugador.cpp.o: ../src/objeto_dune.h
 CMakeFiles/main.dir/src/jugador.cpp.o: ../src/observador.h
+CMakeFiles/main.dir/src/jugador.cpp.o: ../src/root.h
 
 CMakeFiles/main.dir/src/main.cpp.o: ../src/Armas/arma.h
 CMakeFiles/main.dir/src/main.cpp.o: ../src/Edificios/edificio.h
@@ -87,6 +88,7 @@ CMakeFiles/main.dir/src/partida.cpp.o: ../src/objeto_dune.h
 CMakeFiles/main.dir/src/partida.cpp.o: ../src/observador.h
 CMakeFiles/main.dir/src/partida.cpp.o: ../src/partida.cpp
 CMakeFiles/main.dir/src/partida.cpp.o: ../src/partida.h
+CMakeFiles/main.dir/src/partida.cpp.o: ../src/root.h
 
 CMakeFiles/main.dir/src/root.cpp.o: ../src/root.cpp
 CMakeFiles/main.dir/src/root.cpp.o: ../src/root.h

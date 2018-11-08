@@ -33,6 +33,7 @@ CMakeFiles/main.dir/src/jugador.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/main.dir/src/main.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
@@ -88,6 +89,7 @@ CMakeFiles/main.dir/src/partida.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
  /home/ignacio/Downloads/TP4/Dune/src/partida.cpp
  /home/ignacio/Downloads/TP4/Dune/src/partida.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/main.dir/src/root.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/root.cpp
  /home/ignacio/Downloads/TP4/Dune/src/root.h

@@ -115,6 +115,8 @@ memory
 -
 observador.h
 /home/ignacio/Downloads/TP4/Dune/src/observador.h
+root.h
+/home/ignacio/Downloads/TP4/Dune/src/root.h
 
 /home/ignacio/Downloads/TP4/Dune/src/main.cpp
 partida.h
@@ -193,6 +195,8 @@ Edificios/fabrica_edificios.h
 /home/ignacio/Downloads/TP4/Dune/src/Edificios/fabrica_edificios.h
 UnidadesMovibles/fabrica_unidades_movibles.h
 /home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
+root.h
+/home/ignacio/Downloads/TP4/Dune/src/root.h
 
 /home/ignacio/Downloads/TP4/Dune/src/root.h
 list

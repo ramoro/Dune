@@ -47,6 +47,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Edificios/cuartel.cpp
@@ -62,6 +63,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.cpp
@@ -76,6 +78,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Edificios/centro_construccion.h
@@ -99,6 +102,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
@@ -114,6 +118,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
@@ -129,6 +134,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
@@ -144,6 +150,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
@@ -159,6 +166,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
@@ -174,6 +182,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
@@ -189,6 +198,7 @@ CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/Terrenos/especia.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Terrenos/especia.cpp
  /home/ignacio/Downloads/TP4/Dune/src/Terrenos/especia.h
@@ -214,6 +224,7 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/cosechadora.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/desviador.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Armas/lanza_misiles.h
@@ -229,6 +240,7 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/desviador.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Armas/canion_plasma.h
@@ -245,6 +257,7 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fabrica_unidades_movibles.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Terrenos/terreno.h
@@ -271,6 +284,7 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fabrica_unidades_movibles.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Armas/lanza_misiles.h
@@ -287,6 +301,7 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_ligera.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Armas/rifle_asalto.h
@@ -302,6 +317,7 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_ligera.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Armas/lanza_misiles.h
@@ -317,6 +333,7 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/raider.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Armas/canion_22mm.h
@@ -332,6 +349,7 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/raider.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Armas/lanza_misiles.h
@@ -348,6 +366,7 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Armas/canion.h
@@ -363,6 +382,7 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque_sonico.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Armas/onda_sonido.h
@@ -378,6 +398,7 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque_sonico.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/trike.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Armas/rifle_asalto.h
@@ -393,6 +414,7 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/trike.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Terrenos/terreno.h
@@ -406,6 +428,7 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Terrenos/terreno.h
@@ -418,6 +441,7 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
  /home/ignacio/Downloads/TP4/Dune/src/Terrenos/terreno.h
@@ -431,3 +455,4 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o
  /home/ignacio/Downloads/TP4/Dune/src/nodo.h
  /home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
  /home/ignacio/Downloads/TP4/Dune/src/observador.h
+ /home/ignacio/Downloads/TP4/Dune/src/root.h
