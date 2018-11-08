@@ -1,5 +1,6 @@
 #include "edificio.h"
 #include "../observador.h"
+#include <iostream>
 
 Edificio::Edificio(int aporte_energetico, int costo_dinero,
 int puntos_estructura, int id, 
@@ -60,15 +61,20 @@ void Edificio::autodemoler(Mapa &mapa, Jugador &jugador) {
 
 std::shared_ptr<UnidadMovible> Edificio::agregar_unidad(Mapa &mapa, 
 Jugador &jugador, int id_tipo_unidad, int id_unidad) {
-	std::pair<int,int> posicion_central;
+	std::pair<int,int> posicion_central(-1,-1);
 
 	std::shared_ptr<UnidadMovible> ptr_unidad = fabrica_unidades_movibles.
 	crear_unidad_movible(id_tipo_unidad, id_unidad, this->id_duenio, 
 	posicion_central);
-	if (!mapa.ubicar_unidad(this->id, posicion_central)) {
-		
+
+	if (!mapa.ubicar_unidad(this->id, posicion_central,
+		ptr_unidad->obtener_base(),ptr_unidad->obtener_altura())){
 	}
-	
-	ptr_unidad->agregar(mapa, jugador);
+
+	ptr_unidad->set_centro(posicion_central);
+
+	if (posicion_central.first != -1){
+		ptr_unidad->agregar(mapa, jugador);
+	}	
 	return ptr_unidad;
 }

@@ -5,7 +5,7 @@
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 FabricaLigera::FabricaLigera(int id, int id_duenio, std::pair<int, int> 
 centro) : 
-	Edificio(-500, 800, 500, id, id_duenio, 300, 300, centro) {
+	Edificio(-500, 800, 500, id, id_duenio, 5, 4, centro) {
 		id_tipo = ID_FABRICA_LIGERA;
 	}
 

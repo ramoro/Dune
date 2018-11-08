@@ -3,14 +3,20 @@
 #include "buscador_mejor_camino.h"
 #include <iostream>
 #include "nodo.h"
-#include "server.h"
 #include <vector>
 #include <stack>
 #include <cmath>
 #include <iostream>
+#include "root.h"
+#include "server.h"
 
 #define POSICION_INHABILITADA 1
-
+/*
+int main(int argc, char* argv[]) {
+  Server server(argv[1]);
+  server.aceptar_cliente();
+}
+*/
 /*int main() {
 	//parametros
 	std::pair<int ,int> inicio(0, 0);
@@ -173,23 +179,18 @@
 
 	}
 }*/
-
-int main(int argc, char* argv[]) {
-  Server server(argv[1]);
-  server.aceptar_cliente();
-}
-
-/*int main() {
+/*
+int main() {
  Partida partida;
   partida.agregar_jugador("je");
   partida.agregar_jugador("asd");
-  partida.agregar_edificio(0, std::pair<int, int>(7,3), 6);
+  bool agregado1 = partida.agregar_edificio(0, std::pair<int, int>(7,3), 6);
   //bool agregado2 = partida.agregar_edificio(1, std::pair<int, int>(8,4), 0);
   //bool agregado3 = partida.agregar_edificio(0, std::pair<int, int>(5,5), 0);
   std::pair<int, std::pair<int,int>> nueva_unidad = partida.agregar_unidad_movible(0, 0);
   std::vector<std::pair<int ,int>> unidades_afectadas = partida.atacar_objeto(1, 0);
   //std::cout << danio << agregado << std::endl;
-  //std::cout << agregado1 << std::endl;
+  std::cout << agregado1 << std::endl;
   std:: cout << nueva_unidad.first << std::endl;
   if (!unidades_afectadas.empty()) {
     std::cout << "piola " << std::endl;
@@ -197,8 +198,8 @@ int main(int argc, char* argv[]) {
   //Mapa mapa;
   //std::pair<int, int> objetivo = mapa.desenterrar_gusano();
   //std::cout << objetivo.first << " " << objetivo.second << std::endl;
-}*/
-
+}
+*/
 /*int main() {
   Mapa mapa;
   BuscadorMejorCamino buscador;
@@ -213,17 +214,21 @@ int main(int argc, char* argv[]) {
 }*/
 
 //MAIN NACHO
-/*int main() {
+int main() {
+  Root json("../src/input.json");
+  Json::Value aux= json["ClassA"]["teststringA"];
+  std::cout << "aux " << aux << "\n\n";
+
   Partida partida;
   partida.agregar_jugador("harkonnen");
-  std::pair<int, int> centro(100, 100);
-  bool agregado = partida.agregar_edificio(0, centro, 0);
-  std::cout << agregado << std::endl;
-  std::pair<int, std::pair<int ,int>> nueva_unidad = partida.agregar_unidad_movible(2,0);
-  std::cout << nueva_unidad.first << std::endl;
+  //std::pair<int, int> centro(100, 100);
+  //bool agregado = partida.agregar_edificio(0, centro, 0);
+  //std::cout << agregado << std::endl;
+  //std::pair<int, std::pair<int ,int>> nueva_unidad = partida.agregar_unidad_movible(2,0);
+  //std::cout << "ID nueva unidad " << nueva_unidad.first << std::endl;
   std::cout << partida.agregar_edificio(0, std::pair<int, int>(400,400), 4) << std::endl;
   for (int i = 0; i < 24 ; i++) {
     std::pair<int, std::pair<int, int>> nueva_unidad = partida.agregar_unidad_movible(5,0);
-    std::cout << nueva_unidad.first << std::endl;
+    std::cout << "ID nueva unidad " << nueva_unidad.first << std::endl;
   }
-}*/
+}

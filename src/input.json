@@ -1,0 +1,14 @@
+{
+   "ClassA" : {
+	   "testboolA" : false,
+	   "testfloatA" : 4.0,
+	   "testintA" : 80,
+	   "teststringA" : "objetoa"
+	},
+	"ClassB" : {
+	   "testboolB" : true,
+	   "testfloatB" : 4.16161616,
+	   "testintB" : 7000,
+	   "teststringB" : "obejtob"
+	}
+}
