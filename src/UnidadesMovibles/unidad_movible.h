@@ -63,6 +63,9 @@ class UnidadMovible: public ObjetoDune {
 		contrario.*/
 		bool agregar(Mapa &mapa, Jugador 
 		&jugador);
+
+		/*Setear centro*/
+		void set_centro(std::pair<int, int> centro);
 };
 
 #endif 

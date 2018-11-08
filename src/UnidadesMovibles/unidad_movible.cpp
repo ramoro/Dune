@@ -62,3 +62,7 @@ bool UnidadMovible::agregar(Mapa &mapa, Jugador
 	this->centro);
 	return true;
 }
+
+void UnidadMovible::set_centro(std::pair<int, int> centro){
+	this->centro = centro;
+}
