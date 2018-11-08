@@ -1,7 +1,7 @@
 #include "raider.h"
 #include "../Armas/canion_22mm.h"
 
-#define ID_RAIDER 5 //para usarlo en el protocolo
+#define ID_RAIDER 15 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Raider::Raider(int id, int id_duenio, std::pair<int, int> centro) : 

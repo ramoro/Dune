@@ -226,9 +226,9 @@ int main() {
   //std::cout << agregado << std::endl;
   //std::pair<int, std::pair<int ,int>> nueva_unidad = partida.agregar_unidad_movible(2,0);
   //std::cout << "ID nueva unidad " << nueva_unidad.first << std::endl;
-  std::cout << partida.agregar_edificio(0, std::pair<int, int>(400,400), 4) << std::endl;
-  for (int i = 0; i < 24 ; i++) {
-    std::pair<int, std::pair<int, int>> nueva_unidad = partida.agregar_unidad_movible(5,0);
+  partida.agregar_edificio(0, std::pair<int, int>(400,400), 4,json);
+  for (int i = 0; i < 2 ; i++) {
+    std::pair<int, std::pair<int, int>> nueva_unidad = partida.agregar_unidad_movible(15,0);
     std::cout << "ID nueva unidad " << nueva_unidad.first << std::endl;
   }
 }

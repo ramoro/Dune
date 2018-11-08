@@ -2,6 +2,7 @@
 #include "Edificios/edificio.h"
 #include "UnidadesMovibles/unidad_movible.h"
 #include <memory>
+#include <iostream>
 
 #define OBJETO_MUERTO -1 //CODIGO PARA ENVIAR POR PROTOCOLO INDICANDO 
 //QUE OBJ MURIO
@@ -26,7 +27,6 @@ posicion_central, int id_tipo_edificio) {
 
 	bool agregado = ptr_edificio->agregar_al_juego(mapa, jugadores.at(id_jugador), 
 	contador_ids_objetos, id_tipo_edificio);
-	
 	if (agregado) {
 		edificios.insert(std::pair<int, 
 		std::shared_ptr<Edificio>>(contador_ids_objetos, ptr_edificio));

@@ -309,7 +309,6 @@ bool Mapa::ubicar_unidad(int id_edificio, std::pair<int, int> &centro_unidad,
 	
 	return false;
 }
-}
 
 std::vector<std::pair<int, int>> Mapa::mover(int id_unidad, 
 std::pair<int, int> &pos_destino) {
