@@ -42,6 +42,10 @@ this->ptr->ai_protocol);
 		freeaddrinfo(this->ptr);
 		throw SocketError("Error de socket: fallo creacion servidor.\n");
 	}
+	int val = 1;
+	if (setsockopt(this->fd, SOL_SOCKET, SO_REUSEADDR, &val, sizeof(val)) == -1) {
+		throw SocketError("Error de socket: no se pudo setear el sockopt.\n");
+	}
 	socket_bind_and_listen(listen_size);
 }
 

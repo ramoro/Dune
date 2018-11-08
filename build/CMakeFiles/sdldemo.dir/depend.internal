@@ -40,9 +40,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o
  /home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o
@@ -53,9 +55,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o
  /home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o
@@ -65,9 +69,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o
  /home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o
@@ -86,9 +92,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o
  /home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o
@@ -99,9 +107,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o
  /home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o
@@ -112,9 +122,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o
  /home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o
@@ -125,9 +137,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o
  /home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o
@@ -138,9 +152,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o
  /home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o
@@ -151,9 +167,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o
  /home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o
@@ -164,9 +182,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o
  /home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/Terrenos/especia.cpp.o
@@ -187,9 +207,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/cosechadora.cpp.o
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/cosechadora.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/desviador.cpp.o
@@ -200,9 +222,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/desviador.cpp.o
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/desviador.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o
@@ -214,9 +238,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/devastador.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fabrica_unidades_movibles.cpp.o
@@ -238,9 +264,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fabrica_unidades_movibles.cpp.o
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o
@@ -252,9 +280,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fremen.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_ligera.cpp.o
@@ -265,9 +295,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_ligera.cpp.o
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/infanteria_ligera.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o
@@ -278,9 +310,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/infanteria_pesada.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/raider.cpp.o
@@ -291,9 +325,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/raider.cpp.o
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/raider.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o
@@ -305,9 +341,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/sardaukar.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque.cpp.o
@@ -318,9 +356,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque.cpp.o
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/tanque.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque_sonico.cpp.o
@@ -331,9 +371,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque_sonico.cpp.o
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/tanque_sonico.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/trike.cpp.o
@@ -344,9 +386,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/trike.cpp.o
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/trike.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o
@@ -355,9 +399,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.cpp
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o
@@ -365,9 +411,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o
  /home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.cpp
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o
@@ -376,8 +424,10 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.cpp
  /home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+ /home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
  /home/ramiro/Escritorio/Dune/src/coordenada.h
  /home/ramiro/Escritorio/Dune/src/jugador.h
  /home/ramiro/Escritorio/Dune/src/mapa.h
+ /home/ramiro/Escritorio/Dune/src/nodo.h
  /home/ramiro/Escritorio/Dune/src/objeto_dune.h
  /home/ramiro/Escritorio/Dune/src/observador.h

@@ -1,7 +1,7 @@
 #include "infanteria_pesada.h"
 #include "../Armas/lanza_misiles.h"
 
-#define ID_INFANTERIA_PESADA 1 //para usarlo en el protocolo
+#define ID_INFANTERIA_PESADA 11 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 InfanteriaPesada::InfanteriaPesada(int id, int id_duenio, std::pair<int, int>

@@ -19,7 +19,7 @@ void Partida::agregar_jugador(std::string casa_jugador) {
 	contador_ids_jugadores++;
 }
 
-bool Partida::agregar_edificio(int id_jugador, std::pair<int, int>
+std::shared_ptr<Edificio> Partida::agregar_edificio(int id_jugador, std::pair<int, int>
 posicion_central, int id_tipo_edificio) {
 	std::shared_ptr<Edificio> ptr_edificio = fabrica_edificios.crear_edificio(id_tipo_edificio,
 	contador_ids_objetos, id_jugador, posicion_central);
@@ -31,9 +31,11 @@ posicion_central, int id_tipo_edificio) {
 		edificios.insert(std::pair<int, 
 		std::shared_ptr<Edificio>>(contador_ids_objetos, ptr_edificio));
 		contador_ids_objetos++;
+	} else {
+		ptr_edificio = NULL;
 	}
 
-	return agregado;
+	return ptr_edificio;
 }
 
 void Partida::ejecutar_ataque(std::vector<int> objetos_afectados, 
@@ -55,7 +57,6 @@ std::shared_ptr<UnidadMovible> atacante, std::vector<std::pair<int, int>>
 			if (vida_restante <= 0) {
 				std::vector<int> vecinos_afectados = (unidades_movibles.
 				at(*it))->matar(mapa);
-				unidades_movibles.erase(*it);
 				if (!vecinos_afectados.empty()) {
 					ejecutar_ataque(vecinos_afectados, 
 					unidades_movibles.at(*it), ids_vidas);
@@ -104,14 +105,11 @@ int id_tipo_unidad, int id_edificio) {
 	return nueva_unidad;
 }
 
-/*std::stack<std::pair<int, int>> Partida::mover_unidad(int id_unidad, 
-int tipo_unidad, std::pair<int, int> posicion_inicial, 
-std::pair<int, int> posicion_final) {
-	//pedir tipo a la unidad para pasarlo por parametro
-	return buscador_mejor_camino.buscar_mejor_camino(mapa, posicion_inicial,
-	posicion_final, id_tipo_unidad);
-}*/
+std::vector<std::pair<int, int>> Partida::mover_unidad(int id_unidad, 
+std::pair<int, int> posicion_destino) {
+	return mapa.mover(id_unidad, posicion_destino);
+}
 
-std::vector<std::pair<int, int>> Partida::generar_gusano() {
+std::vector<int> Partida::generar_gusano() {
 	return mapa.desenterrar_gusano();
 }

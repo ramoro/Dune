@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/ramiro/Escritorio/Dune/src/Socket.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/main.dir/src/Socket.cpp.o"
   "/home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o"
   "/home/ramiro/Escritorio/Dune/src/coordenada.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/main.dir/src/coordenada.cpp.o"
   "/home/ramiro/Escritorio/Dune/src/jugador.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/main.dir/src/jugador.cpp.o"
@@ -13,6 +14,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ramiro/Escritorio/Dune/src/objeto_dune.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/main.dir/src/objeto_dune.cpp.o"
   "/home/ramiro/Escritorio/Dune/src/observador.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/main.dir/src/observador.cpp.o"
   "/home/ramiro/Escritorio/Dune/src/partida.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/main.dir/src/partida.cpp.o"
+  "/home/ramiro/Escritorio/Dune/src/server.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/main.dir/src/server.cpp.o"
+  "/home/ramiro/Escritorio/Dune/src/socket_error.cpp" "/home/ramiro/Escritorio/Dune/build/CMakeFiles/main.dir/src/socket_error.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

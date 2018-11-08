@@ -9,12 +9,14 @@
 #include "objeto_dune.h"
 #include "coordenada.h"
 #include "observador.h"
+#include "buscador_mejor_camino.h"
 
 /*Clase que representa a un mapa del mundo Dune.*/
 class Mapa {
 	private:
 		std::vector<std::vector<Coordenada>> coordenadas;
 		std::map<int, ObjetoDune> mapa_ids_objetos;
+		BuscadorMejorCamino buscador_mejor_camino;
 		//mapa con ids de objetos y su coordenada de centro para ubicarlos rapido 
 		//ya que el cliente no va a enviar la posicion del edificio
 
@@ -24,7 +26,15 @@ class Mapa {
 		Devuelve true en caso de que el terreno que ocupa el objeto sea del
 		terreno pasado, false en caso contrario.*/
 		bool verificar_terreno_alrededor(std::pair<int, int> centro, 
-		int altura, int base, std::string terreno, bool gusano);
+		int altura, int base, std::string terreno);
+
+		/*Recibe una posicion ocupada por un objeto, el centro de otro objeto
+		que ocupara un cierto espacio determinado por su abse y altura y
+		devuelve true si esa posicion se encuentra dentro
+		de los confines del objeto o false en caso contario.*/
+		bool esta_dentro(std::pair<int, int> pos_objeto1, 
+		std::pair<int, int> centro_objeto2, int altura_objeto2, 
+		int base_objeto2);
 
 		/*Recibe la posicion central de un objeto, su altura y base y devuelve
 		un vector con el id de las unidades que se encuentran en su alrededor
@@ -46,9 +56,8 @@ class Mapa {
 		void eliminar_objeto(int id_objeto);
 
 		/*Elige un lugar random para hacer emerger al gusano de arena
-		y devuelve un vector con pares de lista (id unidad comida, id duenio de
-		la unidad).*/
-		std::vector<std::pair<int, int>> desenterrar_gusano();
+		y devuelve un vector con los ids de las unidades comidas.*/
+		std::vector<int> desenterrar_gusano();
 
 		/*Devuelve la posicion maxima a la que llega el vector de filas.*/
 		unsigned int pedir_limite_filas();
@@ -87,6 +96,11 @@ class Mapa {
 
 		/*Devuelve true si coordenada en la posicion pasada esta ocupada*/
 		bool esta_ocupada_coordenada(std::pair<int, int> posicion);
+
+		/*Recibe el id de una unidad y la posicion a la que debe ir y devuelve
+		un vector con una fraccion del mejor camino a tomar para llegar a destino.*/
+		std::vector<std::pair<int, int>> mover(int id_unidad, 
+		std::pair<int, int> &pos_destino);
 
 		Mapa();
 

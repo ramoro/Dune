@@ -101,6 +101,12 @@ add_executable (main
  src/nodo.h
  src/observador.cpp
  src/observador.h
+ src/Socket.cpp
+ src/Socket.h
+ src/socket_error.cpp
+ src/socket_error.h
+ src/server.cpp
+ src/server.h
 )
 
 

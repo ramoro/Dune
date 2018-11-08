@@ -2,7 +2,7 @@
 #include "../Armas/lanza_misiles.h"
 #include "../Armas/rifle_asalto.h"
 
-#define ID_FREMEN 2 //para usarlo en el protocolo
+#define ID_FREMEN 12 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Fremen::Fremen(int id, int id_duenio, std::pair<int, int> centro) : 

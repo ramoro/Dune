@@ -622,6 +622,33 @@ src/Edificios/trampa_aire.cpp.s:
 	$(MAKE) -f CMakeFiles/sdldemo.dir/build.make CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.s
 .PHONY : src/Edificios/trampa_aire.cpp.s
 
+src/Socket.o: src/Socket.cpp.o
+
+.PHONY : src/Socket.o
+
+# target to build an object file
+src/Socket.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Socket.cpp.o
+.PHONY : src/Socket.cpp.o
+
+src/Socket.i: src/Socket.cpp.i
+
+.PHONY : src/Socket.i
+
+# target to preprocess a source file
+src/Socket.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Socket.cpp.i
+.PHONY : src/Socket.cpp.i
+
+src/Socket.s: src/Socket.cpp.s
+
+.PHONY : src/Socket.s
+
+# target to generate assembly for a file
+src/Socket.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Socket.cpp.s
+.PHONY : src/Socket.cpp.s
+
 src/Terrenos/especia.o: src/Terrenos/especia.cpp.o
 
 .PHONY : src/Terrenos/especia.o
@@ -1351,6 +1378,60 @@ src/partida.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/partida.cpp.s
 .PHONY : src/partida.cpp.s
 
+src/server.o: src/server.cpp.o
+
+.PHONY : src/server.o
+
+# target to build an object file
+src/server.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/server.cpp.o
+.PHONY : src/server.cpp.o
+
+src/server.i: src/server.cpp.i
+
+.PHONY : src/server.i
+
+# target to preprocess a source file
+src/server.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/server.cpp.i
+.PHONY : src/server.cpp.i
+
+src/server.s: src/server.cpp.s
+
+.PHONY : src/server.s
+
+# target to generate assembly for a file
+src/server.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/server.cpp.s
+.PHONY : src/server.cpp.s
+
+src/socket_error.o: src/socket_error.cpp.o
+
+.PHONY : src/socket_error.o
+
+# target to build an object file
+src/socket_error.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/socket_error.cpp.o
+.PHONY : src/socket_error.cpp.o
+
+src/socket_error.i: src/socket_error.cpp.i
+
+.PHONY : src/socket_error.i
+
+# target to preprocess a source file
+src/socket_error.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/socket_error.cpp.i
+.PHONY : src/socket_error.cpp.i
+
+src/socket_error.s: src/socket_error.cpp.s
+
+.PHONY : src/socket_error.s
+
+# target to generate assembly for a file
+src/socket_error.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/socket_error.cpp.s
+.PHONY : src/socket_error.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1415,6 +1496,9 @@ help:
 	@echo "... src/Edificios/trampa_aire.o"
 	@echo "... src/Edificios/trampa_aire.i"
 	@echo "... src/Edificios/trampa_aire.s"
+	@echo "... src/Socket.o"
+	@echo "... src/Socket.i"
+	@echo "... src/Socket.s"
 	@echo "... src/Terrenos/especia.o"
 	@echo "... src/Terrenos/especia.i"
 	@echo "... src/Terrenos/especia.s"
@@ -1496,6 +1580,12 @@ help:
 	@echo "... src/partida.o"
 	@echo "... src/partida.i"
 	@echo "... src/partida.s"
+	@echo "... src/server.o"
+	@echo "... src/server.i"
+	@echo "... src/server.s"
+	@echo "... src/socket_error.o"
+	@echo "... src/socket_error.i"
+	@echo "... src/socket_error.s"
 .PHONY : help
 
 

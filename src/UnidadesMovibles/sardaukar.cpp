@@ -2,7 +2,7 @@
 #include "../Armas/rifle_asalto.h"
 #include "../Armas/lanza_misiles.h"
 
-#define ID_SARDAUKAR 3 //para usarlo en el protocolo
+#define ID_SARDAUKAR 13 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Sardaukar::Sardaukar(int id, int id_duenio, std::pair<int, int> centro) : 

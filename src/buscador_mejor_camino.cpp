@@ -1,6 +1,8 @@
 #include <cmath>
 #include "buscador_mejor_camino.h"
+#include "mapa.h"
 #include <iostream>
+#include <stack>
 
 //FALTA VERIFICAR QUE EL ESPACIOA DODNE ME MUEVO NO ESTE OCUPADO Y QUE
 //SI ES CIMA SOLO PUEDE PASAR UNIDADES DE INFANTERIA
@@ -15,8 +17,9 @@ void BuscadorMejorCamino::delete_vector_nodos(std::vector<Nodo> nodos) {
   }
 }
 
-std::stack<Nodo> BuscadorMejorCamino::buscar_mejor_camino(Mapa &mapa, 
-std::pair<int, int> &pos_inicial, std::pair<int, int> &pos_final) {
+std::vector<std::pair<int, int>> BuscadorMejorCamino::buscar_mejor_camino
+(Mapa &mapa, std::pair<int, int> &pos_inicial, 
+std::pair<int, int> &pos_final) {
 	Nodo nodo_inicio(NULL, pos_inicial);
 	nodo_inicio.poner_valor_g(0);
 	nodo_inicio.poner_valor_h(0);
@@ -55,11 +58,11 @@ std::pair<int, int> &pos_inicial, std::pair<int, int> &pos_final) {
   				camino.push(nodo_actual);
   				nodo_actual = *(nodo_actual.obtener_padre());
   			}
-  			while (!camino.empty()) {
+  			/*while (!camino.empty()) {
   				Nodo nodo = camino.top();
   				std::cout << std::get<0>(nodo.obtener_posicion()) << " " << std::get<1>(nodo.obtener_posicion()) << std::endl;
   				camino.pop();
-  			}
+  			}*/
 
         delete_vector_nodos(posibles_nodos);
         delete_vector_nodos(nodos_visitados);
@@ -156,5 +159,10 @@ std::pair<int, int> &pos_inicial, std::pair<int, int> &pos_final) {
 
       delete_vector_nodos(no_agregados);
 	}
-	return camino;
+  std::vector<std::pair<int, int>> vec_camino;
+  while (!camino.empty()) {
+    vec_camino.push_back((camino.top()).obtener_posicion());
+    camino.pop();
+  }
+	return vec_camino;
 }

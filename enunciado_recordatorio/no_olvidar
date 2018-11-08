@@ -26,17 +26,6 @@ unidades se verán seriamente extendidos, proporcionalmente a la deuda energéti
 
 **hardcodie el dinero inicial de un jugador
 
-**FALTA DEL MODELO:
-	-ataque/destruccion de unidades y vehiculos
-	-creacion de unidades de ataque y vehiculos
-	-reaccion especial de ciertos vehiculos al ser destruidos 
-	-conversion al otro equipo de una unidad por parte de un vehiculo
-	-movimiento de la cosechadora recolectando especia
-	-movimiento de unidades y vehiculos
-	-persecucion o actividad de disparo sin moverse	
-	-velocidades de vehiculos y unidades, y velocidad de creacion segun energia
-	-pulir A*
-	-parser Config
 -me fijo si esta en map edificios, sie sta, saco edificio le pido el tipo y resto uno en edifs tipos
 **PARA ESTA SEMANA:
 -creacion unidades ataque y vehiculos
@@ -71,8 +60,7 @@ atacando, moviendose, etc. USar polimorfismo)
 
 **EDIFICIOS TIENEN RANGO DE SEPARACION PARA PONERSE
 
-*EL modelo esta hecho para q se verifique que si una punta de una unidad esta dentro del lugar dodne quiero poner el edificio no se pueda
-pero al explotar un tanque o atacar con odnas sonicas si unidad esta en la puntita no pierde vida.
+*modelo en explosion o ataque gusano u ondas solo afecta unidades o edificios q tienen su centro dentro del radio
 
 **en el config tambien va el rango de ataque, es decir desde cuantos cuadrados una unidad puede empezar a atacar
 
@@ -81,3 +69,18 @@ pero al explotar un tanque o atacar con odnas sonicas si unidad esta en la punti
 **que es preferible, que cada vez que se ataque partida pregunte a todos sus jugadores si perdio o que el
 metodo de destruir edificio devuelva un bool indicando si se destruyo el centro piola o no? enviar al protocolo
 el vector <id, vida> y si es <id, -1> es porq ese es el centro piola y fue destruido.
+
+**explosion tanque recursvia
+
+**FALTA MODELO:
+-verificacion asentamiento edificios con unidades en el medio sin su centro dentro
+-rango de separacion edificios, vver si se puede omitir
+-refinar creacion unidades
+-movimiento refineria
+-atacar unidad si pasa cerca sin moverse
+-velocidades y tiempos de creacion, recoleccion especia
+-performance A*, uso de baldosas
+-config
+-modificar explosion tanque si es requerido
+
+**esta bien q yo mande ciertas coordenadas para moverse pero enel modelo yo ya lo tenga movido todo al personaje?

@@ -8,7 +8,6 @@
 #include "mapa.h"
 #include "Edificios/fabrica_edificios.h"
 #include "UnidadesMovibles/fabrica_unidades_movibles.h"
-#include "buscador_mejor_camino.h"
 
 /*Clase que representa a una partida de Dune.*/
 class Partida {
@@ -21,7 +20,6 @@ class Partida {
 		FabricaUnidadesMovibles fabrica_unidades_movibles;
 		int contador_ids_jugadores;
 		int contador_ids_objetos;
-		BuscadorMejorCamino buscador_mejor_camino;
 
 	public:
 		/*Constructor de la clase.*/
@@ -33,9 +31,9 @@ class Partida {
 
 		/*Agrega un edificio segun el id de tipo pasado, asociado al id pasado
 		por parametro, asignado al jugador con el id pasado por parametro 
-		y en la posicion tambien pasada por parametro. Devuelve true si se pudo
-		ubicar el edificio. False en caso contario.*/
-		bool agregar_edificio(int id_jugador, std::pair<int, int>
+		y en la posicion tambien pasada por parametro. Devuelve el ptr
+		al edificio si se pudo crear, o null si no.*/
+		std::shared_ptr<Edificio> agregar_edificio(int id_jugador, std::pair<int, int>
 		posicion_central, int id_tipo_edificio);
 
 		/*Recibe el id del tipo de unidad movible que ataca
@@ -57,9 +55,14 @@ class Partida {
 		std::pair<int, std::pair<int,int>> agregar_unidad_movible(
 		int id_tipo_unidad, int id_edificio);
 
-		/*Devuelve un vector de pares de ints con el id de la unidad comida y
-		el id del jugador duenio de la unidad.*/
-		std::vector<std::pair<int, int>> generar_gusano();
+		/*Recibe el id de una unidad y la posicion a donde moverla y devuelve
+		un vector con las posiciones que debe seguir la unidad para moverse
+		de la mejor manera hacia su destino.*/
+		std::vector<std::pair<int, int>> mover_unidad(int id_unidad, 
+		std::pair<int, int> posicion_destino);
+
+		/*Devuelve un vector de ints con el id de la unidad comida.*/
+		std::vector<int> generar_gusano();
 
 	private:
 		/*Metodo recursivo que recibe un vector con el id de los objetos

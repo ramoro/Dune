@@ -39,9 +39,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o: ../src/Edificios
 CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o: ../src/Terrenos/terreno.h
 CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o: ../src/UnidadesMovibles/fabrica_unidades_movibles.h
 CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
+CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/Edificios/centro_construccion.cpp.o: ../src/observador.h
 
@@ -52,9 +54,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o: ../src/Edificios/edificio.h
 CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o: ../src/Terrenos/terreno.h
 CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o: ../src/UnidadesMovibles/fabrica_unidades_movibles.h
 CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
+CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/Edificios/cuartel.cpp.o: ../src/observador.h
 
@@ -64,9 +68,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o: ../src/Edificios/edificio.h
 CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o: ../src/Terrenos/terreno.h
 CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o: ../src/UnidadesMovibles/fabrica_unidades_movibles.h
 CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
+CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/Edificios/edificio.cpp.o: ../src/observador.h
 
@@ -85,9 +91,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o: ../src/Edificios/t
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o: ../src/Terrenos/terreno.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o: ../src/UnidadesMovibles/fabrica_unidades_movibles.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
+CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_edificios.cpp.o: ../src/observador.h
 
@@ -98,9 +106,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o: ../src/Edificios/fabr
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o: ../src/Terrenos/terreno.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o: ../src/UnidadesMovibles/fabrica_unidades_movibles.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
+CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_ligera.cpp.o: ../src/observador.h
 
@@ -111,9 +121,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o: ../src/Edificios/fabr
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o: ../src/Terrenos/terreno.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o: ../src/UnidadesMovibles/fabrica_unidades_movibles.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
+CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/Edificios/fabrica_pesada.cpp.o: ../src/observador.h
 
@@ -124,9 +136,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o: ../src/Edificios/palacio.h
 CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o: ../src/Terrenos/terreno.h
 CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o: ../src/UnidadesMovibles/fabrica_unidades_movibles.h
 CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
+CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/Edificios/palacio.cpp.o: ../src/observador.h
 
@@ -137,9 +151,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o: ../src/Edificios/refineria
 CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o: ../src/Terrenos/terreno.h
 CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o: ../src/UnidadesMovibles/fabrica_unidades_movibles.h
 CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
+CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/Edificios/refineria.cpp.o: ../src/observador.h
 
@@ -150,9 +166,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o: ../src/Edificios/silo.h
 CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o: ../src/Terrenos/terreno.h
 CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o: ../src/UnidadesMovibles/fabrica_unidades_movibles.h
 CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
+CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/Edificios/silo.cpp.o: ../src/observador.h
 
@@ -163,9 +181,11 @@ CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o: ../src/Edificios/trampa_
 CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o: ../src/Terrenos/terreno.h
 CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o: ../src/UnidadesMovibles/fabrica_unidades_movibles.h
 CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
+CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/Edificios/trampa_aire.cpp.o: ../src/observador.h
 
@@ -186,9 +206,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/cosechadora.cpp.o: ../src/UnidadesMo
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/cosechadora.cpp.o: ../src/UnidadesMovibles/cosechadora.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/cosechadora.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/cosechadora.cpp.o: ../src/UnidadesMovibles/vehiculo.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/cosechadora.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/cosechadora.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/cosechadora.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/cosechadora.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/cosechadora.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/cosechadora.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/cosechadora.cpp.o: ../src/observador.h
 
@@ -199,9 +221,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/desviador.cpp.o: ../src/UnidadesMovi
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/desviador.cpp.o: ../src/UnidadesMovibles/desviador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/desviador.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/desviador.cpp.o: ../src/UnidadesMovibles/vehiculo.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/desviador.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/desviador.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/desviador.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/desviador.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/desviador.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/desviador.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/desviador.cpp.o: ../src/observador.h
 
@@ -213,9 +237,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o: ../src/UnidadesMov
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o: ../src/UnidadesMovibles/devastador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o: ../src/UnidadesMovibles/vehiculo.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/devastador.cpp.o: ../src/observador.h
 
@@ -237,9 +263,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fabrica_unidades_movibles.cpp.o: ../
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fabrica_unidades_movibles.cpp.o: ../src/UnidadesMovibles/unidad_infanteria.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fabrica_unidades_movibles.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fabrica_unidades_movibles.cpp.o: ../src/UnidadesMovibles/vehiculo.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fabrica_unidades_movibles.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fabrica_unidades_movibles.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fabrica_unidades_movibles.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fabrica_unidades_movibles.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fabrica_unidades_movibles.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fabrica_unidades_movibles.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fabrica_unidades_movibles.cpp.o: ../src/observador.h
 
@@ -251,9 +279,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o: ../src/UnidadesMovible
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o: ../src/UnidadesMovibles/fremen.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o: ../src/UnidadesMovibles/unidad_infanteria.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/fremen.cpp.o: ../src/observador.h
 
@@ -264,9 +294,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_ligera.cpp.o: ../src/Unid
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_ligera.cpp.o: ../src/UnidadesMovibles/infanteria_ligera.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_ligera.cpp.o: ../src/UnidadesMovibles/unidad_infanteria.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_ligera.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_ligera.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_ligera.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_ligera.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_ligera.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_ligera.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_ligera.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_ligera.cpp.o: ../src/observador.h
 
@@ -277,9 +309,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o: ../src/Unid
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o: ../src/UnidadesMovibles/infanteria_pesada.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o: ../src/UnidadesMovibles/unidad_infanteria.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/infanteria_pesada.cpp.o: ../src/observador.h
 
@@ -290,9 +324,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/raider.cpp.o: ../src/UnidadesMovible
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/raider.cpp.o: ../src/UnidadesMovibles/raider.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/raider.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/raider.cpp.o: ../src/UnidadesMovibles/vehiculo.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/raider.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/raider.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/raider.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/raider.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/raider.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/raider.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/raider.cpp.o: ../src/observador.h
 
@@ -304,9 +340,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o: ../src/UnidadesMovi
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o: ../src/UnidadesMovibles/sardaukar.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o: ../src/UnidadesMovibles/unidad_infanteria.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/sardaukar.cpp.o: ../src/observador.h
 
@@ -317,9 +355,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque.cpp.o: ../src/UnidadesMovible
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque.cpp.o: ../src/UnidadesMovibles/tanque.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque.cpp.o: ../src/UnidadesMovibles/vehiculo.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque.cpp.o: ../src/observador.h
 
@@ -330,9 +370,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque_sonico.cpp.o: ../src/Unidades
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque_sonico.cpp.o: ../src/UnidadesMovibles/tanque_sonico.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque_sonico.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque_sonico.cpp.o: ../src/UnidadesMovibles/vehiculo.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque_sonico.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque_sonico.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque_sonico.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque_sonico.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque_sonico.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque_sonico.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/tanque_sonico.cpp.o: ../src/observador.h
 
@@ -343,9 +385,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/trike.cpp.o: ../src/UnidadesMovibles
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/trike.cpp.o: ../src/UnidadesMovibles/trike.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/trike.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/trike.cpp.o: ../src/UnidadesMovibles/vehiculo.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/trike.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/trike.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/trike.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/trike.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/trike.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/trike.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/trike.cpp.o: ../src/observador.h
 
@@ -354,9 +398,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o: ../src/Terr
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o: ../src/UnidadesMovibles/unidad_infanteria.cpp
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o: ../src/UnidadesMovibles/unidad_infanteria.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_infanteria.cpp.o: ../src/observador.h
 
@@ -364,9 +410,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o: ../src/Armas/a
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o: ../src/Terrenos/terreno.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o: ../src/UnidadesMovibles/unidad_movible.cpp
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/unidad_movible.cpp.o: ../src/observador.h
 
@@ -375,9 +423,11 @@ CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o: ../src/Terrenos/terr
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o: ../src/UnidadesMovibles/unidad_movible.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o: ../src/UnidadesMovibles/vehiculo.cpp
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o: ../src/UnidadesMovibles/vehiculo.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o: ../src/buscador_mejor_camino.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o: ../src/coordenada.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o: ../src/jugador.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o: ../src/mapa.h
+CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o: ../src/nodo.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o: ../src/objeto_dune.h
 CMakeFiles/sdldemo.dir/src/UnidadesMovibles/vehiculo.cpp.o: ../src/observador.h
 

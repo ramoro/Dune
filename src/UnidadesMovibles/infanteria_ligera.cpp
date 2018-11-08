@@ -1,7 +1,7 @@
 #include "infanteria_ligera.h"
 #include "../Armas/rifle_asalto.h"
 
-#define ID_INFANTERIA_LIGERA 0 //para usarlo en el protocolo
+#define ID_INFANTERIA_LIGERA 10 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 InfanteriaLigera::InfanteriaLigera(int id, int id_duenio, std::pair<int, int>

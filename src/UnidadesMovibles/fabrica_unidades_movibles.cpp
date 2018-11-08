@@ -11,17 +11,17 @@
 #include "devastador.h"
 #include "cosechadora.h"
 
-#define INFANTERIA_LIGERA 0
-#define INFANTERIA_PESADA 1
-#define FREMEN 2
-#define SARDAUKAR 3
-#define TRIKE 4
-#define RAIDER 5
-#define TANQUE 6
-#define TANQUE_SONICO 7
-#define DESVIADOR 8
-#define DEVASTADOR 9
-#define COSECHADORA 10
+#define INFANTERIA_LIGERA 10
+#define INFANTERIA_PESADA 11
+#define FREMEN 12
+#define SARDAUKAR 13
+#define TRIKE 14
+#define RAIDER 15
+#define TANQUE 16
+#define TANQUE_SONICO 17
+#define DESVIADOR 18
+#define DEVASTADOR 19
+#define COSECHADORA 20
 
 std::shared_ptr<UnidadMovible> FabricaUnidadesMovibles::
 crear_unidad_movible(int id_tipo_unidad_movible, int id, 

@@ -2,7 +2,7 @@
 #include "../Armas/canion_plasma.h"
 #include "../Armas/explosion.h"
 
-#define ID_DEVASTADOR 9 //para usarlo en el protocolo
+#define ID_DEVASTADOR 19 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Devastador::Devastador(int id, int id_duenio, std::pair<int, int> centro) : 

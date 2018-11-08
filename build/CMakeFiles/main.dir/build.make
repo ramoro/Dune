@@ -273,6 +273,78 @@ CMakeFiles/main.dir/src/observador.cpp.o.provides: CMakeFiles/main.dir/src/obser
 CMakeFiles/main.dir/src/observador.cpp.o.provides.build: CMakeFiles/main.dir/src/observador.cpp.o
 
 
+CMakeFiles/main.dir/src/Socket.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/Socket.cpp.o: ../src/Socket.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/main.dir/src/Socket.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/Socket.cpp.o -c /home/ramiro/Escritorio/Dune/src/Socket.cpp
+
+CMakeFiles/main.dir/src/Socket.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/Socket.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ramiro/Escritorio/Dune/src/Socket.cpp > CMakeFiles/main.dir/src/Socket.cpp.i
+
+CMakeFiles/main.dir/src/Socket.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/Socket.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ramiro/Escritorio/Dune/src/Socket.cpp -o CMakeFiles/main.dir/src/Socket.cpp.s
+
+CMakeFiles/main.dir/src/Socket.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/src/Socket.cpp.o.requires
+
+CMakeFiles/main.dir/src/Socket.cpp.o.provides: CMakeFiles/main.dir/src/Socket.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Socket.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/src/Socket.cpp.o.provides
+
+CMakeFiles/main.dir/src/Socket.cpp.o.provides.build: CMakeFiles/main.dir/src/Socket.cpp.o
+
+
+CMakeFiles/main.dir/src/socket_error.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/socket_error.cpp.o: ../src/socket_error.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/main.dir/src/socket_error.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/socket_error.cpp.o -c /home/ramiro/Escritorio/Dune/src/socket_error.cpp
+
+CMakeFiles/main.dir/src/socket_error.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/socket_error.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ramiro/Escritorio/Dune/src/socket_error.cpp > CMakeFiles/main.dir/src/socket_error.cpp.i
+
+CMakeFiles/main.dir/src/socket_error.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/socket_error.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ramiro/Escritorio/Dune/src/socket_error.cpp -o CMakeFiles/main.dir/src/socket_error.cpp.s
+
+CMakeFiles/main.dir/src/socket_error.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/src/socket_error.cpp.o.requires
+
+CMakeFiles/main.dir/src/socket_error.cpp.o.provides: CMakeFiles/main.dir/src/socket_error.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/socket_error.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/src/socket_error.cpp.o.provides
+
+CMakeFiles/main.dir/src/socket_error.cpp.o.provides.build: CMakeFiles/main.dir/src/socket_error.cpp.o
+
+
+CMakeFiles/main.dir/src/server.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/server.cpp.o: ../src/server.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/main.dir/src/server.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/src/server.cpp.o -c /home/ramiro/Escritorio/Dune/src/server.cpp
+
+CMakeFiles/main.dir/src/server.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/server.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ramiro/Escritorio/Dune/src/server.cpp > CMakeFiles/main.dir/src/server.cpp.i
+
+CMakeFiles/main.dir/src/server.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/server.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ramiro/Escritorio/Dune/src/server.cpp -o CMakeFiles/main.dir/src/server.cpp.s
+
+CMakeFiles/main.dir/src/server.cpp.o.requires:
+
+.PHONY : CMakeFiles/main.dir/src/server.cpp.o.requires
+
+CMakeFiles/main.dir/src/server.cpp.o.provides: CMakeFiles/main.dir/src/server.cpp.o.requires
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/server.cpp.o.provides.build
+.PHONY : CMakeFiles/main.dir/src/server.cpp.o.provides
+
+CMakeFiles/main.dir/src/server.cpp.o.provides.build: CMakeFiles/main.dir/src/server.cpp.o
+
+
 # Object files for target main
 main_OBJECTS = \
 "CMakeFiles/main.dir/src/main.cpp.o" \
@@ -283,7 +355,10 @@ main_OBJECTS = \
 "CMakeFiles/main.dir/src/partida.cpp.o" \
 "CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o" \
 "CMakeFiles/main.dir/src/nodo.cpp.o" \
-"CMakeFiles/main.dir/src/observador.cpp.o"
+"CMakeFiles/main.dir/src/observador.cpp.o" \
+"CMakeFiles/main.dir/src/Socket.cpp.o" \
+"CMakeFiles/main.dir/src/socket_error.cpp.o" \
+"CMakeFiles/main.dir/src/server.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
@@ -297,10 +372,13 @@ main: CMakeFiles/main.dir/src/partida.cpp.o
 main: CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o
 main: CMakeFiles/main.dir/src/nodo.cpp.o
 main: CMakeFiles/main.dir/src/observador.cpp.o
+main: CMakeFiles/main.dir/src/Socket.cpp.o
+main: CMakeFiles/main.dir/src/socket_error.cpp.o
+main: CMakeFiles/main.dir/src/server.cpp.o
 main: CMakeFiles/main.dir/build.make
 main: libsdldemo.a
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ramiro/Escritorio/Dune/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -317,6 +395,9 @@ CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/partida.cpp.o.requires
 CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o.requires
 CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/nodo.cpp.o.requires
 CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/observador.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/Socket.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/socket_error.cpp.o.requires
+CMakeFiles/main.dir/requires: CMakeFiles/main.dir/src/server.cpp.o.requires
 
 .PHONY : CMakeFiles/main.dir/requires
 

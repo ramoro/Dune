@@ -1,7 +1,7 @@
 #include "desviador.h"
 #include "../Armas/lanza_misiles.h"
 
-#define ID_DESVIADOR 8 //para usarlo en el protocolo
+#define ID_DESVIADOR 18 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Desviador::Desviador(int id, int id_duenio, std::pair<int, int> centro) : 

@@ -1,7 +1,7 @@
 #include "tanque_sonico.h"
 #include "../Armas/onda_sonido.h"
 
-#define ID_TANQUE_SONICO 7 //para usarlo en el protocolo
+#define ID_TANQUE_SONICO 17 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 TanqueSonico::TanqueSonico(int id, int id_duenio, std::pair<int, int> centro) : 

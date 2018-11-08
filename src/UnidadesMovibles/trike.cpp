@@ -1,7 +1,7 @@
 #include "trike.h"
 #include "../Armas/rifle_asalto.h"
 
-#define ID_TRIKE 4 //para usarlo en el protocolo
+#define ID_TRIKE 14 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Trike::Trike(int id, int id_duenio, std::pair<int, int> centro) : 

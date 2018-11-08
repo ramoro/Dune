@@ -1,7 +1,7 @@
 #include "tanque.h"
 #include "../Armas/canion.h"
 
-#define ID_TANQUE 6 //para usarlo en el protocolo
+#define ID_TANQUE 16 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Tanque::Tanque(int id, int id_duenio, std::pair<int, int> centro) : 

@@ -8,6 +8,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/src/buscador_mejor_camino.cpp.o"
   "CMakeFiles/main.dir/src/nodo.cpp.o"
   "CMakeFiles/main.dir/src/observador.cpp.o"
+  "CMakeFiles/main.dir/src/Socket.cpp.o"
+  "CMakeFiles/main.dir/src/socket_error.cpp.o"
+  "CMakeFiles/main.dir/src/server.cpp.o"
   "main.pdb"
   "main"
 )
