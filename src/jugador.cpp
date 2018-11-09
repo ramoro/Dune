@@ -6,6 +6,7 @@ Jugador::Jugador(std::string casa): casa(casa) {
 	dinero = 100000000; //INICIO DE DINERO DE UN JUGADOR -->HACER SETEABLE
 	capacidad_especia = 0;
 	capacidad_especia_disponible = 0;
+	energia_disponible = 0;
 }
 
 void Jugador::agregar_edificio(Edificio* edificio, 

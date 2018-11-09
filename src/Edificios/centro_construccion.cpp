@@ -5,7 +5,7 @@
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 CentroConstruccion::CentroConstruccion(int id, int id_duenio,
 std::pair<int, int> centro) : 
-	Edificio(0, 0, 3000, id, id_duenio, 3, 3, centro) {
+	Edificio(0, 0, 3000, id, id_duenio, 1, 4, centro) {
 		id_tipo = ID_CENTRO_CONSTRUCCION;
 	}
 

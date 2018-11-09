@@ -68,7 +68,7 @@ Jugador &jugador, int id_tipo_unidad, int id_unidad) {
 	if (!mapa.ubicar_unidad(this->id, posicion_central)) {
 		
 	}
-	
+	ptr_unidad->asignar_centro(posicion_central);
 	ptr_unidad->agregar(mapa, jugador);
 	return ptr_unidad;
 }

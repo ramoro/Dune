@@ -6,9 +6,8 @@
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Devastador::Devastador(int id, int id_duenio, std::pair<int, int> centro) : 
-	Vehiculo(4, 12, 5, 400, 400, id, id_duenio, 50, 50, centro) {
+	Vehiculo(4, 12, 5, 400, 1, id, id_duenio, 1, 1, centro) {
 		id_tipo = ID_DEVASTADOR;
-		danio_explosion = 20;
 		CanionPlasma canion_plasma;
 		armas.push_back(CanionPlasma(canion_plasma));
 		rango_ataque_fila = 10;
@@ -27,6 +26,7 @@ std::vector<int> Devastador::matar(Mapa &mapa) {
 	armas.clear();
 	Explosion explosion;
 	armas.push_back(Explosion(explosion));
-	return mapa.buscar_unidades_alrededor(this->centro, this->altura,
-	this->base, false);
+	return mapa.buscar_unidades_alrededor(this->centro,
+	explosion.pedir_dimension_altura(), explosion.pedir_dimension_base(), 
+	false);
 }
