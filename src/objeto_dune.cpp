@@ -41,6 +41,6 @@ void ObjetoDune::asignar_duenio(int id_nuevo_duenio) {
 	id_duenio = id_nuevo_duenio;
 }
 
-void ObjetoDune::asignar_centro(std::pair<int, int> centro_nuevo) {
+void ObjetoDune::set_centro(std::pair<int, int> centro_nuevo) {
 	centro = centro_nuevo;
 }

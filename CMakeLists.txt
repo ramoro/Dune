@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 2.8)
 
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(JSONCPP jsoncpp)
+link_libraries(${JSONCPP_LIBRARIES})
+
 project(modelo_dune)
 
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Werror -Wall -pedantic")
@@ -107,6 +111,8 @@ add_executable (main
  src/socket_error.h
  src/server.cpp
  src/server.h
+ src/root.cpp
+ src/root.h
 )
 
 

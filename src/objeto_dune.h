@@ -61,7 +61,7 @@ class ObjetoDune {
 		void asignar_duenio(int id_nuevo_duenio);
 
 		/*Recibe una coordenada nueva y se la asigna al centro.*/
-		void asignar_centro(std::pair<int, int> centro_nuevo);
+		void set_centro(std::pair<int, int> centro_nuevo);
 };
 
 #endif

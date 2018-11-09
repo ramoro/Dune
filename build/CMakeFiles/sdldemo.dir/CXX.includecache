@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,457 +6,399 @@
 
 #IncludeRegexTransform: 
 
-/home/ramiro/Escritorio/Dune/src/Armas/arma.cpp
-arma.h
-/home/ramiro/Escritorio/Dune/src/Armas/arma.h
-
-/home/ramiro/Escritorio/Dune/src/Armas/arma.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
 string
 -
 map
 -
 
-/home/ramiro/Escritorio/Dune/src/Armas/canion.cpp
-canion.h
-/home/ramiro/Escritorio/Dune/src/Armas/canion.h
-string
--
-
-/home/ramiro/Escritorio/Dune/src/Armas/canion.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/canion.h
 arma.h
-/home/ramiro/Escritorio/Dune/src/Armas/arma.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
 
-/home/ramiro/Escritorio/Dune/src/Armas/canion_22mm.cpp
-canion_22mm.h
-/home/ramiro/Escritorio/Dune/src/Armas/canion_22mm.h
-
-/home/ramiro/Escritorio/Dune/src/Armas/canion_22mm.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/canion_22mm.h
 arma.h
-/home/ramiro/Escritorio/Dune/src/Armas/arma.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
 
-/home/ramiro/Escritorio/Dune/src/Armas/canion_plasma.cpp
-canion_plasma.h
-/home/ramiro/Escritorio/Dune/src/Armas/canion_plasma.h
-
-/home/ramiro/Escritorio/Dune/src/Armas/canion_plasma.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/canion_plasma.h
 arma.h
-/home/ramiro/Escritorio/Dune/src/Armas/arma.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
 
-/home/ramiro/Escritorio/Dune/src/Armas/explosion.cpp
-explosion.h
-/home/ramiro/Escritorio/Dune/src/Armas/explosion.h
-string
--
-
-/home/ramiro/Escritorio/Dune/src/Armas/explosion.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/explosion.h
 arma.h
-/home/ramiro/Escritorio/Dune/src/Armas/arma.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
 
-/home/ramiro/Escritorio/Dune/src/Armas/lanza_misiles.cpp
-lanza_misiles.h
-/home/ramiro/Escritorio/Dune/src/Armas/lanza_misiles.h
-
-/home/ramiro/Escritorio/Dune/src/Armas/lanza_misiles.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/lanza_misiles.h
 arma.h
-/home/ramiro/Escritorio/Dune/src/Armas/arma.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
 
-/home/ramiro/Escritorio/Dune/src/Armas/onda_sonido.cpp
-onda_sonido.h
-/home/ramiro/Escritorio/Dune/src/Armas/onda_sonido.h
-
-/home/ramiro/Escritorio/Dune/src/Armas/onda_sonido.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/onda_sonido.h
 arma.h
-/home/ramiro/Escritorio/Dune/src/Armas/arma.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
 
-/home/ramiro/Escritorio/Dune/src/Armas/rifle_asalto.cpp
-rifle_asalto.h
-/home/ramiro/Escritorio/Dune/src/Armas/rifle_asalto.h
-
-/home/ramiro/Escritorio/Dune/src/Armas/rifle_asalto.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/rifle_asalto.h
 arma.h
-/home/ramiro/Escritorio/Dune/src/Armas/arma.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
 
-/home/ramiro/Escritorio/Dune/src/Edificios/centro_construccion.cpp
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/centro_construccion.cpp
 centro_construccion.h
-/home/ramiro/Escritorio/Dune/src/Edificios/centro_construccion.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/centro_construccion.h
 
-/home/ramiro/Escritorio/Dune/src/Edificios/centro_construccion.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/centro_construccion.h
 edificio.h
-/home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
 utility
 -
 
-/home/ramiro/Escritorio/Dune/src/Edificios/cuartel.cpp
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/cuartel.cpp
 cuartel.h
-/home/ramiro/Escritorio/Dune/src/Edificios/cuartel.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/cuartel.h
 
-/home/ramiro/Escritorio/Dune/src/Edificios/cuartel.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/cuartel.h
 edificio.h
-/home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
 string
 -
 utility
 -
 
-/home/ramiro/Escritorio/Dune/src/Edificios/edificio.cpp
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.cpp
 edificio.h
-/home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
 ../observador.h
-/home/ramiro/Escritorio/Dune/src/observador.h
+/home/ignacio/Downloads/TP4/Dune/src/observador.h
+iostream
+-
 
-/home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
 utility
 -
 memory
 -
 ../objeto_dune.h
-/home/ramiro/Escritorio/Dune/src/objeto_dune.h
+/home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
 ../jugador.h
-/home/ramiro/Escritorio/Dune/src/jugador.h
+/home/ignacio/Downloads/TP4/Dune/src/jugador.h
 ../mapa.h
-/home/ramiro/Escritorio/Dune/src/mapa.h
+/home/ignacio/Downloads/TP4/Dune/src/mapa.h
 ../UnidadesMovibles/unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_movible.h
 ../UnidadesMovibles/fabrica_unidades_movibles.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
 
-/home/ramiro/Escritorio/Dune/src/Edificios/fabrica_edificios.cpp
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/fabrica_edificios.cpp
 fabrica_edificios.h
-/home/ramiro/Escritorio/Dune/src/Edificios/fabrica_edificios.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/fabrica_edificios.h
 centro_construccion.h
-/home/ramiro/Escritorio/Dune/src/Edificios/centro_construccion.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/centro_construccion.h
 trampa_aire.h
-/home/ramiro/Escritorio/Dune/src/Edificios/trampa_aire.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/trampa_aire.h
 refineria.h
-/home/ramiro/Escritorio/Dune/src/Edificios/refineria.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/refineria.h
 silo.h
-/home/ramiro/Escritorio/Dune/src/Edificios/silo.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/silo.h
 fabrica_ligera.h
-/home/ramiro/Escritorio/Dune/src/Edificios/fabrica_ligera.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/fabrica_ligera.h
 fabrica_pesada.h
-/home/ramiro/Escritorio/Dune/src/Edificios/fabrica_pesada.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/fabrica_pesada.h
 cuartel.h
-/home/ramiro/Escritorio/Dune/src/Edificios/cuartel.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/cuartel.h
 palacio.h
-/home/ramiro/Escritorio/Dune/src/Edificios/palacio.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/palacio.h
 
-/home/ramiro/Escritorio/Dune/src/Edificios/fabrica_edificios.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/fabrica_edificios.h
 edificio.h
-/home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
 utility
 -
 memory
 -
 
-/home/ramiro/Escritorio/Dune/src/Edificios/fabrica_ligera.cpp
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/fabrica_ligera.cpp
 fabrica_ligera.h
-/home/ramiro/Escritorio/Dune/src/Edificios/fabrica_ligera.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/fabrica_ligera.h
 
-/home/ramiro/Escritorio/Dune/src/Edificios/fabrica_ligera.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/fabrica_ligera.h
 edificio.h
-/home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
 string
 -
 utility
 -
 
-/home/ramiro/Escritorio/Dune/src/Edificios/fabrica_pesada.cpp
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/fabrica_pesada.cpp
 fabrica_pesada.h
-/home/ramiro/Escritorio/Dune/src/Edificios/fabrica_pesada.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/fabrica_pesada.h
 
-/home/ramiro/Escritorio/Dune/src/Edificios/fabrica_pesada.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/fabrica_pesada.h
 edificio.h
-/home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
 string
 -
 utility
 -
 
-/home/ramiro/Escritorio/Dune/src/Edificios/palacio.cpp
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/palacio.cpp
 palacio.h
-/home/ramiro/Escritorio/Dune/src/Edificios/palacio.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/palacio.h
 
-/home/ramiro/Escritorio/Dune/src/Edificios/palacio.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/palacio.h
 edificio.h
-/home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
 string
 -
 utility
 -
 
-/home/ramiro/Escritorio/Dune/src/Edificios/refineria.cpp
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/refineria.cpp
 refineria.h
-/home/ramiro/Escritorio/Dune/src/Edificios/refineria.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/refineria.h
 
-/home/ramiro/Escritorio/Dune/src/Edificios/refineria.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/refineria.h
 edificio.h
-/home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
 utility
 -
 
-/home/ramiro/Escritorio/Dune/src/Edificios/silo.cpp
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/silo.cpp
 silo.h
-/home/ramiro/Escritorio/Dune/src/Edificios/silo.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/silo.h
 
-/home/ramiro/Escritorio/Dune/src/Edificios/silo.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/silo.h
 edificio.h
-/home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
 utility
 -
 
-/home/ramiro/Escritorio/Dune/src/Edificios/trampa_aire.cpp
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/trampa_aire.cpp
 trampa_aire.h
-/home/ramiro/Escritorio/Dune/src/Edificios/trampa_aire.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/trampa_aire.h
 
-/home/ramiro/Escritorio/Dune/src/Edificios/trampa_aire.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/trampa_aire.h
 edificio.h
-/home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
 utility
 -
 
-/home/ramiro/Escritorio/Dune/src/Terrenos/especia.cpp
-especia.h
-/home/ramiro/Escritorio/Dune/src/Terrenos/especia.h
-
-/home/ramiro/Escritorio/Dune/src/Terrenos/especia.h
-terreno.h
-/home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
+/home/ignacio/Downloads/TP4/Dune/src/Terrenos/terreno.h
 string
 -
 
-/home/ramiro/Escritorio/Dune/src/Terrenos/no_especia.cpp
-no_especia.h
-/home/ramiro/Escritorio/Dune/src/Terrenos/no_especia.h
-
-/home/ramiro/Escritorio/Dune/src/Terrenos/no_especia.h
-terreno.h
-/home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
-string
--
-
-/home/ramiro/Escritorio/Dune/src/Terrenos/terreno.cpp
-terreno.h
-/home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
-
-/home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
-string
--
-
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/cosechadora.cpp
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/cosechadora.cpp
 cosechadora.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/cosechadora.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/cosechadora.h
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/cosechadora.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/cosechadora.h
 vehiculo.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/vehiculo.h
 utility
 -
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/desviador.cpp
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/desviador.cpp
 desviador.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/desviador.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/desviador.h
 ../Armas/lanza_misiles.h
-/home/ramiro/Escritorio/Dune/src/Armas/lanza_misiles.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/lanza_misiles.h
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/desviador.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/desviador.h
 vehiculo.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/vehiculo.h
 vector
 -
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/devastador.cpp
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/devastador.cpp
 devastador.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/devastador.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/devastador.h
 ../Armas/canion_plasma.h
-/home/ramiro/Escritorio/Dune/src/Armas/canion_plasma.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/canion_plasma.h
 ../Armas/explosion.h
-/home/ramiro/Escritorio/Dune/src/Armas/explosion.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/explosion.h
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/devastador.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/devastador.h
 vehiculo.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/vehiculo.h
 utility
 -
 vector
 -
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.cpp
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.cpp
 fabrica_unidades_movibles.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
 infanteria_ligera.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/infanteria_ligera.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/infanteria_ligera.h
 infanteria_pesada.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/infanteria_pesada.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/infanteria_pesada.h
 fremen.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fremen.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/fremen.h
 sardaukar.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/sardaukar.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/sardaukar.h
 trike.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/trike.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/trike.h
 raider.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/raider.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/raider.h
 tanque.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/tanque.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/tanque.h
 tanque_sonico.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/tanque_sonico.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/tanque_sonico.h
 desviador.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/desviador.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/desviador.h
 devastador.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/devastador.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/devastador.h
 cosechadora.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/cosechadora.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/cosechadora.h
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
 unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_movible.h
 utility
 -
 memory
 -
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fremen.cpp
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/fremen.cpp
 fremen.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fremen.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/fremen.h
 ../Armas/lanza_misiles.h
-/home/ramiro/Escritorio/Dune/src/Armas/lanza_misiles.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/lanza_misiles.h
 ../Armas/rifle_asalto.h
-/home/ramiro/Escritorio/Dune/src/Armas/rifle_asalto.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/rifle_asalto.h
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fremen.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/fremen.h
 unidad_infanteria.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_infanteria.h
 utility
 -
 vector
 -
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/infanteria_ligera.cpp
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/infanteria_ligera.cpp
 infanteria_ligera.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/infanteria_ligera.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/infanteria_ligera.h
 ../Armas/rifle_asalto.h
-/home/ramiro/Escritorio/Dune/src/Armas/rifle_asalto.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/rifle_asalto.h
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/infanteria_ligera.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/infanteria_ligera.h
 unidad_infanteria.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_infanteria.h
 utility
 -
 vector
 -
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/infanteria_pesada.cpp
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/infanteria_pesada.cpp
 infanteria_pesada.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/infanteria_pesada.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/infanteria_pesada.h
 ../Armas/lanza_misiles.h
-/home/ramiro/Escritorio/Dune/src/Armas/lanza_misiles.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/lanza_misiles.h
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/infanteria_pesada.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/infanteria_pesada.h
 unidad_infanteria.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_infanteria.h
 utility
 -
 vector
 -
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/raider.cpp
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/raider.cpp
 raider.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/raider.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/raider.h
 ../Armas/canion_22mm.h
-/home/ramiro/Escritorio/Dune/src/Armas/canion_22mm.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/canion_22mm.h
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/raider.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/raider.h
 vehiculo.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/vehiculo.h
 utility
 -
 vector
 -
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/sardaukar.cpp
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/sardaukar.cpp
 sardaukar.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/sardaukar.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/sardaukar.h
 ../Armas/rifle_asalto.h
-/home/ramiro/Escritorio/Dune/src/Armas/rifle_asalto.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/rifle_asalto.h
 ../Armas/lanza_misiles.h
-/home/ramiro/Escritorio/Dune/src/Armas/lanza_misiles.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/lanza_misiles.h
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/sardaukar.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/sardaukar.h
 unidad_infanteria.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_infanteria.h
 utility
 -
 vector
 -
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/tanque.cpp
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/tanque.cpp
 tanque.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/tanque.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/tanque.h
 ../Armas/canion.h
-/home/ramiro/Escritorio/Dune/src/Armas/canion.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/canion.h
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/tanque.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/tanque.h
 vehiculo.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/vehiculo.h
 utility
 -
 vector
 -
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/tanque_sonico.cpp
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/tanque_sonico.cpp
 tanque_sonico.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/tanque_sonico.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/tanque_sonico.h
 ../Armas/onda_sonido.h
-/home/ramiro/Escritorio/Dune/src/Armas/onda_sonido.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/onda_sonido.h
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/tanque_sonico.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/tanque_sonico.h
 vehiculo.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/vehiculo.h
 utility
 -
 vector
 -
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/trike.cpp
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/trike.cpp
 trike.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/trike.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/trike.h
 ../Armas/rifle_asalto.h
-/home/ramiro/Escritorio/Dune/src/Armas/rifle_asalto.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/rifle_asalto.h
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/trike.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/trike.h
 vehiculo.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/vehiculo.h
 utility
 -
 vector
 -
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.cpp
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_infanteria.cpp
 unidad_infanteria.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_infanteria.h
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_infanteria.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_infanteria.h
 unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_movible.h
 memory
 -
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.cpp
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_movible.cpp
 unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_movible.h
 stdlib.h
 -
 iostream
 -
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_movible.h
 ../objeto_dune.h
-/home/ramiro/Escritorio/Dune/src/objeto_dune.h
+/home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
 ../Armas/arma.h
-/home/ramiro/Escritorio/Dune/src/Armas/arma.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
 ../jugador.h
-/home/ramiro/Escritorio/Dune/src/jugador.h
+/home/ignacio/Downloads/TP4/Dune/src/jugador.h
 ../mapa.h
-/home/ramiro/Escritorio/Dune/src/mapa.h
+/home/ignacio/Downloads/TP4/Dune/src/mapa.h
 string
 -
 vector
@@ -464,33 +406,33 @@ vector
 utility
 -
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.cpp
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/vehiculo.cpp
 vehiculo.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/vehiculo.h
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/vehiculo.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/vehiculo.h
 unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_movible.h
 memory
 -
 
-/home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
+/home/ignacio/Downloads/TP4/Dune/src/buscador_mejor_camino.h
 nodo.h
-/home/ramiro/Escritorio/Dune/src/nodo.h
+/home/ignacio/Downloads/TP4/Dune/src/nodo.h
 vector
 -
 
-/home/ramiro/Escritorio/Dune/src/coordenada.h
+/home/ignacio/Downloads/TP4/Dune/src/coordenada.h
 objeto_dune.h
-/home/ramiro/Escritorio/Dune/src/objeto_dune.h
+/home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
 Terrenos/terreno.h
-/home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
+/home/ignacio/Downloads/TP4/Dune/src/Terrenos/terreno.h
 string
 -
 memory
 -
 
-/home/ramiro/Escritorio/Dune/src/jugador.h
+/home/ignacio/Downloads/TP4/Dune/src/jugador.h
 utility
 -
 map
@@ -500,9 +442,11 @@ vector
 memory
 -
 observador.h
-/home/ramiro/Escritorio/Dune/src/observador.h
+/home/ignacio/Downloads/TP4/Dune/src/observador.h
+root.h
+/home/ignacio/Downloads/TP4/Dune/src/root.h
 
-/home/ramiro/Escritorio/Dune/src/mapa.h
+/home/ignacio/Downloads/TP4/Dune/src/mapa.h
 vector
 -
 utility
@@ -514,29 +458,35 @@ string
 memory
 -
 objeto_dune.h
-/home/ramiro/Escritorio/Dune/src/objeto_dune.h
+/home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
 coordenada.h
-/home/ramiro/Escritorio/Dune/src/coordenada.h
+/home/ignacio/Downloads/TP4/Dune/src/coordenada.h
 observador.h
-/home/ramiro/Escritorio/Dune/src/observador.h
+/home/ignacio/Downloads/TP4/Dune/src/observador.h
 buscador_mejor_camino.h
-/home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
+/home/ignacio/Downloads/TP4/Dune/src/buscador_mejor_camino.h
 
-/home/ramiro/Escritorio/Dune/src/nodo.h
+/home/ignacio/Downloads/TP4/Dune/src/nodo.h
 utility
 -
 
-/home/ramiro/Escritorio/Dune/src/objeto_dune.h
+/home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
 utility
 -
 vector
 -
 
-/home/ramiro/Escritorio/Dune/src/observador.h
+/home/ignacio/Downloads/TP4/Dune/src/observador.h
 utility
 -
 memory
 -
 objeto_dune.h
-/home/ramiro/Escritorio/Dune/src/objeto_dune.h
+/home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
+
+/home/ignacio/Downloads/TP4/Dune/src/root.h
+list
+-
+jsoncpp/json/json.h
+-
 

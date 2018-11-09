@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,47 +6,37 @@
 
 #IncludeRegexTransform: 
 
-/home/ramiro/Escritorio/Dune/src/Armas/arma.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
 string
 -
 map
 -
 
-/home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
 utility
 -
 memory
 -
 ../objeto_dune.h
-/home/ramiro/Escritorio/Dune/src/objeto_dune.h
+/home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
 ../jugador.h
-/home/ramiro/Escritorio/Dune/src/jugador.h
+/home/ignacio/Downloads/TP4/Dune/src/jugador.h
 ../mapa.h
-/home/ramiro/Escritorio/Dune/src/mapa.h
+/home/ignacio/Downloads/TP4/Dune/src/mapa.h
 ../UnidadesMovibles/unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_movible.h
 ../UnidadesMovibles/fabrica_unidades_movibles.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
 
-/home/ramiro/Escritorio/Dune/src/Edificios/fabrica_edificios.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/fabrica_edificios.h
 edificio.h
-/home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/edificio.h
 utility
 -
 memory
 -
 
-/home/ramiro/Escritorio/Dune/src/Socket.cpp
-Socket.h
-/home/ramiro/Escritorio/Dune/src/Socket.h
-socket_error.h
-/home/ramiro/Escritorio/Dune/src/socket_error.h
-vector
--
-string
--
-
-/home/ramiro/Escritorio/Dune/src/Socket.h
+/home/ignacio/Downloads/TP4/Dune/src/Socket.h
 string
 -
 cstdlib
@@ -70,33 +60,27 @@ unistd.h
 errno.h
 -
 
-/home/ramiro/Escritorio/Dune/src/Terrenos/no_especia.h
-terreno.h
-/home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
+/home/ignacio/Downloads/TP4/Dune/src/Terrenos/terreno.h
 string
 -
 
-/home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
-string
--
-
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
 unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_movible.h
 utility
 -
 memory
 -
 
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_movible.h
 ../objeto_dune.h
-/home/ramiro/Escritorio/Dune/src/objeto_dune.h
+/home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
 ../Armas/arma.h
-/home/ramiro/Escritorio/Dune/src/Armas/arma.h
+/home/ignacio/Downloads/TP4/Dune/src/Armas/arma.h
 ../jugador.h
-/home/ramiro/Escritorio/Dune/src/jugador.h
+/home/ignacio/Downloads/TP4/Dune/src/jugador.h
 ../mapa.h
-/home/ramiro/Escritorio/Dune/src/mapa.h
+/home/ignacio/Downloads/TP4/Dune/src/mapa.h
 string
 -
 vector
@@ -104,47 +88,23 @@ vector
 utility
 -
 
-/home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.cpp
-cmath
--
-buscador_mejor_camino.h
-/home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
-mapa.h
-/home/ramiro/Escritorio/Dune/src/mapa.h
-iostream
--
-stack
--
-
-/home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
+/home/ignacio/Downloads/TP4/Dune/src/buscador_mejor_camino.h
 nodo.h
-/home/ramiro/Escritorio/Dune/src/nodo.h
+/home/ignacio/Downloads/TP4/Dune/src/nodo.h
 vector
 -
 
-/home/ramiro/Escritorio/Dune/src/coordenada.cpp
-coordenada.h
-/home/ramiro/Escritorio/Dune/src/coordenada.h
-
-/home/ramiro/Escritorio/Dune/src/coordenada.h
+/home/ignacio/Downloads/TP4/Dune/src/coordenada.h
 objeto_dune.h
-/home/ramiro/Escritorio/Dune/src/objeto_dune.h
+/home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
 Terrenos/terreno.h
-/home/ramiro/Escritorio/Dune/src/Terrenos/terreno.h
+/home/ignacio/Downloads/TP4/Dune/src/Terrenos/terreno.h
 string
 -
 memory
 -
 
-/home/ramiro/Escritorio/Dune/src/jugador.cpp
-jugador.h
-/home/ramiro/Escritorio/Dune/src/jugador.h
-Edificios/edificio.h
-/home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
-UnidadesMovibles/unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
-
-/home/ramiro/Escritorio/Dune/src/jugador.h
+/home/ignacio/Downloads/TP4/Dune/src/jugador.h
 utility
 -
 map
@@ -154,21 +114,21 @@ vector
 memory
 -
 observador.h
-/home/ramiro/Escritorio/Dune/src/observador.h
+/home/ignacio/Downloads/TP4/Dune/src/observador.h
+root.h
+/home/ignacio/Downloads/TP4/Dune/src/root.h
 
-/home/ramiro/Escritorio/Dune/src/main.cpp
+/home/ignacio/Downloads/TP4/Dune/src/main.cpp
 partida.h
-/home/ramiro/Escritorio/Dune/src/partida.h
+/home/ignacio/Downloads/TP4/Dune/src/partida.h
 mapa.h
-/home/ramiro/Escritorio/Dune/src/mapa.h
+/home/ignacio/Downloads/TP4/Dune/src/mapa.h
 buscador_mejor_camino.h
-/home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
+/home/ignacio/Downloads/TP4/Dune/src/buscador_mejor_camino.h
 iostream
 -
 nodo.h
-/home/ramiro/Escritorio/Dune/src/nodo.h
-server.h
-/home/ramiro/Escritorio/Dune/src/server.h
+/home/ignacio/Downloads/TP4/Dune/src/nodo.h
 vector
 -
 stack
@@ -177,18 +137,12 @@ cmath
 -
 iostream
 -
+root.h
+/home/ignacio/Downloads/TP4/Dune/src/root.h
+server.h
+/home/ignacio/Downloads/TP4/Dune/src/server.h
 
-/home/ramiro/Escritorio/Dune/src/mapa.cpp
-mapa.h
-/home/ramiro/Escritorio/Dune/src/mapa.h
-Terrenos/no_especia.h
-/home/ramiro/Escritorio/Dune/src/Terrenos/no_especia.h
-stdlib.h
--
-iostream
--
-
-/home/ramiro/Escritorio/Dune/src/mapa.h
+/home/ignacio/Downloads/TP4/Dune/src/mapa.h
 vector
 -
 utility
@@ -200,55 +154,33 @@ string
 memory
 -
 objeto_dune.h
-/home/ramiro/Escritorio/Dune/src/objeto_dune.h
+/home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
 coordenada.h
-/home/ramiro/Escritorio/Dune/src/coordenada.h
+/home/ignacio/Downloads/TP4/Dune/src/coordenada.h
 observador.h
-/home/ramiro/Escritorio/Dune/src/observador.h
+/home/ignacio/Downloads/TP4/Dune/src/observador.h
 buscador_mejor_camino.h
-/home/ramiro/Escritorio/Dune/src/buscador_mejor_camino.h
+/home/ignacio/Downloads/TP4/Dune/src/buscador_mejor_camino.h
 
-/home/ramiro/Escritorio/Dune/src/nodo.cpp
-nodo.h
-/home/ramiro/Escritorio/Dune/src/nodo.h
-
-/home/ramiro/Escritorio/Dune/src/nodo.h
+/home/ignacio/Downloads/TP4/Dune/src/nodo.h
 utility
 -
 
-/home/ramiro/Escritorio/Dune/src/objeto_dune.cpp
-objeto_dune.h
-/home/ramiro/Escritorio/Dune/src/objeto_dune.h
-
-/home/ramiro/Escritorio/Dune/src/objeto_dune.h
+/home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
 utility
 -
 vector
 -
 
-/home/ramiro/Escritorio/Dune/src/observador.cpp
-observador.h
-/home/ramiro/Escritorio/Dune/src/observador.h
-
-/home/ramiro/Escritorio/Dune/src/observador.h
+/home/ignacio/Downloads/TP4/Dune/src/observador.h
 utility
 -
 memory
 -
 objeto_dune.h
-/home/ramiro/Escritorio/Dune/src/objeto_dune.h
+/home/ignacio/Downloads/TP4/Dune/src/objeto_dune.h
 
-/home/ramiro/Escritorio/Dune/src/partida.cpp
-partida.h
-/home/ramiro/Escritorio/Dune/src/partida.h
-Edificios/edificio.h
-/home/ramiro/Escritorio/Dune/src/Edificios/edificio.h
-UnidadesMovibles/unidad_movible.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/unidad_movible.h
-memory
--
-
-/home/ramiro/Escritorio/Dune/src/partida.h
+/home/ignacio/Downloads/TP4/Dune/src/partida.h
 utility
 -
 map
@@ -256,19 +188,23 @@ map
 vector
 -
 jugador.h
-/home/ramiro/Escritorio/Dune/src/jugador.h
+/home/ignacio/Downloads/TP4/Dune/src/jugador.h
 mapa.h
-/home/ramiro/Escritorio/Dune/src/mapa.h
+/home/ignacio/Downloads/TP4/Dune/src/mapa.h
 Edificios/fabrica_edificios.h
-/home/ramiro/Escritorio/Dune/src/Edificios/fabrica_edificios.h
+/home/ignacio/Downloads/TP4/Dune/src/Edificios/fabrica_edificios.h
 UnidadesMovibles/fabrica_unidades_movibles.h
-/home/ramiro/Escritorio/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/fabrica_unidades_movibles.h
+root.h
+/home/ignacio/Downloads/TP4/Dune/src/root.h
 
-/home/ramiro/Escritorio/Dune/src/server.cpp
-server.h
-/home/ramiro/Escritorio/Dune/src/server.h
+/home/ignacio/Downloads/TP4/Dune/src/root.h
+list
+-
+jsoncpp/json/json.h
+-
 
-/home/ramiro/Escritorio/Dune/src/server.h
+/home/ignacio/Downloads/TP4/Dune/src/server.h
 vector
 -
 mutex
@@ -276,21 +212,5 @@ mutex
 thread
 -
 Socket.h
-/home/ramiro/Escritorio/Dune/src/Socket.h
-
-/home/ramiro/Escritorio/Dune/src/socket_error.cpp
-socket_error.h
-/home/ramiro/Escritorio/Dune/src/socket_error.h
-errno.h
--
-cstdio
--
-cstdarg
--
-string.h
--
-
-/home/ramiro/Escritorio/Dune/src/socket_error.h
-typeinfo
--
+/home/ignacio/Downloads/TP4/Dune/src/Socket.h
 

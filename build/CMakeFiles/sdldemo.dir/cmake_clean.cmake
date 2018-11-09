@@ -1,4 +1,4 @@
-file(REMOVE_RECURSE
+FILE(REMOVE_RECURSE
   "CMakeFiles/sdldemo.dir/src/Armas/arma.cpp.o"
   "CMakeFiles/sdldemo.dir/src/Armas/canion.cpp.o"
   "CMakeFiles/sdldemo.dir/src/Armas/canion_22mm.cpp.o"
@@ -40,6 +40,6 @@ file(REMOVE_RECURSE
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang CXX)
-  include(CMakeFiles/sdldemo.dir/cmake_clean_${lang}.cmake OPTIONAL)
-endforeach()
+FOREACH(lang CXX)
+  INCLUDE(CMakeFiles/sdldemo.dir/cmake_clean_${lang}.cmake OPTIONAL)
+ENDFOREACH(lang)

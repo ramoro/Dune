@@ -91,8 +91,8 @@ class Mapa {
 		y la posicion donde va a guardar el centro de la unidad creada. 
 		Devuelve true o false si encontro una posicion valida para crear la
 		unidad alrededor del edificio*/
-		bool ubicar_unidad(int id_edificio, std::pair<int, int> 
-		&centro_unidad);
+		bool ubicar_unidad(int id_edificio, std::pair<int, int> &centro_unidad,
+			int base_unidad, int altura_unidad);
 
 		/*Devuelve true si coordenada en la posicion pasada esta ocupada*/
 		bool esta_ocupada_coordenada(std::pair<int, int> posicion);

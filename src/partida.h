@@ -8,6 +8,7 @@
 #include "mapa.h"
 #include "Edificios/fabrica_edificios.h"
 #include "UnidadesMovibles/fabrica_unidades_movibles.h"
+#include "root.h"
 
 /*Clase que representa a una partida de Dune.*/
 class Partida {
@@ -27,7 +28,7 @@ class Partida {
 
 		/*Recibe un string con un nombre y agregar a la partida un Jugador
 		con ese nombre.*/
-		void agregar_jugador(std::string nombre_jugador);
+		void agregar_jugador(std::string nombre_jugador, Root &root);
 
 		/*Agrega un edificio segun el id de tipo pasado, asociado al id pasado
 		por parametro, asignado al jugador con el id pasado por parametro 

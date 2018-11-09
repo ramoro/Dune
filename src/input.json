@@ -1,0 +1,222 @@
+{
+	"Centro de construccion": {
+		"energia_requerida": 0,
+		"costo": 0,
+		"dimension_ancho": 300,
+		"dimension_alto": 300,
+		"puntos_estructura": 3000
+	},
+	"Trampa de Aire": {
+		"energia_requerida": 500,
+		"costo": 300,
+		"dimension_ancho": 300,
+		"dimension_alto": 300,
+		"puntos_estructura": 500
+	},
+	"Refineria": {
+		"energia_requerida": 400,
+		"costo": 500,
+		"dimension_ancho": 300,
+		"dimension_alto": 300,
+		"puntos_estructura": 500,
+		"capacidad": 5000
+	},
+	"Silo": {
+		"energia_requerida": 100,
+		"costo": 200,
+		"dimension_ancho": 100,
+		"dimension_alto": 100,
+		"puntos_estructura": 200,
+		"capacidad": 1000
+	},
+	"Fabrica Ligera": {
+		"energia_requerida": 500,
+		"costo": 800,
+		"dimension_ancho": 300,
+		"dimension_alto": 300,
+		"puntos_estructura": 500
+	},
+	"Fabrica Pesada": {
+		"energia_requerida": 300,
+		"costo": 1500,
+		"dimension_ancho": 400,
+		"dimension_alto": 400,
+		"puntos_estructura": 1500
+	},
+	"Cuartel": {
+		"energia_requerida": 100,
+		"costo": 300,
+		"dimension_ancho": 300,
+		"dimension_alto": 200,
+		"puntos_estructura": 300
+	},
+	"Palacio": {
+		"energia_requerida": 300,
+		"costo": 2000,
+		"dimension_ancho": 300,
+		"dimension_alto": 300,
+		"puntos_estructura": 1000
+	},
+	"Infanteria ligera": {
+		"rango": 3,
+		"velocidad": 16,
+		"tiempo_entrenamiento": 1,
+		"costo": 50,
+		"puntos_vida": 50
+	},
+	"Infanteria pesada": {
+		"rango": 3,
+		"velocidad": 12,
+		"tiempo_entrenamiento": 1.3,
+		"costo": 70,
+		"puntos_vida": 80,
+		"dimension_ancho": 50,
+		"dimension_alto": 50
+	},
+	"Fremen": {
+		"rango": 3,
+		"velocidad": 20,
+		"tiempo_entrenamiento": 2,
+		"costo": 100,
+		"puntos_vida": 50,
+		"dimension_ancho": 50,
+		"dimension_alto": 50
+	},
+	"Sardaukar": {
+		"rango": 3,
+		"velocidad": 12,
+		"tiempo_entrenamiento": 2,
+		"costo": 100,
+		"puntos_vida": 80,
+		"dimension_ancho": 50,
+		"dimension_alto": 50
+	},
+	"Trike": {
+		"rango": 4,
+		"velocidad": 64,
+		"tiempo_entrenamiento": 2,
+		"costo": 100,
+		"puntos_vida": 80,
+		"dimension_ancho": 50,
+		"dimension_alto": 50
+	},
+	"Raider": {
+		"rango": 0,
+		"velocidad": 84,
+		"tiempo_entrenamiento": 2,
+		"costo": 100,
+		"puntos_vida": 80,
+		"dimension_ancho": 50,
+		"dimension_alto": 50
+	},
+	"Tanque": {
+		"rango": 4,
+		"velocidad": 40,
+		"tiempo_entrenamiento": 4,
+		"costo": 300,
+		"puntos_vida": 30,
+		"dimension_ancho": 50,
+		"dimension_alto": 50
+	},
+	"Tanque sonico": {
+		"rango": 4,
+		"velocidad": 12,
+		"tiempo_entrenamiento": 4,
+		"costo": 300,
+		"puntos_vida": 300,
+		"dimension_ancho": 50,
+		"dimension_alto": 50
+	},
+	"Desviador": {
+		"rango": 5,
+		"velocidad": 12,
+		"tiempo_entrenamiento": 4,
+		"costo": 400,
+		"puntos_vida": 300,
+		"dimension_ancho": 50,
+		"dimension_alto": 50
+	},
+	"Devastador": {
+		"rango": 4,
+		"velocidad": 12,
+		"tiempo_entrenamiento": 5,
+		"costo": 400,
+		"puntos_vida": 400,
+		"dimension_ancho": 50,
+		"dimension_alto": 50
+	},
+	"Cosechadora": {
+		"rango": 2,
+		"velocidad": 12,
+		"tiempo_entrenamiento": 3,
+		"costo": 300,
+		"puntos_vida": 600,
+		"dimension_ancho": 50,
+		"dimension_alto": 50
+	},
+	"Rifle Asalto": {
+		"danio": 2,
+		"frecuencia_disparo": 6,
+		"bonificacion_danio_edificios": 0,
+		"bonificacion_danio_infanteria": 1,
+		"bonificacion_danio_vehiculos": 0
+	},
+	"Lanza Misiles": {
+		"danio": 8,
+		"frecuencia_disparo": 1,
+		"bonificacion_danio_edificios": 0,
+		"bonificacion_danio_infanteria": 0,
+		"bonificacion_danio_vehiculos": 0
+	},
+	"Canion 22mm": {
+		"danio": 6,
+		"frecuencia_disparo": 6,
+		"bonificacion_danio_edificios": 2,
+		"bonificacion_danio_infanteria": 0,
+		"bonificacion_danio_vehiculos": 2
+	},
+	"Canion": {
+		"danio": 7,
+		"frecuencia_disparo": 1,
+		"bonificacion_danio_edificios": 0,
+		"bonificacion_danio_infanteria": 0,
+		"bonificacion_danio_vehiculos": 0
+	},
+	"Canion Plasma": {
+		"danio": 8,
+		"frecuencia_disparo": 1,
+		"bonificacion_danio_edificios": 2,
+		"bonificacion_danio_infanteria": 0,
+		"bonificacion_danio_vehiculos": 2
+	},
+	"Ondas Sonido": {
+		"danio": 4,
+		"frecuencia_disparo": 1,
+		"bonificacion_danio_edificios": 0,
+		"bonificacion_danio_infanteria": 4,
+		"bonificacion_danio_vehiculos": 0
+	},
+	"Explosion": {
+		"danio": 10,
+		"frecuencia_disparo": 0,
+		"bonificacion_danio_edificios": 0,
+		"bonificacion_danio_infanteria": 0,
+		"bonificacion_danio_vehiculos": 0
+	},
+	"Jugadores": {
+		"dinero": 10000000,
+		"porcentaje_dinero_recuperado_edificios": 0.5
+	},
+	"Gusano": {
+		"dimension_ancho": 100,
+		"dimension_alto": 100
+	},
+	"Explosion Devastador": {
+		"dimension_ancho": 100,
+		"dimension_alto": 100
+	},
+	"Ataque tanque sonico": {
+		"dimension_ancho": 100,
+		"dimension_alto": 100
+	}
+}
