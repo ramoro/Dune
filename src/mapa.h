@@ -10,6 +10,7 @@
 #include "coordenada.h"
 #include "observador.h"
 #include "buscador_mejor_camino.h"
+#include "root.h"
 
 /*Clase que representa a un mapa del mundo Dune.*/
 class Mapa {
@@ -57,7 +58,7 @@ class Mapa {
 
 		/*Elige un lugar random para hacer emerger al gusano de arena
 		y devuelve un vector con los ids de las unidades comidas.*/
-		std::vector<int> desenterrar_gusano();
+		std::vector<int> desenterrar_gusano(Root &root);
 
 		/*Devuelve la posicion maxima a la que llega el vector de filas.*/
 		unsigned int pedir_limite_filas();

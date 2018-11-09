@@ -3,8 +3,13 @@
 #define CUARTEL 6 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
-Cuartel::Cuartel(int id, int id_duenio, std::pair<int, int> centro) :
-	Edificio(-100, 300, 1, id, id_duenio, 7, 6, centro) {
+Cuartel::Cuartel(int id, int id_duenio, std::pair<int, int> centro,
+ Root &root) :
+	Edificio(root["Cuartel"].get("energia_requerida", 0).asInt(),
+	 root["Cuartel"].get("costo", 0).asInt(),
+	 root["Cuartel"].get("puntos_estructura", 0).asInt(),
+	  id, id_duenio, root["Cuartel"].get("dimension_ancho", 0).asInt(),
+	   root["Cuartel"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = CUARTEL;
 	}
 

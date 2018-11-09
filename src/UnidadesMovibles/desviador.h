@@ -11,7 +11,8 @@ jugador.*/
 class Desviador: public Vehiculo {
 	public:
 		/*Constructor de la clase.*/
-		Desviador(int id, int id_duenio, std::pair<int, int> centro);
+		Desviador(int id, int id_duenio, std::pair<int, int> centro,
+		 Root &root);
 
 		/*Recibe el mapa y el id del objeto y devuelve todas las unidades
 		afectadas por su ataque.*/

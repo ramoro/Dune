@@ -7,7 +7,7 @@
 class Canion: public Arma {
 	public:
 		/*Constructor de la clase.*/
-		Canion();
+		Canion(Root &root);
 };
 
 #endif 

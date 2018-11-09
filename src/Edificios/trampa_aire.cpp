@@ -3,8 +3,13 @@
 #define ID_TRAMPA_AIRE 1 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
-TrampaAire::TrampaAire(int id, int id_duenio, std::pair<int, int> centro) : 
-	Edificio(500, 800, 500, id, id_duenio, 1, 1, centro) {
+TrampaAire::TrampaAire(int id, int id_duenio, std::pair<int, int> centro,
+ Root &root) : 
+	Edificio(root["TrampaAire"].get("energia_requerida", 0).asInt(),
+	 root["TrampaAire"].get("costo", 0).asInt(),
+	 root["TrampaAire"].get("puntos_estructura", 0).asInt(),
+	  id, id_duenio, root["TrampaAire"].get("dimension_ancho", 0).asInt(),
+	   root["TrampaAire"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_TRAMPA_AIRE;
 	}
 

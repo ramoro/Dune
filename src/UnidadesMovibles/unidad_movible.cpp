@@ -40,7 +40,12 @@ std::vector<int> UnidadMovible::matar(Mapa &mapa) {
 	std::vector<int> aux;
 	return aux;
 }
-
+/*
+std::vector<int> UnidadMovible::matar(Mapa &mapa,Root &root) {
+	std::vector<int> aux;
+	return aux;
+}
+*/
 void UnidadMovible::eliminar(Mapa &mapa) {
 	mapa.eliminar_objeto(this->id);
 }
@@ -61,4 +66,8 @@ bool UnidadMovible::agregar(Mapa &mapa, Jugador
 	mapa.agregar_objeto(this, this->id,
 	this->centro);
 	return true;
+}
+
+void UnidadMovible::set_centro(std::pair<int, int> centro){
+	this->centro = centro;
 }

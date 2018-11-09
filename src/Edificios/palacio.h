@@ -11,7 +11,7 @@ más avanzadas.*/
 class Palacio: public Edificio{
 	public:
 		/*Constructor de la clase.*/
-		Palacio(int id, int id_duenio, std::pair<int, int> centro);
+		Palacio(int id, int id_duenio, std::pair<int, int> centro, Root &root);
 		
 		/*Devuelve true si el palacio fue agregado al juego. False en caso
 		contrario.*/

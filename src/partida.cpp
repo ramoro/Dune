@@ -11,9 +11,11 @@
 Partida::Partida() {
 	contador_ids_jugadores = 0;
 	contador_ids_objetos = 0;
+	Root json("../src/input.json");
+	root = std::move(json);
 }
 
-void Partida::agregar_jugador(std::string casa_jugador,Root &root) {
+void Partida::agregar_jugador(std::string casa_jugador) {
 	Jugador jugador(casa_jugador,root);
 	jugadores.insert(std::pair<int, Jugador>(contador_ids_jugadores, 
 	jugador));
@@ -23,7 +25,7 @@ void Partida::agregar_jugador(std::string casa_jugador,Root &root) {
 std::shared_ptr<Edificio> Partida::agregar_edificio(int id_jugador, std::pair<int, int>
 posicion_central, int id_tipo_edificio) {
 	std::shared_ptr<Edificio> ptr_edificio = fabrica_edificios.crear_edificio(id_tipo_edificio,
-	contador_ids_objetos, id_jugador, posicion_central);
+	contador_ids_objetos, id_jugador, posicion_central,root);
 
 	bool agregado = ptr_edificio->agregar_al_juego(mapa, jugadores.at(id_jugador), 
 	contador_ids_objetos, id_tipo_edificio);
@@ -91,7 +93,7 @@ int id_tipo_unidad, int id_edificio) {
 	pedir_id_duenio();
 	std::shared_ptr<UnidadMovible> unidad = (edificios.at(id_edificio))->
 	agregar_unidad(mapa, jugadores.at((edificios.at(id_edificio))->
-	pedir_id_duenio()), id_tipo_unidad, contador_ids_objetos);
+	pedir_id_duenio()), id_tipo_unidad, contador_ids_objetos,root);
 	std::pair<int, std::pair<int, int>> nueva_unidad;
 	if ((unidad->obtener_centro()).first != UNIDAD_NO_AGREGADA) {
 		nueva_unidad.first = contador_ids_objetos;
@@ -111,5 +113,5 @@ std::pair<int, int> posicion_destino) {
 }
 
 std::vector<int> Partida::generar_gusano() {
-	return mapa.desenterrar_gusano();
+	return mapa.desenterrar_gusano(root);
 }

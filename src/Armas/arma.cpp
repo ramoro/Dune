@@ -1,4 +1,5 @@
 #include "arma.h"
+#include <iostream>
 
 Arma::Arma(int danio, int frecuencia_disparo) :
 	danio(danio), frecuencia_disparo(frecuencia_disparo){}

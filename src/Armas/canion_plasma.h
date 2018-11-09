@@ -7,7 +7,7 @@
 class CanionPlasma: public Arma {
 	public:
 		/*Constructor de la clase.*/
-		CanionPlasma();
+		CanionPlasma(Root &root);
 };
 
 #endif 

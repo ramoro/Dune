@@ -4,10 +4,17 @@
 #define ID_TRIKE 14 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
-Trike::Trike(int id, int id_duenio, std::pair<int, int> centro) : 
-	Vehiculo(4, 64, 2, 100, 80, id, id_duenio, 50, 50, centro) {
+Trike::Trike(int id, int id_duenio, std::pair<int, int> centro,
+ Root &root) : 
+	Vehiculo(root["Trike"].get("rango", 0).asInt(),
+	 root["Trike"].get("velocidad", 0).asInt(),
+	 root["Trike"].get("tiempo_entrenamiento", 0).asFloat(),
+	 root["Trike"].get("costo", 0).asInt(), 
+	 root["Trike"].get("puntos_vida", 0).asInt(), id, id_duenio, 
+	 root["Trike"].get("dimension_ancho", 0).asInt(),
+	 root["Trike"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_TRIKE;
-		RifleAsalto rifle_asalto;
+		RifleAsalto rifle_asalto(root);
 		armas.push_back(RifleAsalto(rifle_asalto));
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;

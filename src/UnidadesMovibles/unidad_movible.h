@@ -51,6 +51,8 @@ class UnidadMovible: public ObjetoDune {
 		/*Metodo virtual puro que mata a la unidad movible y la saca del juego.*/
 		virtual std::vector<int> matar(Mapa &mapa) = 0;
 
+		//virtual std::vector<int> matar(Mapa &mapa, Root &root) = 0;
+
 		/*Recibe el mapa del juego y elimina el objeto del mapa.*/
 		void eliminar(Mapa &mapa);
 
@@ -63,6 +65,9 @@ class UnidadMovible: public ObjetoDune {
 		contrario.*/
 		bool agregar(Mapa &mapa, Jugador 
 		&jugador);
+
+		/*Setear centro*/
+		void set_centro(std::pair<int, int> centro);
 };
 
 #endif 

@@ -13,7 +13,7 @@ class FabricaUnidadesMovibles {
 		y devuelve el objeto por movimiento.*/
 		std::shared_ptr<UnidadMovible> crear_unidad_movible(
 		int id_tipo_unidad_movible, int id, int id_duenio, 
-		std::pair<int, int> centro);
+		std::pair<int, int> centro, Root &root);
 };
 
 #endif 

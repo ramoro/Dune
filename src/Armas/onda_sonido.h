@@ -7,7 +7,7 @@
 class OndaSonido: public Arma {
 	public:
 		/*Constructor de la clase.*/
-		OndaSonido();
+		OndaSonido(Root &root);
 };
 
 #endif 

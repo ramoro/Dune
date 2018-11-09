@@ -3,9 +3,13 @@
 #define ID_SILO 3 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
-Silo::Silo(int id, int id_duenio, std::pair<int, int> centro) : 
-	Edificio(-100, 200, 1000, id, id_duenio, 100, 100, centro) {
-		capacidad = 1000;
+Silo::Silo(int id, int id_duenio, std::pair<int, int> centro, Root &root) : 
+	Edificio(root["Silo"].get("energia_requerida", 0).asInt(),
+	 root["Silo"].get("costo", 0).asInt(),
+	 root["Silo"].get("puntos_estructura", 0).asInt(),
+	  id, id_duenio, root["Silo"].get("dimension_ancho", 0).asInt(),
+	   root["Silo"].get("dimension_alto", 0).asInt(), centro) {
+		capacidad = root["Silo"].get("capacidad", 0).asInt();
 		id_tipo = ID_SILO;
 	}
 

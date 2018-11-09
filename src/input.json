@@ -1,12 +1,12 @@
 {
-	"Centro de construccion": {
+	"CentroConstruccion": {
 		"energia_requerida": 0,
 		"costo": 0,
 		"dimension_ancho": 300,
 		"dimension_alto": 300,
 		"puntos_estructura": 3000
 	},
-	"Trampa de Aire": {
+	"TrampaAire": {
 		"energia_requerida": 500,
 		"costo": 300,
 		"dimension_ancho": 300,
@@ -29,14 +29,14 @@
 		"puntos_estructura": 200,
 		"capacidad": 1000
 	},
-	"Fabrica Ligera": {
+	"FabricaLigera": {
 		"energia_requerida": 500,
 		"costo": 800,
-		"dimension_ancho": 300,
-		"dimension_alto": 300,
+		"dimension_ancho": 5,
+		"dimension_alto": 4,
 		"puntos_estructura": 500
 	},
-	"Fabrica Pesada": {
+	"FabricaPesada": {
 		"energia_requerida": 300,
 		"costo": 1500,
 		"dimension_ancho": 400,
@@ -57,14 +57,14 @@
 		"dimension_alto": 300,
 		"puntos_estructura": 1000
 	},
-	"Infanteria ligera": {
+	"InfanteriaLigera": {
 		"rango": 3,
 		"velocidad": 16,
 		"tiempo_entrenamiento": 1,
 		"costo": 50,
 		"puntos_vida": 50
 	},
-	"Infanteria pesada": {
+	"InfanteriaPesada": {
 		"rango": 3,
 		"velocidad": 12,
 		"tiempo_entrenamiento": 1.3,
@@ -106,8 +106,8 @@
 		"tiempo_entrenamiento": 2,
 		"costo": 100,
 		"puntos_vida": 80,
-		"dimension_ancho": 50,
-		"dimension_alto": 50
+		"dimension_ancho": 1,
+		"dimension_alto": 1
 	},
 	"Tanque": {
 		"rango": 4,
@@ -154,21 +154,21 @@
 		"dimension_ancho": 50,
 		"dimension_alto": 50
 	},
-	"Rifle Asalto": {
+	"RifleAsalto": {
 		"danio": 2,
 		"frecuencia_disparo": 6,
 		"bonificacion_danio_edificios": 0,
 		"bonificacion_danio_infanteria": 1,
 		"bonificacion_danio_vehiculos": 0
 	},
-	"Lanza Misiles": {
+	"LanzaMisiles": {
 		"danio": 8,
 		"frecuencia_disparo": 1,
 		"bonificacion_danio_edificios": 0,
 		"bonificacion_danio_infanteria": 0,
 		"bonificacion_danio_vehiculos": 0
 	},
-	"Canion 22mm": {
+	"Canion22mm": {
 		"danio": 6,
 		"frecuencia_disparo": 6,
 		"bonificacion_danio_edificios": 2,
@@ -182,14 +182,14 @@
 		"bonificacion_danio_infanteria": 0,
 		"bonificacion_danio_vehiculos": 0
 	},
-	"Canion Plasma": {
+	"CanionPlasma": {
 		"danio": 8,
 		"frecuencia_disparo": 1,
 		"bonificacion_danio_edificios": 2,
 		"bonificacion_danio_infanteria": 0,
 		"bonificacion_danio_vehiculos": 2
 	},
-	"Ondas Sonido": {
+	"OndasSonido": {
 		"danio": 4,
 		"frecuencia_disparo": 1,
 		"bonificacion_danio_edificios": 0,

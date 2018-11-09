@@ -5,10 +5,16 @@
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 InfanteriaLigera::InfanteriaLigera(int id, int id_duenio, std::pair<int, int>
-centro) : 
-	UnidadInfanteria(3, 16, 1, 50, 50, id, id_duenio, 2, 2, centro) {
+centro, Root &root) : 
+	UnidadInfanteria(root["Infanteria ligera"].get("rango", 0).asInt(),
+	 root["Infanteria ligera"].get("velocidad", 0).asInt(), 
+	 root["Infanteria ligera"].get("tiempo_entrenamiento", 0).asInt(), 
+	 root["Infanteria ligera"].get("costo", 0).asInt(), 
+	 root["Infanteria ligera"].get("puntos_vida", 0).asInt(), id, id_duenio, 
+	 root["Infanteria ligera"].get("dimension_ancho", 0).asInt(), 
+	 root["Infanteria ligera"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_INFANTERIA_LIGERA;
-		RifleAsalto rifle;
+		RifleAsalto rifle(root);
 		armas.push_back(RifleAsalto(rifle));
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;

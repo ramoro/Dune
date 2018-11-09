@@ -3,9 +3,14 @@
 #define ID_REFINERIA 2 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
-Refineria::Refineria(int id, int id_duenio, std::pair<int, int> centro) : 
-	Edificio(-400, 500, 500, id, id_duenio, 300, 300, centro) {
-		capacidad = 5000;
+Refineria::Refineria(int id, int id_duenio, std::pair<int, int> centro,
+ Root &root) : 
+	Edificio(root["Refineria"].get("energia_requerida", 0).asInt(),
+	 root["Refineria"].get("costo", 0).asInt(),
+	 root["Refineria"].get("puntos_estructura", 0).asInt(),
+	  id, id_duenio, root["Refineria"].get("dimension_ancho", 0).asInt(),
+	   root["Refineria"].get("dimension_alto", 0).asInt(), centro) {
+		capacidad =  root["Refineria"].get("capacidad", 0).asInt();
 		id_tipo = ID_REFINERIA;
 	}
 

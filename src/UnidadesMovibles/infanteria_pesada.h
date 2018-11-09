@@ -10,7 +10,8 @@ Unidad efectiva contra unidades blindadas, no así contra la infantería.*/
 class InfanteriaPesada: public UnidadInfanteria {
 	public:
 		/*Constructor de la clase.*/
-		InfanteriaPesada(int id, int id_duenio, std::pair<int, int> centro);
+		InfanteriaPesada(int id, int id_duenio, std::pair<int, int> centro,
+		 Root &root);
 
 		/*Recibe el mapa y el id del objeto y devuelve todas las unidades
 		afectadas por su ataque.*/

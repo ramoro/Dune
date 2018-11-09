@@ -4,10 +4,16 @@
 #define ID_RAIDER 15 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
-Raider::Raider(int id, int id_duenio, std::pair<int, int> centro) : 
-	Vehiculo(4, 84, 2, 100, 80, id, id_duenio, 1, 1, centro) {
+Raider::Raider(int id, int id_duenio, std::pair<int, int> centro,Root &root) : 
+	Vehiculo(root["Raider"].get("rango", 0).asInt(),
+	 root["Raider"].get("velocidad", 0).asInt(),
+	 root["Raider"].get("tiempo_entrenamiento", 0).asFloat(),
+	 root["Raider"].get("costo", 0).asInt(), 
+	 root["Raider"].get("puntos_vida", 0).asInt(), id, id_duenio, 
+	 root["Raider"].get("dimension_ancho", 0).asInt(),
+	 root["Raider"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_RAIDER;
-		Canion22mm canion22mm;
+		Canion22mm canion22mm(root);
 		armas.push_back(Canion22mm(canion22mm));
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;

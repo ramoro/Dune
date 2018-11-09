@@ -8,6 +8,7 @@
 #include <fstream>
 #include <jsoncpp/json/json.h>
 
+Root::Root(){}
 Root::Root(const std::string & filename){
     std::ifstream  m_json(filename, std::ifstream::binary);
 

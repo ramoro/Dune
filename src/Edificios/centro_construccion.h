@@ -10,7 +10,8 @@ del mismo.*/
 class CentroConstruccion: public Edificio{
 	public:
 		/*Constructor de la clase.*/
-		CentroConstruccion(int id, int id_duenio, std::pair<int, int> centro);
+		CentroConstruccion(int id, int id_duenio, std::pair<int, int> centro,
+		 Root &root);
 
 		/*Devuelve true si el centro de construccion fue agregado al juego.
 		False en caso contrario.*/

@@ -9,9 +9,13 @@
 Es un tanque altamente blindado que al ser destruido explota daniando
 todo aquel que este cerca.*/ 
 class Devastador: public Vehiculo {
+	private:
+		int danio_explosion;
+		
 	public:
 		/*Constructor de la clase.*/
-		Devastador(int id, int id_duenio, std::pair<int, int> centro);
+		Devastador(int id, int id_duenio, std::pair<int, int> centro, 
+			Root &root);
 
 		/*Recibe el mapa y el id del objeto y devuelve todas las unidades
 		afectadas por su ataque.*/

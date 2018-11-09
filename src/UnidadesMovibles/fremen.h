@@ -11,7 +11,7 @@ desierto.*/
 class Fremen: public UnidadInfanteria {
 	public:
 		/*Constructor de la clase.*/
-		Fremen(int id, int id_duenio, std::pair<int, int> centro);
+		Fremen(int id, int id_duenio, std::pair<int, int> centro, Root &root);
 
 		/*Recibe el mapa y el id del objeto y devuelve todas las unidades
 		afectadas por su ataque.*/

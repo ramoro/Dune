@@ -11,7 +11,7 @@ class FabricaEdificios {
 		/*Crea un objeto de la clase Edificio segun el int recibido
 		y devuelve un puntero al objeto*/
 		std::shared_ptr<Edificio> crear_edificio(int id_tipo_edificio, int id,
-		int id_duenio, std::pair<int, int> centro);
+		int id_duenio, std::pair<int, int> centro,Root &root);
 };
 
 #endif 

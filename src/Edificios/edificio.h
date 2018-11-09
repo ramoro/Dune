@@ -61,7 +61,7 @@ class Edificio: public ObjetoDune {
 		tambien pasados por parametro y la agrega tanto al jugador como 
 		al mapa. Devuelve un puntero a la unidad creada.*/
 		std::shared_ptr<UnidadMovible> agregar_unidad(Mapa &mapa, 
-		Jugador &jugador, int id_tipo_unidad, int id_unidad) ;
+		Jugador &jugador, int id_tipo_unidad, int id_unidad, Root &root) ;
 };
 
 #endif

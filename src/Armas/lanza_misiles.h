@@ -7,7 +7,7 @@
 class LanzaMisiles: public Arma {
 	public:
 		/*Constructor de la clase.*/
-		LanzaMisiles();
+		LanzaMisiles(Root &root);
 };
 
 #endif 

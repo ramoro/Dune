@@ -21,6 +21,7 @@ class Partida {
 		FabricaUnidadesMovibles fabrica_unidades_movibles;
 		int contador_ids_jugadores;
 		int contador_ids_objetos;
+		Root root;
 
 	public:
 		/*Constructor de la clase.*/
@@ -28,7 +29,7 @@ class Partida {
 
 		/*Recibe un string con un nombre y agregar a la partida un Jugador
 		con ese nombre.*/
-		void agregar_jugador(std::string nombre_jugador, Root &root);
+		void agregar_jugador(std::string nombre_jugador);
 
 		/*Agrega un edificio segun el id de tipo pasado, asociado al id pasado
 		por parametro, asignado al jugador con el id pasado por parametro 

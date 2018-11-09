@@ -16,7 +16,8 @@ class TanqueSonico: public Vehiculo {
 	
 	public:
 		/*Constructor de la clase.*/
-		TanqueSonico(int id, int id_duenio, std::pair<int, int> centro);
+		TanqueSonico(int id, int id_duenio, std::pair<int, int> centro,
+		 Root &root);
 
 		/*Recibe el mapa y el id del objeto y devuelve todas las unidades
 		afectadas por su ataque.*/

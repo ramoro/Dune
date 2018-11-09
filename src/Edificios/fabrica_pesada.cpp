@@ -4,8 +4,12 @@
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 FabricaPesada::FabricaPesada(int id, int id_duenio, std::pair<int, int> 
-centro) : 
-	Edificio(-800, 1500, 1, id, id_duenio, 1, 1, centro) {
+centro, Root &root) : 
+	Edificio(root["FabricaPesada"].get("energia_requerida", 0).asInt(),
+	 root["FabricaPesada"].get("costo", 0).asInt(),
+	 root["FabricaPesada"].get("puntos_estructura", 0).asInt(),
+	  id, id_duenio, root["FabricaPesada"].get("dimension_ancho", 0).asInt(),
+	   root["FabricaPesada"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_FABRICA_PESADA;
 	}
 

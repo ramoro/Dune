@@ -10,7 +10,8 @@ Es una unidad basica que resulta fuerte cuando se la usa en grupo.*/
 class InfanteriaLigera: public UnidadInfanteria {
 	public:
 		/*Constructor de la clase.*/
-		InfanteriaLigera(int id, int id_duenio, std::pair<int, int> centro);
+		InfanteriaLigera(int id, int id_duenio, std::pair<int, int> centro,
+		 Root &root);
 
 		/*Recibe el mapa y el id del objeto y devuelve todas las unidades
 		afectadas por su ataque.*/

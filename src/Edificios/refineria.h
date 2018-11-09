@@ -12,7 +12,8 @@ class Refineria: public Edificio{
 		int capacidad;
 	public:
 		/*Constructor de la clase.*/
-		Refineria(int id, int id_duenio, std::pair<int, int> centro);
+		Refineria(int id, int id_duenio, std::pair<int, int> centro,
+		 Root &root);
 
 		/*Devuelve true si se pudo agregar la refineria al juego. False
 		en caso contrario.*/

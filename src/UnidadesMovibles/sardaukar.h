@@ -10,7 +10,8 @@ Es una unidad de elite concedida por el mismo Emperador.*/
 class Sardaukar: public UnidadInfanteria {
 	public:
 		/*Constructor de la clase.*/
-		Sardaukar(int id, int id_duenio, std::pair<int, int> centro);
+		Sardaukar(int id, int id_duenio, std::pair<int, int> centro, 
+			Root &root);
 
 		/*Recibe el mapa y el id del objeto y devuelve todas las unidades
 		afectadas por su ataque.*/

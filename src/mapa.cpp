@@ -8,10 +8,6 @@
 #define DIREC_EXPANSION_BASE -1 //define el numero base que se le resta
 //a la posicion central desde donde se genera la expansion ya sea del
 //gusano o la explosion del tanque
-	
-//ESTO VIENE EN EL CONFIG
-#define ANCHO_COMIDA_GUSANO 100
-#define ALTO_COMIDA_GUSANO 100
 
 #define RANGO_EXPASION 0 //ESTA HARDCODEADO. ESTO SE DEBERIA
 //CARGAR POR CONFIG. TANTO EXPASION DE GUSANO COMO LA EXPOSION DEL TANQUE
@@ -161,7 +157,7 @@ void Mapa::eliminar_objeto(int id_objeto) {
 	sacar_objeto();
 }
 
-std::vector<int> Mapa::desenterrar_gusano() {
+std::vector<int> Mapa::desenterrar_gusano(Root &root) {
 	int fila_random;
 	int columna_random;
 	bool espacio_valido = false;
@@ -172,10 +168,12 @@ std::vector<int> Mapa::desenterrar_gusano() {
 
 		std::pair<int, int> posicion_centro(fila_random, columna_random);
 		bool es_arena = verificar_terreno_alrededor(posicion_centro,
-		ALTO_COMIDA_GUSANO, ANCHO_COMIDA_GUSANO, "arena");
+		root["Gusano"].get("dimension_alto",0).asInt(), 
+		root["Gusano"].get("dimension_ancho",0).asInt(), "arena");
 		if (es_arena) {
 			objetivos = buscar_unidades_alrededor(posicion_centro, 
-			ALTO_COMIDA_GUSANO, ANCHO_COMIDA_GUSANO, false);
+			root["Gusano"].get("dimension_alto",0).asInt(),
+			 root["Gusano"].get("dimension_ancho",0).asInt(), false);
 			if (!objetivos.empty()) {
 				espacio_valido = true;
 			}

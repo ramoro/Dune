@@ -10,7 +10,8 @@ Permite la construcción de vehículos blindados como los tanques.*/
 class FabricaPesada: public Edificio{
 	public:
 		/*Constructor de la clase.*/
-		FabricaPesada(int id, int id_duenio, std::pair<int, int> centro);
+		FabricaPesada(int id, int id_duenio, std::pair<int, int> centro,
+		 Root &root);
 
 		/*Devuelve true si la fabrica pesada fue agregada al juego.
 		False en caso contrario.*/

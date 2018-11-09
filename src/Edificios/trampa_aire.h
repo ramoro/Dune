@@ -11,7 +11,8 @@ class TrampaAire: public Edificio{
 		int intervalo_generacion_energia; //medido en segundos
 	public:
 		/*Constructor de la clase.*/
-		TrampaAire(int id, int id_duenio, std::pair<int, int> centro);
+		TrampaAire(int id, int id_duenio, std::pair<int, int> centro,
+		 Root &root);
 
 		/*Devuelve true si se pudo agregar la trampa de aire al juego.
 		False en caso contrario.*/

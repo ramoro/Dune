@@ -3,8 +3,12 @@
 #define ID_PALACIO 7 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
-Palacio::Palacio(int id, int id_duenio, std::pair<int, int> centro) : 
-	Edificio(800, 2000, 1, id, id_duenio, 1, 1, centro) {
+Palacio::Palacio(int id, int id_duenio, std::pair<int, int> centro, Root &root) : 
+	Edificio(root["Palacio"].get("energia_requerida", 0).asInt(),
+	 root["Palacio"].get("costo", 0).asInt(),
+	 root["Palacio"].get("puntos_estructura", 0).asInt(),
+	  id, id_duenio, root["Palacio"].get("dimension_ancho", 0).asInt(),
+	   root["Palacio"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_PALACIO;
 	}
 

@@ -10,7 +10,8 @@ Permite la construccion de vehiculos ligeros como los Trike.*/
 class FabricaLigera: public Edificio{
 	public:
 		/*Constructor de la clase.*/
-		FabricaLigera(int id, int id_duenio, std::pair<int, int> centro);
+		FabricaLigera(int id, int id_duenio, std::pair<int, int> centro,
+		 Root &root);
 
 		/*Devuelve true si la fabrica ligera fue agregada al juego.
 		False en caso contrario.*/
