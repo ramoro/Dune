@@ -183,7 +183,9 @@ int main(int argc, char* argv[]) {
 
 int main(int argc, char* argv[]) {
   Partida partida;
-  partida.recibir_comando("e|0|22|33|4");
+  partida.agregar_jugador("jorge");
+  partida.agregar_jugador("asd");
+  partida.recibir_comando("e|0|7|33|4");
 }
 
 

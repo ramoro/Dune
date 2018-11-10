@@ -133,7 +133,6 @@ std::vector<int>& v) {
 
 void Partida::recibir_comando(std::string comando) {
 	std::vector<int> v;
-	Partida partida;
 	std::string accion = comando.substr(0,1);
 	std::string data = comando.substr(comando.find('|') + 1);
 	split(data, '|', v);
@@ -142,13 +141,13 @@ void Partida::recibir_comando(std::string comando) {
 		std::cout << v[i] << '\n';
 	}
 	if (accion == "e") {
-		partida.agregar_edificio(v[0], std::pair<int, int> (v[2], v[3]),
+		agregar_edificio(v[0], std::pair<int, int> (v[2], v[3]),
 		v[1]);
 	} else if (accion == "u") {
-		partida.agregar_unidad_movible(v[0], v[1]);
+		agregar_unidad_movible(v[0], v[1]);
 	} else if (accion == "m") {
-		partida.mover_unidad(v[0],std::pair<int, int> (v[1], v[2]));
+		mover_unidad(v[0],std::pair<int, int> (v[1], v[2]));
 	} else if (accion == "a") {
-		partida.atacar_objeto(v[0], v[1]);
+		atacar_objeto(v[0], v[1]);
 	}
 }
