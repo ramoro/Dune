@@ -1,5 +1,9 @@
 #include "server.h"
-//#include "partida.h"
+#include <cstdlib>
+#include <functional>
+#include <iostream>
+#include <vector>
+#include "partida.h"
 //#include "socket_error.h"
 
 #define MOVER 'm'

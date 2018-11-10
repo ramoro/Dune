@@ -115,3 +115,40 @@ std::pair<int, int> posicion_destino) {
 std::vector<int> Partida::generar_gusano() {
 	return mapa.desenterrar_gusano(root);
 }
+
+void Partida::split(const std::string& s, char c,
+std::vector<int>& v) {
+   std::string::size_type i = 0;
+   std::string::size_type j = s.find(c);
+
+   while (j != std::string::npos) {
+      v.push_back(atoi((s.substr(i, j-i)).c_str()));
+      i = ++j;
+      j = s.find(c, j);
+
+      if (j == std::string::npos)
+        v.push_back(atoi((s.substr(i, s.length())).c_str()));
+   }
+}
+
+void Partida::recibir_comando(std::string comando) {
+	std::vector<int> v;
+	Partida partida;
+	std::string accion = comando.substr(0,1);
+	std::string data = comando.substr(comando.find('|') + 1);
+	split(data, '|', v);
+
+	for (unsigned int i = 0; i < v.size(); ++i) {
+		std::cout << v[i] << '\n';
+	}
+	if (accion == "e") {
+		partida.agregar_edificio(v[0], std::pair<int, int> (v[2], v[3]),
+		v[1]);
+	} else if (accion == "u") {
+		partida.agregar_unidad_movible(v[0], v[1]);
+	} else if (accion == "m") {
+		partida.mover_unidad(v[0],std::pair<int, int> (v[1], v[2]));
+	} else if (accion == "a") {
+		partida.atacar_objeto(v[0], v[1]);
+	}
+}

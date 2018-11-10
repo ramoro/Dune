@@ -66,6 +66,11 @@ class Partida {
 		/*Devuelve un vector de ints con el id de la unidad comida.*/
 		std::vector<int> generar_gusano();
 
+		void recibir_comando(std::string comando);
+
+		void split(const std::string& s, char c,
+		std::vector<int>& v);
+
 	private:
 		/*Metodo recursivo que recibe un vector con el id de los objetos
 		afectados por el ataque de una unidad, un puntero al atacante y

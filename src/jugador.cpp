@@ -1,6 +1,7 @@
 #include "jugador.h"
 #include "Edificios/edificio.h"
 #include "UnidadesMovibles/unidad_movible.h"
+#include <iostream>
 
 Jugador::Jugador(std::string casa, Root &root): casa(casa) {
 	//dinero = 100000000; //INICIO DE DINERO DE UN JUGADOR -->HACER SETEABLE
