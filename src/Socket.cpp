@@ -201,3 +201,27 @@ Socket::~Socket(){
 	close(this->fd);
 }
 
+Socket::Socket(Socket&& other){
+  this->fd = other.fd;
+  this->port = other.port;
+  this->ptr = other.ptr;
+  
+  other.fd = -1;
+  other.port = -1;
+  other.ptr = NULL;
+}
+  
+Socket& Socket::operator=(Socket&& other){
+  if (this == &other) {
+    return *this; // other is myself!
+  }
+  this->fd = other.fd;
+  this->port = other.port;
+  this->ptr = other.ptr;
+  
+  other.fd = -1;
+  other.port = -1;
+  other.ptr = NULL;
+  return *this;
+}
+

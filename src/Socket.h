@@ -37,7 +37,16 @@ public:
 	void close_send_channel();
 	void close_recv_channel();
 	Socket* accept_connection();
-	~Socket();	
+	~Socket();
+	//Constructor por copia anulado
+  	Socket(const Socket& other) = delete;
+  	//Asignacion por copia anulada
+  	Socket& operator=(const Socket &other) = delete;
+  	//Constructor por movimiento
+  	Socket(Socket&& other); 
+  	//Asignacion por movimiento
+  	Socket& operator=(Socket&& other);
+
 };
 
 
