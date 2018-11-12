@@ -1,5 +1,6 @@
 #include "fake_client.h"
 #include <iostream>
+#include <string>
 
 Cliente::Cliente(const char *ip, const char *puerto) {
   //Socket *sckt = new Socket;
@@ -11,25 +12,9 @@ Cliente::Cliente(const char *ip, const char *puerto) {
 
 Cliente::operar() {
 	char *codigo;
-	while(true) {
-		socket.recv_msj(codigo, 1);
-		if(*codigo == 's') break;
-		if(*codigo == 'e') {
-			std::cout << socket.recv_int() << std::endl;
-			std::cout << socket.recv_int() << std::endl;
-			std::cout << socket.recv_int() << std::endl;
-			std::cout << socket.recv_int() << std::endl;
-			std::cout << socket.recv_int() << std::endl;
-			std::cout << socket.recv_int() << std::endl;
-			std::cout << socket.recv_int() << std::endl;
-		} else if (*codigo == 't') {
-			std::cout << socket.recv_int() << std::endl;
-			std::cout << socket.recv_int() << std::endl;
-			std::cout << socket.recv_int() << std::endl;
-			std::cout << socket.recv_int() << std::endl;
-			std::cout << socket.recv_int() << std::endl;
-		}
-	}
+	std::string mensaje("e|0|7|33|4");
+	socket->send_int(mensaje.size());
+	socket->send_string(mensaje, mensaje.size());
 }
 
 Cliente::~Cliente() {

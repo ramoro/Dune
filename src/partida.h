@@ -66,6 +66,10 @@ class Partida {
 		/*Devuelve un vector de ints con el id de la unidad comida.*/
 		std::vector<int> generar_gusano();
 
+		/*Recibe una determinada cantidad de ticks que pasaron en el juego
+		y actualiza el mismo segun ese tiempo transcurrido.*/
+		void actualizar_modelo(clock_t tiempo_transcurrido);
+
 		void recibir_comando(std::string comando);
 
 		void split(const std::string& s, char c,

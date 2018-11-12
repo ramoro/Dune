@@ -151,3 +151,7 @@ void Partida::recibir_comando(std::string comando) {
 		atacar_objeto(v[0], v[1]);
 	}
 }
+
+void Partida::actualizar_modelo(clock_t tiempo_transcurrido) {
+	mapa.actualizar(tiempo_transcurrido);
+}

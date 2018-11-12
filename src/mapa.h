@@ -103,6 +103,10 @@ class Mapa {
 		std::vector<std::pair<int, int>> mover(int id_unidad, 
 		std::pair<int, int> &pos_destino);
 
+		/*Actualiza todos los objetos del mapa/juego teniendo en cuenta
+		el tiempo transcurrido.*/
+		void actualizar(clock_t tiempo_transcurrido);
+
 		Mapa();
 
 	private:

@@ -325,3 +325,10 @@ std::pair<int, int> &pos_destino) {
 	&camino[camino.size() / 3]);
 	return sub_camino;
 }
+
+void Mapa::actualizar(clock_t tiempo_transcurrido) {
+	for (std::map<int, ObjetoDune>::iterator it = 
+	mapa_ids_objetos.begin(); it != mapa_ids_objetos.end(); ++it) {
+		//(it->second).actualizar();
+	}
+}

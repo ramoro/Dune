@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "partida.h"
+#include "juego.h"
 //#include "socket_error.h"
 
 #define MOVER 'm'
@@ -29,8 +30,13 @@ char *codigo) {
 }
 
 void Server::aceptar_cliente() {
+	Partida partida;
 	Socket *otro_socket = socket->accept_connection();
-	enviar_mapa(otro_socket);
+	Juego juego(std::move(*otro_socket), &partida);
+	juego.run();
+
+
+	//enviar_mapa(otro_socket);
 	/*Partida partida;
   	partida.agregar_jugador("je");
   	partida.agregar_jugador("asd");

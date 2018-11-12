@@ -5,7 +5,7 @@
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Refineria::Refineria(int id, int id_duenio, std::pair<int, int> centro,
  Root &root) : 
-	Edificio(root["Refineria"].get("energia_requerida", 0).asInt(),
+	Edificio(root["Refineria"].get("aporte_energetico", 0).asInt(),
 	 root["Refineria"].get("costo", 0).asInt(),
 	 root["Refineria"].get("puntos_estructura", 0).asInt(),
 	  id, id_duenio, root["Refineria"].get("dimension_ancho", 0).asInt(),

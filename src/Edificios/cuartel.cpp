@@ -5,7 +5,7 @@
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Cuartel::Cuartel(int id, int id_duenio, std::pair<int, int> centro,
  Root &root) :
-	Edificio(root["Cuartel"].get("energia_requerida", 0).asInt(),
+	Edificio(root["Cuartel"].get("aporte_energetico", 0).asInt(),
 	 root["Cuartel"].get("costo", 0).asInt(),
 	 root["Cuartel"].get("puntos_estructura", 0).asInt(),
 	  id, id_duenio, root["Cuartel"].get("dimension_ancho", 0).asInt(),

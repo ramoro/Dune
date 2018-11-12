@@ -1,20 +1,20 @@
 {
 	"CentroConstruccion": {
-		"energia_requerida": 0,
+		"aporte_energetico": 0,
 		"costo": 0,
 		"dimension_ancho": 300,
 		"dimension_alto": 300,
 		"puntos_estructura": 3000
 	},
 	"TrampaAire": {
-		"energia_requerida": 500,
+		"aporte_energetico": 500,
 		"costo": 300,
 		"dimension_ancho": 300,
 		"dimension_alto": 300,
 		"puntos_estructura": 500
 	},
 	"Refineria": {
-		"energia_requerida": 400,
+		"aporte_energetico": -400,
 		"costo": 500,
 		"dimension_ancho": 300,
 		"dimension_alto": 300,
@@ -22,7 +22,7 @@
 		"capacidad": 5000
 	},
 	"Silo": {
-		"energia_requerida": 100,
+		"aporte_energetico": -100,
 		"costo": 200,
 		"dimension_ancho": 100,
 		"dimension_alto": 100,
@@ -30,28 +30,28 @@
 		"capacidad": 1000
 	},
 	"FabricaLigera": {
-		"energia_requerida": 500,
+		"aporte_energetico": -500,
 		"costo": 800,
 		"dimension_ancho": 5,
 		"dimension_alto": 4,
 		"puntos_estructura": 500
 	},
 	"FabricaPesada": {
-		"energia_requerida": 300,
+		"aporte_energetico": -300,
 		"costo": 1500,
 		"dimension_ancho": 400,
 		"dimension_alto": 400,
 		"puntos_estructura": 1500
 	},
 	"Cuartel": {
-		"energia_requerida": 100,
+		"aporte_energetico": -100,
 		"costo": 300,
 		"dimension_ancho": 300,
 		"dimension_alto": 200,
 		"puntos_estructura": 300
 	},
 	"Palacio": {
-		"energia_requerida": 300,
+		"aporte_energetico": -300,
 		"costo": 2000,
 		"dimension_ancho": 300,
 		"dimension_alto": 300,

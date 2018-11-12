@@ -5,7 +5,7 @@
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 TrampaAire::TrampaAire(int id, int id_duenio, std::pair<int, int> centro,
  Root &root) : 
-	Edificio(root["TrampaAire"].get("energia_requerida", 0).asInt(),
+	Edificio(root["TrampaAire"].get("aporte_energetico", 0).asInt(),
 	 root["TrampaAire"].get("costo", 0).asInt(),
 	 root["TrampaAire"].get("puntos_estructura", 0).asInt(),
 	  id, id_duenio, root["TrampaAire"].get("dimension_ancho", 0).asInt(),

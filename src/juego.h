@@ -3,33 +3,40 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 #include "Socket.h"
 #include "cola_bloqueante.h"
 #include "protocolo_cliente.h"
 #include "partida.h"
 #include "thread.h"
 
-class Juego: public Thread {
+class Juego {
+  /*public Thread*/
   private:
-    Partida* partida;
     ColaBloqueante cola_envio;
     ColaBloqueante cola_recepcion;
+    Partida* partida;
     bool stopped = false;
-    bool ran = false;
-    ProtocoloCliente cliente;
+    bool terminado = false;
+    std::vector<ProtocoloCliente*> clientes;
 
   public:
-    /*Constructor de la clase.*/
+
     Juego();
+    /*Constructor de la clase.*/
+    Juego(Socket cliente, Partida *partida);
 
-    virtual void run() override;
+    //virtual 
+    void run();
+    //override;
 
-    void stop();
+    //void stop();
 
     /*Destructor de la clase.*/
-    virtual ~Juego();
+    //virtual ~Juego();
   
   private:
+    /*Prepara las colas para recibir y enviar mensajes.*/
     void hacer_ajustes_iniciales();
 
   };

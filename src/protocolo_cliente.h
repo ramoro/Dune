@@ -23,12 +23,21 @@ class ProtocoloCliente {
     estos.*/
     void agregar_colas(ColaBloqueante *cola_env, ColaBloqueante *cola_rec);
 
+    /*Lanza el hilo para empezar a recibir mensajes y el hilo
+    para mandar mensajes.*/
+    void inicializar();
 
-    void start();
+    /*Desencola mensajes de la cola bloqueante de envios que tiene
+    apuntando como atributo y manda los mensajes por socket.*/
+    void enviar_mensajes();
 
-    void send();
-    void receive();
-    void stop();
+    /*Recibe mensajes por socket y los encola en la cola
+    bloqueante de recibos que tiene apuntada como atributo.*/
+    void recibir_mensajes();
+    
+    /*Finaliza el envio y recibo de mensajes del cliente seteando
+    como false su atributo jugando.*/
+    void finalizar();
 
     /*Destructor de la clase.*/
     ~ProtocoloCliente();
