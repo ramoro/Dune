@@ -1,7 +1,8 @@
 #include "estado.h"
 #include "movimiento.h"
 
-std::shared_ptr<Estado> Estado::actualizar(UnidadMovible *unidad) {
+std::shared_ptr<Estado> Estado::actualizar(UnidadMovible *unidad, 
+Mapa &mapa) {
 	return NULL;
 }
 

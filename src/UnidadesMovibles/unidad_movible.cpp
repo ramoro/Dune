@@ -74,3 +74,8 @@ camino_a_seguir) {
 	camino = camino_a_seguir;
 	estado = estado->cambiar_a_movimiento();
 }
+
+void UnidadMovible::actualizar_unidad(clock_t tiempo_transcurrido, 
+Mapa &mapa) {
+	estado->actualizar(this, mapa);
+}

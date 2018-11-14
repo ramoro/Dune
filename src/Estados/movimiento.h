@@ -4,12 +4,14 @@
 #include <memory>
 #include "../UnidadesMovibles/unidad_movible.h"
 #include "estado.h"
+#include "../mapa.h"
 
 /*Clase que representa a un estado.*/
 class Movimiento: public Estado {
 	public:
 		/*Metodo virtual que acutaliza el estado.*/
-		virtual std::shared_ptr<Estado> actualizar(UnidadMovible *unidad);
+		virtual std::shared_ptr<Estado> actualizar(UnidadMovible *unidad,
+		Mapa &mapa);
 };
 
 #endif 

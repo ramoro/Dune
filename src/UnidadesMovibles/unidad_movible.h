@@ -82,6 +82,11 @@ class UnidadMovible: public ObjetoDune {
 		en movimiento.*/
 		void empezar_a_caminar(std::vector<std::pair<int, int>> 
 		camino_a_seguir);
+
+		/*Recibe el tiempo transcurridoy el mapa del juego
+		y segun el estado en el que se encuentre le objeto lo actualiza.*/
+		void actualizar_unidad(clock_t tiempo_transcurrido, 
+		Mapa &mapa);
 };
 
 #endif 
