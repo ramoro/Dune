@@ -1,4 +1,6 @@
 #include "protocolo_cliente.h"
+#include "socket_error.h"
+#include <iostream>
 
 ProtocoloCliente::ProtocoloCliente(Socket skt_clt) : 
 socket_cliente(std::move(skt_clt)) {
@@ -18,30 +20,42 @@ void ProtocoloCliente::inicializar() {
 }
 
 void ProtocoloCliente::enviar_mensajes() {
-	while (this->jugando) {
-		std::string mensaje = this->cola_envio->pop();
-		/* ver si perdio cliente
-		*/
-		/*ver si gano tambien*/
-		this->socket_cliente.send_int(mensaje.size());
-		this->socket_cliente.send_string(mensaje, mensaje.size());
+	try {
+		while (this->jugando) {
+			std::string mensaje = this->cola_envio->pop();
+			/* ver si perdio cliente
+			*/
+			/*ver si gano tambien*/
+			this->socket_cliente.send_int(mensaje.size());
+			this->socket_cliente.send_string(mensaje);
+		}
+	} catch (std::exception &e){
+		std::cerr << e.what() << " En ProtocoloCliente::enviar_mensajes" << std::endl;
 	}
 }
 
 void ProtocoloCliente::recibir_mensajes() {
-	while (this->jugando) {
-		int tam_msje = this->socket_cliente.recv_int();
-		std::string mensaje; 
-		this->socket_cliente.recv_string(tam_msje, mensaje);
-		this->cola_recepcion->push(mensaje);
+	try {
+		while (this->jugando) {
+			std::cout << "asdf" << std::endl;
+			int tam_msje = this->socket_cliente.recv_int();
+			std::string mensaje; 
+			this->socket_cliente.recv_string(tam_msje, mensaje);
+			this->cola_recepcion->push(mensaje);
+		}
+	} catch(SocketError &e){
+		if (this->jugando) {
+			std::cerr << e.what() << " En ProtocoloCliente::recibir_mensajes" << std::endl;	
+		}
+	} catch (std::exception &e){
+		std::cerr << e.what() << " En ProtocoloCliente::recibir_mensajes" << std::endl;
+	} catch (...) {
+		std::cout << "Error desconocido en ProtocoloCliente::recibir_mensajes" << std::endl;
 	}
 }
 
 void ProtocoloCliente::finalizar() {
 	this->jugando = false;
-}
-
-ProtocoloCliente::~ProtocoloCliente() {
 	this->t_envios.join();
 	this->t_recibos.join();
 }

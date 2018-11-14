@@ -29,7 +29,7 @@ public:
 	void socket_bind_and_listen(int cant_conex_espera);
 	void close_socket();
 	void send_msj(unsigned char *text,int size);
-	void send_string(std::string text,int size);
+	void send_string(std::string text);
 	int recv_msj(unsigned char *text,int max);
 	int recv_int();
 	void send_int(int number);

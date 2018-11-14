@@ -2,7 +2,6 @@
 
 #define ID_TRAMPA_AIRE 1 //para usarlo en el protocolo
 
-//DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 TrampaAire::TrampaAire(int id, int id_duenio, std::pair<int, int> centro,
  Root &root) : 
 	Edificio(root["TrampaAire"].get("aporte_energetico", 0).asInt(),

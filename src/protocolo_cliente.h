@@ -38,9 +38,6 @@ class ProtocoloCliente {
     /*Finaliza el envio y recibo de mensajes del cliente seteando
     como false su atributo jugando.*/
     void finalizar();
-
-    /*Destructor de la clase.*/
-    ~ProtocoloCliente();
 };
 
 #endif

@@ -57,7 +57,6 @@ class Jugador {
 		nueva unidad. False en caso contrario.*/
 		bool agregada_unidad(UnidadMovible* unidad);
 
-	private:
 		/*Recibe un valor y se lo resta al dinero del jugador.*/
 		void reducir_dinero(int valor);
 };

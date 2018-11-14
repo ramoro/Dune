@@ -2,7 +2,6 @@
 
 #define ID_REFINERIA 2 //para usarlo en el protocolo
 
-//DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Refineria::Refineria(int id, int id_duenio, std::pair<int, int> centro,
  Root &root) : 
 	Edificio(root["Refineria"].get("aporte_energetico", 0).asInt(),

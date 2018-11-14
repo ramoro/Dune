@@ -3,6 +3,7 @@
 
 #include <utility>
 #include <vector>
+#include "mensaje_protocolo.h"
 
 /*Clase abstracta que representa a un objeto del mundo dune que puede
 ser tanto un edificio como una unidad movible (vehiculos y 
@@ -20,6 +21,7 @@ class ObjetoDune {
 		int base;
 		int altura;
 		std::pair<int, int> centro;
+		MensajeProtocolo mensaje;
 
 	public:
 		/*Constructor de la clase.*/

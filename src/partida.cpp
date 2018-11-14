@@ -22,6 +22,7 @@ void Partida::agregar_jugador(std::string casa_jugador) {
 	contador_ids_jugadores++;
 }
 
+//DEBERIA PASAR COLA BLOQUEANTE
 std::shared_ptr<Edificio> Partida::agregar_edificio(int id_jugador, std::pair<int, int>
 posicion_central, int id_tipo_edificio) {
 	std::shared_ptr<Edificio> ptr_edificio = fabrica_edificios.crear_edificio(id_tipo_edificio,
@@ -33,6 +34,10 @@ posicion_central, int id_tipo_edificio) {
 		edificios.insert(std::pair<int, 
 		std::shared_ptr<Edificio>>(contador_ids_objetos, ptr_edificio));
 		contador_ids_objetos++;
+		ptr_edificio->serializar_mensaje_creacion_objeto(ptr_edificio);
+		/*PARTE COLA BLOQUEANTE/AL SACAR MENSAJE LUEGO DEBO LIMPIAR MENSAJE
+		cola.push(ptr_edificio.pedir_mensaje_protocolo());
+		*/
 	} else {
 		ptr_edificio = NULL;
 	}
@@ -87,24 +92,16 @@ void Partida::autodemoler_edificio(int id_edificio) {
 	(edificios.at(id_edificio))->pedir_id_duenio()));
 }
 
-std::pair<int, std::pair<int,int>> Partida::agregar_unidad_movible(
-int id_tipo_unidad, int id_edificio) {
-	edificios.at(id_edificio)->
-	pedir_id_duenio();
-	std::shared_ptr<UnidadMovible> unidad = (edificios.at(id_edificio))->
-	agregar_unidad(mapa, jugadores.at((edificios.at(id_edificio))->
-	pedir_id_duenio()), id_tipo_unidad, contador_ids_objetos,root);
-	std::pair<int, std::pair<int, int>> nueva_unidad;
-	if ((unidad->obtener_centro()).first != UNIDAD_NO_AGREGADA) {
-		nueva_unidad.first = contador_ids_objetos;
-		unidades_movibles.insert(std::pair<int, 
-		std::shared_ptr<UnidadMovible>> (contador_ids_objetos, unidad));
+bool Partida::se_puede_agregar_unidad_movible(int id_tipo_unidad, 
+int id_edificio) {
+	bool se_puede_agregar = ((edificios.at(id_edificio))->
+	se_puede_agregar_unidad(jugadores.at((edificios.at(id_edificio))->
+	pedir_id_duenio()), id_tipo_unidad, contador_ids_objetos,root));
+	if (se_puede_agregar) {
 		contador_ids_objetos++;
-	} else {
-		nueva_unidad.first = UNIDAD_NO_AGREGADA;
+		return true;
 	}
-	nueva_unidad.second = unidad->obtener_centro();
-	return nueva_unidad;
+	return false;
 }
 
 std::vector<std::pair<int, int>> Partida::mover_unidad(int id_unidad, 
@@ -116,42 +113,25 @@ std::vector<int> Partida::generar_gusano() {
 	return mapa.desenterrar_gusano(root);
 }
 
-void Partida::split(const std::string& s, char c,
-std::vector<int>& v) {
-   std::string::size_type i = 0;
-   std::string::size_type j = s.find(c);
-
-   while (j != std::string::npos) {
-      v.push_back(atoi((s.substr(i, j-i)).c_str()));
-      i = ++j;
-      j = s.find(c, j);
-
-      if (j == std::string::npos)
-        v.push_back(atoi((s.substr(i, s.length())).c_str()));
-   }
-}
-
-void Partida::recibir_comando(std::string comando) {
-	std::vector<int> v;
-	std::string accion = comando.substr(0,1);
-	std::string data = comando.substr(comando.find('|') + 1);
-	split(data, '|', v);
-
-	for (unsigned int i = 0; i < v.size(); ++i) {
-		std::cout << v[i] << '\n';
-	}
-	if (accion == "e") {
-		agregar_edificio(v[0], std::pair<int, int> (v[2], v[3]),
-		v[1]);
-	} else if (accion == "u") {
-		agregar_unidad_movible(v[0], v[1]);
-	} else if (accion == "m") {
-		mover_unidad(v[0],std::pair<int, int> (v[1], v[2]));
-	} else if (accion == "a") {
-		atacar_objeto(v[0], v[1]);
+void Partida::actualizar_creacion_unidades(std::shared_ptr<Edificio> 
+edificio, clock_t tiempo_transcurrido) {
+	bool entrenamiento_terminado = edificio->
+	avanzar_tiempo_creacion(tiempo_transcurrido);
+	if (entrenamiento_terminado) {
+		std::shared_ptr<UnidadMovible> unidad_nueva = edificio->
+		agregar_unidad(mapa); //VERIFICAR ESTE AGREGADO
+		unidades_movibles.insert(std::pair<int, 
+		std::shared_ptr<UnidadMovible>> (unidad_nueva->pedir_id(), 
+		unidad_nueva));
+		//mando sus datos por la cola bloqueante
 	}
 }
 
+//deberia pasarle cola bloqueante para desde aca dentro
+//mandar el mensaje sobre la unidad agregada
 void Partida::actualizar_modelo(clock_t tiempo_transcurrido) {
-	mapa.actualizar(tiempo_transcurrido);
+	for (std::map<int, std::shared_ptr<Edificio>>::iterator it_edifs = 
+	edificios.begin(); it_edifs != edificios.end(); ++it_edifs) {
+		actualizar_creacion_unidades((it_edifs->second), tiempo_transcurrido);
+	}
 }

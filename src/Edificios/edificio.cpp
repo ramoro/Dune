@@ -2,12 +2,16 @@
 #include "../observador.h"
 #include <iostream>
 
+#define INACTIVO 0
+#define ENTRENANDO 1
+
 Edificio::Edificio(int aporte_energetico, int costo_dinero,
 int puntos_estructura, int id, 
 int id_duenio, int base, int altura, std::pair<int, int> centro) :
 ObjetoDune(puntos_estructura, costo_dinero, id, id_duenio, base, altura,
 centro), aporte_energetico(aporte_energetico){
 	porcentaje_recuperacion = 0.5;
+	estado = INACTIVO;
 }
 
 int Edificio::obtener_aporte_energetico() {
@@ -28,12 +32,6 @@ int id_tipo_edificio) {
 		jugador.agregar_edificio(this, id_edificio, this->centro);
 		agregar_posible = true;
 	}
-	/*if (agregar_posible) {
-		for (std::vector<Observador*>::iterator it = observadores.begin();
-		it != observadores.end(); ++it) {
-			(*it)->agregar_edificio(this, id_edificio, posicion_central);
-		}
-	}*/
 	return agregar_posible;
 }
 
@@ -59,22 +57,64 @@ void Edificio::autodemoler(Mapa &mapa, Jugador &jugador) {
 	jugador.aumentar_dinero(porcentaje_recuperacion * this->costo_dinero);
 }
 
-std::shared_ptr<UnidadMovible> Edificio::agregar_unidad(Mapa &mapa, 
-Jugador &jugador, int id_tipo_unidad, int id_unidad, Root &root) {
+bool Edificio::se_puede_agregar_unidad(Jugador &jugador, 
+int id_tipo_unidad, int id_unidad, Root &root) {
 	std::pair<int,int> posicion_central(-1,-1);
 
 	std::shared_ptr<UnidadMovible> ptr_unidad = fabrica_unidades_movibles.
 	crear_unidad_movible(id_tipo_unidad, id_unidad, this->id_duenio, 
 	posicion_central,root);
 
-	if (!mapa.ubicar_unidad(this->id, posicion_central,
-		ptr_unidad->obtener_base(),ptr_unidad->obtener_altura())){
+	if (ptr_unidad->se_puede_agregar(jugador)) {
+		jugador.reducir_dinero(ptr_unidad->obtener_costo());
+		estado = ENTRENANDO;
+		unidades_entrenando.emplace_back(ptr_unidad);
+		return true;
+	}
+	return false;
+}
+
+void Edificio::serializar_mensaje_creacion_objeto(
+std::shared_ptr<ObjetoDune> objeto) {
+	mensaje.asignar_accion('c');
+	mensaje.agregar_parametro(objeto->pedir_id_tipo());
+	mensaje.agregar_parametro(objeto->pedir_id());
+	mensaje.agregar_parametro(objeto->obtener_base());
+	mensaje.agregar_parametro(objeto->obtener_altura());
+	mensaje.agregar_parametro((objeto->obtener_centro()).first);
+	mensaje.agregar_parametro((objeto->obtener_centro()).second);
+	mensaje.agregar_parametro(objeto->pedir_id_duenio());
+}
+
+std::shared_ptr<UnidadMovible> Edificio::agregar_unidad(Mapa &mapa) {
+	std::pair<int, int> pos_central;
+	if (!mapa.ubicar_unidad(this->id, pos_central, 
+		unidades_entrenando.front()->obtener_base(), 
+		unidades_entrenando.front()->obtener_altura())) {
 	}
 
-	ptr_unidad->set_centro(posicion_central);
+	unidades_entrenando.front()->set_centro(pos_central);
 
-	if (posicion_central.first != -1){
-		ptr_unidad->agregar(mapa, jugador);
-	}	
-	return ptr_unidad;
+	unidades_entrenando.front()->agregar(mapa);
+
+	std::shared_ptr<UnidadMovible> unidad_nueva = unidades_entrenando.front();
+	serializar_mensaje_creacion_objeto(unidad_nueva);
+	unidades_entrenando.pop_front();
+	if (unidades_entrenando.empty()) {
+		estado = INACTIVO;
+	}
+	return unidad_nueva;
+}
+
+bool Edificio::avanzar_tiempo_creacion(clock_t tiempo_transcurrido) {
+	if (estado == INACTIVO) {
+		return false;
+	} else {
+		int tiempo_faltante = unidades_entrenando.front()->
+		tiempo_creacion_faltante(tiempo_transcurrido);
+		if (tiempo_faltante <= 0) {
+			return true;
+		}
+		return false;
+	}
 }

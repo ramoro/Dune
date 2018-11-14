@@ -185,6 +185,8 @@ int main(int argc, char* argv[]) {
 int main(int argc, char* argv[]) {
   Juego juego;
   juego.run();
+  /*Server server(argv[1]);
+  server.aceptar_cliente();*/
 }
 
 

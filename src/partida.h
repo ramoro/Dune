@@ -51,10 +51,9 @@ class Partida {
 		void autodemoler_edificio(int id_edificio);
 
 		/*Recibe el id del tipo de unidad a crear y el id del edificio que
-		creara a la unidad y devuelve un par(id_unidad_creada, 
-		posicion_central). En caso de no haberse podido crear la unidad
-		se devolvera (-1, (-1, -1)).*/
-		std::pair<int, std::pair<int,int>> agregar_unidad_movible(
+		creara a la unidad y devuelve true si se puede crear la unidad,
+		false en caso contrario.*/
+		bool se_puede_agregar_unidad_movible(
 		int id_tipo_unidad, int id_edificio);
 
 		/*Recibe el id de una unidad y la posicion a donde moverla y devuelve
@@ -69,12 +68,7 @@ class Partida {
 		/*Recibe una determinada cantidad de ticks que pasaron en el juego
 		y actualiza el mismo segun ese tiempo transcurrido.*/
 		void actualizar_modelo(clock_t tiempo_transcurrido);
-
-		void recibir_comando(std::string comando);
-
-		void split(const std::string& s, char c,
-		std::vector<int>& v);
-
+		
 	private:
 		/*Metodo recursivo que recibe un vector con el id de los objetos
 		afectados por el ataque de una unidad, un puntero al atacante y
@@ -83,6 +77,11 @@ class Partida {
 		void ejecutar_ataque(std::vector<int> objetos_afectados, 
 		std::shared_ptr<UnidadMovible> atacante, std::vector<std::pair
 		<int, int>> &ids_vidas); 
+
+		/*Recibe el puntero al edificio a actualizar el tiempo de entenamiento
+		y el tiempo pasado.*/
+		void actualizar_creacion_unidades(std::shared_ptr<Edificio> 
+		edificio, clock_t tiempo_transcurrido);
 };
 
 #endif 

@@ -1,4 +1,5 @@
 #include "cola_bloqueante.h"
+#include <iostream>
 
 ColaBloqueante::ColaBloqueante(const unsigned int max_size) : 
 max_size(max_size) {}

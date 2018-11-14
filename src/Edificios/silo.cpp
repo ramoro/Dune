@@ -2,7 +2,6 @@
 
 #define ID_SILO 3 //para usarlo en el protocolo
 
-//DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Silo::Silo(int id, int id_duenio, std::pair<int, int> centro, Root &root) : 
 	Edificio(root["Silo"].get("aporte_energetico", 0).asInt(),
 	 root["Silo"].get("costo", 0).asInt(),

@@ -8,6 +8,9 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include <memory>
+
+class Estado;
 
 /*Clase abstracta que representa una unidad movible en el mundo de Dune
 que puede ser tanto un vehiculo como una unidad de infanteria.*/
@@ -15,7 +18,9 @@ class UnidadMovible: public ObjetoDune {
 	private:
 		int rango;
 		int velocidad; //en km/h
-		float tiempo_creacion; //en minutos
+		float tiempo_creacion; //en segundos
+		std::vector<std::pair<int, int>> camino; //esto deberia ser un vector de BALDOSAS
+		std::shared_ptr<Estado> estado;
 		
 	protected:
 		std::vector<Arma> armas;
@@ -60,14 +65,23 @@ class UnidadMovible: public ObjetoDune {
 		la unidad para poder ser creada.*/
 		std::vector<int> obtener_edificios_necesarios();
 
-		/*Recibe el mapa del juego y el jugador duenio de la unidad
-		y trata de agregarla. Devuelve true si la agrego, false en caso
-		contrario.*/
-		bool agregar(Mapa &mapa, Jugador 
-		&jugador);
+		/*Recibe el jugador duenio de la unidad y devuelve true si se puede
+		agregar la nueva unidad al jugador. False en caso contrario.*/
+		bool se_puede_agregar(Jugador &jugador); 
 
-		/*Setear centro*/
-		void set_centro(std::pair<int, int> centro);
+		/*Recibe el mapa del juego y agrega la nueva unidad al juego.*/
+		void agregar(Mapa &mapa);
+
+		/*Recibe una cantidad de segundos y se la disminuye 
+		al tiempo de creacion. Devuelve el tiempo de creacion
+		faltante para crear la unidad luego de haber disminuido los
+		segundos recibidos.*/
+		int tiempo_creacion_faltante(int segs);
+
+		/*Le asigna el camino a seguir a la unidad y setea su estado
+		en movimiento.*/
+		void empezar_a_caminar(std::vector<std::pair<int, int>> 
+		camino_a_seguir);
 };
 
 #endif 

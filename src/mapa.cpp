@@ -314,6 +314,8 @@ std::pair<int, int> &pos_destino) {
 	std::pair<int, int> centro_objeto = objeto.obtener_centro();
 	std::vector<std::pair<int, int>> camino = buscador_mejor_camino.
 	buscar_mejor_camino(*this, centro_objeto, pos_destino);
+	//objeto.empezar_a_caminar(camino);
+
 	marcar_estado_coordenadas_alrededor(centro_objeto, 
 	objeto.obtener_altura(), objeto.obtener_base(), false);
 	coordenadas[centro_objeto.first][centro_objeto.second].sacar_objeto();
@@ -324,11 +326,4 @@ std::pair<int, int> &pos_destino) {
 	std::vector<std::pair<int, int>> sub_camino(&camino[0], 
 	&camino[camino.size() / 3]);
 	return sub_camino;
-}
-
-void Mapa::actualizar(clock_t tiempo_transcurrido) {
-	for (std::map<int, ObjetoDune>::iterator it = 
-	mapa_ids_objetos.begin(); it != mapa_ids_objetos.end(); ++it) {
-		//(it->second).actualizar();
-	}
 }

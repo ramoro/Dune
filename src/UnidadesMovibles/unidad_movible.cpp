@@ -1,8 +1,7 @@
 #include "unidad_movible.h"
+#include "../Estados/estado.h"
 #include <stdlib.h> 
 #include <iostream>
-
-#define NO_AGREGADA -1
 
 UnidadMovible::UnidadMovible(int rango, int velocidad, 
 float tiempo_creacion, int costo_dinero, int vida, int id, int id_duenio,
@@ -54,20 +53,24 @@ std::vector<int> UnidadMovible::obtener_edificios_necesarios() {
 	return ids_tipos_edificios_necesarios;
 }
 
-bool UnidadMovible::agregar(Mapa &mapa, Jugador 
+bool UnidadMovible::se_puede_agregar(Jugador 
 &jugador) {
-	if (!jugador.agregada_unidad(this)) {
-		(this->centro).first = NO_AGREGADA;
-		(this->centro).second = NO_AGREGADA;
-		return false;
-	}
+	return (jugador.agregada_unidad(this));
+}
 
+void UnidadMovible::agregar(Mapa &mapa) {
 	std::cout << "unidad en x " << (this->centro).first << " y " << (this->centro).second << std::endl;
 	mapa.agregar_objeto(this, this->id,
 	this->centro);
-	return true;
 }
 
-void UnidadMovible::set_centro(std::pair<int, int> centro){
-	this->centro = centro;
+int UnidadMovible::tiempo_creacion_faltante(int segs) {
+	tiempo_creacion -= segs;
+	return tiempo_creacion;
+}
+
+void UnidadMovible::empezar_a_caminar(std::vector<std::pair<int, int>> 
+camino_a_seguir) {
+	camino = camino_a_seguir;
+	estado = estado->cambiar_a_movimiento();
 }

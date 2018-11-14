@@ -139,9 +139,10 @@ int Socket::recv_msj(unsigned char *text,int max){
 }
 
 
-void Socket::send_string(std::string text,int size){
-	unsigned char **t=reinterpret_cast<unsigned char**>(&text);
-	this->send_msj(*t,size);
+void Socket::send_string(std::string text){
+	//unsigned char **t=reinterpret_cast<unsigned char**>(&text);
+	//this->send_msj(*t,size);
+	this->send_msj((unsigned char*)text.c_str(), text.length());
 }
 
 
@@ -168,7 +169,7 @@ int Socket::recv_int(){
 		delete[] text;
 		return finish;
 	} else {
-		return -2;
+		throw SocketError("Error de socket: no se recibio nada.\n");
 	}
 }
 
@@ -197,8 +198,10 @@ void Socket::close_recv_channel(){
 
 
 Socket::~Socket(){
-	shutdown(this->fd,0);
-	close(this->fd);
+	if (this->fd != -1) {
+		shutdown(this->fd,0);
+		close(this->fd);
+	}
 }
 
 Socket::Socket(Socket&& other){
@@ -214,6 +217,9 @@ Socket::Socket(Socket&& other){
 Socket& Socket::operator=(Socket&& other){
   if (this == &other) {
     return *this; // other is myself!
+  }
+  if (this->fd != -1) {
+  	close(this->fd);
   }
   this->fd = other.fd;
   this->port = other.port;

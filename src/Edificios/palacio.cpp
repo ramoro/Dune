@@ -2,7 +2,6 @@
 
 #define ID_PALACIO 7 //para usarlo en el protocolo
 
-//DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Palacio::Palacio(int id, int id_duenio, std::pair<int, int> centro, Root &root) : 
 	Edificio(root["Palacio"].get("aporte_energetico", 0).asInt(),
 	 root["Palacio"].get("costo", 0).asInt(),
