@@ -39,8 +39,8 @@
 	"FabricaPesada": {
 		"aporte_energetico": -300,
 		"costo": 1500,
-		"dimension_ancho": 400,
-		"dimension_alto": 400,
+		"dimension_ancho": 50,
+		"dimension_alto": 50,
 		"puntos_estructura": 1500
 	},
 	"Cuartel": {
@@ -53,8 +53,8 @@
 	"Palacio": {
 		"aporte_energetico": -300,
 		"costo": 2000,
-		"dimension_ancho": 300,
-		"dimension_alto": 300,
+		"dimension_ancho": 50,
+		"dimension_alto": 50,
 		"puntos_estructura": 1000
 	},
 	"InfanteriaLigera": {
@@ -62,7 +62,8 @@
 		"velocidad": 16,
 		"tiempo_entrenamiento": 60,
 		"costo": 50,
-		"puntos_vida": 50
+		"puntos_vida": 50,
+		"edificios_necesarios": [6]
 	},
 	"InfanteriaPesada": {
 		"rango": 3,
@@ -71,7 +72,8 @@
 		"costo": 70,
 		"puntos_vida": 80,
 		"dimension_ancho": 50,
-		"dimension_alto": 50
+		"dimension_alto": 50,
+		"edificios_necesarios": [6]
 	},
 	"Fremen": {
 		"rango": 3,
@@ -80,7 +82,8 @@
 		"costo": 100,
 		"puntos_vida": 50,
 		"dimension_ancho": 50,
-		"dimension_alto": 50
+		"dimension_alto": 50,
+		"edificios_necesarios": [6, 7]
 	},
 	"Sardaukar": {
 		"rango": 3,
@@ -89,7 +92,8 @@
 		"costo": 100,
 		"puntos_vida": 80,
 		"dimension_ancho": 50,
-		"dimension_alto": 50
+		"dimension_alto": 50,
+		"edificios_necesarios": [6, 7]
 	},
 	"Trike": {
 		"rango": 4,
@@ -98,7 +102,8 @@
 		"costo": 100,
 		"puntos_vida": 80,
 		"dimension_ancho": 50,
-		"dimension_alto": 50
+		"dimension_alto": 50,
+		"edificios_necesarios": [4]
 	},
 	"Raider": {
 		"rango": 0,
@@ -107,7 +112,8 @@
 		"costo": 100,
 		"puntos_vida": 80,
 		"dimension_ancho": 1,
-		"dimension_alto": 1
+		"dimension_alto": 1,
+		"edificios_necesarios": [4]
 	},
 	"Tanque": {
 		"rango": 4,
@@ -116,7 +122,8 @@
 		"costo": 300,
 		"puntos_vida": 30,
 		"dimension_ancho": 50,
-		"dimension_alto": 50
+		"dimension_alto": 50,
+		"edificios_necesarios": [5]
 	},
 	"Tanque sonico": {
 		"rango": 4,
@@ -125,7 +132,8 @@
 		"costo": 300,
 		"puntos_vida": 300,
 		"dimension_ancho": 50,
-		"dimension_alto": 50
+		"dimension_alto": 50,
+		"edificios_necesarios": [5, 7]
 	},
 	"Desviador": {
 		"rango": 5,
@@ -134,7 +142,8 @@
 		"costo": 400,
 		"puntos_vida": 300,
 		"dimension_ancho": 50,
-		"dimension_alto": 50
+		"dimension_alto": 50,
+		"edificios_necesarios": [5, 7]
 	},
 	"Devastador": {
 		"rango": 4,
@@ -143,7 +152,9 @@
 		"costo": 400,
 		"puntos_vida": 400,
 		"dimension_ancho": 50,
-		"dimension_alto": 50
+		"dimension_alto": 50,
+		"danio_explosion": 20,
+		"edificios_necesarios": [5, 7]
 	},
 	"Cosechadora": {
 		"rango": 2,
@@ -152,7 +163,8 @@
 		"costo": 300,
 		"puntos_vida": 600,
 		"dimension_ancho": 50,
-		"dimension_alto": 50
+		"dimension_alto": 50,
+		"edificios_necesarios": [5]
 	},
 	"RifleAsalto": {
 		"danio": 2,

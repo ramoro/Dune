@@ -81,6 +81,10 @@ add_library(sdldemo STATIC
  src/Edificios/cuartel.h
  src/Edificios/palacio.cpp
  src/Edificios/palacio.h
+ src/Estados/estado.cpp
+ src/Estados/estado.h
+ src/Estados/movimiento.cpp
+ src/Estados/movimiento.h 
 )
 set(CMAKE_BUILD_TYPE Debug)
 # Agrego la carpeta con los headers autogenerados a los includes
@@ -113,6 +117,14 @@ add_executable (main
  src/server.h
  src/root.cpp
  src/root.h
+ src/juego.cpp
+ src/juego.h
+ src/cola_bloqueante.cpp
+ src/cola_bloqueante.h
+ src/protocolo_cliente.cpp
+ src/protocolo_cliente.h
+ src/mensaje_protocolo.cpp
+ src/mensaje_protocolo.h
 )
 
 

@@ -11,7 +11,8 @@ todo aquel que este cerca.*/
 class Devastador: public Vehiculo {
 	private:
 		int danio_explosion;
-		
+		std::vector<int> config_explosion;
+
 	public:
 		/*Constructor de la clase.*/
 		Devastador(int id, int id_duenio, std::pair<int, int> centro, 

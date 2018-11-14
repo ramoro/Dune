@@ -180,16 +180,16 @@ int main(int argc, char* argv[]) {
 
 	}
 }*/
-
+/*
 
 int main(int argc, char* argv[]) {
   Juego juego;
   juego.run();
-  /*Server server(argv[1]);
-  server.aceptar_cliente();*/
+  Server server(argv[1]);
+  server.aceptar_cliente();
 }
 
-
+*/
 /*
 
 int main() {
@@ -235,18 +235,20 @@ int main() {
 }*/
 
 //MAIN NACHO
-/*int main() {
-  Root json("../src/input.json");
+int main() {
   Partida partida;
-  partida.agregar_jugador("harkonnen",json);
+  partida.agregar_jugador("harkonnen");
   //std::pair<int, int> centro(100, 100);
   //bool agregado = partida.agregar_edificio(0, centro, 0);
   //std::cout << agregado << std::endl;
   //std::pair<int, std::pair<int ,int>> nueva_unidad = partida.agregar_unidad_movible(2,0);
   //std::cout << "ID nueva unidad " << nueva_unidad.first << std::endl;
-  partida.agregar_edificio(0, std::pair<int, int>(400,400), 4);
+  //partida.agregar_edificio(0, std::pair<int, int>(400,400), 4);
+  partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
+  partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
+/*
   for (int i = 0; i < 2 ; i++) {
-    std::pair<int, std::pair<int, int>> nueva_unidad = partida.agregar_unidad_movible(15,0);
-    std::cout << "ID nueva unidad " << nueva_unidad.first << std::endl;
-  }
-}*/
+    std::cout << "ID nueva unidad " << partida.se_puede_agregar_unidad_movible(15,0) << std::endl;
+  }*/
+  std::cout << "ID nueva unidad " << partida.se_puede_agregar_unidad_movible(19,1) << std::endl;
+}

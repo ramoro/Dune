@@ -21,8 +21,9 @@ Sardaukar::Sardaukar(int id, int id_duenio, std::pair<int, int> centro,
 		armas.push_back(LanzaMisiles(lanza_misiles));
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;
-		ids_tipos_edificios_necesarios.push_back(6);
-		ids_tipos_edificios_necesarios.push_back(7);
+		for (unsigned int i = 0; i < root["Sardaukar"]["edificios_necesarios"].size(); i++) {
+			ids_tipos_edificios_necesarios.push_back(root["Sardaukar"]["edificios_necesarios"][i].asInt());
+		}
 	}
 
 std::vector<int> Sardaukar::atacar_objetivo(Mapa &mapa, int id_objetivo) {

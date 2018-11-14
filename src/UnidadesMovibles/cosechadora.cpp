@@ -15,7 +15,9 @@ Cosechadora::Cosechadora(int id, int id_duenio, std::pair<int, int> centro,
 		id_tipo = ID_COSECHADORA;
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;
-		ids_tipos_edificios_necesarios.push_back(5);
+		for (unsigned int i = 0; i < root["Cosechadora"]["edificios_necesarios"].size(); i++) {
+			ids_tipos_edificios_necesarios.push_back(root["Cosechadora"]["edificios_necesarios"][i].asInt());
+		}
 	}
 
 std::vector<int> Cosechadora::atacar_objetivo(Mapa &mapa, int id_objetivo) {

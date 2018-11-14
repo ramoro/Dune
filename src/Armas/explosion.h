@@ -2,6 +2,7 @@
 #define EXPLOSION_H
 
 #include "arma.h"
+#include <vector>
 
 /*Clase que representa una explosion en el mundo de Dune.*/
 class Explosion: public Arma {
@@ -10,7 +11,7 @@ class Explosion: public Arma {
 		int dimesion_base;
 	public:
 		/*Constructor de la clase.*/
-		Explosion();
+		Explosion(std::vector<int> &config_explosion);
 
 		/*Devuelve la dimension en altura de la explosion.*/
 		int pedir_dimension_altura();

@@ -6,7 +6,6 @@
 Jugador::Jugador(std::string casa, Root &root): casa(casa) {
 	//dinero = 100000000; //INICIO DE DINERO DE UN JUGADOR -->HACER SETEABLE
 	dinero = root["Jugadores"].get("dinero", 0).asInt();
-	std::cout << "dinero inicial " << dinero << std::endl; 
 	capacidad_especia = 0;
 	capacidad_especia_disponible = 0;
 	energia_disponible = 0;

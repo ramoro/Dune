@@ -20,8 +20,9 @@ TanqueSonico::TanqueSonico(int id, int id_duenio, std::pair<int, int> centro,
 		expansion_base_arma_sonica = 50;
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;
-		ids_tipos_edificios_necesarios.push_back(5);
-		ids_tipos_edificios_necesarios.push_back(7);
+		for (unsigned int i = 0; i < root["Tanque sonico"]["edificios_necesarios"].size(); i++) {
+			ids_tipos_edificios_necesarios.push_back(root["Tanque sonico"]["edificios_necesarios"][i].asInt());
+		}
 	}
 
 std::vector<int> TanqueSonico::atacar_objetivo(Mapa &mapa, int id_objetivo) {
