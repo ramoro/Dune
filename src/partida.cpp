@@ -17,7 +17,7 @@ Partida::Partida() {
 
 void Partida::agregar_jugador(std::string casa_jugador) {
 	Jugador jugador(casa_jugador,root);
-	jugadores.insert(std::pair<int, Jugador>(contador_ids_jugadores, 
+	jugadores.emplace(std::pair<int, Jugador>(contador_ids_jugadores, 
 	jugador));
 	contador_ids_jugadores++;
 }
@@ -31,7 +31,7 @@ posicion_central, int id_tipo_edificio) {
 	bool agregado = ptr_edificio->agregar_al_juego(mapa, jugadores.at(id_jugador), 
 	contador_ids_objetos, id_tipo_edificio);
 	if (agregado) {
-		edificios.insert(std::pair<int, 
+		edificios.emplace(std::pair<int, 
 		std::shared_ptr<Edificio>>(contador_ids_objetos, ptr_edificio));
 		contador_ids_objetos++;
 		ptr_edificio->serializar_mensaje_creacion_objeto(ptr_edificio);
@@ -104,9 +104,11 @@ int id_edificio) {
 	return false;
 }
 
-std::vector<std::pair<int, int>> Partida::mover_unidad(int id_unidad, 
-std::pair<int, int> posicion_destino) {
-	return mapa.mover(id_unidad, posicion_destino);
+void Partida::comenzar_movimiento_unidad(
+int id_unidad, std::pair<int, int> posicion_destino) {
+	unidades_movibles.at(id_unidad)->empezar_a_mover(mapa, 
+	posicion_destino);
+	//return mapa.mover(id_unidad, posicion_destino);
 }
 
 std::vector<int> Partida::generar_gusano() {
@@ -114,22 +116,22 @@ std::vector<int> Partida::generar_gusano() {
 }
 
 void Partida::actualizar_creacion_unidades(std::shared_ptr<Edificio> 
-edificio, clock_t tiempo_transcurrido) {
+edificio, double tiempo_transcurrido) {
 	bool entrenamiento_terminado = edificio->
 	avanzar_tiempo_creacion(tiempo_transcurrido);
 	if (entrenamiento_terminado) {
 		std::shared_ptr<UnidadMovible> unidad_nueva = edificio->
-		agregar_unidad(mapa); //VERIFICAR ESTE AGREGADO
-		unidades_movibles.insert(std::pair<int, 
+		agregar_unidad(mapa); //VERIFICAR ESTE AGREGADO CON GDB LUEGO
+		unidades_movibles.emplace(std::pair<int, 
 		std::shared_ptr<UnidadMovible>> (unidad_nueva->pedir_id(), 
 		unidad_nueva));
 		//mando sus datos por la cola bloqueante
 	}
 }
 
-//deberia pasarle cola bloqueante para desde aca dentro
+//deberia pasarle COLA BLOQUEANTE para desde aca dentro
 //mandar el mensaje sobre la unidad agregada
-void Partida::actualizar_modelo(clock_t tiempo_transcurrido) {
+void Partida::actualizar_modelo(double tiempo_transcurrido) {
 	for (std::map<int, std::shared_ptr<Edificio>>::iterator it_edifs = 
 	edificios.begin(); it_edifs != edificios.end(); ++it_edifs) {
 		actualizar_creacion_unidades((it_edifs->second), tiempo_transcurrido);

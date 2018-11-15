@@ -83,7 +83,7 @@ class Edificio: public ObjetoDune {
 		faltante en caso de que se este entrenando a una unidad. Devuelve
 		false si no se esta entrenando una unidad o si no se termino
 		de entrenar la que se estaba entrenando. True en caso contrario.*/
-		bool avanzar_tiempo_creacion(clock_t tiempo_transcurrido); 
+		bool avanzar_tiempo_creacion(double tiempo_transcurrido); 
 };
 
 #endif

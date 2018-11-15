@@ -20,16 +20,24 @@ TanqueSonico::TanqueSonico(int id, int id_duenio, std::pair<int, int> centro,
 		expansion_base_arma_sonica = 50;
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;
-		for (unsigned int i = 0; i < root["Tanque sonico"]["edificios_necesarios"].size(); i++) {
-			ids_tipos_edificios_necesarios.push_back(root["Tanque sonico"]["edificios_necesarios"][i].asInt());
+		for (unsigned int i = 0; i < 
+		root["Tanque sonico"]["edificios_necesarios"].size(); i++) {
+			ids_tipos_edificios_necesarios.push_back(
+			root["Tanque sonico"]["edificios_necesarios"][i].asInt());
 		}
 	}
 
 std::vector<int> TanqueSonico::atacar_objetivo(Mapa &mapa, int id_objetivo) {
 	std::vector<int> objetivos = UnidadMovible::atacar(mapa, id_objetivo);
 	if (!objetivos.empty()) {
-		return mapa.buscar_unidades_alrededor(this->centro, this->altura,
-		this->base, false);
+		std::vector<ObjetoDune*> afectados = mapa.buscar_unidades_alrededor(
+		this->centro, this->altura, this->base, false, false, -1);
+		std::vector<int> ids_objetivos;
+		for (std::vector<ObjetoDune*>::iterator it = afectados.begin();
+		it != afectados.end(); ++it) {
+			ids_objetivos.push_back((*it)->pedir_id());
+		}
+		return ids_objetivos;
 	}
 	return objetivos;
 }

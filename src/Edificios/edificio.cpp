@@ -4,6 +4,7 @@
 
 #define INACTIVO 0
 #define ENTRENANDO 1
+#define CODIGO_CREACION 'c'
 
 Edificio::Edificio(int aporte_energetico, int costo_dinero,
 int puntos_estructura, int id, 
@@ -76,7 +77,7 @@ int id_tipo_unidad, int id_unidad, Root &root) {
 
 void Edificio::serializar_mensaje_creacion_objeto(
 std::shared_ptr<ObjetoDune> objeto) {
-	mensaje.asignar_accion('c');
+	mensaje.asignar_accion(CODIGO_CREACION);
 	mensaje.agregar_parametro(objeto->pedir_id_tipo());
 	mensaje.agregar_parametro(objeto->pedir_id());
 	mensaje.agregar_parametro(objeto->obtener_base());
@@ -106,7 +107,7 @@ std::shared_ptr<UnidadMovible> Edificio::agregar_unidad(Mapa &mapa) {
 	return unidad_nueva;
 }
 
-bool Edificio::avanzar_tiempo_creacion(clock_t tiempo_transcurrido) {
+bool Edificio::avanzar_tiempo_creacion(double tiempo_transcurrido) {
 	if (estado == INACTIVO) {
 		return false;
 	} else {

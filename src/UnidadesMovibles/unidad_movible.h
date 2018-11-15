@@ -9,6 +9,7 @@
 #include <vector>
 #include <utility>
 #include <memory>
+#include <list>
 
 class Estado;
 
@@ -19,7 +20,7 @@ class UnidadMovible: public ObjetoDune {
 		int rango;
 		int velocidad; //en km/h
 		float tiempo_creacion; //en segundos
-		std::vector<std::pair<int, int>> camino; //esto deberia ser un vector de BALDOSAS
+		std::list<std::pair<int, int>> camino; //esto deberia ser un vector de BALDOSAS
 		std::shared_ptr<Estado> estado;
 		
 	protected:
@@ -65,6 +66,16 @@ class UnidadMovible: public ObjetoDune {
 		la unidad para poder ser creada.*/
 		std::vector<int> obtener_edificios_necesarios();
 
+		/*Devuelve el rango de ataque filas o la cantidad de espacios
+		de forma horizontal hasta donde se extiende el rango de vision
+		de la unidad.*/
+		int obtener_rango_ataque_filas();
+
+		/*Devuelve el rango de ataque filas o la cantidad de espacios
+		de forma vertical hasta donde se extiende el rango de vision
+		de la unidad.*/
+		int obtener_rango_ataque_columnas();
+
 		/*Recibe el jugador duenio de la unidad y devuelve true si se puede
 		agregar la nueva unidad al jugador. False en caso contrario.*/
 		bool se_puede_agregar(Jugador &jugador); 
@@ -76,17 +87,41 @@ class UnidadMovible: public ObjetoDune {
 		al tiempo de creacion. Devuelve el tiempo de creacion
 		faltante para crear la unidad luego de haber disminuido los
 		segundos recibidos.*/
-		int tiempo_creacion_faltante(int segs);
+		int tiempo_creacion_faltante(double segs);
 
 		/*Le asigna el camino a seguir a la unidad y setea su estado
 		en movimiento.*/
-		void empezar_a_caminar(std::vector<std::pair<int, int>> 
-		camino_a_seguir);
+		void empezar_a_mover(Mapa &mapa, std::pair<int, int> 
+		pos_destino);
 
 		/*Recibe el tiempo transcurridoy el mapa del juego
 		y segun el estado en el que se encuentre le objeto lo actualiza.*/
-		void actualizar_unidad(clock_t tiempo_transcurrido, 
+		void actualizar_unidad(double tiempo_transcurrido, 
 		Mapa &mapa);
+
+		/*Devuelve la lista de posiciones que debe recorrer la unidad
+		para llegar a la posicion de destino. Para ello la unidad
+		debe estar en movimiento. Sino se devolvera una lista vacia. */
+		std::list<std::pair<int, int>> pedir_camino();
+
+		/*Saca la primera posicion del camino armado para la unidad, indicando
+		que avanzo a esa posicion.*/
+		void avanzar_camino();
+
+		/*Recibe un camino de posiciones y se lo asgina a la unidad.*/
+		void asignar_nuevo_camino(std::list<std::pair<int, int>>
+		nuevo_camino);
+
+		/* Se agrega la accion unidad recien movida y los parametros 
+		adjuntos a la misma segun el protocolo a la clase 
+		MensajeProtocolo de la unidad.*/
+		void serializar_mensaje_movimiento(); 
+
+
+		/*Se agrega la accion de ataque ejecutada por la unidad dentro 
+		del juego y los parametros adjuntos a la 
+		misma segun el protocolo a la clase MensajeProtocolo de la unidad.*/
+		void serializar_mensaje_ataque();
 };
 
 #endif 

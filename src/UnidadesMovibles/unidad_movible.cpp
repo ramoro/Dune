@@ -3,6 +3,9 @@
 #include <stdlib.h> 
 #include <iostream>
 
+#define CODIGO_MOVIMIENTO 'm'
+#define CODIGO_ATAQUE 'a'
+
 UnidadMovible::UnidadMovible(int rango, int velocidad, 
 float tiempo_creacion, int costo_dinero, int vida, int id, int id_duenio,
 int base, int altura, std::pair<int, int> centro) :
@@ -53,6 +56,14 @@ std::vector<int> UnidadMovible::obtener_edificios_necesarios() {
 	return ids_tipos_edificios_necesarios;
 }
 
+int UnidadMovible::obtener_rango_ataque_filas() {
+	return rango_ataque_fila;
+}
+
+int UnidadMovible::obtener_rango_ataque_columnas() {
+	return rango_ataque_columna;
+}
+
 bool UnidadMovible::se_puede_agregar(Jugador 
 &jugador) {
 	return (jugador.agregada_unidad(this));
@@ -64,18 +75,54 @@ void UnidadMovible::agregar(Mapa &mapa) {
 	this->centro);
 }
 
-int UnidadMovible::tiempo_creacion_faltante(int segs) {
+int UnidadMovible::tiempo_creacion_faltante(double segs) {
 	tiempo_creacion -= segs;
 	return tiempo_creacion;
 }
 
-void UnidadMovible::empezar_a_caminar(std::vector<std::pair<int, int>> 
-camino_a_seguir) {
-	camino = camino_a_seguir;
+void UnidadMovible::empezar_a_mover(Mapa &mapa, std::pair<int, int> 
+pos_destino) {
+	camino = mapa.obtener_camino(this->centro, pos_destino);
 	estado = estado->cambiar_a_movimiento();
 }
 
-void UnidadMovible::actualizar_unidad(clock_t tiempo_transcurrido, 
+void UnidadMovible::actualizar_unidad(double tiempo_transcurrido, 
 Mapa &mapa) {
-	estado->actualizar(this, mapa);
+	//por si sale algo mal y no se vacio del todo el camino
+	//cuando la unidad llego
+	if (camino.empty()) return;
+
+	std::shared_ptr<Estado> nuevo_estado = estado->actualizar(this, mapa,
+	tiempo_transcurrido);
+	
+	//si no es null le asigno el nuevo estado
+	if (nuevo_estado) {
+		estado = nuevo_estado;
+	}
+}
+
+std::list<std::pair<int, int>> UnidadMovible::pedir_camino() {
+	return camino;
+}
+
+void UnidadMovible::avanzar_camino() {
+	camino.pop_front();
+}
+
+void UnidadMovible::asignar_nuevo_camino(std::list<std::pair<int, int>>
+nuevo_camino) {
+	camino = nuevo_camino;
+}
+
+void UnidadMovible::serializar_mensaje_movimiento() {
+	mensaje.asignar_accion(CODIGO_MOVIMIENTO);
+	mensaje.agregar_parametro(this->id);
+	mensaje.agregar_parametro(this->centro.first);
+	mensaje.agregar_parametro(this->centro.second);
+}
+
+void UnidadMovible::serializar_mensaje_ataque() {
+	mensaje.asignar_accion(CODIGO_ATAQUE);
+	mensaje.agregar_parametro(this->id);
+	//AGREGO ID ATACADA O NO?
 }

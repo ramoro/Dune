@@ -2,7 +2,7 @@
 #include "movimiento.h"
 
 std::shared_ptr<Estado> Estado::actualizar(UnidadMovible *unidad, 
-Mapa &mapa) {
+Mapa &mapa, double tiempo_transcurrido) {
 	return NULL;
 }
 

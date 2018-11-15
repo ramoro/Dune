@@ -18,7 +18,8 @@ Raider::Raider(int id, int id_duenio, std::pair<int, int> centro,Root &root) :
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;
 		for (unsigned int i = 0; i < root["Raider"]["edificios_necesarios"].size(); i++) {
-			ids_tipos_edificios_necesarios.push_back(root["Raider"]["edificios_necesarios"][i].asInt());
+			ids_tipos_edificios_necesarios.push_back(
+			root["Raider"]["edificios_necesarios"][i].asInt());
 		}
 	}
 

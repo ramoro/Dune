@@ -8,9 +8,10 @@
 /*Clase que representa a un estado.*/
 class Estado {
 	public:
-		/*Metodo virtual que acutaliza el estado.*/
+		/*Metodo virtual que recibe un puntero a una unidad movible, al mapa y
+		el tiempo transcurrido y actualiza su estado dentro del mismo.*/
 		virtual std::shared_ptr<Estado> actualizar(UnidadMovible *unidad,
-		Mapa &mapa) = 0;
+		Mapa &mapa, double tiempo_transcurrido) = 0;
 
 		/*Devuelve un puntero al estado movimiento.*/
 		std::shared_ptr<Estado> cambiar_a_movimiento();

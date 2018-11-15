@@ -38,9 +38,10 @@ centro_objeto2, int altura_objeto2, int base_objeto2) {
 	return false;
 }
 
-std::vector<int> Mapa::buscar_unidades_alrededor(std::pair<int, int>
-centro_unidad, int altura, int base, bool verificar_asentamiento) {
-	std::vector<int> unidades_alrededor;
+std::vector<ObjetoDune*> Mapa::buscar_unidades_alrededor(std::pair<int, int>
+centro_unidad, int altura, int base, bool verificar_asentamiento,
+bool verificar_ataque_a_enemigo, int id_duenio) {
+	std::vector<ObjetoDune*> unidades_alrededor;
 
 	for (std::map<int, ObjetoDune>::iterator it = 
 	mapa_ids_objetos.begin(); it != mapa_ids_objetos.end(); ++it) {
@@ -48,9 +49,17 @@ centro_unidad, int altura, int base, bool verificar_asentamiento) {
 		//abarcado por la base y la altura
 		if(esta_dentro((it->second).obtener_centro(), centro_unidad, 
 		altura, base)) {
+			//si tienen el mismo centro es que es la misma unidad, la salteo
 			if (it->second.obtener_centro() == centro_unidad) continue;
-			unidades_alrededor.push_back(it->first);
-			if (verificar_asentamiento) break;
+			if (verificar_ataque_a_enemigo) {
+				if (id_duenio != (it->second).pedir_id_duenio()) {
+					unidades_alrededor.push_back(&(it->second));
+					break;
+				}
+			} else {
+				unidades_alrededor.push_back(&(it->second));
+				if (verificar_asentamiento) break;
+			}
 		}
 		//en caso de querer poner un edificio por cada objeto dune
 		//me fijo que no se encuentre atravezando el espacio donde
@@ -69,7 +78,7 @@ centro_unidad, int altura, int base, bool verificar_asentamiento) {
 				obtener_centro().first) + (*it_direc).first, ((it->second).
 				obtener_centro().second) + (*it_direc).second);
 				if(esta_dentro(pos_a_verificar, centro_unidad, altura, base)) {
-					unidades_alrededor.push_back(it->first);
+					unidades_alrededor.push_back(&(it->second));
 					espacio_invalido = true;
 					break;
 				}
@@ -137,7 +146,7 @@ std::pair<int, int> &centro) {
 	int base_objeto1 = objeto->obtener_base();
 	int altura_objeto1 = objeto->obtener_altura();
 	coordenadas[centro.first][centro.second].poner_objeto(objeto);
-	mapa_ids_objetos.insert(std::pair<int, 
+	mapa_ids_objetos.emplace(std::pair<int, 
 	ObjetoDune>(id_objeto, *objeto));
 	marcar_estado_coordenadas_alrededor(centro, altura_objeto1, base_objeto1, 
 	true);
@@ -161,7 +170,7 @@ std::vector<int> Mapa::desenterrar_gusano(Root &root) {
 	int fila_random;
 	int columna_random;
 	bool espacio_valido = false;
-	std::vector<int> objetivos;
+	std::vector<ObjetoDune*> objetivos;
 	while(!espacio_valido) {
 		fila_random = rand() % coordenadas.size();
 		columna_random = rand() % coordenadas.size();
@@ -173,18 +182,20 @@ std::vector<int> Mapa::desenterrar_gusano(Root &root) {
 		if (es_arena) {
 			objetivos = buscar_unidades_alrededor(posicion_centro, 
 			root["Gusano"].get("dimension_alto",0).asInt(),
-			 root["Gusano"].get("dimension_ancho",0).asInt(), false);
+			root["Gusano"].get("dimension_ancho",0).asInt(), false, 
+			false, -1);
 			if (!objetivos.empty()) {
 				espacio_valido = true;
 			}
 		}
 	}
-
-	for (std::vector<int>::iterator it = objetivos.begin();
+	std::vector<int> ids_objetivos;
+	for (std::vector<ObjetoDune*>::iterator it = objetivos.begin();
 	it != objetivos.end(); ++it) {
-		eliminar_objeto(*it);
+		ids_objetivos.push_back((*it)->pedir_id());
+		eliminar_objeto((*it)->pedir_id());
 	}
-	return objetivos;
+	return ids_objetivos;
 }
 
 unsigned int Mapa::pedir_limite_filas() {
@@ -202,19 +213,17 @@ std::string Mapa::pedir_terreno_coordenada(std::pair<int, int> posicion) {
 bool Mapa::agregado_edificio(ObjetoDune* objeto) {
 	std::pair<int, int> posicion_central = objeto->obtener_centro();
 	bool terreno_valido;
-	std::vector<int> unidades_alrededor; 
+	std::vector<ObjetoDune*> unidades_alrededor; 
 	terreno_valido = verificar_terreno_alrededor(posicion_central, 
 	objeto->obtener_altura(), objeto->obtener_base(), "roca");
 	//verifico que no haya ninguna unidad o edificio dentro del espacio
 	//donde se quiere poner el objeto
 	unidades_alrededor = buscar_unidades_alrededor(posicion_central, 
-	objeto->obtener_altura(), objeto->obtener_base(), true);
+	objeto->obtener_altura(), objeto->obtener_base(), true, false, -1);
 	if(terreno_valido && unidades_alrededor.empty()) {
 		return true;
 	}
 	return false;
-	//FALTA ANALIZAR CASO BORDE SI SE METEN EN EL DIOME PERO
-	//NO ENTERAMENTE (NO CON EL CENTRO)
 }
 
 /*void Mapa::agregar_edificio(ObjetoDune* objeto, 
@@ -308,22 +317,26 @@ bool Mapa::ubicar_unidad(int id_edificio, std::pair<int, int> &centro_unidad,
 	return false;
 }
 
-std::vector<std::pair<int, int>> Mapa::mover(int id_unidad, 
+void Mapa::mover_unidad(UnidadMovible *unidad, 
 std::pair<int, int> &pos_destino) {
-	ObjetoDune objeto = mapa_ids_objetos.at(id_unidad);
-	std::pair<int, int> centro_objeto = objeto.obtener_centro();
-	std::vector<std::pair<int, int>> camino = buscador_mejor_camino.
-	buscar_mejor_camino(*this, centro_objeto, pos_destino);
-	//objeto.empezar_a_caminar(camino);
-
-	marcar_estado_coordenadas_alrededor(centro_objeto, 
-	objeto.obtener_altura(), objeto.obtener_base(), false);
-	coordenadas[centro_objeto.first][centro_objeto.second].sacar_objeto();
-	coordenadas[camino[camino.size() / 3].first][camino[camino.size() / 3].
+	std::pair<int, int> centro_unidad = unidad->obtener_centro();
+	marcar_estado_coordenadas_alrededor(centro_unidad, 
+	unidad->obtener_altura(), unidad->obtener_base(), false);
+	coordenadas[centro_unidad.first][centro_unidad.second].sacar_objeto();
+	coordenadas[pos_destino.first][pos_destino.second].poner_objeto(unidad);
+	marcar_estado_coordenadas_alrededor(pos_destino, 
+	unidad->obtener_altura(), unidad->obtener_base(), true);
+	unidad->set_centro(pos_destino);
+	/*coordenadas[camino[camino.size() / 3].first][camino[camino.size() / 3].
 	second].poner_objeto(&(mapa_ids_objetos.at(id_unidad)));
-	marcar_estado_coordenadas_alrededor(camino[camino.size() / 3], 
+	marcar_estado_coordenadas_alrededor(pos_destino, 
 	objeto.obtener_altura(), objeto.obtener_base(), true);
 	std::vector<std::pair<int, int>> sub_camino(&camino[0], 
 	&camino[camino.size() / 3]);
-	return sub_camino;
+	return sub_camino;*/
+}
+
+std::list<std::pair<int, int>> Mapa::obtener_camino(std::pair<int, int> inicio,
+std::pair<int, int> final) {
+	return buscador_mejor_camino.buscar_mejor_camino(*this, inicio, final);
 }

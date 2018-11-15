@@ -1,4 +1,5 @@
 #include "objeto_dune.h"
+#include "Estados/muerte.h"
 
 ObjetoDune::ObjetoDune(int vida, int costo, int id, int id_duenio, int base,
 int altura, std::pair<int, int> centro): vida(vida), costo_dinero(costo), 
@@ -7,7 +8,7 @@ id(id), id_duenio(id_duenio), base(base), altura(altura), centro(centro) {}
 int ObjetoDune::reducir_vida(int danio) {
 	vida -= danio;
 	return vida;
-} 
+}
 
 int ObjetoDune::obtener_costo() {
 	return costo_dinero;

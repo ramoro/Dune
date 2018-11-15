@@ -56,10 +56,10 @@ class Partida {
 		bool se_puede_agregar_unidad_movible(
 		int id_tipo_unidad, int id_edificio);
 
-		/*Recibe el id de una unidad y la posicion a donde moverla y devuelve
-		un vector con las posiciones que debe seguir la unidad para moverse
-		de la mejor manera hacia su destino.*/
-		std::vector<std::pair<int, int>> mover_unidad(int id_unidad, 
+		/*Recibe el id de una unidad y la posicion a donde moverla y setea
+		a la unidad con el mejor camino para empezar a moverse hacia la
+		posicion de destino.*/
+		void comenzar_movimiento_unidad(int id_unidad, 
 		std::pair<int, int> posicion_destino);
 
 		/*Devuelve un vector de ints con el id de la unidad comida.*/
@@ -67,7 +67,7 @@ class Partida {
 
 		/*Recibe una determinada cantidad de ticks que pasaron en el juego
 		y actualiza el mismo segun ese tiempo transcurrido.*/
-		void actualizar_modelo(clock_t tiempo_transcurrido);
+		void actualizar_modelo(double tiempo_transcurrido);
 		
 	private:
 		/*Metodo recursivo que recibe un vector con el id de los objetos
@@ -81,7 +81,7 @@ class Partida {
 		/*Recibe el puntero al edificio a actualizar el tiempo de entenamiento
 		y el tiempo pasado.*/
 		void actualizar_creacion_unidades(std::shared_ptr<Edificio> 
-		edificio, clock_t tiempo_transcurrido);
+		edificio, double tiempo_transcurrido);
 };
 
 #endif 

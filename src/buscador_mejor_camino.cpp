@@ -17,7 +17,7 @@ void BuscadorMejorCamino::delete_vector_nodos(std::vector<Nodo> nodos) {
   }
 }
 
-std::vector<std::pair<int, int>> BuscadorMejorCamino::buscar_mejor_camino
+std::list<std::pair<int, int>> BuscadorMejorCamino::buscar_mejor_camino
 (Mapa &mapa, std::pair<int, int> &pos_inicial, 
 std::pair<int, int> &pos_final) {
 	Nodo nodo_inicio(NULL, pos_inicial);
@@ -159,10 +159,10 @@ std::pair<int, int> &pos_final) {
 
       delete_vector_nodos(no_agregados);
 	}
-  std::vector<std::pair<int, int>> vec_camino;
+  std::list<std::pair<int, int>> lista_camino;
   while (!camino.empty()) {
-    vec_camino.push_back((camino.top()).obtener_posicion());
+    lista_camino.emplace_back((camino.top()).obtener_posicion());
     camino.pop();
   }
-	return vec_camino;
+	return lista_camino;
 }

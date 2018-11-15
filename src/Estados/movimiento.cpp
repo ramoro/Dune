@@ -1,13 +1,25 @@
 #include "movimiento.h"
+#include "inactividad.h"
+#include <list>	
 
+//VER CUANTO MOVER A LA UNIDAD SEGUN EL TIEMPO TRANSCURRIDO Y SU VELOCIDAD
 std::shared_ptr<Estado> Movimiento::actualizar(UnidadMovible *unidad,
-Mapa &mapa) {
-	/*pido camino
-	me fijo si la posicion a moverse esta ocupada
-	en caso de ocupada vuelvo a calcular A*
-	sino muevo la unidad a esa posicion sancandola de donde estaba en el mapa y ponindola en el nuevo lugar
-	saco la posicion a la que avanzo del camino
-	si llego a destino devuelvo otro estado (o NULL). 
-	En caso de no devolver null se deberia luego serializar mensaje.*/
+Mapa &mapa, double tiempo_transcurrido) {
+	std::list<std::pair<int, int>> camino = unidad->pedir_camino();
+	bool posicion_ocupada = mapa.esta_ocupada_coordenada(camino.front());
+	if (posicion_ocupada) {
+		camino = mapa.obtener_camino(unidad->obtener_centro(), camino.back());
+		unidad->asignar_nuevo_camino(camino);
+		//quizas se deberia tener en cuenta un super caso borde que no
+		//se devuelva ningun camino
+	}
+	mapa.mover_unidad(unidad, camino.front());
+	unidad->avanzar_camino();
+	unidad->serializar_mensaje_movimiento(); 
+	//significa que llego a destino
+	if (camino.size() == 1) {
+		std::shared_ptr<Inactividad> inactividad(new Inactividad());
+		return inactividad;
+	}	
 	return NULL;
 }

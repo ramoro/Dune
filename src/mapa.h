@@ -6,11 +6,13 @@
 #include <map>
 #include <string>
 #include <memory>
+#include <list>
 #include "objeto_dune.h"
 #include "coordenada.h"
 #include "observador.h"
 #include "buscador_mejor_camino.h"
 #include "root.h"
+#include "UnidadesMovibles/unidad_movible.h"
 
 /*Clase que representa a un mapa del mundo Dune.*/
 class Mapa {
@@ -38,13 +40,18 @@ class Mapa {
 		int base_objeto2);
 
 		/*Recibe la posicion central de un objeto, su altura y base y devuelve
-		un vector con el id de las unidades que se encuentran en su alrededor
-		(tienen su centro dentro del rango que abarca la base y la altura
-		pasadas). En caso de que verificar_asentamiento sea true apenas
-		encontrada una unidad se corta el for ya que para los edificios
-		con encontrar una unidad basta.*/
-		std::vector<int> buscar_unidades_alrededor(std::pair<int, int>
-		centro_unidad, int altura, int base, bool verificar_asentamiento);
+		un vector con el puntero a las unidades que se encuentran en su 
+		alrededor (tienen su centro dentro del rango que abarca la base 
+		y la altura pasadas). En caso de que verificar_asentamiento sea 
+		true apenas encontrada una unidad se corta el for ya que para 
+		los edificios con encontrar una unidad basta. En caso de que 
+		verificar_ataque_a_enemigo sea true como precondicion id_duenio
+		debe ser de un jugador existente y se verificara que se esta
+		agregando al vector a devolver el puntero a una unidad daniada
+		enemiga.*/
+		std::vector<ObjetoDune*>  buscar_unidades_alrededor(std::pair<int, int>
+		centro_unidad, int altura, int base, bool verificar_asentamiento,
+		bool verificar_ataque_a_enemigo, int id_duenio);
 
 		/*Agrega un objeto del mundo Dune en el mapa de posiciones segun
 		la posicion central pasada por parametro y su id.*/
@@ -98,10 +105,16 @@ class Mapa {
 		/*Devuelve true si coordenada en la posicion pasada esta ocupada*/
 		bool esta_ocupada_coordenada(std::pair<int, int> posicion);
 
-		/*Recibe el id de una unidad y la posicion a la que debe ir y devuelve
-		un vector con una fraccion del mejor camino a tomar para llegar a destino.*/
-		std::vector<std::pair<int, int>> mover(int id_unidad, 
+		/*Recibe un puntero a la unidad a mover y la posicion a donde se 
+		la movera. Se la mueve dentro del mapa, cambiandole su centro.*/
+		void mover_unidad(UnidadMovible *unidad, 
 		std::pair<int, int> &pos_destino);
+
+		/*Recibe una posicion inicial y devuelve una lista con las posiciones 
+		que arman el mejor camino para llegar hasta la posicion destino tambien
+		recibida por parametro.*/
+		std::list<std::pair<int, int>> obtener_camino(std::pair<int, int> inicio,
+		std::pair<int, int> final);
 
 		Mapa();
 
