@@ -4,7 +4,6 @@
 #include <iostream>
 
 Jugador::Jugador(std::string casa, Root &root): casa(casa) {
-	//dinero = 100000000; //INICIO DE DINERO DE UN JUGADOR -->HACER SETEABLE
 	dinero = root["Jugadores"].get("dinero", 0).asInt();
 	capacidad_especia = 0;
 	capacidad_especia_disponible = 0;
@@ -13,12 +12,8 @@ Jugador::Jugador(std::string casa, Root &root): casa(casa) {
 
 void Jugador::agregar_edificio(Edificio* edificio, 
 int id_objeto, std::pair<int, int> centro) {
-	//int costo = edificio->obtener_costo();
-	//if (costo > dinero) return false;
 	reducir_dinero(edificio->obtener_costo());
 	energia_disponible += edificio->obtener_aporte_energetico();
-	//edificios.insert(std::pair<int, std::shared_ptr<Edificio>>(id_edificio, 
-	//edificio));
 	if (edificios_por_tipo.count(edificio->pedir_id_tipo()) > 0) {
 		(edificios_por_tipo.at(edificio->pedir_id_tipo()))++;
 	} else {
@@ -32,7 +27,6 @@ void Jugador::reducir_dinero(int valor) {
 }
 
 void Jugador::eliminar_edificio(Edificio *edificio) {
-	//edificios.erase(id_edificio);
 	energia_disponible -= edificio->obtener_aporte_energetico();
 	(edificios_por_tipo.at(edificio->pedir_id_tipo()))--;
 }
@@ -77,4 +71,8 @@ bool Jugador::agregada_unidad(UnidadMovible* unidad) {
 		}
 	}
 	return creacion;
+}
+
+int Jugador::pedir_energia_disponible() {
+	return energia_disponible;
 }

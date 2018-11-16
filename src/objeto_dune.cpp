@@ -1,5 +1,6 @@
 #include "objeto_dune.h"
-#include "Estados/muerte.h"
+
+#define CODIGO_MUERTE 'd'
 
 ObjetoDune::ObjetoDune(int vida, int costo, int id, int id_duenio, int base,
 int altura, std::pair<int, int> centro): vida(vida), costo_dinero(costo), 
@@ -44,4 +45,13 @@ void ObjetoDune::asignar_duenio(int id_nuevo_duenio) {
 
 void ObjetoDune::set_centro(std::pair<int, int> centro_nuevo) {
 	centro = centro_nuevo;
+}
+
+int ObjetoDune::daniar() {
+	return 0;
+}
+
+void ObjetoDune::mensaje_muerte() {
+	mensaje.asignar_accion(CODIGO_MUERTE);
+	mensaje.agregar_parametro(this->id);
 }

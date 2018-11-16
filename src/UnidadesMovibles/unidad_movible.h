@@ -19,7 +19,7 @@ class UnidadMovible: public ObjetoDune {
 	private:
 		int rango;
 		int velocidad; //en km/h
-		float tiempo_creacion; //en segundos
+		double tiempo_creacion; //en segundos
 		std::list<std::pair<int, int>> camino; //esto deberia ser un vector de BALDOSAS
 		std::shared_ptr<Estado> estado;
 		
@@ -32,7 +32,7 @@ class UnidadMovible: public ObjetoDune {
 	public:
 		/*Constructor de la clase.*/
 		UnidadMovible(int rango, int velocidad, 
-		float tiempo_creacion, int costo_dinero, int vida, 
+		double tiempo_creacion, int costo_dinero, int vida, 
 		int id, int id_duenio, int base, int altura, std::pair<int, int> 
 		centro);
 
@@ -56,6 +56,10 @@ class UnidadMovible: public ObjetoDune {
 
 		/*Metodo virtual puro que mata a la unidad movible y la saca del juego.*/
 		virtual std::vector<int> matar(Mapa &mapa) = 0;
+
+		/*Metodo virtual puro que devuelve un vector de punteros a objetos
+		afectados por la muerte de la unidad.*/
+		//virtual std::vector<ObjetoDune*> ataque_al_morir(Mapa &mapa) = 0;
 
 		//virtual std::vector<int> matar(Mapa &mapa, Root &root) = 0;
 
@@ -121,7 +125,12 @@ class UnidadMovible: public ObjetoDune {
 		/*Se agrega la accion de ataque ejecutada por la unidad dentro 
 		del juego y los parametros adjuntos a la 
 		misma segun el protocolo a la clase MensajeProtocolo de la unidad.*/
-		void serializar_mensaje_ataque();
+		void serializar_mensaje_ataque(int id_unidad_atacada);
+
+		/*Se agrega dentro de la clase ObjetoDune la accion 
+		muerte de la unidad dentro del juego y los parametros adjuntos a la 
+		misma segun el protocolo a la clase MensajeProtocolo de la unidad.*/
+		void serializar_mensaje_muerte();
 };
 
 #endif 

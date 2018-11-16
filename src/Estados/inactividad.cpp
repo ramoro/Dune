@@ -11,8 +11,11 @@ Mapa &mapa, double tiempo_transcurrido) {
 	unidad->pedir_id_duenio());
 
 	if(!objetivo_alrededor.empty()) {
-		//int vida_restante = objetivo_alrededor[0]->daniar(); ESTO TENGO QUE ARREGLAR
-		unidad->serializar_mensaje_ataque();
+		int vida_restante = objetivo_alrededor[0]->daniar();
+		if (vida_restante <= 0) {
+			//objetivo_alrededor[0]->matar();
+		}
+		unidad->serializar_mensaje_ataque(objetivo_alrededor[0]->pedir_id());
 		//ACA NO SE SI DEVOLVER NUEVO ESTADO ATACANDOQUIETO O NO
 	}
 	return NULL;

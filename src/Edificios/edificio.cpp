@@ -4,6 +4,7 @@
 
 #define INACTIVO 0
 #define ENTRENANDO 1
+#define DESTRUIDO -1
 #define CODIGO_CREACION 'c'
 
 Edificio::Edificio(int aporte_energetico, int costo_dinero,
@@ -118,4 +119,19 @@ bool Edificio::avanzar_tiempo_creacion(double tiempo_transcurrido) {
 		}
 		return false;
 	}
+}
+
+void Edificio::matar() {
+	estado = DESTRUIDO;
+}
+
+bool Edificio::verificar_destruccion() {
+	if (estado == DESTRUIDO) {
+		return true;
+	}
+	return false;
+}
+
+void Edificio::serializar_mensaje_muerte() {
+	ObjetoDune::mensaje_muerte();
 }

@@ -8,6 +8,8 @@
 //QUE OBJ MURIO
 #define UNIDAD_NO_AGREGADA -1
 
+#define CODIGO_CREACION_EDIFICIO_RECHAZADA 'r'
+
 Partida::Partida() {
 	contador_ids_jugadores = 0;
 	contador_ids_objetos = 0;
@@ -23,7 +25,7 @@ void Partida::agregar_jugador(std::string casa_jugador) {
 }
 
 //DEBERIA PASAR COLA BLOQUEANTE
-std::shared_ptr<Edificio> Partida::agregar_edificio(int id_jugador, std::pair<int, int>
+void Partida::agregar_edificio(int id_jugador, std::pair<int, int>
 posicion_central, int id_tipo_edificio) {
 	std::shared_ptr<Edificio> ptr_edificio = fabrica_edificios.crear_edificio(id_tipo_edificio,
 	contador_ids_objetos, id_jugador, posicion_central,root);
@@ -39,10 +41,10 @@ posicion_central, int id_tipo_edificio) {
 		cola.push(ptr_edificio.pedir_mensaje_protocolo());
 		*/
 	} else {
-		ptr_edificio = NULL;
+		MensajeProtocolo mensaje;
+		mensaje.asignar_accion(CODIGO_CREACION_EDIFICIO_RECHAZADA);
+		mensaje.agregar_parametro(id_tipo_edificio);
 	}
-
-	return ptr_edificio;
 }
 
 void Partida::ejecutar_ataque(std::vector<int> objetos_afectados, 
@@ -108,15 +110,15 @@ void Partida::comenzar_movimiento_unidad(
 int id_unidad, std::pair<int, int> posicion_destino) {
 	unidades_movibles.at(id_unidad)->empezar_a_mover(mapa, 
 	posicion_destino);
-	//return mapa.mover(id_unidad, posicion_destino);
-}
-
-std::vector<int> Partida::generar_gusano() {
-	return mapa.desenterrar_gusano(root);
 }
 
 void Partida::actualizar_creacion_unidades(std::shared_ptr<Edificio> 
 edificio, double tiempo_transcurrido) {
+	int energia_jugador = jugadores.at(edificio->pedir_id_duenio()).
+	pedir_energia_disponible();
+	if (energia_jugador < 0) {
+		//diminucion del tiempo que paso segun la energia encontra que se tiene
+	}
 	bool entrenamiento_terminado = edificio->
 	avanzar_tiempo_creacion(tiempo_transcurrido);
 	if (entrenamiento_terminado) {
@@ -132,6 +134,7 @@ edificio, double tiempo_transcurrido) {
 //deberia pasarle COLA BLOQUEANTE para desde aca dentro
 //mandar el mensaje sobre la unidad agregada
 void Partida::actualizar_modelo(double tiempo_transcurrido) {
+	mapa.actualizar_salida_gusano(tiempo_transcurrido);
 	for (std::map<int, std::shared_ptr<Edificio>>::iterator it_edifs = 
 	edificios.begin(); it_edifs != edificios.end(); ++it_edifs) {
 		actualizar_creacion_unidades((it_edifs->second), tiempo_transcurrido);

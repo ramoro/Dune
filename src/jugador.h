@@ -59,6 +59,12 @@ class Jugador {
 
 		/*Recibe un valor y se lo resta al dinero del jugador.*/
 		void reducir_dinero(int valor);
+
+		/*Devuelve la energia disponible que posee le jugador.
+		En caso de devolver un numero negativo significa
+		que tiene mas edificios consumiendo energia de los que
+		tiene generando.*/
+		int pedir_energia_disponible();
 };
 
 #endif 

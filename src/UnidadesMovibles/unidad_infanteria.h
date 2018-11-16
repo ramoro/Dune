@@ -9,7 +9,7 @@ class UnidadInfanteria: public UnidadMovible {
 	public:
 		/*Constructor de la clase.*/
 		UnidadInfanteria(int rango, int velocidad, 
-		float tiempo_creacion, int costo_dinero, int vida, 
+		double tiempo_creacion, int costo_dinero, int vida, 
 		int id, int id_duenio, int base, int altura, std::pair<int, int> 
 		centro);
 		

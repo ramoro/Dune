@@ -33,9 +33,8 @@ class Partida {
 
 		/*Agrega un edificio segun el id de tipo pasado, asociado al id pasado
 		por parametro, asignado al jugador con el id pasado por parametro 
-		y en la posicion tambien pasada por parametro. Devuelve el ptr
-		al edificio si se pudo crear, o null si no.*/
-		std::shared_ptr<Edificio> agregar_edificio(int id_jugador, std::pair<int, int>
+		y en la posicion tambien pasada por parametro.*/
+		void agregar_edificio(int id_jugador, std::pair<int, int>
 		posicion_central, int id_tipo_edificio);
 
 		/*Recibe el id del tipo de unidad movible que ataca
@@ -61,9 +60,6 @@ class Partida {
 		posicion de destino.*/
 		void comenzar_movimiento_unidad(int id_unidad, 
 		std::pair<int, int> posicion_destino);
-
-		/*Devuelve un vector de ints con el id de la unidad comida.*/
-		std::vector<int> generar_gusano();
 
 		/*Recibe una determinada cantidad de ticks que pasaron en el juego
 		y actualiza el mismo segun ese tiempo transcurrido.*/

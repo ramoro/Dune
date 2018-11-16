@@ -13,15 +13,17 @@
 #include "buscador_mejor_camino.h"
 #include "root.h"
 #include "UnidadesMovibles/unidad_movible.h"
+#include "gusano.h"
 
 /*Clase que representa a un mapa del mundo Dune.*/
 class Mapa {
 	private:
 		std::vector<std::vector<Coordenada>> coordenadas;
 		std::map<int, ObjetoDune> mapa_ids_objetos;
-		BuscadorMejorCamino buscador_mejor_camino;
 		//mapa con ids de objetos y su coordenada de centro para ubicarlos rapido 
 		//ya que el cliente no va a enviar la posicion del edificio
+		BuscadorMejorCamino buscador_mejor_camino;
+		Gusano gusano;
 
 	public:
 		/*Recibe una posicion central de un objeto, su base y su altura y se fija
@@ -64,8 +66,8 @@ class Mapa {
 		void eliminar_objeto(int id_objeto);
 
 		/*Elige un lugar random para hacer emerger al gusano de arena
-		y devuelve un vector con los ids de las unidades comidas.*/
-		std::vector<int> desenterrar_gusano(Root &root);
+		comiendose/matando a todos los que esten cerca.*/
+		void desenterrar_gusano();
 
 		/*Devuelve la posicion maxima a la que llega el vector de filas.*/
 		unsigned int pedir_limite_filas();
@@ -115,6 +117,11 @@ class Mapa {
 		recibida por parametro.*/
 		std::list<std::pair<int, int>> obtener_camino(std::pair<int, int> inicio,
 		std::pair<int, int> final);
+
+		/*Recibe el tiempo transcurrido y actualiza la salida del gusano
+		matando a las unidades que se encuentran en la superficie de salida
+		en caso de que sea momento de que salga.*/
+		void actualizar_salida_gusano(double tiempo_transcurrido);
 
 		Mapa();
 

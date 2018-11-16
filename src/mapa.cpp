@@ -3,15 +3,6 @@
 #include <stdlib.h>
 #include <iostream> 
 
-#define DIMENSION_EXPANSION_BASE 3 //significa que lo minimo que se expande
-//la explosion del tanque o el gusano es en un cuadrado de 3x3
-#define DIREC_EXPANSION_BASE -1 //define el numero base que se le resta
-//a la posicion central desde donde se genera la expansion ya sea del
-//gusano o la explosion del tanque
-
-#define RANGO_EXPASION 0 //ESTA HARDCODEADO. ESTO SE DEBERIA
-//CARGAR POR CONFIG. TANTO EXPASION DE GUSANO COMO LA EXPOSION DEL TANQUE
-
 //INICIALIAZDOR DE MAPA HARDCODEADO
 Mapa::Mapa() {
 	for (int i = 0; i < 1000; i++) {
@@ -23,6 +14,7 @@ Mapa::Mapa() {
 		}
 		coordenadas.push_back(fila);
 	}
+	
 }
 
 bool Mapa::esta_dentro(std::pair<int, int> pos_objeto1, std::pair<int, int>
@@ -166,7 +158,7 @@ void Mapa::eliminar_objeto(int id_objeto) {
 	sacar_objeto();
 }
 
-std::vector<int> Mapa::desenterrar_gusano(Root &root) {
+void Mapa::desenterrar_gusano() {
 	int fila_random;
 	int columna_random;
 	bool espacio_valido = false;
@@ -177,25 +169,25 @@ std::vector<int> Mapa::desenterrar_gusano(Root &root) {
 
 		std::pair<int, int> posicion_centro(fila_random, columna_random);
 		bool es_arena = verificar_terreno_alrededor(posicion_centro,
-		root["Gusano"].get("dimension_alto",0).asInt(), 
-		root["Gusano"].get("dimension_ancho",0).asInt(), "arena");
+		gusano.obtener_dimesion_alto(), 
+		gusano.obtener_dimesion_ancho(), "arena");
 		if (es_arena) {
 			objetivos = buscar_unidades_alrededor(posicion_centro, 
-			root["Gusano"].get("dimension_alto",0).asInt(),
-			root["Gusano"].get("dimension_ancho",0).asInt(), false, 
+			gusano.obtener_dimesion_alto(),
+			gusano.obtener_dimesion_ancho(), false, 
 			false, -1);
 			if (!objetivos.empty()) {
+				gusano.asignar_centro(posicion_centro);
 				espacio_valido = true;
 			}
 		}
 	}
-	std::vector<int> ids_objetivos;
+	
 	for (std::vector<ObjetoDune*>::iterator it = objetivos.begin();
 	it != objetivos.end(); ++it) {
-		ids_objetivos.push_back((*it)->pedir_id());
-		eliminar_objeto((*it)->pedir_id());
+		//(*it)->matar();
+		//eliminar_objeto((*it)->pedir_id());
 	}
-	return ids_objetivos;
 }
 
 unsigned int Mapa::pedir_limite_filas() {
@@ -339,4 +331,12 @@ std::pair<int, int> &pos_destino) {
 std::list<std::pair<int, int>> Mapa::obtener_camino(std::pair<int, int> inicio,
 std::pair<int, int> final) {
 	return buscador_mejor_camino.buscar_mejor_camino(*this, inicio, final);
+}
+
+void Mapa::actualizar_salida_gusano(double tiempo_transcurrido) {
+	int salio = gusano.actualizar_salida(tiempo_transcurrido);
+	if (salio) {
+		desenterrar_gusano();
+		gusano.serializar_mensaje_salida();
+	}
 }

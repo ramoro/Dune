@@ -64,6 +64,13 @@ class ObjetoDune {
 
 		/*Recibe una coordenada nueva y se la asigna al centro.*/
 		void set_centro(std::pair<int, int> centro_nuevo);
+
+		/*Metodo virtual que dania a la unidad.*/
+		virtual int daniar();
+
+		/*Le da al mensaje la info. de la accion y los parametros
+		adjuntos para mandarlo todo al cliente.*/
+		void mensaje_muerte();
 };
 
 #endif

@@ -7,7 +7,7 @@
 #define CODIGO_ATAQUE 'a'
 
 UnidadMovible::UnidadMovible(int rango, int velocidad, 
-float tiempo_creacion, int costo_dinero, int vida, int id, int id_duenio,
+double tiempo_creacion, int costo_dinero, int vida, int id, int id_duenio,
 int base, int altura, std::pair<int, int> centro) :
 	ObjetoDune(vida, costo_dinero, id, id_duenio, base, altura, centro),
 	rango(rango), velocidad(velocidad), tiempo_creacion(tiempo_creacion){}
@@ -42,6 +42,15 @@ std::vector<int> UnidadMovible::matar(Mapa &mapa) {
 	std::vector<int> aux;
 	return aux;
 }
+
+/*void UnidadMovible::matar() {
+	estado = new Muerte();
+}*/
+/*
+std::vector<ObjetoDune*> ataque_al_morir(Mapa &mapa) {
+	std::vector<ObjetoDune*> aux;
+	return aux;
+}*/
 /*
 std::vector<int> UnidadMovible::matar(Mapa &mapa,Root &root) {
 	std::vector<int> aux;
@@ -121,8 +130,12 @@ void UnidadMovible::serializar_mensaje_movimiento() {
 	mensaje.agregar_parametro(this->centro.second);
 }
 
-void UnidadMovible::serializar_mensaje_ataque() {
+void UnidadMovible::serializar_mensaje_ataque(int id_unidad_atacada) {
 	mensaje.asignar_accion(CODIGO_ATAQUE);
 	mensaje.agregar_parametro(this->id);
-	//AGREGO ID ATACADA O NO?
+	mensaje.agregar_parametro(id_unidad_atacada);
+}
+
+void UnidadMovible::serializar_mensaje_muerte() {
+	ObjetoDune::mensaje_muerte();
 }

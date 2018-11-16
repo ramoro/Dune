@@ -46,7 +46,7 @@ class Edificio: public ObjetoDune {
 		al objeto. Devuelve la vida restante que le queda
 		al edificio luego de ser atacada.
 		Si devuelve un 0 o menos significa que fue destruida.*/
-		int daniar(std::shared_ptr<UnidadMovible> unidad_atacante);
+		virtual int daniar(std::shared_ptr<UnidadMovible> unidad_atacante);
 
 		/*Metodo virtual puro que saca al edificio del juego.*/
 		virtual void destruir(Mapa &mapa, Jugador &jugador) = 0;
@@ -83,7 +83,19 @@ class Edificio: public ObjetoDune {
 		faltante en caso de que se este entrenando a una unidad. Devuelve
 		false si no se esta entrenando una unidad o si no se termino
 		de entrenar la que se estaba entrenando. True en caso contrario.*/
-		bool avanzar_tiempo_creacion(double tiempo_transcurrido); 
+		bool avanzar_tiempo_creacion(double tiempo_transcurrido);
+
+		/*Setea el estado del edificio en destruido.*/
+		virtual void matar();
+
+		/*Devuelve true si han destruido al edificio, false en caso
+		contrario.*/
+		bool verificar_destruccion();
+
+		/*Se agrega dentro de la clase ObjetoDune la accion 
+		muerte del edificio dentro del juego y los parametros adjuntos a la 
+		misma segun el protocolo a la clase MensajeProtocolo del edificio.*/
+		void serializar_mensaje_muerte();
 };
 
 #endif
