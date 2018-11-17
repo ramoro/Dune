@@ -15,19 +15,25 @@ Cosechadora::Cosechadora(int id, int id_duenio, std::pair<int, int> centro,
 		id_tipo = ID_COSECHADORA;
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;
-		for (unsigned int i = 0; i < root["Cosechadora"]["edificios_necesarios"].size(); i++) {
-			ids_tipos_edificios_necesarios.push_back(root["Cosechadora"]["edificios_necesarios"][i].asInt());
+		for (unsigned int i = 0; i < 
+		root["Cosechadora"]["edificios_necesarios"].size(); i++) {
+			ids_tipos_edificios_necesarios.push_back(
+			root["Cosechadora"]["edificios_necesarios"][i].asInt());
 		}
 	}
 
-std::vector<int> Cosechadora::atacar_objetivo(Mapa &mapa, int id_objetivo) {
-	std::vector<int> objetivos;
-	return objetivos;
+std::vector<ObjetoDune*> Cosechadora::atacar_objetivo(Mapa &mapa, 
+int id_objetivo) {
+	std::vector<ObjetoDune*> aux;
+	return aux;
 }
 
-std::vector<int> Cosechadora::matar(Mapa &mapa) { 
-	UnidadMovible::eliminar(mapa);
-	std::vector<int> vecinos_afectados;
-	return vecinos_afectados;
+void Cosechadora::matar() { 
+	UnidadMovible::poner_estado_muerta();
+}
+
+std::vector<ObjetoDune*> Cosechadora::ataque_al_morir(Mapa &mapa) {
+	std::vector<ObjetoDune*> objs;
+	return objs;
 }
 

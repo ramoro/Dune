@@ -1,6 +1,7 @@
 #include "fabrica_pesada.h"
 
 #define ID_FABRICA_PESADA 5 //para usarlo en el protocolo
+#define DESTRUIDO -1
 
 FabricaPesada::FabricaPesada(int id, int id_duenio, std::pair<int, int> 
 centro, Root &root) : 
@@ -18,6 +19,8 @@ int id_edificio, int id_tipo_edificio) {
 	id_tipo_edificio);
 }
 
-void FabricaPesada::destruir(Mapa &mapa, Jugador &jugador) {
-	Edificio::eliminar(mapa, jugador);
+void FabricaPesada::actualizar_existencia(Jugador &jugador) {
+	if (estado == DESTRUIDO) {
+		Edificio::serializar_mensaje_muerte();
+	}
 }

@@ -38,11 +38,11 @@ class Partida {
 		posicion_central, int id_tipo_edificio);
 
 		/*Recibe el id del tipo de unidad movible que ataca
-		y el id del objeto atacado. Devuelve un vector de pares.
-		Cada par con el id de la unidad afectada y la vida que le
-		queda luego de ser atacada.*/
-		std::vector<std::pair<int, int>> atacar_objeto(
-		int id_tipo_unidad_atacante, int id_objeto_atacado);
+		y el id del objeto atacado. Setea la unidad atacante en modo
+		de movimiento para atacar en caso de no estar lo suficientemente
+		lejos o en modo ataque.*/
+		void atacar_objeto(int id_tipo_unidad_atacante, 
+		int id_objeto_atacado);
 
 		/*Recibe un id de un edificio. Elimina el 
 		edificio y le devuelve al jugador con el id recibido un porcentaje
@@ -50,9 +50,9 @@ class Partida {
 		void autodemoler_edificio(int id_edificio);
 
 		/*Recibe el id del tipo de unidad a crear y el id del edificio que
-		creara a la unidad y devuelve true si se puede crear la unidad,
-		false en caso contrario.*/
-		bool se_puede_agregar_unidad_movible(
+		creara a la unidad. Se fija si puede crearla y dependiendo la situacion
+		manda se arma el mensaje correspondiente.*/
+		void iniciar_entrenamiento_unidad_movible(
 		int id_tipo_unidad, int id_edificio);
 
 		/*Recibe el id de una unidad y la posicion a donde moverla y setea
@@ -61,23 +61,27 @@ class Partida {
 		void comenzar_movimiento_unidad(int id_unidad, 
 		std::pair<int, int> posicion_destino);
 
-		/*Recibe una determinada cantidad de ticks que pasaron en el juego
-		y actualiza el mismo segun ese tiempo transcurrido.*/
+		/*Recibe una determinada cantidad de tiempo que pasa en el juego
+		y lo actualiza segun cuanto transcurrio, agregando los mensajes
+		correspondientes a la cola bloqueante.*/
 		void actualizar_modelo(double tiempo_transcurrido);
 		
 	private:
-		/*Metodo recursivo que recibe un vector con el id de los objetos
-		afectados por el ataque de una unidad, un puntero al atacante y
-		un vector de pares (id, vida restante) que sera llenado con
-		los objetos afectados por el ataque.*/
-		void ejecutar_ataque(std::vector<int> objetos_afectados, 
-		std::shared_ptr<UnidadMovible> atacante, std::vector<std::pair
-		<int, int>> &ids_vidas); 
-
 		/*Recibe el puntero al edificio a actualizar el tiempo de entenamiento
 		y el tiempo pasado.*/
 		void actualizar_creacion_unidades(std::shared_ptr<Edificio> 
 		edificio, double tiempo_transcurrido);
+
+		/*Recibe un puntero a un edificio y lo elimina completamente del 
+		juego.*/
+		void eliminar_edificio_del_juego(std::shared_ptr<Edificio> 
+		edificio_a_remover);
+
+		/*Recibe un puntero a una unidad y lo elimina completamente del 
+		juego.*/
+		void eliminar_unidad_del_juego(std::shared_ptr<UnidadMovible> 
+		unidad_a_remover);
+
 };
 
 #endif 

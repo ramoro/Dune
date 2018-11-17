@@ -3,12 +3,11 @@
 #include "UnidadesMovibles/unidad_movible.h"
 #include <memory>
 #include <iostream>
-
-#define OBJETO_MUERTO -1 //CODIGO PARA ENVIAR POR PROTOCOLO INDICANDO 
-//QUE OBJ MURIO
-#define UNIDAD_NO_AGREGADA -1
+#include <set>
 
 #define CODIGO_CREACION_EDIFICIO_RECHAZADA 'r'
+#define CODIGO_MUERTE_OBJETO 'd'
+#define CODIGO_PERDIO_JUGADOR 'e'
 
 Partida::Partida() {
 	contador_ids_jugadores = 0;
@@ -41,52 +40,24 @@ posicion_central, int id_tipo_edificio) {
 		cola.push(ptr_edificio.pedir_mensaje_protocolo());
 		*/
 	} else {
+		//lo meto directo en cola bloqueante
 		MensajeProtocolo mensaje;
 		mensaje.asignar_accion(CODIGO_CREACION_EDIFICIO_RECHAZADA);
 		mensaje.agregar_parametro(id_tipo_edificio);
 	}
 }
 
-void Partida::ejecutar_ataque(std::vector<int> objetos_afectados, 
-std::shared_ptr<UnidadMovible> atacante, std::vector<std::pair<int, int>>
-&ids_vidas) {
-
-	for (std::vector<int>::iterator it = objetos_afectados.begin(); 
-	it != objetos_afectados.end(); ++it) {
-		int vida_restante;
-		if (edificios.count(*it) > 0) {
-			vida_restante = (edificios.at(*it))->daniar(atacante);
-			if (vida_restante <= 0) {
-				(edificios.at(*it))->destruir(mapa, 
-				jugadores.at((edificios.at(*it))->pedir_id_duenio()));
-				edificios.erase(*it);
-			}
-		} else {
-			vida_restante =(unidades_movibles.at(*it))->daniar(atacante);
-			if (vida_restante <= 0) {
-				std::vector<int> vecinos_afectados = (unidades_movibles.
-				at(*it))->matar(mapa);
-				if (!vecinos_afectados.empty()) {
-					ejecutar_ataque(vecinos_afectados, 
-					unidades_movibles.at(*it), ids_vidas);
-				}
-				unidades_movibles.erase(*it);
-			}
-		}
-		ids_vidas.push_back(std::pair<int, int>(*it, vida_restante));
-	}
-}
-
-std::vector<std::pair<int, int>> Partida::atacar_objeto(int id_unidad_atacante, 
+void Partida::atacar_objeto(int id_unidad_atacante, 
 int id_objeto_atacado) {
 	//std::shared_ptr<UnidadMovible> unidad = fabrica_unidades_movibles.crear_unidad_movible(
 	//5, 0, 3, std::pair<int, int>(0,0));
-	std::vector<int> objetos_afectados = (unidades_movibles.
-	at(id_unidad_atacante))->atacar_objetivo(mapa, id_objeto_atacado);
-	std::vector<std::pair<int, int>> ids_vidas;
-	ejecutar_ataque(objetos_afectados, unidades_movibles.
-	at(id_unidad_atacante), ids_vidas);
-	return ids_vidas;
+	if (edificios.count(id_objeto_atacado) > 0) {
+		(unidades_movibles.at(id_unidad_atacante))->iniciar_ataque(mapa, 
+		edificios.at(id_objeto_atacado));
+	} else {
+		(unidades_movibles.at(id_unidad_atacante))->iniciar_ataque(mapa, 
+		unidades_movibles.at(id_objeto_atacado));
+	}
 }
 
 void Partida::autodemoler_edificio(int id_edificio) {
@@ -94,16 +65,16 @@ void Partida::autodemoler_edificio(int id_edificio) {
 	(edificios.at(id_edificio))->pedir_id_duenio()));
 }
 
-bool Partida::se_puede_agregar_unidad_movible(int id_tipo_unidad, 
+void Partida::iniciar_entrenamiento_unidad_movible(int id_tipo_unidad, 
 int id_edificio) {
 	bool se_puede_agregar = ((edificios.at(id_edificio))->
 	se_puede_agregar_unidad(jugadores.at((edificios.at(id_edificio))->
 	pedir_id_duenio()), id_tipo_unidad, contador_ids_objetos,root));
 	if (se_puede_agregar) {
 		contador_ids_objetos++;
-		return true;
+		//mando mensaje que se agrego?
 	}
-	return false;
+	//aca mando mensaje que no se pudo agregar
 }
 
 void Partida::comenzar_movimiento_unidad(
@@ -131,6 +102,20 @@ edificio, double tiempo_transcurrido) {
 	}
 }
 
+void Partida::eliminar_edificio_del_juego(std::shared_ptr<Edificio> 
+edificio_a_remover) {
+	jugadores.at(edificio_a_remover->pedir_id_duenio()).
+	eliminar_edificio(edificio_a_remover);
+	edificios.erase(edificio_a_remover->pedir_id());
+	mapa.eliminar_objeto(edificio_a_remover->pedir_id());
+}
+
+void Partida::eliminar_unidad_del_juego(std::shared_ptr<UnidadMovible> 
+unidad_a_remover) {
+	unidades_movibles.erase(unidad_a_remover->pedir_id());
+	mapa.eliminar_objeto(unidad_a_remover->pedir_id());
+}
+
 //deberia pasarle COLA BLOQUEANTE para desde aca dentro
 //mandar el mensaje sobre la unidad agregada
 void Partida::actualizar_modelo(double tiempo_transcurrido) {
@@ -138,5 +123,73 @@ void Partida::actualizar_modelo(double tiempo_transcurrido) {
 	for (std::map<int, std::shared_ptr<Edificio>>::iterator it_edifs = 
 	edificios.begin(); it_edifs != edificios.end(); ++it_edifs) {
 		actualizar_creacion_unidades((it_edifs->second), tiempo_transcurrido);
+		(it_edifs->second)->actualizar_existencia(
+		jugadores.at((it_edifs->second)->pedir_id_duenio()));
+	}
+
+	for (std::map<int, std::shared_ptr<UnidadMovible>>::iterator it_unidades = 
+	unidades_movibles.begin(); it_unidades != unidades_movibles.end(); 
+	++it_unidades) {
+		(it_unidades->second)->actualizar_unidad(tiempo_transcurrido, mapa);
+	}
+
+	std::set<std::shared_ptr<Edificio>> edificios_a_eliminar;
+	std::set<std::shared_ptr<UnidadMovible>> unidades_a_eliminar;
+	for (std::map<int, std::shared_ptr<Edificio>>::iterator it_edifs = 
+	edificios.begin(); it_edifs != edificios.end(); ++it_edifs) {
+		std::vector<MensajeProtocolo> mensajes = (it_edifs->second)->
+		obtener_mensajes_para_mandar();
+		for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
+		mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
+			if ((*it_mensajes).pedir_accion() == CODIGO_MUERTE_OBJETO) {
+				edificios_a_eliminar.insert(it_edifs->second);
+			} else if ((*it_mensajes).pedir_accion() == CODIGO_PERDIO_JUGADOR) {
+				int id_jugador_afuera = (it_edifs->second)->pedir_id_duenio();
+				for (std::map<int, std::shared_ptr<Edificio>>::iterator it_edifs2 = 
+				edificios.begin(); it_edifs2 != edificios.end(); ++it_edifs) {
+					if ((it_edifs2->second)->pedir_id_duenio() == 
+					id_jugador_afuera) {
+						edificios_a_eliminar.insert(it_edifs2->second);
+					}
+				}
+				for (std::map<int, std::shared_ptr<UnidadMovible>>::iterator it_unidades = 
+				unidades_movibles.begin(); it_unidades != unidades_movibles.end(); 
+				++it_unidades) {
+					if ((it_unidades->second)->pedir_id_duenio() == 
+					id_jugador_afuera) {
+						unidades_a_eliminar.insert(it_unidades->second);
+					}
+				}
+			}
+			//encolar menasje en cola bloqueante
+		}
+		(it_edifs->second)->limpiar_lista_mensajes();
+	}
+
+	for (std::map<int, std::shared_ptr<UnidadMovible>>::iterator it_unidades = 
+	unidades_movibles.begin(); it_unidades != unidades_movibles.end(); 
+	++it_unidades) {
+		std::vector<MensajeProtocolo> mensajes = (it_unidades->second)->
+		obtener_mensajes_para_mandar();
+		for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
+		mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
+			if ((*it_mensajes).pedir_accion() == CODIGO_MUERTE_OBJETO) {
+				unidades_a_eliminar.insert(it_unidades->second);
+			}
+			//encolar mensaje
+		}
+		(it_unidades->second)->limpiar_lista_mensajes();
+	}
+
+	for (std::set<std::shared_ptr<Edificio>>::iterator it_edificios = 
+	edificios_a_eliminar.begin(); it_edificios != edificios_a_eliminar.end();
+	++it_edificios) {
+		eliminar_edificio_del_juego(*it_edificios);
+	}
+
+	for (std::set<std::shared_ptr<UnidadMovible>>::iterator it_unidades = 
+	unidades_a_eliminar.begin(); it_unidades != unidades_a_eliminar.end();
+	++it_unidades) {
+		eliminar_unidad_del_juego(*it_unidades);
 	}
 }

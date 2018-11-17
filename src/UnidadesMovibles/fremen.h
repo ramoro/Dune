@@ -15,12 +15,15 @@ class Fremen: public UnidadInfanteria {
 
 		/*Recibe el mapa y el id del objeto y devuelve todas las unidades
 		afectadas por su ataque.*/
-		virtual std::vector<int> atacar_objetivo(Mapa &mapa, int id_objetivo);
+		virtual std::vector<ObjetoDune*> atacar_objetivo(Mapa &mapa, 
+		int id_objetivo);
 
-		/*Recibe un mapa, mata a la unidad y la remueve del mapa. Devuelve
-		un vector con el id de las unidades afectadas segun si la unidad
-		afecto unidades vecinas al morir.*/
-		virtual std::vector<int> matar(Mapa &mapa);
+		/*Mata a la unidad seteandola como muerta.*/
+		virtual void matar();
+
+		/*En caso de tener un ataque al morir lo ejecuta y devuelve
+		un vector con los objetos afectados.*/
+		virtual std::vector<ObjetoDune*> ataque_al_morir(Mapa &mapa);
 
 };
 

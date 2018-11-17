@@ -37,22 +37,23 @@ Devastador::Devastador(int id, int id_duenio, std::pair<int, int> centro,
 		}
 	}
 
-std::vector<int> Devastador::atacar_objetivo(Mapa &mapa, 
+std::vector<ObjetoDune*> Devastador::atacar_objetivo(Mapa &mapa, 
 int id_objetivo) {
-	return UnidadMovible::atacar(mapa, id_objetivo);
+	std::vector<ObjetoDune*> objetos_afectados;		
+	objetos_afectados.push_back(mapa.obtener_objeto(id_objetivo));
+	return objetos_afectados;
 }
 
-std::vector<int> Devastador::matar(Mapa &mapa) { 
-	UnidadMovible::eliminar(mapa);
+void Devastador::matar() { 
+	UnidadMovible::poner_estado_muerta();
 	armas.clear();
 	Explosion explosion(config_explosion);
 	armas.push_back(Explosion(explosion));
-	std::vector<ObjetoDune*> afectados = mapa.buscar_unidades_alrededor(
-	this->centro, this->altura, this->base, false, false, -1);
-	std::vector<int> ids_objetivos;
-	for (std::vector<ObjetoDune*>::iterator it = afectados.begin();
-	it != afectados.end(); ++it) {
-		ids_objetivos.push_back((*it)->pedir_id());
-	}
-	return ids_objetivos;
+}
+
+std::vector<ObjetoDune*> Devastador::ataque_al_morir(Mapa &mapa) {
+	std::vector<ObjetoDune*> objetos_afectados = mapa.
+	buscar_unidades_alrededor(this->centro, this->altura, 
+	this->base, false, false, -1);
+	return objetos_afectados;
 }

@@ -20,9 +20,9 @@ class Silo: public Edificio{
 		virtual bool agregar_al_juego(Mapa &mapa, Jugador &jugador, int id_edificio, 
 		int id_tipo_edificio);
 
-		/*Recibe el mapa y el jugador que posee el edificio y se lo
-		elimina de ambos a este.*/
-		virtual void destruir(Mapa &mapa, Jugador &jugador);
+		/*Se fija si el edifcio esta destruido y arma los mensajes
+		correspondientes, ademas de realizar cosas extras segun el edificio.*/
+		virtual void actualizar_existencia(Jugador &jugador);
 
 		/*Recibe una cantidad de especia y se la almacena en el silo. 
 		Se devuelve 0 y entro toda la especia en la refineria. Se devuelve

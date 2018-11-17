@@ -27,23 +27,20 @@ TanqueSonico::TanqueSonico(int id, int id_duenio, std::pair<int, int> centro,
 		}
 	}
 
-std::vector<int> TanqueSonico::atacar_objetivo(Mapa &mapa, int id_objetivo) {
-	std::vector<int> objetivos = UnidadMovible::atacar(mapa, id_objetivo);
-	if (!objetivos.empty()) {
-		std::vector<ObjetoDune*> afectados = mapa.buscar_unidades_alrededor(
-		this->centro, this->altura, this->base, false, false, -1);
-		std::vector<int> ids_objetivos;
-		for (std::vector<ObjetoDune*>::iterator it = afectados.begin();
-		it != afectados.end(); ++it) {
-			ids_objetivos.push_back((*it)->pedir_id());
-		}
-		return ids_objetivos;
-	}
-	return objetivos;
+std::vector<ObjetoDune*> TanqueSonico::atacar_objetivo(Mapa &mapa,
+int id_objetivo) {
+	std::vector<ObjetoDune*> afectados = mapa.buscar_unidades_alrededor(
+	this->centro, this->altura, this->base, false, false, -1);
+	std::vector<int> ids_objetivos;
+
+	return afectados;
 }
 
-std::vector<int> TanqueSonico::matar(Mapa &mapa) { 
-	UnidadMovible::eliminar(mapa);
-	std::vector<int> vecinos_afectados;
-	return vecinos_afectados;
+void TanqueSonico::matar() { 
+	UnidadMovible::poner_estado_muerta();
+}
+
+std::vector<ObjetoDune*> TanqueSonico::ataque_al_morir(Mapa &mapa) {
+	std::vector<ObjetoDune*> objs;
+	return objs;
 }

@@ -13,10 +13,12 @@ Mapa &mapa, double tiempo_transcurrido) {
 		//quizas se deberia tener en cuenta un super caso borde que no
 		//se devuelva ningun camino
 	}
+	//en vez de front deberia ser la posicion segun el tiempo y la velocidad
+	//a avanzar camino deberia pasarle la cantiadd de posiciones que avanzo ene l camino
 	mapa.mover_unidad(unidad, camino.front());
 	unidad->avanzar_camino();
 	unidad->serializar_mensaje_movimiento(); 
-	//significa que llego a destino
+	//significa que llego a destino, deberia cambiar la verificacion, ya que es segunc uanto se mueve
 	if (camino.size() == 1) {
 		std::shared_ptr<Inactividad> inactividad(new Inactividad());
 		return inactividad;

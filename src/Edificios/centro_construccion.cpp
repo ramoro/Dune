@@ -1,6 +1,7 @@
 #include "centro_construccion.h"
 
 #define ID_CENTRO_CONSTRUCCION 0 //para usarlo en el protocolo
+#define DESTRUIDO -1
 
 CentroConstruccion::CentroConstruccion(int id, int id_duenio,
 std::pair<int, int> centro, Root &root) : 
@@ -18,6 +19,9 @@ int id_tipo_edificio) {
 	id_tipo_edificio);
 }
 
-void CentroConstruccion::destruir(Mapa &mapa, Jugador &jugador) {
-	Edificio::eliminar(mapa, jugador);
+void CentroConstruccion::actualizar_existencia(Jugador &jugador) {
+	if (estado == DESTRUIDO) {
+		Edificio::serializar_mensaje_muerte();
+		Edificio::serializar_mensaje_perdio_jugador();
+	}
 }

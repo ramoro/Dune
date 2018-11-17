@@ -6,6 +6,7 @@
 #define ENTRENANDO 1
 #define DESTRUIDO -1
 #define CODIGO_CREACION 'c'
+#define CODIGO_PERDIO_DUENIO_EDIFICIO 'e'
 
 Edificio::Edificio(int aporte_energetico, int costo_dinero,
 int puntos_estructura, int id, 
@@ -47,15 +48,8 @@ int Edificio::daniar(std::shared_ptr<UnidadMovible> unidad_atacante) {
 	return ObjetoDune::reducir_vida(danio);
 }
 
-void Edificio::destruir(Mapa &mapa, Jugador &jugador) {}
-
-void Edificio::eliminar(Mapa &mapa, Jugador &jugador) {
-	mapa.eliminar_objeto(this->id);
-	jugador.eliminar_edificio(this);
-}
-
 void Edificio::autodemoler(Mapa &mapa, Jugador &jugador) {
-	eliminar(mapa, jugador);
+	//eliminar(mapa, jugador);
 	jugador.aumentar_dinero(porcentaje_recuperacion * this->costo_dinero);
 }
 
@@ -78,6 +72,7 @@ int id_tipo_unidad, int id_unidad, Root &root) {
 
 void Edificio::serializar_mensaje_creacion_objeto(
 std::shared_ptr<ObjetoDune> objeto) {
+	MensajeProtocolo mensaje;
 	mensaje.asignar_accion(CODIGO_CREACION);
 	mensaje.agregar_parametro(objeto->pedir_id_tipo());
 	mensaje.agregar_parametro(objeto->pedir_id());
@@ -86,6 +81,7 @@ std::shared_ptr<ObjetoDune> objeto) {
 	mensaje.agregar_parametro((objeto->obtener_centro()).first);
 	mensaje.agregar_parametro((objeto->obtener_centro()).second);
 	mensaje.agregar_parametro(objeto->pedir_id_duenio());
+	mensajes.push_back(std::move(mensaje));
 }
 
 std::shared_ptr<UnidadMovible> Edificio::agregar_unidad(Mapa &mapa) {
@@ -125,13 +121,18 @@ void Edificio::matar() {
 	estado = DESTRUIDO;
 }
 
-bool Edificio::verificar_destruccion() {
-	if (estado == DESTRUIDO) {
-		return true;
-	}
-	return false;
-}
+void Edificio::actualizar_existencia(Jugador &jugador) {}
 
 void Edificio::serializar_mensaje_muerte() {
 	ObjetoDune::mensaje_muerte();
+}
+
+void Edificio::serializar_mensaje_perdio_jugador() {
+	MensajeProtocolo mensaje;
+	mensaje.asignar_accion(CODIGO_PERDIO_DUENIO_EDIFICIO);
+	//agrego cualquier id de jugador mientras que no sea
+	//la del duenio del edificio ya que se avisa que otro
+	//gano para decirle nomas que perdio
+	mensaje.agregar_parametro(this->id_duenio + 1);
+	mensajes.push_back(std::move(mensaje));
 }

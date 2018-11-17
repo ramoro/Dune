@@ -21,18 +21,25 @@ Fremen::Fremen(int id, int id_duenio, std::pair<int, int> centro,
 		armas.push_back(LanzaMisiles(lanza_misiles));
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;
-		for (unsigned int i = 0; i < root["Fremen"]["edificios_necesarios"].size(); i++) {
-			ids_tipos_edificios_necesarios.push_back(root["Fremen"]["edificios_necesarios"][i].asInt());
+		for (unsigned int i = 0; i < 
+		root["Fremen"]["edificios_necesarios"].size(); i++) {
+			ids_tipos_edificios_necesarios.push_back(
+			root["Fremen"]["edificios_necesarios"][i].asInt());
 		}
 	}
 
-std::vector<int> Fremen::atacar_objetivo(Mapa &mapa, 
+std::vector<ObjetoDune*> Fremen::atacar_objetivo(Mapa &mapa, 
 int id_objetivo) {
-	return UnidadMovible::atacar(mapa, id_objetivo);
+	std::vector<ObjetoDune*> objetos_afectados;
+	objetos_afectados.push_back(mapa.obtener_objeto(id_objetivo));
+	return objetos_afectados;
 }
 
-std::vector<int> Fremen::matar(Mapa &mapa) { 
-	UnidadMovible::eliminar(mapa);
-	std::vector<int> vecinos_afectados;
-	return vecinos_afectados;
+void Fremen::matar() {
+	UnidadMovible::poner_estado_muerta();
+}
+
+std::vector<ObjetoDune*> Fremen::ataque_al_morir(Mapa &mapa) {
+	std::vector<ObjetoDune*> objs;
+	return objs;
 }

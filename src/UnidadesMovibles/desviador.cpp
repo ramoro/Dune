@@ -18,21 +18,29 @@ Desviador::Desviador(int id, int id_duenio, std::pair<int, int> centro,
 		armas.push_back(LanzaMisiles(lanza_misiles));
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;
-		for (unsigned int i = 0; i < root["Desviador"]["edificios_necesarios"].size(); i++) {
-			ids_tipos_edificios_necesarios.push_back(root["Desviador"]["edificios_necesarios"][i].asInt());
+		for (unsigned int i = 0; i < 
+		root["Desviador"]["edificios_necesarios"].size(); i++) {
+			ids_tipos_edificios_necesarios.push_back(
+			root["Desviador"]["edificios_necesarios"][i].asInt());
 		}
 	}
 
-std::vector<int> Desviador::atacar_objetivo(Mapa &mapa, int id_objetivo) {
-	std::vector<int> objetivos = UnidadMovible::atacar(mapa, id_objetivo);
+std::vector<ObjetoDune*> Desviador::atacar_objetivo(Mapa &mapa, 
+int id_objetivo) {
+	std::vector<ObjetoDune*> aux;
+	return aux;
+	/*std::vector<int> objetivos = UnidadMovible::atacar(mapa, id_objetivo);
 	if (!objetivos.empty()) {
 		mapa.cambiar_equipo(id_objetivo, this->id_duenio);
 	}
-	return objetivos;
+	return objetivos;VERR!!*/ 
 }
 
-std::vector<int> Desviador::matar(Mapa &mapa) { 
-	UnidadMovible::eliminar(mapa);
-	std::vector<int> vecinos_afectados;
-	return vecinos_afectados;
+void Desviador::matar() { 
+	UnidadMovible::poner_estado_muerta();
+}
+
+std::vector<ObjetoDune*> Desviador::ataque_al_morir(Mapa &mapa) {
+	std::vector<ObjetoDune*> objs;
+	return objs;
 }

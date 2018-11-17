@@ -18,9 +18,11 @@ class Edificio: public ObjetoDune {
 		std::pair<int, int> dimension;
 		int porcentaje_recuperacion;
 		FabricaUnidadesMovibles fabrica_unidades_movibles;
-		int estado;
 		std::list<std::shared_ptr<UnidadMovible>> unidades_entrenando;
-		
+	
+	protected:
+		int estado;	
+	
 	public:
 
 		/*Constructor de la clase.*/
@@ -47,13 +49,6 @@ class Edificio: public ObjetoDune {
 		al edificio luego de ser atacada.
 		Si devuelve un 0 o menos significa que fue destruida.*/
 		virtual int daniar(std::shared_ptr<UnidadMovible> unidad_atacante);
-
-		/*Metodo virtual puro que saca al edificio del juego.*/
-		virtual void destruir(Mapa &mapa, Jugador &jugador) = 0;
-
-		/*Recibe el mapa y el jugador al que pertenece el edificio
-		y lo remueve de ambos.*/
-		void eliminar(Mapa &mapa, Jugador &jugador); //VER LO DEL BOOLEANO PARA INDICAR FIN JUEGO
 
 		/*Recibe el mapa y el jugador al que pertenece el edificio y
 		lo demuele, devolviendo la fraccion de plata que se recupera del
@@ -88,14 +83,19 @@ class Edificio: public ObjetoDune {
 		/*Setea el estado del edificio en destruido.*/
 		virtual void matar();
 
-		/*Devuelve true si han destruido al edificio, false en caso
-		contrario.*/
-		bool verificar_destruccion();
+		/*Metodo virtual puro que actualiza al edificio segun si 
+		ha sido destruido o no.*/
+		virtual void actualizar_existencia(Jugador &jugador) = 0;
 
 		/*Se agrega dentro de la clase ObjetoDune la accion 
 		muerte del edificio dentro del juego y los parametros adjuntos a la 
 		misma segun el protocolo a la clase MensajeProtocolo del edificio.*/
 		void serializar_mensaje_muerte();
+
+		/*Se agrega el evento de que perdio el jugador duenio del edificio
+		destruido y los parametros adjuntos al evento segun el protocolo a 
+		la clase MensajeProtocolo del edificio.*/
+		void serializar_mensaje_perdio_jugador();
 };
 
 #endif

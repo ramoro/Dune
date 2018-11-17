@@ -1,6 +1,7 @@
 #include "refineria.h"
 
 #define ID_REFINERIA 2 //para usarlo en el protocolo
+#define DESTRUIDO -1
 
 Refineria::Refineria(int id, int id_duenio, std::pair<int, int> centro,
  Root &root) : 
@@ -23,9 +24,11 @@ int id_tipo_edificio) {
 	return true;
 }
 
-void Refineria::destruir(Mapa &mapa, Jugador &jugador) {
-	jugador.reducir_capacidad_especia(capacidad);
-	Edificio::eliminar(mapa, jugador);
+void Refineria::actualizar_existencia(Jugador &jugador) {
+	if (estado == DESTRUIDO) {
+		jugador.reducir_capacidad_especia(capacidad);
+		Edificio::serializar_mensaje_muerte();
+	}
 }
 
 /*int Refineria::depositar_especia(int cantidad_especia) {

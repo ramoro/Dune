@@ -51,7 +51,19 @@ int ObjetoDune::daniar() {
 	return 0;
 }
 
+void ObjetoDune::matar() {}
+
 void ObjetoDune::mensaje_muerte() {
+	MensajeProtocolo mensaje;
 	mensaje.asignar_accion(CODIGO_MUERTE);
 	mensaje.agregar_parametro(this->id);
+	mensajes.push_back(std::move(mensaje));
+}
+
+std::vector<MensajeProtocolo> ObjetoDune::obtener_mensajes_para_mandar() {
+	return mensajes;
+}
+
+void ObjetoDune::limpiar_lista_mensajes() {
+	mensajes.clear();
 }

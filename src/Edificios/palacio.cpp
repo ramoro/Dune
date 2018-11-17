@@ -1,6 +1,7 @@
 #include "palacio.h"
 
 #define ID_PALACIO 7 //para usarlo en el protocolo
+#define DESTRUIDO -1
 
 Palacio::Palacio(int id, int id_duenio, std::pair<int, int> centro, Root &root) : 
 	Edificio(root["Palacio"].get("aporte_energetico", 0).asInt(),
@@ -17,6 +18,8 @@ int id_tipo_edificio) {
 	id_tipo_edificio);
 }
 
-void Palacio::destruir(Mapa &mapa, Jugador &jugador) {
-	Edificio::eliminar(mapa, jugador);
+void Palacio::actualizar_existencia(Jugador &jugador) {
+	if (estado == DESTRUIDO) {
+		Edificio::serializar_mensaje_muerte();
+	}
 }

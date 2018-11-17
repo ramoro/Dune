@@ -40,31 +40,28 @@ class UnidadMovible: public ObjetoDune {
 		la unidad y devuelve el danio que le realiza al objetivo.*/
 		int pedir_danio(std::string objetivo);
 
-		/*Recibe el mapa y el id de un objetivo a atacar y 
-		hace que la unidad se acerque al objetivo y ataque.*/
-		std::vector<int> atacar(Mapa &mapa, int id_objetivo);
-
-		/*Recibe el mapa del juego y el jugador duenio de la unidad, ademas
-		de el id del objeto a atacar. Devuelve un vector de enteros con los
-		objetos afecta.*/ 
-		virtual std::vector<int> atacar_objetivo(Mapa &mapa, 
+		/*Recibe el mapa del juego y
+		el id del objeto a atacar. Devuelve un vector con los
+		objetos a los que afecta.*/ 
+		virtual std::vector<ObjetoDune*> atacar_objetivo(Mapa &mapa, 
 		int id_objetivo) = 0;
 
 		/*Metodo virtual puro que dania a la unidad apuntada por el puntero
 		recibido.*/
 		virtual int daniar(std::shared_ptr<UnidadMovible> unidad_atacante) = 0;
 
-		/*Metodo virtual puro que mata a la unidad movible y la saca del juego.*/
-		virtual std::vector<int> matar(Mapa &mapa) = 0;
+		/*Metodo virtual puro que mata a la unidad movible seteandola
+		como muerta.*/
+		virtual void matar() = 0;
 
 		/*Metodo virtual puro que devuelve un vector de punteros a objetos
 		afectados por la muerte de la unidad.*/
-		//virtual std::vector<ObjetoDune*> ataque_al_morir(Mapa &mapa) = 0;
+		virtual std::vector<ObjetoDune*> ataque_al_morir(Mapa &mapa) = 0;
 
 		//virtual std::vector<int> matar(Mapa &mapa, Root &root) = 0;
 
-		/*Recibe el mapa del juego y elimina el objeto del mapa.*/
-		void eliminar(Mapa &mapa);
+		/*Le asigna a la unidad el estado de muerta.*/
+		void poner_estado_muerta();
 
 		/*Devuelve un vector con ids de los tipos de edificios que necesita
 		la unidad para poder ser creada.*/
@@ -115,6 +112,11 @@ class UnidadMovible: public ObjetoDune {
 		/*Recibe un camino de posiciones y se lo asgina a la unidad.*/
 		void asignar_nuevo_camino(std::list<std::pair<int, int>>
 		nuevo_camino);
+
+		/*Recibe el mapa del juego y un puntero al objeto atacado.
+		Segun la distancia al objeto atacar se setea a la unidad en estado
+		de ataque o en movimiento para ir a atacar.*/
+		void iniciar_ataque(Mapa &mapa, std::shared_ptr<ObjetoDune> objetivo);
 
 		/* Se agrega la accion unidad recien movida y los parametros 
 		adjuntos a la misma segun el protocolo a la clase 

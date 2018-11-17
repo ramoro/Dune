@@ -1,6 +1,7 @@
 #include "cuartel.h"
 
 #define CUARTEL 6 //para usarlo en el protocolo
+#define DESTRUIDO -1
 
 Cuartel::Cuartel(int id, int id_duenio, std::pair<int, int> centro,
  Root &root) :
@@ -19,6 +20,8 @@ int id_tipo_edificio) {
 	id_tipo_edificio);
 }
 
-void Cuartel::destruir(Mapa &mapa, Jugador &jugador) {
-	Edificio::eliminar(mapa, jugador);
+void Cuartel::actualizar_existencia(Jugador &jugador) {
+	if (estado == DESTRUIDO) {
+		Edificio::serializar_mensaje_muerte();
+	}
 }

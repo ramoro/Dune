@@ -17,18 +17,24 @@ Raider::Raider(int id, int id_duenio, std::pair<int, int> centro,Root &root) :
 		armas.push_back(Canion22mm(canion22mm));
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;
-		for (unsigned int i = 0; i < root["Raider"]["edificios_necesarios"].size(); i++) {
+		for (unsigned int i = 0; i < 
+		root["Raider"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(
 			root["Raider"]["edificios_necesarios"][i].asInt());
 		}
 	}
 
-std::vector<int> Raider::atacar_objetivo(Mapa &mapa, int id_objetivo) {
-	return UnidadMovible::atacar(mapa, id_objetivo);
+std::vector<ObjetoDune*> Raider::atacar_objetivo(Mapa &mapa, int id_objetivo) {
+	std::vector<ObjetoDune*> objetos_afectados;
+	objetos_afectados.push_back(mapa.obtener_objeto(id_objetivo));
+	return objetos_afectados;
 }
 
-std::vector<int> Raider::matar(Mapa &mapa) { 
-	UnidadMovible::eliminar(mapa);
-	std::vector<int> vecinos_afectados;
-	return vecinos_afectados;
+void Raider::matar() { 
+	UnidadMovible::poner_estado_muerta();
+}
+
+std::vector<ObjetoDune*> Raider::ataque_al_morir(Mapa &mapa) {
+	std::vector<ObjetoDune*> objs;
+	return objs;
 }

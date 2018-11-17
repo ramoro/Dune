@@ -21,17 +21,25 @@ Sardaukar::Sardaukar(int id, int id_duenio, std::pair<int, int> centro,
 		armas.push_back(LanzaMisiles(lanza_misiles));
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;
-		for (unsigned int i = 0; i < root["Sardaukar"]["edificios_necesarios"].size(); i++) {
-			ids_tipos_edificios_necesarios.push_back(root["Sardaukar"]["edificios_necesarios"][i].asInt());
+		for (unsigned int i = 0; i < 
+		root["Sardaukar"]["edificios_necesarios"].size(); i++) {
+			ids_tipos_edificios_necesarios.push_back(
+			root["Sardaukar"]["edificios_necesarios"][i].asInt());
 		}
 	}
 
-std::vector<int> Sardaukar::atacar_objetivo(Mapa &mapa, int id_objetivo) {
-	return UnidadMovible::atacar(mapa, id_objetivo);
+std::vector<ObjetoDune*> Sardaukar::atacar_objetivo(Mapa &mapa, 
+int id_objetivo) {
+	std::vector<ObjetoDune*> objetos_afectados;
+	objetos_afectados.push_back(mapa.obtener_objeto(id_objetivo));
+	return objetos_afectados;
 }
 
-std::vector<int> Sardaukar::matar(Mapa &mapa) { 
-	UnidadMovible::eliminar(mapa);
-	std::vector<int> vecinos_afectados;
-	return vecinos_afectados;
+void Sardaukar::matar() { 
+	UnidadMovible::poner_estado_muerta();
+}
+
+std::vector<ObjetoDune*> Sardaukar::ataque_al_morir(Mapa &mapa) {
+	std::vector<ObjetoDune*> objs;
+	return objs;
 }

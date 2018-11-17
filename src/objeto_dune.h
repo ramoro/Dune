@@ -21,7 +21,7 @@ class ObjetoDune {
 		int base;
 		int altura;
 		std::pair<int, int> centro;
-		MensajeProtocolo mensaje;
+		std::vector<MensajeProtocolo> mensajes;
 
 	public:
 		/*Constructor de la clase.*/
@@ -68,9 +68,19 @@ class ObjetoDune {
 		/*Metodo virtual que dania a la unidad.*/
 		virtual int daniar();
 
+		/*Metodo virtual que mata a la unidad (la setea en estado muerta).*/
+		virtual void matar();
+
 		/*Le da al mensaje la info. de la accion y los parametros
 		adjuntos para mandarlo todo al cliente.*/
 		void mensaje_muerte();
+
+		/*Devuelve un vector con los mensajes listos para ser
+		enviados al cliente.*/
+		std::vector<MensajeProtocolo> obtener_mensajes_para_mandar();
+
+		/*Vacia la lista de mensajes.*/
+		void limpiar_lista_mensajes();
 };
 
 #endif

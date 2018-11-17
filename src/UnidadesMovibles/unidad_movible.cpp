@@ -1,5 +1,7 @@
 #include "unidad_movible.h"
 #include "../Estados/estado.h"
+#include "../Estados/movimiento_para_atacar.h"
+#include "../Estados/ataque.h"
 #include <stdlib.h> 
 #include <iostream>
 
@@ -17,20 +19,9 @@ int UnidadMovible::pedir_danio(std::string objetivo) {
 	return armas[arma_seleccionada].obtener_danio(objetivo);
 }
 
-std::vector<int> UnidadMovible::atacar(Mapa &mapa,
+std::vector<ObjetoDune*> UnidadMovible::atacar_objetivo(Mapa &mapa,
 int id_objetivo) {
-	std::pair<int, int> cercania = mapa.pedir_cercania(this->id, id_objetivo);
-	std::vector<int> objetivo;
-	if (cercania.first > this->rango_ataque_fila && cercania.second > 
-	this->rango_ataque_columna) {
-		return objetivo;
-	}
-	objetivo.push_back(id_objetivo);
-	return objetivo;
-}
-
-std::vector<int> UnidadMovible::atacar_objetivo(Mapa &mapa, int id_objetivo) {
-	std::vector<int> aux;
+	std::vector<ObjetoDune*> aux;
 	return aux;
 }
 
@@ -38,27 +29,20 @@ int UnidadMovible::daniar(std::shared_ptr<UnidadMovible> unidad_atacante) {
 	return 0;
 }
 
-std::vector<int> UnidadMovible::matar(Mapa &mapa) {
-	std::vector<int> aux;
-	return aux;
-}
+void UnidadMovible::matar() {}
 
-/*void UnidadMovible::matar() {
-	estado = new Muerte();
-}*/
-/*
 std::vector<ObjetoDune*> ataque_al_morir(Mapa &mapa) {
 	std::vector<ObjetoDune*> aux;
 	return aux;
-}*/
+}
 /*
 std::vector<int> UnidadMovible::matar(Mapa &mapa,Root &root) {
 	std::vector<int> aux;
 	return aux;
 }
 */
-void UnidadMovible::eliminar(Mapa &mapa) {
-	mapa.eliminar_objeto(this->id);
+void UnidadMovible::poner_estado_muerta() {
+	estado = estado->cambiar_a_muerte();
 }
 
 std::vector<int> UnidadMovible::obtener_edificios_necesarios() {
@@ -99,7 +83,7 @@ void UnidadMovible::actualizar_unidad(double tiempo_transcurrido,
 Mapa &mapa) {
 	//por si sale algo mal y no se vacio del todo el camino
 	//cuando la unidad llego
-	if (camino.empty()) return;
+	//if (camino.empty()) return;
 
 	std::shared_ptr<Estado> nuevo_estado = estado->actualizar(this, mapa,
 	tiempo_transcurrido);
@@ -123,17 +107,35 @@ nuevo_camino) {
 	camino = nuevo_camino;
 }
 
+void UnidadMovible::iniciar_ataque(Mapa &mapa, 
+std::shared_ptr<ObjetoDune> objetivo) {
+	std::pair<int, int> cercania = mapa.pedir_cercania(this->id, 
+	objetivo->pedir_id());
+	if (cercania.first > this->rango_ataque_fila || cercania.second > 
+	this->rango_ataque_columna) {
+		estado = estado->cambiar_a_movimiento_para_atacar(objetivo);
+		asignar_nuevo_camino(mapa.obtener_camino(this->centro, 
+		objetivo->obtener_centro()));
+	} else {
+		estado = estado->cambiar_a_ataque(objetivo);
+	}
+}
+
 void UnidadMovible::serializar_mensaje_movimiento() {
+	MensajeProtocolo mensaje;
 	mensaje.asignar_accion(CODIGO_MOVIMIENTO);
 	mensaje.agregar_parametro(this->id);
 	mensaje.agregar_parametro(this->centro.first);
 	mensaje.agregar_parametro(this->centro.second);
+	mensajes.push_back(std::move(mensaje));
 }
 
 void UnidadMovible::serializar_mensaje_ataque(int id_unidad_atacada) {
+	MensajeProtocolo mensaje;
 	mensaje.asignar_accion(CODIGO_ATAQUE);
 	mensaje.agregar_parametro(this->id);
 	mensaje.agregar_parametro(id_unidad_atacada);
+	mensajes.push_back(std::move(mensaje));
 }
 
 void UnidadMovible::serializar_mensaje_muerte() {

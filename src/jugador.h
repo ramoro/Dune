@@ -34,9 +34,9 @@ class Jugador {
 		en caso contrario.*/
 		bool agregado_edificio(ObjetoDune* objeto);
 
-		/*Recibe objeto/edificio a eliminar y lo elimina
+		/*Recibe edificio a eliminar y lo elimina
 		sacandose el aporte energetico que generaba el edificio.*/
-		void eliminar_edificio(Edificio *edificio);
+		void eliminar_edificio(std::shared_ptr<Edificio> edificio);
 
 		/*Recibe una determinada cantidad de dinero y se la aumenta al
 		jugador.*/

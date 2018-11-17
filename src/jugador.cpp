@@ -26,7 +26,7 @@ void Jugador::reducir_dinero(int valor) {
 	dinero -= valor;
 }
 
-void Jugador::eliminar_edificio(Edificio *edificio) {
+void Jugador::eliminar_edificio(std::shared_ptr<Edificio> edificio) {
 	energia_disponible -= edificio->obtener_aporte_energetico();
 	(edificios_por_tipo.at(edificio->pedir_id_tipo()))--;
 }

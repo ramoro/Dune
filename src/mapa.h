@@ -123,6 +123,10 @@ class Mapa {
 		en caso de que sea momento de que salga.*/
 		void actualizar_salida_gusano(double tiempo_transcurrido);
 
+		/*Recibe el id de un objeto y devuelve un puntero al mismo. Precondicion:
+		el objeto se encuentra en el mapa.*/
+		ObjetoDune* obtener_objeto(int id_objeto);
+
 		Mapa();
 
 	private:

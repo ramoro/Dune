@@ -1,6 +1,7 @@
 #include "silo.h"
 
 #define ID_SILO 3 //para usarlo en el protocolo
+#define DESTRUIDO -1
 
 Silo::Silo(int id, int id_duenio, std::pair<int, int> centro, Root &root) : 
 	Edificio(root["Silo"].get("aporte_energetico", 0).asInt(),
@@ -24,9 +25,11 @@ int id_tipo_edificio) {
 	return agregado;
 }
 
-void Silo::destruir(Mapa &mapa, Jugador &jugador) {
-	jugador.reducir_capacidad_especia(capacidad);
-	Edificio::eliminar(mapa, jugador);
+void Silo::actualizar_existencia(Jugador &jugador) {
+	if (estado == DESTRUIDO) {
+		jugador.reducir_capacidad_especia(capacidad);
+		Edificio::serializar_mensaje_muerte();
+	}
 }
 /*int Silo::depositar_especia(int cantidad_especia) {
 	int espacio_restante = capacidad - cantidad_especia;

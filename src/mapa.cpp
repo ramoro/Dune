@@ -340,3 +340,8 @@ void Mapa::actualizar_salida_gusano(double tiempo_transcurrido) {
 		gusano.serializar_mensaje_salida();
 	}
 }
+
+ObjetoDune* Mapa::obtener_objeto(int id_objeto) {
+	ObjetoDune *objeto = &(mapa_ids_objetos.at(id_objeto));
+	return objeto;
+}
