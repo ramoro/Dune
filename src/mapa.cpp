@@ -4,10 +4,11 @@
 #include <stdlib.h>
 #include <iostream> 
 
-<<<<<<< HEAD
 #define LIMITE_ITERACIONES_GUSANO 100
 
 //INICIALIAZDOR DE MAPA HARDCODEADO
+
+Mapa::Mapa() {}
 
 Mapa::Mapa(Root &root) {
 	/*inicialmente mapa de 1300x700 pixeles, siendo cada baldosa

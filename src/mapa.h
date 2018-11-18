@@ -27,6 +27,9 @@ class Mapa {
 
 	public:
 		/*Constructor de la clase.*/
+		Mapa();
+
+		/*Constructor de la clase.*/
 		Mapa(Root &root);
 
 		/*Recibe una posicion central de un objeto, su base y su altura y se fija
