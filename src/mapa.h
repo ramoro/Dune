@@ -129,6 +129,8 @@ class Mapa {
 		ObjetoDune* obtener_objeto(int id_objeto);
 
 		Mapa();
+		Mapa(Root &root);
+
 
 	private:
 		/*Recibe la posicion central de un objeto, su base y su altura y

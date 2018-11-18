@@ -191,7 +191,7 @@ int main(int argc, char* argv[]) {
 
 
 
-
+/*
 int main() {
   std::cout << "asd" << std::endl;
   Partida partida;
@@ -226,7 +226,7 @@ int main() {
   partida.actualizar_modelo(120);
 
 
-/*
+
   bool agregado1 = partida.agregar_edificio(0, std::pair<int, int>(7,3), 6);
   //bool agregado2 = partida.agregar_edificio(1, std::pair<int, int>(8,4), 0);
   //bool agregado3 = partida.agregar_edificio(0, std::pair<int, int>(5,5), 0);
@@ -243,9 +243,9 @@ int main() {
   }
   //Mapa mapa;
   //std::pair<int, int> objetivo = mapa.desenterrar_gusano();
-  //std::cout << objetivo.first << " " << objetivo.second << std::endl;*/
+  //std::cout << objetivo.first << " " << objetivo.second << std::endl;
 }
-
+*/
 /*int main() {
   Mapa mapa;
   BuscadorMejorCamino buscador;
@@ -260,7 +260,7 @@ int main() {
 }*/
 
 //MAIN NACHO
-/*int main() {
+int main() {
   Partida partida;
   partida.agregar_jugador("harkonnen");
   //std::pair<int, int> centro(100, 100);
@@ -268,12 +268,12 @@ int main() {
   //std::cout << agregado << std::endl;
   //std::pair<int, std::pair<int ,int>> nueva_unidad = partida.agregar_unidad_movible(2,0);
   //std::cout << "ID nueva unidad " << nueva_unidad.first << std::endl;
-  //partida.agregar_edificio(0, std::pair<int, int>(400,400), 4);
-  partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
-  partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
+  partida.agregar_edificio(0, std::pair<int, int>(5,5), 4);
+  //partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
+  //partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
 
   for (int i = 0; i < 2 ; i++) {
-    std::cout << "ID nueva unidad " << partida.se_puede_agregar_unidad_movible(15,0) << std::endl;
+    partida.iniciar_entrenamiento_unidad_movible(15,0);
+    partida.actualizar_modelo(1000.0) ;
   }
-  std::cout << "ID nueva unidad " << partida.se_puede_agregar_unidad_movible(19,1) << std::endl;
-}*/
+}

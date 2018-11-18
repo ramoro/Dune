@@ -14,6 +14,8 @@ Partida::Partida() {
 	contador_ids_objetos = 0;
 	Root json("../src/input.json");
 	root = std::move(json);
+	Mapa map(this->root);
+	mapa = std::move(map);
 }
 
 void Partida::agregar_jugador(std::string casa_jugador) {

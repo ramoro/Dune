@@ -1,27 +1,74 @@
 #include "mapa.h"
 #include "Terrenos/no_especia.h"
+#include "Terrenos/especia.h"
 #include <stdlib.h>
 #include <iostream> 
 
-//INICIALIAZDOR DE MAPA HARDCODEADO
-Mapa::Mapa() {
-	for (int i = 0; i < 1000; i++) {
+Mapa::Mapa(){}
+Mapa::Mapa(Root &root) {
+	/*inicialmente mapa de 1300x700 pixeles, siendo cada baldosa
+	 de 50x50 pixeles (26x14)*/
+	std::cout << "Mapa de " << root["terreno"].size() << " por " <<
+	 root["terreno"][0].size() << " baldosas" << std::endl;
+	for (unsigned int i = 0; i < root["terreno"].size(); i++) {
 		std::vector<Coordenada> fila;
-		for (int j = 0; j < 1000; j++) {
-			if (i == 19 && j == 23) {
-				NoEspecia roca("arena");
-				Coordenada coord(0, roca);
-				fila.push_back(coord);
-			} else {
-				NoEspecia roca("roca");
-				Coordenada coord(0, roca);
-				fila.push_back(coord);
+		for (unsigned int j = 0; j < root["terreno"][0].size(); j++) {
+			switch (root["terreno"][i][j].asInt()){
+				case 30:
+				{
+					NoEspecia roca("roca");
+					Coordenada coord(0, roca);
+					fila.push_back(coord);
+					break;
+				}
+				case 31:
+				{
+					NoEspecia duna("duna");
+					Coordenada coord(0, duna);
+					fila.push_back(coord);
+					break;
+				}
+				case 32:
+				{
+					Especia especiafuerte("especia fuerte");
+					Coordenada coord(0, especiafuerte);
+					fila.push_back(coord);
+					break;
+				}
+				case 33:
+				{
+					Especia especiasuave("especia suave");
+					Coordenada coord(0, especiasuave);
+					fila.push_back(coord);
+					break;
+				}
+				case 34:
+				{
+					NoEspecia cima("cima");
+					Coordenada coord(0, cima);
+					fila.push_back(coord);
+					break;
+				}
+				case 35:
+				{
+					NoEspecia precipio("precipio");
+					Coordenada coord(0, precipio);
+					fila.push_back(coord);
+					break;
+				}
+				default:
+				{
+					NoEspecia roca("arena");
+					Coordenada coord(0, roca);
+					fila.push_back(coord);
+					break;
+				}
 			}
 		}
 		coordenadas.push_back(fila);
 	}
-	
 }
+
 
 bool Mapa::esta_dentro(std::pair<int, int> pos_objeto1, std::pair<int, int>
 centro_objeto2, int altura_objeto2, int base_objeto2) {
@@ -115,10 +162,10 @@ int altura, int base, std::string terreno) {
 
 void Mapa::marcar_estado_coordenadas_alrededor(std::pair<int, int> pos_central, 
 int altura, int base, bool ocupar) {
-	std::pair<int, int> inicio((pos_central.first + base/2) - (base - 1), 
-	(pos_central.second + altura/2) - (altura- 1));
-	for (int i = 0; i < base; i++) {
-		for (int j = 0; j < altura; j++) {
+	std::pair<int, int> inicio((pos_central.first + altura/2) - (altura - 1), 
+	(pos_central.second + base/2) - (base- 1));
+	for (int i = 0; i < altura; i++) {
+		for (int j = 0; j < base; j++) {
 			//ignoro el centro ya que ya le agregue el objeto antes
 			if (inicio.first == pos_central.first && inicio.second == 
 			pos_central.second) {
@@ -131,13 +178,14 @@ int altura, int base, bool ocupar) {
 			if (ocupar){
 				coordenadas[inicio.first][inicio.second].
 				marcar_como_ocupada();
+				std::cout << "esta ocupada " << inicio.first << " " << inicio.second << std::endl;
 			} else {
 				coordenadas[inicio.first][inicio.second].
 				marcar_como_desocupada();
 			}
 			inicio.second++;
 		}
-		inicio.second -= altura;
+		inicio.second -= base;
 		inicio.first++;
 	}
 }
