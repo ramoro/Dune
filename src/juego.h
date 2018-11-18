@@ -27,9 +27,6 @@ class Juego {
     /*Constructor de la clase.*/
     Juego(Socket cliente, Partida *partida);
 
-    void split(const std::string& s, char c,
-    std::vector<int>& v); 
-
     //virtual 
     void run();
     //override;

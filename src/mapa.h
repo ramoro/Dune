@@ -26,6 +26,9 @@ class Mapa {
 		Gusano gusano;
 
 	public:
+		/*Constructor de la clase.*/
+		Mapa(Root &root);
+
 		/*Recibe una posicion central de un objeto, su base y su altura y se fija
 		si los puntos que lo rodean son del terreno pasado como string.
 		Devuelve true en caso de que el terreno que ocupa el objeto sea del
@@ -127,8 +130,6 @@ class Mapa {
 		/*Recibe el id de un objeto y devuelve un puntero al mismo. Precondicion:
 		el objeto se encuentra en el mapa.*/
 		ObjetoDune* obtener_objeto(int id_objeto);
-
-		Mapa();
 
 	private:
 		/*Recibe la posicion central de un objeto, su base y su altura y

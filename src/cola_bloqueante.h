@@ -9,12 +9,13 @@
 #include <thread>
 #include <chrono>
 #include <random>
+#include "mensaje_protocolo.h"
 
 /*Clase que representa una cola que se bloquea con un 
 mutex a la hora de poner o sacar cosas de ella.*/
 class ColaBloqueante {
     private:
-        std::queue<std::string> q;
+        std::queue<MensajeProtocolo> q;
         const unsigned int max_size;
         std::mutex mutex;
         std::condition_variable is_not_full;
@@ -24,13 +25,14 @@ class ColaBloqueante {
         /*Constructor de la clase.*/
         ColaBloqueante(const unsigned int max_size);
 
-        /*Recibe un string y lo encola en la cola, bloqueando
+        /*Recibe un mensaje protocolo con la data a enviar al cliente
+         y lo encola en la cola, bloqueando
         el procedimiento.*/
-        void push(const std::string& val);
+        void push(const MensajeProtocolo& mensaje);
 
         /*Saca un elemento de la cola y lo devuelve. El procedimiento
         esta protegido.*/
-        std::string pop();
+        MensajeProtocolo pop();
 
     private:
         /*El objeto no se puede crear por copia.*/

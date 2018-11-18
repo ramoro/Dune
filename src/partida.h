@@ -9,6 +9,7 @@
 #include "Edificios/fabrica_edificios.h"
 #include "UnidadesMovibles/fabrica_unidades_movibles.h"
 #include "root.h"
+#include "cola_bloqueante.h"
 
 /*Clase que representa a una partida de Dune.*/
 class Partida {
@@ -33,9 +34,12 @@ class Partida {
 
 		/*Agrega un edificio segun el id de tipo pasado, asociado al id pasado
 		por parametro, asignado al jugador con el id pasado por parametro 
-		y en la posicion tambien pasada por parametro.*/
+		y en la posicion tambien pasada por parametro. En caso de no poder
+		agregarse se encola un mensaje respetando el protocolo dentro de
+		la cola recibida.*/
 		void agregar_edificio(int id_jugador, std::pair<int, int>
-		posicion_central, int id_tipo_edificio);
+		posicion_central, int id_tipo_edificio, ColaBloqueante 
+		*cola_mensajes);
 
 		/*Recibe el id del tipo de unidad movible que ataca
 		y el id del objeto atacado. Setea la unidad atacante en modo
@@ -49,11 +53,12 @@ class Partida {
 		del dinero que le costo.*/
 		void autodemoler_edificio(int id_edificio);
 
-		/*Recibe el id del tipo de unidad a crear y el id del edificio que
-		creara a la unidad. Se fija si puede crearla y dependiendo la situacion
-		manda se arma el mensaje correspondiente.*/
-		void iniciar_entrenamiento_unidad_movible(
-		int id_tipo_unidad, int id_edificio);
+		/*Recibe el id del tipo de unidad a crear, el id del edificio que
+		creara a la unidad y el id del duenio del edificio. Se fija si puede 
+		crearla y si no se puede arma el mensaje correspondiente encolandolo
+		a la cola recibida.*/
+		void iniciar_entrenamiento_unidad_movible(int id_tipo_unidad,
+		int id_edificio, int id_jugador, ColaBloqueante *cola_mensajes);
 
 		/*Recibe el id de una unidad y la posicion a donde moverla y setea
 		a la unidad con el mejor camino para empezar a moverse hacia la
@@ -61,10 +66,17 @@ class Partida {
 		void comenzar_movimiento_unidad(int id_unidad, 
 		std::pair<int, int> posicion_destino);
 
+		/*Recibe el id del tipo del objeto rechazado y crea un mensaje
+		asginandole la accion de rechazo junto con sus parametros segun
+		indica le protocolo y lo encola a la cola recibida.*/
+		void serializar_mensaje_rechazo_creacion(ColaBloqueante 
+		*cola_mensajes,int id_tipo_objeto_rechazado);
+
 		/*Recibe una determinada cantidad de tiempo que pasa en el juego
 		y lo actualiza segun cuanto transcurrio, agregando los mensajes
-		correspondientes a la cola bloqueante.*/
-		void actualizar_modelo(double tiempo_transcurrido);
+		correspondientes a la cola bloqueante recibida por parametro.*/
+		void actualizar_modelo(double tiempo_transcurrido, 
+		ColaBloqueante *cola_mensajes);
 		
 	private:
 		/*Recibe el puntero al edificio a actualizar el tiempo de entenamiento

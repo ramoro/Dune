@@ -193,7 +193,8 @@ int main(int argc, char* argv[]) {
 
 
 int main() {
-  std::cout << "asd" << std::endl;
+  return 0;
+  /*std::cout << "asd" << std::endl;
   Partida partida;
   partida.agregar_jugador("harkonnen");
   partida.agregar_jugador("ordos");
@@ -223,7 +224,7 @@ int main() {
   partida.actualizar_modelo(90);
   partida.actualizar_modelo(100);
   partida.actualizar_modelo(110);
-  partida.actualizar_modelo(120);
+  partida.actualizar_modelo(120);*/
 
 
 /*
@@ -271,9 +272,13 @@ int main() {
   //partida.agregar_edificio(0, std::pair<int, int>(400,400), 4);
   partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
   partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
-
+  partida.agregar_edificio(0, std::pair<int, int>(5,5), 4);
+  //partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
+  //partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
   for (int i = 0; i < 2 ; i++) {
     std::cout << "ID nueva unidad " << partida.se_puede_agregar_unidad_movible(15,0) << std::endl;
+    partida.iniciar_entrenamiento_unidad_movible(15,0);
+    partida.actualizar_modelo(1000.0) ;
   }
   std::cout << "ID nueva unidad " << partida.se_puede_agregar_unidad_movible(19,1) << std::endl;
 }*/
