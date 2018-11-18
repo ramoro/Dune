@@ -4,11 +4,12 @@
 #include <stdlib.h>
 #include <iostream> 
 
+
 #define LIMITE_ITERACIONES_GUSANO 100
 
 Mapa::Mapa() {}
 
-Mapa::Mapa(Root &root) {
+Mapa::Mapa(Root &root,int &contador_ids_objetos) {
 	/*inicialmente mapa de 1300x700 pixeles, siendo cada baldosa
 	 de 50x50 pixeles (26x14)*/
 	std::cout << "Mapa de " << root["terreno"].size() << " por " <<
@@ -20,49 +21,49 @@ Mapa::Mapa(Root &root) {
 				case 30:
 				{
 					NoEspecia roca("roca");
-					Coordenada coord(0, roca);
+					Coordenada coord(0, roca, contador_ids_objetos);
 					fila.push_back(coord);
 					break;
 				}
 				case 31:
 				{
 					NoEspecia duna("duna");
-					Coordenada coord(0, duna);
+					Coordenada coord(0, duna, contador_ids_objetos);
 					fila.push_back(coord);
 					break;
 				}
 				case 32:
 				{
 					Especia especiafuerte("especia fuerte");
-					Coordenada coord(0, especiafuerte);
+					Coordenada coord(0, especiafuerte, contador_ids_objetos);
 					fila.push_back(coord);
 					break;
 				}
 				case 33:
 				{
 					Especia especiasuave("especia suave");
-					Coordenada coord(0, especiasuave);
+					Coordenada coord(0, especiasuave, contador_ids_objetos);
 					fila.push_back(coord);
 					break;
 				}
 				case 34:
 				{
 					NoEspecia cima("cima");
-					Coordenada coord(0, cima);
+					Coordenada coord(0, cima, contador_ids_objetos);
 					fila.push_back(coord);
 					break;
 				}
 				case 35:
 				{
 					NoEspecia precipio("precipio");
-					Coordenada coord(0, precipio);
+					Coordenada coord(0, precipio, contador_ids_objetos);
 					fila.push_back(coord);
 					break;
 				}
 				default:
 				{
 					NoEspecia roca("arena");
-					Coordenada coord(0, roca);
+					Coordenada coord(0, roca, contador_ids_objetos);
 					fila.push_back(coord);
 					break;
 				}

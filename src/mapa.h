@@ -30,7 +30,7 @@ class Mapa {
 		Mapa();
 
 		/*Constructor de la clase.*/
-		Mapa(Root &root);
+		Mapa(Root &root, int &contador_ids_objetos);
 
 		/*Recibe una posicion central de un objeto, su base y su altura y se fija
 		si los puntos que lo rodean son del terreno pasado como string.
