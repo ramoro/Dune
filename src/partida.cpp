@@ -5,9 +5,10 @@
 #include <iostream>
 #include <set>
 
-#define CODIGO_CREACION_EDIFICIO_RECHAZADA 'r'
+#define CODIGO_CREACION_OBJETO_RECHAZADA 'r'
 #define CODIGO_MUERTE_OBJETO 'd'
 #define CODIGO_PERDIO_JUGADOR 'e'
+#define JUGADOR_NO_ENTRENANDO -1
 
 Partida::Partida() {
 	contador_ids_jugadores = 0;
@@ -28,7 +29,7 @@ void Partida::agregar_jugador(std::string casa_jugador) {
 
 //DEBERIA PASAR COLA BLOQUEANTE
 void Partida::agregar_edificio(int id_jugador, std::pair<int, int>
-posicion_central, int id_tipo_edificio) {
+posicion_central, int id_tipo_edificio, ColaBloqueante* cola_mensajes) {
 	std::shared_ptr<Edificio> ptr_edificio = fabrica_edificios.crear_edificio(id_tipo_edificio,
 	contador_ids_objetos, id_jugador, posicion_central,root);
 	
@@ -43,10 +44,7 @@ posicion_central, int id_tipo_edificio) {
 		//cola.push(ptr_edificio.pedir_mensaje_protocolo());
 	
 	} else {
-		//lo meto directo en cola bloqueante
-		MensajeProtocolo mensaje;
-		mensaje.asignar_accion(CODIGO_CREACION_EDIFICIO_RECHAZADA);
-		mensaje.agregar_parametro(id_tipo_edificio);
+		serializar_mensaje_rechazo_creacion(cola_mensajes, id_tipo_edificio);
 	}
 }
 
@@ -69,15 +67,21 @@ void Partida::autodemoler_edificio(int id_edificio) {
 }
 
 void Partida::iniciar_entrenamiento_unidad_movible(int id_tipo_unidad, 
-int id_edificio) {
-	bool se_puede_agregar = ((edificios.at(id_edificio))->
-	se_puede_agregar_unidad(jugadores.at((edificios.at(id_edificio))->
-	pedir_id_duenio()), id_tipo_unidad, contador_ids_objetos,root));
-	if (se_puede_agregar) {
-		contador_ids_objetos++;
-		//mando mensaje que se agrego?
+int id_edificio, int id_jugador, ColaBloqueante *cola_mensajes) {
+	int id_edificio_entrenando = jugadores.at(id_jugador).
+	pedir_id_edificio_entrenando();
+	if (id_edificio_entrenando == JUGADOR_NO_ENTRENANDO) {
+		serializar_mensaje_rechazo_creacion(cola_mensajes, id_tipo_unidad);
+	} else {
+		bool se_puede_agregar = ((edificios.at(id_edificio))->
+		se_puede_agregar_unidad(jugadores.at(id_jugador), 
+		id_tipo_unidad, contador_ids_objetos,root));
+		if (!se_puede_agregar) {
+			serializar_mensaje_rechazo_creacion(cola_mensajes, id_tipo_unidad);
+		} else {
+			contador_ids_objetos++;
+		}
 	}
-	//aca mando mensaje que no se pudo agregar
 }
 
 void Partida::comenzar_movimiento_unidad(
@@ -102,7 +106,6 @@ edificio, double tiempo_transcurrido) {
 		std::shared_ptr<UnidadMovible>> (unidad_nueva->pedir_id(), 
 		unidad_nueva));
 		jugadores.at(edificio->pedir_id_duenio()).setear_no_entrenando();
-		//mando sus datos por la cola bloqueante
 	}
 }
 
@@ -120,9 +123,18 @@ unidad_a_remover) {
 	mapa.eliminar_objeto(unidad_a_remover->pedir_id());
 }
 
+void Partida::serializar_mensaje_rechazo_creacion(ColaBloqueante 
+*cola_mensajes,int id_tipo_objeto_rechazado) {
+	MensajeProtocolo mensaje;
+	mensaje.asignar_accion(CODIGO_CREACION_OBJETO_RECHAZADA);
+	mensaje.agregar_parametro(id_tipo_objeto_rechazado);
+	cola_mensajes->push(mensaje);
+}
+
 //deberia pasarle COLA BLOQUEANTE para desde aca dentro
 //mandar el mensaje sobre la unidad agregada
-void Partida::actualizar_modelo(double tiempo_transcurrido) {
+void Partida::actualizar_modelo(double tiempo_transcurrido, 
+ColaBloqueante *cola_mensajes) {
 	//mapa.actualizar_salida_gusano(tiempo_transcurrido);
 	for (std::map<int, Jugador>::iterator it_jugadores = 
 	jugadores.begin(); it_jugadores != jugadores.end(); ++it_jugadores) {
@@ -181,7 +193,7 @@ void Partida::actualizar_modelo(double tiempo_transcurrido) {
 					}
 				}
 			}
-			//encolar menasje en cola bloqueante
+			cola_mensajes->push(*it_mensajes);
 		}
 		(it_edifs->second)->limpiar_lista_mensajes();
 	}
@@ -196,7 +208,7 @@ void Partida::actualizar_modelo(double tiempo_transcurrido) {
 			if ((*it_mensajes).pedir_accion() == CODIGO_MUERTE_OBJETO) {
 				unidades_a_eliminar.insert(it_unidades->second);
 			}
-			//encolar mensaje
+			cola_mensajes->push(*it_mensajes);
 		}
 		(it_unidades->second)->limpiar_lista_mensajes();
 	}

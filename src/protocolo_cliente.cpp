@@ -1,5 +1,6 @@
 #include "protocolo_cliente.h"
 #include "socket_error.h"
+#include "mensaje_protocolo.h"
 #include <iostream>
 
 ProtocoloCliente::ProtocoloCliente(Socket skt_clt) : 
@@ -22,12 +23,17 @@ void ProtocoloCliente::inicializar() {
 void ProtocoloCliente::enviar_mensajes() {
 	try {
 		while (this->jugando) {
-			std::string mensaje = this->cola_envio->pop();
+			MensajeProtocolo mensaje = this->cola_envio->pop();
 			/* ver si perdio cliente
 			*/
 			/*ver si gano tambien*/
-			this->socket_cliente.send_int(mensaje.size());
-			this->socket_cliente.send_string(mensaje);
+			unsigned char accion = mensaje.pedir_accion();
+			this->socket_cliente.send_msj(&accion, 1);
+			std::vector<int> parametros = mensaje.pedir_parametros();
+			for (std::vector<int>::iterator it = parametros.begin(); 
+			it != parametros.end(); ++it) {
+				this->socket_cliente.send_int(*it);
+			}
 		}
 	} catch (std::exception &e){
 		std::cerr << e.what() << " En ProtocoloCliente::enviar_mensajes" << std::endl;
@@ -37,9 +43,23 @@ void ProtocoloCliente::enviar_mensajes() {
 void ProtocoloCliente::recibir_mensajes() {
 	try {
 		while (this->jugando) {
-			int tam_msje = this->socket_cliente.recv_int();
-			std::string mensaje; 
-			this->socket_cliente.recv_string(tam_msje, mensaje);
+			MensajeProtocolo mensaje;
+			unsigned char accion;
+			this->socket_cliente.recv_msj(&accion, 1);
+			mensaje.asignar_accion(accion);
+			int cantidad_ints_a_recibir;
+			if (accion == 'm' || accion == 'u') {
+				cantidad_ints_a_recibir = 3;
+			} else if (accion == 'a') {
+				cantidad_ints_a_recibir = 2;
+			} else if (accion == 'e') {
+				cantidad_ints_a_recibir = 4;
+			}
+
+			for (int i = 0; i < cantidad_ints_a_recibir; ++i) {
+				mensaje.agregar_parametro(this->socket_cliente.recv_int());
+			}
+			
 			this->cola_recepcion->push(mensaje);
 		}
 	} catch(SocketError &e){

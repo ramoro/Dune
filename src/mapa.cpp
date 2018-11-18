@@ -4,7 +4,13 @@
 #include <stdlib.h>
 #include <iostream> 
 
-Mapa::Mapa(){}
+
+#define LIMITE_ITERACIONES_GUSANO 100
+
+//INICIALIAZDOR DE MAPA HARDCODEADO
+
+Mapa::Mapa() {}
+
 Mapa::Mapa(Root &root,int &contador_ids_objetos) {
 	/*inicialmente mapa de 1300x700 pixeles, siendo cada baldosa
 	 de 50x50 pixeles (26x14)*/
@@ -185,6 +191,7 @@ int altura, int base, bool ocupar) {
 			}
 			inicio.second++;
 		}
+
 		inicio.second -= base;
 		inicio.first++;
 	}
@@ -220,7 +227,9 @@ void Mapa::desenterrar_gusano() {
 	int columna_random;
 	bool espacio_valido = false;
 	std::vector<ObjetoDune*> objetivos;
+	int limite_salida = 0;
 	while(!espacio_valido) {
+		if (limite_salida == LIMITE_ITERACIONES_GUSANO) break;
 		fila_random = rand() % coordenadas.size();
 		columna_random = rand() % coordenadas.size();
 		//fila_random = 19;
@@ -241,6 +250,7 @@ void Mapa::desenterrar_gusano() {
 				break;
 			}
 		}
+		limite_salida++;
 	}
 	
 	for (std::vector<ObjetoDune*>::iterator it = objetivos.begin();

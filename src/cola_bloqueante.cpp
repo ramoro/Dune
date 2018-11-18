@@ -4,7 +4,7 @@
 ColaBloqueante::ColaBloqueante(const unsigned int max_size) : 
 max_size(max_size) {}
         
-void ColaBloqueante::push(const std::string& val) {
+void ColaBloqueante::push(const MensajeProtocolo& mensaje) {
     std::unique_lock<std::mutex> lock(mutex);
 
     if (q.empty()) {
@@ -16,20 +16,20 @@ void ColaBloqueante::push(const std::string& val) {
 		is_not_full.wait(lock);
 	}
 
-    q.push(val);
+    q.push(mensaje);
 } 
 
-std::string ColaBloqueante::pop() {
+MensajeProtocolo ColaBloqueante::pop() {
     std::unique_lock<std::mutex> lock(mutex);
     while (q.empty()) {
         std::cout << " cola vacia, el pull se bloquea\n";
         is_not_empty.wait(lock);
     }
 
-    const std::string val = q.front();
+    const MensajeProtocolo mensaje = q.front();
     q.pop();
 
     is_not_full.notify_all();
 
-    return val;
+    return mensaje;
 }

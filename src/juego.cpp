@@ -7,6 +7,7 @@
 using namespace std::chrono;
 
 #define TAM_COLA 100
+#define SEGUNDOS_POR_FRAME 1/40
 
 Juego::Juego(): cola_envio(TAM_COLA), 
 cola_recepcion(TAM_COLA) {
@@ -26,56 +27,37 @@ void Juego::hacer_ajustes_iniciales() {
 
 }
 
-void Juego::split(const std::string& s, char c,
-std::vector<int>& v) {
-   std::string::size_type i = 0;
-   std::string::size_type j = s.find(c);
-
-   while (j != std::string::npos) {
-      v.push_back(atoi((s.substr(i, j-i)).c_str()));
-      i = ++j;
-      j = s.find(c, j);
-
-      if (j == std::string::npos)
-        v.push_back(atoi((s.substr(i, s.length())).c_str()));
-   }
-}
-
 void Juego::run() {
-  //hacer_ajustes_iniciales();
+  hacer_ajustes_iniciales();
   this->terminado = false;
   while(!this->terminado) {
-    //std::string mensaje = cola_recepcion.pop();
+    MensajeProtocolo mensaje = cola_recepcion.pop();
+    char accion = mensaje.pedir_accion();
     //std::cout << mensaje << std::endl;
     //cola_envio.push(mensaje);
-    /*
-    std::vector<int> v;
-    std::string accion = comando.substr(0,1);
-    std::string data = comando.substr(comando.find('|') + 1);
-    split(data, '|', v);
-
-    for (unsigned int i = 0; i < v.size(); ++i) {
-      std::cout << v[i] << '\n';
-    }
-    if (accion == "e") {
+    std::vector<int> v = mensaje.pedir_parametros();
+    if (accion == 'e') {
       //despues se pasaria la cola bloqueante de envio para agregar
       //el mensaje de si se puso o no y donde en caso de ponerse
-      agregar_edificio(v[0], std::pair<int, int> (v[2], v[3]),
-      v[1]);
-    } else if (accion == "u") {
+      this->partida->agregar_edificio(v[0], std::pair<int, int> (v[2], v[3]),
+      v[1], &(this->cola_envio));
+    } else if (accion == 'u') {
       //aca paso la cola bloqueante y mando un si si se envio y cambio estado
       //o un no si no
-      se_puede_agregar_unidad_movible(v[0], v[1]);
-    } else if (accion == "m") {
-      mover_unidad(v[0],std::pair<int, int> (v[1], v[2]));
-    } else if (accion == "a") {
-      atacar_objeto(v[0], v[1]);
+      this->partida->iniciar_entrenamiento_unidad_movible(v[0], v[1], v[2], 
+      &(this->cola_envio)); 
+    } else if (accion == 'm') {
+      this->partida->comenzar_movimiento_unidad(v[0],
+      std::pair<int, int> (v[1], v[2]));
+    } else if (accion == 'a') {
+      this->partida->atacar_objeto(v[0], v[1]);
     }
-    this->partida->actualizar_modelo(TIEMPO_GAME_LOOP);
+  
     //ver si juego termino*/
    
     high_resolution_clock::time_point tiempo_inicial = high_resolution_clock::now();
 
+    this->partida->actualizar_modelo(SEGUNDOS_POR_FRAME, &(this->cola_envio));
 
   	high_resolution_clock::time_point tiempo_final = 
   	high_resolution_clock::now();
@@ -85,7 +67,7 @@ void Juego::run() {
 
   	std::this_thread::sleep_for(std::chrono::milliseconds(tiempo_sleep));
 
-    break;
+    //break;
   }
-  //this->clientes[0]->finalizar();
+  this->clientes[0]->finalizar();
 }
