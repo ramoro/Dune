@@ -4,9 +4,11 @@
 #include <stdlib.h>
 #include <iostream> 
 
+<<<<<<< HEAD
 #define LIMITE_ITERACIONES_GUSANO 100
 
 //INICIALIAZDOR DE MAPA HARDCODEADO
+
 Mapa::Mapa(Root &root) {
 	/*inicialmente mapa de 1300x700 pixeles, siendo cada baldosa
 	 de 50x50 pixeles (26x14)*/
@@ -70,6 +72,7 @@ Mapa::Mapa(Root &root) {
 		coordenadas.push_back(fila);
 	}
 }
+
 
 bool Mapa::esta_dentro(std::pair<int, int> pos_objeto1, std::pair<int, int>
 centro_objeto2, int altura_objeto2, int base_objeto2) {
@@ -186,7 +189,8 @@ int altura, int base, bool ocupar) {
 			}
 			inicio.second++;
 		}
-		inicio.second -= base; 
+
+		inicio.second -= base;
 		inicio.first++;
 	}
 }

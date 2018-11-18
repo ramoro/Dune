@@ -85,6 +85,14 @@ add_library(sdldemo STATIC
  src/Estados/estado.h
  src/Estados/movimiento.cpp
  src/Estados/movimiento.h 
+ src/Estados/ataque.cpp
+ src/Estados/ataque.h 
+ src/Estados/movimiento_para_atacar.cpp
+ src/Estados/movimiento_para_atacar.h
+ src/Estados/muerte.cpp
+ src/Estados/muerte.h
+ src/Estados/inactividad.cpp
+ src/Estados/inactividad.h
 )
 set(CMAKE_BUILD_TYPE Debug)
 # Agrego la carpeta con los headers autogenerados a los includes
@@ -125,6 +133,8 @@ add_executable (main
  src/protocolo_cliente.h
  src/mensaje_protocolo.cpp
  src/mensaje_protocolo.h
+ src/gusano.cpp
+ src/gusano.h
 )
 
 

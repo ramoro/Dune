@@ -15,4 +15,4 @@ std::pair<int,int> Conversor::de_pixel_a_baldosa(std::pair<int,int> pixel){
 	baldosa.first = round((pixel.first + (cant_pixel_ancho/2))/cant_pixel_ancho);
 	baldosa.second = round((pixel.second + (cant_pixel_alto/2))/cant_pixel_alto);
 	return baldosa;
-} 
+}

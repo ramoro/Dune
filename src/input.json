@@ -60,22 +60,22 @@
 	"FabricaLigera": {
 		"aporte_energetico": -500,
 		"costo": 800,
-		"dimension_ancho": 5,
+		"dimension_ancho": 4,
 		"dimension_alto": 4,
 		"puntos_estructura": 500
 	},
 	"FabricaPesada": {
 		"aporte_energetico": -300,
 		"costo": 1500,
-		"dimension_ancho": 10,
-		"dimension_alto": 10,
+		"dimension_ancho": 50,
+		"dimension_alto": 50,
 		"puntos_estructura": 1500
 	},
 	"Cuartel": {
 		"aporte_energetico": -100,
 		"costo": 300,
-		"dimension_ancho": 1,
-		"dimension_alto": 1,
+		"dimension_ancho": 300,
+		"dimension_alto": 200,
 		"puntos_estructura": 300
 	},
 	"Palacio": {
@@ -99,8 +99,8 @@
 		"tiempo_entrenamiento": 80,
 		"costo": 70,
 		"puntos_vida": 80,
-		"dimension_ancho": 1,
-		"dimension_alto": 1,
+		"dimension_ancho": 50,
+		"dimension_alto": 50,
 		"edificios_necesarios": [6]
 	},
 	"Fremen": {
