@@ -18,7 +18,7 @@ class Edificio: public ObjetoDune {
 		std::pair<int, int> dimension;
 		int porcentaje_recuperacion;
 		FabricaUnidadesMovibles fabrica_unidades_movibles;
-		std::list<std::shared_ptr<UnidadMovible>> unidades_entrenando;
+		std::shared_ptr<UnidadMovible> unidad_entrenando;
 	
 	protected:
 		int estado;	

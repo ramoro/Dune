@@ -30,7 +30,7 @@ TanqueSonico::TanqueSonico(int id, int id_duenio, std::pair<int, int> centro,
 std::vector<ObjetoDune*> TanqueSonico::atacar_objetivo(Mapa &mapa,
 int id_objetivo) {
 	std::vector<ObjetoDune*> afectados = mapa.buscar_unidades_alrededor(
-	this->centro, this->altura, this->base, false, false, -1);
+	this->centro, this->altura, this->base, false, false, -1, false);
 	std::vector<int> ids_objetivos;
 
 	return afectados;

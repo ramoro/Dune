@@ -2,7 +2,9 @@
 #include "ataque.h"
 
 MovimientoParaAtacar::MovimientoParaAtacar(std::shared_ptr<ObjetoDune>
-objetivo): objeto_destino(objetivo), pos_destino(objetivo->obtener_centro()) {}
+objetivo): objeto_destino(objetivo), pos_destino(objetivo->obtener_centro()) {
+	nombre = "mov para atacar";
+}
 
 std::shared_ptr<Estado> MovimientoParaAtacar::actualizar(UnidadMovible 
 *unidad, Mapa &mapa, double tiempo_transcurrido) {
@@ -13,9 +15,14 @@ std::shared_ptr<Estado> MovimientoParaAtacar::actualizar(UnidadMovible
 		obtener_camino(unidad->obtener_centro(), 
 		objeto_destino->obtener_centro()));
 	}
-	if (Movimiento::actualizar(unidad, mapa, tiempo_transcurrido)) {
-		std::shared_ptr<Ataque> ataque(new Ataque(objeto_destino));
-		return ataque;
+	Movimiento::actualizar(unidad, mapa, tiempo_transcurrido);
+	std::pair<int, int> cercania = mapa.pedir_cercania(unidad->pedir_id(), 
+	objeto_destino->pedir_id());
+	if (cercania.first > unidad->obtener_rango_ataque_filas() || 
+	cercania.second > unidad->obtener_rango_ataque_columnas()) {
+		return NULL;
 	}
-	return NULL;	
+	unidad->limpiar_camino();
+	std::shared_ptr<Ataque> ataque(new Ataque(objeto_destino));
+	return ataque;
 }

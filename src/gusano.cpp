@@ -18,8 +18,8 @@
 
 //DATOS DEL GUSANO VIENEN DEL CONFIG	
 Gusano::Gusano() {
-	dimension_alto = 100;
-	dimension_ancho = 100;
+	dimension_alto = 1;
+	dimension_ancho = 1;
 	tiempo_salida = 240;
 	contador_salida = 240;
 }

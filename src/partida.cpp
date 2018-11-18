@@ -28,7 +28,7 @@ void Partida::agregar_edificio(int id_jugador, std::pair<int, int>
 posicion_central, int id_tipo_edificio) {
 	std::shared_ptr<Edificio> ptr_edificio = fabrica_edificios.crear_edificio(id_tipo_edificio,
 	contador_ids_objetos, id_jugador, posicion_central,root);
-
+	
 	bool agregado = ptr_edificio->agregar_al_juego(mapa, jugadores.at(id_jugador), 
 	contador_ids_objetos, id_tipo_edificio);
 	if (agregado) {
@@ -36,9 +36,9 @@ posicion_central, int id_tipo_edificio) {
 		std::shared_ptr<Edificio>>(contador_ids_objetos, ptr_edificio));
 		contador_ids_objetos++;
 		ptr_edificio->serializar_mensaje_creacion_objeto(ptr_edificio);
-		/*PARTE COLA BLOQUEANTE/AL SACAR MENSAJE LUEGO DEBO LIMPIAR MENSAJE
-		cola.push(ptr_edificio.pedir_mensaje_protocolo());
-		*/
+		//PARTE COLA BLOQUEANTE/AL SACAR MENSAJE LUEGO DEBO LIMPIAR MENSAJE
+		//cola.push(ptr_edificio.pedir_mensaje_protocolo());
+	
 	} else {
 		//lo meto directo en cola bloqueante
 		MensajeProtocolo mensaje;
@@ -98,6 +98,7 @@ edificio, double tiempo_transcurrido) {
 		unidades_movibles.emplace(std::pair<int, 
 		std::shared_ptr<UnidadMovible>> (unidad_nueva->pedir_id(), 
 		unidad_nueva));
+		jugadores.at(edificio->pedir_id_duenio()).setear_no_entrenando();
 		//mando sus datos por la cola bloqueante
 	}
 }
@@ -119,10 +120,26 @@ unidad_a_remover) {
 //deberia pasarle COLA BLOQUEANTE para desde aca dentro
 //mandar el mensaje sobre la unidad agregada
 void Partida::actualizar_modelo(double tiempo_transcurrido) {
-	mapa.actualizar_salida_gusano(tiempo_transcurrido);
+	//mapa.actualizar_salida_gusano(tiempo_transcurrido);
+	for (std::map<int, Jugador>::iterator it_jugadores = 
+	jugadores.begin(); it_jugadores != jugadores.end(); ++it_jugadores) {
+		int id_edificio_entrenando = (it_jugadores->second).
+		pedir_id_edificio_entrenando();
+		if (id_edificio_entrenando != -1) {
+			//verificacion por si un edificio esta creando una unidad
+			//y lo destruyen
+			if (edificios.count(id_edificio_entrenando) < 0) {
+				(it_jugadores->second).setear_no_entrenando();
+				continue;
+			}
+			actualizar_creacion_unidades(edificios.at(id_edificio_entrenando),
+			tiempo_transcurrido);
+		}
+	}
+
 	for (std::map<int, std::shared_ptr<Edificio>>::iterator it_edifs = 
 	edificios.begin(); it_edifs != edificios.end(); ++it_edifs) {
-		actualizar_creacion_unidades((it_edifs->second), tiempo_transcurrido);
+		
 		(it_edifs->second)->actualizar_existencia(
 		jugadores.at((it_edifs->second)->pedir_id_duenio()));
 	}
@@ -132,7 +149,7 @@ void Partida::actualizar_modelo(double tiempo_transcurrido) {
 	++it_unidades) {
 		(it_unidades->second)->actualizar_unidad(tiempo_transcurrido, mapa);
 	}
-
+	
 	std::set<std::shared_ptr<Edificio>> edificios_a_eliminar;
 	std::set<std::shared_ptr<UnidadMovible>> unidades_a_eliminar;
 	for (std::map<int, std::shared_ptr<Edificio>>::iterator it_edifs = 
@@ -190,6 +207,7 @@ void Partida::actualizar_modelo(double tiempo_transcurrido) {
 	for (std::set<std::shared_ptr<UnidadMovible>>::iterator it_unidades = 
 	unidades_a_eliminar.begin(); it_unidades != unidades_a_eliminar.end();
 	++it_unidades) {
+		std::cout << "unidad murio de tipo" << (*it_unidades)->pedir_id_tipo() <<std::endl;
 		eliminar_unidad_del_juego(*it_unidades);
 	}
 }

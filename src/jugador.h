@@ -20,6 +20,7 @@ class Jugador {
 		int capacidad_especia;
 		int capacidad_especia_disponible;
 		int energia_disponible;
+		int id_edificio_entrenando_unidad;
 
 	public:
 		/*Constructor de la clase.*/
@@ -65,6 +66,20 @@ class Jugador {
 		que tiene mas edificios consumiendo energia de los que
 		tiene generando.*/
 		int pedir_energia_disponible();
+
+		/*Recibe el id de un edificio y se lo asgina al jugador
+		como el edificio que actualmente esta entrenando
+		una unidad.*/
+		void agregar_edificio_entrenando(int id_edificio);
+
+		/*Pone al id del edificio entrenando como -1, que significa
+		que no tiene en ese momento ningun edificio entrenando a alguna
+		unidad.*/
+		void setear_no_entrenando();
+
+		/*Devuelve el id del edificio del jugado que esta entrenando o -1
+		en caso de no estar entrenando unidades.*/
+		int pedir_id_edificio_entrenando();
 };
 
 #endif 

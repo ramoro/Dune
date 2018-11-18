@@ -66,6 +66,7 @@ void UnidadMovible::agregar(Mapa &mapa) {
 	std::cout << "unidad en x " << (this->centro).first << " y " << (this->centro).second << std::endl;
 	mapa.agregar_objeto(this, this->id,
 	this->centro);
+	estado = estado->cambiar_a_inactividad();
 }
 
 int UnidadMovible::tiempo_creacion_faltante(double segs) {
@@ -90,6 +91,7 @@ Mapa &mapa) {
 	
 	//si no es null le asigno el nuevo estado
 	if (nuevo_estado) {
+		std::cout << "nuevo estado " << tiempo_transcurrido<< " estado: " << estado->pedir_nombre() << std::endl;
 		estado = nuevo_estado;
 	}
 }
@@ -140,4 +142,8 @@ void UnidadMovible::serializar_mensaje_ataque(int id_unidad_atacada) {
 
 void UnidadMovible::serializar_mensaje_muerte() {
 	ObjetoDune::mensaje_muerte();
+}
+
+void UnidadMovible::limpiar_camino() {
+	camino.clear();
 }

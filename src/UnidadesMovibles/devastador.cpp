@@ -54,6 +54,6 @@ void Devastador::matar() {
 std::vector<ObjetoDune*> Devastador::ataque_al_morir(Mapa &mapa) {
 	std::vector<ObjetoDune*> objetos_afectados = mapa.
 	buscar_unidades_alrededor(this->centro, this->altura, 
-	this->base, false, false, -1);
+	this->base, false, false, -1, false);
 	return objetos_afectados;
 }

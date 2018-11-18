@@ -7,7 +7,7 @@
 #include <stack>
 #include <cmath>
 #include <iostream>
-#include "root.h"
+//#include "root.h"
 #include "server.h"
 #include "juego.h"
 
@@ -182,25 +182,51 @@ int main(int argc, char* argv[]) {
 }*/
 
 
-int main(int argc, char* argv[]) {
+/*int main(int argc, char* argv[]) {
   Juego juego;
   juego.run();
- /* Server server(argv[1]);
-  server.aceptar_cliente();*/
-}
+  Server server(argv[1]);
+  server.aceptar_cliente();
+}*/
+
+
+
+
+int main() {
+  std::cout << "asd" << std::endl;
+  Partida partida;
+  partida.agregar_jugador("harkonnen");
+  partida.agregar_jugador("ordos");
+
+  partida.agregar_edificio(0, std::pair<int, int>(20, 20), 6);
+  partida.agregar_edificio(1, std::pair<int, int>(5,6), 6);
+
+  partida.iniciar_entrenamiento_unidad_movible(11, 0);
+  partida.iniciar_entrenamiento_unidad_movible(11, 1);
+  partida.actualizar_modelo(80);
+
+  
+
+ // partida.comenzar_movimiento_unidad(2, std::pair<int, int> (10, 10));
+  //partida.actualizar_modelo(80);
+
+
+  partida.atacar_objeto(2, 3);
+  partida.actualizar_modelo(10);
+  partida.actualizar_modelo(20);
+  partida.actualizar_modelo(30);
+  partida.actualizar_modelo(40);
+  partida.actualizar_modelo(50);
+  partida.actualizar_modelo(60);
+  partida.actualizar_modelo(70);
+  partida.actualizar_modelo(80);
+  partida.actualizar_modelo(90);
+  partida.actualizar_modelo(100);
+  partida.actualizar_modelo(110);
+  partida.actualizar_modelo(120);
 
 
 /*
-
-int main() {
- Partida partida;
-  partida.agregar_jugador("je");
-  partida.agregar_jugador("asd");
-
-  partida.agregar_edificio(0, std::pair<int, int>(5,4), 5);
-  partida.agregar_edificio(0, std::pair<int, int>(5,6), 7);
-
-
   bool agregado1 = partida.agregar_edificio(0, std::pair<int, int>(7,3), 6);
   //bool agregado2 = partida.agregar_edificio(1, std::pair<int, int>(8,4), 0);
   //bool agregado3 = partida.agregar_edificio(0, std::pair<int, int>(5,5), 0);
@@ -217,10 +243,9 @@ int main() {
   }
   //Mapa mapa;
   //std::pair<int, int> objetivo = mapa.desenterrar_gusano();
-  //std::cout << objetivo.first << " " << objetivo.second << std::endl;
+  //std::cout << objetivo.first << " " << objetivo.second << std::endl;*/
 }
 
-*/
 /*int main() {
   Mapa mapa;
   BuscadorMejorCamino buscador;

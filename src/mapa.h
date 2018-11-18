@@ -19,7 +19,7 @@
 class Mapa {
 	private:
 		std::vector<std::vector<Coordenada>> coordenadas;
-		std::map<int, ObjetoDune> mapa_ids_objetos;
+		std::map<int, ObjetoDune*> mapa_ids_objetos;
 		//mapa con ids de objetos y su coordenada de centro para ubicarlos rapido 
 		//ya que el cliente no va a enviar la posicion del edificio
 		BuscadorMejorCamino buscador_mejor_camino;
@@ -50,10 +50,11 @@ class Mapa {
 		verificar_ataque_a_enemigo sea true como precondicion id_duenio
 		debe ser de un jugador existente y se verificara que se esta
 		agregando al vector a devolver el puntero a una unidad daniada
-		enemiga.*/
+		enemiga. En caso de que es_gusano sea verdadero se considera
+		agregar la unidad que tenga mismo centro que el gusano.*/
 		std::vector<ObjetoDune*>  buscar_unidades_alrededor(std::pair<int, int>
 		centro_unidad, int altura, int base, bool verificar_asentamiento,
-		bool verificar_ataque_a_enemigo, int id_duenio);
+		bool verificar_ataque_a_enemigo, int id_duenio, bool es_gusano);
 
 		/*Agrega un objeto del mundo Dune en el mapa de posiciones segun
 		la posicion central pasada por parametro y su id.*/
@@ -107,9 +108,9 @@ class Mapa {
 		/*Devuelve true si coordenada en la posicion pasada esta ocupada*/
 		bool esta_ocupada_coordenada(std::pair<int, int> posicion);
 
-		/*Recibe un puntero a la unidad a mover y la posicion a donde se 
+		/*Recibe un el id de la unidad a mover y la posicion a donde se 
 		la movera. Se la mueve dentro del mapa, cambiandole su centro.*/
-		void mover_unidad(UnidadMovible *unidad, 
+		void mover_unidad(int id_unidad, 
 		std::pair<int, int> &pos_destino);
 
 		/*Recibe una posicion inicial y devuelve una lista con las posiciones 

@@ -8,9 +8,15 @@ Mapa::Mapa() {
 	for (int i = 0; i < 1000; i++) {
 		std::vector<Coordenada> fila;
 		for (int j = 0; j < 1000; j++) {
+			if (i == 19 && j == 23) {
+				NoEspecia roca("arena");
+				Coordenada coord(0, roca);
+				fila.push_back(coord);
+			} else {
 				NoEspecia roca("roca");
 				Coordenada coord(0, roca);
 				fila.push_back(coord);
+			}
 		}
 		coordenadas.push_back(fila);
 	}
@@ -32,24 +38,26 @@ centro_objeto2, int altura_objeto2, int base_objeto2) {
 
 std::vector<ObjetoDune*> Mapa::buscar_unidades_alrededor(std::pair<int, int>
 centro_unidad, int altura, int base, bool verificar_asentamiento,
-bool verificar_ataque_a_enemigo, int id_duenio) {
+bool verificar_ataque_a_enemigo, int id_duenio, bool es_gusano) {
 	std::vector<ObjetoDune*> unidades_alrededor;
 
-	for (std::map<int, ObjetoDune>::iterator it = 
+	for (std::map<int, ObjetoDune*>::iterator it = 
 	mapa_ids_objetos.begin(); it != mapa_ids_objetos.end(); ++it) {
 		//veo si el centro del objeto se encuentra dentro del lugar
 		//abarcado por la base y la altura
-		if(esta_dentro((it->second).obtener_centro(), centro_unidad, 
+		if(esta_dentro((it->second)->obtener_centro(), centro_unidad, 
 		altura, base)) {
 			//si tienen el mismo centro es que es la misma unidad, la salteo
-			if (it->second.obtener_centro() == centro_unidad) continue;
+			//excpeto que sea el gusano  que puede emerger del mismo lugar
+			//de donde esta la unidad
+			if ((it->second)->obtener_centro() == centro_unidad && !es_gusano) continue;
 			if (verificar_ataque_a_enemigo) {
-				if (id_duenio != (it->second).pedir_id_duenio()) {
-					unidades_alrededor.push_back(&(it->second));
+				if (id_duenio != (it->second)->pedir_id_duenio()) {
+					unidades_alrededor.push_back(it->second);
 					break;
 				}
 			} else {
-				unidades_alrededor.push_back(&(it->second));
+				unidades_alrededor.push_back(it->second);
 				if (verificar_asentamiento) break;
 			}
 		}
@@ -66,11 +74,11 @@ bool verificar_ataque_a_enemigo, int id_duenio) {
 			for (std::vector<std::pair<int, int>>::iterator it_direc = 
 			direcs_verificacion.begin(); it_direc != direcs_verificacion.end();
 			++it_direc) {
-				std::pair<int, int> pos_a_verificar(((it->second).
-				obtener_centro().first) + (*it_direc).first, ((it->second).
+				std::pair<int, int> pos_a_verificar(((it->second)->
+				obtener_centro().first) + (*it_direc).first, ((it->second)->
 				obtener_centro().second) + (*it_direc).second);
 				if(esta_dentro(pos_a_verificar, centro_unidad, altura, base)) {
-					unidades_alrededor.push_back(&(it->second));
+					unidades_alrededor.push_back(it->second);
 					espacio_invalido = true;
 					break;
 				}
@@ -93,6 +101,7 @@ int altura, int base, std::string terreno) {
   		> (int)(coordenadas[coordenadas.size() - 1]).size() || 
   		(centro.second + ((*it).second)) < 0) {
 			terreno_adecuado = false;
+			break;
   		}
   		
   		if (coordenadas[centro.first + (*it).first]
@@ -139,17 +148,17 @@ std::pair<int, int> &centro) {
 	int altura_objeto1 = objeto->obtener_altura();
 	coordenadas[centro.first][centro.second].poner_objeto(objeto);
 	mapa_ids_objetos.emplace(std::pair<int, 
-	ObjetoDune>(id_objeto, *objeto));
+	ObjetoDune*>(id_objeto, objeto));
 	marcar_estado_coordenadas_alrededor(centro, altura_objeto1, base_objeto1, 
 	true);
 }
 
 void Mapa::eliminar_objeto(int id_objeto) {
-	std::pair<int, int> centro_objeto = (mapa_ids_objetos.at(id_objeto)).
+	std::pair<int, int> centro_objeto = (mapa_ids_objetos.at(id_objeto))->
 	obtener_centro();
-	int altura_objeto = (mapa_ids_objetos.at(id_objeto)).
+	int altura_objeto = (mapa_ids_objetos.at(id_objeto))->
 	obtener_altura();
-	int base_objeto = (mapa_ids_objetos.at(id_objeto)).
+	int base_objeto = (mapa_ids_objetos.at(id_objeto))->
 	obtener_base();
 	marcar_estado_coordenadas_alrededor(centro_objeto, altura_objeto,
 	base_objeto, false);
@@ -166,6 +175,8 @@ void Mapa::desenterrar_gusano() {
 	while(!espacio_valido) {
 		fila_random = rand() % coordenadas.size();
 		columna_random = rand() % coordenadas.size();
+		//fila_random = 19;
+		//columna_random = 23;
 
 		std::pair<int, int> posicion_centro(fila_random, columna_random);
 		bool es_arena = verificar_terreno_alrededor(posicion_centro,
@@ -175,18 +186,18 @@ void Mapa::desenterrar_gusano() {
 			objetivos = buscar_unidades_alrededor(posicion_centro, 
 			gusano.obtener_dimesion_alto(),
 			gusano.obtener_dimesion_ancho(), false, 
-			false, -1);
+			false, -1, true);
 			if (!objetivos.empty()) {
 				gusano.asignar_centro(posicion_centro);
 				espacio_valido = true;
+				break;
 			}
 		}
 	}
 	
 	for (std::vector<ObjetoDune*>::iterator it = objetivos.begin();
 	it != objetivos.end(); ++it) {
-		//(*it)->matar();
-		//eliminar_objeto((*it)->pedir_id());
+		(*it)->matar();
 	}
 }
 
@@ -210,9 +221,15 @@ bool Mapa::agregado_edificio(ObjetoDune* objeto) {
 	objeto->obtener_altura(), objeto->obtener_base(), "roca");
 	//verifico que no haya ninguna unidad o edificio dentro del espacio
 	//donde se quiere poner el objeto
-	unidades_alrededor = buscar_unidades_alrededor(posicion_central, 
-	objeto->obtener_altura(), objeto->obtener_base(), true, false, -1);
-	if(terreno_valido && unidades_alrededor.empty()) {
+	if (terreno_valido) {
+		unidades_alrededor = buscar_unidades_alrededor(posicion_central, 
+		objeto->obtener_altura(), objeto->obtener_base(), true, false, -1, 
+		false);
+	} else {
+		return false;
+	}
+
+	if(unidades_alrededor.empty()) {
 		return true;
 	}
 	return false;
@@ -224,10 +241,10 @@ int id_objeto, std::pair<int, int> &centro) {
 }*/
 
 std::pair<int,int> Mapa::pedir_cercania(int id, int id_objetivo) {
-	std::pair<int, int> centro_unidad = (mapa_ids_objetos.at(id)).
+	std::pair<int, int> centro_unidad = (mapa_ids_objetos.at(id))->
 	obtener_centro();
 	std::pair<int, int> centro_objetivo = (mapa_ids_objetos.at(
-	id_objetivo).obtener_centro());
+	id_objetivo)->obtener_centro());
 
 	return std::pair<int, int> (abs(centro_unidad.first - 
 	centro_objetivo.first), abs(centro_unidad.second - 
@@ -235,7 +252,7 @@ std::pair<int,int> Mapa::pedir_cercania(int id, int id_objetivo) {
 }
 
 void Mapa::cambiar_equipo(int id_unidad_a_cambiar, int id_nuevo_duenio) {
-	(mapa_ids_objetos.at(id_unidad_a_cambiar)).asignar_duenio(id_nuevo_duenio);
+	(mapa_ids_objetos.at(id_unidad_a_cambiar))->asignar_duenio(id_nuevo_duenio);
 }
 
 bool Mapa::esta_ocupada_coordenada(std::pair<int, int> posicion) {
@@ -270,11 +287,11 @@ int altura) {
 
 bool Mapa::ubicar_unidad(int id_edificio, std::pair<int, int> &centro_unidad,
 	int base_unidad, int altura_unidad) {
-	std::pair<int, int> pos_edificio = (mapa_ids_objetos.at(id_edificio)).
+	std::pair<int, int> pos_edificio = (mapa_ids_objetos.at(id_edificio))->
 	obtener_centro();
 
-	int rango_x = (mapa_ids_objetos.at(id_edificio)).obtener_base();
-	int rango_y = (mapa_ids_objetos.at(id_edificio)).obtener_altura();
+	int rango_x = (mapa_ids_objetos.at(id_edificio))->obtener_base();
+	int rango_y = (mapa_ids_objetos.at(id_edificio))->obtener_altura();
 	std::pair<int, int> pos_inicial;
 	pos_inicial.first = pos_edificio.first - (rango_x/2) - 
 	(base_unidad/2) - 1 ;
@@ -309,16 +326,20 @@ bool Mapa::ubicar_unidad(int id_edificio, std::pair<int, int> &centro_unidad,
 	return false;
 }
 
-void Mapa::mover_unidad(UnidadMovible *unidad, 
+void Mapa::mover_unidad(int id_unidad, 
 std::pair<int, int> &pos_destino) {
-	std::pair<int, int> centro_unidad = unidad->obtener_centro();
+	std::pair<int, int> centro_unidad = mapa_ids_objetos.at(id_unidad)->
+	obtener_centro();
 	marcar_estado_coordenadas_alrededor(centro_unidad, 
-	unidad->obtener_altura(), unidad->obtener_base(), false);
+	mapa_ids_objetos.at(id_unidad)->obtener_altura(), 
+	mapa_ids_objetos.at(id_unidad)->obtener_base(), false);
 	coordenadas[centro_unidad.first][centro_unidad.second].sacar_objeto();
-	coordenadas[pos_destino.first][pos_destino.second].poner_objeto(unidad);
+	coordenadas[pos_destino.first][pos_destino.second].poner_objeto(
+	mapa_ids_objetos.at(id_unidad));
 	marcar_estado_coordenadas_alrededor(pos_destino, 
-	unidad->obtener_altura(), unidad->obtener_base(), true);
-	unidad->set_centro(pos_destino);
+	mapa_ids_objetos.at(id_unidad)->obtener_altura(), 
+	mapa_ids_objetos.at(id_unidad)->obtener_base(), true);
+	mapa_ids_objetos.at(id_unidad)->set_centro(pos_destino);
 	/*coordenadas[camino[camino.size() / 3].first][camino[camino.size() / 3].
 	second].poner_objeto(&(mapa_ids_objetos.at(id_unidad)));
 	marcar_estado_coordenadas_alrededor(pos_destino, 
@@ -342,6 +363,6 @@ void Mapa::actualizar_salida_gusano(double tiempo_transcurrido) {
 }
 
 ObjetoDune* Mapa::obtener_objeto(int id_objeto) {
-	ObjetoDune *objeto = &(mapa_ids_objetos.at(id_objeto));
+	ObjetoDune *objeto = mapa_ids_objetos.at(id_objeto);
 	return objeto;
 }

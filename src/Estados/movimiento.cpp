@@ -15,7 +15,7 @@ Mapa &mapa, double tiempo_transcurrido) {
 	}
 	//en vez de front deberia ser la posicion segun el tiempo y la velocidad
 	//a avanzar camino deberia pasarle la cantiadd de posiciones que avanzo ene l camino
-	mapa.mover_unidad(unidad, camino.front());
+	mapa.mover_unidad(unidad->pedir_id(), camino.front());
 	unidad->avanzar_camino();
 	unidad->serializar_mensaje_movimiento(); 
 	//significa que llego a destino, deberia cambiar la verificacion, ya que es segunc uanto se mueve

@@ -1,9 +1,12 @@
 #include "ataque.h"
 #include "movimiento_para_atacar.h"
 #include "inactividad.h"
+#include <iostream>
 
 Ataque::Ataque(std::shared_ptr<ObjetoDune> objetivo): 
-objeto_destino(objetivo), pos_a_atacar(objetivo->obtener_centro()) {}
+objeto_destino(objetivo), pos_a_atacar(objetivo->obtener_centro()) {
+	nombre = "ataque";
+}
 
 std::shared_ptr<Estado> Ataque::actualizar(UnidadMovible *unidad,
 Mapa &mapa, double tiempo_transcurrido) {

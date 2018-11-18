@@ -2,6 +2,7 @@
 
 std::shared_ptr<Estado> Muerte::actualizar(UnidadMovible *unidad,
 Mapa &mapa, double tiempo_transcurrido) {
+	nombre = "muerte";
 	unidad->serializar_mensaje_muerte();
 	std::vector<ObjetoDune*> unidades_afectadas = unidad->
 	ataque_al_morir(mapa);

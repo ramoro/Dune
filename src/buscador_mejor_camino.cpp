@@ -34,6 +34,7 @@ std::pair<int, int> &pos_final) {
 
 	while(posibles_nodos.size() > 0) {
 		Nodo nodo_evaluado = posibles_nodos[0];
+     // std::cout<< "atrapado" << nodo_evaluado.obtener_posicion().first << nodo_evaluado.obtener_posicion().second<< std::endl;
 		int indice_nodo_evaluado = 0;
 		int indice_auxiliar = 0;
 
@@ -98,7 +99,8 @@ std::pair<int, int> &pos_final) {
           continue;
         }
 
-        if (mapa.esta_ocupada_coordenada(posicion_adyacente)) {
+        if (mapa.esta_ocupada_coordenada(posicion_adyacente) && 
+        posicion_adyacente != pos_final) {
           std::cout << "Esta ocupada " << posicion_adyacente.first << " " << posicion_adyacente.second << std::endl;
           continue;
         }

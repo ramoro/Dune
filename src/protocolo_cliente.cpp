@@ -37,7 +37,6 @@ void ProtocoloCliente::enviar_mensajes() {
 void ProtocoloCliente::recibir_mensajes() {
 	try {
 		while (this->jugando) {
-			std::cout << "asdf" << std::endl;
 			int tam_msje = this->socket_cliente.recv_int();
 			std::string mensaje; 
 			this->socket_cliente.recv_string(tam_msje, mensaje);

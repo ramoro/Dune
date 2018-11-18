@@ -1,4 +1,5 @@
 #include "objeto_dune.h"
+#include <iostream>
 
 #define CODIGO_MUERTE 'd'
 
@@ -51,7 +52,9 @@ int ObjetoDune::daniar() {
 	return 0;
 }
 
-void ObjetoDune::matar() {}
+void ObjetoDune::matar() {
+	std::cout << "Asdas" << std::endl;
+}
 
 void ObjetoDune::mensaje_muerte() {
 	MensajeProtocolo mensaje;

@@ -3,11 +3,14 @@
 #include "UnidadesMovibles/unidad_movible.h"
 #include <iostream>
 
+#define NO_ESTA_ENTRENANDO -1
+
 Jugador::Jugador(std::string casa, Root &root): casa(casa) {
 	dinero = root["Jugadores"].get("dinero", 0).asInt();
 	capacidad_especia = 0;
 	capacidad_especia_disponible = 0;
 	energia_disponible = 0;
+	id_edificio_entrenando_unidad = -1;
 }
 
 void Jugador::agregar_edificio(Edificio* edificio, 
@@ -75,4 +78,16 @@ bool Jugador::agregada_unidad(UnidadMovible* unidad) {
 
 int Jugador::pedir_energia_disponible() {
 	return energia_disponible;
+}
+
+void Jugador::agregar_edificio_entrenando(int id_edificio) {
+	id_edificio_entrenando_unidad = id_edificio;
+}
+
+void Jugador::setear_no_entrenando() {
+	id_edificio_entrenando_unidad = NO_ESTA_ENTRENANDO;
+}
+
+int Jugador::pedir_id_edificio_entrenando() {
+	return id_edificio_entrenando_unidad;
 }

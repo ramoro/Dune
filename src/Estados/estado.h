@@ -4,9 +4,12 @@
 #include <memory>
 #include "../UnidadesMovibles/unidad_movible.h"
 #include "../mapa.h"
+#include <string>
 
 /*Clase que representa a un estado.*/
 class Estado {
+	protected:
+		std::string nombre;
 	public:
 		/*Metodo virtual que recibe un puntero a una unidad movible, al mapa y
 		el tiempo transcurrido y actualiza su estado dentro del mismo.*/
@@ -28,6 +31,11 @@ class Estado {
 
 		/*Devuelve un puntero al estado muerte.*/
 		std::shared_ptr<Estado> cambiar_a_muerte();
+
+		/*Devuelve un puntero al estado inactividad*/
+		std::shared_ptr<Estado> cambiar_a_inactividad();
+
+		std::string pedir_nombre();
 
 };
 

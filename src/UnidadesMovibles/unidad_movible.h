@@ -133,6 +133,9 @@ class UnidadMovible: public ObjetoDune {
 		muerte de la unidad dentro del juego y los parametros adjuntos a la 
 		misma segun el protocolo a la clase MensajeProtocolo de la unidad.*/
 		void serializar_mensaje_muerte();
+
+		/*Elimina todas las posiciones de la lista camino.*/
+		void limpiar_camino();
 };
 
 #endif 
