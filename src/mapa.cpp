@@ -6,8 +6,6 @@
 
 #define LIMITE_ITERACIONES_GUSANO 100
 
-//INICIALIAZDOR DE MAPA HARDCODEADO
-
 Mapa::Mapa() {}
 
 Mapa::Mapa(Root &root) {
@@ -102,7 +100,8 @@ bool verificar_ataque_a_enemigo, int id_duenio, bool es_gusano) {
 			//si tienen el mismo centro es que es la misma unidad, la salteo
 			//excpeto que sea el gusano  que puede emerger del mismo lugar
 			//de donde esta la unidad
-			if ((it->second)->obtener_centro() == centro_unidad && !es_gusano) continue;
+			if ((it->second)->obtener_centro() == centro_unidad && !es_gusano && 
+			!verificar_asentamiento) continue;
 			if (verificar_ataque_a_enemigo) {
 				if (id_duenio != (it->second)->pedir_id_duenio()) {
 					unidades_alrededor.push_back(it->second);
