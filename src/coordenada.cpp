@@ -3,8 +3,8 @@
 #define VACIA 0
 #define OCUPADA 1
 
-Coordenada::Coordenada(int estado, Terreno terreno): estado(estado), 
-terreno(terreno) {}
+Coordenada::Coordenada(int estado, Terreno terreno,int &id): estado(estado), 
+terreno(terreno) , id(id++){}
 
 bool Coordenada::poner_objeto(ObjetoDune* objeto_dune) {
 	if (estado == OCUPADA) {

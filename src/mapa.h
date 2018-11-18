@@ -129,7 +129,7 @@ class Mapa {
 		ObjetoDune* obtener_objeto(int id_objeto);
 
 		Mapa();
-		Mapa(Root &root);
+		Mapa(Root &root, int &contador_ids_objetos);
 
 
 	private:

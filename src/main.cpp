@@ -273,7 +273,7 @@ int main() {
   //partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
 
   for (int i = 0; i < 2 ; i++) {
-    partida.iniciar_entrenamiento_unidad_movible(15,0);
+    partida.iniciar_entrenamiento_unidad_movible(15,364);
     partida.actualizar_modelo(1000.0) ;
   }
 }
