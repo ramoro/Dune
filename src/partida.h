@@ -94,9 +94,18 @@ class Partida {
 		void eliminar_unidad_del_juego(std::shared_ptr<UnidadMovible> 
 		unidad_a_remover);
 
+		/*ubica centro de construccion segun el numero de jugador que sea*/
 		std::pair<int,int> ubicar_centro_construccion();
 
+		/*busca en que parte de cada esquina colocar el centro de construccion
+		dada una esquina, devuelve el centro donde puede colocarse*/
 		std::pair<int,int> buscar_ubicacion(std::pair<int,int> esquina);
+
+		/*Devuelve true si la posicion_central tiene un edificio cercano aliado
+		dentro del rango definido, false en caso contrario. En caso de que no
+		existan edificios aliados devuelve true */
+		bool esta_dentro(int id_jugador, std::pair<int,int> &posicion_central);
+
 
 };
 

@@ -9,6 +9,7 @@
 #define CODIGO_MUERTE_OBJETO 'd'
 #define CODIGO_PERDIO_JUGADOR 'e'
 #define JUGADOR_NO_ENTRENANDO -1
+#define DISTANCIA_MINIMA_EDIFICIO_ALIADO 7
 
 Partida::Partida() {
 	contador_ids_jugadores = 0;
@@ -66,15 +67,35 @@ std::pair<int,int> Partida::ubicar_centro_construccion(){
 	return ubicacion_centro;
 }
 
+bool Partida::esta_dentro(int id_jugador,std::pair<int,int> &posicion_central){
+	int cant_propios = 0;
+	for (std::map<int, std::shared_ptr<Edificio>>::iterator 
+		it=edificios.begin(); it!=edificios.end(); ++it){
+		if (it->second->pedir_id_duenio() == id_jugador){
+			std::cout << "Edificio con id "<< it->first << " pertenece al mismo jugador y tiene distancia " << it->second->calcular_distancia_baldosas(posicion_central) << '\n';
+			if(it->second->calcular_distancia_baldosas(posicion_central) <= 
+				DISTANCIA_MINIMA_EDIFICIO_ALIADO){
+				return true;
+			}
+			cant_propios++;
+		}
+	}
+	if (cant_propios == 0){
+		return true;
+	}
+    return false;
+}
+
 //DEBERIA PASAR COLA BLOQUEANTE
 void Partida::agregar_edificio(int id_jugador, std::pair<int, int>
 posicion_central, int id_tipo_edificio, ColaBloqueante* cola_mensajes) {
 	std::shared_ptr<Edificio> ptr_edificio = fabrica_edificios.crear_edificio(id_tipo_edificio,
 	contador_ids_objetos, id_jugador, posicion_central,config);
 	
+	bool esta_dentro_rango = esta_dentro(id_jugador, posicion_central);
 	bool agregado = ptr_edificio->agregar_al_juego(mapa, jugadores.at(id_jugador), 
 	contador_ids_objetos, id_tipo_edificio);
-	if (agregado) {
+	if (agregado && esta_dentro_rango) {
 		edificios.emplace(std::pair<int, 
 		std::shared_ptr<Edificio>>(contador_ids_objetos, ptr_edificio));
 		contador_ids_objetos++;
@@ -110,7 +131,6 @@ int id_edificio, int id_jugador, ColaBloqueante* cola_mensajes) {
 	int id_edificio_entrenando = jugadores.at(id_jugador).
 	pedir_id_edificio_entrenando();
 	if (id_edificio_entrenando != JUGADOR_NO_ENTRENANDO) {
-		std::cout << "Partida::iniciar_entrenamiento_unidad_movible " << std::endl;
 		serializar_mensaje_rechazo_creacion(cola_mensajes, id_tipo_unidad);
 	} else {
 		bool se_puede_agregar = ((edificios.at(id_edificio))->

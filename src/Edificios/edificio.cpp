@@ -1,6 +1,7 @@
 #include "edificio.h"
 #include "../observador.h"
 #include <iostream>
+#include <math.h>
 
 #define INACTIVO 0
 #define ENTRENANDO 1
@@ -31,7 +32,6 @@ int id_tipo_edificio) {
 	agregar_a_jugador = jugador.agregado_edificio(this);
 	
 	if (agregar_a_mapa && agregar_a_jugador) {
-		std::cout << "entro " << std::endl;
 		mapa.agregar_objeto(this, id_edificio, this->centro);
 		jugador.agregar_edificio(this, id_edificio, this->centro);
 		agregar_posible = true;
@@ -134,4 +134,10 @@ void Edificio::serializar_mensaje_perdio_jugador() {
 	//gano para decirle nomas que perdio
 	mensaje.agregar_parametro(this->id_duenio + 1);
 	mensajes.push_back(std::move(mensaje));
+}
+
+int Edificio::calcular_distancia_baldosas(std::pair<int,int> &centro_otro){
+	return sqrt((centro.first - centro_otro.first)*(centro.first - 
+		centro_otro.first) + (centro.second - centro_otro.second)*
+	(centro.second - centro_otro.second));
 }

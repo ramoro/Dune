@@ -13,7 +13,13 @@ class Conversor {
 	public:
 		/*Constructor de la clase*/
 		Conversor(Config &config);
+
+		/*Ubica para cada pixel pasado por parametro a que baldosa 
+		hace referencia*/
 		std::pair<int,int> de_pixel_a_baldosa(std::pair<int,int> pixel);
+
+		/*Ubica para cada baldosa pasada por parametro a que pixel 
+		hace referencia*/
 		std::pair<int,int> de_baldosa_a_pixel(std::pair<int,int> baldosa);
 };
 #endif

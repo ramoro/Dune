@@ -277,23 +277,24 @@ int main() {
   //partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
   // partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
   partida.agregar_edificio(0, std::pair<int, int>(5,5), 4,&cola);
+  partida.agregar_edificio(0, std::pair<int, int>(13,13), 4,&cola);
 
-  std::cout << "agregado" << std::endl;
 
   partida.agregar_edificio(1, std::pair<int, int>(10,5), 4,&cola);
 
   //partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
   //partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
-  std::cout << "agregado" << std::endl;
 
   for (int i = 0; i < 2 ; i++) {
     partida.iniciar_entrenamiento_unidad_movible(15,364+i,i,&cola);
     partida.actualizar_modelo(20000.0,&cola) ;
-    std::cout << "agregado" << std::endl;
   }
   partida.atacar_objeto(366,367);
 
-  partida.actualizar_modelo(100.0,&cola) ;
+  partida.actualizar_modelo(50.0,&cola) ;
+  partida.actualizar_modelo(50.0,&cola) ;
+  partida.actualizar_modelo(50.0,&cola) ;
 
+  partida.actualizar_modelo(10.0,&cola) ;
 
 }

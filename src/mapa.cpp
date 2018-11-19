@@ -183,7 +183,6 @@ int altura, int base, bool ocupar) {
 			if (ocupar){
 				coordenadas[inicio.first][inicio.second].
 				marcar_como_ocupada();
-				std::cout << "esta ocupada " << inicio.first << " " << inicio.second << std::endl;
 			} else {
 				coordenadas[inicio.first][inicio.second].
 				marcar_como_desocupada();

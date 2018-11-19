@@ -96,6 +96,11 @@ class Edificio: public ObjetoDune {
 		destruido y los parametros adjuntos al evento segun el protocolo a 
 		la clase MensajeProtocolo del edificio.*/
 		void serializar_mensaje_perdio_jugador();
+
+		/*Devuelve la distancia euclideana dado un centro para con el
+		centro del propio edificio*/
+		int calcular_distancia_baldosas(std::pair<int,int> &centro_otro);
+
 };
 
 #endif
