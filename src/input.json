@@ -1,15 +1,15 @@
 {    
 	"terreno": [
+[30,30,30,30,30,30,30,30,30,30,30,30,0,0],
+[30,30,30,30,30,30,30,30,30,30,30,30,30,30],
+[30,30,30,30,30,30,30,30,30,30,30,30,30,30],
+[30,30,30,30,30,30,30,30,30,30,30,30,30,30],
+[30,30,30,30,30,30,30,30,30,30,30,30,0,0],
+[30,30,30,30,30,30,30,30,30,30,30,30,0,0],
 [30,30,30,30,30,30,30,30,30,30,30,0,0,0],
 [30,30,30,30,30,30,30,30,30,30,30,0,0,0],
 [30,30,30,30,30,30,30,30,30,30,30,0,0,0],
-[30,30,30,30,30,30,30,30,30,30,30,0,0,0],
-[30,30,30,30,30,30,30,30,30,30,30,0,0,0],
-[30,30,30,30,30,30,30,30,30,30,30,0,0,0],
-[30,30,30,30,30,30,30,30,30,30,30,0,0,0],
-[30,30,30,30,30,30,30,30,30,30,30,0,0,0],
-[30,30,30,30,30,30,30,30,30,30,30,0,0,0],
-[30,30,30,30,30,30,30,30,30,30,30,0,0,0],
+[30,30,30,30,30,30,35,30,34,30,30,0,0,0],
 [30,30,30,30,30,30,30,30,30,30,30,0,0,0],
 [30,30,30,30,30,30,30,30,30,30,30,0,0,0],
 [30,30,30,30,30,30,30,30,30,30,30,0,0,0],
@@ -30,8 +30,8 @@
 	"CentroConstruccion": {
 		"aporte_energetico": 0,
 		"costo": 0,
-		"dimension_ancho": 3,
-		"dimension_alto": 3,
+		"dimension_ancho": 2,
+		"dimension_alto": 2,
 		"puntos_estructura": 3000
 	},
 	"TrampaAire": {
@@ -81,8 +81,8 @@
 	"Palacio": {
 		"aporte_energetico": -300,
 		"costo": 2000,
-		"dimension_ancho": 50,
-		"dimension_alto": 50,
+		"dimension_ancho": 2,
+		"dimension_alto": 2,
 		"puntos_estructura": 1000
 	},
 	"InfanteriaLigera": {
@@ -93,7 +93,8 @@
 		"puntos_vida": 50,
 		"dimension_ancho": 1,
 		"dimension_alto": 1,
-		"edificios_necesarios": [6]
+		"edificios_necesarios": [6],
+		"casas": ["ordos","harkonnen","atreides"]
 	},
 	"InfanteriaPesada": {
 		"rango": 3,
@@ -103,7 +104,8 @@
 		"puntos_vida": 80,
 		"dimension_ancho": 1,
 		"dimension_alto": 1,
-		"edificios_necesarios": [6]
+		"edificios_necesarios": [6],
+		"casas": ["ordos","harkonnen","atreides"]
 	},
 	"Fremen": {
 		"rango": 3,
@@ -113,7 +115,8 @@
 		"puntos_vida": 50,
 		"dimension_ancho": 50,
 		"dimension_alto": 50,
-		"edificios_necesarios": [6, 7]
+		"edificios_necesarios": [6, 7],
+		"casas": ["atreides"]
 	},
 	"Sardaukar": {
 		"rango": 3,
@@ -123,7 +126,8 @@
 		"puntos_vida": 80,
 		"dimension_ancho": 50,
 		"dimension_alto": 50,
-		"edificios_necesarios": [6, 7]
+		"edificios_necesarios": [6, 7],
+		"casas": ["harkonnen"]
 	},
 	"Trike": {
 		"rango": 4,
@@ -133,7 +137,8 @@
 		"puntos_vida": 80,
 		"dimension_ancho": 50,
 		"dimension_alto": 50,
-		"edificios_necesarios": [4]
+		"edificios_necesarios": [4],
+		"casas": ["harkonnen","atreides"]
 	},
 	"Raider": {
 		"rango": 0,
@@ -143,7 +148,8 @@
 		"puntos_vida": 800,
 		"dimension_ancho": 1,
 		"dimension_alto": 1,
-		"edificios_necesarios": [4]
+		"edificios_necesarios": [4],
+		"casas": ["ordos"]
 	},
 	"Tanque": {
 		"rango": 4,
@@ -153,7 +159,8 @@
 		"puntos_vida": 30,
 		"dimension_ancho": 50,
 		"dimension_alto": 50,
-		"edificios_necesarios": [5]
+		"edificios_necesarios": [5],
+		"casas": ["ordos","atreides","harkonnen"]
 	},
 	"Tanque sonico": {
 		"rango": 4,
@@ -163,7 +170,8 @@
 		"puntos_vida": 300,
 		"dimension_ancho": 50,
 		"dimension_alto": 50,
-		"edificios_necesarios": [5, 7]
+		"edificios_necesarios": [5, 7],
+		"casas": ["atreides"]
 	},
 	"Desviador": {
 		"rango": 5,
@@ -173,7 +181,8 @@
 		"puntos_vida": 300,
 		"dimension_ancho": 50,
 		"dimension_alto": 50,
-		"edificios_necesarios": [5, 7]
+		"edificios_necesarios": [5, 7],
+		"casas": ["ordos"]
 	},
 	"Devastador": {
 		"rango": 4,
@@ -184,7 +193,8 @@
 		"dimension_ancho": 50,
 		"dimension_alto": 50,
 		"danio_explosion": 20,
-		"edificios_necesarios": [5, 7]
+		"edificios_necesarios": [5, 7],
+		"casas": ["harkonnen"]
 	},
 	"Cosechadora": {
 		"rango": 2,
@@ -194,7 +204,8 @@
 		"puntos_vida": 600,
 		"dimension_ancho": 50,
 		"dimension_alto": 50,
-		"edificios_necesarios": [5]
+		"edificios_necesarios": [5],
+		"casas": ["ordos","harkonnen","atreides"]
 	},
 	"RifleAsalto": {
 		"danio": 2,

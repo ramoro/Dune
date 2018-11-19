@@ -9,7 +9,7 @@
 #define CODIGO_MUERTE_OBJETO 'd'
 #define CODIGO_PERDIO_JUGADOR 'e'
 #define JUGADOR_NO_ENTRENANDO -1
-#define DISTANCIA_MINIMA_EDIFICIO_ALIADO 7
+#define DISTANCIA_MINIMA_EDIFICIO_ALIADO 70
 
 Partida::Partida() {
 	contador_ids_jugadores = 0;
@@ -21,16 +21,19 @@ Partida::Partida() {
 	std::cout << "contador_ids_objetos " << contador_ids_objetos << std::endl;
 }
 
-void Partida::agregar_jugador(std::string casa_jugador) {
+void Partida::agregar_jugador(std::string casa_jugador, ColaBloqueante* cola_mensajes) {
 	Jugador jugador(casa_jugador,config);
 	jugadores.emplace(std::pair<int, Jugador>(contador_ids_jugadores, 
 	jugador));
 	std::pair<int,int> ubicacion_centro = ubicar_centro_construccion();
 	std::cout << "centro constuccion en " << ubicacion_centro.first << " " << ubicacion_centro.second << std::endl;
+	agregar_edificio(contador_ids_jugadores, ubicacion_centro, 0, cola_mensajes);
 	contador_ids_jugadores++;
 }
 
 std::pair<int,int> Partida::buscar_ubicacion(std::pair<int,int> esquina){
+	esquina.first+=2;
+	esquina.second+=2;
 	return esquina;
 }
 std::pair<int,int> Partida::ubicar_centro_construccion(){
@@ -72,7 +75,6 @@ bool Partida::esta_dentro(int id_jugador,std::pair<int,int> &posicion_central){
 	for (std::map<int, std::shared_ptr<Edificio>>::iterator 
 		it=edificios.begin(); it!=edificios.end(); ++it){
 		if (it->second->pedir_id_duenio() == id_jugador){
-			std::cout << "Edificio con id "<< it->first << " pertenece al mismo jugador y tiene distancia " << it->second->calcular_distancia_baldosas(posicion_central) << '\n';
 			if(it->second->calcular_distancia_baldosas(posicion_central) <= 
 				DISTANCIA_MINIMA_EDIFICIO_ALIADO){
 				return true;
@@ -105,6 +107,7 @@ posicion_central, int id_tipo_edificio, ColaBloqueante* cola_mensajes) {
 		//cola.push(ptr_edificio.pedir_mensaje_protocolo());
 	
 	} else {
+		std::cout << "No se pudo construir edificio de tipo " << id_tipo_edificio << std::endl;
 		serializar_mensaje_rechazo_creacion(cola_mensajes, id_tipo_edificio);
 	}
 }

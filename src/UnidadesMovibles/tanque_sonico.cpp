@@ -18,8 +18,10 @@ TanqueSonico::TanqueSonico(int id, int id_duenio, std::pair<int, int> centro,
 		armas.push_back(OndaSonido(arma_ondas_sonidos));
 		expansion_altura_arma_sonica = 70;
 		expansion_base_arma_sonica = 50;
-		rango_ataque_fila = 10;
-		rango_ataque_columna = 10;
+		for (unsigned int i = 0; i < 
+		config["Tanque sonico"]["casas"].size(); i++) {
+			casa.push_back(config["Tanque sonico"]["casas"][i].asString());
+		}		
 		for (unsigned int i = 0; i < 
 		config["Tanque sonico"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(

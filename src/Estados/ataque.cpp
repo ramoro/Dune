@@ -15,8 +15,8 @@ Mapa &mapa, double tiempo_transcurrido) {
 	//si no lo esta se devuelve el estado moviendose para atacar
 	std::pair<int, int> cercania = mapa.pedir_cercania(unidad->pedir_id(), 
 	objeto_destino->pedir_id());
-	if (cercania.first > unidad->obtener_rango_ataque_filas() 
-	|| cercania.second > unidad->obtener_rango_ataque_columnas()) {
+	if (cercania.first > unidad->obtener_rango_ataque() 
+	|| cercania.second > unidad->obtener_rango_ataque()) {
 			unidad->asignar_nuevo_camino(mapa.obtener_camino(unidad->
 			obtener_centro(), objeto_destino->obtener_centro()));
 			std::shared_ptr<MovimientoParaAtacar> movimiento_ataque(new 

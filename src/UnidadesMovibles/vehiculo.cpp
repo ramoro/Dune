@@ -10,3 +10,9 @@ int Vehiculo::daniar(UnidadMovible* unidad_atacante) {
 	int danio = unidad_atacante->pedir_danio("vehiculo");
 	return ObjetoDune::reducir_vida(danio);
 }
+
+bool Vehiculo::es_terreno_valido(std::string terreno){
+	if (terreno == "precipicio" || terreno == "cima")
+		return false;
+	return true;
+}

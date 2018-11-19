@@ -25,9 +25,8 @@ class UnidadMovible: public ObjetoDune {
 		
 	protected:
 		std::vector<Arma> armas;
-		int rango_ataque_fila;
-		int rango_ataque_columna;
 		std::vector<int> ids_tipos_edificios_necesarios;
+		std::vector<std::string> casa;
 
 	public:
 		/*Constructor de la clase.*/
@@ -70,12 +69,7 @@ class UnidadMovible: public ObjetoDune {
 		/*Devuelve el rango de ataque filas o la cantidad de espacios
 		de forma horizontal hasta donde se extiende el rango de vision
 		de la unidad.*/
-		int obtener_rango_ataque_filas();
-
-		/*Devuelve el rango de ataque filas o la cantidad de espacios
-		de forma vertical hasta donde se extiende el rango de vision
-		de la unidad.*/
-		int obtener_rango_ataque_columnas();
+		int obtener_rango_ataque();
 
 		/*Recibe el jugador duenio de la unidad y devuelve true si se puede
 		agregar la nueva unidad al jugador. False en caso contrario.*/
@@ -136,6 +130,11 @@ class UnidadMovible: public ObjetoDune {
 
 		/*Elimina todas las posiciones de la lista camino.*/
 		void limpiar_camino();
+
+		virtual bool es_terreno_valido(std::string terreno) = 0;
+
+		std::vector<std::string> obtener_casa();
+
 };
 
 #endif 

@@ -109,7 +109,7 @@ class Mapa {
 		Devuelve true o false si encontro una posicion valida para crear la
 		unidad alrededor del edificio*/
 		bool ubicar_unidad(int id_edificio, std::pair<int, int> &centro_unidad,
-			int base_unidad, int altura_unidad);
+			std::shared_ptr<UnidadMovible> unidad);
 
 		/*Devuelve true si coordenada en la posicion pasada esta ocupada*/
 		bool esta_ocupada_coordenada(std::pair<int, int> posicion);
@@ -146,14 +146,14 @@ class Mapa {
 		inicial pasada hasta el rango que se establece buscando un espacio 
 		donde pueda meter una unidad de un tamanio con la base pasada.*/
 		bool recorrer_horizontal(std::pair<int, int> &pos_inicial, int rango,
-		int base);
+		std::shared_ptr<UnidadMovible> unidad);
 		
 		/*Devuelve true si encontro una posicion valida para poner la unidad.
 		Lo que hace es recorrer verticalmete hacia arriba desde la pos inicial 
 		pasada hasta el rango que se establece buscando un espacio donde pueda 
 		meter una unidad de un tamanio con la base pasada.*/
 		bool recorrer_vertical(std::pair<int, int> &pos_inicial, int rango,
-		int altura);
+		std::shared_ptr<UnidadMovible> unidad);
 
 		/*Devuelve true si esta dentro de los limites del mapa, false en caso
 		 contrario*/

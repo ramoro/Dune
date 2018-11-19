@@ -7,8 +7,8 @@ Mapa &mapa, double tiempo_transcurrido) {
 	std::vector<ObjetoDune*> objetivo_alrededor = mapa.
 	buscar_unidades_alrededor(unidad->obtener_centro(), 
 	(unidad->obtener_altura() + 
-	unidad->obtener_rango_ataque_columnas())*2, (unidad->obtener_base() + 
-	unidad->obtener_rango_ataque_filas())*2, false, true, 
+	unidad->obtener_rango_ataque())*2, (unidad->obtener_base() + 
+	unidad->obtener_rango_ataque())*2, false, true, 
 	unidad->pedir_id_duenio(), false);
 
 	if(!objetivo_alrededor.empty()) {

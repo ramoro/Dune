@@ -16,8 +16,10 @@ Tanque::Tanque(int id, int id_duenio, std::pair<int, int> centro,
 		id_tipo = ID_TANQUE;
 		Canion canion(config);
 		armas.push_back(Canion(canion));
-		rango_ataque_fila = 10;
-		rango_ataque_columna = 10;
+		for (unsigned int i = 0; i < 
+		config["Tanque"]["casas"].size(); i++) {
+			casa.push_back(config["Tanque"]["casas"][i].asString());
+		}	
 		for (unsigned int i = 0; i < 
 		config["Tanque"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(

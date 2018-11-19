@@ -199,14 +199,14 @@ int main() {
   ColaBloqueante cola(100);
   std::cout << "asd" << std::endl;
   Partida partida;
-  partida.agregar_jugador("harkonnen");
-  partida.agregar_jugador("ordos");
+  partida.agregar_jugador("harkonnen", &cola);
+  partida.agregar_jugador("ordos", &cola);
 
   partida.agregar_edificio(0, std::pair<int, int>(15, 7), 6,&cola);
   partida.agregar_edificio(1, std::pair<int, int>(5,6), 6,&cola);
 
-  partida.iniciar_entrenamiento_unidad_movible(11, 364,0,&cola);
-  partida.iniciar_entrenamiento_unidad_movible(11, 365,1,&cola);
+  partida.iniciar_entrenamiento_unidad_movible(11, 366,0,&cola);
+  partida.iniciar_entrenamiento_unidad_movible(11, 367,1,&cola);
   partida.actualizar_modelo(80,&cola);
 
   
@@ -215,9 +215,9 @@ int main() {
   //partida.actualizar_modelo(80);
 
 
-  partida.atacar_objeto(366, 367);
+  partida.atacar_objeto(368, 369);
   partida.actualizar_modelo(10,&cola);
-  partida.comenzar_movimiento_unidad(367, std::pair<int, int> (4, 10));
+  partida.comenzar_movimiento_unidad(369, std::pair<int, int> (4, 10));
   partida.actualizar_modelo(20,&cola);
   partida.actualizar_modelo(30,&cola);
   partida.actualizar_modelo(40,&cola);
@@ -253,9 +253,11 @@ int main() {
 //MAIN NACHO
 /*int main() {
   Partida partida;
-  partida.agregar_jugador("harkonnen");
-  partida.agregar_jugador("harkonnen");
+
   ColaBloqueante cola(100);
+
+  partida.agregar_jugador("ordos",&cola);
+  partida.agregar_jugador("harkonnen",&cola);
   //std::pair<int, int> centro(100, 100);
   //bool agregado = partida.agregar_edificio(0, centro, 0);
   //std::cout << agregado << std::endl;
@@ -265,19 +267,21 @@ int main() {
   //partida.agregar_edificio(0, std::pair<int, int>(400,400), 4);
   //partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
   // partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
-  partida.agregar_edificio(0, std::pair<int, int>(2,2), 4,&cola);
-  partida.agregar_edificio(0, std::pair<int, int>(13,13), 4,&cola);
+  partida.agregar_edificio(0, std::pair<int, int>(7,7), 4,&cola);
+  //partida.agregar_edificio(0, std::pair<int, int>(13,13), 4,&cola);
 
 
-  partida.agregar_edificio(1, std::pair<int, int>(10,5), 4,&cola);
+  //partida.agregar_edificio(1, std::pair<int, int>(10,5), 4,&cola);
 
   //partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
   //partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
 
-  for (int i = 0; i < 12 ; i++) {
-    partida.iniciar_entrenamiento_unidad_movible(15,364,0,&cola);
+  for (int i = 0; i < 2 ; i++) {
+    partida.iniciar_entrenamiento_unidad_movible(15,366,0,&cola);
     partida.actualizar_modelo(20000.0,&cola) ;
   }
+
+  //partida.comenzar_movimiento_unidad(365,std::pair<int, int>(3,3));
   
   partida.atacar_objeto(366,367);
 

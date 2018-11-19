@@ -55,7 +55,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 				}
 				case 35:
 				{
-					NoEspecia precipio("precipio");
+					NoEspecia precipio("precipicio");
 					Coordenada coord(0, precipio, contador_ids_objetos);
 					fila.push_back(coord);
 					break;
@@ -317,66 +317,81 @@ bool Mapa::esta_ocupada_coordenada(std::pair<int, int> posicion) {
 	return coordenadas[posicion.first][posicion.second].esta_ocupada();
 }
 
+bool Mapa::esta_dentro_limites(std::pair<int, int> &centro){
+	if (0 <= centro.first && centro.first < (int)pedir_limite_columnas() &&
+	 0 <= centro.second && centro.second < (int)pedir_limite_filas()){
+		return true;
+	}
+	std::cout << centro.first << " centro fuera " << centro.second << std::endl;
+	return false;
+}
+
 bool Mapa::recorrer_horizontal(std::pair<int, int> &pos_inicial, int rango, 
-int base) {
+std::shared_ptr<UnidadMovible> unidad) {
 	std::pair<int, int> pos_return(pos_inicial);
-	for (; pos_return.first <= pos_inicial.first + rango;){
-		if (!esta_ocupada_coordenada(pos_return)){
+	for (; pos_return.second <= pos_inicial.second + rango;){
+		if (esta_dentro_limites(pos_return) && 
+			!esta_ocupada_coordenada(pos_return) && 
+			unidad->es_terreno_valido(pedir_terreno_coordenada(pos_return))){
 			pos_inicial = pos_return;
 			return true;
 		}
-		pos_return.first+=base;
+		pos_return.second+=unidad->obtener_base();
 	}
 	return false;
 }
 
 bool Mapa::recorrer_vertical(std::pair<int, int> &pos_inicial, int rango, 
-int altura) {
+std::shared_ptr<UnidadMovible> unidad) {
 	std::pair<int, int> pos_return(pos_inicial);
-	for (; pos_return.second >= pos_inicial.second - rango;){
-		if (!esta_ocupada_coordenada(pos_return)){
+	for (; pos_return.first >= pos_inicial.first - rango;){
+		if (esta_dentro_limites(pos_return) && 
+			!esta_ocupada_coordenada(pos_return) && 
+			unidad->es_terreno_valido(pedir_terreno_coordenada(pos_return))){
 			pos_inicial = pos_return;
 			return true;
 		}
-		pos_return.second-=altura;
+		pos_return.first-=unidad->obtener_altura();
 	}
 	return false;
 }
 
 bool Mapa::ubicar_unidad(int id_edificio, std::pair<int, int> &centro_unidad,
-	int base_unidad, int altura_unidad) {
+	std::shared_ptr<UnidadMovible> unidad) {
 	std::pair<int, int> pos_edificio = (mapa_ids_objetos.at(id_edificio))->
 	obtener_centro();
-
 	int rango_x = (mapa_ids_objetos.at(id_edificio))->obtener_base();
 	int rango_y = (mapa_ids_objetos.at(id_edificio))->obtener_altura();
 	std::pair<int, int> pos_inicial;
-	pos_inicial.first = pos_edificio.first - (rango_x/2) - 
-	(base_unidad/2) - 1 ;
-	pos_inicial.second = pos_edificio.second + (rango_y/2) + 
-	(altura_unidad/2) + 1; 
-	
-	if (recorrer_horizontal(pos_inicial,rango_x,base_unidad)){
+
+	pos_inicial.first = pos_edificio.first + (rango_y/2) +
+	(unidad->obtener_altura()/2) + 1;
+	pos_inicial.second = pos_edificio.second - (rango_x/2) -
+	(unidad->obtener_base()/2); 
+	if (recorrer_horizontal(pos_inicial,rango_y,unidad)){
 		centro_unidad = pos_inicial;
 		return true;
 	}
-	pos_inicial.second-=altura_unidad;
-	
-	if (recorrer_vertical(pos_inicial,rango_y,altura_unidad)){
-		centro_unidad = pos_inicial;
-		return true;
-	}
-	
-	pos_inicial.second-= rango_y;
-	pos_inicial.first+=base_unidad;
-	if (recorrer_horizontal(pos_inicial,rango_x,base_unidad)){
+
+	pos_inicial.first-=unidad->obtener_altura();
+
+	if (recorrer_vertical(pos_inicial,rango_x,unidad)){
 		centro_unidad = pos_inicial;
 		return true;
 	}
 	
-	pos_inicial.first+= rango_x;
-	pos_inicial.second+= rango_y + altura_unidad; 
-	if (recorrer_vertical(pos_inicial,rango_y,altura_unidad)){
+	pos_inicial.first-= rango_y;
+	pos_inicial.second+=unidad->obtener_base();
+
+	if (recorrer_horizontal(pos_inicial,rango_y,unidad)){
+		centro_unidad = pos_inicial;
+		return true;
+	}
+	
+	pos_inicial.second+= rango_x;
+	pos_inicial.first+= rango_y + unidad->obtener_altura(); 
+
+	if (recorrer_vertical(pos_inicial,rango_x,unidad)){
 		centro_unidad = pos_inicial;
 		return true;
 	}
