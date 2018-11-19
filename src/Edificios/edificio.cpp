@@ -89,8 +89,7 @@ std::shared_ptr<ObjetoDune> objeto) {
 std::shared_ptr<UnidadMovible> Edificio::agregar_unidad(Mapa &mapa) {
 	std::pair<int, int> pos_central;
 	if (!mapa.ubicar_unidad(this->id, pos_central, 
-		unidad_entrenando->obtener_base(), 
-		unidad_entrenando->obtener_altura())) {
+		unidad_entrenando)) {
 	}
 
 	unidad_entrenando->set_centro(pos_central);

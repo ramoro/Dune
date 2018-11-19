@@ -18,6 +18,9 @@ class Vehiculo: public UnidadMovible {
 		al vehiculo luego de ser atacada.
 		Si devuelve un 0 o menos significa que fue destruida.*/
 		virtual int daniar(std::shared_ptr<UnidadMovible> unidad_atacante);
+
+		/*valida que el terreno no sea ni precipicio ni cima*/
+		bool es_terreno_valido(std::string terreno);
 };
 
 #endif 

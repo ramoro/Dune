@@ -12,3 +12,9 @@ int UnidadInfanteria::daniar(std::shared_ptr<UnidadMovible> unidad_atacante) {
 	int danio = unidad_atacante->pedir_danio("infanteria");
 	return ObjetoDune::reducir_vida(danio);
 }
+
+bool UnidadInfanteria::es_terreno_valido(std::string terreno){
+	if (terreno == "precipicio")
+		return false;
+	return true;
+}
