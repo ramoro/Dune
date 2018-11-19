@@ -264,9 +264,11 @@ int main() {
 //MAIN NACHO
 int main() {
   Partida partida;
-  partida.agregar_jugador("harkonnen");
-  partida.agregar_jugador("harkonnen");
+
   ColaBloqueante cola(100);
+
+  partida.agregar_jugador("harkonnen",&cola);
+  partida.agregar_jugador("harkonnen",&cola);
   //std::pair<int, int> centro(100, 100);
   //bool agregado = partida.agregar_edificio(0, centro, 0);
   //std::cout << agregado << std::endl;
@@ -276,20 +278,22 @@ int main() {
   //partida.agregar_edificio(0, std::pair<int, int>(400,400), 4);
   //partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
   // partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
-  partida.agregar_edificio(0, std::pair<int, int>(2,2), 4,&cola);
-  partida.agregar_edificio(0, std::pair<int, int>(13,13), 4,&cola);
+  partida.agregar_edificio(0, std::pair<int, int>(3,3), 4,&cola);
+  //partida.agregar_edificio(0, std::pair<int, int>(13,13), 4,&cola);
 
 
-  partida.agregar_edificio(1, std::pair<int, int>(10,5), 4,&cola);
+  //partida.agregar_edificio(1, std::pair<int, int>(10,5), 4,&cola);
 
   //partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
   //partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
 
-  for (int i = 0; i < 12 ; i++) {
+  /*for (int i = 0; i < 1 ; i++) {
     partida.iniciar_entrenamiento_unidad_movible(15,364,0,&cola);
     partida.actualizar_modelo(20000.0,&cola) ;
   }
-  /*
+
+  partida.comenzar_movimiento_unidad(365,std::pair<int, int>(3,3));
+  *//*
   partida.atacar_objeto(366,367);
 
   partida.actualizar_modelo(50.0,&cola) ;

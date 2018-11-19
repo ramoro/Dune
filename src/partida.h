@@ -29,8 +29,8 @@ class Partida {
 		Partida();
 
 		/*Recibe un string con un nombre y agregar a la partida un Jugador
-		con ese nombre.*/
-		void agregar_jugador(std::string nombre_jugador);
+		con ese nombre, ademas crea su edificio Centro de Construccion*/
+		void agregar_jugador(std::string nombre_jugador, ColaBloqueante* cola_mensajes);
 
 		/*Agrega un edificio segun el id de tipo pasado, asociado al id pasado
 		por parametro, asignado al jugador con el id pasado por parametro 

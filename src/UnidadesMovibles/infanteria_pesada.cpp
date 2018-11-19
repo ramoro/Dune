@@ -16,8 +16,6 @@ centro, Config &config) :
 		id_tipo = ID_INFANTERIA_PESADA;
 		LanzaMisiles lanza_misiles(config);
 		armas.push_back(LanzaMisiles(lanza_misiles));
-		rango_ataque_fila = 10;
-		rango_ataque_columna = 10;
 		for (unsigned int i = 0; i < 
 		config["InfanteriaPesada"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(

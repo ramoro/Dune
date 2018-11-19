@@ -28,8 +28,6 @@ Devastador::Devastador(int id, int id_duenio, std::pair<int, int> centro,
 			config["Explosion"].get("bonificacion_danio_vehiculo", 0).asInt());
 		config_explosion.push_back(
 			config["Explosion"].get("bonificacion_danio_infanteria", 0).asInt());
-		rango_ataque_fila = 10;
-		rango_ataque_columna = 10;
 		for (unsigned int i = 0;
 		 i < config["Devastador"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(

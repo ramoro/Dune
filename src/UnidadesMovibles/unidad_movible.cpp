@@ -49,12 +49,8 @@ std::vector<int> UnidadMovible::obtener_edificios_necesarios() {
 	return ids_tipos_edificios_necesarios;
 }
 
-int UnidadMovible::obtener_rango_ataque_filas() {
-	return rango_ataque_fila;
-}
-
-int UnidadMovible::obtener_rango_ataque_columnas() {
-	return rango_ataque_columna;
+int UnidadMovible::obtener_rango_ataque() {
+	return rango;
 }
 
 bool UnidadMovible::se_puede_agregar(Jugador 
@@ -113,8 +109,8 @@ void UnidadMovible::iniciar_ataque(Mapa &mapa,
 std::shared_ptr<ObjetoDune> objetivo) {
 	std::pair<int, int> cercania = mapa.pedir_cercania(this->id, 
 	objetivo->pedir_id());
-	if (cercania.first > this->rango_ataque_fila || cercania.second > 
-	this->rango_ataque_columna) {
+	if (cercania.first > this->rango || cercania.second > 
+	this->rango) {
 		estado = estado->cambiar_a_movimiento_para_atacar(objetivo);
 		asignar_nuevo_camino(mapa.obtener_camino(this->centro, 
 		objetivo->obtener_centro()));

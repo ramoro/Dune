@@ -16,8 +16,6 @@ Desviador::Desviador(int id, int id_duenio, std::pair<int, int> centro,
 		id_tipo = ID_DESVIADOR;
 		LanzaMisiles lanza_misiles(config);
 		armas.push_back(LanzaMisiles(lanza_misiles));
-		rango_ataque_fila = 10;
-		rango_ataque_columna = 10;
 		for (unsigned int i = 0; i < 
 		config["Desviador"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(

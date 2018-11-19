@@ -19,8 +19,6 @@ Sardaukar::Sardaukar(int id, int id_duenio, std::pair<int, int> centro,
 		LanzaMisiles lanza_misiles(config);
 		armas.push_back(RifleAsalto(rifle_asalto));
 		armas.push_back(LanzaMisiles(lanza_misiles));
-		rango_ataque_fila = 10;
-		rango_ataque_columna = 10;
 		for (unsigned int i = 0; i < 
 		config["Sardaukar"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(

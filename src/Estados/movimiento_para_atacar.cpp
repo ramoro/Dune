@@ -18,8 +18,8 @@ std::shared_ptr<Estado> MovimientoParaAtacar::actualizar(UnidadMovible
 	Movimiento::actualizar(unidad, mapa, tiempo_transcurrido);
 	std::pair<int, int> cercania = mapa.pedir_cercania(unidad->pedir_id(), 
 	objeto_destino->pedir_id());
-	if (cercania.first > unidad->obtener_rango_ataque_filas() || 
-	cercania.second > unidad->obtener_rango_ataque_columnas()) {
+	if (cercania.first > unidad->obtener_rango_ataque() || 
+	cercania.second > unidad->obtener_rango_ataque()) {
 		return NULL;
 	}
 	unidad->limpiar_camino();

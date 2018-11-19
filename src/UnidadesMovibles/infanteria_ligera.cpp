@@ -16,8 +16,6 @@ centro, Config &config) :
 		id_tipo = ID_INFANTERIA_LIGERA;
 		RifleAsalto rifle(config);
 		armas.push_back(RifleAsalto(rifle));
-		rango_ataque_fila = 10;
-		rango_ataque_columna = 10;
 		for (unsigned int i = 0; i < 
 		config["InfanteriaLigera"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(

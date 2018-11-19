@@ -16,8 +16,6 @@ Trike::Trike(int id, int id_duenio, std::pair<int, int> centro,
 		id_tipo = ID_TRIKE;
 		RifleAsalto rifle_asalto(config);
 		armas.push_back(RifleAsalto(rifle_asalto));
-		rango_ataque_fila = 10;
-		rango_ataque_columna = 10;
 		for (unsigned int i = 0; i < 
 		config["Trike"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(

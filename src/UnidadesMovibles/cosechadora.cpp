@@ -13,8 +13,6 @@ Cosechadora::Cosechadora(int id, int id_duenio, std::pair<int, int> centro,
 	 config["Cosechadora"].get("dimension_ancho", 0).asInt(),
 	 config["Cosechadora"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_COSECHADORA;
-		rango_ataque_fila = 10;
-		rango_ataque_columna = 10;
 		for (unsigned int i = 0; i < 
 		config["Cosechadora"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(
