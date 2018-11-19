@@ -91,7 +91,7 @@ void Partida::agregar_edificio(int id_jugador, std::pair<int, int>
 posicion_central, int id_tipo_edificio, ColaBloqueante* cola_mensajes) {
 	std::shared_ptr<Edificio> ptr_edificio = fabrica_edificios.crear_edificio(id_tipo_edificio,
 	contador_ids_objetos, id_jugador, posicion_central,config);
-	
+
 	bool esta_dentro_rango = esta_dentro(id_jugador, posicion_central);
 	bool agregado = ptr_edificio->agregar_al_juego(mapa, jugadores.at(id_jugador), 
 	contador_ids_objetos, id_tipo_edificio);
@@ -100,6 +100,7 @@ posicion_central, int id_tipo_edificio, ColaBloqueante* cola_mensajes) {
 		std::shared_ptr<Edificio>>(contador_ids_objetos, ptr_edificio));
 		contador_ids_objetos++;
 		ptr_edificio->serializar_mensaje_creacion_objeto(ptr_edificio);
+
 		//PARTE COLA BLOQUEANTE/AL SACAR MENSAJE LUEGO DEBO LIMPIAR MENSAJE
 		//cola.push(ptr_edificio.pedir_mensaje_protocolo());
 	
@@ -266,7 +267,8 @@ ColaBloqueante *cola_mensajes) {
 		obtener_mensajes_para_mandar();
 		for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 		mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
-			std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
+			std::vector<int> v = (*it_mensajes).pedir_parametros();
+			std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose de "   << v[0] << " a " << v[1] << std::endl;
 			if ((*it_mensajes).pedir_accion() == CODIGO_MUERTE_OBJETO) {
 				unidades_a_eliminar.insert(it_unidades->second);
 			}

@@ -48,7 +48,7 @@ class Edificio: public ObjetoDune {
 		al objeto. Devuelve la vida restante que le queda
 		al edificio luego de ser atacada.
 		Si devuelve un 0 o menos significa que fue destruida.*/
-		virtual int daniar(std::shared_ptr<UnidadMovible> unidad_atacante);
+		virtual int daniar(UnidadMovible* unidad_atacante);
 
 		/*Recibe el mapa y el jugador al que pertenece el edificio y
 		lo demuele, devolviendo la fraccion de plata que se recupera del

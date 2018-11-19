@@ -44,7 +44,7 @@ int id_tipo_edificio) {
 	return true;
 }
 
-int Edificio::daniar(std::shared_ptr<UnidadMovible> unidad_atacante) {
+int Edificio::daniar(UnidadMovible* unidad_atacante) {
 	int danio = unidad_atacante->pedir_danio("edificio");
 	return ObjetoDune::reducir_vida(danio);
 }

@@ -193,7 +193,7 @@ int main(int argc, char* argv[]) {
 
 
 
-/*
+
 int main() {
   //return 0;
   ColaBloqueante cola(100);
@@ -217,6 +217,7 @@ int main() {
 
   partida.atacar_objeto(366, 367);
   partida.actualizar_modelo(10,&cola);
+  partida.comenzar_movimiento_unidad(367, std::pair<int, int> (4, 10));
   partida.actualizar_modelo(20,&cola);
   partida.actualizar_modelo(30,&cola);
   partida.actualizar_modelo(40,&cola);
@@ -228,26 +229,14 @@ int main() {
   partida.actualizar_modelo(100,&cola);
   partida.actualizar_modelo(110,&cola);
   partida.actualizar_modelo(120,&cola);
+  partida.actualizar_modelo(120,&cola);
+  partida.actualizar_modelo(120,&cola);
+  partida.actualizar_modelo(120,&cola);
+  partida.actualizar_modelo(120,&cola);
+  partida.actualizar_modelo(120,&cola);
+  partida.actualizar_modelo(120,&cola);
+}
 
-
-  bool agregado1 = partida.agregar_edificio(0, std::pair<int, int>(7,3), 6);
-  //bool agregado2 = partida.agregar_edificio(1, std::pair<int, int>(8,4), 0);
-  //bool agregado3 = partida.agregar_edificio(0, std::pair<int, int>(5,5), 0);
-  partida.agregar_unidad_movible(19, 0);
-  partida.agregar_unidad_movible(19,1);
-  std::vector<std::pair<int ,int>> unidades_afectadas = partida.atacar_objeto(3, 2);
-  //std::cout << danio << agregado << std::endl;
-  //std::cout << agregado1 << std::endl;
- // std:: cout << nueva_unidad.first << std::endl;
-  std::cout << agregado1 << std::endl;
-  std:: cout << nueva_unidad.first << std::endl;
-  if (!unidades_afectadas.empty()) {
-    std::cout << "piola " << std::endl;
-  }
-  //Mapa mapa;
-  //std::pair<int, int> objetivo = mapa.desenterrar_gusano();
-  //std::cout << objetivo.first << " " << objetivo.second << std::endl;
-}*/
 /*int main() {
   Mapa mapa;
   BuscadorMejorCamino buscador;
@@ -262,7 +251,7 @@ int main() {
 }*/
 
 //MAIN NACHO
-int main() {
+/*int main() {
   Partida partida;
   partida.agregar_jugador("harkonnen");
   partida.agregar_jugador("harkonnen");
@@ -289,7 +278,7 @@ int main() {
     partida.iniciar_entrenamiento_unidad_movible(15,364,0,&cola);
     partida.actualizar_modelo(20000.0,&cola) ;
   }
-  /*
+  
   partida.atacar_objeto(366,367);
 
   partida.actualizar_modelo(50.0,&cola) ;
@@ -297,5 +286,5 @@ int main() {
   partida.actualizar_modelo(50.0,&cola) ;
 
   partida.actualizar_modelo(10.0,&cola) ;
-*/
-}
+
+}*/

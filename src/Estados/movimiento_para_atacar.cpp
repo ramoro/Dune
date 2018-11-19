@@ -1,5 +1,6 @@
 #include "movimiento_para_atacar.h"
 #include "ataque.h"
+#include <iostream>
 
 MovimientoParaAtacar::MovimientoParaAtacar(std::shared_ptr<ObjetoDune>
 objetivo): objeto_destino(objetivo), pos_destino(objetivo->obtener_centro()) {

@@ -5,6 +5,8 @@
 #include <vector>
 #include "mensaje_protocolo.h"
 
+class UnidadMovible;
+
 /*Clase abstracta que representa a un objeto del mundo dune que puede
 ser tanto un edificio como una unidad movible (vehiculos y 
 unidades de ataque).*/
@@ -65,8 +67,9 @@ class ObjetoDune {
 		/*Recibe una coordenada nueva y se la asigna al centro.*/
 		void set_centro(std::pair<int, int> centro_nuevo);
 
-		/*Metodo virtual que dania a la unidad.*/
-		virtual int daniar();
+		/*Metodo virtual que dania a la unidad segun el danio provocado
+		por la unidad atacante.*/
+		virtual int daniar(UnidadMovible* unidad_atacante);
 
 		/*Metodo virtual que mata a la unidad (la setea en estado muerta).*/
 		virtual void matar();

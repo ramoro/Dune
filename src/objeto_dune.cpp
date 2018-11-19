@@ -1,4 +1,5 @@
 #include "objeto_dune.h"
+#include "UnidadesMovibles/unidad_movible.h"
 #include <iostream>
 
 #define CODIGO_MUERTE 'd'
@@ -48,7 +49,8 @@ void ObjetoDune::set_centro(std::pair<int, int> centro_nuevo) {
 	centro = centro_nuevo;
 }
 
-int ObjetoDune::daniar() {
+int ObjetoDune::daniar(UnidadMovible* unidad_atacante) {
+	std::cout << "entro en daniar de objeto dune" << std::endl;
 	return 0;
 }
 

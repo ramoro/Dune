@@ -3,7 +3,7 @@
 
 #include <utility>
 #include <memory>
-#include "objeto_dune.h"
+class ObjetoDune;
 
 /*Clase abstracta que representa un observador. Su existencia se debe
 al uso del patron de programacion Observer.*/

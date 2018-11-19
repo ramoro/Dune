@@ -17,7 +17,7 @@ class Vehiculo: public UnidadMovible {
 		al objeto. Devuelve la vida restante que le queda
 		al vehiculo luego de ser atacada.
 		Si devuelve un 0 o menos significa que fue destruida.*/
-		virtual int daniar(std::shared_ptr<UnidadMovible> unidad_atacante);
+		virtual int daniar(UnidadMovible* unidad_atacante);
 };
 
 #endif 

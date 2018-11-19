@@ -48,11 +48,11 @@ class UnidadMovible: public ObjetoDune {
 
 		/*Metodo virtual puro que dania a la unidad apuntada por el puntero
 		recibido.*/
-		virtual int daniar(std::shared_ptr<UnidadMovible> unidad_atacante) = 0;
+		virtual int daniar(std::shared_ptr<UnidadMovible> unidad_atacante);
 
 		/*Metodo virtual puro que mata a la unidad movible seteandola
 		como muerta.*/
-		virtual void matar() = 0;
+		virtual void matar();
 
 		/*Metodo virtual puro que devuelve un vector de punteros a objetos
 		afectados por la muerte de la unidad.*/
