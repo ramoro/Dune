@@ -5,23 +5,23 @@
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 InfanteriaPesada::InfanteriaPesada(int id, int id_duenio, std::pair<int, int>
-centro, Root &root) : 
-	UnidadInfanteria(root["InfanteriaPesada"].get("rango", 0).asInt(),
-	 root["InfanteriaPesada"].get("velocidad", 0).asInt(), 
-	 root["InfanteriaPesada"].get("tiempo_entrenamiento", 0).asInt(), 
-	 root["InfanteriaPesada"].get("costo", 0).asInt(), 
-	 root["InfanteriaPesada"].get("puntos_vida", 0).asInt(), id, id_duenio, 
-	 root["InfanteriaPesada"].get("dimension_ancho", 0).asInt(), 
-	 root["InfanteriaPesada"].get("dimension_alto", 0).asInt(), centro) {
+centro, Config &config) : 
+	UnidadInfanteria(config["InfanteriaPesada"].get("rango", 0).asInt(),
+	 config["InfanteriaPesada"].get("velocidad", 0).asInt(), 
+	 config["InfanteriaPesada"].get("tiempo_entrenamiento", 0).asInt(), 
+	 config["InfanteriaPesada"].get("costo", 0).asInt(), 
+	 config["InfanteriaPesada"].get("puntos_vida", 0).asInt(), id, id_duenio, 
+	 config["InfanteriaPesada"].get("dimension_ancho", 0).asInt(), 
+	 config["InfanteriaPesada"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_INFANTERIA_PESADA;
-		LanzaMisiles lanza_misiles(root);
+		LanzaMisiles lanza_misiles(config);
 		armas.push_back(LanzaMisiles(lanza_misiles));
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;
 		for (unsigned int i = 0; i < 
-		root["InfanteriaPesada"]["edificios_necesarios"].size(); i++) {
+		config["InfanteriaPesada"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(
-			root["InfanteriaPesada"]["edificios_necesarios"][i].asInt());
+			config["InfanteriaPesada"]["edificios_necesarios"][i].asInt());
 		}
 	}
 

@@ -4,12 +4,12 @@
 #define DESTRUIDO -1
 
 TrampaAire::TrampaAire(int id, int id_duenio, std::pair<int, int> centro,
- Root &root) : 
-	Edificio(root["TrampaAire"].get("aporte_energetico", 0).asInt(),
-	 root["TrampaAire"].get("costo", 0).asInt(),
-	 root["TrampaAire"].get("puntos_estructura", 0).asInt(),
-	  id, id_duenio, root["TrampaAire"].get("dimension_ancho", 0).asInt(),
-	   root["TrampaAire"].get("dimension_alto", 0).asInt(), centro) {
+ Config &config) : 
+	Edificio(config["TrampaAire"].get("aporte_energetico", 0).asInt(),
+	 config["TrampaAire"].get("costo", 0).asInt(),
+	 config["TrampaAire"].get("puntos_estructura", 0).asInt(),
+	  id, id_duenio, config["TrampaAire"].get("dimension_ancho", 0).asInt(),
+	   config["TrampaAire"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_TRAMPA_AIRE;
 	}
 

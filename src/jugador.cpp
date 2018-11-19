@@ -5,8 +5,8 @@
 
 #define NO_ESTA_ENTRENANDO -1
 
-Jugador::Jugador(std::string casa, Root &root): casa(casa) {
-	dinero = root["Jugadores"].get("dinero", 0).asInt();
+Jugador::Jugador(std::string casa, Config &config): casa(casa) {
+	dinero = config["Jugadores"].get("dinero", 0).asInt();
 	capacidad_especia = 0;
 	capacidad_especia_disponible = 0;
 	energia_disponible = 0;

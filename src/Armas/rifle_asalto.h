@@ -7,7 +7,7 @@
 class RifleAsalto: public Arma {
 	public:
 		/*Constructor de la clase.*/
-		RifleAsalto(Root &root);
+		RifleAsalto(Config &config);
 };
 
 #endif 

@@ -3,7 +3,7 @@
 
 #include <string>
 #include <map>
-#include "../src/root.h"
+#include "../src/config.h"
 
 /*Clase abstracta que representa un arma en el mundo de Dune.*/
 class Arma {

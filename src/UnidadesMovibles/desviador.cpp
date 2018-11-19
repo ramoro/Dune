@@ -5,23 +5,23 @@
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Desviador::Desviador(int id, int id_duenio, std::pair<int, int> centro,
- Root &root) : 
-	Vehiculo(root["Desviador"].get("rango", 0).asInt(),
-	 root["Desviador"].get("velocidad", 0).asInt(),
-	 root["Desviador"].get("tiempo_entrenamiento", 0).asFloat(),
-	 root["Desviador"].get("costo", 0).asInt(), 
-	 root["Desviador"].get("puntos_vida", 0).asInt(), id, id_duenio, 
-	 root["Desviador"].get("dimension_ancho", 0).asInt(),
-	 root["Desviador"].get("dimension_alto", 0).asInt(), centro) {
+ Config &config) : 
+	Vehiculo(config["Desviador"].get("rango", 0).asInt(),
+	 config["Desviador"].get("velocidad", 0).asInt(),
+	 config["Desviador"].get("tiempo_entrenamiento", 0).asFloat(),
+	 config["Desviador"].get("costo", 0).asInt(), 
+	 config["Desviador"].get("puntos_vida", 0).asInt(), id, id_duenio, 
+	 config["Desviador"].get("dimension_ancho", 0).asInt(),
+	 config["Desviador"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_DESVIADOR;
-		LanzaMisiles lanza_misiles(root);
+		LanzaMisiles lanza_misiles(config);
 		armas.push_back(LanzaMisiles(lanza_misiles));
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;
 		for (unsigned int i = 0; i < 
-		root["Desviador"]["edificios_necesarios"].size(); i++) {
+		config["Desviador"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(
-			root["Desviador"]["edificios_necesarios"][i].asInt());
+			config["Desviador"]["edificios_necesarios"][i].asInt());
 		}
 	}
 

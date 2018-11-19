@@ -12,7 +12,7 @@ class TrampaAire: public Edificio{
 	public:
 		/*Constructor de la clase.*/
 		TrampaAire(int id, int id_duenio, std::pair<int, int> centro,
-		 Root &root);
+		 Config &config);
 
 		/*Devuelve true si se pudo agregar la trampa de aire al juego.
 		False en caso contrario.*/

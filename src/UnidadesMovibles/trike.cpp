@@ -5,23 +5,23 @@
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Trike::Trike(int id, int id_duenio, std::pair<int, int> centro,
- Root &root) : 
-	Vehiculo(root["Trike"].get("rango", 0).asInt(),
-	 root["Trike"].get("velocidad", 0).asInt(),
-	 root["Trike"].get("tiempo_entrenamiento", 0).asFloat(),
-	 root["Trike"].get("costo", 0).asInt(), 
-	 root["Trike"].get("puntos_vida", 0).asInt(), id, id_duenio, 
-	 root["Trike"].get("dimension_ancho", 0).asInt(),
-	 root["Trike"].get("dimension_alto", 0).asInt(), centro) {
+ Config &config) : 
+	Vehiculo(config["Trike"].get("rango", 0).asInt(),
+	 config["Trike"].get("velocidad", 0).asInt(),
+	 config["Trike"].get("tiempo_entrenamiento", 0).asFloat(),
+	 config["Trike"].get("costo", 0).asInt(), 
+	 config["Trike"].get("puntos_vida", 0).asInt(), id, id_duenio, 
+	 config["Trike"].get("dimension_ancho", 0).asInt(),
+	 config["Trike"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_TRIKE;
-		RifleAsalto rifle_asalto(root);
+		RifleAsalto rifle_asalto(config);
 		armas.push_back(RifleAsalto(rifle_asalto));
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;
 		for (unsigned int i = 0; i < 
-		root["Trike"]["edificios_necesarios"].size(); i++) {
+		config["Trike"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(
-			root["Trike"]["edificios_necesarios"][i].asInt());
+			config["Trike"]["edificios_necesarios"][i].asInt());
 		}
 	}
 

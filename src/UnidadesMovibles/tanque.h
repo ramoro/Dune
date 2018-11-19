@@ -11,7 +11,7 @@ Es un vehiculo de ataque versatil. Unidad de combate por excelencia.*/
 class Tanque: public Vehiculo {
 	public:
 		/*Constructor de la clase.*/
-		Tanque(int id, int id_duenio, std::pair<int, int> centro, Root &root);
+		Tanque(int id, int id_duenio, std::pair<int, int> centro, Config &config);
 
 		/*Recibe el mapa y el id del objeto y devuelve todas las unidades
 		afectadas por su ataque.*/

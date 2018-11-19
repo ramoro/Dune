@@ -5,23 +5,23 @@
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 InfanteriaLigera::InfanteriaLigera(int id, int id_duenio, std::pair<int, int>
-centro, Root &root) : 
-	UnidadInfanteria(root["InfanteriaLigera"].get("rango", 0).asInt(),
-	 root["InfanteriaLigera"].get("velocidad", 0).asInt(), 
-	 root["InfanteriaLigera"].get("tiempo_entrenamiento", 0).asInt(), 
-	 root["InfanteriaLigera"].get("costo", 0).asInt(), 
-	 root["InfanteriaLigera"].get("puntos_vida", 0).asInt(), id, id_duenio, 
-	 root["InfanteriaLigera"].get("dimension_ancho", 0).asInt(), 
-	 root["InfanteriaLigera"].get("dimension_alto", 0).asInt(), centro) {
+centro, Config &config) : 
+	UnidadInfanteria(config["InfanteriaLigera"].get("rango", 0).asInt(),
+	 config["InfanteriaLigera"].get("velocidad", 0).asInt(), 
+	 config["InfanteriaLigera"].get("tiempo_entrenamiento", 0).asInt(), 
+	 config["InfanteriaLigera"].get("costo", 0).asInt(), 
+	 config["InfanteriaLigera"].get("puntos_vida", 0).asInt(), id, id_duenio, 
+	 config["InfanteriaLigera"].get("dimension_ancho", 0).asInt(), 
+	 config["InfanteriaLigera"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_INFANTERIA_LIGERA;
-		RifleAsalto rifle(root);
+		RifleAsalto rifle(config);
 		armas.push_back(RifleAsalto(rifle));
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;
 		for (unsigned int i = 0; i < 
-		root["InfanteriaLigera"]["edificios_necesarios"].size(); i++) {
+		config["InfanteriaLigera"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(
-			root["InfanteriaLigera"]["edificios_necesarios"][i].asInt());
+			config["InfanteriaLigera"]["edificios_necesarios"][i].asInt());
 		}
 	}
 	

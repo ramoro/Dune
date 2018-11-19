@@ -4,21 +4,21 @@
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Cosechadora::Cosechadora(int id, int id_duenio, std::pair<int, int> centro,
- Root &root) : 
-	Vehiculo(root["Cosechadora"].get("rango", 0).asInt(),
-	 root["Cosechadora"].get("velocidad", 0).asInt(),
-	 root["Cosechadora"].get("tiempo_entrenamiento", 0).asFloat(),
-	 root["Cosechadora"].get("costo", 0).asInt(), 
-	 root["Cosechadora"].get("puntos_vida", 0).asInt(), id, id_duenio, 
-	 root["Cosechadora"].get("dimension_ancho", 0).asInt(),
-	 root["Cosechadora"].get("dimension_alto", 0).asInt(), centro) {
+ Config &config) : 
+	Vehiculo(config["Cosechadora"].get("rango", 0).asInt(),
+	 config["Cosechadora"].get("velocidad", 0).asInt(),
+	 config["Cosechadora"].get("tiempo_entrenamiento", 0).asFloat(),
+	 config["Cosechadora"].get("costo", 0).asInt(), 
+	 config["Cosechadora"].get("puntos_vida", 0).asInt(), id, id_duenio, 
+	 config["Cosechadora"].get("dimension_ancho", 0).asInt(),
+	 config["Cosechadora"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_COSECHADORA;
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;
 		for (unsigned int i = 0; i < 
-		root["Cosechadora"]["edificios_necesarios"].size(); i++) {
+		config["Cosechadora"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(
-			root["Cosechadora"]["edificios_necesarios"][i].asInt());
+			config["Cosechadora"]["edificios_necesarios"][i].asInt());
 		}
 	}
 

@@ -55,12 +55,12 @@ void Edificio::autodemoler(Mapa &mapa, Jugador &jugador) {
 }
 
 bool Edificio::se_puede_agregar_unidad(Jugador &jugador, 
-int id_tipo_unidad, int id_unidad, Root &root) {
+int id_tipo_unidad, int id_unidad, Config &config) {
 	std::pair<int,int> posicion_central(-1,-1);
 
 	std::shared_ptr<UnidadMovible> ptr_unidad = fabrica_unidades_movibles.
 	crear_unidad_movible(id_tipo_unidad, id_unidad, this->id_duenio, 
-	posicion_central,root);
+	posicion_central,config);
 
 	if (ptr_unidad->se_puede_agregar(jugador)) {
 		jugador.reducir_dinero(ptr_unidad->obtener_costo());

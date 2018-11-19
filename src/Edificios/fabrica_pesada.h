@@ -11,7 +11,7 @@ class FabricaPesada: public Edificio{
 	public:
 		/*Constructor de la clase.*/
 		FabricaPesada(int id, int id_duenio, std::pair<int, int> centro,
-		 Root &root);
+		 Config &config);
 
 		/*Devuelve true si la fabrica pesada fue agregada al juego.
 		False en caso contrario.*/

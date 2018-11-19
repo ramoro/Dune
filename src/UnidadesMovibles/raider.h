@@ -10,7 +10,7 @@ Es un vehiculo similar a un Trike pero mucho mas rapido.*/
 class Raider: public Vehiculo {
 	public:
 		/*Constructor de la clase.*/
-		Raider(int id, int id_duenio, std::pair<int, int> centro, Root &root);
+		Raider(int id, int id_duenio, std::pair<int, int> centro, Config &config);
 
 		/*Recibe el mapa y el id del objeto y devuelve todas las unidades
 		afectadas por su ataque.*/

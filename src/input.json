@@ -30,8 +30,8 @@
 	"CentroConstruccion": {
 		"aporte_energetico": 0,
 		"costo": 0,
-		"dimension_ancho": 300,
-		"dimension_alto": 300,
+		"dimension_ancho": 3,
+		"dimension_alto": 3,
 		"puntos_estructura": 3000
 	},
 	"TrampaAire": {
@@ -260,5 +260,9 @@
 	"Ataque tanque sonico": {
 		"dimension_ancho": 100,
 		"dimension_alto": 100
+	},
+	"Conversor": {
+		"cant_pixel_ancho": 50,
+		"cant_pixel_alto": 50
 	}
 }

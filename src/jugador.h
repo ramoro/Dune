@@ -6,7 +6,7 @@
 #include <vector>
 #include <memory>
 #include "observador.h"
-#include "root.h"
+#include "config.h"
 
 class UnidadMovible;
 class Edificio;
@@ -24,7 +24,7 @@ class Jugador {
 
 	public:
 		/*Constructor de la clase.*/
-		Jugador(std::string casa, Root &root);
+		Jugador(std::string casa, Config &config);
 
 		/*Recibe un puntero a un objeto Dune. Se lo agregar al jugador
 		sacandole el dinero correspondiente.*/

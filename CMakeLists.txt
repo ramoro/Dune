@@ -123,8 +123,8 @@ add_executable (main
  src/socket_error.h
  src/server.cpp
  src/server.h
- src/root.cpp
- src/root.h
+ src/config.cpp
+ src/config.h
  src/juego.cpp
  src/juego.h
  src/cola_bloqueante.cpp

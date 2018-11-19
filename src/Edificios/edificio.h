@@ -59,10 +59,10 @@ class Edificio: public ObjetoDune {
 		y crea una unidad segun el id del tipo y asignandole la id_unidad
 		tambien pasados por parametro y la agrega tanto al jugador como 
 		al mapa. Los valores de los atributos de la unidad creada
-		estaran determinados por el parseo de Root. Devuelve true si
+		estaran determinados por el parseo de Config. Devuelve true si
 		se pudo agregar la unidad. False en caso contrario.*/
 		bool se_puede_agregar_unidad(Jugador &jugador, int id_tipo_unidad,
-		int id_unidad, Root &root);
+		int id_unidad, Config &config);
 
 		/*Recibe el puntero a un objeto que se agrego recientemente
 		al juego y se agrega la accion y los parametros adjuntos a la misma

@@ -3,13 +3,13 @@
 #define ID_SILO 3 //para usarlo en el protocolo
 #define DESTRUIDO -1
 
-Silo::Silo(int id, int id_duenio, std::pair<int, int> centro, Root &root) : 
-	Edificio(root["Silo"].get("aporte_energetico", 0).asInt(),
-	 root["Silo"].get("costo", 0).asInt(),
-	 root["Silo"].get("puntos_estructura", 0).asInt(),
-	  id, id_duenio, root["Silo"].get("dimension_ancho", 0).asInt(),
-	   root["Silo"].get("dimension_alto", 0).asInt(), centro) {
-		capacidad = root["Silo"].get("capacidad", 0).asInt();
+Silo::Silo(int id, int id_duenio, std::pair<int, int> centro, Config &config) : 
+	Edificio(config["Silo"].get("aporte_energetico", 0).asInt(),
+	 config["Silo"].get("costo", 0).asInt(),
+	 config["Silo"].get("puntos_estructura", 0).asInt(),
+	  id, id_duenio, config["Silo"].get("dimension_ancho", 0).asInt(),
+	   config["Silo"].get("dimension_alto", 0).asInt(), centro) {
+		capacidad = config["Silo"].get("capacidad", 0).asInt();
 		id_tipo = ID_SILO;
 	}
 

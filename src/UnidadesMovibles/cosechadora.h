@@ -14,7 +14,7 @@ class Cosechadora: public Vehiculo {
 	public:
 		/*Constructor de la clase.*/
 		Cosechadora(int id, int id_duenio, std::pair<int, int> centro,
-		 Root &root);
+		 Config &config);
 
 		/*Recibe el mapa y el id del objeto y devuelve todas las unidades
 		afectadas por su ataque.*/

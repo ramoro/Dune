@@ -9,15 +9,15 @@
 
 Mapa::Mapa() {}
 
-Mapa::Mapa(Root &root,int &contador_ids_objetos) {
+Mapa::Mapa(Config &config,int &contador_ids_objetos) {
 	/*inicialmente mapa de 1300x700 pixeles, siendo cada baldosa
 	 de 50x50 pixeles (26x14)*/
-	std::cout << "Mapa de " << root["terreno"].size() << " por " <<
-	 root["terreno"][0].size() << " baldosas" << std::endl;
-	for (unsigned int i = 0; i < root["terreno"].size(); i++) {
+	std::cout << "Mapa de " << config["terreno"].size() << " por " <<
+	 config["terreno"][0].size() << " baldosas" << std::endl;
+	for (unsigned int i = 0; i < config["terreno"].size(); i++) {
 		std::vector<Coordenada> fila;
-		for (unsigned int j = 0; j < root["terreno"][0].size(); j++) {
-			switch (root["terreno"][i][j].asInt()){
+		for (unsigned int j = 0; j < config["terreno"][0].size(); j++) {
+			switch (config["terreno"][i][j].asInt()){
 				case 30:
 				{
 					NoEspecia roca("roca");

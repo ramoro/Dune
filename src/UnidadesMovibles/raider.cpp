@@ -4,23 +4,23 @@
 #define ID_RAIDER 15 //para usarlo en el protocolo
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
-Raider::Raider(int id, int id_duenio, std::pair<int, int> centro,Root &root) : 
-	Vehiculo(root["Raider"].get("rango", 0).asInt(),
-	 root["Raider"].get("velocidad", 0).asInt(),
-	 root["Raider"].get("tiempo_entrenamiento", 0).asFloat(),
-	 root["Raider"].get("costo", 0).asInt(), 
-	 root["Raider"].get("puntos_vida", 1000).asInt(), id, id_duenio, 
-	 root["Raider"].get("dimension_ancho", 0).asInt(),
-	 root["Raider"].get("dimension_alto", 0).asInt(), centro) {
+Raider::Raider(int id, int id_duenio, std::pair<int, int> centro,Config &config) : 
+	Vehiculo(config["Raider"].get("rango", 0).asInt(),
+	 config["Raider"].get("velocidad", 0).asInt(),
+	 config["Raider"].get("tiempo_entrenamiento", 0).asFloat(),
+	 config["Raider"].get("costo", 0).asInt(), 
+	 config["Raider"].get("puntos_vida", 1000).asInt(), id, id_duenio, 
+	 config["Raider"].get("dimension_ancho", 0).asInt(),
+	 config["Raider"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_RAIDER;
-		Canion22mm canion22mm(root);
+		Canion22mm canion22mm(config);
 		armas.push_back(Canion22mm(canion22mm));
 		rango_ataque_fila = 10;
 		rango_ataque_columna = 10;
 		for (unsigned int i = 0; i < 
-		root["Raider"]["edificios_necesarios"].size(); i++) {
+		config["Raider"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(
-			root["Raider"]["edificios_necesarios"][i].asInt());
+			config["Raider"]["edificios_necesarios"][i].asInt());
 		}
 	}
 

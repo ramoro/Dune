@@ -13,25 +13,64 @@
 Partida::Partida() {
 	contador_ids_jugadores = 0;
 	contador_ids_objetos = 0;
-	Root json("../src/input.json");
-	root = std::move(json);
-	Mapa map(this->root,contador_ids_objetos);
+	Config json("../src/input.json");
+	config = std::move(json);
+	Mapa map(this->config,contador_ids_objetos);
 	mapa = std::move(map);
 	std::cout << "contador_ids_objetos " << contador_ids_objetos << std::endl;
 }
 
 void Partida::agregar_jugador(std::string casa_jugador) {
-	Jugador jugador(casa_jugador,root);
+	Jugador jugador(casa_jugador,config);
 	jugadores.emplace(std::pair<int, Jugador>(contador_ids_jugadores, 
 	jugador));
+	std::pair<int,int> ubicacion_centro = ubicar_centro_construccion();
+	std::cout << "centro constuccion en " << ubicacion_centro.first << " " << ubicacion_centro.second << std::endl;
 	contador_ids_jugadores++;
+}
+
+std::pair<int,int> Partida::buscar_ubicacion(std::pair<int,int> esquina){
+	return esquina;
+}
+std::pair<int,int> Partida::ubicar_centro_construccion(){
+	std::pair<int,int> ubicacion_centro;
+	int limite_col = (int)mapa.pedir_limite_columnas();
+	int limite_fil = (int)mapa.pedir_limite_filas();
+	int rango_col = limite_col/3;
+	int rango_fil = limite_fil/3;
+	switch (contador_ids_jugadores){
+		case 0:
+		{
+			ubicacion_centro = buscar_ubicacion(std::pair<int,int> (0,0));
+			break;
+		}
+		case 1:
+		{
+			ubicacion_centro = buscar_ubicacion(std::pair<int,int> (0,
+				limite_col - rango_col));
+			break;
+		}
+		case 2:
+		{
+			ubicacion_centro = buscar_ubicacion(std::pair<int,int> 
+				(limite_fil - rango_fil,0));
+			break;
+		}
+		case 3:
+		{
+			ubicacion_centro = buscar_ubicacion(std::pair<int,int> 
+				(limite_fil - rango_fil, limite_col - rango_col));
+			break;
+		}
+	}
+	return ubicacion_centro;
 }
 
 //DEBERIA PASAR COLA BLOQUEANTE
 void Partida::agregar_edificio(int id_jugador, std::pair<int, int>
 posicion_central, int id_tipo_edificio, ColaBloqueante* cola_mensajes) {
 	std::shared_ptr<Edificio> ptr_edificio = fabrica_edificios.crear_edificio(id_tipo_edificio,
-	contador_ids_objetos, id_jugador, posicion_central,root);
+	contador_ids_objetos, id_jugador, posicion_central,config);
 	
 	bool agregado = ptr_edificio->agregar_al_juego(mapa, jugadores.at(id_jugador), 
 	contador_ids_objetos, id_tipo_edificio);
@@ -76,7 +115,7 @@ int id_edificio, int id_jugador, ColaBloqueante* cola_mensajes) {
 	} else {
 		bool se_puede_agregar = ((edificios.at(id_edificio))->
 		se_puede_agregar_unidad(jugadores.at(id_jugador), 
-		id_tipo_unidad, contador_ids_objetos,root));
+		id_tipo_unidad, contador_ids_objetos,config));
 		if (!se_puede_agregar) {
 			serializar_mensaje_rechazo_creacion(cola_mensajes, id_tipo_unidad);
 		} else {

@@ -13,7 +13,7 @@ class Silo: public Edificio{
 	public:
 		/*Constructor de la clase.*/
 		Silo(int id, int id_duenio, std::pair<int, int> centro,
-		 Root &root);
+		 Config &config);
 
 		/*Devuelve true si se pudo agregar el silo al juego, false
 		en caso contrario.*/

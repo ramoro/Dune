@@ -8,7 +8,7 @@
 #include "mapa.h"
 #include "Edificios/fabrica_edificios.h"
 #include "UnidadesMovibles/fabrica_unidades_movibles.h"
-#include "root.h"
+#include "config.h"
 #include "cola_bloqueante.h"
 
 /*Clase que representa a una partida de Dune.*/
@@ -22,7 +22,7 @@ class Partida {
 		FabricaUnidadesMovibles fabrica_unidades_movibles;
 		int contador_ids_jugadores;
 		int contador_ids_objetos;
-		Root root;
+		Config config;
 
 	public:
 		/*Constructor de la clase.*/
@@ -93,6 +93,10 @@ class Partida {
 		juego.*/
 		void eliminar_unidad_del_juego(std::shared_ptr<UnidadMovible> 
 		unidad_a_remover);
+
+		std::pair<int,int> ubicar_centro_construccion();
+
+		std::pair<int,int> buscar_ubicacion(std::pair<int,int> esquina);
 
 };
 

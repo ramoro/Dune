@@ -10,7 +10,7 @@ Es un vehiculo rapido armado conametralladoras.*/
 class Trike: public Vehiculo {
 	public:
 		/*Constructor de la clase.*/
-		Trike(int id, int id_duenio, std::pair<int, int> centro, Root &root);
+		Trike(int id, int id_duenio, std::pair<int, int> centro, Config &config);
 
 		/*Recibe el mapa y el id del objeto y devuelve todas las unidades
 		afectadas por su ataque.*/

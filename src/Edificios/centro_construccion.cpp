@@ -4,12 +4,12 @@
 #define DESTRUIDO -1
 
 CentroConstruccion::CentroConstruccion(int id, int id_duenio,
-std::pair<int, int> centro, Root &root) : 
-	Edificio(root["CentroConstruccion"].get("aporte_energetico", 0).asInt(),
-	 root["CentroConstruccion"].get("costo", 0).asInt(),
-	 root["CentroConstruccion"].get("puntos_estructura", 0).asInt(),
-	  id, id_duenio, root["CentroConstruccion"].get("dimension_ancho", 0).asInt(),
-	   root["CentroConstruccion"].get("dimension_alto", 0).asInt(), centro) {
+std::pair<int, int> centro, Config &config) : 
+	Edificio(config["CentroConstruccion"].get("aporte_energetico", 0).asInt(),
+	 config["CentroConstruccion"].get("costo", 0).asInt(),
+	 config["CentroConstruccion"].get("puntos_estructura", 0).asInt(),
+	  id, id_duenio, config["CentroConstruccion"].get("dimension_ancho", 0).asInt(),
+	   config["CentroConstruccion"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_CENTRO_CONSTRUCCION;
 	}
 

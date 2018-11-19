@@ -14,7 +14,7 @@ class Cuartel: public Edificio{
 	public:
 		/*Constructor de la clase. Recibe un string con el nombre
 		de la casa a la que pertenece.*/
-		Cuartel(int id, int id_duenio, std::pair<int, int> centro, Root &root);
+		Cuartel(int id, int id_duenio, std::pair<int, int> centro, Config &config);
 		
 		/*Devuelve true si el cuartel fue agregado al juego.
 		False en caso contrario.*/

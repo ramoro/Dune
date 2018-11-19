@@ -11,7 +11,7 @@
 #include "coordenada.h"
 #include "observador.h"
 #include "buscador_mejor_camino.h"
-#include "root.h"
+#include "config.h"
 #include "UnidadesMovibles/unidad_movible.h"
 #include "gusano.h"
 
@@ -30,7 +30,7 @@ class Mapa {
 		Mapa();
 
 		/*Constructor de la clase.*/
-		Mapa(Root &root, int &contador_ids_objetos);
+		Mapa(Config &config, int &contador_ids_objetos);
 
 		/*Recibe una posicion central de un objeto, su base y su altura y se fija
 		si los puntos que lo rodean son del terreno pasado como string.
