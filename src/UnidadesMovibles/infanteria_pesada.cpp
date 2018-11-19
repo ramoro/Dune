@@ -17,6 +17,10 @@ centro, Config &config) :
 		LanzaMisiles lanza_misiles(config);
 		armas.push_back(LanzaMisiles(lanza_misiles));
 		for (unsigned int i = 0; i < 
+		config["InfanteriaPesada"]["casas"].size(); i++) {
+			casa.push_back(config["InfanteriaPesada"]["casas"][i].asString());
+		}	
+		for (unsigned int i = 0; i < 
 		config["InfanteriaPesada"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(
 			config["InfanteriaPesada"]["edificios_necesarios"][i].asInt());

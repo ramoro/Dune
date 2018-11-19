@@ -267,7 +267,7 @@ int main() {
 
   ColaBloqueante cola(100);
 
-  partida.agregar_jugador("harkonnen",&cola);
+  partida.agregar_jugador("ordos",&cola);
   partida.agregar_jugador("harkonnen",&cola);
   //std::pair<int, int> centro(100, 100);
   //bool agregado = partida.agregar_edificio(0, centro, 0);

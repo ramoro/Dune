@@ -143,3 +143,7 @@ void UnidadMovible::serializar_mensaje_muerte() {
 void UnidadMovible::limpiar_camino() {
 	camino.clear();
 }
+
+std::vector<std::string> UnidadMovible::obtener_casa(){
+	return casa;
+}

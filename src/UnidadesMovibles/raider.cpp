@@ -16,6 +16,10 @@ Raider::Raider(int id, int id_duenio, std::pair<int, int> centro,Config &config)
 		Canion22mm canion22mm(config);
 		armas.push_back(Canion22mm(canion22mm));
 		for (unsigned int i = 0; i < 
+		config["Raider"]["casas"].size(); i++) {
+			casa.push_back(config["Raider"]["casas"][i].asString());
+		}		
+		for (unsigned int i = 0; i < 
 		config["Raider"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(
 			config["Raider"]["edificios_necesarios"][i].asInt());

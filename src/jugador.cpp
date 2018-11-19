@@ -2,6 +2,7 @@
 #include "Edificios/edificio.h"
 #include "UnidadesMovibles/unidad_movible.h"
 #include <iostream>
+#include <algorithm>
 
 #define NO_ESTA_ENTRENANDO -1
 
@@ -58,7 +59,8 @@ void Jugador::reducir_capacidad_especia(int cap_a_reducir) {
 }
 
 bool Jugador::agregada_unidad(UnidadMovible* unidad) {
-	if (unidad->obtener_costo() > dinero) return false;
+	std::vector<std::string> casas= unidad->obtener_casa();
+	if (unidad->obtener_costo() > dinero || (std::find(casas.begin(), casas.end(), casa) == casas.end())) return false;
 	bool creacion = true;
 	std::vector<int> edificios_necesitados = unidad->
 	obtener_edificios_necesarios();

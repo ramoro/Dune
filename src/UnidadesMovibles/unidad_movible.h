@@ -26,6 +26,7 @@ class UnidadMovible: public ObjetoDune {
 	protected:
 		std::vector<Arma> armas;
 		std::vector<int> ids_tipos_edificios_necesarios;
+		std::vector<std::string> casa;
 
 	public:
 		/*Constructor de la clase.*/
@@ -131,6 +132,8 @@ class UnidadMovible: public ObjetoDune {
 		void limpiar_camino();
 
 		virtual bool es_terreno_valido(std::string terreno) = 0;
+
+		std::vector<std::string> obtener_casa();
 
 };
 

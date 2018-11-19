@@ -20,6 +20,10 @@ Sardaukar::Sardaukar(int id, int id_duenio, std::pair<int, int> centro,
 		armas.push_back(RifleAsalto(rifle_asalto));
 		armas.push_back(LanzaMisiles(lanza_misiles));
 		for (unsigned int i = 0; i < 
+		config["Sardaukar"]["casas"].size(); i++) {
+			casa.push_back(config["Sardaukar"]["casas"][i].asString());
+		}	
+		for (unsigned int i = 0; i < 
 		config["Sardaukar"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(
 			config["Sardaukar"]["edificios_necesarios"][i].asInt());

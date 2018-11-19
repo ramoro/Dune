@@ -14,6 +14,10 @@ Cosechadora::Cosechadora(int id, int id_duenio, std::pair<int, int> centro,
 	 config["Cosechadora"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_COSECHADORA;
 		for (unsigned int i = 0; i < 
+		config["Cosechadora"]["casas"].size(); i++) {
+			casa.push_back(config["Cosechadora"]["casas"][i].asString());
+		}	
+		for (unsigned int i = 0; i < 
 		config["Cosechadora"]["edificios_necesarios"].size(); i++) {
 			ids_tipos_edificios_necesarios.push_back(
 			config["Cosechadora"]["edificios_necesarios"][i].asInt());
