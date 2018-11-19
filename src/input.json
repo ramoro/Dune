@@ -74,8 +74,8 @@
 	"Cuartel": {
 		"aporte_energetico": -100,
 		"costo": 300,
-		"dimension_ancho": 300,
-		"dimension_alto": 200,
+		"dimension_ancho": 1,
+		"dimension_alto": 1,
 		"puntos_estructura": 300
 	},
 	"Palacio": {
@@ -91,6 +91,8 @@
 		"tiempo_entrenamiento": 60,
 		"costo": 50,
 		"puntos_vida": 50,
+		"dimension_ancho": 1,
+		"dimension_alto": 1,
 		"edificios_necesarios": [6]
 	},
 	"InfanteriaPesada": {
@@ -99,8 +101,8 @@
 		"tiempo_entrenamiento": 80,
 		"costo": 70,
 		"puntos_vida": 80,
-		"dimension_ancho": 50,
-		"dimension_alto": 50,
+		"dimension_ancho": 1,
+		"dimension_alto": 1,
 		"edificios_necesarios": [6]
 	},
 	"Fremen": {

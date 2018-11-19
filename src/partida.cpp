@@ -67,7 +67,7 @@ void Partida::autodemoler_edificio(int id_edificio) {
 }
 
 void Partida::iniciar_entrenamiento_unidad_movible(int id_tipo_unidad, 
-int id_edificio, int id_jugador, ColaBloqueante *cola_mensajes) {
+int id_edificio, int id_jugador, ColaBloqueante* cola_mensajes) {
 	int id_edificio_entrenando = jugadores.at(id_jugador).
 	pedir_id_edificio_entrenando();
 	if (id_edificio_entrenando != JUGADOR_NO_ENTRENANDO) {
@@ -174,6 +174,7 @@ ColaBloqueante *cola_mensajes) {
 		obtener_mensajes_para_mandar();
 		for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 		mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
+			std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
 			if ((*it_mensajes).pedir_accion() == CODIGO_MUERTE_OBJETO) {
 				edificios_a_eliminar.insert(it_edifs->second);
 			} else if ((*it_mensajes).pedir_accion() == CODIGO_PERDIO_JUGADOR) {
@@ -206,6 +207,7 @@ ColaBloqueante *cola_mensajes) {
 		obtener_mensajes_para_mandar();
 		for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 		mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
+			std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
 			if ((*it_mensajes).pedir_accion() == CODIGO_MUERTE_OBJETO) {
 				unidades_a_eliminar.insert(it_unidades->second);
 			}

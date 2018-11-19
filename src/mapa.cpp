@@ -7,8 +7,6 @@
 
 #define LIMITE_ITERACIONES_GUSANO 100
 
-//INICIALIAZDOR DE MAPA HARDCODEADO
-
 Mapa::Mapa() {}
 
 Mapa::Mapa(Root &root,int &contador_ids_objetos) {

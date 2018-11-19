@@ -7,6 +7,7 @@
 #include <stack>
 #include <cmath>
 #include <iostream>
+#include "cola_bloqueante.h"
 //#include "root.h"
 #include "server.h"
 #include "juego.h"
@@ -194,18 +195,19 @@ int main(int argc, char* argv[]) {
 
 /*
 int main() {
-  return 0;
+  //return 0;
+  ColaBloqueante cola(100);
   std::cout << "asd" << std::endl;
   Partida partida;
   partida.agregar_jugador("harkonnen");
   partida.agregar_jugador("ordos");
 
-  partida.agregar_edificio(0, std::pair<int, int>(20, 20), 6);
-  partida.agregar_edificio(1, std::pair<int, int>(5,6), 6);
+  partida.agregar_edificio(0, std::pair<int, int>(15, 7), 6,&cola);
+  partida.agregar_edificio(1, std::pair<int, int>(5,6), 6,&cola);
 
-  partida.iniciar_entrenamiento_unidad_movible(11, 0);
-  partida.iniciar_entrenamiento_unidad_movible(11, 1);
-  partida.actualizar_modelo(80);
+  partida.iniciar_entrenamiento_unidad_movible(11, 364,0,&cola);
+  partida.iniciar_entrenamiento_unidad_movible(11, 365,1,&cola);
+  partida.actualizar_modelo(80,&cola);
 
   
 
@@ -213,20 +215,19 @@ int main() {
   //partida.actualizar_modelo(80);
 
 
-  partida.atacar_objeto(2, 3);
-  partida.actualizar_modelo(10);
-  partida.actualizar_modelo(20);
-  partida.actualizar_modelo(30);
-  partida.actualizar_modelo(40);
-  partida.actualizar_modelo(50);
-  partida.actualizar_modelo(60);
-  partida.actualizar_modelo(70);
-  partida.actualizar_modelo(80);
-  partida.actualizar_modelo(90);
-  partida.actualizar_modelo(100);
-  partida.actualizar_modelo(110);
-  partida.actualizar_modelo(120);
-
+  partida.atacar_objeto(366, 367);
+  partida.actualizar_modelo(10,&cola);
+  partida.actualizar_modelo(20,&cola);
+  partida.actualizar_modelo(30,&cola);
+  partida.actualizar_modelo(40,&cola);
+  partida.actualizar_modelo(50,&cola);
+  partida.actualizar_modelo(60,&cola);
+  partida.actualizar_modelo(70,&cola);
+  partida.actualizar_modelo(80,&cola);
+  partida.actualizar_modelo(90,&cola);
+  partida.actualizar_modelo(100,&cola);
+  partida.actualizar_modelo(110,&cola);
+  partida.actualizar_modelo(120,&cola);
 
 
   bool agregado1 = partida.agregar_edificio(0, std::pair<int, int>(7,3), 6);
