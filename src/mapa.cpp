@@ -103,7 +103,8 @@ bool verificar_ataque_a_enemigo, int id_duenio, bool es_gusano) {
 			//si tienen el mismo centro es que es la misma unidad, la salteo
 			//excpeto que sea el gusano  que puede emerger del mismo lugar
 			//de donde esta la unidad
-			if ((it->second)->obtener_centro() == centro_unidad && !es_gusano) continue;
+			if ((it->second)->obtener_centro() == centro_unidad && !es_gusano && 
+			!verificar_asentamiento) continue;
 			if (verificar_ataque_a_enemigo) {
 				if (id_duenio != (it->second)->pedir_id_duenio()) {
 					unidades_alrededor.push_back(it->second);
@@ -202,6 +203,7 @@ std::pair<int, int> &centro) {
 	int base_objeto1 = objeto->obtener_base();
 	int altura_objeto1 = objeto->obtener_altura();
 	coordenadas[centro.first][centro.second].poner_objeto(objeto);
+	std::cout << "esta ocupada id "<< id_objeto<< " " << centro.first << " " << centro.second << std::endl;
 	mapa_ids_objetos.emplace(std::pair<int, 
 	ObjetoDune*>(id_objeto, objeto));
 	marcar_estado_coordenadas_alrededor(centro, altura_objeto1, base_objeto1, 

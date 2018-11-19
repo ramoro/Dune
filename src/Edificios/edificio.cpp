@@ -31,6 +31,7 @@ int id_tipo_edificio) {
 	agregar_a_jugador = jugador.agregado_edificio(this);
 	
 	if (agregar_a_mapa && agregar_a_jugador) {
+		std::cout << "entro " << std::endl;
 		mapa.agregar_objeto(this, id_edificio, this->centro);
 		jugador.agregar_edificio(this, id_edificio, this->centro);
 		agregar_posible = true;

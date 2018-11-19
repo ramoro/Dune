@@ -70,7 +70,8 @@ void Partida::iniciar_entrenamiento_unidad_movible(int id_tipo_unidad,
 int id_edificio, int id_jugador, ColaBloqueante *cola_mensajes) {
 	int id_edificio_entrenando = jugadores.at(id_jugador).
 	pedir_id_edificio_entrenando();
-	if (id_edificio_entrenando == JUGADOR_NO_ENTRENANDO) {
+	if (id_edificio_entrenando != JUGADOR_NO_ENTRENANDO) {
+		std::cout << "Partida::iniciar_entrenamiento_unidad_movible " << std::endl;
 		serializar_mensaje_rechazo_creacion(cola_mensajes, id_tipo_unidad);
 	} else {
 		bool se_puede_agregar = ((edificios.at(id_edificio))->

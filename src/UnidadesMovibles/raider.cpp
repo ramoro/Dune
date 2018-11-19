@@ -9,7 +9,7 @@ Raider::Raider(int id, int id_duenio, std::pair<int, int> centro,Root &root) :
 	 root["Raider"].get("velocidad", 0).asInt(),
 	 root["Raider"].get("tiempo_entrenamiento", 0).asFloat(),
 	 root["Raider"].get("costo", 0).asInt(), 
-	 root["Raider"].get("puntos_vida", 0).asInt(), id, id_duenio, 
+	 root["Raider"].get("puntos_vida", 1000).asInt(), id, id_duenio, 
 	 root["Raider"].get("dimension_ancho", 0).asInt(),
 	 root["Raider"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_RAIDER;

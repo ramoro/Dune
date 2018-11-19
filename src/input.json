@@ -138,7 +138,7 @@
 		"velocidad": 84,
 		"tiempo_entrenamiento": 120,
 		"costo": 100,
-		"puntos_vida": 80,
+		"puntos_vida": 800,
 		"dimension_ancho": 1,
 		"dimension_alto": 1,
 		"edificios_necesarios": [4]

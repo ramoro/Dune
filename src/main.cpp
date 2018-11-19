@@ -10,6 +10,7 @@
 //#include "root.h"
 #include "server.h"
 #include "juego.h"
+#include "cola_bloqueante.h"
 
 #define POSICION_INHABILITADA 1
 /*
@@ -191,10 +192,10 @@ int main(int argc, char* argv[]) {
 
 
 
-
+/*
 int main() {
   return 0;
-  /*std::cout << "asd" << std::endl;
+  std::cout << "asd" << std::endl;
   Partida partida;
   partida.agregar_jugador("harkonnen");
   partida.agregar_jugador("ordos");
@@ -224,11 +225,11 @@ int main() {
   partida.actualizar_modelo(90);
   partida.actualizar_modelo(100);
   partida.actualizar_modelo(110);
-  partida.actualizar_modelo(120);*/
+  partida.actualizar_modelo(120);
 
 
 
-  /*bool agregado1 = partida.agregar_edificio(0, std::pair<int, int>(7,3), 6);
+  bool agregado1 = partida.agregar_edificio(0, std::pair<int, int>(7,3), 6);
   //bool agregado2 = partida.agregar_edificio(1, std::pair<int, int>(8,4), 0);
   //bool agregado3 = partida.agregar_edificio(0, std::pair<int, int>(5,5), 0);
   partida.agregar_unidad_movible(19, 0);
@@ -241,11 +242,11 @@ int main() {
   std:: cout << nueva_unidad.first << std::endl;
   if (!unidades_afectadas.empty()) {
     std::cout << "piola " << std::endl;
-  }*/
+  }
   //Mapa mapa;
   //std::pair<int, int> objetivo = mapa.desenterrar_gusano();
   //std::cout << objetivo.first << " " << objetivo.second << std::endl;
-}
+}*/
 /*int main() {
   Mapa mapa;
   BuscadorMejorCamino buscador;
@@ -260,9 +261,11 @@ int main() {
 }*/
 
 //MAIN NACHO
-/*int main() {
+int main() {
   Partida partida;
   partida.agregar_jugador("harkonnen");
+  partida.agregar_jugador("harkonnen");
+  ColaBloqueante cola(100);
   //std::pair<int, int> centro(100, 100);
   //bool agregado = partida.agregar_edificio(0, centro, 0);
   //std::cout << agregado << std::endl;
@@ -270,14 +273,26 @@ int main() {
   //std::cout << "ID nueva unidad " << nueva_unidad.first << std::endl;
 
   //partida.agregar_edificio(0, std::pair<int, int>(400,400), 4);
-  partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
-  partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
-  partida.agregar_edificio(0, std::pair<int, int>(5,5), 4);
+  //partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
+  // partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
+  partida.agregar_edificio(0, std::pair<int, int>(5,5), 4,&cola);
+
+  std::cout << "agregado" << std::endl;
+
+  partida.agregar_edificio(1, std::pair<int, int>(10,5), 4,&cola);
+
   //partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
   //partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
+  std::cout << "agregado" << std::endl;
 
   for (int i = 0; i < 2 ; i++) {
-    partida.iniciar_entrenamiento_unidad_movible(15,364);
-    partida.actualizar_modelo(1000.0) ;
+    partida.iniciar_entrenamiento_unidad_movible(15,364+i,i,&cola);
+    partida.actualizar_modelo(20000.0,&cola) ;
+    std::cout << "agregado" << std::endl;
   }
-}*/
+  partida.atacar_objeto(366,367);
+
+  partida.actualizar_modelo(100.0,&cola) ;
+
+
+}
