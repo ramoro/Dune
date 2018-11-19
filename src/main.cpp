@@ -276,7 +276,7 @@ int main() {
   //partida.agregar_edificio(0, std::pair<int, int>(400,400), 4);
   //partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
   // partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
-  partida.agregar_edificio(0, std::pair<int, int>(5,5), 4,&cola);
+  partida.agregar_edificio(0, std::pair<int, int>(2,2), 4,&cola);
   partida.agregar_edificio(0, std::pair<int, int>(13,13), 4,&cola);
 
 
@@ -285,10 +285,11 @@ int main() {
   //partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
   //partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
 
-  for (int i = 0; i < 2 ; i++) {
-    partida.iniciar_entrenamiento_unidad_movible(15,364+i,i,&cola);
+  for (int i = 0; i < 12 ; i++) {
+    partida.iniciar_entrenamiento_unidad_movible(15,364,0,&cola);
     partida.actualizar_modelo(20000.0,&cola) ;
   }
+  /*
   partida.atacar_objeto(366,367);
 
   partida.actualizar_modelo(50.0,&cola) ;
@@ -296,5 +297,5 @@ int main() {
   partida.actualizar_modelo(50.0,&cola) ;
 
   partida.actualizar_modelo(10.0,&cola) ;
-
+*/
 }

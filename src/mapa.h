@@ -154,6 +154,10 @@ class Mapa {
 		meter una unidad de un tamanio con la base pasada.*/
 		bool recorrer_vertical(std::pair<int, int> &pos_inicial, int rango,
 		int altura);
+
+		/*Devuelve true si esta dentro de los limites del mapa, false en caso
+		 contrario*/
+		bool esta_dentro_limites(std::pair<int, int> &centro);
 };
 
 #endif 

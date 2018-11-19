@@ -60,8 +60,8 @@
 	"FabricaLigera": {
 		"aporte_energetico": -500,
 		"costo": 800,
-		"dimension_ancho": 4,
-		"dimension_alto": 4,
+		"dimension_ancho": 2,
+		"dimension_alto": 2,
 		"puntos_estructura": 500
 	},
 	"FabricaPesada": {
