@@ -319,7 +319,7 @@ bool Mapa::esta_ocupada_coordenada(std::pair<int, int> posicion) {
 
 bool Mapa::esta_dentro_limites(std::pair<int, int> &centro){
 	if (0 <= centro.first && centro.first < (int)pedir_limite_filas() &&
-	 0 <= centro.second && centro.second < (int)pedir_limite_columnas()){
+	 0 <= centro.second && centro.second < (int)pedir_limite_columnas()) {
 		return true;
 	}
 	std::cout << centro.first << " centro fuera " << centro.second << std::endl;

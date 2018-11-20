@@ -24,6 +24,7 @@ private:
 	explicit Socket(int fd);
 
 public:
+	Socket();
 	Socket(char ip[], char port[]);
 	Socket(char port[], int listen_size);
 	void socket_bind_and_listen(int cant_conex_espera);

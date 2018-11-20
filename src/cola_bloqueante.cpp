@@ -2,12 +2,12 @@
 #include <iostream>
 
 ColaBloqueante::ColaBloqueante(const unsigned int max_size) : 
-max_size(max_size) {}
+max_size(max_size) {sigo = true;}
         
 void ColaBloqueante::push(const MensajeProtocolo& mensaje) {
     std::unique_lock<std::mutex> lock(mutex);
 
-    if (q.empty()) {
+    if (q.empty()&& sigo) {
         is_not_empty.notify_all();
     }
 
@@ -21,7 +21,7 @@ void ColaBloqueante::push(const MensajeProtocolo& mensaje) {
 
 MensajeProtocolo ColaBloqueante::pop() {
     std::unique_lock<std::mutex> lock(mutex);
-    while (q.empty()) {
+    while (q.empty() && sigo) {
         std::cout << " cola vacia, el pull se bloquea\n";
         is_not_empty.wait(lock);
     }
@@ -32,4 +32,11 @@ MensajeProtocolo ColaBloqueante::pop() {
     is_not_full.notify_all();
 
     return mensaje;
+}
+
+void ColaBloqueante::cerrar() {
+    is_not_full.notify_all();
+    is_not_empty.notify_all();
+    sigo = false;
+
 }

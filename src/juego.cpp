@@ -9,9 +9,10 @@ using namespace std::chrono;
 #define TAM_COLA 100
 #define SEGUNDOS_POR_FRAME 1/40
 
-Juego::Juego(): cola_envio(TAM_COLA), 
-cola_recepcion(TAM_COLA) {
+Juego::Juego(Partida *partida): cola_envio(TAM_COLA), 
+cola_recepcion(TAM_COLA), partida(partida) {
   std::cout << "constr" << std::endl;
+  this->clientes.push_back(new ProtocoloCliente());
 }
 
 Juego::Juego(Socket skt_cliente, Partida *partida): cola_envio(TAM_COLA), 
@@ -24,7 +25,10 @@ void Juego::hacer_ajustes_iniciales() {
   (this->clientes[0])->agregar_colas(&(this->cola_envio), 
   &(this->cola_recepcion));
   (this->clientes[0])->inicializar();
-
+  this->partida->actualizar_modelo(SEGUNDOS_POR_FRAME, &(this->cola_envio));
+  MensajeProtocolo msj;
+  msj.asignar_accion('x');
+  this->cola_envio.push(msj);
 }
 
 void Juego::run() {
@@ -33,6 +37,7 @@ void Juego::run() {
   while(!this->terminado) {
     MensajeProtocolo mensaje = cola_recepcion.pop();
     char accion = mensaje.pedir_accion();
+    std::cout << "accion en juego: " << accion << std::endl;
     //std::cout << mensaje << std::endl;
     //cola_envio.push(mensaje);
     std::vector<int> v = mensaje.pedir_parametros();
@@ -51,6 +56,14 @@ void Juego::run() {
       std::pair<int, int> (v[1], v[2]));
     } else if (accion == 'a') {
       this->partida->atacar_objeto(v[0], v[1]);
+    } else if (accion == 's') {
+        //this->clientes[0]->finalizar();
+
+      this->cola_recepcion.cerrar();
+      this->cola_envio.cerrar();
+      this->clientes[0]->finalizar();
+
+      break;
     }
   
     //ver si juego termino*/
@@ -58,8 +71,11 @@ void Juego::run() {
     high_resolution_clock::time_point tiempo_inicial = high_resolution_clock::now();
 
     this->partida->actualizar_modelo(SEGUNDOS_POR_FRAME, &(this->cola_envio));
+    /*MensajeProtocolo msaje;
+    msaje.asignar_accion('x');
+    this->cola_envio.push(std::move(msaje));
 
-  	high_resolution_clock::time_point tiempo_final = 
+*/  	high_resolution_clock::time_point tiempo_final = 
   	high_resolution_clock::now();
   	duration<int, std::milli> tiempo_transcurrido = 
   	duration_cast<duration<int>>(tiempo_final - tiempo_inicial);
@@ -69,5 +85,7 @@ void Juego::run() {
 
     //break;
   }
-  this->clientes[0]->finalizar();
+  std::cout << "salio!" << std::endl;
+  //delete this->clientes[0];
+  //this->clientes[0]->finalizar();
 }

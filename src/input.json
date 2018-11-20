@@ -52,8 +52,8 @@
 	"Silo": {
 		"aporte_energetico": -100,
 		"costo": 200,
-		"dimension_ancho": 100,
-		"dimension_alto": 100,
+		"dimension_ancho": 2,
+		"dimension_alto": 2,
 		"puntos_estructura": 200,
 		"capacidad": 1000
 	},

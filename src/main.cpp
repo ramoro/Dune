@@ -184,16 +184,20 @@ int main(int argc, char* argv[]) {
 }*/
 
 
-/*int main(int argc, char* argv[]) {
-  Juego juego;
-  juego.run();
+int main(int argc, char* argv[]) {
+  //Partida partida;
+  //ColaBloqueante cola(10);
+  //partida.agregar_jugador("harkonnen", &cola);
+  //partida.agregar_jugador("ordos", &cola);
+  //Juego juego(&partida);
+  //juego.run();
   Server server(argv[1]);
   server.aceptar_cliente();
-}*/
+}
 
 
 
-
+/*
 int main() {
   //return 0;
   ColaBloqueante cola(100);
@@ -231,11 +235,11 @@ int main() {
   partida.actualizar_modelo(120,&cola);
   partida.actualizar_modelo(120,&cola);
   partida.actualizar_modelo(120,&cola);
+  partida.actualizar_modelo(130,&cola);
   partida.actualizar_modelo(120,&cola);
   partida.actualizar_modelo(120,&cola);
   partida.actualizar_modelo(120,&cola);
-  partida.actualizar_modelo(120,&cola);
-}
+}*/
 
 /*int main() {
   Mapa mapa;

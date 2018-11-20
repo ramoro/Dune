@@ -22,7 +22,7 @@ class Juego {
 
   public:
 
-    Juego();
+    Juego(Partida *partida);
     
     /*Constructor de la clase.*/
     Juego(Socket cliente, Partida *partida);

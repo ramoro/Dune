@@ -15,6 +15,7 @@ class ProtocoloCliente {
     std::thread t_recibos;
 
   public:
+    ProtocoloCliente();
     /*Constructor clase.*/
     ProtocoloCliente(Socket skt_clt);
 

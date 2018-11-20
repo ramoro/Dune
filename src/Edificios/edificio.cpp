@@ -78,10 +78,10 @@ std::shared_ptr<ObjetoDune> objeto) {
 	mensaje.asignar_accion(CODIGO_CREACION);
 	mensaje.agregar_parametro(objeto->pedir_id_tipo());
 	mensaje.agregar_parametro(objeto->pedir_id());
-	mensaje.agregar_parametro(objeto->obtener_base());
-	mensaje.agregar_parametro(objeto->obtener_altura());
-	mensaje.agregar_parametro((objeto->obtener_centro()).first);
-	mensaje.agregar_parametro((objeto->obtener_centro()).second);
+	mensaje.agregar_parametro(objeto->obtener_base()*50);
+	mensaje.agregar_parametro(objeto->obtener_altura()*50);
+	mensaje.agregar_parametro((objeto->obtener_centro()).first*50);
+	mensaje.agregar_parametro((objeto->obtener_centro()).second*50);
 	mensaje.agregar_parametro(objeto->pedir_id_duenio());
 	mensajes.push_back(std::move(mensaje));
 }

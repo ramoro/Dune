@@ -5,7 +5,7 @@
 
 
 //PRIVATE
-
+Socket::Socket() {}
 Socket::Socket(int file_desc){
 	this->fd=file_desc;
 }
