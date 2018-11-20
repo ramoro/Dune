@@ -217,7 +217,7 @@ int main() {
 
   partida.atacar_objeto(368, 369);
   partida.actualizar_modelo(10,&cola);
-  partida.comenzar_movimiento_unidad(369, std::pair<int, int> (4, 10));
+  //partida.comenzar_movimiento_unidad(369, std::pair<int, int> (4, 10));
   partida.actualizar_modelo(20,&cola);
   partida.actualizar_modelo(30,&cola);
   partida.actualizar_modelo(40,&cola);

@@ -5,7 +5,6 @@
 //VER CUANTO MOVER A LA UNIDAD SEGUN EL TIEMPO TRANSCURRIDO Y SU VELOCIDAD
 std::shared_ptr<Estado> Movimiento::actualizar(UnidadMovible *unidad,
 Mapa &mapa, double tiempo_transcurrido) {
-	nombre = "movimiento";
 	std::list<std::pair<int, int>> camino = unidad->pedir_camino();
 	bool posicion_ocupada = mapa.esta_ocupada_coordenada(camino.front());
 	if (posicion_ocupada && camino.size() == 1) {
