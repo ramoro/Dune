@@ -30,7 +30,7 @@ void Partida::agregar_jugador(std::string casa_jugador, ColaBloqueante* cola_men
 	agregar_edificio(contador_ids_jugadores, ubicacion_centro, 0, cola_mensajes);
 
 #ifdef DEBUG 
-	agregar_edificio(contador_ids_jugadores, std::pair<int,int>(7,7), 6, cola_mensajes);
+	//agregar_edificio(contador_ids_jugadores, std::pair<int,int>(7,7), 6, cola_mensajes);
 
 #endif
 	contador_ids_jugadores++;

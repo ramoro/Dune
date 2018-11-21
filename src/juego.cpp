@@ -45,13 +45,9 @@ void Juego::run() {
       std::vector<int> v = mensaje.pedir_parametros();
 
       if (accion == 'e') {
-        //despues se pasaria la cola bloqueante de envio para agregar
-        //el mensaje de si se puso o no y donde en caso de ponerse
         this->partida->agregar_edificio(v[0],std::pair<int, int> (v[2], v[3]),
         v[1], &(this->cola_envio));
       } else if (accion == 'u') {
-        //aca paso la cola bloqueante y mando un si si se envio y cambio estado
-        //o un no si no
          std::cout << "Parametros inicio entrenamiento unidad: " << v[0] << " "<< v[1] << " "<< v[2] << std::endl;
         this->partida->iniciar_entrenamiento_unidad_movible(v[0], v[1], v[2], 
         &(this->cola_envio)); 
