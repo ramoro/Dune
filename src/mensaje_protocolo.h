@@ -18,7 +18,7 @@ class MensajeProtocolo {
 		void agregar_parametro(int parametro);
 
 		/*Devuelve la accion del mensaje.*/
-		char pedir_accion();
+		char pedir_accion() const;
 
 		/*Devueleve el vector de ints con los parametros de la accion*/
 		std::vector<int> pedir_parametros();

@@ -1,6 +1,7 @@
 #include "protocolo_cliente.h"
 #include "socket_error.h"
 #include "mensaje_protocolo.h"
+#include "cola_cerrada_error.h"
 #include <iostream>
 #include <list>
 
@@ -12,7 +13,7 @@ socket_cliente(std::move(skt_clt)) {
 }
 
 void ProtocoloCliente::agregar_colas(ColaBloqueante *cola_env,
-ColaBloqueante *cola_rec) {
+ColaSegura *cola_rec) {
 	this->cola_envio = cola_env;
 	this->cola_recepcion = cola_rec;
 }
@@ -32,7 +33,7 @@ void ProtocoloCliente::enviar_mensajes() {
 			*/
 			/*ver si gano tambien*/
 			unsigned char accion = mensaje.pedir_accion();
-			std::cout << "mensaje en cola: " << accion <<std::endl;
+			std::cout << "Mensaje a enviar en protocolo cliente: " << accion <<std::endl;
 			this->socket_cliente.send_msj(&accion, 1);
 			std::vector<int> parametros = mensaje.pedir_parametros();
 			for (std::vector<int>::iterator it = parametros.begin(); 
@@ -44,6 +45,8 @@ void ProtocoloCliente::enviar_mensajes() {
 		if (this->jugando) {
 			std::cerr << e.what() << " En ProtocoloCliente::enviar_mensajes" << std::endl;	
 		}
+	} catch (ColaCerradaError &e) {
+		std::cerr << e.what() << "ClienteDesconectado" << std::endl;
 	} catch (std::exception &e){
 		std::cerr << e.what() << " En ProtocoloCliente::enviar_mensajes" << std::endl;
 	} catch (...) {

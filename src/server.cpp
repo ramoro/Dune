@@ -33,7 +33,7 @@ void Server::aceptar_cliente() {
 	Partida partida;
 	ColaBloqueante cola(10);
   	partida.agregar_jugador("harkonnen", &cola);
-  	partida.agregar_jugador("ordos", &cola);
+  	//partida.agregar_jugador("ordos", &cola);
 	Socket *otro_socket = socket->accept_connection();
 	otro_socket->send_int(1);
 	Juego juego(std::move(*otro_socket), &partida);

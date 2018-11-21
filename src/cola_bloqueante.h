@@ -20,7 +20,6 @@ class ColaBloqueante {
         std::mutex mutex;
         std::condition_variable is_not_full;
         std::condition_variable is_not_empty;
-        bool sigo;
 
     public:
         /*Constructor de la clase.*/
@@ -35,7 +34,12 @@ class ColaBloqueante {
         esta protegido.*/
         MensajeProtocolo pop();
 
+        /*Pushea un codigo en la cola avisando que no se va a usar mas
+        para asi desbloquear cualquier wait ejecutado.*/
         void cerrar();
+
+        /*Devuelve true si esta vacia la cola, false en caso contrario.*/
+        bool vacia();
 
     private:
         /*El objeto no se puede crear por copia.*/

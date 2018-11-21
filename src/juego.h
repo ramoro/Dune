@@ -7,6 +7,7 @@
 #include "Socket.h"
 #include "cola_bloqueante.h"
 #include "protocolo_cliente.h"
+#include "cola_segura.h"
 #include "partida.h"
 #include "thread.h"
 
@@ -14,7 +15,7 @@ class Juego {
   /*public Thread*/
   private:
     ColaBloqueante cola_envio;
-    ColaBloqueante cola_recepcion;
+    ColaSegura cola_recepcion;
     Partida* partida;
     bool stopped = false;
     bool terminado = false;

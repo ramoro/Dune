@@ -12,7 +12,7 @@ class Conversor {
 		
 	public:
 		/*Constructor de la clase*/
-		Conversor(Config &config);
+		Conversor();
 
 		/*Ubica para cada pixel pasado por parametro a que baldosa 
 		hace referencia*/

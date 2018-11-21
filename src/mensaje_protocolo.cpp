@@ -8,7 +8,7 @@ void MensajeProtocolo::agregar_parametro(int parametro) {
 	parametros.push_back(parametro);
 }
 
-char MensajeProtocolo::pedir_accion() {
+char MensajeProtocolo::pedir_accion() const {
 	return accion;
 }
 

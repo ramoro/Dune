@@ -277,6 +277,7 @@ bool Mapa::agregado_edificio(ObjetoDune* objeto) {
 	std::vector<ObjetoDune*> unidades_alrededor; 
 	terreno_valido = verificar_terreno_alrededor(posicion_central, 
 	objeto->obtener_altura(), objeto->obtener_base(), "roca");
+	std::cout << "Terreno valido:" << terreno_valido << " para edificio de tipo " << objeto->pedir_id_tipo() << std::endl;
 	//verifico que no haya ninguna unidad o edificio dentro del espacio
 	//donde se quiere poner el objeto
 	if (terreno_valido) {
@@ -288,6 +289,7 @@ bool Mapa::agregado_edificio(ObjetoDune* objeto) {
 	}
 
 	if(unidades_alrededor.empty()) {
+		std::cout << "Terreno vacio para edificio de tipo " << objeto->pedir_id_tipo() << std::endl;
 		return true;
 	}
 	return false;

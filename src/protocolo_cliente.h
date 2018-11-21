@@ -4,13 +4,14 @@
 #include <thread>
 #include "Socket.h"
 #include "cola_bloqueante.h"
+#include "cola_segura.h"
 
 class ProtocoloCliente {
   private:
     Socket socket_cliente;
     bool jugando;
     ColaBloqueante *cola_envio;
-    ColaBloqueante *cola_recepcion;
+    ColaSegura *cola_recepcion;
     std::thread t_envios;
     std::thread t_recibos;
 
@@ -22,7 +23,7 @@ class ProtocoloCliente {
     /*Recibe dos puntero a dos colas bloqueantes. Una
     para envio de mensajes y la otra para el recibo de 
     estos.*/
-    void agregar_colas(ColaBloqueante *cola_env, ColaBloqueante *cola_rec);
+    void agregar_colas(ColaBloqueante *cola_env, ColaSegura *cola_rec);
 
     /*Lanza el hilo para empezar a recibir mensajes y el hilo
     para mandar mensajes.*/

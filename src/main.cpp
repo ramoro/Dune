@@ -8,12 +8,11 @@
 #include <cmath>
 #include <iostream>
 #include "cola_bloqueante.h"
-//#include "root.h"
 #include "server.h"
 #include "juego.h"
 #include "cola_bloqueante.h"
 
-#define POSICION_INHABILITADA 1
+//#define POSICION_INHABILITADA 1
 /*
 int main(int argc, char* argv[]) {
   Server server(argv[1]);
@@ -185,6 +184,7 @@ int main(int argc, char* argv[]) {
 
 
 int main(int argc, char* argv[]) {
+  //std::cout << "hola " << std::endl;
   //Partida partida;
   //ColaBloqueante cola(10);
   //partida.agregar_jugador("harkonnen", &cola);
@@ -194,7 +194,6 @@ int main(int argc, char* argv[]) {
   Server server(argv[1]);
   server.aceptar_cliente();
 }
-
 
 
 /*
@@ -255,7 +254,7 @@ int main() {
 }*/
 
 //MAIN NACHO
-/*int main() {
+/*nt main() {
   Partida partida;
 
   ColaBloqueante cola(100);
@@ -275,7 +274,7 @@ int main() {
   //partida.agregar_edificio(0, std::pair<int, int>(13,13), 4,&cola);
 
 
-  //partida.agregar_edificio(1, std::pair<int, int>(10,5), 4,&cola);
+  partida.agregar_edificio(1, std::pair<int, int>(10,5), 4,&cola);
 
   //partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
   //partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
@@ -287,7 +286,7 @@ int main() {
 
   //partida.comenzar_movimiento_unidad(365,std::pair<int, int>(3,3));
   
-  partida.atacar_objeto(366,367);
+  partida.atacar_objeto(367,366);
 
   partida.actualizar_modelo(50.0,&cola) ;
   partida.actualizar_modelo(50.0,&cola) ;

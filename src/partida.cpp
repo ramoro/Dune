@@ -28,6 +28,11 @@ void Partida::agregar_jugador(std::string casa_jugador, ColaBloqueante* cola_men
 	std::pair<int,int> ubicacion_centro = ubicar_centro_construccion();
 	std::cout << "centro constuccion en " << ubicacion_centro.first << " " << ubicacion_centro.second << std::endl;
 	agregar_edificio(contador_ids_jugadores, ubicacion_centro, 0, cola_mensajes);
+
+#ifdef DEBUG 
+	agregar_edificio(contador_ids_jugadores, std::pair<int,int>(7,7), 6, cola_mensajes);
+
+#endif
 	contador_ids_jugadores++;
 }
 
@@ -135,12 +140,14 @@ int id_edificio, int id_jugador, ColaBloqueante* cola_mensajes) {
 	int id_edificio_entrenando = jugadores.at(id_jugador).
 	pedir_id_edificio_entrenando();
 	if (id_edificio_entrenando != JUGADOR_NO_ENTRENANDO) {
+		std::cout << "ERROR JUGADRO YA ENTRENANDO" << std::endl;
 		serializar_mensaje_rechazo_creacion(cola_mensajes, id_tipo_unidad);
 	} else {
 		bool se_puede_agregar = ((edificios.at(id_edificio))->
 		se_puede_agregar_unidad(jugadores.at(id_jugador), 
 		id_tipo_unidad, contador_ids_objetos,config));
 		if (!se_puede_agregar) {
+			std::cout << "ERRO no se puede agregar porque no etnre en mapa" << std::endl;
 			serializar_mensaje_rechazo_creacion(cola_mensajes, id_tipo_unidad);
 		} else {
 			contador_ids_objetos++;
@@ -164,6 +171,7 @@ edificio, double tiempo_transcurrido) {
 	bool entrenamiento_terminado = edificio->
 	avanzar_tiempo_creacion(tiempo_transcurrido);
 	if (entrenamiento_terminado) {
+		std::cout << "se creo unidad" << std::endl;
 		std::shared_ptr<UnidadMovible> unidad_nueva = edificio->
 		agregar_unidad(mapa); //VERIFICAR ESTE AGREGADO CON GDB LUEGO
 		unidades_movibles.emplace(std::pair<int, 
@@ -199,6 +207,7 @@ void Partida::serializar_mensaje_rechazo_creacion(ColaBloqueante
 //mandar el mensaje sobre la unidad agregada
 void Partida::actualizar_modelo(double tiempo_transcurrido, 
 ColaBloqueante *cola_mensajes) {
+	std::cout << "ACTUALIZA MODELO con tiempo " << tiempo_transcurrido << std::endl; 
 	//mapa.actualizar_salida_gusano(tiempo_transcurrido);
 	for (std::map<int, Jugador>::iterator it_jugadores = 
 	jugadores.begin(); it_jugadores != jugadores.end(); ++it_jugadores) {
@@ -289,7 +298,7 @@ ColaBloqueante *cola_mensajes) {
 	for (std::set<std::shared_ptr<UnidadMovible>>::iterator it_unidades = 
 	unidades_a_eliminar.begin(); it_unidades != unidades_a_eliminar.end();
 	++it_unidades) {
-		std::cout << "unidad murio de tipo" << (*it_unidades)->pedir_id_tipo() <<std::endl;
+		std::cout << "Unidad de tipo " << (*it_unidades)->pedir_id_tipo()<< " e id " << (*it_unidades)->pedir_id() << " murio." <<std::endl;
 		eliminar_unidad_del_juego(*it_unidades);
 	}
 }
