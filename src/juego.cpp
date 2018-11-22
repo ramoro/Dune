@@ -25,10 +25,10 @@ cola_recepcion(TAM_COLA), partida(partida) {
 }
 
 void Juego::agregar_jugador(Socket skt_cliente, std::string casa) {
+  partida->agregar_jugador(casa, this->colas_envio_clientes);
   std::shared_ptr<ProtocoloCliente> cliente(new 
   ProtocoloCliente(std::move(skt_cliente)));
   this->clientes.push_back(cliente);
-  partida->agregar_jugador(casa, this->colas_envio_clientes);
   std::shared_ptr<ColaBloqueante> cola_bloq(new ColaBloqueante(TAM_COLA));
   this->colas_envio_clientes.push_back(cola_bloq);
 }
