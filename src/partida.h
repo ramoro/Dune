@@ -30,7 +30,8 @@ class Partida {
 
 		/*Recibe un string con un nombre y agregar a la partida un Jugador
 		con ese nombre, ademas crea su edificio Centro de Construccion*/
-		void agregar_jugador(std::string nombre_jugador, ColaBloqueante* cola_mensajes);
+		void agregar_jugador(std::string nombre_jugador,
+		std::vector<std::shared_ptr<ColaBloqueante>> cola_mensajes);
 
 		/*Agrega un edificio segun el id de tipo pasado, asociado al id pasado
 		por parametro, asignado al jugador con el id pasado por parametro 
@@ -38,8 +39,8 @@ class Partida {
 		agregarse se encola un mensaje respetando el protocolo dentro de
 		la cola recibida.*/
 		void agregar_edificio(int id_jugador, std::pair<int, int>
-		posicion_central, int id_tipo_edificio, ColaBloqueante 
-		*cola_mensajes);
+		posicion_central, int id_tipo_edificio, 
+		std::vector<std::shared_ptr<ColaBloqueante>> cola_mensajes);
 
 		/*Recibe el id del tipo de unidad movible que ataca
 		y el id del objeto atacado. Setea la unidad atacante en modo
@@ -58,7 +59,8 @@ class Partida {
 		crearla y si no se puede arma el mensaje correspondiente encolandolo
 		a la cola recibida.*/
 		void iniciar_entrenamiento_unidad_movible(int id_tipo_unidad,
-		int id_edificio, int id_jugador, ColaBloqueante *cola_mensajes);
+		int id_edificio, int id_jugador, 
+		std::vector<std::shared_ptr<ColaBloqueante>> cola_mensajes);
 
 		/*Recibe el id de una unidad y la posicion a donde moverla y setea
 		a la unidad con el mejor camino para empezar a moverse hacia la
@@ -69,14 +71,15 @@ class Partida {
 		/*Recibe el id del tipo del objeto rechazado y crea un mensaje
 		asginandole la accion de rechazo junto con sus parametros segun
 		indica le protocolo y lo encola a la cola recibida.*/
-		void serializar_mensaje_rechazo_creacion(ColaBloqueante 
-		*cola_mensajes,int id_tipo_objeto_rechazado);
+		void serializar_mensaje_rechazo_creacion(
+		std::vector<std::shared_ptr<ColaBloqueante>> cola_mensajes,
+		int id_tipo_objeto_rechazado);
 
 		/*Recibe una determinada cantidad de tiempo que pasa en el juego
 		y lo actualiza segun cuanto transcurrio, agregando los mensajes
 		correspondientes a la cola bloqueante recibida por parametro.*/
 		void actualizar_modelo(double tiempo_transcurrido, 
-		ColaBloqueante *cola_mensajes);
+		std::vector<std::shared_ptr<ColaBloqueante>> cola_mensajes);
 		
 	private:
 		/*Recibe el puntero al edificio a actualizar el tiempo de entenamiento
@@ -105,6 +108,11 @@ class Partida {
 		dentro del rango definido, false en caso contrario. En caso de que no
 		existan edificios aliados devuelve true */
 		bool esta_dentro(int id_jugador, std::pair<int,int> &posicion_central);
+
+		/*Recibe un vector de colas y un mensaje y lo encola en cada cola.*/
+		void guardar_mensaje_en_colas(
+		std::vector<std::shared_ptr<ColaBloqueante>> colas, 
+		MensajeProtocolo mensaje);
 
 
 };

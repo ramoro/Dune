@@ -21,16 +21,17 @@ Partida::Partida() {
 	std::cout << "contador_ids_objetos " << contador_ids_objetos << std::endl;
 }
 
-void Partida::agregar_jugador(std::string casa_jugador, ColaBloqueante* cola_mensajes) {
+void Partida::agregar_jugador(std::string casa_jugador, 
+std::vector<std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	Jugador jugador(casa_jugador,config);
 	jugadores.emplace(std::pair<int, Jugador>(contador_ids_jugadores, 
 	jugador));
 	std::pair<int,int> ubicacion_centro = ubicar_centro_construccion();
 	std::cout << "centro constuccion en " << ubicacion_centro.first << " " << ubicacion_centro.second << std::endl;
-	agregar_edificio(contador_ids_jugadores, ubicacion_centro, 0, cola_mensajes);
+	agregar_edificio(contador_ids_jugadores, ubicacion_centro, 0, colas_mensajes);
 
 #ifdef DEBUG 
-	agregar_edificio(contador_ids_jugadores, std::pair<int,int>(7,7), 6, cola_mensajes);
+	//agregar_edificio(contador_ids_jugadores, std::pair<int,int>(7,7), 6, cola_mensajes);
 
 #endif
 	contador_ids_jugadores++;
@@ -95,7 +96,8 @@ bool Partida::esta_dentro(int id_jugador,std::pair<int,int> &posicion_central){
 
 //DEBERIA PASAR COLA BLOQUEANTE
 void Partida::agregar_edificio(int id_jugador, std::pair<int, int>
-posicion_central, int id_tipo_edificio, ColaBloqueante* cola_mensajes) {
+posicion_central, int id_tipo_edificio, 
+std::vector<std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	std::shared_ptr<Edificio> ptr_edificio = fabrica_edificios.crear_edificio(id_tipo_edificio,
 	contador_ids_objetos, id_jugador, posicion_central,config);
 
@@ -113,7 +115,7 @@ posicion_central, int id_tipo_edificio, ColaBloqueante* cola_mensajes) {
 	
 	} else {
 		std::cout << "No se pudo construir edificio de tipo " << id_tipo_edificio << std::endl;
-		serializar_mensaje_rechazo_creacion(cola_mensajes, id_tipo_edificio);
+		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_edificio);
 	}
 }
 
@@ -136,19 +138,20 @@ void Partida::autodemoler_edificio(int id_edificio) {
 }
 
 void Partida::iniciar_entrenamiento_unidad_movible(int id_tipo_unidad, 
-int id_edificio, int id_jugador, ColaBloqueante* cola_mensajes) {
+int id_edificio, int id_jugador, 
+std::vector<std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	int id_edificio_entrenando = jugadores.at(id_jugador).
 	pedir_id_edificio_entrenando();
 	if (id_edificio_entrenando != JUGADOR_NO_ENTRENANDO) {
 		std::cout << "ERROR JUGADRO YA ENTRENANDO" << std::endl;
-		serializar_mensaje_rechazo_creacion(cola_mensajes, id_tipo_unidad);
+		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad);
 	} else {
 		bool se_puede_agregar = ((edificios.at(id_edificio))->
 		se_puede_agregar_unidad(jugadores.at(id_jugador), 
 		id_tipo_unidad, contador_ids_objetos,config));
 		if (!se_puede_agregar) {
 			std::cout << "ERRO no se puede agregar porque no etnre en mapa" << std::endl;
-			serializar_mensaje_rechazo_creacion(cola_mensajes, id_tipo_unidad);
+			serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad);
 		} else {
 			contador_ids_objetos++;
 		}
@@ -195,18 +198,27 @@ unidad_a_remover) {
 	mapa.eliminar_objeto(unidad_a_remover->pedir_id());
 }
 
-void Partida::serializar_mensaje_rechazo_creacion(ColaBloqueante 
-*cola_mensajes,int id_tipo_objeto_rechazado) {
+void Partida::serializar_mensaje_rechazo_creacion(
+std::vector<std::shared_ptr<ColaBloqueante>> colas_mensajes,
+int id_tipo_objeto_rechazado) {
 	MensajeProtocolo mensaje;
 	mensaje.asignar_accion(CODIGO_CREACION_OBJETO_RECHAZADA);
 	mensaje.agregar_parametro(id_tipo_objeto_rechazado);
-	cola_mensajes->push(mensaje);
+  	guardar_mensaje_en_colas(colas_mensajes, mensaje);
+}
+
+void Partida::guardar_mensaje_en_colas(
+std::vector<std::shared_ptr<ColaBloqueante>> colas, MensajeProtocolo mensaje) {
+	for (std::vector<std::shared_ptr<ColaBloqueante>>::iterator it = 
+	colas.begin(); it != colas.end(); ++it) {
+		(*it)->push(mensaje);
+	} 
 }
 
 //deberia pasarle COLA BLOQUEANTE para desde aca dentro
 //mandar el mensaje sobre la unidad agregada
 void Partida::actualizar_modelo(double tiempo_transcurrido, 
-ColaBloqueante *cola_mensajes) {
+std::vector<std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	std::cout << "ACTUALIZA MODELO con tiempo " << tiempo_transcurrido << std::endl; 
 	//mapa.actualizar_salida_gusano(tiempo_transcurrido);
 	for (std::map<int, Jugador>::iterator it_jugadores = 
@@ -267,7 +279,7 @@ ColaBloqueante *cola_mensajes) {
 					}
 				}
 			}
-			cola_mensajes->push(*it_mensajes);
+			guardar_mensaje_en_colas(colas_mensajes, *it_mensajes);
 		}
 		(it_edifs->second)->limpiar_lista_mensajes();
 	}
@@ -284,7 +296,7 @@ ColaBloqueante *cola_mensajes) {
 			if ((*it_mensajes).pedir_accion() == CODIGO_MUERTE_OBJETO) {
 				unidades_a_eliminar.insert(it_unidades->second);
 			}
-			cola_mensajes->push(*it_mensajes);
+			guardar_mensaje_en_colas(colas_mensajes, *it_mensajes);
 		}
 		(it_unidades->second)->limpiar_lista_mensajes();
 	}

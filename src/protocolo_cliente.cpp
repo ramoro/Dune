@@ -12,7 +12,7 @@ socket_cliente(std::move(skt_clt)) {
   this->jugando = false;
 }
 
-void ProtocoloCliente::agregar_colas(ColaBloqueante *cola_env,
+void ProtocoloCliente::agregar_colas(std::shared_ptr<ColaBloqueante> cola_env,
 ColaSegura *cola_rec) {
 	this->cola_envio = cola_env;
 	this->cola_recepcion = cola_rec;

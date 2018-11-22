@@ -31,13 +31,28 @@ char *codigo) {
 
 void Server::aceptar_cliente() {
 	Partida partida;
-	ColaBloqueante cola(10);
-  	partida.agregar_jugador("harkonnen", &cola);
+	std::vector<std::shared_ptr<ColaBloqueante>> colas;
+  	//partida.agregar_jugador("harkonnen", colas);
   	//partida.agregar_jugador("ordos", &cola);
-	Socket *otro_socket = socket->accept_connection();
-	otro_socket->send_int(1);
-	Juego juego(std::move(*otro_socket), &partida);
-	juego.run();
+  	int i = 0;
+  	while (i < 3) {
+  		Socket *otro_socket = socket->accept_connection();
+  		otro_socket->send_int(1);
+  		if ( i == 0) {
+  			std::shared_ptr<Juego> juego(new Juego(&partida));
+  			juegos.push_back(juego);
+  			juegos[0]->agregar_jugador(std::move(*otro_socket), "harkonnen");
+  		} else {
+			juegos[0]->agregar_jugador(std::move(*otro_socket), "ordos");  			
+  		}		
+  		delete otro_socket;
+  		i++;
+  	}
+	juegos[0]->run();
+	
+	
+
+	
 
 
 	//enviar_mapa(otro_socket);
@@ -57,7 +72,7 @@ void Server::aceptar_cliente() {
 	otro_socket->send_int((nueva_unidad.second).first);//mando su coordx
 	otro_socket->send_int((nueva_unidad.second).second);//mando coordy*/
 
-	delete otro_socket;
+	
 
 
 }

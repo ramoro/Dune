@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <mutex>
 #include "Socket.h"
 #include "cola_bloqueante.h"
 #include "protocolo_cliente.h"
@@ -14,19 +15,22 @@
 class Juego {
   /*public Thread*/
   private:
-    ColaBloqueante cola_envio;
+    std::vector<std::shared_ptr<ColaBloqueante>> colas_envio_clientes;
     ColaSegura cola_recepcion;
     Partida* partida;
     bool stopped = false;
     bool terminado = false;
-    std::vector<ProtocoloCliente*> clientes;
+    std::vector<std::shared_ptr<ProtocoloCliente>> clientes;
+    std::mutex mutex;
 
   public:
 
-    Juego(Partida *partida);
+   // Juego(Partida *partida);
     
     /*Constructor de la clase.*/
-    Juego(Socket cliente, Partida *partida);
+    Juego(Partida *partida);
+
+    void agregar_jugador(Socket skt_cliente, std::string casa);
 
     //virtual 
     void run();

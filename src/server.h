@@ -4,15 +4,15 @@
 #include <vector>
 #include <mutex>
 #include <thread>
-//#include "partida.h"
+#include "juego.h"
 #include "Socket.h"
 
-/*Clase que representa a un server el juego Dune.*/
+/*Clase que representa a un server del juego Dune.*/
 class Server {
 	private:
-		//std::vector<Partida> partidas;
 		Socket *socket;
 		std::vector<std::thread*> threads;
+		std::vector<std::shared_ptr<Juego>> juegos;
 		bool server_finalizado;
 		std::mutex mutex;
 
