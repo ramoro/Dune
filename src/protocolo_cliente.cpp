@@ -96,7 +96,7 @@ void ProtocoloCliente::recibir_mensajes() {
 			this->socket_cliente.recv_msj(&accion, 1);
 			std::cout << accion << std::endl;
 			mensaje.asignar_accion(accion);
-			int cantidad_ints_a_recibir;
+			int cantidad_ints_a_recibir = 0;
 			if (accion == 'm' || accion == 'u') {
 				cantidad_ints_a_recibir = 3;
 			} else if (accion == 'a') {

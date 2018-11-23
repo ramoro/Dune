@@ -35,12 +35,14 @@ void Juego::agregar_jugador(Socket skt_cliente, std::string casa) {
 
 
 void Juego::hacer_ajustes_iniciales() {
+  int i = 0;
   for (std::vector<std::shared_ptr<ProtocoloCliente>>::iterator it = 
   this->clientes.begin(); it != this->clientes.end(); ++it) {
-    std::shared_ptr<ColaBloqueante> cola_bloq(new ColaBloqueante(TAM_COLA));
-    this->colas_envio_clientes.push_back(cola_bloq);
-    (*it)->agregar_colas(cola_bloq, &(this->cola_recepcion));
+    //std::shared_ptr<ColaBloqueante> cola_bloq(new ColaBloqueante(TAM_COLA));
+   // this->colas_envio_clientes.push_back(cola_bloq);
+    (*it)->agregar_colas(this->colas_envio_clientes[i], &(this->cola_recepcion));
     (*it)->inicializar();
+    i++;
   }
   //(this->clientes[0])->agregar_colas(&(this->cola_envio), 
   //&(this->cola_recepcion));

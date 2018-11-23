@@ -5,6 +5,7 @@
 #include <vector>
 #include <memory>
 #include <mutex>
+#include <map>
 #include "Socket.h"
 #include "cola_bloqueante.h"
 #include "protocolo_cliente.h"

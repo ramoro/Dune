@@ -21,20 +21,21 @@ Partida::Partida() {
 	std::cout << "contador_ids_objetos " << contador_ids_objetos << std::endl;
 }
 
-void Partida::agregar_jugador(std::string casa_jugador, 
+int Partida::agregar_jugador(std::string casa_jugador, 
 std::vector<std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	Jugador jugador(casa_jugador,config);
 	jugadores.emplace(std::pair<int, Jugador>(contador_ids_jugadores, 
 	jugador));
 	std::pair<int,int> ubicacion_centro = ubicar_centro_construccion();
+	int id_nuevo_jugador = contador_ids_jugadores;
 	std::cout << "centro constuccion en " << ubicacion_centro.first << " " << ubicacion_centro.second << std::endl;
 	agregar_edificio(contador_ids_jugadores, ubicacion_centro, 0, colas_mensajes);
-
 #ifdef DEBUG 
 	//agregar_edificio(contador_ids_jugadores, std::pair<int,int>(7,7), 6, cola_mensajes);
 
 #endif
 	contador_ids_jugadores++;
+	return id_nuevo_jugador;
 }
 
 std::pair<int,int> Partida::buscar_ubicacion(std::pair<int,int> esquina){
