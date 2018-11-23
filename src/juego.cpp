@@ -40,14 +40,10 @@ void Juego::agregar_jugador(Socket skt_cliente, std::string casa) {
 void Juego::hacer_ajustes_iniciales() {
   for (std::map<int, std::shared_ptr<ProtocoloCliente>>::iterator 
   it = this->clientes.begin(); it != this->clientes.end(); ++it) {
-    //std::shared_ptr<ColaBloqueante> cola_bloq(new ColaBloqueante(TAM_COLA));
-   // this->colas_envio_clientes.push_back(cola_bloq);
     (it->second)->agregar_colas(this->colas_envio_clientes.at(it->first), &(this->cola_recepcion));
     (it->second)->inicializar();
   }
-  //(this->clientes[0])->agregar_colas(&(this->cola_envio), 
-  //&(this->cola_recepcion));
-  //(this->clientes[0])->inicializar();
+
   mutex.lock();
   this->partida->actualizar_modelo(SEGUNDOS_POR_FRAME, this->colas_envio_clientes);
   mutex.unlock();
@@ -79,26 +75,23 @@ void Juego::run() {
         v[1], this->colas_envio_clientes);
         mutex.unlock();
       } else if (accion == 'u') {
-         std::cout << "Parametros inicio entrenamiento unidad: " << v[0] << " "<< v[1] << " "<< v[2] << std::endl;
+        std::cout << "Parametros inicio entrenamiento unidad: " << v[0] << " "<< v[1] << " "<< v[2] << std::endl;
+        mutex.lock();
         this->partida->iniciar_entrenamiento_unidad_movible(v[0], v[1], v[2], 
-        this->colas_envio_clientes); 
+        this->colas_envio_clientes);
+        mutex.unlock(); 
       } else if (accion == 'm') {
+        mutex.lock();
         this->partida->comenzar_movimiento_unidad(v[0],
         std::pair<int, int> (v[1], v[2]));
+        mutex.unlock();
       } else if (accion == 'a') {
+        mutex.lock();
         this->partida->atacar_objeto(v[0], v[1]);
+        mutex.unlock();      
       } else if (accion == 's') {
         std::cout << "entro a accion salida de cliente "<< v[0] << std::endl;
-        /*for (std::map<int, std::shared_ptr<ColaBloqueante>>::iterator it = 
-        this->colas_envio_clientes.begin(); it != 
-        this->colas_envio_clientes.end(); ++it) {
-          (it->second)->cerrar();
-        }
-        for (std::map<int, std::shared_ptr<ProtocoloCliente>>::iterator it = 
-        this->clientes.begin(); it != this->clientes.end(); 
-        ++it) {
-          (it->second)->finalizar();
-        } */
+
         this->colas_envio_clientes.at(v[0])->cerrar();
         this->clientes.at(v[0])->finalizar();
         this->colas_envio_clientes.erase(v[0]);
