@@ -103,8 +103,8 @@ void ProtocoloCliente::recibir_mensajes() {
 				cantidad_ints_a_recibir = 2;
 			} else if (accion == 'e') {
 				cantidad_ints_a_recibir = 4;
-			} else if (accion == 's' || accion == 'x') {
-				cantidad_ints_a_recibir = 0;
+			} else if (accion == 's') {
+				cantidad_ints_a_recibir = 1;
 			}
 
 			for (int i = 0; i < cantidad_ints_a_recibir; ++i) {

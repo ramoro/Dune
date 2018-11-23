@@ -32,7 +32,7 @@ class Partida {
 		con ese nombre, ademas crea su edificio Centro de Construccion. 
 		Devuelve el id del nuevo jugador agregado.*/
 		int agregar_jugador(std::string nombre_jugador,
-		std::vector<std::shared_ptr<ColaBloqueante>> cola_mensajes);
+		std::map<int, std::shared_ptr<ColaBloqueante>> cola_mensajes);
 
 		/*Agrega un edificio segun el id de tipo pasado, asociado al id pasado
 		por parametro, asignado al jugador con el id pasado por parametro 
@@ -41,7 +41,7 @@ class Partida {
 		la cola recibida.*/
 		void agregar_edificio(int id_jugador, std::pair<int, int>
 		posicion_central, int id_tipo_edificio, 
-		std::vector<std::shared_ptr<ColaBloqueante>> cola_mensajes);
+		std::map<int, std::shared_ptr<ColaBloqueante>> cola_mensajes);
 
 		/*Recibe el id del tipo de unidad movible que ataca
 		y el id del objeto atacado. Setea la unidad atacante en modo
@@ -61,7 +61,7 @@ class Partida {
 		a la cola recibida.*/
 		void iniciar_entrenamiento_unidad_movible(int id_tipo_unidad,
 		int id_edificio, int id_jugador, 
-		std::vector<std::shared_ptr<ColaBloqueante>> cola_mensajes);
+		std::map<int, std::shared_ptr<ColaBloqueante>> cola_mensajes);
 
 		/*Recibe el id de una unidad y la posicion a donde moverla y setea
 		a la unidad con el mejor camino para empezar a moverse hacia la
@@ -73,14 +73,14 @@ class Partida {
 		asginandole la accion de rechazo junto con sus parametros segun
 		indica le protocolo y lo encola a la cola recibida.*/
 		void serializar_mensaje_rechazo_creacion(
-		std::vector<std::shared_ptr<ColaBloqueante>> cola_mensajes,
+		std::map<int, std::shared_ptr<ColaBloqueante>> cola_mensajes,
 		int id_tipo_objeto_rechazado);
 
 		/*Recibe una determinada cantidad de tiempo que pasa en el juego
 		y lo actualiza segun cuanto transcurrio, agregando los mensajes
 		correspondientes a la cola bloqueante recibida por parametro.*/
 		void actualizar_modelo(double tiempo_transcurrido, 
-		std::vector<std::shared_ptr<ColaBloqueante>> cola_mensajes);
+		std::map<int, std::shared_ptr<ColaBloqueante>> cola_mensajes);
 		
 	private:
 		/*Recibe el puntero al edificio a actualizar el tiempo de entenamiento
@@ -112,7 +112,7 @@ class Partida {
 
 		/*Recibe un vector de colas y un mensaje y lo encola en cada cola.*/
 		void guardar_mensaje_en_colas(
-		std::vector<std::shared_ptr<ColaBloqueante>> colas, 
+		std::map<int, std::shared_ptr<ColaBloqueante>> colas, 
 		MensajeProtocolo mensaje);
 
 

@@ -25,24 +25,25 @@ cola_recepcion(TAM_COLA), partida(partida) {
 }
 
 void Juego::agregar_jugador(Socket skt_cliente, std::string casa) {
-  partida->agregar_jugador(casa, this->colas_envio_clientes);
+  int id_cliente = partida->agregar_jugador(casa, this->colas_envio_clientes);
+  std::cout << "id_cliente " << id_cliente << std::endl;
   std::shared_ptr<ProtocoloCliente> cliente(new 
   ProtocoloCliente(std::move(skt_cliente)));
-  this->clientes.push_back(cliente);
+  this->clientes.emplace(
+  std::pair<int, std::shared_ptr<ProtocoloCliente>>(id_cliente, cliente));
   std::shared_ptr<ColaBloqueante> cola_bloq(new ColaBloqueante(TAM_COLA));
-  this->colas_envio_clientes.push_back(cola_bloq);
+  this->colas_envio_clientes.emplace(
+  std::pair<int, std::shared_ptr<ColaBloqueante>>(id_cliente, cola_bloq));
 }
 
 
 void Juego::hacer_ajustes_iniciales() {
-  int i = 0;
-  for (std::vector<std::shared_ptr<ProtocoloCliente>>::iterator it = 
-  this->clientes.begin(); it != this->clientes.end(); ++it) {
+  for (std::map<int, std::shared_ptr<ProtocoloCliente>>::iterator 
+  it = this->clientes.begin(); it != this->clientes.end(); ++it) {
     //std::shared_ptr<ColaBloqueante> cola_bloq(new ColaBloqueante(TAM_COLA));
    // this->colas_envio_clientes.push_back(cola_bloq);
-    (*it)->agregar_colas(this->colas_envio_clientes[i], &(this->cola_recepcion));
-    (*it)->inicializar();
-    i++;
+    (it->second)->agregar_colas(this->colas_envio_clientes.at(it->first), &(this->cola_recepcion));
+    (it->second)->inicializar();
   }
   //(this->clientes[0])->agregar_colas(&(this->cola_envio), 
   //&(this->cola_recepcion));
@@ -52,11 +53,11 @@ void Juego::hacer_ajustes_iniciales() {
   mutex.unlock();
   MensajeProtocolo msj;
   msj.asignar_accion('x');
-  for (std::vector<std::shared_ptr<ColaBloqueante>>::iterator it = 
+  for (std::map<int, std::shared_ptr<ColaBloqueante>>::iterator it =
   this->colas_envio_clientes.begin(); it != 
   this->colas_envio_clientes.end(); ++it) {
     std::cout << "Se encolo la x de inicio de juego" << std::endl;
-    (*it)->push(msj);
+    (it->second)->push(msj);
   }
 }
 
@@ -87,22 +88,27 @@ void Juego::run() {
       } else if (accion == 'a') {
         this->partida->atacar_objeto(v[0], v[1]);
       } else if (accion == 's') {
-        std::cout << "entro a accion salida" << std::endl;
-        //this->cola_recepcion.cerrar();
-        for (std::vector<std::shared_ptr<ColaBloqueante>>::iterator it = 
+        std::cout << "entro a accion salida de cliente "<< v[0] << std::endl;
+        /*for (std::map<int, std::shared_ptr<ColaBloqueante>>::iterator it = 
         this->colas_envio_clientes.begin(); it != 
         this->colas_envio_clientes.end(); ++it) {
-          (*it)->cerrar();
+          (it->second)->cerrar();
         }
-        for (std::vector<std::shared_ptr<ProtocoloCliente>>::iterator it = 
+        for (std::map<int, std::shared_ptr<ProtocoloCliente>>::iterator it = 
         this->clientes.begin(); it != this->clientes.end(); 
         ++it) {
-          (*it)->finalizar();
-        } 
-
-        break;
+          (it->second)->finalizar();
+        } */
+        this->colas_envio_clientes.at(v[0])->cerrar();
+        this->clientes.at(v[0])->finalizar();
+        this->colas_envio_clientes.erase(v[0]);
+        this->clientes.erase(v[0]);
       }
     }
+    if (this->clientes.empty()) {
+      break;
+    }
+
     //ver si juego termino*/
     mutex.lock();
     this->partida->actualizar_modelo(SEGUNDOS_POR_FRAME, this->colas_envio_clientes);
