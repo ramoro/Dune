@@ -96,15 +96,15 @@ void ProtocoloCliente::recibir_mensajes() {
 			this->socket_cliente.recv_msj(&accion, 1);
 			std::cout << accion << std::endl;
 			mensaje.asignar_accion(accion);
-			int cantidad_ints_a_recibir;
+			int cantidad_ints_a_recibir = 0;
 			if (accion == 'm' || accion == 'u') {
 				cantidad_ints_a_recibir = 3;
 			} else if (accion == 'a') {
 				cantidad_ints_a_recibir = 2;
 			} else if (accion == 'e') {
 				cantidad_ints_a_recibir = 4;
-			} else if (accion == 's' || accion == 'x') {
-				cantidad_ints_a_recibir = 0;
+			} else if (accion == 's') {
+				cantidad_ints_a_recibir = 1;
 			}
 
 			for (int i = 0; i < cantidad_ints_a_recibir; ++i) {
