@@ -6,70 +6,99 @@
 
 
 #define LIMITE_ITERACIONES_GUSANO 100
+#define PIX 10
 
 Mapa::Mapa() {}
 
 Mapa::Mapa(Config &root,int &contador_ids_objetos) {
-	/*inicialmente mapa de 1300x700 pixeles, siendo cada baldosa
-	 de 50x50 pixeles (26x14)*/
-	std::cout << "Mapa de " << root["terreno"].size() << " por " <<
-	 root["terreno"][0].size() << " baldosas" << std::endl;
 	for (unsigned int i = 0; i < root["terreno"].size(); i++) {
-		std::vector<Coordenada> fila;
-		for (unsigned int j = 0; j < root["terreno"][0].size(); j++) {
-			switch (root["terreno"][i][j].asInt()){
-				case 30:
-				{
-					NoEspecia roca("roca");
-					Coordenada coord(0, roca, contador_ids_objetos);
-					fila.push_back(coord);
-					break;
-				}
-				case 31:
-				{
-					NoEspecia duna("duna");
-					Coordenada coord(0, duna, contador_ids_objetos);
-					fila.push_back(coord);
-					break;
-				}
-				case 32:
-				{
-					Especia especiafuerte("especia fuerte");
-					Coordenada coord(0, especiafuerte, contador_ids_objetos);
-					fila.push_back(coord);
-					break;
-				}
-				case 33:
-				{
-					Especia especiasuave("especia suave");
-					Coordenada coord(0, especiasuave, contador_ids_objetos);
-					fila.push_back(coord);
-					break;
-				}
-				case 34:
-				{
-					NoEspecia cima("cima");
-					Coordenada coord(0, cima, contador_ids_objetos);
-					fila.push_back(coord);
-					break;
-				}
-				case 35:
-				{
-					NoEspecia precipio("precipicio");
-					Coordenada coord(0, precipio, contador_ids_objetos);
-					fila.push_back(coord);
-					break;
-				}
-				default:
-				{
-					NoEspecia roca("arena");
-					Coordenada coord(0, roca, contador_ids_objetos);
-					fila.push_back(coord);
-					break;
+		std::vector<Baldosa> fila_baldosa;
+			std::vector<Coordenada> fila;
+			for (unsigned int j = 0; j < root["terreno"][0].size(); j++) {
+					switch (root["terreno"][i][j].asInt()){
+						case 30:
+						{
+							NoEspecia roca("roca");
+							Baldosa bald(0, roca, contador_ids_objetos);
+							for (unsigned int q = 0; q < PIX; q++){ 
+								Coordenada coord(0, roca, contador_ids_objetos);
+								fila.push_back(coord);
+							}
+							fila_baldosa.push_back(bald);
+							break;
+						}
+						case 31:
+						{
+							NoEspecia duna("duna");
+							Baldosa bald(0, duna, contador_ids_objetos);
+							for (unsigned int q = 0; q < PIX; q++){ 
+								Coordenada coord(0, duna, contador_ids_objetos);
+								fila.push_back(coord);
+							}
+							fila_baldosa.push_back(bald);
+							break;
+						}
+						case 32:
+						{
+							Especia especiafuerte("especia fuerte");
+							Baldosa bald(0, especiafuerte, contador_ids_objetos);
+							for (unsigned int q = 0; q < PIX; q++){ 
+								Coordenada coord(0, especiafuerte, contador_ids_objetos);
+								fila.push_back(coord);
+							}
+							fila_baldosa.push_back(bald);
+							break;
+						}
+						case 33:
+						{
+							Especia especiasuave("especia suave");
+							Baldosa bald(0, especiasuave, contador_ids_objetos);
+							for (unsigned int q = 0; q < PIX; q++){ 
+								Coordenada coord(0, especiasuave, contador_ids_objetos);
+								fila.push_back(coord);
+							}
+							fila_baldosa.push_back(bald);
+							break;
+						}
+						case 34:
+						{
+							NoEspecia cima("cima");
+							Baldosa bald(0, cima, contador_ids_objetos);
+							for (unsigned int q = 0; q < PIX; q++){ 
+								Coordenada coord(0, cima, contador_ids_objetos);
+								fila.push_back(coord);
+							}
+							fila_baldosa.push_back(bald);
+							break;
+						}
+						case 35:
+						{
+							NoEspecia precipio("precipicio");
+							Baldosa bald(0, precipio, contador_ids_objetos);
+							for (unsigned int q = 0; q < PIX; q++){ 
+								Coordenada coord(0, precipio, contador_ids_objetos);
+								fila.push_back(coord);
+							}
+							fila_baldosa.push_back(bald);
+							break;
+						}
+						default:
+						{
+							NoEspecia arena("arena");							
+							Baldosa bald(0, arena, contador_ids_objetos);
+							for (unsigned int q = 0; q < PIX; q++){ 
+								Coordenada coord(0, arena, contador_ids_objetos);
+								fila.push_back(coord);
+							}
+							fila_baldosa.push_back(bald);
+							break;
+						}
 				}
 			}
+			for (unsigned int p = 0; p < PIX; p++){ 
+			coordenadas.push_back(fila);
 		}
-		coordenadas.push_back(fila);
+		baldosas.push_back(fila_baldosa);
 	}
 }
 
@@ -182,9 +211,9 @@ int altura, int base, bool ocupar) {
 			//esto del if dsp se podria reemplazar con un metodo de la coord
 			//que le invierta el estado nomas
 			if (ocupar){
-				coordenadas[inicio.first][inicio.second].
-				marcar_como_ocupada();
-				std::cout << "esta ocupada " << inicio.first << " " << inicio.second << std::endl;
+				//coordenadas[inicio.first][inicio.second].
+				//marcar_como_ocupada();
+				//std::cout << "esta ocupada " << inicio.first << " " << inicio.second << std::endl;
 			} else {
 				coordenadas[inicio.first][inicio.second].
 				marcar_como_desocupada();
@@ -271,6 +300,18 @@ std::string Mapa::pedir_terreno_coordenada(std::pair<int, int> posicion) {
 	return coordenadas[posicion.first][posicion.second].obtener_terreno();
 }
 
+unsigned int Mapa::pedir_limite_filas_baldosa() {
+	return baldosas.size();
+}
+
+unsigned int Mapa::pedir_limite_columnas_baldosa() {
+	return (baldosas[baldosas.size() - 1]).size();
+}
+
+std::string Mapa::pedir_terreno_baldosa(std::pair<int, int> posicion) {
+	return baldosas[posicion.first][posicion.second].obtener_terreno();
+}
+
 bool Mapa::agregado_edificio(ObjetoDune* objeto) {
 	std::pair<int, int> posicion_central = objeto->obtener_centro();
 	bool terreno_valido;
@@ -317,6 +358,10 @@ void Mapa::cambiar_equipo(int id_unidad_a_cambiar, int id_nuevo_duenio) {
 
 bool Mapa::esta_ocupada_coordenada(std::pair<int, int> posicion) {
 	return coordenadas[posicion.first][posicion.second].esta_ocupada();
+}
+
+bool Mapa::esta_ocupada_baldosa(std::pair<int, int> posicion) {
+	return baldosas[posicion.first][posicion.second].esta_ocupada();
 }
 
 bool Mapa::esta_dentro_limites(std::pair<int, int> &centro){
@@ -426,7 +471,76 @@ std::pair<int, int> &pos_destino) {
 
 std::list<std::pair<int, int>> Mapa::obtener_camino(std::pair<int, int> inicio,
 std::pair<int, int> final) {
-	return buscador_mejor_camino.buscar_mejor_camino(*this, inicio, final);
+	std::pair<int, int> inicio_baldosa = conversor.de_pixel_a_baldosa(inicio);
+	std::pair<int, int> final_baldosa = conversor.de_pixel_a_baldosa(final);
+
+#ifdef NACHO 
+    std::cout << "Quiero ir de  " << inicio_baldosa.first << " " << inicio_baldosa.second << std::endl;
+
+    std::cout << "Hacia  " << final_baldosa.first << " " << final_baldosa.second << std::endl;
+#endif
+
+	std::list<std::pair<int, int>> lista_camino = buscador_mejor_camino.buscar_mejor_camino(*this, inicio_baldosa, final_baldosa);
+
+#ifdef NACHO 
+  	std::cout << "lista_camino contains:";
+#endif
+
+  	for (std::list<std::pair<int, int>>::iterator it=lista_camino.begin(); it != lista_camino.end(); ++it){
+  		//obtengo diff para sacar camino en pixeles entre nodos
+#ifdef NACHO
+		std::cout << " inicio_baldosa " << inicio_baldosa.first << " " << inicio_baldosa.second << std::endl; 
+#endif
+		
+  		int diff_first = it->first - inicio_baldosa.first;
+  		int diff_second = it->second - inicio_baldosa.second;
+
+  		inicio_baldosa.first = it->first;
+		inicio_baldosa.second = it->second;
+
+#ifdef NACHO 
+		std::cout << " Cambio inicio para iteracion posterior" << inicio_baldosa.first << " " << inicio_baldosa.second << std::endl; 
+    	std::cout << ' ' << it->first << ' ' << it->second;
+#endif
+
+    	*it = conversor.de_baldosa_a_pixel(*it);
+
+#ifdef NACHO 
+    	std::cout << " Lo transformo a " << it->first << ' ' << it->second << std::endl; 
+#endif
+
+    	int neg_sec = 0;
+    	int neg_first = 0;
+
+    	if (diff_first == -1){
+    		neg_first = 1;
+    	}
+
+    	if (diff_second == -1){
+    		neg_sec = 1;
+    	}
+
+    	for(int i = PIX ; i > 0 ; i--){
+    		std::pair<int,int> sig(((it->first+=diff_first) + (i*neg_first)),(it->second+=diff_second) + (i*neg_sec));
+
+#ifdef NACHO 
+    		std::cout << " Nuevo first " << sig.first << " " << sig.second << std::endl; 
+#endif
+
+    		lista_camino.insert(it,sig);
+	    	if (neg_first == 1){
+	    		it->first-=diff_first;
+	    	}
+
+	    	if (neg_sec == 1){
+				it->second-=diff_second;
+	    	}
+		}
+
+
+  	}
+
+	return lista_camino;
 }
 
 void Mapa::actualizar_salida_gusano(double tiempo_transcurrido) {

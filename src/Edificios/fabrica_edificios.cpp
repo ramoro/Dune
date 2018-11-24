@@ -14,8 +14,10 @@
 #define SILO 3
 #define FABRICA_LIGERA 4
 #define FABRICA_PESADA 5
-#define CUARTEL 6
-#define PALACIO 7
+#define CUARTELATREIDES 6
+#define CUARTELHARKONNEN 7
+#define CUARTELORDOS 8
+#define PALACIO 9
 
 std::shared_ptr<Edificio> FabricaEdificios::crear_edificio(
 int id_tipo_edificio, int id, int id_duenio, 
@@ -44,7 +46,7 @@ std::pair<int, int> centro,Config &config) {
 		std::shared_ptr<FabricaPesada> fabrica_pesada(new 
 		FabricaPesada(id, id_duenio, centro, config));
 		return fabrica_pesada;
-	} else if (id_tipo_edificio == CUARTEL) {
+	} else if (id_tipo_edificio == CUARTELATREIDES || id_tipo_edificio == CUARTELHARKONNEN || id_tipo_edificio == CUARTELORDOS) {
 		std::shared_ptr<Cuartel> cuartel(new 
 		Cuartel(id, id_duenio, centro, config));
 		return cuartel;

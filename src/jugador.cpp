@@ -60,18 +60,29 @@ void Jugador::reducir_capacidad_especia(int cap_a_reducir) {
 
 bool Jugador::agregada_unidad(UnidadMovible* unidad) {
 	std::vector<std::string> casas= unidad->obtener_casa();
-	if (unidad->obtener_costo() > dinero || (std::find(casas.begin(), casas.end(), casa) == casas.end())) return false;
+	if (unidad->obtener_costo() > dinero || (std::find(casas.begin(), casas.end(), casa) == casas.end())){
+#ifdef NACHO 
+			std::cout << " El edificio no pertenece a la casa " << casa << std::endl;
+#endif		
+		return false;
+	}
 	bool creacion = true;
 	std::vector<int> edificios_necesitados = unidad->
 	obtener_edificios_necesarios();
 	for (std::vector<int>::iterator it = edificios_necesitados.begin();
 	it != edificios_necesitados.end(); ++it) {
 		if (edificios_por_tipo.count(*it) <= 0) {
+#ifdef NACHO 
+			std::cout << " NO existen edificios necesarios " << std::endl;
+#endif
 			creacion = false;
 			break;
 		}
 		if (edificios_por_tipo.at(*it) == 0) {
 			creacion = false;
+#ifdef NACHO 
+			std::cout << " NO existen edificios necesarios 2 " << std::endl;
+#endif
 			break;
 		}
 	}

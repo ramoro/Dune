@@ -14,12 +14,16 @@
 #include "config.h"
 #include "UnidadesMovibles/unidad_movible.h"
 #include "gusano.h"
+#include "conversor.h"
+#include "baldosa.h"
 
 /*Clase que representa a un mapa del mundo Dune.*/
 class Mapa {
 	private:
 		std::vector<std::vector<Coordenada>> coordenadas;
+		std::vector<std::vector<Baldosa>> baldosas;
 		std::map<int, ObjetoDune*> mapa_ids_objetos;
+		Conversor conversor;
 		//mapa con ids de objetos y su coordenada de centro para ubicarlos rapido 
 		//ya que el cliente no va a enviar la posicion del edificio
 		BuscadorMejorCamino buscador_mejor_camino;
@@ -87,6 +91,18 @@ class Mapa {
 		Coordenada con esa posicion.*/
 		std::string pedir_terreno_coordenada(std::pair<int, int> posicion);
 
+		/*Devuelve la posicion maxima a la que llega el vector de filas
+		de baldosas.*/
+		unsigned int pedir_limite_filas_baldosa();
+
+		/*Devuelve la posicion maxima a la que llegan los vectores de
+		columnas de baldosas.*/
+		unsigned int pedir_limite_columnas_baldosa();
+
+		/*Recibe una posicion y devuelve el nombre del terreno de la 
+		Baldosa con esa posicion.*/
+		std::string pedir_terreno_baldosa(std::pair<int, int> posicion);
+
 		/*Recibe un puntero al objeto.
 		Devuelve true si el objeto se puede agregar al mapa,
 		false en caso contrario.*/
@@ -113,6 +129,9 @@ class Mapa {
 
 		/*Devuelve true si coordenada en la posicion pasada esta ocupada*/
 		bool esta_ocupada_coordenada(std::pair<int, int> posicion);
+
+		/*Devuelve true si baldosa en la posicion pasada esta ocupada*/
+		bool esta_ocupada_baldosa(std::pair<int, int> posicion);
 
 		/*Recibe un el id de la unidad a mover y la posicion a donde se 
 		la movera. Se la mueve dentro del mapa, cambiandole su centro.*/

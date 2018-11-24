@@ -53,6 +53,10 @@ int UnidadMovible::obtener_rango_ataque() {
 	return rango;
 }
 
+int UnidadMovible::obtener_velocidad() {
+	return velocidad;
+}
+
 bool UnidadMovible::se_puede_agregar(Jugador 
 &jugador) {
 	return (jugador.agregada_unidad(this));
@@ -81,10 +85,10 @@ Mapa &mapa) {
 	//por si sale algo mal y no se vacio del todo el camino
 	//cuando la unidad llego
 	//if (camino.empty()) return;
-	std::cout << "centro: " << centro.first << centro.second << " de la unidad " << id << std::endl;
+//	std::cout << "centro: " << centro.first << centro.second << " de la unidad " << id << std::endl;
 	std::shared_ptr<Estado> nuevo_estado = estado->actualizar(this, mapa,
 	tiempo_transcurrido);
-	std::cout << "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
+//	std::cout << "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
 	//si no es null le asigno el nuevo estado
 	if (nuevo_estado) {
 		std::cout << "nuevo estado " << " estado: " << nuevo_estado->pedir_nombre() << std::endl;

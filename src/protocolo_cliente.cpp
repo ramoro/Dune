@@ -115,7 +115,11 @@ void ProtocoloCliente::recibir_mensajes() {
 				list_mensajes.pop_front();
 				this->cola_recepcion->push(msj);
 			}*/
+			//std::cout << accion << std::endl;
+
 			this->cola_recepcion->push(mensaje);
+
+			//std::cout << accion << std::endl;
 		}
 	} catch(SocketError &e){
 		if (this->jugando) {

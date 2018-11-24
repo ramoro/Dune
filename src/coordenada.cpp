@@ -26,7 +26,7 @@ void Coordenada::sacar_objeto() {
 }
 
 bool Coordenada::esta_ocupada() {
-	if(estado == OCUPADA) return true;
+	//if(estado == OCUPADA) return true;
 	return false;
 }
 

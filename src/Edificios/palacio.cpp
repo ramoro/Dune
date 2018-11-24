@@ -1,6 +1,6 @@
 #include "palacio.h"
 
-#define ID_PALACIO 7 //para usarlo en el protocolo
+#define ID_PALACIO 9 //para usarlo en el protocolo
 #define DESTRUIDO -1
 
 Palacio::Palacio(int id, int id_duenio, std::pair<int, int> centro,

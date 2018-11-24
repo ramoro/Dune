@@ -9,7 +9,7 @@
 #define CODIGO_MUERTE_OBJETO 'd'
 #define CODIGO_PERDIO_JUGADOR 'e'
 #define JUGADOR_NO_ENTRENANDO -1
-#define DISTANCIA_MINIMA_EDIFICIO_ALIADO 70
+#define DISTANCIA_MINIMA_EDIFICIO_ALIADO 7000
 
 Partida::Partida() {
 	contador_ids_jugadores = 0;
@@ -38,14 +38,21 @@ std::vector<std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 }
 
 std::pair<int,int> Partida::buscar_ubicacion(std::pair<int,int> esquina){
-	esquina.first+=2;
-	esquina.second+=2;
+	esquina.first+=50;
+	esquina.second+=50;
 	return esquina;
 }
 std::pair<int,int> Partida::ubicar_centro_construccion(){
 	std::pair<int,int> ubicacion_centro;
 	int limite_col = (int)mapa.pedir_limite_columnas();
 	int limite_fil = (int)mapa.pedir_limite_filas();
+
+#ifdef NACHO 
+	std::cout << "limite_col " << limite_col << " limite_fil " << limite_fil << std::endl;
+
+	std::cout << "limite_col_bald " << mapa.pedir_limite_columnas_baldosa() << " limite_fil_bald " << mapa.pedir_limite_filas_baldosa() << std::endl;
+#endif
+
 	int rango_col = limite_col/3;
 	int rango_fil = limite_fil/3;
 	switch (contador_ids_jugadores){
@@ -150,7 +157,7 @@ std::vector<std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		se_puede_agregar_unidad(jugadores.at(id_jugador), 
 		id_tipo_unidad, contador_ids_objetos,config));
 		if (!se_puede_agregar) {
-			std::cout << "ERRO no se puede agregar porque no etnre en mapa" << std::endl;
+			std::cout << "ERRO no se puede agregar" << std::endl;
 			serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad);
 		} else {
 			contador_ids_objetos++;
@@ -219,7 +226,7 @@ std::vector<std::shared_ptr<ColaBloqueante>> colas, MensajeProtocolo mensaje) {
 //mandar el mensaje sobre la unidad agregada
 void Partida::actualizar_modelo(double tiempo_transcurrido, 
 std::vector<std::shared_ptr<ColaBloqueante>> colas_mensajes) {
-	std::cout << "ACTUALIZA MODELO con tiempo " << tiempo_transcurrido << std::endl; 
+	//std::cout << "ACTUALIZA MODELO con tiempo " << tiempo_transcurrido << std::endl; 
 	//mapa.actualizar_salida_gusano(tiempo_transcurrido);
 	for (std::map<int, Jugador>::iterator it_jugadores = 
 	jugadores.begin(); it_jugadores != jugadores.end(); ++it_jugadores) {
