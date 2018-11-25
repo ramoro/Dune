@@ -14,7 +14,6 @@
 #include "config.h"
 #include "UnidadesMovibles/unidad_movible.h"
 #include "gusano.h"
-#include "Terrenos/especia.h"
 #include "conversor.h"
 #include "baldosa.h"
 #include "cola_bloqueante.h"

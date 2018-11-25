@@ -14,7 +14,7 @@ std::shared_ptr<Estado> Deposito::actualizar(UnidadMovible
 *unidad, Mapa &mapa, double tiempo_transcurrido) {
 	contador_segundo += tiempo_transcurrido;
 	if (tiempo_transcurrido >= SEGUNDO_EN_MILIS) {
-		tiempo_transcurrido -= SEGUNDO_EN_MILIS;
+		contador_segundo -= SEGUNDO_EN_MILIS;
 		int especia_depositada = unidad->depositar_especia_en_segundo();
 		if (especia_depositada == 0) {
 			if (especia_a_volver->esta_fuera_de_juego()) {

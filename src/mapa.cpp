@@ -1,19 +1,20 @@
 #include "mapa.h"
-#include "Terrenos/no_especia.h"
-#include "Terrenos/especia.h"
+#include "Terrenos/terreno.h"
 #include "Edificios/refineria.h"
 #include "UnidadesMovibles/cosechadora.h"
 #include <stdlib.h>
 #include <iostream>
 #include <math.h>
 
-#define ROCA 30
-#define DUNA 31
-#define ESPECIAFUERTE 32
-#define ESPECIASUAVE 33
-#define CIMA 34
-#define PRECIPICIO 35
-#define ARENA 36
+//codigos de terrenos para el protocolo
+#define CODIGO_ROCA 30
+#define CODIGO_DUNA 31
+#define CODIGO_ESPECIAFUERTE 32
+#define CODIGO_ESPECIASUAVE 33
+#define CODIGO_CIMA 34
+#define CODIGO_PRECIPICIO 35
+#define CODIGO_ARENA 36
+
 #define PIX 50
 #define LIMITE_ITERACIONES_GUSANO 100
 #define TAM_TERRENO 100
@@ -27,9 +28,9 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 			for (unsigned int j = 0; j < root["terreno"][0].size(); j++) {
 				std::pair<int,int> esquina(i,j);
 					switch (root["terreno"][i][j].asInt()){
-						case 30:
+						case CODIGO_ROCA:
 						{
-							NoEspecia roca(ROCA);
+							Terreno roca(CODIGO_ROCA, root);
 							Baldosa bald(0, roca, contador_ids_objetos,
 							std::pair<int, int> (i*TAM_TERRENO, j*TAM_TERRENO));
 							for (unsigned int q = 0; q < PIX; q++){ 
@@ -45,9 +46,9 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 							fila_baldosa.push_back(bald);
 							break;
 						}
-						case 31:
+						case CODIGO_DUNA:
 						{
-							NoEspecia duna(DUNA);
+							Terreno duna(CODIGO_DUNA, root);
 							Baldosa bald(0, duna, contador_ids_objetos,
 							std::pair<int, int> (i*PIX, j*PIX));
 							for (unsigned int q = 0; q < PIX; q++){ 
@@ -58,9 +59,9 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 							bald.serializar_mensaje_baldosa();
 							break;
 						}
-						case 32:
+						case CODIGO_ESPECIAFUERTE:
 						{
-							Especia especiafuerte(ESPECIAFUERTE, root);
+							Terreno especiafuerte(CODIGO_ESPECIAFUERTE, root);
 							std::shared_ptr<Baldosa> bald(new 
 							Baldosa(0, especiafuerte, contador_ids_objetos,
 							std::pair<int, int> (i*PIX, j*PIX)));
@@ -76,9 +77,9 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 							//std::cout << "ID ESFUER " << contador_ids_objetos << "con pos x " << i << " pos y " << j<<std::endl;
 							break;
 						}
-						case 33:
+						case CODIGO_ESPECIASUAVE:
 						{
-							Especia especiasuave(ESPECIASUAVE, root);
+							Terreno especiasuave(CODIGO_ESPECIASUAVE, root);
 							std::shared_ptr<Baldosa> bald(new 
 							Baldosa(0, especiasuave, contador_ids_objetos,
 							std::pair<int, int> (i*PIX, j*PIX)));
@@ -93,9 +94,9 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 							bald->serializar_mensaje_baldosa();
 							break;
 						}
-						case 34:
+						case CODIGO_CIMA:
 						{
-							NoEspecia cima(CIMA);
+							Terreno cima(CODIGO_CIMA, root);
 							Baldosa bald(0, cima, contador_ids_objetos,
 							std::pair<int, int> (i*PIX, j*PIX));
 							for (unsigned int q = 0; q < PIX; q++){ 
@@ -106,9 +107,9 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 							bald.serializar_mensaje_baldosa();
 							break;
 						}
-						case 35:
+						case CODIGO_PRECIPICIO:
 						{
-							NoEspecia precipio(PRECIPICIO);
+							Terreno precipio(CODIGO_PRECIPICIO, root);
 							Baldosa bald(0, precipio, contador_ids_objetos,
 							std::pair<int, int> (i*PIX, j*PIX));
 							for (unsigned int q = 0; q < PIX; q++){ 
@@ -121,7 +122,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						}
 						default:
 						{
-							NoEspecia arena(ARENA);							
+							Terreno arena(CODIGO_ARENA, root);							
 							Baldosa bald(0, arena, contador_ids_objetos,
 							std::pair<int, int> (i*PIX, j*PIX));
 							for (unsigned int q = 0; q < PIX; q++){ 
@@ -251,8 +252,8 @@ int altura, int base, bool ocupar) {
 			//esto del if dsp se podria reemplazar con un metodo de la coord
 			//que le invierta el estado nomas
 			if (ocupar){
-				//coordenadas[inicio.first][inicio.second].
-				//marcar_como_ocupada();
+				coordenadas[inicio.first][inicio.second].
+				marcar_como_ocupada();
 				//std::cout << "esta ocupada " << inicio.first << " " << inicio.second << std::endl;
 			} else {
 				coordenadas[inicio.first][inicio.second].
@@ -310,7 +311,7 @@ void Mapa::desenterrar_gusano() {
 		std::pair<int, int> posicion_centro(fila_random, columna_random);
 		bool es_arena = verificar_terreno_alrededor(posicion_centro,
 		gusano.obtener_dimesion_alto(), 
-		gusano.obtener_dimesion_ancho(), ARENA);
+		gusano.obtener_dimesion_ancho(), CODIGO_ARENA);
 		if (es_arena) {
 			objetivos = buscar_unidades_alrededor(posicion_centro, 
 			gusano.obtener_dimesion_alto(),
@@ -360,7 +361,7 @@ bool Mapa::agregado_edificio(ObjetoDune* objeto) {
 	bool terreno_valido;
 	std::vector<ObjetoDune*> unidades_alrededor; 
 	terreno_valido = verificar_terreno_alrededor(posicion_central, 
-	objeto->obtener_altura(), objeto->obtener_base(), ROCA);
+	objeto->obtener_altura(), objeto->obtener_base(), CODIGO_ROCA);
 	std::cout << "Terreno valido:" << terreno_valido << " para edificio de tipo " << objeto->pedir_id_tipo() << std::endl;
 	//verifico que no haya ninguna unidad o edificio dentro del espacio
 	//donde se quiere poner el objeto

@@ -1,13 +1,14 @@
 #include "baldosa.h"
 #include <iostream>
 #include "UnidadesMovibles/cosechadora.h"
+#include "mensaje_protocolo.h"
 
 #define VACIA 0
 #define OCUPADA 1
 #define CODIGO_SALIDA_TERRENO 't'
 
 Baldosa::Baldosa(int estado, Terreno terreno, int id, 
-std::pair<int, int> posicion): ObjetoDune((&terreno)->obtener_cantidad_especia(),
+std::pair<int, int> posicion): ObjetoDune(terreno.obtener_cantidad_especia(),
 0, id, -1, 1, 1, posicion), estado(estado), 
 terreno(terreno) {}
 
@@ -65,7 +66,7 @@ int Baldosa::cantidad_mensajes(){
 }
 
 int Baldosa::remover_especia(Cosechadora* unidad_atacante) {
-	return (&terreno)->reducir_especia(unidad_atacante->
+	return terreno.reducir_especia(unidad_atacante->
 	obtener_extraccion_especia());
 }
 

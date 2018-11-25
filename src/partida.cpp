@@ -103,25 +103,25 @@ bool Partida::esta_dentro(int id_jugador,std::pair<int,int> &posicion_central){
     return false;
 }
 
-//DEBERIA PASAR COLA BLOQUEANTE
 void Partida::agregar_edificio(int id_jugador, std::pair<int, int>
 posicion_central, int id_tipo_edificio, 
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
-	std::shared_ptr<Edificio> ptr_edificio = fabrica_edificios.crear_edificio(id_tipo_edificio,
-	contador_ids_objetos, id_jugador, posicion_central,config);
+	std::shared_ptr<Edificio> ptr_edificio = fabrica_edificios.
+	crear_edificio(id_tipo_edificio, contador_ids_objetos, id_jugador,
+	posicion_central,config);
 
 	bool esta_dentro_rango = esta_dentro(id_jugador, posicion_central);
-	bool agregado = ptr_edificio->agregar_al_juego(mapa, jugadores.at(id_jugador), 
-	contador_ids_objetos, id_tipo_edificio);
+	bool agregado = ptr_edificio->agregar_al_juego(mapa, 
+	jugadores.at(id_jugador), contador_ids_objetos, id_tipo_edificio);
 	if (agregado && esta_dentro_rango) {
 		edificios.emplace(std::pair<int, 
 		std::shared_ptr<Edificio>>(contador_ids_objetos, ptr_edificio));
 		contador_ids_objetos++;
 		ptr_edificio->serializar_mensaje_creacion_objeto(ptr_edificio);
-
-		//PARTE COLA BLOQUEANTE/AL SACAR MENSAJE LUEGO DEBO LIMPIAR MENSAJE
-		//cola.push(ptr_edificio.pedir_mensaje_protocolo());
-	
+		serializar_mensaje_dinero(jugadores.at(id_jugador).pedir_dinero(),
+		colas_mensajes);
+		serializar_mensaje_energia(jugadores.at(id_jugador).
+		pedir_energia_disponible(), colas_mensajes);
 	} else {
 		std::cout << "No se pudo construir edificio de tipo " << id_tipo_edificio << std::endl;
 		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_edificio);
@@ -165,6 +165,8 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 			std::cout << "ERRO no se puede agregar" << std::endl;
 			serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad);
 		} else {
+			serializar_mensaje_dinero(jugadores.at(id_jugador).pedir_dinero(), 
+			colas_mensajes);
 			contador_ids_objetos++;
 		}
 	}
@@ -228,12 +230,32 @@ MensajeProtocolo mensaje) {
 	} 
 }
 
-//deberia pasarle COLA BLOQUEANTE para desde aca dentro
-//mandar el mensaje sobre la unidad agregada
+
+void Partida::serializar_mensaje_dinero(int dinero,
+std::map<int, std::shared_ptr<ColaBloqueante>> colas) {
+	MensajeProtocolo mensaje;
+	mensaje.asignar_accion('p');
+	mensaje.agregar_parametro(dinero);
+	guardar_mensaje_en_colas(colas, mensaje);
+}
+
+void Partida::serializar_mensaje_energia(int energia,
+std::map<int, std::shared_ptr<ColaBloqueante>> colas) {
+	MensajeProtocolo mensaje;
+	mensaje.asignar_accion('o');
+	mensaje.agregar_parametro(energia);
+	guardar_mensaje_en_colas(colas, mensaje);
+}
+
 void Partida::actualizar_modelo(double tiempo_transcurrido, 
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
-	//std::cout << "ACTUALIZA MODELO con tiempo " << tiempo_transcurrido << std::endl; 
+	std::cout << "ACTUALIZA MODELO con tiempo " << tiempo_transcurrido << std::endl; 
+	//actualizo salida del gusano
 	//mapa.actualizar_salida_gusano(tiempo_transcurrido);
+
+	//por cada jugador me fijo si tiene un id de un edificio
+	//entrenando. De ser asi actualizo la reacion de la
+	//unidad que tenga en entrenamiento
 	for (std::map<int, Jugador>::iterator it_jugadores = 
 	jugadores.begin(); it_jugadores != jugadores.end(); ++it_jugadores) {
 		int id_edificio_entrenando = (it_jugadores->second).
@@ -250,6 +272,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		}
 	}
 
+	//por cada edificio actualizo el estado en caso de que haya muerto
 	for (std::map<int, std::shared_ptr<Edificio>>::iterator it_edifs = 
 	edificios.begin(); it_edifs != edificios.end(); ++it_edifs) {
 		
@@ -257,12 +280,15 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		jugadores.at((it_edifs->second)->pedir_id_duenio()));
 	}
 
+	//actualizo cada unidad
 	for (std::map<int, std::shared_ptr<UnidadMovible>>::iterator it_unidades = 
 	unidades_movibles.begin(); it_unidades != unidades_movibles.end(); 
 	++it_unidades) {
 		(it_unidades->second)->actualizar_unidad(tiempo_transcurrido, mapa);
 	}
 
+	//por cada refineria me fijo si tiene especia encima y si tiene
+	// y el jugador tiene espacio se le agrega, convirtiendose en dinero
 	std::map<int, Refineria*> refinerias = mapa.pedir_refinerias();
 	for (std::map<int, Refineria*>::iterator it_ref = 
 	refinerias.begin(); it_ref != refinerias.end(); 
@@ -274,10 +300,14 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 			it_ref->second->reducir_especia(especia_agregada);
 			jugadores.at(it_ref->second->pedir_id_duenio()).
 			aumentar_dinero(especia_agregada);
-			//serializar_mensaje_dinero(); -->
+			serializar_mensaje_dinero(jugadores.at(
+			it_ref->second->pedir_id_duenio()).pedir_dinero(), 
+			colas_mensajes);
 		}
 	}
 
+	//por cada terreno con especia me fijo si la sigue teniendo
+	//si no la tiene, mando mensaje de que no hay mas especia ahi
 	std::vector<MensajeProtocolo> terrenos_sin_especia = mapa.
 	obtener_mensajes_terrenos_sin_especia();
 	for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
@@ -288,8 +318,13 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		guardar_mensaje_en_colas(colas_mensajes, *it_mensajes);
 	}
 	
+
 	std::set<std::shared_ptr<Edificio>> edificios_a_eliminar;
 	std::set<std::shared_ptr<UnidadMovible>> unidades_a_eliminar;
+	//por cada edificio me fijo los mensajes que tiene para enviar
+	//si hay mensaje de muerte se agrega a edificios a eliminar
+	//y en caso de que sea el centro de cosntruccion se agregan
+	//todos los objetos del jugador para eliminar
 	for (std::map<int, std::shared_ptr<Edificio>>::iterator it_edifs = 
 	edificios.begin(); it_edifs != edificios.end(); ++it_edifs) {
 		std::vector<MensajeProtocolo> mensajes = (it_edifs->second)->
@@ -322,6 +357,8 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		(it_edifs->second)->limpiar_lista_mensajes();
 	}
 
+	//por cada unidad la actualizo y si tiene menasje de muerte
+	//las pongo para eliminar
 	for (std::map<int, std::shared_ptr<UnidadMovible>>::iterator it_unidades = 
 	unidades_movibles.begin(); it_unidades != unidades_movibles.end(); 
 	++it_unidades) {

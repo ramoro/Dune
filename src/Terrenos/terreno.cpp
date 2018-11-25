@@ -1,20 +1,33 @@
 #include "terreno.h"
 #include <iostream>
 
-Terreno::Terreno(int material): material(material) {}
+#define CODIGO_ESPECIAFUERTE 32
+#define CODIGO_ESPECIASUAVE 33
+
+Terreno::Terreno(int material, Config &config): material(material) {
+	if (material == CODIGO_ESPECIASUAVE) {
+		cant_especia_actual = config["Especia Suave"].
+		get("cantidad_especia", 0).asInt();
+	} else if(material == CODIGO_ESPECIAFUERTE) {
+		cant_especia_actual = config["Especia Fuerte"].
+		get("cantidad_especia", 0).asInt();
+	} else {
+		cant_especia_actual = 0;
+	}
+}
 
 int Terreno::obtener_id_material() {
 	return material;
 }
 
-int Terreno::obtener_cantidad_especia() {
-	//std::cout << "paso por metodo de terreno en obtener_cantidad_especia"
-	//<< std::endl;
-	return 0;
+int Terreno::reducir_especia(int cantidad) {
+	int especia_sobrante = cant_especia_actual - cantidad;
+	if (especia_sobrante < 0) {
+		cant_especia_actual = 0;
+	} 
+	return especia_sobrante;
 }
 
-int Terreno::reducir_especia(int cantidad_a_reducir) {
-	//std::cout << "paso por metodo de terreno en reducir_especia"
-	//<< std::endl;
-	return 0;
+int Terreno::obtener_cantidad_especia() {
+	return cant_especia_actual;
 }
