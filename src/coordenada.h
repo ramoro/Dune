@@ -14,7 +14,6 @@ class Coordenada {
 		ObjetoDune* objeto;
 		int estado;
 		Terreno terreno;
-		//int id;
 
 	public:
 		/*Constructor de la clase.*/
@@ -27,7 +26,7 @@ class Coordenada {
 
 		/*Devuelve un string con el nombre del terreno que posee
 		la coordenada.*/
-		std::string obtener_terreno();
+		int obtener_terreno();
 
 		/*Saca el objeto que tiene la coordenada (setea el puntero que tiene
 		como atributo a NULL) y cambia su estado a VACIA.

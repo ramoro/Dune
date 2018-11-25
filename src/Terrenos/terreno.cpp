@@ -1,11 +1,14 @@
 #include "terreno.h"
 #include <iostream>
 
-Terreno::Terreno(std::string material, Config &config): material(material) {
-	if (material == "especia debil") {
+#define CODIGO_ESPECIAFUERTE 32
+#define CODIGO_ESPECIASUAVE 33
+
+Terreno::Terreno(int material, Config &config): material(material) {
+	if (material == CODIGO_ESPECIASUAVE) {
 		cant_especia_actual = config["Especia Suave"].
 		get("cantidad_especia", 0).asInt();
-	} else if(material == "especia fuerte") {
+	} else if(material == CODIGO_ESPECIAFUERTE) {
 		cant_especia_actual = config["Especia Fuerte"].
 		get("cantidad_especia", 0).asInt();
 	} else {
@@ -13,25 +16,18 @@ Terreno::Terreno(std::string material, Config &config): material(material) {
 	}
 }
 
-std::string Terreno::obtener_nombre_material() {
+int Terreno::obtener_id_material() {
 	return material;
 }
 
-int Terreno::sacar_especia(int cantidad) {
-	if ((cant_especia_actual - cantidad) <= 0) {
+int Terreno::reducir_especia(int cantidad) {
+	int especia_sobrante = cant_especia_actual - cantidad;
+	if (especia_sobrante < 0) {
 		cant_especia_actual = 0;
-		return cant_especia_actual;
-	} else {
-		cant_especia_actual -= cantidad;
-		return cantidad;
-	}
+	} 
+	return especia_sobrante;
 }
 
 int Terreno::obtener_cantidad_especia() {
-	return cant_especia_actual;
-}
-
-int Terreno::reducir_especia(int cant_a_reducir) {
-	cant_especia_actual -= cant_a_reducir;
 	return cant_especia_actual;
 }

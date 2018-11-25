@@ -6,12 +6,15 @@
 #include <string>
 #include <memory>
 
+
 /*Clase que representa una baldosa de un mapa del mundo Dune.*/
 class Baldosa: public ObjetoDune {
 	private:
 		ObjetoDune* objeto;
 		int estado;
 		Terreno terreno;
+		std::pair<int,int> esquina;
+		MensajeProtocolo mensaje;
 
 	public:
 		/*Constructor de la clase.*/
@@ -25,7 +28,7 @@ class Baldosa: public ObjetoDune {
 
 		/*Devuelve un string con el nombre del terreno que posee
 		la baldosa.*/
-		std::string obtener_terreno();
+		int obtener_terreno();
 
 		/*Saca el objeto que tiene la baldosa (setea el puntero que tiene
 		como atributo a NULL) y cambia su estado a VACIA.
@@ -46,6 +49,8 @@ class Baldosa: public ObjetoDune {
 		pero que esta marcada como ocupada.
 		Precondicion:la coordeanada esta marcada como ocupada.*/
 		void marcar_como_desocupada();
+
+		void serializar_mensaje_salida();
 
 		/*Se saca al terreno de la baldosa especia si es que tiene
 		segun la cantidad que puede sacar la unidad recibida. Devuelve

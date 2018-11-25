@@ -40,8 +40,8 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 }
 
 std::pair<int,int> Partida::buscar_ubicacion(std::pair<int,int> esquina){
-	esquina.first+=1;
-	esquina.second+=1;
+	esquina.first+=50;
+	esquina.second+=50;
 	return esquina;
 }
 std::pair<int,int> Partida::ubicar_centro_construccion(){
@@ -229,6 +229,7 @@ MensajeProtocolo mensaje) {
 		(it->second)->push(mensaje);
 	} 
 }
+
 
 void Partida::serializar_mensaje_dinero(int dinero,
 std::map<int, std::shared_ptr<ColaBloqueante>> colas) {

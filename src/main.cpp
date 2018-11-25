@@ -182,7 +182,7 @@ int main(int argc, char* argv[]) {
 	}
 }*/
 
-
+/*
 int main() {
   std::map<int, std::shared_ptr<ColaBloqueante>> colas;
   Partida partida;
@@ -199,8 +199,8 @@ int main() {
  // partida.actualizar_modelo(1000, colas);
   //partida.actualizar_modelo(80,colas);
 }
-
-/*int main(int argc, char* argv[]) {
+*/
+int main(int argc, char* argv[]) {
   //std::cout << "hola " << std::endl;
   //Partida partida;
   //ColaBloqueante cola(10);
@@ -210,7 +210,7 @@ int main() {
   //juego.run();
   Server server(argv[1]);
   server.aceptar_cliente();
-}*/
+}
 
 
 /*

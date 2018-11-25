@@ -35,7 +35,7 @@ void Server::aceptar_cliente() {
   	//partida.agregar_jugador("harkonnen", colas);
   	//partida.agregar_jugador("ordos", &cola);
   	int i = 0;
-  	while (i < 2) {
+  	while (i < 1) {
   		Socket *otro_socket = socket->accept_connection();
   		otro_socket->send_int(i);
   		if ( i == 0) {

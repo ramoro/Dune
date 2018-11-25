@@ -1,4 +1,6 @@
 #include "vehiculo.h"
+#define PRECIPICIO 35
+#define CIMA 34
 
 Vehiculo::Vehiculo(int rango, int velocidad, 
 float tiempo_creacion, int costo_dinero, int vida, 
@@ -11,8 +13,8 @@ int Vehiculo::daniar(UnidadMovible* unidad_atacante) {
 	return ObjetoDune::reducir_vida(danio);
 }
 
-bool Vehiculo::es_terreno_valido(std::string terreno){
-	if (terreno == "precipicio" || terreno == "cima")
+bool Vehiculo::es_terreno_valido(int terreno){
+	if (terreno == PRECIPICIO || terreno == CIMA)
 		return false;
 	return true;
 }

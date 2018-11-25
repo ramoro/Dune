@@ -1,9 +1,11 @@
 #include "baldosa.h"
+#include <iostream>
 #include "UnidadesMovibles/cosechadora.h"
 #include "mensaje_protocolo.h"
 
 #define VACIA 0
 #define OCUPADA 1
+#define CODIGO_SALIDA_TERRENO 't'
 
 Baldosa::Baldosa(int estado, Terreno terreno, int id, 
 std::pair<int, int> posicion): ObjetoDune(terreno.obtener_cantidad_especia(),
@@ -20,8 +22,8 @@ bool Baldosa::poner_objeto(ObjetoDune* objeto_dune) {
 	}
 }
 
-std::string Baldosa::obtener_terreno() {
-	return terreno.obtener_nombre_material();
+int Baldosa::obtener_terreno() {
+	return terreno.obtener_id_material();
 }
 
 void Baldosa::sacar_objeto() {
@@ -44,6 +46,17 @@ void Baldosa::marcar_como_ocupada() {
 
 void Baldosa::marcar_como_desocupada() {
 	estado = VACIA;
+}
+
+void Baldosa::serializar_mensaje_salida() {
+	std::cout << "entro a serializar " << std::endl;
+	mensaje.asignar_accion(CODIGO_SALIDA_TERRENO);
+	mensaje.agregar_parametro(30);
+	mensaje.agregar_parametro(id);
+	mensaje.agregar_parametro(10);
+	mensaje.agregar_parametro(10);
+	mensaje.agregar_parametro(esquina.first);
+	mensaje.agregar_parametro(esquina.second);
 }
 
 int Baldosa::remover_especia(Cosechadora* unidad_atacante) {

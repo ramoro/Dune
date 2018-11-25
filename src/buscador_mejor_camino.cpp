@@ -4,6 +4,8 @@
 #include <iostream>
 #include <stack>
 
+#define PRECIPICIO 35
+
 //FALTA VERIFICAR QUE EL ESPACIOA DODNE ME MUEVO NO ESTE OCUPADO Y QUE
 //SI ES CIMA SOLO PUEDE PASAR UNIDADES DE INFANTERIA
 //USAR ALGO COMO DEFINE PARA LAS 8 DIRECCIONES (TYPEDEF SEGUN FEDE)
@@ -94,7 +96,7 @@ std::pair<int, int> &pos_final) {
   			//Evaluo el terreno y unidad para ver si puede pasar por 
   			//esa posicion
   			if (mapa.pedir_terreno_baldosa(posicion_adyacente) == 
-        "precipicio") {
+        PRECIPICIO) {
           std::cout << "Precipicio " << posicion_adyacente.first << " " << posicion_adyacente.second << std::endl;
           continue;
         }

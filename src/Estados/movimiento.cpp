@@ -23,9 +23,9 @@ Mapa &mapa, double tiempo_transcurrido) {
 	//a avanzar camino deberia pasarle la cantiadd de posiciones que avanzo ene l camino
 	
 #ifdef NACHO
-	std::cout << "dist1 " << dist1 << " dist2 " << dist2 << std::endl;
 	double dist1 = sqrt(abs(unidad->obtener_centro().first - camino.front().first) * abs(unidad->obtener_centro().second - camino.front().second));
 	double dist2 = tiempo_transcurrido * unidad->obtener_velocidad();
+	std::cout << "dist1 " << dist1 << " dist2 " << dist2 << std::endl;
 
 	if (dist2 <= dist1){
 		std::cout << "Tiene que esperar para moverse" << std::endl;

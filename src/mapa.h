@@ -46,7 +46,7 @@ class Mapa {
 		Devuelve true en caso de que el terreno que ocupa el objeto sea del
 		terreno pasado, false en caso contrario.*/
 		bool verificar_terreno_alrededor(std::pair<int, int> centro, 
-		int altura, int base, std::string terreno);
+		int altura, int base, int terreno);
 
 		/*Recibe una posicion ocupada por un objeto, el centro de otro objeto
 		que ocupara un cierto espacio determinado por su abse y altura y
@@ -94,7 +94,7 @@ class Mapa {
 
 		/*Recibe una posicion y devuelve el nombre del terreno de la 
 		Coordenada con esa posicion.*/
-		std::string pedir_terreno_coordenada(std::pair<int, int> posicion);
+		int pedir_terreno_coordenada(std::pair<int, int> posicion);
 
 		/*Devuelve la posicion maxima a la que llega el vector de filas
 		de baldosas.*/
@@ -106,7 +106,7 @@ class Mapa {
 
 		/*Recibe una posicion y devuelve el nombre del terreno de la 
 		Baldosa con esa posicion.*/
-		std::string pedir_terreno_baldosa(std::pair<int, int> posicion);
+		int pedir_terreno_baldosa(std::pair<int, int> posicion);
 
 		/*Recibe un puntero al objeto.
 		Devuelve true si el objeto se puede agregar al mapa,
