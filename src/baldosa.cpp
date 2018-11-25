@@ -1,16 +1,15 @@
 #include "baldosa.h"
 #include <iostream>
+#include "UnidadesMovibles/cosechadora.h"
 
 #define VACIA 0
 #define OCUPADA 1
 #define CODIGO_SALIDA_TERRENO 't'
 
-Baldosa::Baldosa(int estado, Terreno terreno, int &id, std::pair<int,int> esquina): estado(estado), 
-terreno(terreno), id(id++), esquina(esquina){
-#ifdef NACHO
-	//std::cout << "Esquina " << esquina.first << " " << esquina.second << std::endl;
-#endif
-}
+Baldosa::Baldosa(int estado, Terreno terreno, int id, 
+std::pair<int, int> posicion): ObjetoDune((&terreno)->obtener_cantidad_especia(),
+0, id, -1, 1, 1, posicion), estado(estado), 
+terreno(terreno) {}
 
 bool Baldosa::poner_objeto(ObjetoDune* objeto_dune) {
 	if (estado == OCUPADA) {
@@ -57,4 +56,14 @@ void Baldosa::serializar_mensaje_salida() {
 	mensaje.agregar_parametro(10);
 	mensaje.agregar_parametro(esquina.first);
 	mensaje.agregar_parametro(esquina.second);
+}
+
+int Baldosa::remover_especia(Cosechadora* unidad_atacante) {
+	return (&terreno)->reducir_especia(unidad_atacante->
+	obtener_extraccion_especia());
+}
+
+void Baldosa::matar() {
+	ObjetoDune::mensaje_muerte();
+	fuera_de_juego = true;
 }

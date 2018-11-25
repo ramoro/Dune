@@ -4,6 +4,7 @@
 #include <memory>
 #include "../UnidadesMovibles/unidad_movible.h"
 #include "../mapa.h"
+#include "../Edificios/refineria.h"
 #include <string>
 
 /*Clase que representa a un estado.*/
@@ -34,6 +35,12 @@ class Estado {
 
 		/*Devuelve un puntero al estado inactividad*/
 		std::shared_ptr<Estado> cambiar_a_inactividad();
+
+		/*Recibe un puntero al objeto donde va a ir a depositar la especia
+		y el terreno a donde volvera a extraer mas especia
+		y devuelve un puntero al estado movimiento para depositar.*/
+		std::shared_ptr<Estado> cambiar_a_movimiento_para_depositar(
+		Refineria* objetivo, std::shared_ptr<ObjetoDune> terreno);
 
 		std::string pedir_nombre();
 

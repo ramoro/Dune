@@ -129,6 +129,7 @@ bool Edificio::avanzar_tiempo_creacion(double tiempo_transcurrido) {
 
 void Edificio::matar() {
 	estado = DESTRUIDO;
+	fuera_de_juego = true;
 }
 
 void Edificio::actualizar_existencia(Jugador &jugador) {}

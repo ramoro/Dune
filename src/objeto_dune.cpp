@@ -1,12 +1,15 @@
 #include "objeto_dune.h"
 #include "UnidadesMovibles/unidad_movible.h"
+#include "UnidadesMovibles/cosechadora.h"
 #include <iostream>
 
 #define CODIGO_MUERTE 'd'
 
 ObjetoDune::ObjetoDune(int vida, int costo, int id, int id_duenio, int base,
 int altura, std::pair<int, int> centro): vida(vida), costo_dinero(costo), 
-id(id), id_duenio(id_duenio), base(base), altura(altura), centro(centro) {}
+id(id), id_duenio(id_duenio), base(base), altura(altura), centro(centro) {
+	fuera_de_juego = false;
+}
 
 int ObjetoDune::reducir_vida(int danio) {
 	vida -= danio;
@@ -71,4 +74,12 @@ std::vector<MensajeProtocolo> ObjetoDune::obtener_mensajes_para_mandar() {
 
 void ObjetoDune::limpiar_lista_mensajes() {
 	mensajes.clear();
+}
+
+bool ObjetoDune::esta_fuera_de_juego() {
+	return fuera_de_juego;
+}
+int ObjetoDune::remover_especia(Cosechadora* cosechadora) {
+	std::cout << "entreo a remover especia de objeto dune" << std::endl; 
+	return 0;
 }

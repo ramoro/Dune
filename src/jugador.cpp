@@ -104,3 +104,14 @@ void Jugador::setear_no_entrenando() {
 int Jugador::pedir_id_edificio_entrenando() {
 	return id_edificio_entrenando_unidad;
 }
+
+int Jugador::agregar_especia(int cant_especia) {
+	if (capacidad_especia_disponible - cant_especia < 0) {
+		int especia_agregada = capacidad_especia_disponible;
+		capacidad_especia_disponible = 0;
+		return especia_agregada;
+	} else {
+		capacidad_especia_disponible -= cant_especia;
+		return cant_especia;
+	}
+}

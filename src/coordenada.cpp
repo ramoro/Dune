@@ -1,4 +1,5 @@
 #include "coordenada.h"
+#include "UnidadesMovibles/cosechadora.h"
 
 #define VACIA 0
 #define OCUPADA 1

@@ -12,6 +12,7 @@ Refineria::Refineria(int id, int id_duenio, std::pair<int, int> centro,
 	   config["Refineria"].get("dimension_alto", 0).asInt(), centro) {
 		capacidad =  config["Refineria"].get("capacidad", 0).asInt();
 		id_tipo = ID_REFINERIA;
+		cantidad_especia = 0;
 	}
 
 bool Refineria::agregar_al_juego(Mapa &mapa, Jugador &jugador, int id_edificio, 
@@ -20,8 +21,9 @@ int id_tipo_edificio) {
 	id_tipo_edificio);
 	if (agregado) {
 		jugador.aumentar_capacidad_especia(capacidad);
+		mapa.agregar_refineria(this);
 	}
-	return true;
+	return agregado;
 }
 
 void Refineria::actualizar_existencia(Jugador &jugador) {
@@ -31,8 +33,14 @@ void Refineria::actualizar_existencia(Jugador &jugador) {
 	}
 }
 
-/*int Refineria::depositar_especia(int cantidad_especia) {
-	int espacio_restante = capacidad - cantidad_especia;
-	if (espacio_restante >= 0) return 0;
-	else return (cantidad_especia - capacidad);
-}*/
+void Refineria::agregar_especia(int especia) {
+	cantidad_especia += especia;
+}
+
+void Refineria::reducir_especia(int especia) {
+	cantidad_especia -= especia;
+}
+
+int Refineria::obtener_especia() {
+	return cantidad_especia;
+}

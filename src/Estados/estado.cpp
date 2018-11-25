@@ -4,6 +4,7 @@
 #include "ataque.h"
 #include "muerte.h"
 #include "inactividad.h"
+#include "movimiento_para_depositar.h"
 
 std::shared_ptr<Estado> Estado::actualizar(UnidadMovible *unidad, 
 Mapa &mapa, double tiempo_transcurrido) {
@@ -36,6 +37,13 @@ std::shared_ptr<Estado> Estado::cambiar_a_muerte() {
 std::shared_ptr<Estado> Estado::cambiar_a_inactividad() {
 	std::shared_ptr<Inactividad> inactividad(new Inactividad());
 	return inactividad;
+}
+
+std::shared_ptr<Estado> Estado::cambiar_a_movimiento_para_depositar(
+Refineria* objetivo, std::shared_ptr<ObjetoDune> terreno) {
+	std::shared_ptr<MovimientoParaDepositar> movimiento_deposito(new
+	MovimientoParaDepositar(objetivo, terreno));
+	return movimiento_deposito;
 }
 
 std::string Estado::pedir_nombre() {

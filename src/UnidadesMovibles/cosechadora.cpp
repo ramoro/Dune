@@ -1,10 +1,12 @@
 #include "cosechadora.h"
+#include "../Estados/movimiento_para_depositar.h"
+#include "../mapa.h"
 
 #define ID_COSECHADORA 20 //para usarlo en el protocolo
+#define SEGUNDO_EN_MILIS 1000
 
-//DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Cosechadora::Cosechadora(int id, int id_duenio, std::pair<int, int> centro,
- Config &config) : 
+Config &config) : 
 	Vehiculo(config["Cosechadora"].get("rango", 0).asInt(),
 	 config["Cosechadora"].get("velocidad", 0).asInt(),
 	 config["Cosechadora"].get("tiempo_entrenamiento", 0).asFloat(),
@@ -13,6 +15,16 @@ Cosechadora::Cosechadora(int id, int id_duenio, std::pair<int, int> centro,
 	 config["Cosechadora"].get("dimension_ancho", 0).asInt(),
 	 config["Cosechadora"].get("dimension_alto", 0).asInt(), centro) {
 		id_tipo = ID_COSECHADORA;
+		contador_segundo = 0;
+		especia_encima = 0;
+		limite_especia = config["Cosechadora"].get("limite_especia", 0).
+		asInt();
+		extraccion_especia_por_segundo = config["Cosechadora"].
+		get("extraccion_especia_por_segundo", 0).asInt();
+		deposito_especia_por_segundo = config["Cosechadora"].
+		get("deposito_especia_por_segundo", 0).asInt();
+		estado = NULL;
+
 		for (unsigned int i = 0; i < 
 		config["Cosechadora"]["casas"].size(); i++) {
 			casa.push_back(config["Cosechadora"]["casas"][i].asString());
@@ -39,3 +51,58 @@ std::vector<ObjetoDune*> Cosechadora::ataque_al_morir(Mapa &mapa) {
 	return objs;
 }
 
+void Cosechadora::afectar_terreno(std::shared_ptr<ObjetoDune> terreno,
+Mapa &mapa, double tiempo_transcurrido) {
+	//esto es por si esta llena la cosechadora y le dicen de ir
+	//a sacar mas especia
+	if (especia_encima == limite_especia) {
+		buscar_depositar_especia(mapa, terreno);
+		return;
+	}
+	contador_segundo += tiempo_transcurrido;
+	if (tiempo_transcurrido >= SEGUNDO_EN_MILIS) {
+		contador_segundo -= SEGUNDO_EN_MILIS;
+		especia_encima += extraccion_especia_por_segundo;
+		int especia_sobrante = terreno->remover_especia(this);
+		if (especia_sobrante <= 0) {
+			especia_encima += especia_sobrante; //es por las dudas de si el
+												//rsltdo es negativo. No puedo
+												//sumar mas de lo que tenia
+												//el terreno
+			terreno->matar();
+		}
+
+	}
+	//tiro la especia que sobra
+	if (especia_encima >= limite_especia) {
+		int resto = especia_encima - limite_especia;
+		especia_encima -= resto;
+		buscar_depositar_especia(mapa, terreno);
+	}
+}
+
+int Cosechadora::obtener_extraccion_especia() {
+	return extraccion_especia_por_segundo;
+}
+
+void Cosechadora::buscar_depositar_especia(Mapa &mapa, 
+std::shared_ptr<ObjetoDune> terreno) {
+	Refineria* refineria = mapa.obtener_refineria_mas_cercana(this);
+	if (!refineria) {
+		estado = NULL;
+	} else {
+		estado = estado->cambiar_a_movimiento_para_depositar(refineria, 
+		terreno);
+	}
+}
+
+int Cosechadora::depositar_especia_en_segundo() {
+	if (especia_encima < extraccion_especia_por_segundo) {
+		int especia_devuelta = especia_encima;
+		especia_encima = 0;
+		return especia_devuelta;
+	} else {
+		especia_encima -= extraccion_especia_por_segundo;
+		return extraccion_especia_por_segundo;
+	}
+}

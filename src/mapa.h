@@ -14,8 +14,12 @@
 #include "config.h"
 #include "UnidadesMovibles/unidad_movible.h"
 #include "gusano.h"
+#include "Terrenos/especia.h"
 #include "conversor.h"
 #include "baldosa.h"
+
+class Refineria;
+class Cosechadora;
 
 /*Clase que representa a un mapa del mundo Dune.*/
 class Mapa {
@@ -28,6 +32,8 @@ class Mapa {
 		//ya que el cliente no va a enviar la posicion del edificio
 		BuscadorMejorCamino buscador_mejor_camino;
 		Gusano gusano;
+		std::map<int, Refineria*> refinerias;
+		std::map<int, std::shared_ptr<Baldosa>> terrenos_con_especia;
 
 	public:
 		/*Constructor de la clase.*/
@@ -153,6 +159,27 @@ class Mapa {
 		el objeto se encuentra en el mapa.*/
 		ObjetoDune* obtener_objeto(int id_objeto);
 
+		/*Recibe una refineria y la agrega al mapa de refinerias junto con su
+		id.*/
+		void agregar_refineria(Refineria *refineria);
+
+		/*Recibe un puntero a una cosechadora y devuelve un puntero
+		a la refineria de su equipo mas cercana. En caso de no haber refinerias
+		en su equipo devuelve NULL.*/
+		Refineria* obtener_refineria_mas_cercana(Cosechadora* cosechadora);
+
+		/*Recibe un id de una coordenada con especia y devuelve un puntero a 
+		la misma.*/
+		std::shared_ptr<Baldosa> obtener_baldosa_con_especia(
+		int id_objeto);
+
+		/*Devuelve un vector con todos los mensajes que avisan que ciertos
+		terrenos perdieron la especia que tenian*/
+		std::vector<MensajeProtocolo> obtener_mensajes_terrenos_sin_especia();
+
+		/*Devuelve las refinerias que posee el mapa.*/
+		std::map<int, Refineria*> pedir_refinerias();
+
 	private:
 		/*Recibe la posicion central de un objeto, su base y su altura y
 		setea en ocupadas a todas las coordenadas que ocupa.
@@ -177,6 +204,9 @@ class Mapa {
 		/*Devuelve true si esta dentro de los limites del mapa, false en caso
 		 contrario*/
 		bool esta_dentro_limites(std::pair<int, int> &centro);
+
+		/*Recibe dos puntos y devuelve la distancia entre ellos.*/
+		int calcular_distancia(std::pair<int, int> p1, std::pair<int, int> p2);
 };
 
 #endif 

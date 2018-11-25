@@ -9,6 +9,7 @@ En ella las cosechadoras depositan la especia recolectada y
 esta se transforma en dinero.*/
 class Refineria: public Edificio{
 	private:
+		int cantidad_especia;
 		int capacidad;
 	public:
 		/*Constructor de la clase.*/
@@ -24,10 +25,16 @@ class Refineria: public Edificio{
 		correspondientes, ademas de realizar cosas extras segun el edificio.*/
 		virtual void actualizar_existencia(Jugador &jugador);
 
-		/*Recibe una cantidad de especia y se la almacena en la refineria. 
-		Se devuelve 0 si entro toda la especia en la refineria. Se devuelve
-		un numero mayor a 0 en caso contrario.*/
-		/*int depositar_especia(int cantidad_especia);*/
+		/*Recibe una cantidad de especia y se la agrega a la refineria.*/
+		void agregar_especia(int especia);
+
+		/*Recibe una cantidad de especia y se la reduce a la que tiene
+		la refineria.*/
+		void reducir_especia(int especia);
+
+		/*Devuelve la cantidad de especia que tiene almacenada
+		la refineria.*/
+		int obtener_especia();
 };
 
 #endif 

@@ -6,6 +6,8 @@
 #include <string>
 #include <memory>
 
+class Cosechadora;
+
 /*Clase que representa la coordenada de un mapa del mundo Dune.*/
 class Coordenada {
 	private:
@@ -14,6 +16,9 @@ class Coordenada {
 		Terreno terreno;
 
 	public:
+		/*Constructor de la clase.*/
+		Coordenada(int estado, Terreno terreno);
+
 		/*Recibe un objeto del mundo Dune y ocupa la coordenada con
 		ese objeto en caso de ser posible, devolviendo true. Si la coordenada
 		esta ocupada no lo agrega y devuelve false.*/
@@ -43,7 +48,6 @@ class Coordenada {
 		Precondicion:la coordeanada esta marcada como ocupada.*/
 		void marcar_como_desocupada();
 
-		Coordenada(int estado, Terreno terreno);
 };
 
 #endif 

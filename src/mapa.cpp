@@ -1,8 +1,11 @@
 #include "mapa.h"
 #include "Terrenos/no_especia.h"
 #include "Terrenos/especia.h"
+#include "Edificios/refineria.h"
+#include "UnidadesMovibles/cosechadora.h"
 #include <stdlib.h>
-#include <iostream> 
+#include <iostream>
+#include <math.h>
 
 
 #define LIMITE_ITERACIONES_GUSANO 100
@@ -20,7 +23,8 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						case 30:
 						{
 							NoEspecia roca("roca");
-							Baldosa bald(0, roca, contador_ids_objetos, esquina);
+							Baldosa bald(0, roca, contador_ids_objetos,
+							std::pair<int, int> (i, j));
 							for (unsigned int q = 0; q < PIX; q++){ 
 								Coordenada coord(0, roca);
 								fila.push_back(coord);
@@ -34,7 +38,8 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						case 31:
 						{
 							NoEspecia duna("duna");
-							Baldosa bald(0, duna, contador_ids_objetos, esquina);
+							Baldosa bald(0, duna, contador_ids_objetos,
+							std::pair<int, int> (i, j));
 							for (unsigned int q = 0; q < PIX; q++){ 
 								Coordenada coord(0, duna);
 								fila.push_back(coord);
@@ -44,30 +49,42 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						}
 						case 32:
 						{
-							Especia especiafuerte("especia fuerte");
-							Baldosa bald(0, especiafuerte, contador_ids_objetos, esquina);
+							Especia especiafuerte("especia fuerte", root);
+							std::shared_ptr<Baldosa> bald(new 
+							Baldosa(0, especiafuerte, contador_ids_objetos,
+							std::pair<int, int> (i, j)));
 							for (unsigned int q = 0; q < PIX; q++){ 
 								Coordenada coord(0, especiafuerte);
 								fila.push_back(coord);
 							}
-							fila_baldosa.push_back(bald);
+							fila_baldosa.push_back(*bald);
+							terrenos_con_especia.emplace(
+							std::pair<int, std::shared_ptr<Baldosa>>(
+							contador_ids_objetos, bald));
+							std::cout << "ID ESFUER " << contador_ids_objetos << "con pos x " << i << " pos y " << j<<std::endl;
 							break;
 						}
 						case 33:
 						{
-							Especia especiasuave("especia suave");
-							Baldosa bald(0, especiasuave, contador_ids_objetos, esquina);
+							Especia especiasuave("especia suave", root);
+							std::shared_ptr<Baldosa> bald(new 
+							Baldosa(0, especiasuave, contador_ids_objetos,
+							std::pair<int, int> (i, j)));
 							for (unsigned int q = 0; q < PIX; q++){ 
 								Coordenada coord(0, especiasuave);
 								fila.push_back(coord);
 							}
-							fila_baldosa.push_back(bald);
+							fila_baldosa.push_back(*bald);
+							terrenos_con_especia.emplace(
+							std::pair<int, std::shared_ptr<Baldosa>>(
+							contador_ids_objetos, bald));
 							break;
 						}
 						case 34:
 						{
 							NoEspecia cima("cima");
-							Baldosa bald(0, cima, contador_ids_objetos, esquina);
+							Baldosa bald(0, cima, contador_ids_objetos,
+							std::pair<int, int> (i, j));
 							for (unsigned int q = 0; q < PIX; q++){ 
 								Coordenada coord(0, cima);
 								fila.push_back(coord);
@@ -77,10 +94,11 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						}
 						case 35:
 						{
-							NoEspecia precipicio("precipicio");
-							Baldosa bald(0, precipicio, contador_ids_objetos, esquina);
+							NoEspecia precipio("precipicio");
+							Baldosa bald(0, precipio, contador_ids_objetos,
+							std::pair<int, int> (i, j));
 							for (unsigned int q = 0; q < PIX; q++){ 
-								Coordenada coord(0, precipicio);
+								Coordenada coord(0, precipio);
 								fila.push_back(coord);
 							}
 							fila_baldosa.push_back(bald);
@@ -89,7 +107,8 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						default:
 						{
 							NoEspecia arena("arena");							
-							Baldosa bald(0, arena, contador_ids_objetos, esquina);
+							Baldosa bald(0, arena, contador_ids_objetos,
+							std::pair<int, int> (i, j));
 							for (unsigned int q = 0; q < PIX; q++){ 
 								Coordenada coord(0, arena);
 								fila.push_back(coord);
@@ -97,7 +116,8 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 							fila_baldosa.push_back(bald);
 							break;
 						}
-				}
+					}
+					contador_ids_objetos++;
 			}
 			for (unsigned int p = 0; p < PIX; p++){ 
 			coordenadas.push_back(fila);
@@ -112,7 +132,7 @@ centro_objeto2, int altura_objeto2, int base_objeto2) {
 	if ((pos_objeto1.first <= (centro_objeto2.first + 
 		(altura_objeto2 / 2)) && pos_objeto1.first >= 
 		(centro_objeto2.first - (altura_objeto2/ 2))) && 
-		((centro_objeto2.second <= centro_objeto2.second + 
+		((pos_objeto1.second <= centro_objeto2.second + 
 		(base_objeto2 / 2)) && pos_objeto1.second >= 
 		(centro_objeto2.second - (base_objeto2/ 2)))) {
 		return true;
@@ -124,6 +144,7 @@ std::vector<ObjetoDune*> Mapa::buscar_unidades_alrededor(std::pair<int, int>
 centro_unidad, int altura, int base, bool verificar_asentamiento,
 bool verificar_ataque_a_enemigo, int id_duenio, bool es_gusano) {
 	std::vector<ObjetoDune*> unidades_alrededor;
+	bool espacio_invalido = false;
 
 	for (std::map<int, ObjetoDune*>::iterator it = 
 	mapa_ids_objetos.begin(); it != mapa_ids_objetos.end(); ++it) {
@@ -151,7 +172,6 @@ bool verificar_ataque_a_enemigo, int id_duenio, bool es_gusano) {
 		//me fijo que no se encuentre atravezando el espacio donde
 		//se establecera el edificio
 		if (verificar_asentamiento) {
-			bool espacio_invalido = false;
 			if (espacio_invalido) break;
 			std::vector<std::pair<int, int>> direcs_verificacion = {{0, base/2},
 			{0, -(base/2)}, {altura/2,0}, {-(altura/2), 0},
@@ -253,6 +273,9 @@ void Mapa::eliminar_objeto(int id_objeto) {
 	mapa_ids_objetos.erase(id_objeto);
 	coordenadas[centro_objeto.first][centro_objeto.second].
 	sacar_objeto();
+	if (refinerias.count(id_objeto) > 0) {
+		refinerias.erase(id_objeto);
+	}
 }
 
 void Mapa::desenterrar_gusano() {
@@ -340,16 +363,17 @@ bool Mapa::agregado_edificio(ObjetoDune* objeto) {
 	return false;
 }
 
-/*void Mapa::agregar_edificio(ObjetoDune* objeto, 
-int id_objeto, std::pair<int, int> &centro) {
-	agregar_objeto(objeto, id_objeto, centro);
-}*/
-
 std::pair<int,int> Mapa::pedir_cercania(int id, int id_objetivo) {
 	std::pair<int, int> centro_unidad = (mapa_ids_objetos.at(id))->
 	obtener_centro();
-	std::pair<int, int> centro_objetivo = (mapa_ids_objetos.at(
-	id_objetivo)->obtener_centro());
+	std::pair<int, int> centro_objetivo;
+	if (mapa_ids_objetos.count(id_objetivo) > 0) {
+		centro_objetivo = (mapa_ids_objetos.at(
+		id_objetivo)->obtener_centro());
+	} else {
+		centro_objetivo = (terrenos_con_especia.at(
+		id_objetivo)->obtener_centro());
+	}
 
 	return std::pair<int, int> (abs(centro_unidad.first - 
 	centro_objetivo.first), abs(centro_unidad.second - 
@@ -558,4 +582,60 @@ void Mapa::actualizar_salida_gusano(double tiempo_transcurrido) {
 ObjetoDune* Mapa::obtener_objeto(int id_objeto) {
 	ObjetoDune *objeto = mapa_ids_objetos.at(id_objeto);
 	return objeto;
+}
+
+void Mapa::agregar_refineria(Refineria *refineria) {
+	refinerias.emplace(std::pair<int, Refineria*>(refineria->pedir_id(),
+	refineria));
+}
+
+Refineria* Mapa::obtener_refineria_mas_cercana(Cosechadora* cosechadora) {
+	Refineria* refineria_objetivo = NULL;
+	int distancia_a_ref_mas_cercana = -1;
+	for (std::map<int, Refineria*>::iterator it = 
+	refinerias.begin(); it != refinerias.end(); ++it) {
+		if (it->second->pedir_id_duenio() != cosechadora->pedir_id_duenio()) {
+			continue;
+		}
+		int distancia_a_refineria = calcular_distancia(
+		cosechadora->obtener_centro(), it->second->obtener_centro());
+		if (distancia_a_ref_mas_cercana == -1) {
+			refineria_objetivo = it->second;
+			distancia_a_ref_mas_cercana = distancia_a_refineria;
+		} else {
+			if (distancia_a_refineria < distancia_a_ref_mas_cercana) {
+				distancia_a_ref_mas_cercana = distancia_a_refineria;
+				refineria_objetivo = it->second;
+			}
+		}
+	}
+	return refineria_objetivo;
+}
+
+int Mapa::calcular_distancia(std::pair<int, int> p1, std::pair<int, int> p2) {
+	return sqrt(pow(2, p2.first - p1.first) + pow(2, p2.second - p1.second));
+}
+
+std::shared_ptr<Baldosa> Mapa::obtener_baldosa_con_especia(
+int id_objeto) {
+	return terrenos_con_especia.at(id_objeto);
+}
+
+std::vector<MensajeProtocolo> Mapa::obtener_mensajes_terrenos_sin_especia() {
+	std::vector<MensajeProtocolo> mensajes_terrenos_sin_especia;
+	for (std::map<int, std::shared_ptr<Baldosa>>::iterator it = 
+	terrenos_con_especia.begin(); it != terrenos_con_especia.end(); ++it) {
+		std::vector<MensajeProtocolo> mensajes = it->second->
+		obtener_mensajes_para_mandar();
+		for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
+		mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
+			mensajes_terrenos_sin_especia.push_back(*it_mensajes);
+		}
+		it->second->limpiar_lista_mensajes();
+	}
+	return mensajes_terrenos_sin_especia;
+}
+
+std::map<int, Refineria*> Mapa::pedir_refinerias() {
+	return refinerias;
 }

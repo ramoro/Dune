@@ -1,6 +1,7 @@
 #include "movimiento.h"
 #include "inactividad.h"
 #include <list>	
+#include <iostream>
 #include "math.h"
 
 //VER CUANTO MOVER A LA UNIDAD SEGUN EL TIEMPO TRANSCURRIDO Y SU VELOCIDAD
@@ -9,6 +10,7 @@ Mapa &mapa, double tiempo_transcurrido) {
 	std::list<std::pair<int, int>> camino = unidad->pedir_camino();
 	bool posicion_ocupada = mapa.esta_ocupada_coordenada(camino.front());
 	if (posicion_ocupada && camino.size() == 1) {
+		unidad->limpiar_camino();
 		std::shared_ptr<Inactividad> inactividad(new Inactividad());
 		return inactividad;
 	} else if (posicion_ocupada) {
@@ -19,10 +21,10 @@ Mapa &mapa, double tiempo_transcurrido) {
 	}
 	//en vez de front deberia ser la posicion segun el tiempo y la velocidad
 	//a avanzar camino deberia pasarle la cantiadd de posiciones que avanzo ene l camino
+	
+#ifdef NACHO
 	double dist1 = sqrt(abs(unidad->obtener_centro().first - camino.front().first) * abs(unidad->obtener_centro().second - camino.front().second));
 	double dist2 = tiempo_transcurrido * unidad->obtener_velocidad();
-
-#ifdef NACHO
 	std::cout << "dist1 " << dist1 << " dist2 " << dist2 << std::endl;
 
 	if (dist2 <= dist1){
@@ -36,6 +38,7 @@ Mapa &mapa, double tiempo_transcurrido) {
 	unidad->avanzar_camino();
 	unidad->serializar_mensaje_movimiento(); 
 	//significa que llego a destino, deberia cambiar la verificacion, ya que es segunc uanto se mueve
+	//ademas de que porahi antes ya esta ocupado por un pedazo de edificio
 	if (camino.size() == 1) {
 		std::shared_ptr<Inactividad> inactividad(new Inactividad());
 		return inactividad;

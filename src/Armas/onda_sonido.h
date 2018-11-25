@@ -2,6 +2,7 @@
 #define ONDA_SONIDO_H
 
 #include "arma.h"
+#include "../src/config.h"
 
 /*Clase que representa un arma de ondas de sonidos en el mundo de Dune.*/
 class OndaSonido: public Arma {
