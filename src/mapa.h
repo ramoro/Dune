@@ -16,6 +16,7 @@
 #include "gusano.h"
 #include "conversor.h"
 #include "baldosa.h"
+#include "cola_bloqueante.h"
 
 class Refineria;
 class Cosechadora;
@@ -178,6 +179,11 @@ class Mapa {
 
 		/*Devuelve las refinerias que posee el mapa.*/
 		std::map<int, Refineria*> pedir_refinerias();
+
+		void guardar_mensaje_en_colas(std::map<int, std::shared_ptr<ColaBloqueante>> colas,
+MensajeProtocolo mensaje);
+
+		void terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes);
 
 	private:
 		/*Recibe la posicion central de un objeto, su base y su altura y

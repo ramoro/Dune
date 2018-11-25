@@ -97,6 +97,7 @@ class Partida {
 		void actualizar_modelo(double tiempo_transcurrido, 
 		std::map<int, std::shared_ptr<ColaBloqueante>> cola_mensajes);
 		
+		void terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> cola_mensajes);
 	private:
 		/*Recibe el puntero al edificio a actualizar el tiempo de entenamiento
 		y el tiempo pasado.*/

@@ -48,15 +48,21 @@ void Baldosa::marcar_como_desocupada() {
 	estado = VACIA;
 }
 
-void Baldosa::serializar_mensaje_salida() {
-	std::cout << "entro a serializar " << std::endl;
+void Baldosa::serializar_mensaje_baldosa() {
+	MensajeProtocolo mensaje;
 	mensaje.asignar_accion(CODIGO_SALIDA_TERRENO);
-	mensaje.agregar_parametro(30);
+	mensaje.agregar_parametro(terreno.obtener_id_material());
 	mensaje.agregar_parametro(id);
-	mensaje.agregar_parametro(10);
-	mensaje.agregar_parametro(10);
-	mensaje.agregar_parametro(esquina.first);
-	mensaje.agregar_parametro(esquina.second);
+	mensaje.agregar_parametro(100);
+	mensaje.agregar_parametro(100);
+	mensaje.agregar_parametro(obtener_centro().first);
+	mensaje.agregar_parametro(obtener_centro().second);
+	mensajes.push_back(std::move(mensaje));
+}
+
+int Baldosa::cantidad_mensajes(){
+	//std::cout << mensaje.pedir_accion() << std::cout;
+	return mensajes.size();
 }
 
 int Baldosa::remover_especia(Cosechadora* unidad_atacante) {

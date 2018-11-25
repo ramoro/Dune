@@ -15,8 +15,9 @@
 #define CODIGO_PRECIPICIO 35
 #define CODIGO_ARENA 36
 
-#define PIX 10
+#define PIX 50
 #define LIMITE_ITERACIONES_GUSANO 100
+#define TAM_TERRENO 100
 
 Mapa::Mapa() {}
 
@@ -31,14 +32,17 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						{
 							Terreno roca(CODIGO_ROCA, root);
 							Baldosa bald(0, roca, contador_ids_objetos,
-							std::pair<int, int> (i, j));
+							std::pair<int, int> (i*TAM_TERRENO, j*TAM_TERRENO));
 							for (unsigned int q = 0; q < PIX; q++){ 
 								Coordenada coord(0, roca);
 								fila.push_back(coord);
 							}
-							if (i == 0 && j ==0){
-								bald.serializar_mensaje_salida();
+							if (i%100==0){
+								bald.serializar_mensaje_baldosa();
 							}
+							/*if (i==j){
+								bald.serializar_mensaje_baldosa();
+							}*/
 							fila_baldosa.push_back(bald);
 							break;
 						}
@@ -46,12 +50,13 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						{
 							Terreno duna(CODIGO_DUNA, root);
 							Baldosa bald(0, duna, contador_ids_objetos,
-							std::pair<int, int> (i, j));
+							std::pair<int, int> (i*PIX, j*PIX));
 							for (unsigned int q = 0; q < PIX; q++){ 
 								Coordenada coord(0, duna);
 								fila.push_back(coord);
 							}
 							fila_baldosa.push_back(bald);
+							bald.serializar_mensaje_baldosa();
 							break;
 						}
 						case CODIGO_ESPECIAFUERTE:
@@ -59,7 +64,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 							Terreno especiafuerte(CODIGO_ESPECIAFUERTE, root);
 							std::shared_ptr<Baldosa> bald(new 
 							Baldosa(0, especiafuerte, contador_ids_objetos,
-							std::pair<int, int> (i, j)));
+							std::pair<int, int> (i*PIX, j*PIX)));
 							for (unsigned int q = 0; q < PIX; q++){ 
 								Coordenada coord(0, especiafuerte);
 								fila.push_back(coord);
@@ -68,6 +73,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 							terrenos_con_especia.emplace(
 							std::pair<int, std::shared_ptr<Baldosa>>(
 							contador_ids_objetos, bald));
+							bald->serializar_mensaje_baldosa();
 							//std::cout << "ID ESFUER " << contador_ids_objetos << "con pos x " << i << " pos y " << j<<std::endl;
 							break;
 						}
@@ -76,7 +82,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 							Terreno especiasuave(CODIGO_ESPECIASUAVE, root);
 							std::shared_ptr<Baldosa> bald(new 
 							Baldosa(0, especiasuave, contador_ids_objetos,
-							std::pair<int, int> (i, j)));
+							std::pair<int, int> (i*PIX, j*PIX)));
 							for (unsigned int q = 0; q < PIX; q++){ 
 								Coordenada coord(0, especiasuave);
 								fila.push_back(coord);
@@ -85,42 +91,46 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 							terrenos_con_especia.emplace(
 							std::pair<int, std::shared_ptr<Baldosa>>(
 							contador_ids_objetos, bald));
+							bald->serializar_mensaje_baldosa();
 							break;
 						}
 						case CODIGO_CIMA:
 						{
 							Terreno cima(CODIGO_CIMA, root);
 							Baldosa bald(0, cima, contador_ids_objetos,
-							std::pair<int, int> (i, j));
+							std::pair<int, int> (i*PIX, j*PIX));
 							for (unsigned int q = 0; q < PIX; q++){ 
 								Coordenada coord(0, cima);
 								fila.push_back(coord);
 							}
 							fila_baldosa.push_back(bald);
+							bald.serializar_mensaje_baldosa();
 							break;
 						}
 						case CODIGO_PRECIPICIO:
 						{
 							Terreno precipio(CODIGO_PRECIPICIO, root);
 							Baldosa bald(0, precipio, contador_ids_objetos,
-							std::pair<int, int> (i, j));
+							std::pair<int, int> (i*PIX, j*PIX));
 							for (unsigned int q = 0; q < PIX; q++){ 
 								Coordenada coord(0, precipio);
 								fila.push_back(coord);
 							}
 							fila_baldosa.push_back(bald);
+							bald.serializar_mensaje_baldosa();
 							break;
 						}
 						default:
 						{
 							Terreno arena(CODIGO_ARENA, root);							
 							Baldosa bald(0, arena, contador_ids_objetos,
-							std::pair<int, int> (i, j));
+							std::pair<int, int> (i*PIX, j*PIX));
 							for (unsigned int q = 0; q < PIX; q++){ 
 								Coordenada coord(0, arena);
 								fila.push_back(coord);
 							}
 							fila_baldosa.push_back(bald);
+							bald.serializar_mensaje_baldosa();
 							break;
 						}
 					}
@@ -645,4 +655,29 @@ std::vector<MensajeProtocolo> Mapa::obtener_mensajes_terrenos_sin_especia() {
 
 std::map<int, Refineria*> Mapa::pedir_refinerias() {
 	return refinerias;
+}
+
+void Mapa::terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes){
+	for (unsigned int i = 0 ; i < baldosas.size() ; i++){
+		for (unsigned int j = 0 ; j < baldosas[0].size() ; j++){
+			std::vector<MensajeProtocolo> mensajes = baldosas[i][j].obtener_mensajes_para_mandar();
+			std::cout << baldosas[i][j].cantidad_mensajes() << std::endl;
+			for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
+			mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
+				std::vector<int> v = (*it_mensajes).pedir_parametros();
+				std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << v[4] << v[5] << std::endl;
+				guardar_mensaje_en_colas(colas_mensajes, *it_mensajes);
+			}
+			baldosas[i][j].limpiar_lista_mensajes();
+		}
+	}
+}
+
+void Mapa::guardar_mensaje_en_colas(
+std::map<int, std::shared_ptr<ColaBloqueante>> colas,
+MensajeProtocolo mensaje) {
+	for (std::map<int, std::shared_ptr<ColaBloqueante>>::iterator
+	it = colas.begin(); it != colas.end(); ++it) {
+		(it->second)->push(mensaje);
+	} 
 }

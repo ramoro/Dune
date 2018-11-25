@@ -7,7 +7,7 @@
 
 using namespace std::chrono;
 
-#define TAM_COLA 300
+#define TAM_COLA 600
 #define SEGUNDOS_POR_FRAME 1.f/40
 
 /*Juego::Juego(Partida *partida): 
@@ -46,6 +46,7 @@ void Juego::hacer_ajustes_iniciales() {
   }
 
   mutex.lock();
+  this->partida->terreno_inicial(this->colas_envio_clientes);
   this->partida->actualizar_modelo(SEGUNDOS_POR_FRAME, this->colas_envio_clientes);
   mutex.unlock();
   MensajeProtocolo msj;
