@@ -1,6 +1,5 @@
 #include "mapa.h"
-#include "Terrenos/no_especia.h"
-#include "Terrenos/especia.h"
+#include "Terrenos/terreno.h"
 #include "Edificios/refineria.h"
 #include "UnidadesMovibles/cosechadora.h"
 #include <stdlib.h>
@@ -21,7 +20,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 					switch (root["terreno"][i][j].asInt()){
 						case 30:
 						{
-							NoEspecia roca("roca");
+							Terreno roca("roca", root);
 							Baldosa bald(0, roca, contador_ids_objetos,
 							std::pair<int, int> (i, j));
 							for (unsigned int q = 0; q < PIX; q++){ 
@@ -33,7 +32,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						}
 						case 31:
 						{
-							NoEspecia duna("duna");
+							Terreno duna("duna", root);
 							Baldosa bald(0, duna, contador_ids_objetos,
 							std::pair<int, int> (i, j));
 							for (unsigned int q = 0; q < PIX; q++){ 
@@ -45,7 +44,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						}
 						case 32:
 						{
-							Especia especiafuerte("especia fuerte", root);
+							Terreno especiafuerte("especia fuerte", root);
 							std::shared_ptr<Baldosa> bald(new 
 							Baldosa(0, especiafuerte, contador_ids_objetos,
 							std::pair<int, int> (i, j)));
@@ -62,7 +61,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						}
 						case 33:
 						{
-							Especia especiasuave("especia suave", root);
+							Terreno especiasuave("especia suave", root);
 							std::shared_ptr<Baldosa> bald(new 
 							Baldosa(0, especiasuave, contador_ids_objetos,
 							std::pair<int, int> (i, j)));
@@ -78,7 +77,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						}
 						case 34:
 						{
-							NoEspecia cima("cima");
+							Terreno cima("cima", root);
 							Baldosa bald(0, cima, contador_ids_objetos,
 							std::pair<int, int> (i, j));
 							for (unsigned int q = 0; q < PIX; q++){ 
@@ -90,7 +89,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						}
 						case 35:
 						{
-							NoEspecia precipio("precipicio");
+							Terreno precipio("precipicio", root);
 							Baldosa bald(0, precipio, contador_ids_objetos,
 							std::pair<int, int> (i, j));
 							for (unsigned int q = 0; q < PIX; q++){ 
@@ -102,7 +101,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						}
 						default:
 						{
-							NoEspecia arena("arena");							
+							Terreno arena("arena", root);							
 							Baldosa bald(0, arena, contador_ids_objetos,
 							std::pair<int, int> (i, j));
 							for (unsigned int q = 0; q < PIX; q++){ 

@@ -115,3 +115,7 @@ int Jugador::agregar_especia(int cant_especia) {
 		return cant_especia;
 	}
 }
+
+int Jugador::pedir_dinero() {
+	return dinero;
+}

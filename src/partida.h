@@ -76,6 +76,18 @@ class Partida {
 		std::map<int, std::shared_ptr<ColaBloqueante>> cola_mensajes,
 		int id_tipo_objeto_rechazado);
 
+		/*Recibe el dinero actual del jugador y crea un mensaje asigandole
+		la accion de cambio de dinero junto con sus parametros segun
+		indica el protocolo y lo encola a la cola recibida.*/
+		void serializar_mensaje_dinero(int dinero,
+		std::map<int, std::shared_ptr<ColaBloqueante>> colas);
+
+		/*Recibe la energia actual del jugador y crea un mensaje asigandole
+		la accion de cambio de dinero junto con sus parametros segun
+		indica el protocolo y lo encola a la cola recibida.*/
+		void serializar_mensaje_energia(int energia,
+		std::map<int, std::shared_ptr<ColaBloqueante>> colas);
+
 		/*Recibe una determinada cantidad de tiempo que pasa en el juego
 		y lo actualiza segun cuanto transcurrio, agregando los mensajes
 		correspondientes a la cola bloqueante recibida por parametro.*/

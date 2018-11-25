@@ -12,7 +12,6 @@ class Baldosa: public ObjetoDune {
 		ObjetoDune* objeto;
 		int estado;
 		Terreno terreno;
-		int id;
 
 	public:
 		/*Constructor de la clase.*/

@@ -6,7 +6,7 @@ link_libraries(${JSONCPP_LIBRARIES})
 
 project(modelo_dune)
 
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -ggdb -O0 -Werror -Wall -DNACHO -pedantic")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -ggdb -O0 -Werror -Wall -pedantic")
 
 add_library(sdldemo STATIC
  src/Armas/arma.cpp
@@ -27,10 +27,6 @@ add_library(sdldemo STATIC
  src/Armas/explosion.h
  src/Terrenos/terreno.cpp
  src/Terrenos/terreno.h
- src/Terrenos/especia.cpp
- src/Terrenos/especia.h
- src/Terrenos/no_especia.cpp
- src/Terrenos/especia.h
  src/UnidadesMovibles/unidad_movible.cpp
  src/UnidadesMovibles/unidad_movible.h
  src/UnidadesMovibles/fabrica_unidades_movibles.cpp
@@ -93,6 +89,10 @@ add_library(sdldemo STATIC
  src/Estados/muerte.h
  src/Estados/inactividad.cpp
  src/Estados/inactividad.h
+ src/Estados/movimiento_para_depositar.cpp
+ src/Estados/movimiento_para_depositar.h
+ src/Estados/deposito.cpp
+ src/Estados/deposito.h
 )
 set(CMAKE_BUILD_TYPE Debug)
 # Agrego la carpeta con los headers autogenerados a los includes

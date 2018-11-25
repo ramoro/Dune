@@ -100,7 +100,6 @@ class Edificio: public ObjetoDune {
 		/*Devuelve la distancia euclideana dado un centro para con el
 		centro del propio edificio*/
 		int calcular_distancia_baldosas(std::pair<int,int> &centro_otro);
-
 };
 
 #endif

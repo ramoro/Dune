@@ -87,6 +87,9 @@ class Jugador {
 		/*Recibe una cantidad de especia y la agrega al jugador.
 		Devuelve la cantidad de especia que pudo ser agregada.*/
 		int agregar_especia(int cant_especia);
+
+		/*Devuelve la cantidad de dinero que posee el jugador.*/
+		int pedir_dinero();
 };
 
 #endif 
