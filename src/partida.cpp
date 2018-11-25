@@ -22,13 +22,16 @@ Partida::Partida() {
 	std::cout << "contador_ids_objetos " << contador_ids_objetos << std::endl;
 }
 
-int Partida::agregar_jugador(std::string casa_jugador, 
+int Partida::pedir_id_nuevo_cliente() {
+	return contador_ids_jugadores;
+}
+
+void Partida::agregar_jugador(std::string casa_jugador, 
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	Jugador jugador(casa_jugador,config);
 	jugadores.emplace(std::pair<int, Jugador>(contador_ids_jugadores, 
 	jugador));
 	std::pair<int,int> ubicacion_centro = ubicar_centro_construccion();
-	int id_nuevo_jugador = contador_ids_jugadores;
 	std::cout << "centro constuccion en " << ubicacion_centro.first << " " << ubicacion_centro.second << std::endl;
 	agregar_edificio(contador_ids_jugadores, ubicacion_centro, 0, colas_mensajes);
 #ifdef DEBUG 
@@ -36,7 +39,6 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 
 #endif
 	contador_ids_jugadores++;
-	return id_nuevo_jugador;
 }
 
 std::pair<int,int> Partida::buscar_ubicacion(std::pair<int,int> esquina){
@@ -119,9 +121,9 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		contador_ids_objetos++;
 		ptr_edificio->serializar_mensaje_creacion_objeto(ptr_edificio);
 		serializar_mensaje_dinero(jugadores.at(id_jugador).pedir_dinero(),
-		colas_mensajes);
+		id_jugador, colas_mensajes);
 		serializar_mensaje_energia(jugadores.at(id_jugador).
-		pedir_energia_disponible(), colas_mensajes);
+		pedir_energia_disponible(), id_jugador, colas_mensajes);
 	} else {
 		std::cout << "No se pudo construir edificio de tipo " << id_tipo_edificio << std::endl;
 		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_edificio);
@@ -165,8 +167,8 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 			std::cout << "ERRO no se puede agregar" << std::endl;
 			serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad);
 		} else {
-			serializar_mensaje_dinero(jugadores.at(id_jugador).pedir_dinero(), 
-			colas_mensajes);
+			serializar_mensaje_dinero(jugadores.at(id_jugador).pedir_dinero(),
+			id_jugador, colas_mensajes);
 			contador_ids_objetos++;
 		}
 	}
@@ -231,20 +233,20 @@ MensajeProtocolo mensaje) {
 }
 
 
-void Partida::serializar_mensaje_dinero(int dinero,
+void Partida::serializar_mensaje_dinero(int dinero, int id_jugador,
 std::map<int, std::shared_ptr<ColaBloqueante>> colas) {
 	MensajeProtocolo mensaje;
 	mensaje.asignar_accion('p');
 	mensaje.agregar_parametro(dinero);
-	guardar_mensaje_en_colas(colas, mensaje);
+	colas.at(id_jugador)->push(mensaje);
 }
 
-void Partida::serializar_mensaje_energia(int energia,
+void Partida::serializar_mensaje_energia(int energia, int id_jugador,
 std::map<int, std::shared_ptr<ColaBloqueante>> colas) {
 	MensajeProtocolo mensaje;
 	mensaje.asignar_accion('o');
 	mensaje.agregar_parametro(energia);
-	guardar_mensaje_en_colas(colas, mensaje);
+	colas.at(id_jugador)->push(mensaje);
 }
 
 void Partida::actualizar_modelo(double tiempo_transcurrido, 
@@ -301,8 +303,8 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 			jugadores.at(it_ref->second->pedir_id_duenio()).
 			aumentar_dinero(especia_agregada);
 			serializar_mensaje_dinero(jugadores.at(
-			it_ref->second->pedir_id_duenio()).pedir_dinero(), 
-			colas_mensajes);
+			it_ref->second->pedir_id_duenio()).pedir_dinero(),
+			it_ref->second->pedir_id_duenio(), colas_mensajes);
 		}
 	}
 

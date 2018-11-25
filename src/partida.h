@@ -28,10 +28,13 @@ class Partida {
 		/*Constructor de la clase.*/
 		Partida();
 
+		/*Devuelve el id que pertenece al nuevo cliente 
+		que se agregara a la partida.*/
+		int pedir_id_nuevo_cliente();
+
 		/*Recibe un string con un nombre y agregar a la partida un Jugador
-		con ese nombre, ademas crea su edificio Centro de Construccion. 
-		Devuelve el id del nuevo jugador agregado.*/
-		int agregar_jugador(std::string nombre_jugador,
+		con ese nombre, ademas crea su edificio Centro de Construccion. */
+		void agregar_jugador(std::string nombre_jugador,
 		std::map<int, std::shared_ptr<ColaBloqueante>> cola_mensajes);
 
 		/*Agrega un edificio segun el id de tipo pasado, asociado al id pasado
@@ -76,16 +79,16 @@ class Partida {
 		std::map<int, std::shared_ptr<ColaBloqueante>> cola_mensajes,
 		int id_tipo_objeto_rechazado);
 
-		/*Recibe el dinero actual del jugador y crea un mensaje asigandole
-		la accion de cambio de dinero junto con sus parametros segun
-		indica el protocolo y lo encola a la cola recibida.*/
-		void serializar_mensaje_dinero(int dinero,
+		/*Recibe el dinero actual del jugador, su id y crea un mensaje 
+		asigandole la accion de cambio de dinero junto con sus parametros 
+		segun indica el protocolo y lo encola a la cola que le corresponde.*/
+		void serializar_mensaje_dinero(int dinero, int id_jugador,
 		std::map<int, std::shared_ptr<ColaBloqueante>> colas);
 
-		/*Recibe la energia actual del jugador y crea un mensaje asigandole
-		la accion de cambio de dinero junto con sus parametros segun
-		indica el protocolo y lo encola a la cola recibida.*/
-		void serializar_mensaje_energia(int energia,
+		/*Recibe la energia actual del jugador y su id y crea un mensaje
+		asigandole la accion de cambio de dinero junto con sus parametros 
+		segun indica el protocolo y lo encola a la cola correspondiente.*/
+		void serializar_mensaje_energia(int energia, int id_jugador,
 		std::map<int, std::shared_ptr<ColaBloqueante>> colas);
 
 		/*Recibe una determinada cantidad de tiempo que pasa en el juego
