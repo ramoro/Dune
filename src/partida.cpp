@@ -352,3 +352,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		eliminar_unidad_del_juego(*it_unidades);
 	}
 }
+
+void Partida::terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes){
+	mapa.terreno_inicial(colas_mensajes);
+}

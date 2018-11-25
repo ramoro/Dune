@@ -13,9 +13,7 @@ class Baldosa: public ObjetoDune {
 		ObjetoDune* objeto;
 		int estado;
 		Terreno terreno;
-		int id;
 		std::pair<int,int> esquina;
-		MensajeProtocolo mensaje;
 
 	public:
 		/*Constructor de la clase.*/
@@ -51,7 +49,7 @@ class Baldosa: public ObjetoDune {
 		Precondicion:la coordeanada esta marcada como ocupada.*/
 		void marcar_como_desocupada();
 
-		void serializar_mensaje_salida();
+		void serializar_mensaje_baldosa();
 
 		/*Se saca al terreno de la baldosa especia si es que tiene
 		segun la cantidad que puede sacar la unidad recibida. Devuelve
@@ -61,6 +59,8 @@ class Baldosa: public ObjetoDune {
 		/*Avisa que la baldosa en caso de tener especia ya no tiene
 		mas y se avisa armando un mensaje para enviar al cliente.*/
 		virtual void matar();
+
+		int cantidad_mensajes();
 };
 
 #endif 
