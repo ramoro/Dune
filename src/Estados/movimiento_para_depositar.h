@@ -22,7 +22,7 @@ class MovimientoParaDepositar: public Movimiento {
 		a la refineria donde debe depositar la especia devuelve el estado
 		Deposito.*/
 		virtual std::shared_ptr<Estado> actualizar(UnidadMovible *unidad,
-		Mapa &mapa, double tiempo_transcurrido);
+		Mapa &mapa, int tiempo_transcurrido);
 };
 
 #endif 

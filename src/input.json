@@ -396,8 +396,9 @@
 		"porcentaje_dinero_recuperado_edificios": 0.5
 	},
 	"Gusano": {
-		"dimension_ancho": 100,
-		"dimension_alto": 100
+		"dimension_ancho": 50,
+		"dimension_alto": 50,
+		"tiempo_salida_segs": 240
 	},
 	"Explosion Devastador": {
 		"dimension_ancho": 100,

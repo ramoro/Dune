@@ -11,7 +11,7 @@ especia en una refineria.*/
 class Deposito: public Estado {
 	private:
 		Refineria* refineria_deposito;
-		double contador_segundo; //lo cuenta en milisegundos. Al llegar 
+		int contador_segundo; //lo cuenta en milisegundos. Al llegar 
 								 //al segundo se reinicia.
 		int tiempo_transcurrido;
 		std::shared_ptr<ObjetoDune> especia_a_volver;
@@ -24,7 +24,7 @@ class Deposito: public Estado {
 		a la refineria donde debe depositar la especia devuelve el estado
 		Deposito.*/
 		virtual std::shared_ptr<Estado> actualizar(UnidadMovible *unidad,
-		Mapa &mapa, double tiempo_transcurrido);
+		Mapa &mapa, int tiempo_transcurrido);
 };
 
 #endif 

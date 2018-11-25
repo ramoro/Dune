@@ -9,7 +9,7 @@ objetivo): objeto_destino(objetivo), pos_destino(objetivo->obtener_centro()) {
 }
 
 std::shared_ptr<Estado> MovimientoParaAtacar::actualizar(UnidadMovible 
-*unidad, Mapa &mapa, double tiempo_transcurrido) {
+*unidad, Mapa &mapa, int tiempo_transcurrido) {
 	//si la unidad ya esta muerta la unidad queda inactiva
 	if (objeto_destino->esta_fuera_de_juego()) {
 		unidad->limpiar_camino();

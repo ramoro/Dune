@@ -141,6 +141,8 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 		}
 		baldosas.push_back(fila_baldosa);
 	}
+	Gusano gus(root);
+	gusano = std::move(gus);
 }
 
 
@@ -588,7 +590,7 @@ std::pair<int, int> final) {
 	return lista_camino;
 }
 
-void Mapa::actualizar_salida_gusano(double tiempo_transcurrido) {
+void Mapa::actualizar_salida_gusano(int tiempo_transcurrido) {
 	int salio = gusano.actualizar_salida(tiempo_transcurrido);
 	if (salio) {
 		desenterrar_gusano();

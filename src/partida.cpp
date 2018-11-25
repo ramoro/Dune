@@ -181,7 +181,7 @@ int id_unidad, std::pair<int, int> posicion_destino) {
 }
 
 void Partida::actualizar_creacion_unidades(std::shared_ptr<Edificio> 
-edificio, double tiempo_transcurrido) {
+edificio, int tiempo_transcurrido) {
 	int energia_jugador = jugadores.at(edificio->pedir_id_duenio()).
 	pedir_energia_disponible();
 	if (energia_jugador < 0) {
@@ -249,7 +249,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas) {
 	colas.at(id_jugador)->push(mensaje);
 }
 
-void Partida::actualizar_modelo(double tiempo_transcurrido, 
+void Partida::actualizar_modelo(int tiempo_transcurrido, 
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	std::cout << "ACTUALIZA MODELO con tiempo " << tiempo_transcurrido << std::endl; 
 	//actualizo salida del gusano

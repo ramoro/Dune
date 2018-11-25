@@ -2,7 +2,7 @@
 #include <list>	
 
 std::shared_ptr<Estado> Inactividad::actualizar(UnidadMovible *unidad,
-Mapa &mapa, double tiempo_transcurrido) {
+Mapa &mapa, int tiempo_transcurrido) {
 	nombre = "inactividad";
 	std::vector<ObjetoDune*> objetivo_alrededor = mapa.
 	buscar_unidades_alrededor(unidad->obtener_centro(), 

@@ -18,7 +18,7 @@ class Movimiento: public Estado {
 		unidad y se quita la posicion del camino, actualizandosela a la
 		unidad.*/
 		virtual std::shared_ptr<Estado> actualizar(UnidadMovible *unidad,
-		Mapa &mapa, double tiempo_transcurrido);
+		Mapa &mapa, int tiempo_transcurrido);
 };
 
 #endif 

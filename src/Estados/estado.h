@@ -15,7 +15,7 @@ class Estado {
 		/*Metodo virtual que recibe un puntero a una unidad movible, al mapa y
 		el tiempo transcurrido y actualiza su estado dentro del mismo.*/
 		virtual std::shared_ptr<Estado> actualizar(UnidadMovible *unidad,
-		Mapa &mapa, double tiempo_transcurrido) = 0;
+		Mapa &mapa, int tiempo_transcurrido) = 0;
 
 		/*Devuelve un puntero al estado movimiento.*/
 		std::shared_ptr<Estado> cambiar_a_movimiento();

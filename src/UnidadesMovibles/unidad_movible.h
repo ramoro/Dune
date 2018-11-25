@@ -19,7 +19,7 @@ class UnidadMovible: public ObjetoDune {
 	private:
 		int rango;
 		int velocidad; //en km/h
-		double tiempo_creacion; //en segundos
+		int tiempo_creacion; //en milisegundos
 		std::list<std::pair<int, int>> camino; //esto deberia ser un vector de BALDOSAS
 		
 	protected:
@@ -82,20 +82,20 @@ class UnidadMovible: public ObjetoDune {
 		/*Recibe el mapa del juego y agrega la nueva unidad al juego.*/
 		void agregar(Mapa &mapa);
 
-		/*Recibe una cantidad de segundos y se la disminuye 
+		/*Recibe una cantidad de milisegundos y se la disminuye 
 		al tiempo de creacion. Devuelve el tiempo de creacion
 		faltante para crear la unidad luego de haber disminuido los
 		segundos recibidos.*/
-		int tiempo_creacion_faltante(double segs);
+		int tiempo_creacion_faltante(int milisegs);
 
 		/*Le asigna el camino a seguir a la unidad y setea su estado
 		en movimiento.*/
 		void empezar_a_mover(Mapa &mapa, std::pair<int, int> 
 		pos_destino);
 
-		/*Recibe el tiempo transcurridoy el mapa del juego
+		/*Recibe el tiempo transcurrido y el mapa del juego
 		y segun el estado en el que se encuentre le objeto lo actualiza.*/
-		void actualizar_unidad(double tiempo_transcurrido, 
+		void actualizar_unidad(int tiempo_transcurrido, 
 		Mapa &mapa);
 
 		/*Devuelve la lista de posiciones que debe recorrer la unidad
@@ -142,7 +142,7 @@ class UnidadMovible: public ObjetoDune {
 		/*Recibe el terreno, el mapa y el tiempo que paso y afecta el terreno 
 		donde se encuentra la unidad segun que haga la unidad.*/
 		virtual void afectar_terreno(std::shared_ptr<ObjetoDune> terreno,
-		Mapa &mapa, double tiempo_transcurrido);
+		Mapa &mapa, int tiempo_transcurrido);
 
 		/*En caso de que a unidad lleve especia encima se saca
 		tanta especia como puede depositar en un segundo.*/

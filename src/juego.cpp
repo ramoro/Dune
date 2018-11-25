@@ -9,6 +9,7 @@ using namespace std::chrono;
 
 #define TAM_COLA 600
 #define SEGUNDOS_POR_FRAME 1.f/40
+#define MILISEGUNDOS_POR_FRAME 1.f/40 * 1000
 
 /*Juego::Juego(Partida *partida): 
 cola_recepcion(TAM_COLA), partida(partida) {
@@ -47,7 +48,7 @@ void Juego::hacer_ajustes_iniciales() {
 
   mutex.lock();
   this->partida->terreno_inicial(this->colas_envio_clientes);
-  this->partida->actualizar_modelo(SEGUNDOS_POR_FRAME, this->colas_envio_clientes);
+  this->partida->actualizar_modelo(MILISEGUNDOS_POR_FRAME, this->colas_envio_clientes);
   mutex.unlock();
   MensajeProtocolo msj;
   msj.asignar_accion('x');
@@ -113,13 +114,13 @@ void Juego::run() {
 
     //ver si juego termino*/
     mutex.lock();
-    this->partida->actualizar_modelo(SEGUNDOS_POR_FRAME, this->colas_envio_clientes);
+    this->partida->actualizar_modelo(MILISEGUNDOS_POR_FRAME, this->colas_envio_clientes);
     mutex.unlock();
     high_resolution_clock::time_point tiempo_final = 
   	high_resolution_clock::now();
   	duration<int, std::milli> tiempo_transcurrido = 
   	duration_cast<duration<int>>(tiempo_final - tiempo_inicial);
-  	int tiempo_sleep = (SEGUNDOS_POR_FRAME * 1000) - tiempo_transcurrido.count();
+  	int tiempo_sleep = MILISEGUNDOS_POR_FRAME - tiempo_transcurrido.count();
 
   	std::this_thread::sleep_for(std::chrono::milliseconds(tiempo_sleep));
   }

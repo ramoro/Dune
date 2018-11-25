@@ -7,12 +7,14 @@
 
 #define CODIGO_MOVIMIENTO 'm'
 #define CODIGO_ATAQUE 'a'
+#define PASAJE_A_MILISEGS 1000
 
 UnidadMovible::UnidadMovible(int rango, int velocidad, 
 double tiempo_creacion, int costo_dinero, int vida, int id, int id_duenio,
 int base, int altura, std::pair<int, int> centro) :
 	ObjetoDune(vida, costo_dinero, id, id_duenio, base, altura, centro),
-	rango(rango), velocidad(velocidad), tiempo_creacion(tiempo_creacion){}
+	rango(rango), velocidad(velocidad), 
+	tiempo_creacion(tiempo_creacion * PASAJE_A_MILISEGS){}
 
 int UnidadMovible::pedir_danio(std::string objetivo) {
 	int arma_seleccionada = rand() % armas.size();
@@ -70,8 +72,8 @@ void UnidadMovible::agregar(Mapa &mapa) {
 	estado = estado->cambiar_a_inactividad();
 }
 
-int UnidadMovible::tiempo_creacion_faltante(double segs) {
-	tiempo_creacion -= segs;
+int UnidadMovible::tiempo_creacion_faltante(int milisegs) {
+	tiempo_creacion -= milisegs;
 	return tiempo_creacion;
 }
 
@@ -81,7 +83,7 @@ pos_destino) {
 	estado = estado->cambiar_a_movimiento();
 }
 
-void UnidadMovible::actualizar_unidad(double tiempo_transcurrido, 
+void UnidadMovible::actualizar_unidad(int tiempo_transcurrido, 
 Mapa &mapa) {
 	//por si sale algo mal y no se vacio del todo el camino
 	//cuando la unidad llego
@@ -156,7 +158,7 @@ std::vector<std::string> UnidadMovible::obtener_casa(){
 }
 
 void UnidadMovible::afectar_terreno(std::shared_ptr<ObjetoDune> terreno,
-Mapa &mapa, double tiempo_transcurrido) {}
+Mapa &mapa, int tiempo_transcurrido) {}
 
 int UnidadMovible::depositar_especia_en_segundo() {
 	std::cout << "se llamo a depositar_especia_en_segundo de un mov" 

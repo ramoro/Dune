@@ -11,7 +11,7 @@ especia_a_volver(coord) {
 }
 
 std::shared_ptr<Estado> Deposito::actualizar(UnidadMovible 
-*unidad, Mapa &mapa, double tiempo_transcurrido) {
+*unidad, Mapa &mapa, int tiempo_transcurrido) {
 	contador_segundo += tiempo_transcurrido;
 	if (tiempo_transcurrido >= SEGUNDO_EN_MILIS) {
 		contador_segundo -= SEGUNDO_EN_MILIS;

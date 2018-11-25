@@ -11,7 +11,7 @@ class Muerte: public Estado {
 	public:
 		/*Metodo virtual que actualiza el estado.*/
 		virtual std::shared_ptr<Estado> actualizar(UnidadMovible *unidad,
-		Mapa &mapa, double tiempo_transcurrido);
+		Mapa &mapa, int tiempo_transcurrido);
 };
 
 #endif 

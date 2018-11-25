@@ -2,6 +2,7 @@
 #define GUSANO_H
 
 #include "mensaje_protocolo.h"
+#include "config.h"
 #include <utility>
 
 /*Clase que representa un gusano que sale cada cierto tiempo
@@ -10,13 +11,15 @@ class Gusano {
 	private:
 		int dimension_alto;
 		int dimension_ancho;
-		int tiempo_salida; //en segundos
+		int tiempo_salida; //en milisegundos
 		int contador_salida;
 		std::pair<int, int> centro_salida;
 		MensajeProtocolo mensaje;
 
 	public:
 		/*Constructor de la clase.*/
+		Gusano(Config &config);
+
 		Gusano();
 
 		/*Devuelve la dimension en altura que ocupa el gusano.*/
@@ -28,7 +31,7 @@ class Gusano {
 		/*Recibe el tiempo transcurrido dentro del juego y actualiza
 		el tiempo de salida del gusano. En caso de que le toque
 		salir se devuelve true. False en caso contrario.*/
-		bool actualizar_salida(double tiempo_transcurrido);
+		bool actualizar_salida(int tiempo_transcurrido);
 
 		/*Se agrega la accion de salida del gusano hacia la superficie dentro 
 		del juego y los parametros adjuntos a la 

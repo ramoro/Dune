@@ -52,7 +52,7 @@ std::vector<ObjetoDune*> Cosechadora::ataque_al_morir(Mapa &mapa) {
 }
 
 void Cosechadora::afectar_terreno(std::shared_ptr<ObjetoDune> terreno,
-Mapa &mapa, double tiempo_transcurrido) {
+Mapa &mapa, int tiempo_transcurrido) {
 	//esto es por si esta llena la cosechadora y le dicen de ir
 	//a sacar mas especia
 	if (especia_encima == limite_especia) {

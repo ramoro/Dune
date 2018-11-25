@@ -2,6 +2,7 @@
 	
 #define CODIGO_SALIDA_GUSANO 'g'
 #define ID_GUSANO 50 //esto es por el protocolo
+#define PASAJE_A_MILISEGS 1000
 
 /*bool es_arena = verificar_terreno_alrededor(posicion_centro,
 		root["Gusano"].get("dimension_alto",0).asInt(), 
@@ -16,13 +17,16 @@
 			}
 		}*/
 
-//DATOS DEL GUSANO VIENEN DEL CONFIG	
-Gusano::Gusano() {
-	dimension_alto = 1;
-	dimension_ancho = 1;
-	tiempo_salida = 240;
-	contador_salida = 240;
+//DATOS DEL GUSANO VIENEN DEL CONFIG
+Gusano::Gusano(Config &config) {
+	dimension_ancho = config["Gusano"].get("dimension_ancho", 0).asInt();
+	dimension_alto = config["Gusano"].get("dimension_alto", 0).asInt();
+	tiempo_salida =  config["Gusano"].get("tiempo_salida_segs", 0).asInt() 
+	* PASAJE_A_MILISEGS;
+	contador_salida = tiempo_salida;
 }
+
+Gusano::Gusano() {}
 
 int Gusano::obtener_dimesion_alto() {
 	return dimension_alto;
@@ -32,12 +36,13 @@ int Gusano::obtener_dimesion_ancho(){
 	return dimension_ancho;
 }
 
-bool Gusano::actualizar_salida(double tiempo_transcurrido) {
-	contador_salida -= tiempo_transcurrido;
-	if (contador_salida <= 0) {
-		contador_salida = tiempo_salida;
+bool Gusano::actualizar_salida(int tiempo_transcurrido) {
+	int tiempo_faltante = contador_salida - tiempo_transcurrido;
+	if (tiempo_faltante <= 0) {
+		contador_salida = tiempo_salida + tiempo_faltante;
 		return true;
 	}
+	contador_salida -= tiempo_transcurrido;
 	return false;
 }
 

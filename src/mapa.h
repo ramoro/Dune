@@ -150,10 +150,10 @@ class Mapa {
 		std::list<std::pair<int, int>> obtener_camino(std::pair<int, int> inicio,
 		std::pair<int, int> final);
 
-		/*Recibe el tiempo transcurrido y actualiza la salida del gusano
+		/*Recibe el tiempo transcurrido en ms y actualiza la salida del gusano
 		matando a las unidades que se encuentran en la superficie de salida
 		en caso de que sea momento de que salga.*/
-		void actualizar_salida_gusano(double tiempo_transcurrido);
+		void actualizar_salida_gusano(int tiempo_transcurrido);
 
 		/*Recibe el id de un objeto y devuelve un puntero al mismo. Precondicion:
 		el objeto se encuentra en el mapa.*/
@@ -181,7 +181,7 @@ class Mapa {
 		std::map<int, Refineria*> pedir_refinerias();
 
 		void guardar_mensaje_en_colas(std::map<int, std::shared_ptr<ColaBloqueante>> colas,
-MensajeProtocolo mensaje);
+		MensajeProtocolo mensaje);
 
 		void terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes);
 

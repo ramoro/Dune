@@ -44,7 +44,7 @@ class Cosechadora: public Vehiculo {
 		En caso de llegar a su limite de capacidad se setea en el estado
 		de movimiento para depositar la especia.*/
 		void afectar_terreno(std::shared_ptr<ObjetoDune> terreno,
-		Mapa &mapa, double tiempo_transucrrido);
+		Mapa &mapa, int tiempo_transcurrido);
 
 		/*Devuelve la cantidad de especia que extrae en un segundo.*/
 		int obtener_extraccion_especia();

@@ -113,8 +113,8 @@ std::shared_ptr<UnidadMovible> Edificio::agregar_unidad(Mapa &mapa) {
 	return unidad_nueva;
 }
 
-bool Edificio::avanzar_tiempo_creacion(double tiempo_transcurrido) {
-	std::cout << "Tiempo transcurrido " << tiempo_transcurrido << std::endl;
+bool Edificio::avanzar_tiempo_creacion(int tiempo_transcurrido) {
+	std::cout << "Tiempo transcurrido en ms" << tiempo_transcurrido << std::endl;
 	if (estado == INACTIVO) {
 		return false;
 	} else {

@@ -9,7 +9,7 @@ objeto_destino(objetivo), pos_a_atacar(objetivo->obtener_centro()) {
 }
 
 std::shared_ptr<Estado> Ataque::actualizar(UnidadMovible *unidad,
-Mapa &mapa, double tiempo_transcurrido) {
+Mapa &mapa, int tiempo_transcurrido) {
 
 	//Primero me fijo si esta lo suficientemente cerca
 	//si no lo esta se devuelve el estado moviendose para atacar

@@ -94,7 +94,7 @@ class Partida {
 		/*Recibe una determinada cantidad de tiempo que pasa en el juego
 		y lo actualiza segun cuanto transcurrio, agregando los mensajes
 		correspondientes a la cola bloqueante recibida por parametro.*/
-		void actualizar_modelo(double tiempo_transcurrido, 
+		void actualizar_modelo(int tiempo_transcurrido, 
 		std::map<int, std::shared_ptr<ColaBloqueante>> cola_mensajes);
 		
 		void terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> cola_mensajes);
@@ -102,7 +102,7 @@ class Partida {
 		/*Recibe el puntero al edificio a actualizar el tiempo de entenamiento
 		y el tiempo pasado.*/
 		void actualizar_creacion_unidades(std::shared_ptr<Edificio> 
-		edificio, double tiempo_transcurrido);
+		edificio, int tiempo_transcurrido);
 
 		/*Recibe un puntero a un edificio y lo elimina completamente del 
 		juego.*/

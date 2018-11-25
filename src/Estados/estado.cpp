@@ -7,7 +7,7 @@
 #include "movimiento_para_depositar.h"
 
 std::shared_ptr<Estado> Estado::actualizar(UnidadMovible *unidad, 
-Mapa &mapa, double tiempo_transcurrido) {
+Mapa &mapa, int tiempo_transcurrido) {
 	return NULL;
 }
 
