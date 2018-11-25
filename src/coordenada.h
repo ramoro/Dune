@@ -6,15 +6,21 @@
 #include <string>
 #include <memory>
 
+class Cosechadora;
+
 /*Clase que representa la coordenada de un mapa del mundo Dune.*/
-class Coordenada {
+class Coordenada: public ObjetoDune {
 	private:
 		ObjetoDune* objeto;
 		int estado;
 		Terreno terreno;
-		int id;
+		//int id;
 
 	public:
+		/*Constructor de la clase.*/
+		Coordenada(int estado, Terreno terreno, int &id, 
+		std::pair<int, int> posicion);
+
 		/*Recibe un objeto del mundo Dune y ocupa la coordenada con
 		ese objeto en caso de ser posible, devolviendo true. Si la coordenada
 		esta ocupada no lo agrega y devuelve false.*/
@@ -44,7 +50,14 @@ class Coordenada {
 		Precondicion:la coordeanada esta marcada como ocupada.*/
 		void marcar_como_desocupada();
 
-		Coordenada(int estado, Terreno terreno, int &id);
+		/*Se saca al terreno de la coordenada especia si es que tiene
+		segun la cantidad que puede sacar la unidad recibida. Devuelve
+		la cantidad que le queda de especia al terreno de la coordenada.*/
+		virtual int remover_especia(Cosechadora* unidad_atacante);
+
+		/*Avisa que la coordenada en caso de tener especia ya no tiene
+		mas y se avisa armando un mensaje para enviar al cliente.*/
+		virtual void matar();
 };
 
 #endif 

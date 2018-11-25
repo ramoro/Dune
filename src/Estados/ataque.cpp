@@ -28,6 +28,7 @@ Mapa &mapa, double tiempo_transcurrido) {
 	atacar_objetivo(mapa, objeto_destino->pedir_id());
 	if (unidades_afectadas.empty()) {
 		//significa que es la cosechadora la q ataco
+		unidad->afectar_terreno(objeto_destino, mapa, tiempo_transcurrido);
 	} 
 
 	for (std::vector<ObjetoDune*>::iterator it = 

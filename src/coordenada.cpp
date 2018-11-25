@@ -1,10 +1,16 @@
 #include "coordenada.h"
+#include "UnidadesMovibles/cosechadora.h"
 
 #define VACIA 0
 #define OCUPADA 1
 
-Coordenada::Coordenada(int estado, Terreno terreno,int &id): estado(estado), 
-terreno(terreno) , id(id++){}
+//Llamo al contructor de ObjetoDune (clase madre) aunque
+//algunos datos no se vana usar como el id_duenio o la base
+//y la altura. Se pusieron valores random.
+Coordenada::Coordenada(int estado, Terreno terreno, int &id, 
+std::pair<int, int> posicion): ObjetoDune((&terreno)->obtener_cantidad_especia(),
+0, id, -1, 1, 1, posicion), estado(estado), 
+terreno(terreno) {}
 
 bool Coordenada::poner_objeto(ObjetoDune* objeto_dune) {
 	if (estado == OCUPADA) {
@@ -40,4 +46,14 @@ void Coordenada::marcar_como_ocupada() {
 
 void Coordenada::marcar_como_desocupada() {
 	estado = VACIA;
+}
+
+int Coordenada::remover_especia(Cosechadora* unidad_atacante) {
+	return (&terreno)->reducir_especia(unidad_atacante->
+	obtener_extraccion_especia());
+}
+
+void Coordenada::matar() {
+	ObjetoDune::mensaje_muerte();
+	fuera_de_juego = true;
 }

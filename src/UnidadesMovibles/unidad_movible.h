@@ -21,12 +21,12 @@ class UnidadMovible: public ObjetoDune {
 		int velocidad; //en km/h
 		double tiempo_creacion; //en segundos
 		std::list<std::pair<int, int>> camino; //esto deberia ser un vector de BALDOSAS
-		std::shared_ptr<Estado> estado;
 		
 	protected:
 		std::vector<Arma> armas;
 		std::vector<int> ids_tipos_edificios_necesarios;
 		std::vector<std::string> casa;
+		std::shared_ptr<Estado> estado;
 
 	public:
 		/*Constructor de la clase.*/
@@ -134,6 +134,15 @@ class UnidadMovible: public ObjetoDune {
 		virtual bool es_terreno_valido(std::string terreno) = 0;
 
 		std::vector<std::string> obtener_casa();
+
+		/*Recibe el terreno, el mapa y el tiempo que paso y afecta el terreno 
+		donde se encuentra la unidad segun que haga la unidad.*/
+		virtual void afectar_terreno(std::shared_ptr<ObjetoDune> terreno,
+		Mapa &mapa, double tiempo_transcurrido);
+
+		/*En caso de que a unidad lleve especia encima se saca
+		tanta especia como puede depositar en un segundo.*/
+		virtual int depositar_especia_en_segundo();
 
 };
 

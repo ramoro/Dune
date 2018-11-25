@@ -2,6 +2,7 @@
 #define EXPLOSION_H
 
 #include "arma.h"
+#include "../src/config.h"
 #include <vector>
 
 /*Clase que representa una explosion en el mundo de Dune.*/

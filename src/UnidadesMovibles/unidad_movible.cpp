@@ -43,6 +43,7 @@ std::vector<int> UnidadMovible::matar(Mapa &mapa,Root &root) {
 */
 void UnidadMovible::poner_estado_muerta() {
 	estado = estado->cambiar_a_muerte();
+	fuera_de_juego = true;
 }
 
 std::vector<int> UnidadMovible::obtener_edificios_necesarios() {
@@ -82,13 +83,15 @@ Mapa &mapa) {
 	//cuando la unidad llego
 	//if (camino.empty()) return;
 	std::cout << "centro: " << centro.first << centro.second << " de la unidad " << id << std::endl;
-	std::shared_ptr<Estado> nuevo_estado = estado->actualizar(this, mapa,
-	tiempo_transcurrido);
-	std::cout << "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
-	//si no es null le asigno el nuevo estado
-	if (nuevo_estado) {
-		std::cout << "nuevo estado " << " estado: " << nuevo_estado->pedir_nombre() << std::endl;
-		estado = nuevo_estado;
+	if (estado) {
+		std::shared_ptr<Estado> nuevo_estado = estado->actualizar(this, mapa,
+		tiempo_transcurrido);
+		std::cout << "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
+		//si no es null le asigno el nuevo estado
+		if (nuevo_estado) {
+			std::cout << "nuevo estado " << " estado: " << nuevo_estado->pedir_nombre() << std::endl;
+			estado = nuevo_estado;
+		}
 	}
 }
 
@@ -146,4 +149,13 @@ void UnidadMovible::limpiar_camino() {
 
 std::vector<std::string> UnidadMovible::obtener_casa(){
 	return casa;
+}
+
+void UnidadMovible::afectar_terreno(std::shared_ptr<ObjetoDune> terreno,
+Mapa &mapa, double tiempo_transcurrido) {}
+
+int UnidadMovible::depositar_especia_en_segundo() {
+	std::cout << "se llamo a depositar_especia_en_segundo de un mov" 
+	<< std::endl;
+	return 0;
 }

@@ -6,6 +6,7 @@
 #include "mensaje_protocolo.h"
 
 class UnidadMovible;
+class Cosechadora;
 
 /*Clase abstracta que representa a un objeto del mundo dune que puede
 ser tanto un edificio como una unidad movible (vehiculos y 
@@ -24,6 +25,7 @@ class ObjetoDune {
 		int altura;
 		std::pair<int, int> centro;
 		std::vector<MensajeProtocolo> mensajes;
+		bool fuera_de_juego;
 
 	public:
 		/*Constructor de la clase.*/
@@ -84,6 +86,15 @@ class ObjetoDune {
 
 		/*Vacia la lista de mensajes.*/
 		void limpiar_lista_mensajes();
+
+		/*Devuelve true si el objeto ya esta fuera de juego. False
+		en caso contrario.*/
+		bool esta_fuera_de_juego();
+
+		/*Metodo virtual que en caso de tener especia
+		le saca la especia al objeto dune segun cuanto extrae
+		la cosechadora que recibe.*/
+		virtual int remover_especia(Cosechadora *cosechadora);
 };
 
 #endif

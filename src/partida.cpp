@@ -1,6 +1,7 @@
 #include "partida.h"
 #include "Edificios/edificio.h"
 #include "UnidadesMovibles/unidad_movible.h"
+#include "Edificios/refineria.h"
 #include <memory>
 #include <iostream>
 #include <set>
@@ -122,14 +123,17 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 
 void Partida::atacar_objeto(int id_unidad_atacante, 
 int id_objeto_atacado) {
-	//std::shared_ptr<UnidadMovible> unidad = fabrica_unidades_movibles.crear_unidad_movible(
-	//5, 0, 3, std::pair<int, int>(0,0));
 	if (edificios.count(id_objeto_atacado) > 0) {
 		(unidades_movibles.at(id_unidad_atacante))->iniciar_ataque(mapa, 
 		edificios.at(id_objeto_atacado));
-	} else {
+	} else if(unidades_movibles.count(id_objeto_atacado) > 0) {
 		(unidades_movibles.at(id_unidad_atacante))->iniciar_ataque(mapa, 
 		unidades_movibles.at(id_objeto_atacado));
+	} else {
+		//si el id no es de unidad o edificio significa que es de terreno
+		//y que es la cosechadora la que ataca 
+		(unidades_movibles.at(id_unidad_atacante))->iniciar_ataque(mapa,
+		mapa.obtener_coordenada_con_especia(id_objeto_atacado));
 	}
 }
 
@@ -251,6 +255,31 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	++it_unidades) {
 		(it_unidades->second)->actualizar_unidad(tiempo_transcurrido, mapa);
 	}
+
+	std::map<int, Refineria*> refinerias = mapa.pedir_refinerias();
+	for (std::map<int, Refineria*>::iterator it_ref = 
+	refinerias.begin(); it_ref != refinerias.end(); 
+	++it_ref){
+		int especia_almacenada_en_ref = it_ref->second->obtener_especia();
+		int especia_agregada = jugadores.at(it_ref->second->pedir_id_duenio()).
+		agregar_especia(especia_almacenada_en_ref);
+		if (especia_agregada > 0) {
+			it_ref->second->reducir_especia(especia_agregada);
+			jugadores.at(it_ref->second->pedir_id_duenio()).
+			aumentar_dinero(especia_agregada);
+			//serializar_mensaje_dinero(); -->
+		}
+	}
+
+	std::vector<MensajeProtocolo> terrenos_sin_especia = mapa.
+	obtener_mensajes_terrenos_sin_especia();
+	for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
+	terrenos_sin_especia.begin(); it_mensajes != 
+	terrenos_sin_especia.end(); ++it_mensajes) {
+		std::cout << "Pasa por verificacion terrenos" << std::endl;
+		std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
+		guardar_mensaje_en_colas(colas_mensajes, *it_mensajes);
+	}
 	
 	std::set<std::shared_ptr<Edificio>> edificios_a_eliminar;
 	std::set<std::shared_ptr<UnidadMovible>> unidades_a_eliminar;
@@ -266,7 +295,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 			} else if ((*it_mensajes).pedir_accion() == CODIGO_PERDIO_JUGADOR) {
 				int id_jugador_afuera = (it_edifs->second)->pedir_id_duenio();
 				for (std::map<int, std::shared_ptr<Edificio>>::iterator it_edifs2 = 
-				edificios.begin(); it_edifs2 != edificios.end(); ++it_edifs) {
+				edificios.begin(); it_edifs2 != edificios.end(); ++it_edifs2) {
 					if ((it_edifs2->second)->pedir_id_duenio() == 
 					id_jugador_afuera) {
 						edificios_a_eliminar.insert(it_edifs2->second);

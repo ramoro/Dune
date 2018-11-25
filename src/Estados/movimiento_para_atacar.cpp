@@ -1,5 +1,6 @@
 #include "movimiento_para_atacar.h"
 #include "ataque.h"
+#include "inactividad.h"
 #include <iostream>
 
 MovimientoParaAtacar::MovimientoParaAtacar(std::shared_ptr<ObjetoDune>
@@ -9,6 +10,12 @@ objetivo): objeto_destino(objetivo), pos_destino(objetivo->obtener_centro()) {
 
 std::shared_ptr<Estado> MovimientoParaAtacar::actualizar(UnidadMovible 
 *unidad, Mapa &mapa, double tiempo_transcurrido) {
+	//si la unidad ya esta muerta la unidad queda inactiva
+	if (objeto_destino->esta_fuera_de_juego()) {
+		unidad->limpiar_camino();
+		std::shared_ptr<Inactividad> inactividad(new Inactividad());
+		return inactividad;
+	}
 	//me fijo si la posicion de destino es diferente a la de la unidad
 	//a atacar. En ese caso hay que recalcular el A*
 	if (pos_destino != objeto_destino->obtener_centro()) {

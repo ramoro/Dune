@@ -14,7 +14,7 @@ Mapa &mapa, double tiempo_transcurrido) {
 	if(!objetivo_alrededor.empty()) {
 		int vida_restante = objetivo_alrededor[0]->daniar(unidad);
 		if (vida_restante <= 0) {
-			//objetivo_alrededor[0]->matar();
+			objetivo_alrededor[0]->matar();
 		}
 		unidad->serializar_mensaje_ataque(objetivo_alrededor[0]->pedir_id());
 		//ACA NO SE SI DEVOLVER NUEVO ESTADO ATACANDOQUIETO O NO

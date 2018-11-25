@@ -17,8 +17,11 @@ class Jugador {
 		std::map<int, int> edificios_por_tipo;
 		int dinero;
 		std::string casa;
-		int capacidad_especia;
-		int capacidad_especia_disponible;
+		int capacidad_especia; //representa todo el espacio que tiene el
+								//jugador para guardar especia
+		int capacidad_especia_disponible; //representa de todo el espacio
+										//que tiene el jugador para guardar
+										//especia solo el disponible
 		int energia_disponible;
 		int id_edificio_entrenando_unidad;
 
@@ -80,6 +83,10 @@ class Jugador {
 		/*Devuelve el id del edificio del jugado que esta entrenando o -1
 		en caso de no estar entrenando unidades.*/
 		int pedir_id_edificio_entrenando();
+
+		/*Recibe una cantidad de especia y la agrega al jugador.
+		Devuelve la cantidad de especia que pudo ser agregada.*/
+		int agregar_especia(int cant_especia);
 };
 
 #endif 

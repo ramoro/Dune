@@ -1,6 +1,7 @@
 #include "movimiento.h"
 #include "inactividad.h"
 #include <list>	
+#include <iostream>
 
 //VER CUANTO MOVER A LA UNIDAD SEGUN EL TIEMPO TRANSCURRIDO Y SU VELOCIDAD
 std::shared_ptr<Estado> Movimiento::actualizar(UnidadMovible *unidad,
@@ -8,6 +9,7 @@ Mapa &mapa, double tiempo_transcurrido) {
 	std::list<std::pair<int, int>> camino = unidad->pedir_camino();
 	bool posicion_ocupada = mapa.esta_ocupada_coordenada(camino.front());
 	if (posicion_ocupada && camino.size() == 1) {
+		unidad->limpiar_camino();
 		std::shared_ptr<Inactividad> inactividad(new Inactividad());
 		return inactividad;
 	} else if (posicion_ocupada) {
@@ -22,6 +24,7 @@ Mapa &mapa, double tiempo_transcurrido) {
 	unidad->avanzar_camino();
 	unidad->serializar_mensaje_movimiento(); 
 	//significa que llego a destino, deberia cambiar la verificacion, ya que es segunc uanto se mueve
+	//ademas de que porahi antes ya esta ocupado por un pedazo de edificio
 	if (camino.size() == 1) {
 		std::shared_ptr<Inactividad> inactividad(new Inactividad());
 		return inactividad;

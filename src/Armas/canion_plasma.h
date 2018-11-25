@@ -2,6 +2,7 @@
 #define CANION_PLASMA_H
 
 #include "arma.h"
+#include "../src/config.h"
 
 /*Clase que representa un canion de plasma en el mundo de Dune.*/
 class CanionPlasma: public Arma {

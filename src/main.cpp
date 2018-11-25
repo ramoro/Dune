@@ -183,7 +183,24 @@ int main(int argc, char* argv[]) {
 }*/
 
 
-int main(int argc, char* argv[]) {
+int main() {
+  std::map<int, std::shared_ptr<ColaBloqueante>> colas;
+  Partida partida;
+  partida.agregar_jugador("harkonnen", colas);
+  partida.agregar_edificio(0, std::pair<int, int>(15, 7), 5, colas);
+  partida.agregar_edificio(0, std::pair<int, int>(15, 5), 2, colas);
+  partida.iniciar_entrenamiento_unidad_movible(20, 366, 0, colas);
+  partida.actualizar_modelo(180, colas);
+  partida.atacar_objeto(367, 233);
+  partida.actualizar_modelo(80, colas);
+  partida.actualizar_modelo(80, colas);
+  partida.actualizar_modelo(80, colas);
+  partida.actualizar_modelo(80, colas);
+  partida.actualizar_modelo(1000, colas);
+  partida.actualizar_modelo(80,colas);
+}
+
+/*int main(int argc, char* argv[]) {
   //std::cout << "hola " << std::endl;
   //Partida partida;
   //ColaBloqueante cola(10);
@@ -193,7 +210,7 @@ int main(int argc, char* argv[]) {
   //juego.run();
   Server server(argv[1]);
   server.aceptar_cliente();
-}
+}*/
 
 
 /*
