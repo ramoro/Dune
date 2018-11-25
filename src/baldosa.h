@@ -7,12 +7,14 @@
 #include <memory>
 
 /*Clase que representa la coordenada de un mapa del mundo Dune.*/
-class Baldosa {
+class Baldosa{
 	private:
 		ObjetoDune* objeto;
 		int estado;
 		Terreno terreno;
 		int id;
+		std::pair<int,int> esquina;
+		MensajeProtocolo mensaje;
 
 	public:
 		/*Recibe un objeto del mundo Dune y ocupa la coordenada con
@@ -44,7 +46,10 @@ class Baldosa {
 		Precondicion:la coordeanada esta marcada como ocupada.*/
 		void marcar_como_desocupada();
 
-		Baldosa(int estado, Terreno terreno, int &id);
+		Baldosa(int estado, Terreno terreno, int &id, std::pair<int,int> esquina);
+
+		void serializar_mensaje_salida();
+
 };
 
 #endif 

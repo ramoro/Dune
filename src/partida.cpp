@@ -227,9 +227,8 @@ MensajeProtocolo mensaje) {
 //deberia pasarle COLA BLOQUEANTE para desde aca dentro
 //mandar el mensaje sobre la unidad agregada
 void Partida::actualizar_modelo(double tiempo_transcurrido, 
-
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
-	std::cout << "ACTUALIZA MODELO con tiempo " << tiempo_transcurrido << std::endl; 
+	//std::cout << "ACTUALIZA MODELO con tiempo " << tiempo_transcurrido << std::endl; 
 	//mapa.actualizar_salida_gusano(tiempo_transcurrido);
 	for (std::map<int, Jugador>::iterator it_jugadores = 
 	jugadores.begin(); it_jugadores != jugadores.end(); ++it_jugadores) {

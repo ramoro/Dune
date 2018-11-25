@@ -84,6 +84,17 @@ std::shared_ptr<ObjetoDune> objeto) {
 	mensaje.agregar_parametro((objeto->obtener_centro()).second);
 	mensaje.agregar_parametro(objeto->pedir_id_duenio());
 	mensajes.push_back(std::move(mensaje));
+
+	if (objeto->pedir_id_tipo() == 0) {
+		mensaje.asignar_accion('t');
+		mensaje.agregar_parametro(30);
+		mensaje.agregar_parametro(100);
+		mensaje.agregar_parametro(500);
+		mensaje.agregar_parametro(500);
+		mensaje.agregar_parametro(0);
+		mensaje.agregar_parametro(0);
+		mensajes.push_back(std::move(mensaje));
+	}
 }
 
 std::shared_ptr<UnidadMovible> Edificio::agregar_unidad(Mapa &mapa) {

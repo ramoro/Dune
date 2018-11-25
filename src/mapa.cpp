@@ -15,14 +15,18 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 		std::vector<Baldosa> fila_baldosa;
 			std::vector<Coordenada> fila;
 			for (unsigned int j = 0; j < root["terreno"][0].size(); j++) {
+				std::pair<int,int> esquina(i,j);
 					switch (root["terreno"][i][j].asInt()){
 						case 30:
 						{
 							NoEspecia roca("roca");
-							Baldosa bald(0, roca, contador_ids_objetos);
+							Baldosa bald(0, roca, contador_ids_objetos, esquina);
 							for (unsigned int q = 0; q < PIX; q++){ 
-								Coordenada coord(0, roca, contador_ids_objetos);
+								Coordenada coord(0, roca);
 								fila.push_back(coord);
+							}
+							if (i == 0 && j ==0){
+								bald.serializar_mensaje_salida();
 							}
 							fila_baldosa.push_back(bald);
 							break;
@@ -30,9 +34,9 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						case 31:
 						{
 							NoEspecia duna("duna");
-							Baldosa bald(0, duna, contador_ids_objetos);
+							Baldosa bald(0, duna, contador_ids_objetos, esquina);
 							for (unsigned int q = 0; q < PIX; q++){ 
-								Coordenada coord(0, duna, contador_ids_objetos);
+								Coordenada coord(0, duna);
 								fila.push_back(coord);
 							}
 							fila_baldosa.push_back(bald);
@@ -41,9 +45,9 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						case 32:
 						{
 							Especia especiafuerte("especia fuerte");
-							Baldosa bald(0, especiafuerte, contador_ids_objetos);
+							Baldosa bald(0, especiafuerte, contador_ids_objetos, esquina);
 							for (unsigned int q = 0; q < PIX; q++){ 
-								Coordenada coord(0, especiafuerte, contador_ids_objetos);
+								Coordenada coord(0, especiafuerte);
 								fila.push_back(coord);
 							}
 							fila_baldosa.push_back(bald);
@@ -52,9 +56,9 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						case 33:
 						{
 							Especia especiasuave("especia suave");
-							Baldosa bald(0, especiasuave, contador_ids_objetos);
+							Baldosa bald(0, especiasuave, contador_ids_objetos, esquina);
 							for (unsigned int q = 0; q < PIX; q++){ 
-								Coordenada coord(0, especiasuave, contador_ids_objetos);
+								Coordenada coord(0, especiasuave);
 								fila.push_back(coord);
 							}
 							fila_baldosa.push_back(bald);
@@ -63,9 +67,9 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						case 34:
 						{
 							NoEspecia cima("cima");
-							Baldosa bald(0, cima, contador_ids_objetos);
+							Baldosa bald(0, cima, contador_ids_objetos, esquina);
 							for (unsigned int q = 0; q < PIX; q++){ 
-								Coordenada coord(0, cima, contador_ids_objetos);
+								Coordenada coord(0, cima);
 								fila.push_back(coord);
 							}
 							fila_baldosa.push_back(bald);
@@ -73,10 +77,10 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						}
 						case 35:
 						{
-							NoEspecia precipio("precipicio");
-							Baldosa bald(0, precipio, contador_ids_objetos);
+							NoEspecia precipicio("precipicio");
+							Baldosa bald(0, precipicio, contador_ids_objetos, esquina);
 							for (unsigned int q = 0; q < PIX; q++){ 
-								Coordenada coord(0, precipio, contador_ids_objetos);
+								Coordenada coord(0, precipicio);
 								fila.push_back(coord);
 							}
 							fila_baldosa.push_back(bald);
@@ -85,9 +89,9 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						default:
 						{
 							NoEspecia arena("arena");							
-							Baldosa bald(0, arena, contador_ids_objetos);
+							Baldosa bald(0, arena, contador_ids_objetos, esquina);
 							for (unsigned int q = 0; q < PIX; q++){ 
-								Coordenada coord(0, arena, contador_ids_objetos);
+								Coordenada coord(0, arena);
 								fila.push_back(coord);
 							}
 							fila_baldosa.push_back(bald);
@@ -491,7 +495,7 @@ std::pair<int, int> final) {
 #ifdef NACHO
 		std::cout << " inicio_baldosa " << inicio_baldosa.first << " " << inicio_baldosa.second << std::endl; 
 #endif
-		
+
   		int diff_first = it->first - inicio_baldosa.first;
   		int diff_second = it->second - inicio_baldosa.second;
 

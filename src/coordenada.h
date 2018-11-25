@@ -12,7 +12,6 @@ class Coordenada {
 		ObjetoDune* objeto;
 		int estado;
 		Terreno terreno;
-		int id;
 
 	public:
 		/*Recibe un objeto del mundo Dune y ocupa la coordenada con
@@ -44,7 +43,7 @@ class Coordenada {
 		Precondicion:la coordeanada esta marcada como ocupada.*/
 		void marcar_como_desocupada();
 
-		Coordenada(int estado, Terreno terreno, int &id);
+		Coordenada(int estado, Terreno terreno);
 };
 
 #endif 
