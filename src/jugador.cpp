@@ -60,10 +60,10 @@ void Jugador::reducir_capacidad_especia(int cap_a_reducir) {
 
 bool Jugador::agregada_unidad(UnidadMovible* unidad) {
 	std::vector<std::string> casas= unidad->obtener_casa();
-	if (unidad->obtener_costo() > dinero || (std::find(casas.begin(), casas.end(), casa) == casas.end())){
-#ifdef NACHO 
-			std::cout << " El edificio no pertenece a la casa " << casa << std::endl;
-#endif		
+	if (unidad->obtener_costo() > dinero || (std::find(casas.begin(),
+	 casas.end(), casa) == casas.end())){
+			std::cout << " El edificio no pertenece a la casa " <<
+			 casa << std::endl;
 		return false;
 	}
 	bool creacion = true;
@@ -71,19 +71,29 @@ bool Jugador::agregada_unidad(UnidadMovible* unidad) {
 	obtener_edificios_necesarios();
 	for (std::vector<int>::iterator it = edificios_necesitados.begin();
 	it != edificios_necesitados.end(); ++it) {
-		if (edificios_por_tipo.count(*it) <= 0) {
-#ifdef NACHO 
-			std::cout << " NO existen edificios necesarios " << std::endl;
-#endif
-			creacion = false;
-			break;
-		}
-		if (edificios_por_tipo.at(*it) == 0) {
-			creacion = false;
-#ifdef NACHO 
-			std::cout << " NO existen edificios necesarios 2 " << std::endl;
-#endif
-			break;
+		if (*it == 66 ){
+			if ((edificios_por_tipo.count(6) > 0) && (edificios_por_tipo.at(6) > 0)){
+				continue;
+			} else if ((edificios_por_tipo.count(7) > 0) && (edificios_por_tipo.at(7) > 0)){
+				continue;
+			} else if ((edificios_por_tipo.count(8) > 0) && (edificios_por_tipo.at(8) > 0)){
+				continue;
+			} else {
+				std::cout << " NO existe cuartel " << std::endl;
+				creacion = false;
+				break;
+			}
+		} else {
+			if (edificios_por_tipo.count(*it) == 0) {
+				std::cout << " NO existen edificios necesarios " << std::endl;
+				creacion = false;
+				break;
+			}
+			if (edificios_por_tipo.at(*it) == 0) {
+				creacion = false;
+				std::cout << " NO existen edificios necesarios 2 " << std::endl;
+				break;
+			}
 		}
 	}
 	return creacion;
