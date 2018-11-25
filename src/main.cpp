@@ -193,11 +193,11 @@ int main() {
   partida.actualizar_modelo(180, colas);
   partida.atacar_objeto(367, 233);
   partida.actualizar_modelo(80, colas);
-  partida.actualizar_modelo(80, colas);
-  partida.actualizar_modelo(80, colas);
-  partida.actualizar_modelo(80, colas);
-  partida.actualizar_modelo(1000, colas);
-  partida.actualizar_modelo(80,colas);
+ //partida.actualizar_modelo(80, colas);
+// partida.actualizar_modelo(80, colas);
+//partida.actualizar_modelo(80, colas);
+ // partida.actualizar_modelo(1000, colas);
+  //partida.actualizar_modelo(80,colas);
 }
 
 /*int main(int argc, char* argv[]) {

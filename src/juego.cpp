@@ -7,7 +7,7 @@
 
 using namespace std::chrono;
 
-#define TAM_COLA 100
+#define TAM_COLA 300
 #define SEGUNDOS_POR_FRAME 1.f/40
 
 /*Juego::Juego(Partida *partida): 
@@ -68,6 +68,13 @@ void Juego::run() {
       char accion = mensaje.pedir_accion();
       std::cout << "Accion desencolada en juego: " << accion << std::endl;
       std::vector<int> v = mensaje.pedir_parametros();
+
+#ifdef NACHO 
+      for (unsigned int aux = 0; aux < v.size(); aux++){
+        std::cout << "vector " << aux << " " << v[aux] << " ";
+      }
+      std::cout << std::endl;
+#endif
 
       if (accion == 'e') {
         mutex.lock();

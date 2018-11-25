@@ -2,6 +2,7 @@
 #include "inactividad.h"
 #include <list>	
 #include <iostream>
+#include "math.h"
 
 //VER CUANTO MOVER A LA UNIDAD SEGUN EL TIEMPO TRANSCURRIDO Y SU VELOCIDAD
 std::shared_ptr<Estado> Movimiento::actualizar(UnidadMovible *unidad,
@@ -20,6 +21,19 @@ Mapa &mapa, double tiempo_transcurrido) {
 	}
 	//en vez de front deberia ser la posicion segun el tiempo y la velocidad
 	//a avanzar camino deberia pasarle la cantiadd de posiciones que avanzo ene l camino
+	
+#ifdef NACHO
+	std::cout << "dist1 " << dist1 << " dist2 " << dist2 << std::endl;
+	double dist1 = sqrt(abs(unidad->obtener_centro().first - camino.front().first) * abs(unidad->obtener_centro().second - camino.front().second));
+	double dist2 = tiempo_transcurrido * unidad->obtener_velocidad();
+
+	if (dist2 <= dist1){
+		std::cout << "Tiene que esperar para moverse" << std::endl;
+	} else {
+		std::cout << "Deberia moverse" << std::endl;
+	}
+#endif
+ 
 	mapa.mover_unidad(unidad->pedir_id(), camino.front());
 	unidad->avanzar_camino();
 	unidad->serializar_mensaje_movimiento(); 

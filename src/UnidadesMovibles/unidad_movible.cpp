@@ -54,6 +54,10 @@ int UnidadMovible::obtener_rango_ataque() {
 	return rango;
 }
 
+int UnidadMovible::obtener_velocidad() {
+	return velocidad;
+}
+
 bool UnidadMovible::se_puede_agregar(Jugador 
 &jugador) {
 	return (jugador.agregada_unidad(this));

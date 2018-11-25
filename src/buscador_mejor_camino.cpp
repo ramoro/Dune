@@ -34,7 +34,7 @@ std::pair<int, int> &pos_final) {
 
 	while(posibles_nodos.size() > 0) {
 		Nodo nodo_evaluado = posibles_nodos[0];
-     // std::cout<< "atrapado" << nodo_evaluado.obtener_posicion().first << nodo_evaluado.obtener_posicion().second<< std::endl;
+      std::cout<< "atrapado" << nodo_evaluado.obtener_posicion().first << nodo_evaluado.obtener_posicion().second<< std::endl;
 		int indice_nodo_evaluado = 0;
 		int indice_auxiliar = 0;
 
@@ -84,22 +84,22 @@ std::pair<int, int> &pos_final) {
 
   			//Verfico que no se evalue una posicion fuera del mapa
   			if (std::get<0>(posicion_adyacente) > (int)(mapa.
-  			pedir_limite_filas()) || std::get<0>(posicion_adyacente) < 0 
+  			pedir_limite_filas_baldosa()) || std::get<0>(posicion_adyacente) < 0 
   			|| std::get<1>(posicion_adyacente) > 
-  			(int)(mapa.pedir_limite_columnas()) || 
+  			(int)(mapa.pedir_limite_columnas_baldosa()) || 
   			std::get<1>(posicion_adyacente) < 0) {
   				continue;
   			} 
 
   			//Evaluo el terreno y unidad para ver si puede pasar por 
   			//esa posicion
-  			if (mapa.pedir_terreno_coordenada(posicion_adyacente) == 
+  			if (mapa.pedir_terreno_baldosa(posicion_adyacente) == 
         "precipicio") {
           std::cout << "Precipicio " << posicion_adyacente.first << " " << posicion_adyacente.second << std::endl;
           continue;
         }
 
-        if (mapa.esta_ocupada_coordenada(posicion_adyacente) && 
+        if (mapa.esta_ocupada_baldosa(posicion_adyacente) && 
         posicion_adyacente != pos_final) {
           std::cout << "Esta ocupada " << posicion_adyacente.first << " " << posicion_adyacente.second << std::endl;
           continue;

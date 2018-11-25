@@ -27,6 +27,7 @@ class UnidadMovible: public ObjetoDune {
 		std::vector<int> ids_tipos_edificios_necesarios;
 		std::vector<std::string> casa;
 		std::shared_ptr<Estado> estado;
+		double tiempo_acumulado;
 
 	public:
 		/*Constructor de la clase.*/
@@ -70,6 +71,9 @@ class UnidadMovible: public ObjetoDune {
 		de forma horizontal hasta donde se extiende el rango de vision
 		de la unidad.*/
 		int obtener_rango_ataque();
+
+		/*Devuelve la velocidad de la unidad*/
+		int obtener_velocidad();
 
 		/*Recibe el jugador duenio de la unidad y devuelve true si se puede
 		agregar la nueva unidad al jugador. False en caso contrario.*/
