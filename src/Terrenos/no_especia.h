@@ -8,7 +8,7 @@
 class NoEspecia: public Terreno {
 	public:
 		/*Constructor de la clase.*/
-		NoEspecia(std::string material);
+		NoEspecia(int material);
 };
 
 #endif 

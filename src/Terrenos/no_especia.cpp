@@ -1,3 +1,3 @@
 #include "no_especia.h"
 
-NoEspecia::NoEspecia(std::string material): Terreno(material) {}
+NoEspecia::NoEspecia(int material): Terreno(material) {}

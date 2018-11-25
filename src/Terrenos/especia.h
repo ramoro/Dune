@@ -13,7 +13,7 @@ class Especia: public Terreno {
 
 	public:
 		/*Constructor de la clase.*/
-		Especia(std::string material, Config &config);
+		Especia(int material, Config &config);
 
 		/*Recibe la cantidad de especia a reducir y se la saca
 		al terreno.*/

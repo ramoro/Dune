@@ -20,7 +20,7 @@ class Vehiculo: public UnidadMovible {
 		virtual int daniar(UnidadMovible* unidad_atacante);
 
 		/*valida que el terreno no sea ni precipicio ni cima*/
-		bool es_terreno_valido(std::string terreno);
+		bool es_terreno_valido(int terreno);
 };
 
 #endif 

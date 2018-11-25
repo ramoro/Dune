@@ -29,7 +29,7 @@ class Baldosa: public ObjetoDune {
 
 		/*Devuelve un string con el nombre del terreno que posee
 		la baldosa.*/
-		std::string obtener_terreno();
+		int obtener_terreno();
 
 		/*Saca el objeto que tiene la baldosa (setea el puntero que tiene
 		como atributo a NULL) y cambia su estado a VACIA.

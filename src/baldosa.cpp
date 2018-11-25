@@ -21,8 +21,8 @@ bool Baldosa::poner_objeto(ObjetoDune* objeto_dune) {
 	}
 }
 
-std::string Baldosa::obtener_terreno() {
-	return terreno.obtener_nombre_material();
+int Baldosa::obtener_terreno() {
+	return terreno.obtener_id_material();
 }
 
 void Baldosa::sacar_objeto() {

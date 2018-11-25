@@ -135,7 +135,7 @@ class UnidadMovible: public ObjetoDune {
 		/*Elimina todas las posiciones de la lista camino.*/
 		void limpiar_camino();
 
-		virtual bool es_terreno_valido(std::string terreno) = 0;
+		virtual bool es_terreno_valido(int terreno) = 0;
 
 		std::vector<std::string> obtener_casa();
 

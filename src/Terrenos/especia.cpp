@@ -1,8 +1,10 @@
 #include "especia.h"
 #include <iostream>
+#define ESPECIAFUERTE 32
+#define ESPECIASUAVE 33
 
-Especia::Especia(std::string material, Config &config): Terreno(material) {
-	if (material == "especia debil") {
+Especia::Especia(int material, Config &config): Terreno(material) {
+	if (material == 33) {
 		cant_especia_actual = config["Especia Debil"].
 		get("cantidad_especia", 0).asInt();
 	} else {

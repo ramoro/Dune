@@ -1,6 +1,7 @@
 #include "unidad_infanteria.h"
 
 #define OBJETO_MUERTO -1
+#define PRECIPICIO 35
 
 UnidadInfanteria::UnidadInfanteria(int rango, int velocidad, 
 double tiempo_creacion, int costo_dinero, int vida, 
@@ -13,8 +14,8 @@ int UnidadInfanteria::daniar(UnidadMovible* unidad_atacante) {
 	return ObjetoDune::reducir_vida(danio);
 }
 
-bool UnidadInfanteria::es_terreno_valido(std::string terreno){
-	if (terreno == "precipicio")
+bool UnidadInfanteria::es_terreno_valido(int terreno){
+	if (terreno == PRECIPICIO)
 		return false;
 	return true;
 }

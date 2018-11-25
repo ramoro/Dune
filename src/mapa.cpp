@@ -7,9 +7,15 @@
 #include <iostream>
 #include <math.h>
 
-
-#define LIMITE_ITERACIONES_GUSANO 100
+#define ROCA 30
+#define DUNA 31
+#define ESPECIAFUERTE 32
+#define ESPECIASUAVE 33
+#define CIMA 34
+#define PRECIPICIO 35
+#define ARENA 36
 #define PIX 10
+#define LIMITE_ITERACIONES_GUSANO 100
 
 Mapa::Mapa() {}
 
@@ -22,7 +28,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 					switch (root["terreno"][i][j].asInt()){
 						case 30:
 						{
-							NoEspecia roca("roca");
+							NoEspecia roca(ROCA);
 							Baldosa bald(0, roca, contador_ids_objetos,
 							std::pair<int, int> (i, j));
 							for (unsigned int q = 0; q < PIX; q++){ 
@@ -37,7 +43,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						}
 						case 31:
 						{
-							NoEspecia duna("duna");
+							NoEspecia duna(DUNA);
 							Baldosa bald(0, duna, contador_ids_objetos,
 							std::pair<int, int> (i, j));
 							for (unsigned int q = 0; q < PIX; q++){ 
@@ -49,7 +55,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						}
 						case 32:
 						{
-							Especia especiafuerte("especia fuerte", root);
+							Especia especiafuerte(ESPECIAFUERTE, root);
 							std::shared_ptr<Baldosa> bald(new 
 							Baldosa(0, especiafuerte, contador_ids_objetos,
 							std::pair<int, int> (i, j)));
@@ -61,12 +67,12 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 							terrenos_con_especia.emplace(
 							std::pair<int, std::shared_ptr<Baldosa>>(
 							contador_ids_objetos, bald));
-							std::cout << "ID ESFUER " << contador_ids_objetos << "con pos x " << i << " pos y " << j<<std::endl;
+							//std::cout << "ID ESFUER " << contador_ids_objetos << "con pos x " << i << " pos y " << j<<std::endl;
 							break;
 						}
 						case 33:
 						{
-							Especia especiasuave("especia suave", root);
+							Especia especiasuave(ESPECIASUAVE, root);
 							std::shared_ptr<Baldosa> bald(new 
 							Baldosa(0, especiasuave, contador_ids_objetos,
 							std::pair<int, int> (i, j)));
@@ -82,7 +88,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						}
 						case 34:
 						{
-							NoEspecia cima("cima");
+							NoEspecia cima(CIMA);
 							Baldosa bald(0, cima, contador_ids_objetos,
 							std::pair<int, int> (i, j));
 							for (unsigned int q = 0; q < PIX; q++){ 
@@ -94,7 +100,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						}
 						case 35:
 						{
-							NoEspecia precipio("precipicio");
+							NoEspecia precipio(PRECIPICIO);
 							Baldosa bald(0, precipio, contador_ids_objetos,
 							std::pair<int, int> (i, j));
 							for (unsigned int q = 0; q < PIX; q++){ 
@@ -106,7 +112,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						}
 						default:
 						{
-							NoEspecia arena("arena");							
+							NoEspecia arena(ARENA);							
 							Baldosa bald(0, arena, contador_ids_objetos,
 							std::pair<int, int> (i, j));
 							for (unsigned int q = 0; q < PIX; q++){ 
@@ -195,7 +201,7 @@ bool verificar_ataque_a_enemigo, int id_duenio, bool es_gusano) {
 }
 
 bool Mapa::verificar_terreno_alrededor(std::pair<int, int> centro, 
-int altura, int base, std::string terreno) {
+int altura, int base, int terreno) {
 	bool terreno_adecuado = true;
 	std::vector<std::pair<int, int>> direcs_verificacion = {{0, base/2},
 	{0, -(base/2)}, {altura/2,0}, {-(altura/2), 0}, {altura/2, -(base/2)},
@@ -294,7 +300,7 @@ void Mapa::desenterrar_gusano() {
 		std::pair<int, int> posicion_centro(fila_random, columna_random);
 		bool es_arena = verificar_terreno_alrededor(posicion_centro,
 		gusano.obtener_dimesion_alto(), 
-		gusano.obtener_dimesion_ancho(), "arena");
+		gusano.obtener_dimesion_ancho(), ARENA);
 		if (es_arena) {
 			objetivos = buscar_unidades_alrededor(posicion_centro, 
 			gusano.obtener_dimesion_alto(),
@@ -323,7 +329,7 @@ unsigned int Mapa::pedir_limite_columnas() {
 	return (coordenadas[coordenadas.size() - 1]).size();
 }
 
-std::string Mapa::pedir_terreno_coordenada(std::pair<int, int> posicion) {
+int Mapa::pedir_terreno_coordenada(std::pair<int, int> posicion) {
 	return coordenadas[posicion.first][posicion.second].obtener_terreno();
 }
 
@@ -335,7 +341,7 @@ unsigned int Mapa::pedir_limite_columnas_baldosa() {
 	return (baldosas[baldosas.size() - 1]).size();
 }
 
-std::string Mapa::pedir_terreno_baldosa(std::pair<int, int> posicion) {
+int Mapa::pedir_terreno_baldosa(std::pair<int, int> posicion) {
 	return baldosas[posicion.first][posicion.second].obtener_terreno();
 }
 
@@ -344,7 +350,7 @@ bool Mapa::agregado_edificio(ObjetoDune* objeto) {
 	bool terreno_valido;
 	std::vector<ObjetoDune*> unidades_alrededor; 
 	terreno_valido = verificar_terreno_alrededor(posicion_central, 
-	objeto->obtener_altura(), objeto->obtener_base(), "roca");
+	objeto->obtener_altura(), objeto->obtener_base(), ROCA);
 	std::cout << "Terreno valido:" << terreno_valido << " para edificio de tipo " << objeto->pedir_id_tipo() << std::endl;
 	//verifico que no haya ninguna unidad o edificio dentro del espacio
 	//donde se quiere poner el objeto

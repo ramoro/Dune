@@ -17,8 +17,8 @@ bool Coordenada::poner_objeto(ObjetoDune* objeto_dune) {
 	}
 }
 
-std::string Coordenada::obtener_terreno() {
-	return terreno.obtener_nombre_material();
+int Coordenada::obtener_terreno() {
+	return terreno.obtener_id_material();
 }
 
 void Coordenada::sacar_objeto() {

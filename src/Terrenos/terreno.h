@@ -6,17 +6,17 @@
 /*Clase abstracta que representa un terreno en el mundo de Dune.*/
 class Terreno {
 	private:
-		std::string material;
+		int material;
 		std::pair<int, int> centro;
 		int base;
 		int altura;
 
 	public:
 		/*Constructor de la clase.*/
-		Terreno(std::string material);
+		Terreno(int material);
 
 		/*Devuelve el nombre del material que posee el terreno.*/
-		std::string obtener_nombre_material();
+		int obtener_id_material();
 
 		/*Metodo virtual que en caso de tener especia el terreno
 		devuelve la cantidad que posee.*/
