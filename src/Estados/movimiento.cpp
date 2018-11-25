@@ -35,8 +35,11 @@ Mapa &mapa, double tiempo_transcurrido) {
 #endif
  
 	mapa.mover_unidad(unidad->pedir_id(), camino.front());
+
 	unidad->avanzar_camino();
+
 	unidad->serializar_mensaje_movimiento(); 
+
 	//significa que llego a destino, deberia cambiar la verificacion, ya que es segunc uanto se mueve
 	//ademas de que porahi antes ya esta ocupado por un pedazo de edificio
 	if (camino.size() == 1) {

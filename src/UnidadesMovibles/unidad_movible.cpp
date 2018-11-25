@@ -104,7 +104,9 @@ std::list<std::pair<int, int>> UnidadMovible::pedir_camino() {
 }
 
 void UnidadMovible::avanzar_camino() {
-	camino.pop_front();
+	if (!camino.empty()){
+		camino.pop_front();
+	}
 }
 
 void UnidadMovible::asignar_nuevo_camino(std::list<std::pair<int, int>>

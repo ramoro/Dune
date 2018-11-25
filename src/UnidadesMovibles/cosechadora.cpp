@@ -55,10 +55,12 @@ void Cosechadora::afectar_terreno(std::shared_ptr<ObjetoDune> terreno,
 Mapa &mapa, double tiempo_transcurrido) {
 	//esto es por si esta llena la cosechadora y le dicen de ir
 	//a sacar mas especia
+	std::cout << "entro" << std::endl;
 	if (especia_encima == limite_especia) {
 		buscar_depositar_especia(mapa, terreno);
 		return;
 	}
+	std::cout << "entro2" << std::endl;
 	contador_segundo += tiempo_transcurrido;
 	if (tiempo_transcurrido >= SEGUNDO_EN_MILIS) {
 		contador_segundo -= SEGUNDO_EN_MILIS;
@@ -73,6 +75,7 @@ Mapa &mapa, double tiempo_transcurrido) {
 		}
 
 	}
+	std::cout << "entro3" << std::endl;
 	//tiro la especia que sobra
 	if (especia_encima >= limite_especia) {
 		int resto = especia_encima - limite_especia;
@@ -94,6 +97,7 @@ std::shared_ptr<ObjetoDune> terreno) {
 		estado = estado->cambiar_a_movimiento_para_depositar(refineria, 
 		terreno);
 	}
+	std::cout << "Cosechadora::buscar_depositar_especia" <<std::endl;
 }
 
 int Cosechadora::depositar_especia_en_segundo() {

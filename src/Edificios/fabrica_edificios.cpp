@@ -48,7 +48,7 @@ std::pair<int, int> centro,Config &config) {
 		return fabrica_pesada;
 	} else if (id_tipo_edificio == CUARTELATREIDES || id_tipo_edificio == CUARTELHARKONNEN || id_tipo_edificio == CUARTELORDOS) {
 		std::shared_ptr<Cuartel> cuartel(new 
-		Cuartel(id, id_duenio, centro, config));
+		Cuartel(id, id_duenio, centro, config,id_tipo_edificio));
 		return cuartel;
 	} else {
 		std::shared_ptr<Palacio> palacio(new 

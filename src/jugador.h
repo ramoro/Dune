@@ -90,6 +90,9 @@ class Jugador {
 
 		/*Devuelve la cantidad de dinero que posee el jugador.*/
 		int pedir_dinero();
+
+		/*Devuelve la casa del jugador*/
+		std::string obtener_casa();
 };
 
 #endif 

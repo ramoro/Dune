@@ -119,3 +119,7 @@ int Jugador::agregar_especia(int cant_especia) {
 int Jugador::pedir_dinero() {
 	return dinero;
 }
+
+std::string Jugador::obtener_casa() {
+	return casa;
+}
