@@ -37,9 +37,10 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 								Coordenada coord(0, roca);
 								fila.push_back(coord);
 							}
+							/*
 							if (i%100==0){
 								bald.serializar_mensaje_baldosa();
-							}
+							}*/
 							/*if (i==j){
 								bald.serializar_mensaje_baldosa();
 							}*/
@@ -69,11 +70,11 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 								Coordenada coord(0, especiafuerte);
 								fila.push_back(coord);
 							}
+							bald->serializar_mensaje_baldosa();
 							fila_baldosa.push_back(*bald);
 							terrenos_con_especia.emplace(
 							std::pair<int, std::shared_ptr<Baldosa>>(
 							contador_ids_objetos, bald));
-							bald->serializar_mensaje_baldosa();
 							//std::cout << "ID ESFUER " << contador_ids_objetos << "con pos x " << i << " pos y " << j<<std::endl;
 							break;
 						}
@@ -87,11 +88,11 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 								Coordenada coord(0, especiasuave);
 								fila.push_back(coord);
 							}
+							bald->serializar_mensaje_baldosa();
 							fila_baldosa.push_back(*bald);
 							terrenos_con_especia.emplace(
 							std::pair<int, std::shared_ptr<Baldosa>>(
 							contador_ids_objetos, bald));
-							bald->serializar_mensaje_baldosa();
 							break;
 						}
 						case CODIGO_CIMA:
@@ -103,8 +104,8 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 								Coordenada coord(0, cima);
 								fila.push_back(coord);
 							}
-							fila_baldosa.push_back(bald);
 							bald.serializar_mensaje_baldosa();
+							fila_baldosa.push_back(bald);
 							break;
 						}
 						case CODIGO_PRECIPICIO:

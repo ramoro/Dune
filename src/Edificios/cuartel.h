@@ -14,12 +14,13 @@ class Cuartel: public Edificio{
 	public:
 		/*Constructor de la clase. Recibe un string con el nombre
 		de la casa a la que pertenece.*/
-		Cuartel(int id, int id_duenio, std::pair<int, int> centro, Config &config);
+		Cuartel(int id, int id_duenio, std::pair<int, int> centro,
+		 Config &config,int id_tipo_edificio);
 		
 		/*Devuelve true si el cuartel fue agregado al juego.
 		False en caso contrario.*/
-		virtual bool agregar_al_juego(Mapa &mapa, Jugador &jugador, int id_edificio, 
-		int id_tipo_edificio);
+		virtual bool agregar_al_juego(Mapa &mapa, Jugador &jugador,
+		 int id_edificio, int id_tipo_edificio);
 
 		/*Se fija si el edifcio esta destruido y arma los mensajes
 		correspondientes, ademas de realizar cosas extras segun el edificio.*/
