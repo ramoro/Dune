@@ -46,13 +46,14 @@ bool Gusano::actualizar_salida(int tiempo_transcurrido) {
 	return false;
 }
 
-void Gusano::serializar_mensaje_salida() {
+MensajeProtocolo Gusano::serializar_mensaje_salida() {
 	mensaje.asignar_accion(CODIGO_SALIDA_GUSANO);
 	mensaje.agregar_parametro(ID_GUSANO);
 	mensaje.agregar_parametro(dimension_ancho);
 	mensaje.agregar_parametro(dimension_alto);
 	mensaje.agregar_parametro(centro_salida.first);
 	mensaje.agregar_parametro(centro_salida.second);
+	return mensaje;
 }
 
 void Gusano::asignar_centro(std::pair<int, int> nuevo_centro) {

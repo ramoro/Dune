@@ -35,8 +35,9 @@ class Gusano {
 
 		/*Se agrega la accion de salida del gusano hacia la superficie dentro 
 		del juego y los parametros adjuntos a la 
-		misma segun el protocolo a la clase MensajeProtocolo del gusano.*/
-		void serializar_mensaje_salida();
+		misma segun el protocolo a la clase MensajeProtocolo del gusano,
+		devolviendo el mensaje.*/
+		MensajeProtocolo serializar_mensaje_salida();
 
 		/*Recibe un nueva posicion para el centro de donde saldra el
 		gusano y se lo asigna a su centro de salida.*/

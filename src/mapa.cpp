@@ -591,11 +591,14 @@ std::pair<int, int> final) {
 	return lista_camino;
 }
 
-void Mapa::actualizar_salida_gusano(int tiempo_transcurrido) {
+void Mapa::actualizar_salida_gusano(int tiempo_transcurrido,
+std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	int salio = gusano.actualizar_salida(tiempo_transcurrido);
 	if (salio) {
 		desenterrar_gusano();
-		gusano.serializar_mensaje_salida();
+		MensajeProtocolo mensaje = gusano.
+		serializar_mensaje_salida();
+		guardar_mensaje_en_colas(colas_mensajes, mensaje);
 	}
 }
 

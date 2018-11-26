@@ -131,7 +131,7 @@ class Mapa {
 		Devuelve true o false si encontro una posicion valida para crear la
 		unidad alrededor del edificio*/
 		bool ubicar_unidad(int id_edificio, std::pair<int, int> &centro_unidad,
-			std::shared_ptr<UnidadMovible> unidad);
+		std::shared_ptr<UnidadMovible> unidad);
 
 		/*Devuelve true si coordenada en la posicion pasada esta ocupada*/
 		bool esta_ocupada_coordenada(std::pair<int, int> posicion);
@@ -152,8 +152,10 @@ class Mapa {
 
 		/*Recibe el tiempo transcurrido en ms y actualiza la salida del gusano
 		matando a las unidades que se encuentran en la superficie de salida
-		en caso de que sea momento de que salga.*/
-		void actualizar_salida_gusano(int tiempo_transcurrido);
+		en caso de que sea momento de que salga y encolandose el mensaje
+		de gusano en las cola recibidas.*/
+		void actualizar_salida_gusano(int tiempo_transcurrido,
+		std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes);
 
 		/*Recibe el id de un objeto y devuelve un puntero al mismo. Precondicion:
 		el objeto se encuentra en el mapa.*/

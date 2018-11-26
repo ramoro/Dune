@@ -12,29 +12,40 @@
 #include "juego.h"
 #include "cola_bloqueante.h"
 
-//#define POSICION_INHABILITADA 1
-/*
-int main(int argc, char* argv[]) {
-  Server server(argv[1]);
-  server.aceptar_cliente();
-}
-*/
+#define POSICION_INHABILITADA 1
+
+/*int main(int argc, char* argv[]) {
+ Config conf;
+ int id =0;
+ Mapa map(conf, id);
+ BuscadorMejorCamino busc;
+ busc.buscar_mejor_camino(map, std::pair<)
+}*/
+
 /*int main() {
 	//parametros
 	std::pair<int ,int> inicio(0, 0);
 	std::vector<std::vector<int>> mapa;
-	std::pair<int, int> final(3, 1);
+	std::pair<int, int> final(10, 3);
 	//fin parametros
 
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 13; i++) {
 		std::vector<int> fila;
-		for (int j = 0; j < 10; j++) {
+		for (int j = 0; j < 13; j++) {
 			fila.push_back(0);
 		}
 		mapa.push_back(fila);
 	}
 	mapa[1][1] = 1;
 	mapa[2][1] = 1;
+  mapa[9][2] = 1;
+  mapa[9][3] = 1;
+  mapa[9][4] = 1;
+  mapa[10][2] = 1;
+  mapa[10][4] = 1;
+  mapa[11][2] = 1;
+  mapa[11][3] = 1;
+  mapa[11][4] = 1;
 
 	Nodo nodo_inicio(NULL, inicio);
 	nodo_inicio.poner_valor_g(0);
@@ -50,16 +61,15 @@ int main(int argc, char* argv[]) {
 		Nodo nodo_evaluado = posibles_nodos[0];
 		int indice_nodo_evaluado = 0;
 		int indice_auxiliar = 0;
-
 		//Me quedo con el nodo de menor valor F
 		for (std::vector<Nodo>::iterator it = posibles_nodos.begin(); 
-  		it != posibles_nodos.end(); ++it) {
+  	it != posibles_nodos.end(); ++it) {
   			if ((*it).obtener_valor_f() < nodo_evaluado.obtener_valor_f()) {
   				nodo_evaluado = (*it);
   				indice_nodo_evaluado = indice_auxiliar;
   			}
   			indice_auxiliar++;
-  		}
+  	}
 
   		posibles_nodos.erase(posibles_nodos.begin() + indice_nodo_evaluado);
   		nodos_visitados.push_back(nodo_evaluado);
@@ -178,10 +188,10 @@ int main(int argc, char* argv[]) {
   		begin(); it_no_agregados != no_agregados.end(); ++it_no_agregados) {
   			delete ((*it_no_agregados).obtener_padre());
   		}
-
 	}
-}*/
-
+  std::cout << "salio" << std::endl;
+}
+*/
 /*
 int main() {
   std::map<int, std::shared_ptr<ColaBloqueante>> colas;
