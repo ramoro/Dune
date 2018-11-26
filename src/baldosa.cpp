@@ -53,8 +53,8 @@ void Baldosa::serializar_mensaje_baldosa() {
 	mensaje.asignar_accion(CODIGO_SALIDA_TERRENO);
 	mensaje.agregar_parametro(terreno.obtener_id_material());
 	mensaje.agregar_parametro(id);
-	mensaje.agregar_parametro(100);
-	mensaje.agregar_parametro(100);
+	mensaje.agregar_parametro(50);
+	mensaje.agregar_parametro(50);
 	mensaje.agregar_parametro(obtener_centro().first);
 	mensaje.agregar_parametro(obtener_centro().second);
 	std::cout << "Serializo terreno con id " <<id << std::endl;

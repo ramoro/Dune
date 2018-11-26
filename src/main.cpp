@@ -208,8 +208,8 @@ int main(int argc, char* argv[]) {
   //partida.agregar_jugador("ordos", &cola);
   //Juego juego(&partida);
   //juego.run();
-  //Server server(argv[1]);
-  //server.aceptar_cliente();
+  Server server(argv[1]);
+  server.aceptar_cliente();
 }
 
 

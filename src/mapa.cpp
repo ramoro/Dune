@@ -306,10 +306,10 @@ void Mapa::desenterrar_gusano() {
 	int limite_salida = 0;
 	while(!espacio_valido) {
 		if (limite_salida == LIMITE_ITERACIONES_GUSANO) break;
-		fila_random = rand() % coordenadas.size();
-		columna_random = rand() % coordenadas.size();
-		//fila_random = 19;
-		//columna_random = 23;
+		//fila_random = rand() % coordenadas.size();
+		//columna_random = rand() % coordenadas.size();
+		fila_random = 525;
+		columna_random = 175;
 
 		std::pair<int, int> posicion_centro(fila_random, columna_random);
 		bool es_arena = verificar_terreno_alrededor(posicion_centro,
