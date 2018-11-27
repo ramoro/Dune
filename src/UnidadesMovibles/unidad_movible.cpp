@@ -14,7 +14,22 @@ double tiempo_creacion, int costo_dinero, int vida, int id, int id_duenio,
 int base, int altura, std::pair<int, int> centro) :
 	ObjetoDune(vida, costo_dinero, id, id_duenio, base, altura, centro),
 	rango(rango), velocidad(velocidad), 
-	tiempo_creacion(tiempo_creacion * PASAJE_A_MILISEGS){}
+	tiempo_creacion(tiempo_creacion * PASAJE_A_MILISEGS){
+		tiempo_acumulado = 0;
+	}
+
+void UnidadMovible::resetear_tiempo_acumulado(){ 
+	tiempo_acumulado = 0;
+}
+
+void UnidadMovible::acumular_tiempo(int tiempo_transcurrido){
+	tiempo_acumulado+=tiempo_transcurrido;
+}
+
+int UnidadMovible::obtener_tiempo_acumulado(){
+	return tiempo_acumulado;
+}
+
 
 int UnidadMovible::pedir_danio(std::string objetivo) {
 	int danio_mayor = 0;
@@ -69,7 +84,7 @@ bool UnidadMovible::se_puede_agregar(Jugador
 void UnidadMovible::agregar(Mapa &mapa) {
 	std::cout << "unidad en x " << (this->centro).first << " y " << (this->centro).second << std::endl;
 	mapa.agregar_objeto(this, this->id,
-	this->centro);
+	this->centro,false);
 	estado = estado->cambiar_a_inactividad();
 }
 
@@ -89,11 +104,11 @@ Mapa &mapa) {
 	//por si sale algo mal y no se vacio del todo el camino
 	//cuando la unidad llego
 	//if (camino.empty()) return;
-	std::cout << "centro: " << centro.first << centro.second << " de la unidad " << id << std::endl;
+//	std::cout << "centro: " << centro.first << centro.second << " de la unidad " << id << std::endl;
 	if (estado) {
 		std::shared_ptr<Estado> nuevo_estado = estado->actualizar(this, mapa,
 		tiempo_transcurrido);
-		std::cout << "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
+//		std::cout << "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
 		//si no es null le asigno el nuevo estado
 		if (nuevo_estado) {
 			std::cout << "nuevo estado " << " estado: " << nuevo_estado->pedir_nombre() << std::endl;

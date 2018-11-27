@@ -27,7 +27,7 @@ class UnidadMovible: public ObjetoDune {
 		std::vector<int> ids_tipos_edificios_necesarios;
 		std::vector<std::string> casa;
 		std::shared_ptr<Estado> estado;
-		double tiempo_acumulado;
+		int tiempo_acumulado;
 
 	public:
 		/*Constructor de la clase.*/
@@ -35,6 +35,15 @@ class UnidadMovible: public ObjetoDune {
 		double tiempo_creacion, int costo_dinero, int vida, 
 		int id, int id_duenio, int base, int altura, std::pair<int, int> 
 		centro);
+
+		/*Setea a 0 el tiempo acumulado*/
+		void resetear_tiempo_acumulado();
+
+		/*Sumo el tiempo recibido por parametro en el atributo*/
+		void acumular_tiempo(int tiempo_transcurrido);
+
+		/*Devuelve el tiempo acumulado por la unidad*/
+		int obtener_tiempo_acumulado();
 
 		/*Recibe un string con el objetivo al que esta atacando
 		la unidad y devuelve el danio que le realiza al objetivo.*/

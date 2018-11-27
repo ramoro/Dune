@@ -75,7 +75,7 @@ class Mapa {
 		/*Agrega un objeto del mundo Dune en el mapa de posiciones segun
 		la posicion central pasada por parametro y su id.*/
 		void agregar_objeto(ObjetoDune* objeto, 
-		int id_objeto, std::pair<int, int> &centro);
+		int id_objeto, std::pair<int, int> &centro,bool edif);
 
 		/*Recibe el id del objeto y lo elimina tanto del mapa
 		de ids de cada objeto junto con su posicion y de la coordenada
@@ -142,7 +142,7 @@ class Mapa {
 		/*Recibe un el id de la unidad a mover y la posicion a donde se 
 		la movera. Se la mueve dentro del mapa, cambiandole su centro.*/
 		void mover_unidad(int id_unidad, 
-		std::pair<int, int> &pos_destino);
+		std::pair<int, int> pos_destino);
 
 		/*Recibe una posicion inicial y devuelve una lista con las posiciones 
 		que arman el mejor camino para llegar hasta la posicion destino tambien

@@ -32,7 +32,7 @@ int id_tipo_edificio) {
 	agregar_a_jugador = jugador.agregado_edificio(this);
 	
 	if (agregar_a_mapa && agregar_a_jugador) {
-		mapa.agregar_objeto(this, id_edificio, this->centro);
+		mapa.agregar_objeto(this, id_edificio, this->centro,true);
 		jugador.agregar_edificio(this, id_edificio, this->centro);
 		agregar_posible = true;
 	}

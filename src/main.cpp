@@ -217,8 +217,8 @@ int main(int argc, char* argv[]) {
   //ColaBloqueante cola(10);
   //partida.agregar_jugador("harkonnen", &cola);
   //partida.agregar_jugador("ordos", &cola);
-  Juego juego(&partida);
-  juego.run();
+  //Juego juego(&partida);
+  //juego.run();
   Server server(argv[1]);
   server.aceptar_cliente();
 }

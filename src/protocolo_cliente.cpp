@@ -33,7 +33,7 @@ void ProtocoloCliente::enviar_mensajes() {
 			*/
 			/*ver si gano tambien*/
 			unsigned char accion = mensaje.pedir_accion();
-			std::cout << "Mensaje a enviar en protocolo cliente: " << accion <<std::endl;
+//			std::cout << "Mensaje a enviar en protocolo cliente: " << accion <<std::endl;
 			this->socket_cliente.send_msj(&accion, 1);
 			std::vector<int> parametros = mensaje.pedir_parametros();
 			for (std::vector<int>::iterator it = parametros.begin(); 
