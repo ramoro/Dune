@@ -108,7 +108,7 @@ Mapa &mapa) {
 	if (estado) {
 		std::shared_ptr<Estado> nuevo_estado = estado->actualizar(this, mapa,
 		tiempo_transcurrido);
-//		std::cout << "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
+		std::cout << "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
 		//si no es null le asigno el nuevo estado
 		if (nuevo_estado) {
 			std::cout << "nuevo estado " << " estado: " << nuevo_estado->pedir_nombre() << std::endl;
@@ -143,6 +143,7 @@ std::shared_ptr<ObjetoDune> objetivo) {
 		objetivo->obtener_centro()));
 	} else {
 		estado = estado->cambiar_a_ataque(objetivo);
+		serializar_mensaje_ataque(objetivo->pedir_id());
 	}
 }
 
@@ -153,6 +154,10 @@ void UnidadMovible::serializar_mensaje_movimiento() {
 	mensaje.agregar_parametro(this->centro.first);
 	mensaje.agregar_parametro(this->centro.second);
 	mensajes.push_back(std::move(mensaje));
+}
+
+void UnidadMovible::serializar_mensaje_termino_ataque() {
+	serializar_mensaje_movimiento();
 }
 
 void UnidadMovible::serializar_mensaje_ataque(int id_unidad_atacada) {

@@ -536,6 +536,7 @@ std::pair<int, int> final) {
     std::cout << "Hacia  " << final_baldosa.first << " " << final_baldosa.second << std::endl;
 #endif
 
+
 	std::list<std::pair<int, int>> lista_camino = buscador_mejor_camino.buscar_mejor_camino(*this, inicio_baldosa, final_baldosa);
 
 #ifdef NACHO 

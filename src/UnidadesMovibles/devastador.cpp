@@ -19,15 +19,20 @@ Devastador::Devastador(int id, int id_duenio, std::pair<int, int> centro,
 		CanionPlasma canion_plasma(config);
 		armas.push_back(CanionPlasma(canion_plasma));
 		config_explosion.push_back(
-			config["Explosion"].get("danio", 0).asInt());
+		config["Explosion"].get("danio", 0).asInt());
 		config_explosion.push_back(
-			config["Explosion"].get("frecuencia_disparo", 0).asInt());
+		config["Explosion"].get("frecuencia_disparo", 0).asInt());
 		config_explosion.push_back(
-			config["Explosion"].get("bonificacion_danio_edificios", 0).asInt());
+		config["Explosion"].get("bonificacion_danio_edificios", 0).asInt());
 		config_explosion.push_back(
-			config["Explosion"].get("bonificacion_danio_vehiculo", 0).asInt());
+		config["Explosion"].get("bonificacion_danio_vehiculo", 0).asInt());
 		config_explosion.push_back(
-			config["Explosion"].get("bonificacion_danio_infanteria", 0).asInt());
+		config["Explosion"].get("bonificacion_danio_infanteria", 0).asInt());
+		config_explosion.push_back(
+		config["Explosion"].get("dimension_alto", 0).asInt());
+		config_explosion.push_back(
+		config["Explosion"].get("dimension_ancho", 0).asInt());
+		
 		for (unsigned int i = 0; i < 
 		config["Devastador"]["casas"].size(); i++) {
 			casa.push_back(config["Devastador"]["casas"][i].asString());

@@ -32,5 +32,6 @@ std::shared_ptr<Estado> MovimientoParaAtacar::actualizar(UnidadMovible
 	}
 	unidad->limpiar_camino();
 	std::shared_ptr<Ataque> ataque(new Ataque(objeto_destino));
+	unidad->serializar_mensaje_ataque(objeto_destino->pedir_id());
 	return ataque;
 }

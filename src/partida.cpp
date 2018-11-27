@@ -10,7 +10,7 @@
 #define CODIGO_MUERTE_OBJETO 'd'
 #define CODIGO_PERDIO_JUGADOR 'e'
 #define CODIGO_CAMBIO_DINERO 'p'
-#define CODIGO_CAMBIO_ENERGIA 'w'
+#define CODIGO_CAMBIO_ENERGIA 'o'
 #define JUGADOR_NO_ENTRENANDO -1
 #define DISTANCIA_MINIMA_EDIFICIO_ALIADO 7000
 
@@ -19,7 +19,7 @@ Partida::Partida() {
 	contador_ids_objetos = 0;
 	Config json("../src/input.json");
 	config = std::move(json);
-	Mapa map(this->config,contador_ids_objetos);
+	Mapa map(this->config, contador_ids_objetos);
 	mapa = std::move(map);
 	std::cout << "contador_ids_objetos " << contador_ids_objetos << std::endl;
 }

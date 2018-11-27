@@ -258,7 +258,9 @@
 		"frecuencia_disparo": 0,
 		"bonificacion_danio_edificios": 0,
 		"bonificacion_danio_infanteria": 0,
-		"bonificacion_danio_vehiculos": 0
+		"bonificacion_danio_vehiculos": 0,
+		"dimension_alto": 100,
+		"dimension_ancho": 100
 	},
 	"Jugadores": {
 		"dinero": 10000000,

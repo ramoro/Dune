@@ -213,7 +213,7 @@ int main() {
 
 int main(int argc, char* argv[]) {
   //std::cout << "hola " << std::endl;
-  Partida partida;
+  //Partida partida;
   //ColaBloqueante cola(10);
   //partida.agregar_jugador("harkonnen", &cola);
   //partida.agregar_jugador("ordos", &cola);

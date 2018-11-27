@@ -19,6 +19,7 @@ Mapa &mapa, int tiempo_transcurrido) {
 	|| cercania.second > unidad->obtener_rango_ataque()) {
 			unidad->asignar_nuevo_camino(mapa.obtener_camino(unidad->
 			obtener_centro(), objeto_destino->obtener_centro()));
+			//unidad->serializar_mensaje_termino_ataque();
 			std::shared_ptr<MovimientoParaAtacar> movimiento_ataque(new 
 			MovimientoParaAtacar(objeto_destino));
 			return movimiento_ataque;
@@ -30,11 +31,10 @@ Mapa &mapa, int tiempo_transcurrido) {
 		//significa que es la cosechadora la q ataco
 		unidad->afectar_terreno(objeto_destino, mapa, tiempo_transcurrido);
 	} 
-
+	std::cout << "llego a ataque" << std::endl;
 	for (std::vector<ObjetoDune*>::iterator it = 
 	unidades_afectadas.begin(); it != unidades_afectadas.end(); ++it) {
-		int vida_restante = (*it)->daniar(unidad);
-		unidad->serializar_mensaje_ataque((*it)->pedir_id());
+		int vida_restante = (*it)->daniar(unidad, tiempo_transcurrido);
 		if (vida_restante <= 0) {
 			(*it)->matar();
 			//en caso de matar al objeto que fue a atacar queda en estado

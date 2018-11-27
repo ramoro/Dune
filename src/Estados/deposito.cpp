@@ -8,12 +8,13 @@ Deposito::Deposito(Refineria* objetivo,
 std::shared_ptr<ObjetoDune> coord): refineria_deposito(objetivo),
 especia_a_volver(coord) {
 	nombre = "deposito";
+	contador_segundo = 0;
 }
 
 std::shared_ptr<Estado> Deposito::actualizar(UnidadMovible 
 *unidad, Mapa &mapa, int tiempo_transcurrido) {
 	contador_segundo += tiempo_transcurrido;
-	if (tiempo_transcurrido >= SEGUNDO_EN_MILIS) {
+	if (contador_segundo >= SEGUNDO_EN_MILIS) {
 		contador_segundo -= SEGUNDO_EN_MILIS;
 		int especia_depositada = unidad->depositar_especia_en_segundo();
 		if (especia_depositada == 0) {

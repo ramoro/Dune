@@ -8,11 +8,10 @@ Mapa &mapa, int tiempo_transcurrido) {
 	ataque_al_morir(mapa);
 	for (std::vector<ObjetoDune*>::iterator it = 
 	unidades_afectadas.begin(); it != unidades_afectadas.end(); ++it) {
-		int vida_restante = (*it)->daniar(unidad);
+		int vida_restante = (*it)->daniar(unidad, tiempo_transcurrido);
 		if (vida_restante <= 0) {
 			(*it)->matar();
 		}
-		unidad->serializar_mensaje_ataque((*it)->pedir_id());
 	}
 	return NULL;
 }

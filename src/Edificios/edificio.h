@@ -19,6 +19,7 @@ class Edificio: public ObjetoDune {
 		int porcentaje_recuperacion;
 		FabricaUnidadesMovibles fabrica_unidades_movibles;
 		std::shared_ptr<UnidadMovible> unidad_entrenando;
+		int contador_seg; // cuenta un seg en ms y reinicia
 	
 	protected:
 		int estado;	
@@ -45,10 +46,12 @@ class Edificio: public ObjetoDune {
 		int id_edificio, int id_tipo_edificio) = 0;
 
 		/*Recibe un puntero a una unidad movible que dania
-		al objeto. Devuelve la vida restante que le queda
+		al objeto y el tiempo transcurrido en el game loop. 
+		Devuelve la vida restante que le queda
 		al edificio luego de ser atacada.
 		Si devuelve un 0 o menos significa que fue destruida.*/
-		virtual int daniar(UnidadMovible* unidad_atacante);
+		virtual int daniar(UnidadMovible* unidad_atacante, 
+		int tiempo_transcurrido);
 
 		/*Recibe el jugador duenio del edificio
 		y crea una unidad segun el id del tipo y asignandole la id_unidad

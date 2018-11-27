@@ -62,7 +62,7 @@ Mapa &mapa, int tiempo_transcurrido) {
 	}
 	std::cout << "entro2" << std::endl;
 	contador_segundo += tiempo_transcurrido;
-	if (tiempo_transcurrido >= SEGUNDO_EN_MILIS) {
+	if (contador_segundo >= SEGUNDO_EN_MILIS) {
 		contador_segundo -= SEGUNDO_EN_MILIS;
 		especia_encima += extraccion_especia_por_segundo;
 		int especia_sobrante = terreno->remover_especia(this);

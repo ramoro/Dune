@@ -128,8 +128,13 @@ class UnidadMovible: public ObjetoDune {
 		/* Se agrega la accion unidad recien movida y los parametros 
 		adjuntos a la misma segun el protocolo a la clase 
 		MensajeProtocolo de la unidad.*/
-		void serializar_mensaje_movimiento(); 
+		void serializar_mensaje_movimiento();
 
+		/*Se agrega la accion terminar ataque (se usa la accion
+		movimiento en el mismo lugar) y los parametros 
+		adjuntos a la misma segun el protocolo a la clase 
+		MensajeProtocolo de la unidad.*/
+		void serializar_mensaje_termino_ataque(); 
 
 		/*Se agrega la accion de ataque ejecutada por la unidad dentro 
 		del juego y los parametros adjuntos a la 

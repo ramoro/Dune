@@ -52,7 +52,8 @@ void ObjetoDune::set_centro(std::pair<int, int> centro_nuevo) {
 	centro = centro_nuevo;
 }
 
-int ObjetoDune::daniar(UnidadMovible* unidad_atacante) {
+int ObjetoDune::daniar(UnidadMovible* unidad_atacante, 
+int tiempo_transcurrido) {
 	std::cout << "entro en daniar de objeto dune" << std::endl;
 	return 0;
 }

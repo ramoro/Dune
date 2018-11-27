@@ -8,6 +8,7 @@
 #define DESTRUIDO -1
 #define CODIGO_CREACION 'c'
 #define CODIGO_PERDIO_DUENIO_EDIFICIO 'e'
+#define SEGUNDO_EN_MILIS 1000
 
 Edificio::Edificio(int aporte_energetico, int costo_dinero,
 int puntos_estructura, int id, 
@@ -16,6 +17,7 @@ ObjetoDune(puntos_estructura, costo_dinero, id, id_duenio, base, altura,
 centro), aporte_energetico(aporte_energetico){
 	porcentaje_recuperacion = 0.5;
 	estado = INACTIVO;
+	contador_seg = 0;
 }
 
 int Edificio::obtener_aporte_energetico() {
@@ -44,9 +46,14 @@ int id_tipo_edificio) {
 	return true;
 }
 
-int Edificio::daniar(UnidadMovible* unidad_atacante) {
-	int danio = unidad_atacante->pedir_danio("edificio");
-	return ObjetoDune::reducir_vida(danio);
+int Edificio::daniar(UnidadMovible* unidad_atacante, int tiempo_transcurrido) {
+	int danio_recibido = 0;
+	contador_seg += tiempo_transcurrido;
+	if (contador_seg >= SEGUNDO_EN_MILIS) {
+		contador_seg -= SEGUNDO_EN_MILIS;
+		danio_recibido = unidad_atacante->pedir_danio("edificio");
+	}
+	return ObjetoDune::reducir_vida(danio_recibido);
 }
 
 bool Edificio::se_puede_agregar_unidad(Jugador &jugador, 
@@ -57,7 +64,7 @@ int id_tipo_unidad, int id_unidad, Config &config) {
 	crear_unidad_movible(id_tipo_unidad, id_unidad, this->id_duenio, 
 	posicion_central,config);
 
-	bool edificio_correcto = false;
+	/*bool edificio_correcto = false;
 	std::vector<int> edificios_necesitados = ptr_unidad->
 	obtener_edificios_necesarios();
 
@@ -66,9 +73,9 @@ int id_tipo_unidad, int id_unidad, Config &config) {
 		if (this->id_tipo == *it) {
 			edificio_correcto = true;
 		}
-	}
+	}*/
 
-	if (edificio_correcto && ptr_unidad->se_puede_agregar(jugador)) {
+	if (ptr_unidad->se_puede_agregar(jugador)) {
 		jugador.reducir_dinero(ptr_unidad->obtener_costo());
 		estado = ENTRENANDO;
 		unidad_entrenando = ptr_unidad;

@@ -11,14 +11,14 @@ Explosion::Explosion(std::vector<int> &config_explosion) :
 	 config_explosion[3]));
 	bonificaciones.insert(std::pair<std::string, int>("infanteria",
 	 config_explosion[4]));
-	dimesion_altura = 5;
-	dimesion_base = 5;
+	dimesion_alto = config_explosion[5];
+	dimesion_ancho = config_explosion[6];
 }
 
 int Explosion::pedir_dimension_altura() {
-	return dimesion_altura;
+	return dimesion_alto;
 }
 
 int Explosion::pedir_dimension_base() {
-	return dimesion_base;
+	return dimesion_ancho;
 }

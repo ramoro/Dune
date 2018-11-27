@@ -22,7 +22,6 @@ Mapa &mapa, int tiempo_transcurrido) {
 	//en vez de front deberia ser la posicion segun el tiempo y la velocidad
 	//a avanzar camino deberia pasarle la cantiadd de posiciones que avanzo ene l camino
 	
-#ifdef NACHO
 	tiempo_transcurrido+=unidad->obtener_tiempo_acumulado();
 	double dist1 = sqrt(abs(unidad->obtener_centro().first - camino.back().first) * abs(unidad->obtener_centro().second - camino.back().second));
 	double dist2 = tiempo_transcurrido * unidad->obtener_velocidad();
@@ -44,65 +43,6 @@ Mapa &mapa, int tiempo_transcurrido) {
 			unidad->resetear_tiempo_acumulado();
 		//}
 	}
-
-/*
-std::cout << "Tiene que esperar para moverse1" << std::endl;
-float distance = sqrt(pow(camino.back().first-camino.front().first,2)+pow(camino.back().second-camino.front().second,2));
-if (distance == 0){
-	std::shared_ptr<Inactividad> inactividad(new Inactividad());
-	return inactividad;	
-}
-float directionX = (camino.back().first-camino.front().first) / distance;
-float directionY = (camino.back().second-camino.front().second) / distance;
-mapa.mover_unidad(unidad->pedir_id(), camino.front());
-std::cout << distance << "Tiene que esperar para moverse2" << std::endl;
-//unidad->avanzar_camino();
-//unidad->serializar_mensaje_movimiento(); 
-bool moving = true;
-// On update
-
-if(moving == true)
-{
-	std::cout << "Tiene que esperar para moverse2.5" << std::endl;
-	std::pair<int,int> cen(unidad->obtener_centro());
-    cen.first += directionX * unidad->obtener_velocidad() * tiempo_transcurrido;
-    	std::cout << directionX << "Tiene que esperar para moverse2.7" << tiempo_transcurrido << std::endl;
-
-    cen.second += directionY * unidad->obtener_velocidad() * tiempo_transcurrido;
-        	std::cout << "Tiene que esperar para moverse2.75" << std::endl;
-
-    mapa.mover_unidad(unidad->pedir_id(), cen);
-    	std::cout << "Tiene que esperar para moverse2.8" << std::endl;
-
-    unidad->avanzar_camino();
-    	std::cout << "Tiene que esperar para moverse2.9" << std::endl;
-
-	unidad->serializar_mensaje_movimiento(); 
-
-	std::cout << "Tiene que esperar para moverse3" << camino.front().first << std::endl;
-
-    if(sqrt(pow(unidad->obtener_centro().first-camino.front().first,2)+pow(unidad->obtener_centro().second-camino.front().second,2)) >= distance)
-    {
-    	        std::cout << "Tiene que esperar para moverse3.2" << std::endl;
-
-    	mapa.mover_unidad(unidad->pedir_id(), camino.back());
-	    //unidad->avanzar_camino();
-	            std::cout << "Tiene que esperar para moverse3.3" << std::endl;
-
-    	unidad->serializar_mensaje_movimiento(); 
-        moving = false;
-        std::cout << "Tiene que esperar para moverse4" << std::endl;
-    }
-
-
-}*/
-
-#endif
- 
-	//mapa.mover_unidad(unidad->pedir_id(), camino.front());
-
-	//unidad->avanzar_camino();
-   	//unidad->serializar_mensaje_movimiento(); 
 
 
 	//significa que llego a destino, deberia cambiar la verificacion, ya que es segunc uanto se mueve

@@ -70,8 +70,9 @@ class ObjetoDune {
 		void set_centro(std::pair<int, int> centro_nuevo);
 
 		/*Metodo virtual que dania a la unidad segun el danio provocado
-		por la unidad atacante.*/
-		virtual int daniar(UnidadMovible* unidad_atacante);
+		por la unidad atacante y el tiempo pasado.*/
+		virtual int daniar(UnidadMovible* unidad_atacante, 
+		int tiempo_trasncurrido);
 
 		/*Metodo virtual que mata a la unidad (la setea en estado muerta).*/
 		virtual void matar();

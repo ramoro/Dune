@@ -6,6 +6,9 @@
 
 /*Clase que representa vehiculo en el mundo de Dune.*/
 class Vehiculo: public UnidadMovible {
+	private:
+		int contador_seg; //cuenta un segundo en milisegundosy reinicia
+
 	public:
 		/*Constructor de la clase.*/
 		Vehiculo(int rango, int velocidad, 
@@ -14,10 +17,12 @@ class Vehiculo: public UnidadMovible {
 		centro);
 
 		/*Recibe un puntero a una unidad movible que dania
-		al objeto. Devuelve la vida restante que le queda
+		al objeto y el tiempo trasncurrido en el game loop. 
+		Devuelve la vida restante que le queda
 		al vehiculo luego de ser atacada.
 		Si devuelve un 0 o menos significa que fue destruida.*/
-		virtual int daniar(UnidadMovible* unidad_atacante);
+		virtual int daniar(UnidadMovible* unidad_atacante,
+		int tiempo_transcurrido);
 
 		/*valida que el terreno no sea ni precipicio ni cima*/
 		bool es_terreno_valido(int terreno);

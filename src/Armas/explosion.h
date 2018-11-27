@@ -8,8 +8,8 @@
 /*Clase que representa una explosion en el mundo de Dune.*/
 class Explosion: public Arma {
 	private:
-		int dimesion_altura;
-		int dimesion_base;
+		int dimesion_alto;
+		int dimesion_ancho;
 	public:
 		/*Constructor de la clase.*/
 		Explosion(std::vector<int> &config_explosion);
