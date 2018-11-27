@@ -4,7 +4,8 @@
 #include "mensaje_protocolo.h"
 
 #define VACIA 0
-#define OCUPADA 1
+#define OCUPADA_EDIFICIO 1
+#define OCUPADA_UNIDAD 2
 #define CODIGO_SALIDA_TERRENO 't'
 
 Baldosa::Baldosa(int estado, Terreno terreno, int id, 
@@ -12,12 +13,22 @@ std::pair<int, int> posicion): ObjetoDune(terreno.obtener_cantidad_especia(),
 0, id, -1, 1, 1, posicion), estado(estado), 
 terreno(terreno) {}
 
-bool Baldosa::poner_objeto(ObjetoDune* objeto_dune) {
-	if (estado == OCUPADA) {
+bool Baldosa::poner_edificio(ObjetoDune* objeto_dune) {
+	if (estado == OCUPADA_EDIFICIO || estado == OCUPADA_UNIDAD) {
 		return false;
 	} else {
 		objeto = objeto_dune;
-		estado = OCUPADA;
+		estado = OCUPADA_EDIFICIO;
+		return true;
+	}
+}
+
+bool Baldosa::poner_unidad(ObjetoDune* objeto_dune) {
+	if (estado == OCUPADA_EDIFICIO || estado == OCUPADA_UNIDAD) {
+		return false;
+	} else {
+		objeto = objeto_dune;
+		estado = OCUPADA_UNIDAD;
 		return true;
 	}
 }
@@ -31,17 +42,24 @@ void Baldosa::sacar_objeto() {
 	estado = VACIA;
 }
 
-bool Baldosa::esta_ocupada() {
-	if(estado == OCUPADA) return true;
+bool Baldosa::esta_ocupada_edificio() {
+	if(estado == OCUPADA_EDIFICIO) return true;
 	return false;
 }
-
+bool Baldosa::esta_ocupada_unidad() {
+	if(estado == OCUPADA_UNIDAD) return true;
+	return false;
+}
 int Baldosa::obtener_id_objeto_contenido() {
 	return objeto->pedir_id();
 }
 
-void Baldosa::marcar_como_ocupada() {
-	estado = OCUPADA;
+void Baldosa::marcar_como_ocupada_edificio() {
+	estado = OCUPADA_EDIFICIO;
+}
+
+void Baldosa::marcar_como_ocupada_unidad() {
+	estado = OCUPADA_UNIDAD;
 }
 
 void Baldosa::marcar_como_desocupada() {

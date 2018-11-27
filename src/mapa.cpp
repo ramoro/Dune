@@ -271,10 +271,14 @@ int altura, int base, bool ocupar) {
 }
 
 void Mapa::agregar_objeto(ObjetoDune* objeto, int id_objeto, 
-std::pair<int, int> &centro) {
+std::pair<int, int> &centro, bool edif) {
 	int base_objeto1 = objeto->obtener_base();
 	int altura_objeto1 = objeto->obtener_altura();
 	coordenadas[centro.first][centro.second].poner_objeto(objeto);
+	if (edif){
+		std::pair <int,int> bald(conversor.de_pixel_a_baldosa(centro));
+		baldosas[bald.first][bald.second].poner_edificio(objeto);
+	}
 	mapa_ids_objetos.emplace(std::pair<int, 
 	ObjetoDune*>(id_objeto, objeto));
 	marcar_estado_coordenadas_alrededor(centro, altura_objeto1, base_objeto1, 
@@ -409,7 +413,7 @@ bool Mapa::esta_ocupada_coordenada(std::pair<int, int> posicion) {
 }
 
 bool Mapa::esta_ocupada_baldosa(std::pair<int, int> posicion) {
-	return baldosas[posicion.first][posicion.second].esta_ocupada();
+	return baldosas[posicion.first][posicion.second].esta_ocupada_edificio();
 }
 
 bool Mapa::esta_dentro_limites(std::pair<int, int> &centro){
@@ -417,7 +421,6 @@ bool Mapa::esta_dentro_limites(std::pair<int, int> &centro){
 	 0 <= centro.second && centro.second < (int)pedir_limite_columnas()) {
 		return true;
 	}
-	std::cout << centro.first << " centro fuera " << centro.second << std::endl;
 	return false;
 }
 
@@ -495,19 +498,23 @@ bool Mapa::ubicar_unidad(int id_edificio, std::pair<int, int> &centro_unidad,
 }
 
 void Mapa::mover_unidad(int id_unidad, 
-std::pair<int, int> &pos_destino) {
+std::pair<int, int> pos_destino) {
 	std::pair<int, int> centro_unidad = mapa_ids_objetos.at(id_unidad)->
 	obtener_centro();
 	marcar_estado_coordenadas_alrededor(centro_unidad, 
 	mapa_ids_objetos.at(id_unidad)->obtener_altura(), 
 	mapa_ids_objetos.at(id_unidad)->obtener_base(), false);
+
 	coordenadas[centro_unidad.first][centro_unidad.second].sacar_objeto();
+
 	coordenadas[pos_destino.first][pos_destino.second].poner_objeto(
 	mapa_ids_objetos.at(id_unidad));
+
 	marcar_estado_coordenadas_alrededor(pos_destino, 
 	mapa_ids_objetos.at(id_unidad)->obtener_altura(), 
 	mapa_ids_objetos.at(id_unidad)->obtener_base(), true);
 	mapa_ids_objetos.at(id_unidad)->set_centro(pos_destino);
+
 	/*coordenadas[camino[camino.size() / 3].first][camino[camino.size() / 3].
 	second].poner_objeto(&(mapa_ids_objetos.at(id_unidad)));
 	marcar_estado_coordenadas_alrededor(pos_destino, 
@@ -523,6 +530,7 @@ std::pair<int, int> final) {
 	std::pair<int, int> final_baldosa = conversor.de_pixel_a_baldosa(final);
 
 #ifdef NACHO 
+	std::cout << " Final " << final.first << " " << final.second << std::endl; 
     std::cout << "Quiero ir de  " << inicio_baldosa.first << " " << inicio_baldosa.second << std::endl;
 
     std::cout << "Hacia  " << final_baldosa.first << " " << final_baldosa.second << std::endl;
@@ -583,6 +591,10 @@ std::pair<int, int> final) {
 	    	if (neg_sec == 1){
 				it->second-=diff_second;
 	    	}
+	    	/*if (sig == final){ 
+    			std::cout << "LLege final"  << std::endl; 
+	    		break;
+	    	}*/
 		}
 
 
