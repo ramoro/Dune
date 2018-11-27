@@ -28,6 +28,14 @@ int Partida::pedir_id_nuevo_cliente() {
 	return contador_ids_jugadores;
 }
 
+int Partida::obtener_limite_mapa_fila(){
+	return mapa.pedir_limite_filas();
+}
+
+int Partida::obtener_limite_mapa_columna(){
+	return mapa.pedir_limite_columnas();
+}
+
 void Partida::agregar_jugador(std::string casa_jugador, 
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	Jugador jugador(casa_jugador,config);
