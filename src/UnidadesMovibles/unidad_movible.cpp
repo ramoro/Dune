@@ -17,8 +17,14 @@ int base, int altura, std::pair<int, int> centro) :
 	tiempo_creacion(tiempo_creacion * PASAJE_A_MILISEGS){}
 
 int UnidadMovible::pedir_danio(std::string objetivo) {
-	int arma_seleccionada = rand() % armas.size();
-	return armas[arma_seleccionada].obtener_danio(objetivo);
+	int danio_mayor = 0;
+	for (std::vector<Arma>::iterator it = armas.begin();
+	it != armas.end(); ++it) {
+		if ((*it).obtener_danio(objetivo) > danio_mayor) {
+			danio_mayor = (*it).obtener_danio(objetivo);
+		}
+	}
+	return danio_mayor;
 }
 
 std::vector<ObjetoDune*> UnidadMovible::atacar_objetivo(Mapa &mapa,
@@ -37,12 +43,7 @@ std::vector<ObjetoDune*> ataque_al_morir(Mapa &mapa) {
 	std::vector<ObjetoDune*> aux;
 	return aux;
 }
-/*
-std::vector<int> UnidadMovible::matar(Mapa &mapa,Root &root) {
-	std::vector<int> aux;
-	return aux;
-}
-*/
+
 void UnidadMovible::poner_estado_muerta() {
 	estado = estado->cambiar_a_muerte();
 	fuera_de_juego = true;

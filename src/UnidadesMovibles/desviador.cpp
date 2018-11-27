@@ -2,6 +2,7 @@
 #include "../Armas/lanza_misiles.h"
 
 #define ID_DESVIADOR 18 //para usarlo en el protocolo
+#define CODIGO_CAMBIO_EQUIPO 'k'
 
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Desviador::Desviador(int id, int id_duenio, std::pair<int, int> centro,
@@ -29,13 +30,12 @@ Desviador::Desviador(int id, int id_duenio, std::pair<int, int> centro,
 
 std::vector<ObjetoDune*> Desviador::atacar_objetivo(Mapa &mapa, 
 int id_objetivo) {
-	std::vector<ObjetoDune*> aux;
-	return aux;
-	/*std::vector<int> objetivos = UnidadMovible::atacar(mapa, id_objetivo);
-	if (!objetivos.empty()) {
-		mapa.cambiar_equipo(id_objetivo, this->id_duenio);
-	}
-	return objetivos;VERR!!*/ 
+	std::vector<ObjetoDune*> objetos_afectados;		
+	objetos_afectados.push_back(mapa.obtener_objeto(id_objetivo));
+	objetos_afectados[0]->asignar_duenio(this->id_duenio);
+	serializar_mensaje_cambio_equipo(objetos_afectados[0]->pedir_id(),
+	objetos_afectados[0]->pedir_id_tipo());
+	return objetos_afectados;
 }
 
 void Desviador::matar() { 
@@ -45,4 +45,14 @@ void Desviador::matar() {
 std::vector<ObjetoDune*> Desviador::ataque_al_morir(Mapa &mapa) {
 	std::vector<ObjetoDune*> objs;
 	return objs;
+}
+
+void Desviador::serializar_mensaje_cambio_equipo(int id_objetivo,
+int id_tipo_objetivo) {
+	MensajeProtocolo mensaje;
+	mensaje.asignar_accion(CODIGO_CAMBIO_EQUIPO);
+	mensaje.agregar_parametro(id_objetivo);
+	mensaje.agregar_parametro(id_tipo_objetivo);
+	mensaje.agregar_parametro(this->id_duenio);
+	mensajes.push_back(mensaje);
 }

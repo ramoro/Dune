@@ -25,7 +25,13 @@ class Desviador: public Vehiculo {
 		/*En caso de tener un ataque al morir lo ejecuta y devuelve
 		un vector con los objetos afectados.*/
 		virtual std::vector<ObjetoDune*> ataque_al_morir(Mapa &mapa);
+
+		/*Recibe el id de la unidad a cambiar de equipo ademas del
+		id del tipo al que pertenece  y crea un mensaje 
+		asigandole la accion de cambio de jugador junto con sus parametros 
+		segun indica el protocolo.*/
+		void serializar_mensaje_cambio_equipo(int id_objetivo,
+		int id_tipo_objetivo);
 };
 
 #endif
-

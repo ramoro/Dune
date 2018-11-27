@@ -98,7 +98,11 @@ void Juego::run() {
       } else if (accion == 'a') {
         mutex.lock();
         this->partida->atacar_objeto(v[0], v[1]);
-        mutex.unlock();      
+        mutex.unlock();
+      } else if (accion == 'v') {
+        mutex.lock();
+        this->partida->vender_edificio(v[0], this->colas_envio_clientes);
+        mutex.unlock();
       } else if (accion == 's') {
         std::cout << "entro a accion salida de cliente "<< v[0] << std::endl;
 

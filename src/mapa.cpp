@@ -636,7 +636,8 @@ Refineria* Mapa::obtener_refineria_mas_cercana(Cosechadora* cosechadora) {
 }
 
 int Mapa::calcular_distancia(std::pair<int, int> p1, std::pair<int, int> p2) {
-	return sqrt(pow(2, p2.first - p1.first) + pow(2, p2.second - p1.second));
+	return sqrt((p2.first - p1.first) * (p2.first - p1.first)  + 
+	(p2.second - p1.second) * (p2.second - p1.second));
 }
 
 std::shared_ptr<Baldosa> Mapa::obtener_baldosa_con_especia(

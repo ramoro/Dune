@@ -9,6 +9,8 @@
 #define CODIGO_CREACION_OBJETO_RECHAZADA 'r'
 #define CODIGO_MUERTE_OBJETO 'd'
 #define CODIGO_PERDIO_JUGADOR 'e'
+#define CODIGO_CAMBIO_DINERO 'p'
+#define CODIGO_CAMBIO_ENERGIA 'w'
 #define JUGADOR_NO_ENTRENANDO -1
 #define DISTANCIA_MINIMA_EDIFICIO_ALIADO 7000
 
@@ -146,11 +148,6 @@ int id_objeto_atacado) {
 	}
 }
 
-void Partida::autodemoler_edificio(int id_edificio) {
-	(edificios.at(id_edificio))->autodemoler(mapa, jugadores.at(
-	(edificios.at(id_edificio))->pedir_id_duenio()));
-}
-
 void Partida::iniciar_entrenamiento_unidad_movible(int id_tipo_unidad, 
 int id_edificio, int id_jugador, 
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
@@ -200,6 +197,14 @@ edificio, int tiempo_transcurrido) {
 	}
 }
 
+void Partida::vender_edificio(int id_edificio,
+std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
+	int id_duenio = edificios.at(id_edificio)->pedir_id_duenio();
+	edificios.at(id_edificio)->vender(jugadores.at(id_duenio));
+	serializar_mensaje_dinero(jugadores.at(id_duenio).pedir_dinero(),
+	id_duenio, colas_mensajes);
+}
+
 void Partida::eliminar_edificio_del_juego(std::shared_ptr<Edificio> 
 edificio_a_remover) {
 	jugadores.at(edificio_a_remover->pedir_id_duenio()).
@@ -236,7 +241,7 @@ MensajeProtocolo mensaje) {
 void Partida::serializar_mensaje_dinero(int dinero, int id_jugador,
 std::map<int, std::shared_ptr<ColaBloqueante>> colas) {
 	MensajeProtocolo mensaje;
-	mensaje.asignar_accion('p');
+	mensaje.asignar_accion(CODIGO_CAMBIO_DINERO);
 	mensaje.agregar_parametro(dinero);
 	colas.at(id_jugador)->push(mensaje);
 }
@@ -244,7 +249,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas) {
 void Partida::serializar_mensaje_energia(int energia, int id_jugador,
 std::map<int, std::shared_ptr<ColaBloqueante>> colas) {
 	MensajeProtocolo mensaje;
-	mensaje.asignar_accion('o');
+	mensaje.asignar_accion(CODIGO_CAMBIO_ENERGIA);
 	mensaje.agregar_parametro(energia);
 	colas.at(id_jugador)->push(mensaje);
 }
