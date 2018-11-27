@@ -35,9 +35,15 @@ void Server::aceptar_cliente() {
   	//partida.agregar_jugador("harkonnen", colas);
   	//partida.agregar_jugador("ordos", &cola);
   	int i = 0;
-  	while (i < 2) {
+  	while (i < 1) {
   		Socket *otro_socket = socket->accept_connection();
   		otro_socket->send_int(i);
+  		otro_socket->send_int(1);
+  		otro_socket->send_int(1);
+  		otro_socket->send_int(150000);
+ 		otro_socket->send_int(150000);
+ 		int aux = otro_socket->recv_int(); 
+ 		aux++;
   		if ( i == 0) {
   			std::shared_ptr<Juego> juego(new Juego(&partida));
   			juegos.push_back(juego);

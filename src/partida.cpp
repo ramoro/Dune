@@ -26,6 +26,14 @@ int Partida::pedir_id_nuevo_cliente() {
 	return contador_ids_jugadores;
 }
 
+int Partida::obtener_limite_mapa_fila(){
+	return mapa.pedir_limite_filas();
+}
+
+int Partida::obtener_limite_mapa_columna(){
+	return mapa.pedir_limite_columnas();
+}
+
 void Partida::agregar_jugador(std::string casa_jugador, 
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	Jugador jugador(casa_jugador,config);
@@ -244,7 +252,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas) {
 void Partida::serializar_mensaje_energia(int energia, int id_jugador,
 std::map<int, std::shared_ptr<ColaBloqueante>> colas) {
 	MensajeProtocolo mensaje;
-	mensaje.asignar_accion('o');
+	mensaje.asignar_accion('w');
 	mensaje.agregar_parametro(energia);
 	colas.at(id_jugador)->push(mensaje);
 }

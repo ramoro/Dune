@@ -98,6 +98,9 @@ class Partida {
 		std::map<int, std::shared_ptr<ColaBloqueante>> cola_mensajes);
 		
 		void terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> cola_mensajes);
+
+		int obtener_limite_mapa_fila();
+		int obtener_limite_mapa_columna();
 	private:
 		/*Recibe el puntero al edificio a actualizar el tiempo de entenamiento
 		y el tiempo pasado.*/
