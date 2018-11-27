@@ -49,11 +49,6 @@ int Edificio::daniar(UnidadMovible* unidad_atacante) {
 	return ObjetoDune::reducir_vida(danio);
 }
 
-void Edificio::autodemoler(Mapa &mapa, Jugador &jugador) {
-	//eliminar(mapa, jugador);
-	jugador.aumentar_dinero(porcentaje_recuperacion * this->costo_dinero);
-}
-
 bool Edificio::se_puede_agregar_unidad(Jugador &jugador, 
 int id_tipo_unidad, int id_unidad, Config &config) {
 	std::pair<int,int> posicion_central(-1,-1);
@@ -62,7 +57,18 @@ int id_tipo_unidad, int id_unidad, Config &config) {
 	crear_unidad_movible(id_tipo_unidad, id_unidad, this->id_duenio, 
 	posicion_central,config);
 
-	if (ptr_unidad->se_puede_agregar(jugador)) {
+	bool edificio_correcto = false;
+	std::vector<int> edificios_necesitados = ptr_unidad->
+	obtener_edificios_necesarios();
+
+	for (std::vector<int>::iterator it = edificios_necesitados.begin();
+	it != edificios_necesitados.end(); ++it) {
+		if (this->id_tipo == *it) {
+			edificio_correcto = true;
+		}
+	}
+
+	if (edificio_correcto && ptr_unidad->se_puede_agregar(jugador)) {
 		jugador.reducir_dinero(ptr_unidad->obtener_costo());
 		estado = ENTRENANDO;
 		unidad_entrenando = ptr_unidad;
@@ -70,6 +76,11 @@ int id_tipo_unidad, int id_unidad, Config &config) {
 		return true;
 	}
 	return false;
+}
+
+void Edificio::vender(Jugador &jugador) {
+	matar();
+	jugador.aumentar_dinero(this->costo_dinero * porcentaje_recuperacion);
 }
 
 void Edificio::serializar_mensaje_creacion_objeto(

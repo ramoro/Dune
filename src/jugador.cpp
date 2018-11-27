@@ -36,6 +36,7 @@ void Jugador::eliminar_edificio(std::shared_ptr<Edificio> edificio) {
 }
 
 void Jugador::aumentar_dinero(int valor) {
+	std::cout << "se aumento dinero" << std::endl;
 	dinero += valor;
 }
 

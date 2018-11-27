@@ -15,11 +15,13 @@
 #define POSICION_INHABILITADA 1
 
 /*int main(int argc, char* argv[]) {
- Config conf;
+ Config config("../src/input.json");
  int id =0;
- Mapa map(conf, id);
+ Mapa map(config, id);
  BuscadorMejorCamino busc;
- busc.buscar_mejor_camino(map, std::pair<)
+ std::pair<int, int> pos_inicial(0,0);
+ std::pair<int, int> pos_final(10, 3);
+ busc.buscar_mejor_camino(map, pos_inicial, pos_final);
 }*/
 
 /*int main() {
@@ -29,15 +31,15 @@
 	std::pair<int, int> final(10, 3);
 	//fin parametros
 
-	for (int i = 0; i < 13; i++) {
+	for (int i = 0; i < 160; i++) {
 		std::vector<int> fila;
-		for (int j = 0; j < 13; j++) {
+		for (int j = 0; j < 33; j++) {
 			fila.push_back(0);
 		}
 		mapa.push_back(fila);
 	}
-	mapa[1][1] = 1;
-	mapa[2][1] = 1;
+	//mapa[1][1] = 1;
+	//mapa[2][1] = 1;
   mapa[9][2] = 1;
   mapa[9][3] = 1;
   mapa[9][4] = 1;
@@ -190,8 +192,7 @@
   		}
 	}
   std::cout << "salio" << std::endl;
-}
-*/
+}*/
 /*
 int main() {
   std::map<int, std::shared_ptr<ColaBloqueante>> colas;
@@ -208,11 +209,11 @@ int main() {
 //partida.actualizar_modelo(80, colas);
  // partida.actualizar_modelo(1000, colas);
   //partida.actualizar_modelo(80,colas);
-}
-*/
+}*/
+
 int main(int argc, char* argv[]) {
   //std::cout << "hola " << std::endl;
-  //Partida partida;
+  Partida partida;
   //ColaBloqueante cola(10);
   //partida.agregar_jugador("harkonnen", &cola);
   //partida.agregar_jugador("ordos", &cola);

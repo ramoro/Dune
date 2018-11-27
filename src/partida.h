@@ -53,11 +53,6 @@ class Partida {
 		void atacar_objeto(int id_tipo_unidad_atacante, 
 		int id_objeto_atacado);
 
-		/*Recibe un id de un edificio. Elimina el 
-		edificio y le devuelve al jugador con el id recibido un porcentaje
-		del dinero que le costo.*/
-		void autodemoler_edificio(int id_edificio);
-
 		/*Recibe el id del tipo de unidad a crear, el id del edificio que
 		creara a la unidad y el id del duenio del edificio. Se fija si puede 
 		crearla y si no se puede arma el mensaje correspondiente encolandolo
@@ -71,6 +66,13 @@ class Partida {
 		posicion de destino.*/
 		void comenzar_movimiento_unidad(int id_unidad, 
 		std::pair<int, int> posicion_destino);
+
+		/*Recibe un id de un edificio y lo destruye dandole de vuelta
+		al jugador una fraccion del dinero que le costo ese edificio.
+		Recibe tambien las colas de mensajes donde encolara el mensaje
+		del cambio de dinero.*/
+		void vender_edificio(int id_edificio,
+		std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes);
 
 		/*Recibe el id del tipo del objeto rechazado y crea un mensaje
 		asginandole la accion de rechazo junto con sus parametros segun

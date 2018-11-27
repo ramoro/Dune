@@ -50,11 +50,6 @@ class Edificio: public ObjetoDune {
 		Si devuelve un 0 o menos significa que fue destruida.*/
 		virtual int daniar(UnidadMovible* unidad_atacante);
 
-		/*Recibe el mapa y el jugador al que pertenece el edificio y
-		lo demuele, devolviendo la fraccion de plata que se recupera del
-		mismo.*/
-		void autodemoler(Mapa &mapa, Jugador &jugador);
-
 		/*Recibe el jugador duenio del edificio
 		y crea una unidad segun el id del tipo y asignandole la id_unidad
 		tambien pasados por parametro y la agrega tanto al jugador como 
@@ -63,6 +58,10 @@ class Edificio: public ObjetoDune {
 		se pudo agregar la unidad. False en caso contrario.*/
 		bool se_puede_agregar_unidad(Jugador &jugador, int id_tipo_unidad,
 		int id_unidad, Config &config);
+
+		/*Recibe el jugador y le aumenta un porcentaje en dinero
+		de lo que le costo el edificio, el cual se mata.*/
+		void vender(Jugador &jugador);
 
 		/*Recibe el puntero a un objeto que se agrego recientemente
 		al juego y se agrega la accion y los parametros adjuntos a la misma
