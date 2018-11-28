@@ -154,7 +154,7 @@ class Mapa {
 		matando a las unidades que se encuentran en la superficie de salida
 		en caso de que sea momento de que salga y encolandose el mensaje
 		de gusano en las cola recibidas.*/
-		void actualizar_salida_gusano(int tiempo_transcurrido,
+		bool actualizar_salida_gusano(int tiempo_transcurrido,
 		std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes);
 
 		/*Recibe el id de un objeto y devuelve un puntero al mismo. Precondicion:

@@ -105,7 +105,7 @@
 		"velocidad": 10,
 		"tiempo_entrenamiento": 1,
 		"costo": 90,
-		"puntos_vida": 80,
+		"puntos_vida": 80000,
 		"dimension_ancho": 20,
 		"dimension_alto": 20,
 		"edificios_necesarios": [66],
@@ -267,8 +267,8 @@
 		"porcentaje_dinero_recuperado_edificios": 0.5
 	},
 	"Gusano": {
-		"dimension_ancho": 50,
-		"dimension_alto": 50,
+		"dimension_ancho": 150,
+		"dimension_alto": 150,
 		"tiempo_salida_segs": 30
 	},
 	"Explosion Devastador": {

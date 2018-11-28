@@ -310,25 +310,23 @@ void Mapa::desenterrar_gusano() {
 	int limite_salida = 0;
 	while(!espacio_valido) {
 		if (limite_salida == LIMITE_ITERACIONES_GUSANO) break;
-		//fila_random = rand() % coordenadas.size();
-		//columna_random = rand() % coordenadas.size();
-		fila_random = 525;
-		columna_random = 175;
+		fila_random = rand() % coordenadas.size();
+		columna_random = rand() % coordenadas.size();
+		//fila_random = 525;
+		//columna_random = 175;
 
 		std::pair<int, int> posicion_centro(fila_random, columna_random);
 		bool es_arena = verificar_terreno_alrededor(posicion_centro,
 		gusano.obtener_dimesion_alto(), 
 		gusano.obtener_dimesion_ancho(), CODIGO_ARENA);
 		if (es_arena) {
+			gusano.asignar_centro(posicion_centro);
 			objetivos = buscar_unidades_alrededor(posicion_centro, 
 			gusano.obtener_dimesion_alto(),
 			gusano.obtener_dimesion_ancho(), false, 
 			false, -1, true);
-			if (!objetivos.empty()) {
-				gusano.asignar_centro(posicion_centro);
-				espacio_valido = true;
-				break;
-			}
+			espacio_valido = true;
+			break;
 		}
 		limite_salida++;
 	}
@@ -604,15 +602,18 @@ std::pair<int, int> final) {
 	return lista_camino;
 }
 
-void Mapa::actualizar_salida_gusano(int tiempo_transcurrido,
+bool Mapa::actualizar_salida_gusano(int tiempo_transcurrido,
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	int salio = gusano.actualizar_salida(tiempo_transcurrido);
 	if (salio) {
+		std::cout << "sale gusano" << std::endl;
 		desenterrar_gusano();
 		MensajeProtocolo mensaje = gusano.
 		serializar_mensaje_salida();
 		guardar_mensaje_en_colas(colas_mensajes, mensaje);
+		gusano.limpiar_mensaje();
 	}
+	return salio;
 }
 
 ObjetoDune* Mapa::obtener_objeto(int id_objeto) {
@@ -696,8 +697,10 @@ void Mapa::terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> colas_
 void Mapa::guardar_mensaje_en_colas(
 std::map<int, std::shared_ptr<ColaBloqueante>> colas,
 MensajeProtocolo mensaje) {
+	char accion = mensaje.pedir_accion();
+	std::cout << "accion gusano : " << accion << std::endl;
 	for (std::map<int, std::shared_ptr<ColaBloqueante>>::iterator
 	it = colas.begin(); it != colas.end(); ++it) {
-		(it->second)->push(mensaje);
+		(it->second)->push(std::move(mensaje));
 	} 
 }

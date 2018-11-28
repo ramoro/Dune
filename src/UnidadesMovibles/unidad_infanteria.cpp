@@ -16,11 +16,11 @@ int UnidadInfanteria::daniar(UnidadMovible* unidad_atacante,
 int tiempo_transcurrido) {
 	int danio_recibido = 0;
 	contador_seg += tiempo_transcurrido;
-	/*if (contador_seg >= SEGUNDO_EN_MILIS) {
-		contador_seg -= SEGUNDO_EN_MILIS;
+	if (contador_seg >= SEGUNDO_EN_MILIS) {
+		contador_seg = 0;
 		danio_recibido = unidad_atacante->pedir_danio("infanteria");
 		std::cout << "danio recibido: " << danio_recibido << std::endl;
-	}*/
+	}
 	danio_recibido = unidad_atacante->pedir_danio("infanteria");
 	return ObjetoDune::reducir_vida(danio_recibido);
 }

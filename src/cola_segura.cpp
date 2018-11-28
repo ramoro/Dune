@@ -16,5 +16,6 @@ MensajeProtocolo ColaSegura::pop() {
 }
 
 bool ColaSegura::vacia() {
+	std::lock_guard<std::mutex> lck(mutex);
 	return q.empty();
 }

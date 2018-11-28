@@ -108,7 +108,7 @@ Mapa &mapa) {
 	if (estado) {
 		std::shared_ptr<Estado> nuevo_estado = estado->actualizar(this, mapa,
 		tiempo_transcurrido);
-		std::cout << "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
+		//std::cout << "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
 		//si no es null le asigno el nuevo estado
 		if (nuevo_estado) {
 			std::cout << "nuevo estado " << " estado: " << nuevo_estado->pedir_nombre() << std::endl;

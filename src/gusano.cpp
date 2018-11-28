@@ -1,4 +1,5 @@
 #include "gusano.h"
+#include <iostream>
 	
 #define CODIGO_SALIDA_GUSANO 'g'
 #define ID_GUSANO 50 //esto es por el protocolo
@@ -24,6 +25,8 @@ Gusano::Gusano(Config &config) {
 	tiempo_salida =  config["Gusano"].get("tiempo_salida_segs", 0).asInt() 
 	* PASAJE_A_MILISEGS;
 	contador_salida = tiempo_salida;
+	std::pair<int ,int> centro(0, 0);
+	centro_salida = centro;
 }
 
 Gusano::Gusano() {}
@@ -51,6 +54,7 @@ MensajeProtocolo Gusano::serializar_mensaje_salida() {
 	mensaje.agregar_parametro(ID_GUSANO);
 	mensaje.agregar_parametro(dimension_ancho);
 	mensaje.agregar_parametro(dimension_alto);
+	std::cout << "Centros gusano: " << centro_salida.first << " " << centro_salida.second << std::endl;
 	mensaje.agregar_parametro(centro_salida.first);
 	mensaje.agregar_parametro(centro_salida.second);
 	return mensaje;
@@ -58,4 +62,8 @@ MensajeProtocolo Gusano::serializar_mensaje_salida() {
 
 void Gusano::asignar_centro(std::pair<int, int> nuevo_centro) {
 	centro_salida = nuevo_centro;
+}
+
+void Gusano::limpiar_mensaje() {
+	mensaje.limpiar_mensaje();
 }
