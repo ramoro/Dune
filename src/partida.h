@@ -111,9 +111,11 @@ class Partida {
 		edificio, int tiempo_transcurrido);
 
 		/*Recibe un puntero a un edificio y lo elimina completamente del 
-		juego.*/
+		juego, encolando el mensaje de cambio de energia en la cola
+		recibida.*/
 		void eliminar_edificio_del_juego(std::shared_ptr<Edificio> 
-		edificio_a_remover);
+		edificio_a_remover, std::map<int, std::shared_ptr<ColaBloqueante>> 
+		cola_mensajes);
 
 		/*Recibe un puntero a una unidad y lo elimina completamente del 
 		juego.*/

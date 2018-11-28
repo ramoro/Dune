@@ -86,8 +86,9 @@ int id_tipo_unidad, int id_unidad, Config &config) {
 }
 
 void Edificio::vender(Jugador &jugador) {
+	jugador.aumentar_dinero(this->costo_dinero * 
+	this->porcentaje_recuperacion);
 	matar();
-	jugador.aumentar_dinero(this->costo_dinero * porcentaje_recuperacion);
 }
 
 void Edificio::serializar_mensaje_creacion_objeto(

@@ -16,7 +16,7 @@ class Edificio: public ObjetoDune {
 	private:
 		int aporte_energetico;
 		std::pair<int, int> dimension;
-		int porcentaje_recuperacion;
+		float porcentaje_recuperacion;
 		FabricaUnidadesMovibles fabrica_unidades_movibles;
 		std::shared_ptr<UnidadMovible> unidad_entrenando;
 		int contador_seg; // cuenta un seg en ms y reinicia

@@ -104,7 +104,7 @@ void ProtocoloCliente::recibir_mensajes() {
 				cantidad_ints_a_recibir = 2;
 			} else if (accion == 'e') {
 				cantidad_ints_a_recibir = 4;
-			} else if (accion == 's') {
+			} else if (accion == 'v' || accion == 's') {
 				cantidad_ints_a_recibir = 1;
 			}
 

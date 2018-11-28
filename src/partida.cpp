@@ -10,7 +10,7 @@
 #define CODIGO_MUERTE_OBJETO 'd'
 #define CODIGO_PERDIO_JUGADOR 'e'
 #define CODIGO_CAMBIO_DINERO 'p'
-#define CODIGO_CAMBIO_ENERGIA 'o'
+#define CODIGO_CAMBIO_ENERGIA 'w'
 #define JUGADOR_NO_ENTRENANDO -1
 #define DISTANCIA_MINIMA_EDIFICIO_ALIADO 7000
 
@@ -217,11 +217,15 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 }
 
 void Partida::eliminar_edificio_del_juego(std::shared_ptr<Edificio> 
-edificio_a_remover) {
+edificio_a_remover, std::map<int, std::shared_ptr<ColaBloqueante>> 
+colas_mensajes) {
+	int id_duenio = edificio_a_remover->pedir_id_duenio();
 	jugadores.at(edificio_a_remover->pedir_id_duenio()).
 	eliminar_edificio(edificio_a_remover);
 	edificios.erase(edificio_a_remover->pedir_id());
 	mapa.eliminar_objeto(edificio_a_remover->pedir_id());
+	serializar_mensaje_energia(jugadores.at(id_duenio).
+	pedir_energia_disponible(), id_duenio, colas_mensajes);
 }
 
 void Partida::eliminar_unidad_del_juego(std::shared_ptr<UnidadMovible> 
@@ -400,7 +404,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	for (std::set<std::shared_ptr<Edificio>>::iterator it_edificios = 
 	edificios_a_eliminar.begin(); it_edificios != edificios_a_eliminar.end();
 	++it_edificios) {
-		eliminar_edificio_del_juego(*it_edificios);
+		eliminar_edificio_del_juego(*it_edificios, colas_mensajes);
 	}
 
 	for (std::set<std::shared_ptr<UnidadMovible>>::iterator it_unidades = 
