@@ -136,7 +136,8 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		pedir_energia_disponible(), id_jugador, colas_mensajes);
 	} else {
 		std::cout << "No se pudo construir edificio de tipo " << id_tipo_edificio << std::endl;
-		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_edificio);
+		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_edificio,
+		id_jugador);
 	}
 }
 
@@ -163,14 +164,16 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	pedir_id_edificio_entrenando();
 	if (id_edificio_entrenando != JUGADOR_NO_ENTRENANDO) {
 		std::cout << "ERROR JUGADRO YA ENTRENANDO" << std::endl;
-		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad);
+		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad,
+		id_jugador);
 	} else {
 		bool se_puede_agregar = ((edificios.at(id_edificio))->
 		se_puede_agregar_unidad(jugadores.at(id_jugador), 
 		id_tipo_unidad, contador_ids_objetos,config));
 		if (!se_puede_agregar) {
 			std::cout << "ERRO no se puede agregar" << std::endl;
-			serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad);
+			serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad,
+			id_jugador);
 		} else {
 			serializar_mensaje_dinero(jugadores.at(id_jugador).pedir_dinero(),
 			id_jugador, colas_mensajes);
@@ -229,11 +232,11 @@ unidad_a_remover) {
 
 void Partida::serializar_mensaje_rechazo_creacion(
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes,
-int id_tipo_objeto_rechazado) {
+int id_tipo_objeto_rechazado, int id_jugador) {
 	MensajeProtocolo mensaje;
 	mensaje.asignar_accion(CODIGO_CREACION_OBJETO_RECHAZADA);
 	mensaje.agregar_parametro(id_tipo_objeto_rechazado);
-  	guardar_mensaje_en_colas(colas_mensajes, mensaje);
+  	colas_mensajes[id_jugador]->push(mensaje);
 }
 
 void Partida::guardar_mensaje_en_colas(
