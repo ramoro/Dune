@@ -8,7 +8,6 @@
 #define DESTRUIDO -1
 #define CODIGO_CREACION 'c'
 #define CODIGO_PERDIO_DUENIO_EDIFICIO 'e'
-#define SEGUNDO_EN_MILIS 1000
 
 Edificio::Edificio(int aporte_energetico, int costo_dinero,
 int puntos_estructura, int id, 
@@ -17,7 +16,6 @@ ObjetoDune(puntos_estructura, costo_dinero, id, id_duenio, base, altura,
 centro), aporte_energetico(aporte_energetico){
 	porcentaje_recuperacion = 0.5;
 	estado = INACTIVO;
-	contador_seg = 0;
 }
 
 int Edificio::obtener_aporte_energetico() {
@@ -47,12 +45,8 @@ int id_tipo_edificio) {
 }
 
 int Edificio::daniar(UnidadMovible* unidad_atacante, int tiempo_transcurrido) {
-	int danio_recibido = 0;
-	contador_seg += tiempo_transcurrido;
-	if (contador_seg >= SEGUNDO_EN_MILIS) {
-		contador_seg -= SEGUNDO_EN_MILIS;
-		danio_recibido = unidad_atacante->pedir_danio("edificio");
-	}
+	int danio_recibido = unidad_atacante->pedir_danio("edificio", 
+	tiempo_transcurrido);
 	return ObjetoDune::reducir_vida(danio_recibido);
 }
 

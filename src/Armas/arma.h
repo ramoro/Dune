@@ -9,7 +9,8 @@
 class Arma {
 	private:
 		int danio;
-		int frecuencia_disparo; //en segundos
+		int frecuencia_disparo; //tantos disparos en un segundo
+		int contador_seg; //cuenta un segundo en ms y se reinicia
 
 	protected:
 		std::map<std::string, int> bonificaciones;
@@ -25,6 +26,13 @@ class Arma {
 		unidad de infanteria o un vehiculo y devuelve el danio que hace
 		el arma, sumado a la bonificacion si es que tiene hacia el objetivo.*/
 		int obtener_danio(std::string objetivo);
+
+		/*Recibe un tiempo determinado que se suma al contador de segundo
+		y devuelve true si el arma puede atacar o false en caso contrario.*/
+		bool puede_atacar(int tiempo_transcurrido);
+
+		/*Devuelve la frecuencia de disparo del arma.*/
+		int obtener_frecuencia_disparo();
 };
 
 #endif 

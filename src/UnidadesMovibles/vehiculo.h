@@ -6,9 +6,6 @@
 
 /*Clase que representa vehiculo en el mundo de Dune.*/
 class Vehiculo: public UnidadMovible {
-	private:
-		int contador_seg; //cuenta un segundo en milisegundosy reinicia
-
 	public:
 		/*Constructor de la clase.*/
 		Vehiculo(int rango, int velocidad, 

@@ -273,11 +273,8 @@ void Partida::actualizar_modelo(int tiempo_transcurrido,
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	//std::cout << "ACTUALIZA MODELO con tiempo " << tiempo_transcurrido << std::endl; 
 	//actualizo salida del gusano
-
-	if(mapa.actualizar_salida_gusano(tiempo_transcurrido, colas_mensajes)) {
-		//std::cout << colas_mensajes.at(0)->front().pedir_accion() << std::endl;
-	}
-
+	mapa.actualizar_salida_gusano(tiempo_transcurrido, colas_mensajes);
+	
 	//por cada jugador me fijo si tiene un id de un edificio
 	//entrenando. De ser asi actualizo la reacion de la
 	//unidad que tenga en entrenamiento

@@ -46,8 +46,11 @@ class UnidadMovible: public ObjetoDune {
 		int obtener_tiempo_acumulado();
 
 		/*Recibe un string con el objetivo al que esta atacando
-		la unidad y devuelve el danio que le realiza al objetivo.*/
-		int pedir_danio(std::string objetivo);
+		la unidad y el tiempo transcurrido en el juego y devuelve el danio
+		que le realiza al objetivo. Devolvera 0 si no paso el tiempo
+		suficiente que cumpla la frecuencia de disparo del arma con la
+		que se ataca.*/
+		int pedir_danio(std::string objetivo, int tiempo_transcurrido);
 
 		/*Recibe el mapa del juego y
 		el id del objeto a atacar. Devuelve un vector con los

@@ -8,6 +8,7 @@
 #define CODIGO_MOVIMIENTO 'm'
 #define CODIGO_ATAQUE 'a'
 #define PASAJE_A_MILISEGS 1000
+#define SEGUNDO_EN_MILIS 1000
 
 UnidadMovible::UnidadMovible(int rango, int velocidad, 
 double tiempo_creacion, int costo_dinero, int vida, int id, int id_duenio,
@@ -31,15 +32,28 @@ int UnidadMovible::obtener_tiempo_acumulado(){
 }
 
 
-int UnidadMovible::pedir_danio(std::string objetivo) {
+int UnidadMovible::pedir_danio(std::string objetivo, int tiempo_transcurrido) {
 	int danio_mayor = 0;
+	int indice = 0;
+	int indice_arma_mayor_danio;
+	int danio_total = 0;
 	for (std::vector<Arma>::iterator it = armas.begin();
 	it != armas.end(); ++it) {
 		if ((*it).obtener_danio(objetivo) > danio_mayor) {
 			danio_mayor = (*it).obtener_danio(objetivo);
+			indice_arma_mayor_danio = indice;
 		}
+		indice++;
 	}
-	return danio_mayor;
+	if (armas[indice_arma_mayor_danio].puede_atacar(tiempo_transcurrido)) {
+		int cantidad_disparos = armas[indice_arma_mayor_danio].
+		obtener_frecuencia_disparo();
+		for (int i = 0; i < cantidad_disparos; i++) {
+			danio_total += danio_mayor;
+		}
+		std::cout << "cantidad disparos" << cantidad_disparos << std::endl;
+	}
+	return danio_total;
 }
 
 std::vector<ObjetoDune*> UnidadMovible::atacar_objetivo(Mapa &mapa,
