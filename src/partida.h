@@ -74,12 +74,13 @@ class Partida {
 		void vender_edificio(int id_edificio,
 		std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes);
 
-		/*Recibe el id del tipo del objeto rechazado y crea un mensaje
+		/*Recibe el id del tipo del objeto rechazado y el id del
+		jugador que intento crearlo y se genera un mensaje
 		asginandole la accion de rechazo junto con sus parametros segun
 		indica le protocolo y lo encola a la cola recibida.*/
 		void serializar_mensaje_rechazo_creacion(
 		std::map<int, std::shared_ptr<ColaBloqueante>> cola_mensajes,
-		int id_tipo_objeto_rechazado);
+		int id_tipo_objeto_rechazado, int id_jugador);
 
 		/*Recibe el dinero actual del jugador, su id y crea un mensaje 
 		asigandole la accion de cambio de dinero junto con sus parametros 
@@ -110,9 +111,11 @@ class Partida {
 		edificio, int tiempo_transcurrido);
 
 		/*Recibe un puntero a un edificio y lo elimina completamente del 
-		juego.*/
+		juego, encolando el mensaje de cambio de energia en la cola
+		recibida.*/
 		void eliminar_edificio_del_juego(std::shared_ptr<Edificio> 
-		edificio_a_remover);
+		edificio_a_remover, std::map<int, std::shared_ptr<ColaBloqueante>> 
+		cola_mensajes);
 
 		/*Recibe un puntero a una unidad y lo elimina completamente del 
 		juego.*/

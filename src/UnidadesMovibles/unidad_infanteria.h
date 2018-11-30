@@ -6,9 +6,6 @@
 
 /*Clase abstracta que representa unidad de infanteria en el mundo de Dune.*/
 class UnidadInfanteria: public UnidadMovible {
-	private:
-		int contador_seg; //cuenta un segundo en milisegundos y reinicia
-
 	public:
 		/*Constructor de la clase.*/
 		UnidadInfanteria(int rango, int velocidad, 

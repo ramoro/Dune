@@ -47,3 +47,7 @@ void ColaBloqueante::cerrar() {
 bool ColaBloqueante::vacia() {
     return this->q.empty();
 }
+
+MensajeProtocolo ColaBloqueante::front() {
+    return q.front();
+}

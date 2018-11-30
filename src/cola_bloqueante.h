@@ -41,6 +41,8 @@ class ColaBloqueante {
         /*Devuelve true si esta vacia la cola, false en caso contrario.*/
         bool vacia();
 
+        MensajeProtocolo front();
+
     private:
         /*El objeto no se puede crear por copia.*/
         ColaBloqueante(const ColaBloqueante&) = delete;

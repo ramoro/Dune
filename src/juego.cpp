@@ -8,8 +8,8 @@
 using namespace std::chrono;
 
 #define TAM_COLA 600
-#define SEGUNDOS_POR_FRAME 1.f/40
-#define MILISEGUNDOS_POR_FRAME 1.f/40 * 1000
+#define SEGUNDOS_POR_FRAME 1.f/20
+#define MILISEGUNDOS_POR_FRAME (1.f/20 * 1000)
 
 /*Juego::Juego(Partida *partida): 
 cola_recepcion(TAM_COLA), partida(partida) {

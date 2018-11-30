@@ -10,7 +10,7 @@
 #define CODIGO_MUERTE_OBJETO 'd'
 #define CODIGO_PERDIO_JUGADOR 'e'
 #define CODIGO_CAMBIO_DINERO 'p'
-#define CODIGO_CAMBIO_ENERGIA 'o'
+#define CODIGO_CAMBIO_ENERGIA 'w'
 #define JUGADOR_NO_ENTRENANDO -1
 #define DISTANCIA_MINIMA_EDIFICIO_ALIADO 7000
 
@@ -136,7 +136,8 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		pedir_energia_disponible(), id_jugador, colas_mensajes);
 	} else {
 		std::cout << "No se pudo construir edificio de tipo " << id_tipo_edificio << std::endl;
-		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_edificio);
+		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_edificio,
+		id_jugador);
 	}
 }
 
@@ -163,14 +164,16 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	pedir_id_edificio_entrenando();
 	if (id_edificio_entrenando != JUGADOR_NO_ENTRENANDO) {
 		std::cout << "ERROR JUGADRO YA ENTRENANDO" << std::endl;
-		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad);
+		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad,
+		id_jugador);
 	} else {
 		bool se_puede_agregar = ((edificios.at(id_edificio))->
 		se_puede_agregar_unidad(jugadores.at(id_jugador), 
 		id_tipo_unidad, contador_ids_objetos,config));
 		if (!se_puede_agregar) {
 			std::cout << "ERRO no se puede agregar" << std::endl;
-			serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad);
+			serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad,
+			id_jugador);
 		} else {
 			serializar_mensaje_dinero(jugadores.at(id_jugador).pedir_dinero(),
 			id_jugador, colas_mensajes);
@@ -214,11 +217,15 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 }
 
 void Partida::eliminar_edificio_del_juego(std::shared_ptr<Edificio> 
-edificio_a_remover) {
+edificio_a_remover, std::map<int, std::shared_ptr<ColaBloqueante>> 
+colas_mensajes) {
+	int id_duenio = edificio_a_remover->pedir_id_duenio();
 	jugadores.at(edificio_a_remover->pedir_id_duenio()).
 	eliminar_edificio(edificio_a_remover);
 	edificios.erase(edificio_a_remover->pedir_id());
 	mapa.eliminar_objeto(edificio_a_remover->pedir_id());
+	serializar_mensaje_energia(jugadores.at(id_duenio).
+	pedir_energia_disponible(), id_duenio, colas_mensajes);
 }
 
 void Partida::eliminar_unidad_del_juego(std::shared_ptr<UnidadMovible> 
@@ -229,11 +236,11 @@ unidad_a_remover) {
 
 void Partida::serializar_mensaje_rechazo_creacion(
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes,
-int id_tipo_objeto_rechazado) {
+int id_tipo_objeto_rechazado, int id_jugador) {
 	MensajeProtocolo mensaje;
 	mensaje.asignar_accion(CODIGO_CREACION_OBJETO_RECHAZADA);
 	mensaje.agregar_parametro(id_tipo_objeto_rechazado);
-  	guardar_mensaje_en_colas(colas_mensajes, mensaje);
+  	colas_mensajes[id_jugador]->push(mensaje);
 }
 
 void Partida::guardar_mensaje_en_colas(
@@ -266,9 +273,8 @@ void Partida::actualizar_modelo(int tiempo_transcurrido,
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	//std::cout << "ACTUALIZA MODELO con tiempo " << tiempo_transcurrido << std::endl; 
 	//actualizo salida del gusano
-
 	mapa.actualizar_salida_gusano(tiempo_transcurrido, colas_mensajes);
-
+	
 	//por cada jugador me fijo si tiene un id de un edificio
 	//entrenando. De ser asi actualizo la reacion de la
 	//unidad que tenga en entrenamiento
@@ -395,7 +401,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	for (std::set<std::shared_ptr<Edificio>>::iterator it_edificios = 
 	edificios_a_eliminar.begin(); it_edificios != edificios_a_eliminar.end();
 	++it_edificios) {
-		eliminar_edificio_del_juego(*it_edificios);
+		eliminar_edificio_del_juego(*it_edificios, colas_mensajes);
 	}
 
 	for (std::set<std::shared_ptr<UnidadMovible>>::iterator it_unidades = 

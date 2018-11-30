@@ -33,11 +33,12 @@ void ProtocoloCliente::enviar_mensajes() {
 			*/
 			/*ver si gano tambien*/
 			unsigned char accion = mensaje.pedir_accion();
-//			std::cout << "Mensaje a enviar en protocolo cliente: " << accion <<std::endl;
+			std::cout << "Accion a enviar en protocolo cliente por socket: " << accion << " " << "con parametros:"<<std::endl;
 			this->socket_cliente.send_msj(&accion, 1);
 			std::vector<int> parametros = mensaje.pedir_parametros();
 			for (std::vector<int>::iterator it = parametros.begin(); 
 			it != parametros.end(); ++it) {
+				std::cout << *it << std::endl;
 				this->socket_cliente.send_int(*it);
 			}
 		}
@@ -103,7 +104,7 @@ void ProtocoloCliente::recibir_mensajes() {
 				cantidad_ints_a_recibir = 2;
 			} else if (accion == 'e') {
 				cantidad_ints_a_recibir = 4;
-			} else if (accion == 's') {
+			} else if (accion == 'v' || accion == 's') {
 				cantidad_ints_a_recibir = 1;
 			}
 

@@ -42,6 +42,9 @@ class Gusano {
 		/*Recibe un nueva posicion para el centro de donde saldra el
 		gusano y se lo asigna a su centro de salida.*/
 		void asignar_centro(std::pair<int, int> nuevo_centro);
+
+		/*Vacia el mensaje que tiene como atributo.*/
+		void limpiar_mensaje();
 };
 
 #endif 
