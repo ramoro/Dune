@@ -42,6 +42,14 @@ class Mapa {
 		/*Constructor de la clase.*/
 		Mapa(Config &config, int &contador_ids_objetos);
 
+		/*Ubica para cada pixel pasado por parametro a que baldosa 
+		hace referencia*/
+		std::pair<int,int> de_pixel_a_baldosa(std::pair<int,int> pixel);
+
+		/*Ubica para cada baldosa pasada por parametro a que pixel 
+		hace referencia*/
+		std::pair<int,int> de_baldosa_a_pixel(std::pair<int,int> baldosa);
+		
 		/*Recibe una posicion central de un objeto, su base y su altura y se fija
 		si los puntos que lo rodean son del terreno pasado como string.
 		Devuelve true en caso de que el terreno que ocupa el objeto sea del

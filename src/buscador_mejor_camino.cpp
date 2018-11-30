@@ -36,7 +36,7 @@ std::pair<int, int> &pos_final) {
 
 	while(posibles_nodos.size() > 0) {
 		Nodo nodo_evaluado = posibles_nodos[0];
-      std::cout<< "atrapado" << nodo_evaluado.obtener_posicion().first << nodo_evaluado.obtener_posicion().second<< std::endl;
+     // std::cout<< "atrapado" << nodo_evaluado.obtener_posicion().first << nodo_evaluado.obtener_posicion().second<< std::endl;
 		int indice_nodo_evaluado = 0;
 		int indice_auxiliar = 0;
 

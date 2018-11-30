@@ -11,6 +11,7 @@
 #include "server.h"
 #include "juego.h"
 #include "cola_bloqueante.h"
+#include "conversor.h"
 
 #define POSICION_INHABILITADA 1
 
@@ -282,44 +283,14 @@ int main() {
 }*/
 
 //MAIN NACHO
-/*nt main() {
-  Partida partida;
+/*int main() {
+  Conversor conv;
 
-  ColaBloqueante cola(100);
+  std::pair<int,int> baldosa(21,1);
+  std::pair<int,int> pixel1(0,79);
+  std::pair<int,int> pixel2(0,101);
 
-  partida.agregar_jugador("ordos",&cola);
-  partida.agregar_jugador("harkonnen",&cola);
-  //std::pair<int, int> centro(100, 100);
-  //bool agregado = partida.agregar_edificio(0, centro, 0);
-  //std::cout << agregado << std::endl;
-  //std::pair<int, std::pair<int ,int>> nueva_unidad = partida.agregar_unidad_movible(2,0);
-  //std::cout << "ID nueva unidad " << nueva_unidad.first << std::endl;
-
-  //partida.agregar_edificio(0, std::pair<int, int>(400,400), 4);
-  //partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
-  // partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
-  partida.agregar_edificio(0, std::pair<int, int>(7,7), 4,&cola);
-  //partida.agregar_edificio(0, std::pair<int, int>(13,13), 4,&cola);
-
-
-  partida.agregar_edificio(1, std::pair<int, int>(10,5), 4,&cola);
-
-  //partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
-  //partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
-
-  for (int i = 0; i < 2 ; i++) {
-    partida.iniciar_entrenamiento_unidad_movible(15,366,0,&cola);
-    partida.actualizar_modelo(20000.0,&cola) ;
-  }
-
-  //partida.comenzar_movimiento_unidad(365,std::pair<int, int>(3,3));
-  
-  partida.atacar_objeto(367,366);
-
-  partida.actualizar_modelo(50.0,&cola) ;
-  partida.actualizar_modelo(50.0,&cola) ;
-  partida.actualizar_modelo(50.0,&cola) ;
-
-  partida.actualizar_modelo(10.0,&cola) ;
-
+  std::cout << conv.de_baldosa_a_pixel(baldosa).first << " de_baldosa_a_pixel " << conv.de_baldosa_a_pixel(baldosa).second << std::endl;
+  std::cout << conv.de_pixel_a_baldosa(pixel1).first << " de_baldosa_a_pixel " << conv.de_pixel_a_baldosa(pixel1).second << std::endl;
+  std::cout << conv.de_pixel_a_baldosa(pixel2).first << " de_baldosa_a_pixel " << conv.de_pixel_a_baldosa(pixel2).second << std::endl;
 }*/

@@ -27,21 +27,17 @@ Mapa &mapa, int tiempo_transcurrido) {
 	double dist2 = tiempo_transcurrido * unidad->obtener_velocidad();
 
 	if (dist2 <= dist1){
-		//mapa.mover_unidad(unidad->pedir_id(), camino.front());
-		//unidad->avanzar_camino();
-   		//unidad->serializar_mensaje_movimiento(); 
 		unidad->acumular_tiempo(tiempo_transcurrido);
 	} else {
-		//for (int i = 0 ; i < dist1 ; i++){
-			mapa.mover_unidad(unidad->pedir_id(), camino.front());
-			unidad->avanzar_camino();
-	   		unidad->serializar_mensaje_movimiento(); 
-			if (camino.size() == 1) {
-				std::shared_ptr<Inactividad> inactividad(new Inactividad());
-				return inactividad;
-			}
-			unidad->resetear_tiempo_acumulado();
-		//}
+		//std::cout << "Mover UNidad " << camino.front().first << '-' << camino.front().second<< std::endl;
+		mapa.mover_unidad(unidad->pedir_id(), camino.front());
+		unidad->avanzar_camino();
+   		unidad->serializar_mensaje_movimiento(); 
+		if (camino.size() == 1) {
+			std::shared_ptr<Inactividad> inactividad(new Inactividad());
+			return inactividad;
+		}
+		unidad->resetear_tiempo_acumulado();
 	}
 
 

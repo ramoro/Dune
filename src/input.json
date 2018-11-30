@@ -90,7 +90,7 @@
 		"puntos_estructura": 1000
 	},
 	"InfanteriaLigera": {
-		"rango": 3,
+		"rango": 30,
 		"velocidad": 1,
 		"tiempo_entrenamiento": 1,
 		"costo": 50,
@@ -101,7 +101,7 @@
 		"casas": ["ordos","harkonnen","atreides"]
 	},
 	"InfanteriaPesada": {
-		"rango": 3,
+		"rango": 60,
 		"velocidad": 10,
 		"tiempo_entrenamiento": 1,
 		"costo": 90,
