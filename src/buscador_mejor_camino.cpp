@@ -5,6 +5,7 @@
 #include <stack>
 
 #define PRECIPICIO 35
+#define CIMA 34
 
 //FALTA VERIFICAR QUE EL ESPACIOA DODNE ME MUEVO NO ESTE OCUPADO Y QUE
 //SI ES CIMA SOLO PUEDE PASAR UNIDADES DE INFANTERIA
@@ -20,8 +21,8 @@ void BuscadorMejorCamino::delete_vector_nodos(std::vector<Nodo> nodos) {
 }
 
 std::list<std::pair<int, int>> BuscadorMejorCamino::buscar_mejor_camino
-(Mapa &mapa, std::pair<int, int> &pos_inicial, 
-std::pair<int, int> &pos_final) {
+(Mapa &mapa, std::pair<int, int> &pos_inicial, std::pair<int, int> &pos_final,
+ UnidadMovible *unidad) {
 	Nodo nodo_inicio(NULL, pos_inicial);
 	nodo_inicio.poner_valor_g(0);
 	nodo_inicio.poner_valor_h(0);
@@ -95,9 +96,8 @@ std::pair<int, int> &pos_final) {
 
   			//Evaluo el terreno y unidad para ver si puede pasar por 
   			//esa posicion
-  			if (mapa.pedir_terreno_baldosa(posicion_adyacente) == 
-        PRECIPICIO) {
-          std::cout << "Precipicio " << posicion_adyacente.first << " " << posicion_adyacente.second << std::endl;
+  			if (!unidad->es_terreno_valido(mapa.pedir_terreno_baldosa(posicion_adyacente))) {
+          std::cout << "no puede andar en " << mapa.pedir_terreno_baldosa(posicion_adyacente) << ' '<< posicion_adyacente.first << " " << posicion_adyacente.second << std::endl;
           continue;
         }
 

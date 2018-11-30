@@ -24,6 +24,7 @@ class Cosechadora;
 /*Clase que representa a un mapa del mundo Dune.*/
 class Mapa {
 	private:
+		int cant_pixeles_por_baldosa;
 		std::vector<std::vector<Coordenada>> coordenadas;
 		std::vector<std::vector<Baldosa>> baldosas;
 		std::map<int, ObjetoDune*> mapa_ids_objetos;
@@ -156,7 +157,7 @@ class Mapa {
 		que arman el mejor camino para llegar hasta la posicion destino tambien
 		recibida por parametro.*/
 		std::list<std::pair<int, int>> obtener_camino(std::pair<int, int> inicio,
-		std::pair<int, int> final);
+		std::pair<int, int> final, UnidadMovible *unidad);
 
 		/*Recibe el tiempo transcurrido en ms y actualiza la salida del gusano
 		matando a las unidades que se encuentran en la superficie de salida
@@ -199,7 +200,7 @@ class Mapa {
 		/*Recibe la posicion central de un objeto, su base y su altura y
 		setea en ocupadas a todas las coordenadas que ocupa.
 		Precondicion:el objeto puede ser agregado.*/
-		void marcar_estado_coordenadas_alrededor(std::pair<int, int> 
+		void marcar_estado_baldosas_alrededor(std::pair<int, int> 
 		pos_central, int altura, int base, bool ocupar);
 
 		/*Devuelve true si encontro una posicion valida para poner la unidad.

@@ -109,7 +109,7 @@ int UnidadMovible::tiempo_creacion_faltante(int milisegs) {
 
 void UnidadMovible::empezar_a_mover(Mapa &mapa, std::pair<int, int> 
 pos_destino) {
-	camino = mapa.obtener_camino(this->centro, pos_destino);
+	camino = mapa.obtener_camino(this->centro, pos_destino, this);
 	estado = estado->cambiar_a_movimiento();
 }
 
@@ -154,7 +154,7 @@ std::shared_ptr<ObjetoDune> objetivo) {
 	this->rango) {
 		estado = estado->cambiar_a_movimiento_para_atacar(objetivo);
 		asignar_nuevo_camino(mapa.obtener_camino(this->centro, 
-		objetivo->obtener_centro()));
+		objetivo->obtener_centro(),this));
 	} else {
 		estado = estado->cambiar_a_ataque(objetivo);
 		serializar_mensaje_ataque(objetivo->pedir_id());

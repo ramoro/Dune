@@ -23,7 +23,8 @@ std::shared_ptr<Estado> Deposito::actualizar(UnidadMovible
 				return inactividad;
 			} else {
 				unidad->asignar_nuevo_camino(mapa.obtener_camino(
-				unidad->obtener_centro(), especia_a_volver->obtener_centro()));
+				unidad->obtener_centro(), especia_a_volver->obtener_centro(),
+				unidad));
 				std::shared_ptr<MovimientoParaAtacar> 
 				movimiento_ataque_especia(new 
 				MovimientoParaAtacar(especia_a_volver));

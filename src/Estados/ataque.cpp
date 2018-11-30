@@ -18,7 +18,7 @@ Mapa &mapa, int tiempo_transcurrido) {
 	if (cercania.first > unidad->obtener_rango_ataque() 
 	|| cercania.second > unidad->obtener_rango_ataque()) {
 			unidad->asignar_nuevo_camino(mapa.obtener_camino(unidad->
-			obtener_centro(), objeto_destino->obtener_centro()));
+			obtener_centro(), objeto_destino->obtener_centro(),unidad));
 			//unidad->serializar_mensaje_termino_ataque();
 			std::shared_ptr<MovimientoParaAtacar> movimiento_ataque(new 
 			MovimientoParaAtacar(objeto_destino));

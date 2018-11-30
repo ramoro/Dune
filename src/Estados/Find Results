@@ -1,0 +1,180 @@
+}Searching 193 files for "buscar_mejor_camino" (case sensitive)
+
+/home/ignacio/Downloads/TP4/Dune/build/main:
+    <binary>
+
+/home/ignacio/Downloads/TP4/Dune/src/buscador_mejor_camino.cpp:
+   21  }
+   22  
+   23: std::list<std::pair<int, int>> BuscadorMejorCamino::buscar_mejor_camino
+   24  (Mapa &mapa, std::pair<int, int> &pos_inicial, 
+   25  std::pair<int, int> &pos_final, bool vehiculo) {
+
+/home/ignacio/Downloads/TP4/Dune/src/buscador_mejor_camino.h:
+   16  		una lista con el mejor/mas rapido camino posible para ir desde
+   17  		el punto inicial al final ,utilizando el algoritmo A*. */
+   18: 		std::list<std::pair<int, int>> buscar_mejor_camino(Mapa &mapa, 
+   19  		std::pair<int, int> &pos_inicial, std::pair<int, int> &pos_final,
+   20  		 bool vehiculo);
+
+/home/ignacio/Downloads/TP4/Dune/src/main.cpp:
+   23   std::pair<int, int> pos_inicial(0,0);
+   24   std::pair<int, int> pos_final(10, 3);
+   25:  busc.buscar_mejor_camino(map, pos_inicial, pos_final);
+   26  }*/
+   27  
+   ..
+  275    std::pair<int ,int> inicio(0, 0);
+  276    std::pair<int, int> final(3, 1);
+  277:   buscador.buscar_mejor_camino(mapa, inicio, final);
+  278    Partida partida();
+  279    partida.agregar_jugador("harkonnen");
+
+/home/ignacio/Downloads/TP4/Dune/src/mapa.cpp:
+  587  	}
+  588  
+  589: 	std::list<std::pair<int, int>> lista_camino = buscador_mejor_camino.buscar_mejor_camino(*this, inicio_baldosa, final_baldosa, vehiculo);
+  590  
+  591  #ifdef NACHO 
+
+9 matches across 5 files
+
+
+Searching 193 files for "obtener_camino" (case sensitive)
+
+/home/ignacio/Downloads/TP4/Dune/build/main:
+    <binary>
+
+/home/ignacio/Downloads/TP4/Dune/src/mapa.cpp:
+  534  }
+  535  
+  536: std::list<std::pair<int, int>> Mapa::obtener_camino(std::pair<int, int> inicio,
+  537  std::pair<int, int> final, bool vehiculo) {
+  538  	std::pair<int, int> inicio_baldosa = conversor.de_pixel_a_baldosa(inicio);
+
+/home/ignacio/Downloads/TP4/Dune/src/mapa.h:
+  156  		que arman el mejor camino para llegar hasta la posicion destino tambien
+  157  		recibida por parametro.*/
+  158: 		std::list<std::pair<int, int>> obtener_camino(std::pair<int, int> inicio,
+  159  		std::pair<int, int> final, bool vehiculo);
+  160  
+
+/home/ignacio/Downloads/TP4/Dune/src/Estados/ataque.cpp:
+   18  	if (cercania.first > unidad->obtener_rango_ataque() 
+   19  	|| cercania.second > unidad->obtener_rango_ataque()) {
+   20: 			unidad->asignar_nuevo_camino(mapa.obtener_camino(unidad->
+   21  			obtener_centro(), objeto_destino->obtener_centro()));
+   22  			//unidad->serializar_mensaje_termino_ataque();
+
+/home/ignacio/Downloads/TP4/Dune/src/Estados/deposito.cpp:
+   23  				return inactividad;
+   24  			} else {
+   25: 				unidad->asignar_nuevo_camino(mapa.obtener_camino(
+   26  				unidad->obtener_centro(), especia_a_volver->obtener_centro()));
+   27  				std::shared_ptr<MovimientoParaAtacar> 
+
+/home/ignacio/Downloads/TP4/Dune/src/Estados/movimiento.cpp:
+   15  		return inactividad;
+   16  	} else if (posicion_ocupada) {
+   17: 		camino = mapa.obtener_camino(unidad->obtener_centro(), camino.back());
+   18  		unidad->asignar_nuevo_camino(camino);
+   19  		//quizas se deberia tener en cuenta un super caso borde que no
+
+/home/ignacio/Downloads/TP4/Dune/src/Estados/movimiento_para_atacar.cpp:
+   21  	if (mapa.de_pixel_a_baldosa(pos_destino) != mapa.de_pixel_a_baldosa(objeto_destino->obtener_centro())) {
+   22  		unidad->asignar_nuevo_camino(mapa.
+   23: 		obtener_camino(unidad->obtener_centro(),objeto_destino->obtener_centro()));
+   24  		pos_destino = objeto_destino->obtener_centro();
+   25  	}
+
+/home/ignacio/Downloads/TP4/Dune/src/Estados/movimiento_para_depositar.cpp:
+   12  std::shared_ptr<Estado> MovimientoParaDepositar::actualizar(UnidadMovible 
+   13  *unidad, Mapa &mapa, int tiempo_transcurrido) {
+   14: 	std::list<std::pair<int, int>> camino = mapa.obtener_camino(
+   15  	unidad->obtener_centro(), refineria_destino->obtener_centro());
+   16  	unidad->asignar_nuevo_camino(camino);
+
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_movible.cpp:
+  110  void UnidadMovible::empezar_a_mover(Mapa &mapa, std::pair<int, int> 
+  111  pos_destino) {
+  112: 	camino = mapa.obtener_camino(this->centro, pos_destino);
+  113  	estado = estado->cambiar_a_movimiento();
+  114  }
+  ...
+  154  	this->rango) {
+  155  		estado = estado->cambiar_a_movimiento_para_atacar(objetivo);
+  156: 		asignar_nuevo_camino(mapa.obtener_camino(this->centro, 
+  157  		objetivo->obtener_centro()));
+  158  	} else {
+
+13 matches across 9 files
+
+
+Searching 195 files for "obtener_camino" (case sensitive)
+
+/home/ignacio/Downloads/TP4/Dune/build/main:
+    <binary>
+
+/home/ignacio/Downloads/TP4/Dune/src/mapa.cpp:
+  534  }
+  535  
+  536: std::list<std::pair<int, int>> Mapa::obtener_camino(std::pair<int, int> inicio,
+  537  std::pair<int, int> final, UnidadMovible *unidad) {
+  538  	std::pair<int, int> inicio_baldosa = conversor.de_pixel_a_baldosa(inicio);
+
+/home/ignacio/Downloads/TP4/Dune/src/mapa.h:
+  156  		que arman el mejor camino para llegar hasta la posicion destino tambien
+  157  		recibida por parametro.*/
+  158: 		std::list<std::pair<int, int>> obtener_camino(std::pair<int, int> inicio,
+  159  		std::pair<int, int> final);
+  160  
+
+/home/ignacio/Downloads/TP4/Dune/src/Estados/ataque.cpp:
+   18  	if (cercania.first > unidad->obtener_rango_ataque() 
+   19  	|| cercania.second > unidad->obtener_rango_ataque()) {
+   20: 			unidad->asignar_nuevo_camino(mapa.obtener_camino(unidad->
+   21  			obtener_centro(), objeto_destino->obtener_centro()));
+   22  			//unidad->serializar_mensaje_termino_ataque();
+
+/home/ignacio/Downloads/TP4/Dune/src/Estados/deposito.cpp:
+   23  				return inactividad;
+   24  			} else {
+   25: 				unidad->asignar_nuevo_camino(mapa.obtener_camino(
+   26  				unidad->obtener_centro(), especia_a_volver->obtener_centro()));
+   27  				std::shared_ptr<MovimientoParaAtacar> 
+
+/home/ignacio/Downloads/TP4/Dune/src/Estados/movimiento.cpp:
+   15  		return inactividad;
+   16  	} else if (posicion_ocupada) {
+   17: 		camino = mapa.obtener_camino(unidad->obtener_centro(), camino.back());
+   18  		unidad->asignar_nuevo_camino(camino);
+   19  		//quizas se deberia tener en cuenta un super caso borde que no
+
+/home/ignacio/Downloads/TP4/Dune/src/Estados/movimiento_para_atacar.cpp:
+   21  	if (mapa.de_pixel_a_baldosa(pos_destino) != mapa.de_pixel_a_baldosa(objeto_destino->obtener_centro())) {
+   22  		unidad->asignar_nuevo_camino(mapa.
+   23: 		obtener_camino(unidad->obtener_centro(),objeto_destino->obtener_centro()));
+   24  		pos_destino = objeto_destino->obtener_centro();
+   25  	}
+
+/home/ignacio/Downloads/TP4/Dune/src/Estados/movimiento_para_depositar.cpp:
+   12  std::shared_ptr<Estado> MovimientoParaDepositar::actualizar(UnidadMovible 
+   13  *unidad, Mapa &mapa, int tiempo_transcurrido) {
+   14: 	std::list<std::pair<int, int>> camino = mapa.obtener_camino(
+   15  	unidad->obtener_centro(), refineria_destino->obtener_centro());
+   16  	unidad->asignar_nuevo_camino(camino);
+
+/home/ignacio/Downloads/TP4/Dune/src/UnidadesMovibles/unidad_movible.cpp:
+  110  void UnidadMovible::empezar_a_mover(Mapa &mapa, std::pair<int, int> 
+  111  pos_destino) {
+  112: 	camino = mapa.obtener_camino(this->centro, pos_destino);
+  113  	estado = estado->cambiar_a_movimiento();
+  114  }
+  ...
+  154  	this->rango) {
+  155  		estado = estado->cambiar_a_movimiento_para_atacar(objetivo);
+  156: 		asignar_nuevo_camino(mapa.obtener_camino(this->centro, 
+  157  		objetivo->obtener_centro()));
+  158  	} else {
+
+13 matches across 9 files

@@ -1,8 +1,10 @@
 #include "conversor.h"
 #include <math.h>
-Conversor::Conversor(){
-	cant_pixel_ancho = 50;
-	cant_pixel_alto = 50;
+
+Conversor::Conversor(){}
+Conversor::Conversor(int cant_pixel){
+	cant_pixel_ancho = cant_pixel;
+	cant_pixel_alto = cant_pixel;
 }
 std::pair<int,int> Conversor::de_baldosa_a_pixel(std::pair<int,int> baldosa){
 	std::pair<int,int> pixel;

@@ -66,16 +66,16 @@ void Baldosa::marcar_como_desocupada() {
 	estado = VACIA;
 }
 
-void Baldosa::serializar_mensaje_baldosa() {
+void Baldosa::serializar_mensaje_baldosa(int cant_pixeles_baldosa) {
 	MensajeProtocolo mensaje;
 	mensaje.asignar_accion(CODIGO_SALIDA_TERRENO);
 	mensaje.agregar_parametro(terreno.obtener_id_material());
 	mensaje.agregar_parametro(id);
-	mensaje.agregar_parametro(50);
-	mensaje.agregar_parametro(50);
+	mensaje.agregar_parametro(cant_pixeles_baldosa);
+	mensaje.agregar_parametro(cant_pixeles_baldosa);
 	mensaje.agregar_parametro(obtener_centro().first);
 	mensaje.agregar_parametro(obtener_centro().second);
-	std::cout << "Serializo terreno con id " <<id << std::endl;
+	std::cout << "Serializo terreno con id " << id << " y tipo " << terreno.obtener_id_material() << std::endl;
 	mensajes.push_back(std::move(mensaje));
 }
 

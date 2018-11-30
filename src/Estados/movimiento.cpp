@@ -14,7 +14,8 @@ Mapa &mapa, int tiempo_transcurrido) {
 		std::shared_ptr<Inactividad> inactividad(new Inactividad());
 		return inactividad;
 	} else if (posicion_ocupada) {
-		camino = mapa.obtener_camino(unidad->obtener_centro(), camino.back());
+		camino = mapa.obtener_camino(unidad->obtener_centro(), camino.back(),
+			unidad);
 		unidad->asignar_nuevo_camino(camino);
 		//quizas se deberia tener en cuenta un super caso borde que no
 		//se devuelva ningun camino
@@ -23,7 +24,9 @@ Mapa &mapa, int tiempo_transcurrido) {
 	//a avanzar camino deberia pasarle la cantiadd de posiciones que avanzo ene l camino
 	
 	tiempo_transcurrido+=unidad->obtener_tiempo_acumulado();
-	double dist1 = sqrt(abs(unidad->obtener_centro().first - camino.back().first) * abs(unidad->obtener_centro().second - camino.back().second));
+	double dist1 = sqrt(abs(unidad->obtener_centro().first - 
+		camino.back().first) * abs(unidad->obtener_centro().second - 
+		camino.back().second));
 	double dist2 = tiempo_transcurrido * unidad->obtener_velocidad();
 
 	if (dist2 <= dist1){
