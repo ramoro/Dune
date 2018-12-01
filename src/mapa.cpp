@@ -172,10 +172,8 @@ centro_unidad, int altura, int base, bool verificar_asentamiento,
 bool verificar_ataque_a_enemigo, int id_duenio, bool es_gusano) {
 	std::vector<ObjetoDune*> unidades_alrededor;
 	bool espacio_invalido = false;
-
 	for (std::map<int, ObjetoDune*>::iterator it = 
 	mapa_ids_objetos.begin(); it != mapa_ids_objetos.end(); ++it) {
-
 		//veo si el centro del objeto se encuentra dentro del lugar
 		//abarcado por la base y la altura
 		if(esta_dentro((it->second)->obtener_centro(), centro_unidad, 
@@ -258,9 +256,6 @@ int altura, int base, bool ocupar) {
 				inicio.second++;
 				continue;
 			}
-			
-			//esto del if dsp se podria reemplazar con un metodo de la coord
-			//que le invierta el estado nomas
 			if (ocupar){
 				baldosas[inicio.first][inicio.second].
 				marcar_como_ocupada_edificio();
@@ -271,7 +266,6 @@ int altura, int base, bool ocupar) {
 			}
 			inicio.second++;
 		}
-
 		inicio.second -= base;
 		inicio.first++;
 	}
@@ -327,9 +321,6 @@ void Mapa::desenterrar_gusano() {
 		if (limite_salida == LIMITE_ITERACIONES_GUSANO) break;
 		fila_random = rand() % coordenadas.size();
 		columna_random = rand() % coordenadas.size();
-		//fila_random = 525;
-		//columna_random = 175;
-
 		std::pair<int, int> posicion_centro(fila_random, columna_random);
 		bool es_arena = verificar_terreno_alrededor(posicion_centro,
 		gusano.obtener_dimesion_alto(), 
@@ -345,7 +336,6 @@ void Mapa::desenterrar_gusano() {
 		}
 		limite_salida++;
 	}
-	
 	for (std::vector<ObjetoDune*>::iterator it = objetivos.begin();
 	it != objetivos.end(); ++it) {
 		(*it)->matar();
@@ -550,143 +540,93 @@ std::pair<int, int> pos_destino) {
 	return sub_camino;*/
 }
 
+std::list<std::pair<int, int>> Mapa::obtener_camino_misma_baldosa(
+std::pair<int, int> inicio, std::pair<int, int> final, UnidadMovible *unidad){
+	std::list<std::pair<int, int>> dentro_baldosa;
+	std::pair<int, int> pixel(inicio);
+	int diff_first = final.first - inicio.first;
+	int diff_second = final.second - inicio.second;
+    int neg_sec = 1;
+    int neg_first = 1;
+	if (diff_first < 0){
+		diff_first*=-1;
+		neg_first = -1;
+	}
+	if (diff_second < 0){
+		diff_second*=-1;
+		neg_sec = -1;
+	}
+	for (int i = 0; i <= diff_second; i++){
+		for (int j = 0; j <= diff_first; j++){
+			dentro_baldosa.push_back(pixel);
+			if (pixel.first == final.first){
+				break;
+			}
+			pixel.first+=neg_first;
+		}
+		pixel.second+=neg_sec;
+		if (pixel.second == final.second){
+			break;
+		}
+	}
+	return dentro_baldosa;
+}
+
 std::list<std::pair<int, int>> Mapa::obtener_camino(std::pair<int, int> inicio,
 std::pair<int, int> final, UnidadMovible *unidad) {
-
 	std::pair<int, int> inicio_baldosa = conversor.de_pixel_a_baldosa(inicio);
 	std::pair<int, int> final_baldosa = conversor.de_pixel_a_baldosa(final);
-
 	//si quiere ir hacia una baldosa invalida directamente la unidad no se mueve
 	if(!unidad->es_terreno_valido(baldosas[final_baldosa.first]
 			[final_baldosa.second].obtener_terreno())){
-		std::cout << "mismo lugar, destino invalido" << std::endl;
 		std::list<std::pair<int, int>> mismo_lugar;
 		std::pair<int, int> pixel_actual(inicio);
 		mismo_lugar.push_back(pixel_actual);
 		return mismo_lugar;
 	}
-#ifdef NACHO 
-   // std::cout << "Quiero ir de  " << inicio_baldosa.first << " " << inicio_baldosa.second << std::endl;
-
-    //std::cout << "Hacia  " << final_baldosa.first << " " << final_baldosa.second << std::endl;
-#endif
 	if (inicio_baldosa == final_baldosa){
-	//	std::cout << " Misma baldosa" << std::endl; 
-	//	std::cout << " Inicio " << inicio.first << " " << inicio.second << std::endl; 
-	//	std::cout << " Final " << final.first << " " << final.second << std::endl; 
-		std::list<std::pair<int, int>> dentro_baldosa;
-		std::pair<int, int> pixel(inicio);
-		int diff_first = final.first - inicio.first;
-		//std::cout << "diff first " << diff_first << std::endl;
-
-  		int diff_second = final.second - inicio.second;
-		//std::cout << "diff second " << diff_second << std::endl;
-	    int neg_sec = 1;
-	    int neg_first = 1;
-
-    	if (diff_first < 0){
-			//std::cout << "Negativo first " << std::endl;
-			diff_first*=-1;
-			neg_first = -1;
-		}
-
-		if (diff_second < 0){
-			//std::cout << "Negativo second " << std::endl;
-			diff_second*=-1;
-			neg_sec = -1;
-		}
-		for (int i = 0; i <= diff_second; i++){
-			for (int j = 0; j <= diff_first; j++){
-#ifdef NACHO 
-    			//std::cout << " Nuevo first " << pixel.first << " " << pixel.second << std::endl; 
-#endif
-				dentro_baldosa.push_back(pixel);
-				if (pixel.first == final.first){
-					break;
-				}
-				pixel.first+=neg_first;
-			}
-			pixel.second+=neg_sec;
-			if (pixel.second == final.second){
-				break;
-			}
-		}
-		return dentro_baldosa;
+		return obtener_camino_misma_baldosa(inicio, final, unidad);
 	}
-
 	std::list<std::pair<int, int>> lista_camino = 
 	buscador_mejor_camino.buscar_mejor_camino(*this, inicio_baldosa,
 	 final_baldosa, unidad);
-
-#ifdef NACHO 
-  	///std::cout << "lista_camino contains:";
-#endif
-
   	for (std::list<std::pair<int, int>>::iterator it=lista_camino.begin();
   	 it != lista_camino.end(); ++it){
   		//obtengo diff para sacar camino en pixeles entre nodos
-#ifdef NACHO
-		//std::cout << "tamanio lista " << lista_camino.size() << std::endl; 
-		//std::cout << " inicio_baldosa " << inicio_baldosa.first << " " << inicio_baldosa.second << std::endl; 
-#endif
-
   		int diff_first = it->first - inicio_baldosa.first;
   		int diff_second = it->second - inicio_baldosa.second;
-
   		inicio_baldosa.first = it->first;
 		inicio_baldosa.second = it->second;
-
-#ifdef NACHO 
-		//std::cout << " Cambio inicio para iteracion posterior" << inicio_baldosa.first << " " << inicio_baldosa.second << std::endl; 
-    	//std::cout << ' ' << it->first << ' ' << it->second;
-#endif
-
     	*it = conversor.de_baldosa_a_pixel(*it);
-
-#ifdef NACHO 
-    	//std::cout << " Lo transformo a " << it->first << ' ' << it->second << std::endl; 
-#endif
-
     	int neg_sec = 0;
     	int neg_first = 0;
-
     	if (diff_first == -1){
     		neg_first = 1;
     	}
-
     	if (diff_second == -1){
     		neg_sec = 1;
     	}
-
     	for(int i = cant_pixeles_por_baldosa ; i > 0 ; i--){
     		std::pair<int,int> sig(((it->first+=diff_first) + (i*neg_first)),
     			(it->second+=diff_second) + (i*neg_sec));
-
-#ifdef NACHO 
-    		//std::cout << " Nuevo first " << sig.first << " " << sig.second << std::endl; 
-#endif
-
     		lista_camino.insert(it,sig);
 	    	if (neg_first == 1){
 	    		it->first-=diff_first;
 	    	}
-
 	    	if (neg_sec == 1){
 				it->second-=diff_second;
 	    	}
-	    	if (sig == final){
-	    		std::cout << " POSICION FINAL LLEGO " << std::endl; 
-	    		break;
+	    	if (inicio_baldosa == final_baldosa){
+				std::list<std::pair<int, int>> dentro_baldosa = 
+				obtener_camino_misma_baldosa(sig, final, unidad);
+				lista_camino.splice(lista_camino.end(), dentro_baldosa);
+				break;
 	    	}
 		}
-    	if (*it == final){
-    		std::cout << " POSICION FINAL LLEGO " << std::endl; 
+    	if (inicio_baldosa == final_baldosa){
     		break;
     	}
-
-
   	}
-
 	return lista_camino;
 }
 
@@ -694,7 +634,6 @@ bool Mapa::actualizar_salida_gusano(int tiempo_transcurrido,
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	int salio = gusano.actualizar_salida(tiempo_transcurrido);
 	if (salio) {
-		std::cout << "sale gusano" << std::endl;
 		desenterrar_gusano();
 		MensajeProtocolo mensaje = gusano.
 		serializar_mensaje_salida();
@@ -744,7 +683,6 @@ int Mapa::calcular_distancia(std::pair<int, int> p1, std::pair<int, int> p2) {
 
 std::shared_ptr<Baldosa> Mapa::obtener_especia_cercana(UnidadMovible* unidad){
 //	std::cout << "Mapa::obtener_especia_cercana" << std::endl;
-
 	for (std::map<int, std::shared_ptr<Baldosa>>::iterator it_baldosas = 
 		terrenos_con_especia.begin(); it_baldosas!=terrenos_con_especia.end();
 		 ++it_baldosas){
@@ -806,8 +744,6 @@ void Mapa::terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> colas_
 void Mapa::guardar_mensaje_en_colas(
 std::map<int, std::shared_ptr<ColaBloqueante>> colas,
 MensajeProtocolo mensaje) {
-	char accion = mensaje.pedir_accion();
-	std::cout << "accion gusano : " << accion << std::endl;
 	for (std::map<int, std::shared_ptr<ColaBloqueante>>::iterator
 	it = colas.begin(); it != colas.end(); ++it) {
 		(it->second)->push(std::move(mensaje));

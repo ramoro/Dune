@@ -205,6 +205,11 @@ class Mapa {
 		baldosas de distancia tanto de X como de Y*/
 		std::shared_ptr<Baldosa> obtener_especia_cercana(UnidadMovible* unidad);
 
+		/*Obtiene el camino dentro de la misma baldosa en coordenadas*/
+		std::list<std::pair<int, int>> obtener_camino_misma_baldosa(
+		std::pair<int, int> inicio, std::pair<int, int> final,
+		 UnidadMovible *unidad);
+		
 	private:
 		/*Recibe la posicion central de un objeto, su base y su altura y
 		setea en ocupadas a todas las coordenadas que ocupa.
