@@ -196,6 +196,8 @@ class Mapa {
 
 		void terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes);
 
+		std::shared_ptr<Baldosa> obtener_especia_cercana(UnidadMovible* unidad);
+
 	private:
 		/*Recibe la posicion central de un objeto, su base y su altura y
 		setea en ocupadas a todas las coordenadas que ocupa.

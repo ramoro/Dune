@@ -85,7 +85,7 @@ int Baldosa::cantidad_mensajes(){
 }
 
 int Baldosa::remover_especia(Cosechadora* unidad_atacante) {
-	std::cout << "Baldosa::remover_especia id "  << id << std::endl;
+//	std::cout << "Baldosa::remover_especia id "  << id << std::endl;
 	return terreno.reducir_especia(unidad_atacante->
 	obtener_extraccion_especia());
 }

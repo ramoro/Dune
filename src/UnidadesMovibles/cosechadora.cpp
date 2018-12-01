@@ -89,17 +89,17 @@ void Cosechadora::buscar_depositar_especia(Mapa &mapa,
 std::shared_ptr<ObjetoDune> terreno) {
 	Refineria* refineria = mapa.obtener_refineria_mas_cercana(this);
 	if (!refineria) {
-		std::cout << "Cosechadora::buscar_depositar_especia no hay refinerias" <<std::endl;
+//		std::cout << "Cosechadora::buscar_depositar_especia no hay refinerias" <<std::endl;
 		estado = NULL;
 	} else {
 		estado = estado->cambiar_a_movimiento_para_depositar(refineria, 
 		terreno);
 	}
-	std::cout << "Cosechadora::buscar_depositar_especia" <<std::endl;
+//	std::cout << "Cosechadora::buscar_depositar_especia" <<std::endl;
 }
 
 int Cosechadora::depositar_especia_en_segundo() {
-	std::cout << "Cosechadora::depositar_especia_en_segundo " << especia_encima << std::endl;
+//	std::cout << "Cosechadora::depositar_especia_en_segundo " << especia_encima << std::endl;
 	if (especia_encima < extraccion_especia_por_segundo) {
 		int especia_devuelta = especia_encima;
 		especia_encima = 0;

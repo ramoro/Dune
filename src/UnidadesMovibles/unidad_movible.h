@@ -85,7 +85,7 @@ class UnidadMovible: public ObjetoDune {
 		int obtener_rango_ataque();
 
 		/*Devuelve la velocidad de la unidad*/
-		int obtener_velocidad();
+		int obtener_velocidad(int tipo_terreno);
 
 		/*Recibe el jugador duenio de la unidad y devuelve true si se puede
 		agregar la nueva unidad al jugador. False en caso contrario.*/

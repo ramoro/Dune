@@ -26,7 +26,7 @@ int Terreno::reducir_especia(int cantidad) {
 	if (especia_sobrante < 0) {
 		cant_especia_actual = 0;
 	} 
-	std::cout << "Terreno::reducir_especia " << cant_especia_actual << std::endl;
+//	std::cout << "Terreno::reducir_especia " << cant_especia_actual << std::endl;
 	return especia_sobrante;
 }
 

@@ -9,6 +9,7 @@
 #define CODIGO_ATAQUE 'a'
 #define PASAJE_A_MILISEGS 1000
 #define SEGUNDO_EN_MILIS 1000
+#define CODIGO_DUNA 31
 
 UnidadMovible::UnidadMovible(int rango, int velocidad, 
 double tiempo_creacion, int costo_dinero, int vida, int id, int id_duenio,
@@ -86,7 +87,11 @@ int UnidadMovible::obtener_rango_ataque() {
 	return rango;
 }
 
-int UnidadMovible::obtener_velocidad() {
+int UnidadMovible::obtener_velocidad(int tipo_terreno) {
+	if (tipo_terreno == CODIGO_DUNA){
+		//std::cout << "Mover UNidad sobre duna a velocidad " << velocidad/2 << std::endl;
+		return velocidad/2;
+	}
 	return velocidad;
 }
 

@@ -408,6 +408,7 @@ std::pair<int,int> Mapa::pedir_cercania(int id, int id_objetivo) {
 		centro_objetivo = (mapa_ids_objetos.at(
 		id_objetivo)->obtener_centro());
 	} else {
+//		std::cout << "Mapa::pedir_cercania busco cercania con especia" << std::endl;
 		centro_objetivo = (terrenos_con_especia.at(
 		id_objetivo)->obtener_centro());
 	}
@@ -740,6 +741,26 @@ int Mapa::calcular_distancia(std::pair<int, int> p1, std::pair<int, int> p2) {
 	return sqrt((p2.first - p1.first) * (p2.first - p1.first)  + 
 	(p2.second - p1.second) * (p2.second - p1.second));
 }
+
+std::shared_ptr<Baldosa> Mapa::obtener_especia_cercana(UnidadMovible* unidad){
+//	std::cout << "Mapa::obtener_especia_cercana" << std::endl;
+
+	for (std::map<int, std::shared_ptr<Baldosa>>::iterator it_baldosas = 
+		terrenos_con_especia.begin(); it_baldosas!=terrenos_con_especia.end();
+		 ++it_baldosas){
+		std::pair <int,int> dist = pedir_cercania(unidad->pedir_id(),
+			it_baldosas->second->pedir_id());
+		if (dist.first < (cant_pixeles_por_baldosa*5) &&
+			dist.second < (cant_pixeles_por_baldosa*5)){
+	//		std::cout << "Mapa::obtener_especia_cercana encontre especia menor a "<< cant_pixeles_por_baldosa*5 <<" pixeles dist" << std::endl;
+			std::shared_ptr<Baldosa> nueva_especia = it_baldosas->second;
+			return nueva_especia;
+		}
+	}
+//	std::cout << "Mapa::obtener_especia_cercana no hay especia cerca perro" << std::endl;
+	return NULL;
+}
+
 
 std::shared_ptr<Baldosa> Mapa::obtener_baldosa_con_especia(
 int id_objeto) {
