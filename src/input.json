@@ -53,7 +53,7 @@
 		"dimension_ancho": 50,
 		"dimension_alto": 50,
 		"puntos_estructura": 500,
-		"capacidad": 5000
+		"capacidad": 200
 	},
 	"Silo": {
 		"aporte_energetico": -100,
@@ -180,7 +180,7 @@
 		"casas": ["atreides"]
 	},
 	"Desviador": {
-		"rango": 5,
+		"rango": 50,
 		"velocidad": 12,
 		"tiempo_entrenamiento": 10,
 		"costo": 400,
@@ -203,7 +203,7 @@
 		"casas": ["harkonnen"]
 	},
 	"Cosechadora": {
-		"rango": 2,
+		"rango": 30,
 		"velocidad": 12,
 		"tiempo_entrenamiento": 10,
 		"costo": 300,
@@ -211,7 +211,9 @@
 		"dimension_ancho": 20,
 		"dimension_alto": 20,
 		"edificios_necesarios": [5],
-		"casas": ["ordos","harkonnen","atreides"]
+		"casas": ["ordos","harkonnen","atreides"],
+		"extraccion_especia_por_segundo": 10,
+		"limite_especia": 300
 	},
 	"RifleAsalto": {
 		"danio": 2,
@@ -284,5 +286,11 @@
 	"Conversor": {
 		"cant_pixel_ancho": 50,
 		"cant_pixel_alto": 50
+	},
+	"EspeciaSuave": {
+		"cantidad_especia": 600
+	},
+	"EspeciaFuerte": {
+		"cantidad_especia": 1200
 	}
 }

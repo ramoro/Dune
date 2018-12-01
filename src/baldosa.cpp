@@ -85,7 +85,7 @@ int Baldosa::cantidad_mensajes(){
 }
 
 int Baldosa::remover_especia(Cosechadora* unidad_atacante) {
-	std::cout << "Baldosa::remover_especia" << std::endl;
+	std::cout << "Baldosa::remover_especia id "  << id << std::endl;
 	return terreno.reducir_especia(unidad_atacante->
 	obtener_extraccion_especia());
 }
@@ -93,4 +93,8 @@ int Baldosa::remover_especia(Cosechadora* unidad_atacante) {
 void Baldosa::matar() {
 	ObjetoDune::mensaje_muerte();
 	fuera_de_juego = true;
+}
+
+int Baldosa::obtener_cantidad_especia() {
+	return terreno.obtener_cantidad_especia();
 }

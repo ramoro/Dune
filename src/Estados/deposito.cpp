@@ -17,11 +17,14 @@ std::shared_ptr<Estado> Deposito::actualizar(UnidadMovible
 	if (contador_segundo >= SEGUNDO_EN_MILIS) {
 		contador_segundo -= SEGUNDO_EN_MILIS;
 		int especia_depositada = unidad->depositar_especia_en_segundo();
+		std::cout << "Deposito::actualizar especia_depositada "<< especia_depositada << std::endl;
 		if (especia_depositada == 0) {
 			if (especia_a_volver->esta_fuera_de_juego()) {
+				std::cout << "especia muerta " << std::endl;
 				std::shared_ptr<Inactividad> inactividad(new Inactividad());
 				return inactividad;
 			} else {
+				std::cout << "Deposito::actualizar a depositar " << std::endl;
 				unidad->asignar_nuevo_camino(mapa.obtener_camino(
 				unidad->obtener_centro(), especia_a_volver->obtener_centro(),
 				unidad));

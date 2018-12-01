@@ -96,6 +96,9 @@ class ObjetoDune {
 		le saca la especia al objeto dune segun cuanto extrae
 		la cosechadora que recibe.*/
 		virtual int remover_especia(Cosechadora *cosechadora);
+
+
+		virtual int obtener_cantidad_especia();
 };
 
 #endif

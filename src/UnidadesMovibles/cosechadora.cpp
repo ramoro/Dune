@@ -20,9 +20,9 @@ Config &config) :
 		limite_especia = config["Cosechadora"].get("limite_especia", 0).
 		asInt();
 		extraccion_especia_por_segundo = config["Cosechadora"].
-		get("extraccion_especia_por_segundo", 0).asInt();
+		get("extraccion_especia_por_segundo", 50).asInt();
 		deposito_especia_por_segundo = config["Cosechadora"].
-		get("deposito_especia_por_segundo", 0).asInt();
+		get("deposito_especia_por_segundo", 50).asInt();
 		estado = NULL;
 
 		for (unsigned int i = 0; i < 
@@ -55,12 +55,10 @@ void Cosechadora::afectar_terreno(std::shared_ptr<ObjetoDune> terreno,
 Mapa &mapa, int tiempo_transcurrido) {
 	//esto es por si esta llena la cosechadora y le dicen de ir
 	//a sacar mas especia
-	std::cout << "entro" << std::endl;
-	if (especia_encima == limite_especia) {
+	if (terreno->obtener_cantidad_especia() == 0 || especia_encima == limite_especia) {
 		buscar_depositar_especia(mapa, terreno);
 		return;
 	}
-	std::cout << "entro2" << std::endl;
 	contador_segundo += tiempo_transcurrido;
 	if (contador_segundo >= SEGUNDO_EN_MILIS) {
 		contador_segundo -= SEGUNDO_EN_MILIS;
@@ -75,7 +73,6 @@ Mapa &mapa, int tiempo_transcurrido) {
 		}
 
 	}
-	std::cout << "entro3" << std::endl;
 	//tiro la especia que sobra
 	if (especia_encima >= limite_especia) {
 		int resto = especia_encima - limite_especia;
@@ -92,6 +89,7 @@ void Cosechadora::buscar_depositar_especia(Mapa &mapa,
 std::shared_ptr<ObjetoDune> terreno) {
 	Refineria* refineria = mapa.obtener_refineria_mas_cercana(this);
 	if (!refineria) {
+		std::cout << "Cosechadora::buscar_depositar_especia no hay refinerias" <<std::endl;
 		estado = NULL;
 	} else {
 		estado = estado->cambiar_a_movimiento_para_depositar(refineria, 
@@ -101,6 +99,7 @@ std::shared_ptr<ObjetoDune> terreno) {
 }
 
 int Cosechadora::depositar_especia_en_segundo() {
+	std::cout << "Cosechadora::depositar_especia_en_segundo " << especia_encima << std::endl;
 	if (especia_encima < extraccion_especia_por_segundo) {
 		int especia_devuelta = especia_encima;
 		especia_encima = 0;

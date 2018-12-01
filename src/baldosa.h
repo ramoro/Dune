@@ -62,6 +62,8 @@ class Baldosa: public ObjetoDune {
 		mas y se avisa armando un mensaje para enviar al cliente.*/
 		virtual void matar();
 
+		virtual int obtener_cantidad_especia();
+
 		int cantidad_mensajes();
 };
 

@@ -84,3 +84,7 @@ int ObjetoDune::remover_especia(Cosechadora* cosechadora) {
 	std::cout << "entreo a remover especia de objeto dune" << std::endl; 
 	return 0;
 }
+int ObjetoDune::obtener_cantidad_especia() {
+	std::cout << "entreo a remover especia de objeto dune" << std::endl; 
+	return 0;
+}
