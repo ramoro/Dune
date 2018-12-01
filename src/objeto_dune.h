@@ -97,7 +97,8 @@ class ObjetoDune {
 		la cosechadora que recibe.*/
 		virtual int remover_especia(Cosechadora *cosechadora);
 
-
+		/*Metodo virtual que en caso de tener especia devuelve la cantidad
+		de la misma*/
 		virtual int obtener_cantidad_especia();
 };
 

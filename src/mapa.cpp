@@ -757,6 +757,7 @@ std::shared_ptr<Baldosa> Mapa::obtener_especia_cercana(UnidadMovible* unidad){
 			return nueva_especia;
 		}
 	}
+//
 //	std::cout << "Mapa::obtener_especia_cercana no hay especia cerca perro" << std::endl;
 	return NULL;
 }

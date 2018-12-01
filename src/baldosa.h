@@ -62,8 +62,11 @@ class Baldosa: public ObjetoDune {
 		mas y se avisa armando un mensaje para enviar al cliente.*/
 		virtual void matar();
 
+		/*Obtiene la cantidad de especia que hay en el terreno 
+		dentro de la baldosa*/
 		virtual int obtener_cantidad_especia();
 
+		/*Devuelve la cantidad de mensajes que hay dentro de la baldosa*/
 		int cantidad_mensajes();
 };
 

@@ -191,11 +191,18 @@ class Mapa {
 		/*Devuelve las refinerias que posee el mapa.*/
 		std::map<int, Refineria*> pedir_refinerias();
 
-		void guardar_mensaje_en_colas(std::map<int, std::shared_ptr<ColaBloqueante>> colas,
-		MensajeProtocolo mensaje);
+		/*Guarda los mensajes en las colas bloqueantes*/
+		void guardar_mensaje_en_colas(std::map<int,
+		 std::shared_ptr<ColaBloqueante>> colas, MensajeProtocolo mensaje);
 
-		void terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes);
+		/*Obtiene los mensajes para enviar a los clientes del terreno del mapa
+		y los serializa */
+		void terreno_inicial(std::map<int,
+		 std::shared_ptr<ColaBloqueante>> colas_mensajes);
 
+		/*Busca segun la posicion de la unidad y las especias que hay en el
+		mapa alguna cercana para ir a cosechar, debe estar cercana a 5
+		baldosas de distancia tanto de X como de Y*/
 		std::shared_ptr<Baldosa> obtener_especia_cercana(UnidadMovible* unidad);
 
 	private:

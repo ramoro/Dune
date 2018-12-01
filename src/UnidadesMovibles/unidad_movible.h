@@ -152,8 +152,11 @@ class UnidadMovible: public ObjetoDune {
 		/*Elimina todas las posiciones de la lista camino.*/
 		void limpiar_camino();
 
+		/*Se fija si el terreno pasado por parametro es valido para
+		esta unidad*/
 		virtual bool es_terreno_valido(int terreno) = 0;
 
+		/*Devuelve un vector indicando a que casas pertenece la unidad*/
 		std::vector<std::string> obtener_casa();
 
 		/*Recibe el terreno, el mapa y el tiempo que paso y afecta el terreno 
