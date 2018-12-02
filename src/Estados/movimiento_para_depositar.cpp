@@ -12,7 +12,7 @@ coordenada_a_volver(terreno) {
 
 std::shared_ptr<Estado> MovimientoParaDepositar::actualizar(UnidadMovible 
 *unidad, Mapa &mapa, int tiempo_transcurrido) {
-	std::cout << "Estado::cambiar_a_movimiento_para_deposita" << std::endl;
+	// "Estado::cambiar_a_movimiento_para_deposita" << std::endl;
 	std::list<std::pair<int, int>> camino = mapa.obtener_camino(
 	unidad->obtener_centro(), refineria_destino->obtener_centro(), unidad);
 	unidad->asignar_nuevo_camino(camino);
@@ -22,9 +22,9 @@ std::shared_ptr<Estado> MovimientoParaDepositar::actualizar(UnidadMovible
 	 cercania.second > DISTANCIA_DEPOSITO){
 		cercania = mapa.pedir_cercania(unidad->pedir_id(), 
 		refineria_destino->pedir_id());
-/*		std::cout << "unidad en " << unidad->obtener_centro().first << '-'<<unidad->obtener_centro().second << std::endl;
-		std::cout << "refineria en " << refineria_destino->obtener_centro().first << '-'<<refineria_destino->obtener_centro().second << std::endl;
-		std::cout << "MovimientoParaDepositar::cercania " << cercania.first << '-' << cercania.second << std::endl;
+/*		// "unidad en " << unidad->obtener_centro().first << '-'<<unidad->obtener_centro().second << std::endl;
+		// "refineria en " << refineria_destino->obtener_centro().first << '-'<<refineria_destino->obtener_centro().second << std::endl;
+		// "MovimientoParaDepositar::cercania " << cercania.first << '-' << cercania.second << std::endl;
 */		Movimiento::actualizar(unidad, mapa, tiempo_transcurrido);
 	}
 	//unidad->limpiar_camino();

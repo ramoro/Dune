@@ -32,6 +32,9 @@ class Desviador: public Vehiculo {
 		segun indica el protocolo.*/
 		void serializar_mensaje_cambio_equipo(int id_objetivo,
 		int id_tipo_objetivo);
+
+		virtual bool puede_atacar_aliado();
+
 };
 
 #endif

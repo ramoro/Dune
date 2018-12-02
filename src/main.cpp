@@ -88,7 +88,7 @@
   			}
   			while (!camino.empty()) {
   				Nodo nodo = camino.top();
-  				std::cout << std::get<0>(nodo.obtener_posicion()) << " " << std::get<1>(nodo.obtener_posicion()) << std::endl;
+  				// std::get<0>(nodo.obtener_posicion()) << " " << std::get<1>(nodo.obtener_posicion()) << std::endl;
   				camino.pop();
   			}
   			for (std::vector<Nodo>::iterator it_posibles = posibles_nodos.
@@ -192,7 +192,7 @@
   			delete ((*it_no_agregados).obtener_padre());
   		}
 	}
-  std::cout << "salio" << std::endl;
+  // "salio" << std::endl;
 }*/
 /*
 int main() {
@@ -213,7 +213,7 @@ int main() {
 }*/
 
 int main(int argc, char* argv[]) {
-  //std::cout << "hola " << std::endl;
+  //// "hola " << std::endl;
   //Partida partida;
   //ColaBloqueante cola(10);
   //partida.agregar_jugador("harkonnen", &cola);
@@ -229,7 +229,7 @@ int main(int argc, char* argv[]) {
 int main() {
   //return 0;
   ColaBloqueante cola(100);
-  std::cout << "asd" << std::endl;
+  // "asd" << std::endl;
   Partida partida;
   partida.agregar_jugador("harkonnen", &cola);
   partida.agregar_jugador("ordos", &cola);
@@ -279,7 +279,7 @@ int main() {
   partida.agregar_jugador("harkonnen");
   std::pair<int, int> centro(100, 100);
   bool agregado = partida.agregar_edificio(0, centro, 0);
-  std::cout << agregado << std::endl;
+  // agregado << std::endl;
 }*/
 
 //MAIN NACHO
@@ -290,7 +290,7 @@ int main() {
   std::pair<int,int> pixel1(0,79);
   std::pair<int,int> pixel2(0,101);
 
-  std::cout << conv.de_baldosa_a_pixel(baldosa).first << " de_baldosa_a_pixel " << conv.de_baldosa_a_pixel(baldosa).second << std::endl;
-  std::cout << conv.de_pixel_a_baldosa(pixel1).first << " de_baldosa_a_pixel " << conv.de_pixel_a_baldosa(pixel1).second << std::endl;
-  std::cout << conv.de_pixel_a_baldosa(pixel2).first << " de_baldosa_a_pixel " << conv.de_pixel_a_baldosa(pixel2).second << std::endl;
+  // conv.de_baldosa_a_pixel(baldosa).first << " de_baldosa_a_pixel " << conv.de_baldosa_a_pixel(baldosa).second << std::endl;
+  // conv.de_pixel_a_baldosa(pixel1).first << " de_baldosa_a_pixel " << conv.de_pixel_a_baldosa(pixel1).second << std::endl;
+  // conv.de_pixel_a_baldosa(pixel2).first << " de_baldosa_a_pixel " << conv.de_pixel_a_baldosa(pixel2).second << std::endl;
 }*/

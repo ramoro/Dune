@@ -19,19 +19,19 @@ Devastador::Devastador(int id, int id_duenio, std::pair<int, int> centro,
 		CanionPlasma canion_plasma(config);
 		armas.push_back(CanionPlasma(canion_plasma));
 		config_explosion.push_back(
-		config["Explosion"].get("danio", 0).asInt());
+		config["Explosion"].get("danio", 70).asInt());
 		config_explosion.push_back(
-		config["Explosion"].get("frecuencia_disparo", 0).asInt());
+		config["Explosion"].get("frecuencia_disparo", 1).asInt());
 		config_explosion.push_back(
-		config["Explosion"].get("bonificacion_danio_edificios", 0).asInt());
+		config["Explosion"].get("bonificacion_danio_edificios", 1).asInt());
 		config_explosion.push_back(
-		config["Explosion"].get("bonificacion_danio_vehiculo", 0).asInt());
+		config["Explosion"].get("bonificacion_danio_vehiculo", 1).asInt());
 		config_explosion.push_back(
-		config["Explosion"].get("bonificacion_danio_infanteria", 0).asInt());
+		config["Explosion"].get("bonificacion_danio_infanteria", 1).asInt());
 		config_explosion.push_back(
-		config["Explosion"].get("dimension_alto", 0).asInt());
+		config["Explosion"].get("dimension_alto", 100).asInt());
 		config_explosion.push_back(
-		config["Explosion"].get("dimension_ancho", 0).asInt());
+		config["Explosion"].get("dimension_ancho", 100).asInt());
 		
 		for (unsigned int i = 0; i < 
 		config["Devastador"]["casas"].size(); i++) {
@@ -60,7 +60,10 @@ void Devastador::matar() {
 
 std::vector<ObjetoDune*> Devastador::ataque_al_morir(Mapa &mapa) {
 	std::vector<ObjetoDune*> objetos_afectados = mapa.
-	buscar_unidades_alrededor(this->centro, this->altura, 
-	this->base, false, false, -1, false);
+	buscar_unidades_devastador(this);
+	 std::cout << "objetos_afectados contains:";
+  	for (std::vector<ObjetoDune*>::iterator it = objetos_afectados.begin() ; it != objetos_afectados.end(); ++it)
+    	std::cout << ' ' << (*it)->pedir_id();
+  	std::cout << '\n';
 	return objetos_afectados;
 }

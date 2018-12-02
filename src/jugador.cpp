@@ -36,7 +36,7 @@ void Jugador::eliminar_edificio(std::shared_ptr<Edificio> edificio) {
 }
 
 void Jugador::aumentar_dinero(int valor) {
-	//std::cout << "se aumento dinero" << std::endl;
+	//// "se aumento dinero" << std::endl;
 	dinero += valor;
 }
 
@@ -63,8 +63,8 @@ bool Jugador::agregada_unidad(UnidadMovible* unidad) {
 	std::vector<std::string> casas= unidad->obtener_casa();
 	if (unidad->obtener_costo() > dinero || (std::find(casas.begin(),
 	 casas.end(), casa) == casas.end())){
-			std::cout << " El edificio no pertenece a la casa " <<
-			 casa << std::endl;
+			// " El edificio no pertenece a la casa " <<
+	//		 casa << std::endl;
 		return false;
 	}
 	bool creacion = true;
@@ -80,19 +80,19 @@ bool Jugador::agregada_unidad(UnidadMovible* unidad) {
 			} else if ((edificios_por_tipo.count(8) > 0) && (edificios_por_tipo.at(8) > 0)){
 				continue;
 			} else {
-				std::cout << " NO existe cuartel " << std::endl;
+				// " NO existe cuartel " << std::endl;
 				creacion = false;
 				break;
 			}
 		} else {
 			if (edificios_por_tipo.count(*it) == 0) {
-				std::cout << " NO existen edificios necesarios " << std::endl;
+				// " NO existen edificios necesarios " << std::endl;
 				creacion = false;
 				break;
 			}
 			if (edificios_por_tipo.at(*it) == 0) {
 				creacion = false;
-				std::cout << " NO existen edificios necesarios 2 " << std::endl;
+				// " NO existen edificios necesarios 2 " << std::endl;
 				break;
 			}
 		}

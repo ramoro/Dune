@@ -13,7 +13,7 @@ using namespace std::chrono;
 
 /*Juego::Juego(Partida *partida): 
 cola_recepcion(TAM_COLA), partida(partida) {
-  std::cout << "Constructor juego sin socket" << std::endl;
+  // "Constructor juego sin socket" << std::endl;
   //this->clientes.push_back(new ProtocoloCliente());
 }*/
 
@@ -27,7 +27,7 @@ cola_recepcion(TAM_COLA), partida(partida) {
 
 void Juego::agregar_jugador(Socket skt_cliente, std::string casa) {
   int id_cliente = partida->pedir_id_nuevo_cliente();
-  std::cout << "id_cliente " << id_cliente << std::endl;
+  // "id_cliente " << id_cliente << std::endl;
   std::shared_ptr<ProtocoloCliente> cliente(new 
   ProtocoloCliente(std::move(skt_cliente)));
   this->clientes.emplace(
@@ -55,7 +55,7 @@ void Juego::hacer_ajustes_iniciales() {
   for (std::map<int, std::shared_ptr<ColaBloqueante>>::iterator it =
   this->colas_envio_clientes.begin(); it != 
   this->colas_envio_clientes.end(); ++it) {
-    std::cout << "Se encolo la x de inicio de juego" << std::endl;
+    // "Se encolo la x de inicio de juego" << std::endl;
     (it->second)->push(msj);
   }
 }
@@ -69,14 +69,14 @@ void Juego::run() {
     if (!cola_recepcion.vacia()) {
       MensajeProtocolo mensaje = cola_recepcion.pop();
       char accion = mensaje.pedir_accion();
-      std::cout << "Accion desencolada en juego: " << accion << std::endl;
+      // "Accion desencolada en juego: " << accion << std::endl;
       std::vector<int> v = mensaje.pedir_parametros();
 
 #ifdef NACHO 
       for (unsigned int aux = 0; aux < v.size(); aux++){
-        std::cout << "vector " << aux << " " << v[aux] << " ";
+        // "vector " << aux << " " << v[aux] << " ";
       }
-      std::cout << std::endl;
+      // std::endl;
 #endif
 
       if (accion == 'e') {
@@ -85,7 +85,7 @@ void Juego::run() {
         v[1], this->colas_envio_clientes);
         mutex.unlock();
       } else if (accion == 'u') {
-        std::cout << "Parametros inicio entrenamiento unidad: " << v[0] << " "<< v[1] << " "<< v[2] << std::endl;
+        // "Parametros inicio entrenamiento unidad: " << v[0] << " "<< v[1] << " "<< v[2] << std::endl;
         mutex.lock();
         this->partida->iniciar_entrenamiento_unidad_movible(v[0], v[1], v[2], 
         this->colas_envio_clientes);
@@ -104,7 +104,7 @@ void Juego::run() {
         this->partida->vender_edificio(v[0], this->colas_envio_clientes);
         mutex.unlock();
       } else if (accion == 's') {
-        std::cout << "entro a accion salida de cliente "<< v[0] << std::endl;
+        // "entro a accion salida de cliente "<< v[0] << std::endl;
 
         this->colas_envio_clientes.at(v[0])->cerrar();
         this->clientes.at(v[0])->finalizar();
@@ -128,5 +128,5 @@ void Juego::run() {
 
   	std::this_thread::sleep_for(std::chrono::milliseconds(tiempo_sleep));
   }
-  std::cout << "Salio del game loop!" << std::endl;
+  // "Salio del game loop!" << std::endl;
 }

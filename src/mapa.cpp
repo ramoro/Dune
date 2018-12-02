@@ -73,7 +73,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) : cant_pixeles_por_baldosa(ro
 							terrenos_con_especia.emplace(
 							std::pair<int, std::shared_ptr<Baldosa>>(
 							contador_ids_objetos, bald));
-							//std::cout << "ID ESFUER " << contador_ids_objetos << "con pos x " << i << " pos y " << j<<std::endl;
+							//// "ID ESFUER " << contador_ids_objetos << "con pos x " << i << " pos y " << j<<std::endl;
 							break;
 						}
 						case CODIGO_ESPECIASUAVE:
@@ -166,6 +166,23 @@ centro_objeto2, int altura_objeto2, int base_objeto2) {
 	}
 	return false;
 }
+std::vector<ObjetoDune*> Mapa::buscar_unidades_devastador(
+	UnidadMovible *unidad){
+	std::vector<ObjetoDune*> unidades_alrededor;
+	for (std::map<int, ObjetoDune*>::iterator it = 
+	mapa_ids_objetos.begin(); it != mapa_ids_objetos.end(); ++it) {
+		if (unidad->pedir_id()==(it->second)->pedir_id()){
+			continue;
+		}
+		std::pair<int,int> cercania = pedir_cercania(unidad->pedir_id(), 
+			(it->second)->pedir_id());
+		if ( cercania.first < unidad->obtener_rango_ataque() ||
+		 cercania.second < unidad->obtener_rango_ataque()) {
+			unidades_alrededor.push_back(it->second);
+		}
+	}
+	return unidades_alrededor;
+}
 
 std::vector<ObjetoDune*> Mapa::buscar_unidades_alrededor(std::pair<int, int>
 centro_unidad, int altura, int base, bool verificar_asentamiento,
@@ -181,7 +198,7 @@ bool verificar_ataque_a_enemigo, int id_duenio, bool es_gusano) {
 			//si tienen el mismo centro es que es la misma unidad, la salteo
 			//excpeto que sea el gusano  que puede emerger del mismo lugar
 			//de donde esta la unidad
-			if ((it->second)->obtener_centro() == centro_unidad && !es_gusano && 
+			if ((it->second)->obtener_centro() == centro_unidad && !es_gusano &&
 			!verificar_asentamiento) continue;
 			if (verificar_ataque_a_enemigo) {
 				if (id_duenio != (it->second)->pedir_id_duenio()) {
@@ -259,7 +276,7 @@ int altura, int base, bool ocupar) {
 			if (ocupar){
 				baldosas[inicio.first][inicio.second].
 				marcar_como_ocupada_edificio();
-				std::cout << "esta ocupada " << inicio.first << " " << inicio.second << std::endl;
+				// "esta ocupada " << inicio.first << " " << inicio.second << std::endl;
 			} else {
 				baldosas[inicio.first][inicio.second].
 				marcar_como_desocupada();
@@ -372,7 +389,7 @@ bool Mapa::agregado_edificio(ObjetoDune* objeto) {
 	std::vector<ObjetoDune*> unidades_alrededor; 
 	terreno_valido = verificar_terreno_alrededor(posicion_central, 
 	objeto->obtener_altura(), objeto->obtener_base(), CODIGO_ROCA);
-	std::cout << "Terreno valido:" << terreno_valido << " para edificio de tipo " << objeto->pedir_id_tipo() << std::endl;
+	// "Terreno valido:" << terreno_valido << " para edificio de tipo " << objeto->pedir_id_tipo() << std::endl;
 	//verifico que no haya ninguna unidad o edificio dentro del espacio
 	//donde se quiere poner el objeto
 	if (terreno_valido) {
@@ -382,9 +399,8 @@ bool Mapa::agregado_edificio(ObjetoDune* objeto) {
 	} else {
 		return false;
 	}
-
 	if(unidades_alrededor.empty()) {
-		std::cout << "Terreno vacio para edificio de tipo " << objeto->pedir_id_tipo() << std::endl;
+		// "Terreno vacio para edificio de tipo " << objeto->pedir_id_tipo() << std::endl;
 		return true;
 	}
 	return false;
@@ -396,17 +412,11 @@ std::pair<int,int> Mapa::pedir_cercania(int id, int id_objetivo) {
 	std::pair<int, int> centro_objetivo;
 	if (mapa_ids_objetos.count(id_objetivo) > 0) {
 		centro_objetivo = (mapa_ids_objetos.at(
-		id_objetivo)->obtener_centro());
+		id_objetivo)->obtener_esquina());
 	} else {
-//		std::cout << "Mapa::pedir_cercania busco cercania con especia" << std::endl;
 		centro_objetivo = (terrenos_con_especia.at(
 		id_objetivo)->obtener_centro());
 	}
-
-	/*std::pair<int, int> centro_objetivo_baldosa = 
-	conversor.de_pixel_a_baldosa(centro_objetivo);
-	std::pair<int, int> centro_unidad_baldosa = 
-	conversor.de_pixel_a_baldosa(centro_unidad);*/
 	return std::pair<int, int> (abs(centro_unidad.first - 
 	centro_objetivo.first), abs(centro_unidad.second - 
 	centro_objetivo.second));
@@ -517,27 +527,10 @@ void Mapa::mover_unidad(int id_unidad,
 std::pair<int, int> pos_destino) {
 	std::pair<int, int> centro_unidad = mapa_ids_objetos.at(id_unidad)->
 	obtener_centro();
-	/*marcar_estado_coordenadas_alrededor(centro_unidad, 
-	mapa_ids_objetos.at(id_unidad)->obtener_altura(), 
-	mapa_ids_objetos.at(id_unidad)->obtener_base(), false);*/
-
 	coordenadas[centro_unidad.first][centro_unidad.second].sacar_objeto();
-
 	coordenadas[pos_destino.first][pos_destino.second].poner_objeto(
 	mapa_ids_objetos.at(id_unidad));
-
-	/*marcar_estado_coordenadas_alrededor(pos_destino, 
-	mapa_ids_objetos.at(id_unidad)->obtener_altura(), 
-	mapa_ids_objetos.at(id_unidad)->obtener_base(), true);*/
 	mapa_ids_objetos.at(id_unidad)->set_centro(pos_destino);
-
-	/*coordenadas[camino[camino.size() / 3].first][camino[camino.size() / 3].
-	second].poner_objeto(&(mapa_ids_objetos.at(id_unidad)));
-	marcar_estado_coordenadas_alrededor(pos_destino, 
-	objeto.obtener_altura(), objeto.obtener_base(), true);
-	std::vector<std::pair<int, int>> sub_camino(&camino[0], 
-	&camino[camino.size() / 3]);
-	return sub_camino;*/
 }
 
 std::list<std::pair<int, int>> Mapa::obtener_camino_misma_baldosa(
@@ -576,6 +569,10 @@ std::list<std::pair<int, int>> Mapa::obtener_camino(std::pair<int, int> inicio,
 std::pair<int, int> final, UnidadMovible *unidad) {
 	std::pair<int, int> inicio_baldosa = conversor.de_pixel_a_baldosa(inicio);
 	std::pair<int, int> final_baldosa = conversor.de_pixel_a_baldosa(final);
+
+	// "Quiero ir desde " << inicio_baldosa.first << '-' << inicio_baldosa.second << std::endl;
+	// "Quiero ir hacia " << final_baldosa.first << '-' << final_baldosa.second << std::endl;
+
 	//si quiere ir hacia una baldosa invalida directamente la unidad no se mueve
 	if(!unidad->es_terreno_valido(baldosas[final_baldosa.first]
 			[final_baldosa.second].obtener_terreno())){
@@ -682,7 +679,7 @@ int Mapa::calcular_distancia(std::pair<int, int> p1, std::pair<int, int> p2) {
 }
 
 std::shared_ptr<Baldosa> Mapa::obtener_especia_cercana(UnidadMovible* unidad){
-//	std::cout << "Mapa::obtener_especia_cercana" << std::endl;
+//	// "Mapa::obtener_especia_cercana" << std::endl;
 	for (std::map<int, std::shared_ptr<Baldosa>>::iterator it_baldosas = 
 		terrenos_con_especia.begin(); it_baldosas!=terrenos_con_especia.end();
 		 ++it_baldosas){
@@ -690,13 +687,13 @@ std::shared_ptr<Baldosa> Mapa::obtener_especia_cercana(UnidadMovible* unidad){
 			it_baldosas->second->pedir_id());
 		if (dist.first < (cant_pixeles_por_baldosa*5) &&
 			dist.second < (cant_pixeles_por_baldosa*5)){
-	//		std::cout << "Mapa::obtener_especia_cercana encontre especia menor a "<< cant_pixeles_por_baldosa*5 <<" pixeles dist" << std::endl;
+	//		// "Mapa::obtener_especia_cercana encontre especia menor a "<< cant_pixeles_por_baldosa*5 <<" pixeles dist" << std::endl;
 			std::shared_ptr<Baldosa> nueva_especia = it_baldosas->second;
 			return nueva_especia;
 		}
 	}
 //
-//	std::cout << "Mapa::obtener_especia_cercana no hay especia cerca perro" << std::endl;
+//	// "Mapa::obtener_especia_cercana no hay especia cerca perro" << std::endl;
 	return NULL;
 }
 
@@ -729,11 +726,11 @@ void Mapa::terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> colas_
 	for (unsigned int i = 0 ; i < baldosas.size() ; i++){
 		for (unsigned int j = 0 ; j < baldosas[0].size() ; j++){
 			std::vector<MensajeProtocolo> mensajes = baldosas[i][j].obtener_mensajes_para_mandar();
-			std::cout << baldosas[i][j].cantidad_mensajes() << std::endl;
+			// baldosas[i][j].cantidad_mensajes() << std::endl;
 			for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 			mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
 				std::vector<int> v = (*it_mensajes).pedir_parametros();
-//				std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << v[4] << v[5] << std::endl;
+//				// "Mensaje de accion " << (*it_mensajes).pedir_accion() << v[4] << v[5] << std::endl;
 				guardar_mensaje_en_colas(colas_mensajes, *it_mensajes);
 			}
 			baldosas[i][j].limpiar_lista_mensajes();

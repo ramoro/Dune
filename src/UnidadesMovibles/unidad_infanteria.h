@@ -23,6 +23,9 @@ class UnidadInfanteria: public UnidadMovible {
 
 		/*valida que el terreno no sea precipicio*/
 		bool es_terreno_valido(int terreno);
+
+		virtual int daniar_devastador(UnidadMovible* unidad_atacante);
+
 };
 
 #endif 

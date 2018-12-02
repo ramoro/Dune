@@ -64,7 +64,7 @@ std::list<std::pair<int, int>> BuscadorMejorCamino::buscar_mejor_camino
   			}
   			/*while (!camino.empty()) {
   				Nodo nodo = camino.top();
-  				std::cout << std::get<0>(nodo.obtener_posicion()) << " " << std::get<1>(nodo.obtener_posicion()) << std::endl;
+  				// std::get<0>(nodo.obtener_posicion()) << " " << std::get<1>(nodo.obtener_posicion()) << std::endl;
   				camino.pop();
   			}*/
 
@@ -97,13 +97,13 @@ std::list<std::pair<int, int>> BuscadorMejorCamino::buscar_mejor_camino
   			//Evaluo el terreno y unidad para ver si puede pasar por 
   			//esa posicion
   			if (!unidad->es_terreno_valido(mapa.pedir_terreno_baldosa(posicion_adyacente))) {
-          std::cout << "no puede andar en " << mapa.pedir_terreno_baldosa(posicion_adyacente) << ' '<< posicion_adyacente.first << " " << posicion_adyacente.second << std::endl;
+          //// "no puede andar en " << mapa.pedir_terreno_baldosa(posicion_adyacente) << ' '<< posicion_adyacente.first << " " << posicion_adyacente.second << std::endl;
           continue;
         }
 
         if (mapa.esta_ocupada_baldosa(posicion_adyacente) && 
         posicion_adyacente != pos_final) {
-          std::cout << "Esta ocupada " << posicion_adyacente.first << " " << posicion_adyacente.second << std::endl;
+          //// "Esta ocupada " << posicion_adyacente.first << " " << posicion_adyacente.second << std::endl;
           continue;
         }
   			Nodo *nodo_aux = new Nodo(nodo_evaluado);

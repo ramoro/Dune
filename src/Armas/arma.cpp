@@ -20,7 +20,7 @@ int Arma::obtener_danio(std::string objetivo) {
 }
 
 bool Arma::puede_atacar(int tiempo_transcurrido) {
-	std::cout << "entro a puede atacar y contador_seg es: " << contador_seg << std::endl;
+//	// "entro a puede atacar y contador_seg es: " << contador_seg << std::endl;
 	contador_seg += tiempo_transcurrido;
 	if (contador_seg >= SEGUNDO_EN_MILIS) {
 		contador_seg = 0;

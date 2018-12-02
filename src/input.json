@@ -92,7 +92,7 @@
 		"puntos_estructura": 1000
 	},
 	"InfanteriaLigera": {
-		"rango": 30,
+		"rango": 150,
 		"velocidad": 1,
 		"tiempo_entrenamiento": 1,
 		"costo": 50,
@@ -107,7 +107,7 @@
 		"velocidad": 10,
 		"tiempo_entrenamiento": 1,
 		"costo": 90,
-		"puntos_vida": 80,
+		"puntos_vida": 1,
 		"dimension_ancho": 20,
 		"dimension_alto": 20,
 		"edificios_necesarios": [66],
@@ -169,7 +169,7 @@
 		"casas": ["ordos","atreides","harkonnen"]
 	},
 	"Tanque sonico": {
-		"rango": 4,
+		"rango": 50,
 		"velocidad": 12,
 		"tiempo_entrenamiento": 10,
 		"costo": 300,
@@ -250,16 +250,16 @@
 		"bonificacion_danio_infanteria": 0,
 		"bonificacion_danio_vehiculos": 2
 	},
-	"OndasSonido": {
+	"OndaSonido": {
 		"danio": 4,
-		"frecuencia_disparo": 1,
+		"frecuencia_disparo": 2,
 		"bonificacion_danio_edificios": 0,
 		"bonificacion_danio_infanteria": 4,
 		"bonificacion_danio_vehiculos": 0
 	},
 	"Explosion": {
-		"danio": 10,
-		"frecuencia_disparo": 0,
+		"danio": 2,
+		"frecuencia_disparo": 6,
 		"bonificacion_danio_edificios": 0,
 		"bonificacion_danio_infanteria": 0,
 		"bonificacion_danio_vehiculos": 0,

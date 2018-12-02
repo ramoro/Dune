@@ -35,7 +35,7 @@ void Server::aceptar_cliente() {
   	//partida.agregar_jugador("harkonnen", colas);
   	//partida.agregar_jugador("ordos", &cola);
   	int i = 0;
-  	while (i < 1) {
+  	while (i < 2) {
   		Socket *otro_socket = socket->accept_connection();
   		otro_socket->send_int(i);
   		/*otro_socket->send_int(1);
@@ -49,7 +49,7 @@ void Server::aceptar_cliente() {
   			juegos.push_back(juego);
   			juegos[0]->agregar_jugador(std::move(*otro_socket), "harkonnen");
   		} else {
-			juegos[0]->agregar_jugador(std::move(*otro_socket), "ordos");  			
+			juegos[0]->agregar_jugador(std::move(*otro_socket), "atreides");  			
   		}		
   		delete otro_socket;
   		i++;
@@ -103,7 +103,7 @@ void Server::ejecutar_accion(Socket *otro_socket) {
   		otro_socket->recv_msj(accion, 1);
 	
 		if (*accion == MOVER) {
-			std::cout << "claa" << std::endl;
+			// "claa" << std::endl;
 		} else if (*accion == ATACAR) {
 			
 		} else if (*accion == CREAR_EDIFICIO) {
@@ -120,14 +120,14 @@ void Server::enviar_mapa(Socket* otro_socket) {
 	300, 50, 50}, {1, 1, 1, 300, 300, 1000, 1000}};
 	std::vector<std::vector<int>> terrenos = {{0, 500, 500, 50, 50},
 	{2, 200, 200, 700, 700}};
-	std::cout << "envia1" << std::endl;
+	// "envia1" << std::endl;
 	//char codigo_edificio = 'e';
 	//char codigo_terreno = 't';
 	//enviar_info_vectores_enteros(edificios, &codigo_edificio);
 	//enviar_info_vectores_enteros(terrenos, &codigo_terreno);
 	unsigned char codigo = 's';
 	otro_socket->send_msj(&codigo, 1);
-	std::cout << "envia2" << std::endl;
+	// "envia2" << std::endl;
 }
 
 void Server::apagar() {

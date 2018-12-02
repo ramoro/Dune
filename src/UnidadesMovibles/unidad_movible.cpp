@@ -32,6 +32,9 @@ int UnidadMovible::obtener_tiempo_acumulado(){
 	return tiempo_acumulado;
 }
 
+bool UnidadMovible::puede_atacar_aliado(){
+	return false;
+}
 
 int UnidadMovible::pedir_danio(std::string objetivo, int tiempo_transcurrido) {
 	int danio_mayor = 0;
@@ -46,15 +49,19 @@ int UnidadMovible::pedir_danio(std::string objetivo, int tiempo_transcurrido) {
 		}
 		indice++;
 	}
+
 	if (armas[indice_arma_mayor_danio].puede_atacar(tiempo_transcurrido)) {
 		int cantidad_disparos = armas[indice_arma_mayor_danio].
 		obtener_frecuencia_disparo();
 		for (int i = 0; i < cantidad_disparos; i++) {
 			danio_total += danio_mayor;
 		}
-		std::cout << "cantidad disparos" << cantidad_disparos << std::endl;
 	}
 	return danio_total;
+}
+
+int UnidadMovible::pedir_danio_explosion(std::string unidad){
+	return armas[0].obtener_danio(unidad);
 }
 
 std::vector<ObjetoDune*> UnidadMovible::atacar_objetivo(Mapa &mapa,
@@ -89,7 +96,7 @@ int UnidadMovible::obtener_rango_ataque() {
 
 int UnidadMovible::obtener_velocidad(int tipo_terreno) {
 	if (tipo_terreno == CODIGO_DUNA){
-		//std::cout << "Mover UNidad sobre duna a velocidad " << velocidad/2 << std::endl;
+		//// "Mover UNidad sobre duna a velocidad " << velocidad/2 << std::endl;
 		return velocidad/2;
 	}
 	return velocidad;
@@ -101,7 +108,7 @@ bool UnidadMovible::se_puede_agregar(Jugador
 }
 
 void UnidadMovible::agregar(Mapa &mapa) {
-	std::cout << "unidad en x " << (this->centro).first << " y " << (this->centro).second << std::endl;
+	// "unidad en x " << (this->centro).first << " y " << (this->centro).second << std::endl;
 	mapa.agregar_objeto(this, this->id,
 	this->centro,false);
 	estado = estado->cambiar_a_inactividad();
@@ -123,14 +130,14 @@ Mapa &mapa) {
 	//por si sale algo mal y no se vacio del todo el camino
 	//cuando la unidad llego
 	//if (camino.empty()) return;
-//	std::cout << "centro: " << centro.first << centro.second << " de la unidad " << id << std::endl;
+//	// "centro: " << centro.first << centro.second << " de la unidad " << id << std::endl;
 	if (estado) {
 		std::shared_ptr<Estado> nuevo_estado = estado->actualizar(this, mapa,
 		tiempo_transcurrido);
-//		std::cout << "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
+//		// "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
 		//si no es null le asigno el nuevo estado
 		if (nuevo_estado) {
-			std::cout << "nuevo estado " << " estado: " << nuevo_estado->pedir_nombre() << std::endl;
+			// "nuevo estado " << " estado: " << nuevo_estado->pedir_nombre() << std::endl;
 			estado = nuevo_estado;
 		}
 	}
@@ -159,7 +166,7 @@ std::shared_ptr<ObjetoDune> objetivo) {
 	this->rango) {
 		estado = estado->cambiar_a_movimiento_para_atacar(objetivo);
 		asignar_nuevo_camino(mapa.obtener_camino(this->centro, 
-		objetivo->obtener_centro(),this));
+		objetivo->obtener_esquina(),this));
 	} else {
 		estado = estado->cambiar_a_ataque(objetivo);
 		serializar_mensaje_ataque(objetivo->pedir_id());
@@ -203,7 +210,12 @@ void UnidadMovible::afectar_terreno(std::shared_ptr<ObjetoDune> terreno,
 Mapa &mapa, int tiempo_transcurrido) {}
 
 int UnidadMovible::depositar_especia_en_segundo() {
-	std::cout << "se llamo a depositar_especia_en_segundo de un mov" 
-	<< std::endl;
+	// "se llamo a depositar_especia_en_segundo de un mov" 
+	//<< std::endl;
 	return 0;
+}
+
+std::pair<int,int> UnidadMovible::obtener_esquina(){
+	// "UnidadMovible::obtener_esquina va a obtener_centro " << std::endl;
+	return obtener_centro();
 }

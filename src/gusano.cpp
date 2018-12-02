@@ -54,7 +54,7 @@ MensajeProtocolo Gusano::serializar_mensaje_salida() {
 	mensaje.agregar_parametro(ID_GUSANO);
 	mensaje.agregar_parametro(dimension_ancho);
 	mensaje.agregar_parametro(dimension_alto);
-	std::cout << "Centros gusano: " << centro_salida.first << " " << centro_salida.second << std::endl;
+	// "Centros gusano: " << centro_salida.first << " " << centro_salida.second << std::endl;
 	mensaje.agregar_parametro(centro_salida.first);
 	mensaje.agregar_parametro(centro_salida.second);
 	return mensaje;

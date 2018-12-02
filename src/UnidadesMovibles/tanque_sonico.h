@@ -11,8 +11,8 @@ Es un tanque que dispara ondas de sonidos que danian a todo aquel que se
 encuentre en su paso, inclusive a unidades aliadas.*/
 class TanqueSonico: public Vehiculo {
 	private:
-		int expansion_altura_arma_sonica; //la idea es que sean mayores que
-		int expansion_base_arma_sonica; //las dimensiones del tanque
+	//	int expansion_altura_arma_sonica; //la idea es que sean mayores que
+	//	int expansion_base_arma_sonica; //las dimensiones del tanque
 	
 	public:
 		/*Constructor de la clase.*/

@@ -28,6 +28,10 @@ Desviador::Desviador(int id, int id_duenio, std::pair<int, int> centro,
 		}
 	}
 
+bool Desviador::puede_atacar_aliado(){
+	return true;
+}
+
 std::vector<ObjetoDune*> Desviador::atacar_objetivo(Mapa &mapa, 
 int id_objetivo) {
 	std::vector<ObjetoDune*> objetos_afectados;		

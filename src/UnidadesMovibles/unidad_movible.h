@@ -51,6 +51,8 @@ class UnidadMovible: public ObjetoDune {
 		suficiente que cumpla la frecuencia de disparo del arma con la
 		que se ataca.*/
 		int pedir_danio(std::string objetivo, int tiempo_transcurrido);
+		
+		int pedir_danio_explosion(std::string objetivo);
 
 		/*Recibe el mapa del juego y
 		el id del objeto a atacar. Devuelve un vector con los
@@ -65,6 +67,9 @@ class UnidadMovible: public ObjetoDune {
 		/*Metodo virtual puro que mata a la unidad movible seteandola
 		como muerta.*/
 		virtual void matar();
+
+		/*Devuelve el la posicion del centro del objeto.*/
+		virtual std::pair<int, int> obtener_esquina();
 
 		/*Metodo virtual puro que devuelve un vector de punteros a objetos
 		afectados por la muerte de la unidad.*/
@@ -167,6 +172,8 @@ class UnidadMovible: public ObjetoDune {
 		/*En caso de que a unidad lleve especia encima se saca
 		tanta especia como puede depositar en un segundo.*/
 		virtual int depositar_especia_en_segundo();
+		
+		virtual bool puede_atacar_aliado();
 
 };
 

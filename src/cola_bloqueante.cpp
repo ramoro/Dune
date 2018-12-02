@@ -23,7 +23,7 @@ void ColaBloqueante::push(const MensajeProtocolo& mensaje) {
 MensajeProtocolo ColaBloqueante::pop() {
     std::unique_lock<std::mutex> lock(mutex);
     while (q.empty()) {
-//        std::cout << " cola vacia, el pull se bloquea\n";
+//        // " cola vacia, el pull se bloquea\n";
         is_not_empty.wait(lock);
     }
 

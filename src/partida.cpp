@@ -21,7 +21,7 @@ Partida::Partida() {
 	config = std::move(json);
 	Mapa map(this->config, contador_ids_objetos);
 	mapa = std::move(map);
-	std::cout << "contador_ids_objetos " << contador_ids_objetos << std::endl;
+	// "contador_ids_objetos " << contador_ids_objetos << std::endl;
 }
 
 int Partida::pedir_id_nuevo_cliente() {
@@ -42,7 +42,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	jugadores.emplace(std::pair<int, Jugador>(contador_ids_jugadores, 
 	jugador));
 	std::pair<int,int> ubicacion_centro = ubicar_centro_construccion();
-	std::cout << "centro constuccion en " << ubicacion_centro.first << " " << ubicacion_centro.second << std::endl;
+	// "centro constuccion en " << ubicacion_centro.first << " " << ubicacion_centro.second << std::endl;
 	agregar_edificio(contador_ids_jugadores, ubicacion_centro, 0, colas_mensajes);
 #ifdef DEBUG 
 	//agregar_edificio(contador_ids_jugadores, std::pair<int,int>(7,7), 6, cola_mensajes);
@@ -62,9 +62,9 @@ std::pair<int,int> Partida::ubicar_centro_construccion(){
 	int limite_fil = (int)mapa.pedir_limite_filas();
 
 #ifdef NACHO 
-	std::cout << "limite_col " << limite_col << " limite_fil " << limite_fil << std::endl;
+	// "limite_col " << limite_col << " limite_fil " << limite_fil << std::endl;
 
-	std::cout << "limite_col_bald " << mapa.pedir_limite_columnas_baldosa() << " limite_fil_bald " << mapa.pedir_limite_filas_baldosa() << std::endl;
+	// "limite_col_bald " << mapa.pedir_limite_columnas_baldosa() << " limite_fil_bald " << mapa.pedir_limite_filas_baldosa() << std::endl;
 #endif
 
 	int rango_col = limite_col/3;
@@ -135,7 +135,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		serializar_mensaje_energia(jugadores.at(id_jugador).
 		pedir_energia_disponible(), id_jugador, colas_mensajes);
 	} else {
-		std::cout << "No se pudo construir edificio de tipo " << id_tipo_edificio << std::endl;
+		// "No se pudo construir edificio de tipo " << id_tipo_edificio << std::endl;
 		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_edificio,
 		id_jugador);
 	}
@@ -163,7 +163,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	int id_edificio_entrenando = jugadores.at(id_jugador).
 	pedir_id_edificio_entrenando();
 	if (id_edificio_entrenando != JUGADOR_NO_ENTRENANDO) {
-		std::cout << "ERROR JUGADRO YA ENTRENANDO" << std::endl;
+		// "ERROR JUGADRO YA ENTRENANDO" << std::endl;
 		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad,
 		id_jugador);
 	} else {
@@ -171,7 +171,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		se_puede_agregar_unidad(jugadores.at(id_jugador), 
 		id_tipo_unidad, contador_ids_objetos,config));
 		if (!se_puede_agregar) {
-			std::cout << "ERRO no se puede agregar" << std::endl;
+			// "ERRO no se puede agregar" << std::endl;
 			serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad,
 			id_jugador);
 		} else {
@@ -198,7 +198,7 @@ edificio, int tiempo_transcurrido) {
 	bool entrenamiento_terminado = edificio->
 	avanzar_tiempo_creacion(tiempo_transcurrido);
 	if (entrenamiento_terminado) {
-		std::cout << "se creo unidad" << std::endl;
+		// "se creo unidad" << std::endl;
 		std::shared_ptr<UnidadMovible> unidad_nueva = edificio->
 		agregar_unidad(mapa); //VERIFICAR ESTE AGREGADO CON GDB LUEGO
 		unidades_movibles.emplace(std::pair<int, 
@@ -271,7 +271,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas) {
 
 void Partida::actualizar_modelo(int tiempo_transcurrido, 
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
-	//std::cout << "ACTUALIZA MODELO con tiempo " << tiempo_transcurrido << std::endl; 
+	//// "ACTUALIZA MODELO con tiempo " << tiempo_transcurrido << std::endl; 
 	//actualizo salida del gusano
 	mapa.actualizar_salida_gusano(tiempo_transcurrido, colas_mensajes);
 	
@@ -335,8 +335,8 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 	terrenos_sin_especia.begin(); it_mensajes != 
 	terrenos_sin_especia.end(); ++it_mensajes) {
-		std::cout << "Pasa por verificacion terrenos" << std::endl;
-//		std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
+		// "Pasa por verificacion terrenos" << std::endl;
+//		// "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
 		guardar_mensaje_en_colas(colas_mensajes, *it_mensajes);
 	}
 	
@@ -353,7 +353,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		obtener_mensajes_para_mandar();
 		for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 		mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
-//			std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
+//			// "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
 			if ((*it_mensajes).pedir_accion() == CODIGO_MUERTE_OBJETO) {
 				edificios_a_eliminar.insert(it_edifs->second);
 			} else if ((*it_mensajes).pedir_accion() == CODIGO_PERDIO_JUGADOR) {
@@ -389,7 +389,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 		mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
 			std::vector<int> v = (*it_mensajes).pedir_parametros();
-//			std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose de "   << v[0] << " a " << v[1] << std::endl;
+//			// "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose de "   << v[0] << " a " << v[1] << std::endl;
 			if ((*it_mensajes).pedir_accion() == CODIGO_MUERTE_OBJETO) {
 				unidades_a_eliminar.insert(it_unidades->second);
 			}
@@ -407,7 +407,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	for (std::set<std::shared_ptr<UnidadMovible>>::iterator it_unidades = 
 	unidades_a_eliminar.begin(); it_unidades != unidades_a_eliminar.end();
 	++it_unidades) {
-		std::cout << "Unidad de tipo " << (*it_unidades)->pedir_id_tipo()<< " e id " << (*it_unidades)->pedir_id() << " murio." <<std::endl;
+		// "Unidad de tipo " << (*it_unidades)->pedir_id_tipo()<< " e id " << (*it_unidades)->pedir_id() << " murio." <<std::endl;
 		eliminar_unidad_del_juego(*it_unidades);
 	}
 }

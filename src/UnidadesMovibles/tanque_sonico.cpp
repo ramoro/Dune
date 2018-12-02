@@ -16,8 +16,8 @@ TanqueSonico::TanqueSonico(int id, int id_duenio, std::pair<int, int> centro,
 		id_tipo = ID_TANQUE_SONICO;
 		OndaSonido arma_ondas_sonidos(config);
 		armas.push_back(OndaSonido(arma_ondas_sonidos));
-		expansion_altura_arma_sonica = 70;
-		expansion_base_arma_sonica = 50;
+		//expansion_altura_arma_sonica = 70;
+		//expansion_base_arma_sonica = 50;
 		for (unsigned int i = 0; i < 
 		config["Tanque sonico"]["casas"].size(); i++) {
 			casa.push_back(config["Tanque sonico"]["casas"][i].asString());
@@ -28,12 +28,15 @@ TanqueSonico::TanqueSonico(int id, int id_duenio, std::pair<int, int> centro,
 			config["Tanque sonico"]["edificios_necesarios"][i].asInt());
 		}
 	}
+	
 
 std::vector<ObjetoDune*> TanqueSonico::atacar_objetivo(Mapa &mapa,
 int id_objetivo) {
-	std::vector<ObjetoDune*> afectados = mapa.buscar_unidades_alrededor(
-	this->centro, this->altura, this->base, false, false, -1, false);
-
+	std::vector<ObjetoDune*> afectados = mapa.buscar_unidades_devastador(this);
+	for (std::vector<ObjetoDune*>::iterator it = 
+	afectados.begin(); it != afectados.end(); ++it) {
+		std::cout << "TanqueSonico::atacar_objetivo afectados " << (*it)->pedir_id_tipo() << std::endl;
+	}
 	return afectados;
 }
 

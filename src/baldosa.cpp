@@ -75,17 +75,17 @@ void Baldosa::serializar_mensaje_baldosa(int cant_pixeles_baldosa) {
 	mensaje.agregar_parametro(cant_pixeles_baldosa);
 	mensaje.agregar_parametro(obtener_centro().first);
 	mensaje.agregar_parametro(obtener_centro().second);
-	std::cout << "Serializo terreno con id " << id << " y tipo " << terreno.obtener_id_material() << std::endl;
+	// "Serializo terreno con id " << id << " y tipo " << terreno.obtener_id_material() << std::endl;
 	mensajes.push_back(std::move(mensaje));
 }
 
 int Baldosa::cantidad_mensajes(){
-	//std::cout << mensaje.pedir_accion() << std::cout;
+	//// mensaje.pedir_accion() << std::cout;
 	return mensajes.size();
 }
 
 int Baldosa::remover_especia(Cosechadora* unidad_atacante) {
-//	std::cout << "Baldosa::remover_especia id "  << id << std::endl;
+//	// "Baldosa::remover_especia id "  << id << std::endl;
 	return terreno.reducir_especia(unidad_atacante->
 	obtener_extraccion_especia());
 }
@@ -97,4 +97,8 @@ void Baldosa::matar() {
 
 int Baldosa::obtener_cantidad_especia() {
 	return terreno.obtener_cantidad_especia();
+}
+
+std::pair<int, int> Baldosa::obtener_esquina(){
+	return obtener_centro();
 }

@@ -27,18 +27,18 @@ void ProtocoloCliente::inicializar() {
 void ProtocoloCliente::enviar_mensajes() {
 	try {
 		while (this->jugando) {
-			//std::cout << "en envio mensaje" << std::endl;
+			//// "en envio mensaje" << std::endl;
 			MensajeProtocolo mensaje = this->cola_envio->pop();
 			/* ver si perdio cliente
 			*/
 			/*ver si gano tambien*/
 			unsigned char accion = mensaje.pedir_accion();
-//			std::cout << "Accion a enviar en protocolo cliente por socket: " << accion << " " << "con parametros:"<<std::endl;
+//			// "Accion a enviar en protocolo cliente por socket: " << accion << " " << "con parametros:"<<std::endl;
 			this->socket_cliente.send_msj(&accion, 1);
 			std::vector<int> parametros = mensaje.pedir_parametros();
 			for (std::vector<int>::iterator it = parametros.begin(); 
 			it != parametros.end(); ++it) {
-//				std::cout << *it << std::endl;
+//				// *it << std::endl;
 				this->socket_cliente.send_int(*it);
 			}
 		}
@@ -51,7 +51,7 @@ void ProtocoloCliente::enviar_mensajes() {
 	} catch (std::exception &e){
 		std::cerr << e.what() << " En ProtocoloCliente::enviar_mensajes" << std::endl;
 	} catch (...) {
-		std::cout << "Error desconocido en ProtocoloCliente::enviar_mensajes" << std::endl;
+		// "Error desconocido en ProtocoloCliente::enviar_mensajes" << std::endl;
 	}
 }
 
@@ -95,7 +95,7 @@ void ProtocoloCliente::recibir_mensajes() {
 			MensajeProtocolo mensaje;
 			unsigned char accion;
 			this->socket_cliente.recv_msj(&accion, 1);
-			std::cout << accion << std::endl;
+			// accion << std::endl;
 			mensaje.asignar_accion(accion);
 			int cantidad_ints_a_recibir = 0;
 			if (accion == 'm' || accion == 'u') {
@@ -116,11 +116,11 @@ void ProtocoloCliente::recibir_mensajes() {
 				list_mensajes.pop_front();
 				this->cola_recepcion->push(msj);
 			}*/
-			//std::cout << accion << std::endl;
+			//// accion << std::endl;
 
 			this->cola_recepcion->push(mensaje);
 
-			//std::cout << accion << std::endl;
+			//// accion << std::endl;
 		}
 	} catch(SocketError &e){
 		if (this->jugando) {
@@ -129,7 +129,7 @@ void ProtocoloCliente::recibir_mensajes() {
 	} catch (std::exception &e){
 		std::cerr << e.what() << " En ProtocoloCliente::recibir_mensajes" << std::endl;
 	} catch (...) {
-		std::cout << "Error desconocido en ProtocoloCliente::recibir_mensajes" << std::endl;
+		// "Error desconocido en ProtocoloCliente::recibir_mensajes" << std::endl;
 	}
 }
 
@@ -137,7 +137,7 @@ void ProtocoloCliente::finalizar() {
 	this->jugando = false;
 	std::cout<< "entro a finalizar" << std::endl;
 	this->t_envios.join();
-	std::cout << "joineo cola envios" << std::endl;
+	// "joineo cola envios" << std::endl;
 	this->t_recibos.join();
-	std::cout << "joineo cola recibo" << std::endl;
+	// "joineo cola recibo" << std::endl;
 }
