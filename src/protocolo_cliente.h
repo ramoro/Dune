@@ -65,7 +65,11 @@ class ProtocoloCliente {
     en sala.*/
     void cambiar_a_modo_juego();
 
-    void mensaje_casa();
+    /*Recibe el nombre de un mapa y el id del mapa y envia esta info
+    al cliente que le corresponde el socket que tiene como
+    atributo la clase. Tambien puede reicibr el nombre
+    de un mapa que tiene una sala y el id de esta.*/
+    void enviar_mapa_o_sala(std::string nombre, int id);
 
   private:
     /*Recibe cierta cantidad de ints a traves del socket y los

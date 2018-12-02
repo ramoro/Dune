@@ -12,20 +12,40 @@ class ProtocoloCliente;
 
 class Sala {
   private:
-    int cantidad_maxima_jugadores;
-    int cantidad_jugadores_dentro;
-    std::string nombre_mapa;
     std::shared_ptr<Juego> juego;
     std::shared_ptr<Partida> partida;
+    std::string nombre_mapa;
+    int cantidad_maxima_jugadores;
+    int cantidad_jugadores_dentro;
+    bool sala_llena;
 
   public:
     /*Constructor de la clase.*/
-    Sala(std::shared_ptr<Juego> juego, std::shared_ptr<Partida> partida);
+    Sala(std::shared_ptr<Juego> juego, std::shared_ptr<Partida> partida,
+    std::string nombre_mapa, int cantidad_maxima_jugadores);
 
+    /*Larga el juego que posee como atributo en un hilo nuevo.*/
     void largar_juego();
 
+    /*Recibe un puntero a un protocolo cliente junto con la casa y 
+    lo agrega al juego.*/
     void agregar_jugador_a_juego(std::shared_ptr<ProtocoloCliente> jugador,
     std::string casa);
+
+    /*Suma en uno la cantidad de clientes dentro. Si se llego
+    a la cantidad maxima de jugadores sala_llena se setea en true.*/
+    void agregar_cliente();
+
+    /*Devuelve el nombre del mapa en el que se jugara.*/
+    std::string pedir_nombre_mapa();
+
+    /*Devuelve true si la sala esta llena, false
+    en caso contrario.*/
+    bool esta_llena();
+
+    /*Setea a la sala como llena para imposibilitar que alguien se
+    una.*/
+    void cerrar_sala();
 
     /*Destructor de la clase.*/
     ~Sala();

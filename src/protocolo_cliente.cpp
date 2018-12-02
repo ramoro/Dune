@@ -67,46 +67,33 @@ void ProtocoloCliente::iniciar_protocolo() {
 			std::vector<int> parametros_recibidos;
 			std::cout << "accion en esperando sala " << accion << " de cliente " << this->id << std::endl;
 			if (accion == 'p') {
-				std::string nombre("yeahh");
-				accion = 'm';
-				this->socket_cliente.send_msj(&accion, 1);
-				this->socket_cliente.send_int(nombre.size());
-				this->socket_cliente.send_string(nombre);
-				this->socket_cliente.send_int(5);
+				organizador.recorrer_mapas_para_enviar(this->id);
 				accion = 'f';
 				this->socket_cliente.send_msj(&accion, 1);
-				// << "se enviaron mapas" << std::endl;
-				
-				//mandar mapas
-				//mandar finalizacion envio mapas
-				//recibo m con id, max_cant_jugadores, e id partida?
+				std::cout << "se enviaron mapas" << std::endl;
 			} else if (accion == 'm') {
-				this->socket_cliente.recv_int(); //recibo id mapa elegido
-				this->socket_cliente.recv_int(); //recibo maxs jugadores
-				id_sala_asociada = organizador.crear_sala();
+				int id_mapa = this->socket_cliente.recv_int(); //recibo id mapa elegido
+				int max_jugadores = this->socket_cliente.recv_int(); //recibo maxs jugadores
+				id_sala_asociada = organizador.crear_sala(id_mapa, 
+				max_jugadores);
 				accion = 'o';
 				this->socket_cliente.send_msj(&accion, 1);
 			} else if (accion == 'n') {
-				unsigned char acc = 'm';
-				std::string nombre_mapa("yeahh");
-				this->socket_cliente.send_msj(&acc, 1);
-				this->socket_cliente.send_int(nombre_mapa.size());
-				this->socket_cliente.send_string(nombre_mapa);
-				this->socket_cliente.send_int(0);
+				organizador.recorrer_salas_para_enviar(this->id);
 				accion = 'f';
 				this->socket_cliente.send_msj(&accion, 1);
-				//mando lista de partidas
 			} else if (accion == 'j') {
 				std::cout << "entro a join " << std::endl;
 				id_sala_asociada = this->socket_cliente.recv_int();
 				std::cout << "recibio id partida" << std::endl;
+				organizador.agregar_cliente_a_sala(id_sala_asociada);
 				accion = 'o';
 				this->socket_cliente.send_msj(&accion, 1);
 				//recibo id mapa,
 			} else if (accion == 'i') {
 				//parametros_recibidos = recibir_ints(1);
 				// << "entro a iniciar juego en inciar_protocolo" << std::endl;
-				organizador.iniciar_juego(0);
+				organizador.iniciar_juego(id_sala_asociada);
 				int casa = this->socket_cliente.recv_int();//recibo el id de la casa
 				std::cout << "recibio casa owner : " << casa <<  std::endl;
 				break;
@@ -197,14 +184,10 @@ void ProtocoloCliente::cambiar_a_modo_juego() {
 	this->socket_cliente.send_msj(&accion, 1);
 }
 
-void ProtocoloCliente::mensaje_casa() {
-	//this->socket_cliente.recv_msj(&accion, 1);// recibo t de team
-	int casa = this->socket_cliente.recv_int();//recibo el id de la casa
-	std::cout << "recibio casa: " << casa <<  std::endl;
-
-	//this->socket_cliente.send_int(0);
-	//this->socket_cliente.send_int(0);
-	//this->socket_cliente.send_int(5000);
-	//this->socket_cliente.send_int(3000);
-	// << "mando caracs mapa" << std::endl;
+void ProtocoloCliente::enviar_mapa_o_sala(std::string nombre, int id) {
+	unsigned char accion = 'm';
+	this->socket_cliente.send_msj(&accion, 1);
+	this->socket_cliente.send_int(nombre.size());
+	this->socket_cliente.send_string(nombre);
+	this->socket_cliente.send_int(id);
 }

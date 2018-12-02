@@ -26,9 +26,9 @@ private:
     int contador_id_clientes; // da el id del proximo cliente que se conecta
     int contador_id_salas; // da el id de la proxima sala a crearr
     std::mutex mutex;
-    //map con el id del cliente y su cola
     std::map<int, std::shared_ptr<ProtocoloCliente>> clientes;
     std::map<int, std::shared_ptr<Sala>> salas;
+    std::map<int, std::string> mapas;
 
 public:
     /*Constructor de la clase.*/
@@ -37,12 +37,26 @@ public:
     /*Recibe un socket y agrega un nuevo cliente al sistema con ese socket.*/
     void agregar_cliente(Socket sckt_cliente);
 
-    /*Crea una nueva sala con un juego agregandola al organizador de juegos y devuelve
-    el id de la nueva sala.*/
-    int crear_sala();
+    /*Crea una nueva sala con el nombre el mapa que le corresponde
+    al id recibido y con la cantidad maxima de jugadores recibida y
+    crea un juego agregandolselo.
+    Devuelve el id de la nueva sala.*/
+    int crear_sala(int id_mapa, int max_jugadores);
 
     /*Recibe el id de una sala y e inicia su juego en otro hilo.*/
     void iniciar_juego(int id_sala);
+
+    /*Recibe el id de un cliente y le manda todos los mapas con su nombre
+    e id.*/
+    void recorrer_mapas_para_enviar(int id_cliente);
+
+    /*Recibe el id de un cliente y le manda todas las salas con el nombre
+    del mapa en el que se jugara y su id.*/
+    void recorrer_salas_para_enviar(int id_cliente);
+
+    /*Recibe el id de una sala y le aumenta en uno la cantidad
+    de clientes que tiene dentro.*/
+    void agregar_cliente_a_sala(int id_sala);
 
     /*Destructor de la clase.*/
    	~OrganizadorJuegos();
