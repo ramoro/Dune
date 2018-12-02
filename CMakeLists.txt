@@ -6,7 +6,7 @@ link_libraries(${JSONCPP_LIBRARIES})
 
 project(modelo_dune)
 
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -ggdb -O0 -Werror -Wall -pedantic")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -ggdb -O0 -Werror -DNACHO -Wall -pedantic")
 
 add_library(sdldemo STATIC
  src/Armas/arma.cpp
@@ -115,8 +115,6 @@ add_executable (main
  src/buscador_mejor_camino.h
  src/nodo.cpp
  src/nodo.h
- src/observador.cpp
- src/observador.h
  src/Socket.cpp
  src/Socket.h
  src/socket_error.cpp
@@ -143,6 +141,12 @@ add_executable (main
  src/cola_segura.h
  src/baldosa.cpp
  src/baldosa.h
+ src/organizador_juegos.cpp
+ src/organizador_juegos.h
+ src/thread.cpp
+ src/thread.h
+ src/sala.cpp
+ src/sala.h
 )
 
 

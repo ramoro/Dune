@@ -13,6 +13,8 @@
 #include "partida.h"
 #include "thread.h"
 
+class ProtocoloCliente;
+
 class Juego: public Thread {
   private:
     std::map<int, std::shared_ptr<ColaBloqueante>> colas_envio_clientes;

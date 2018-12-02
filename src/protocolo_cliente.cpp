@@ -2,6 +2,7 @@
 #include "socket_error.h"
 #include "mensaje_protocolo.h"
 #include "cola_cerrada_error.h"
+#include "organizador_juegos.h"
 #include <iostream>
 #include <list>
 
@@ -12,7 +13,7 @@ OrganizadorJuegos &organizador) :
 socket_cliente(std::move(skt_clt)), id(id), organizador(organizador) {
   this->jugando = false;
   this->esperando_en_sala = false;
-  this->id_juego_asociado = -1;
+  this->id_sala_asociada = -1;
 }
 
 void ProtocoloCliente::agregar_colas(std::shared_ptr<ColaBloqueante> cola_env,
@@ -82,7 +83,7 @@ void ProtocoloCliente::iniciar_protocolo() {
 			} else if (accion == 'm') {
 				this->socket_cliente.recv_int(); //recibo id mapa elegido
 				this->socket_cliente.recv_int(); //recibo maxs jugadores
-				id_juego_asociado = organizador.crear_juego();
+				id_sala_asociada = organizador.crear_sala();
 				accion = 'o';
 				this->socket_cliente.send_msj(&accion, 1);
 			} else if (accion == 'n') {
@@ -97,7 +98,7 @@ void ProtocoloCliente::iniciar_protocolo() {
 				//mando lista de partidas
 			} else if (accion == 'j') {
 				std::cout << "entro a join " << std::endl;
-				id_juego_asociado = this->socket_cliente.recv_int();
+				id_sala_asociada = this->socket_cliente.recv_int();
 				std::cout << "recibio id partida" << std::endl;
 				accion = 'o';
 				this->socket_cliente.send_msj(&accion, 1);
@@ -179,8 +180,8 @@ int ProtocoloCliente::pedir_id() {
 	return id;
 }
 
-int ProtocoloCliente::pedir_id_juego_asociado() {
-	return id_juego_asociado;
+int ProtocoloCliente::pedir_id_sala_asociada() {
+	return id_sala_asociada;
 }
 
 void ProtocoloCliente::iniciar_protocolo_en_salas() {

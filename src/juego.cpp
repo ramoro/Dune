@@ -1,9 +1,10 @@
 #include "juego.h"
+#include "conversor.h"
+#include "protocolo_cliente.h"
 #include <iostream>
 #include <ctime>
 #include <chrono>
 #include <ratio>
-#include "conversor.h"
 
 using namespace std::chrono;
 

@@ -7,11 +7,13 @@
 #include "cola_segura.h"
 #include "organizador_juegos.h"
 
+class OrganizadorJuegos;
+
 class ProtocoloCliente {
   private:
     Socket socket_cliente;
     int id;
-    int id_juego_asociado;
+    int id_sala_asociada;
     OrganizadorJuegos &organizador;
     bool jugando;
     bool esperando_en_sala;
@@ -51,9 +53,9 @@ class ProtocoloCliente {
     /*Devuelve el id del cliente.*/
     int pedir_id();
 
-    /*Devuelve el id del juego al que esta asociado el cliente
-    en caso de estar asociado a uno. Sino devuelve -1.*/
-    int pedir_id_juego_asociado();
+    /*Devuelve el id de la sala a la que esta asociado el cliente
+    en caso de estar asociado a una. Sino devuelve -1.*/
+    int pedir_id_sala_asociada();
 
     /*Lanza un thread para el envio y recibo de mensajes mientras
     el cliente esta en la zona de salas esperando a jugar.*/

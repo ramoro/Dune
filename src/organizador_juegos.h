@@ -6,14 +6,14 @@
 #include <map>
 #include <memory>
 #include <list>
-//#include "protocolo_cliente.h"
 #include "cola_bloqueante.h"
-//#include "juego.h"
 #include "Socket.h"
 #include "partida.h"
+#include "sala.h"
 
 class ProtocoloCliente;
 class Juego;
+class Sala;
 
 /******************************** OrganizadorJuegos ********************************
  Clase monitor, que controla la informacion de cada una de las conexiones
@@ -24,12 +24,11 @@ class Juego;
 class OrganizadorJuegos {
 private:
     int contador_id_clientes; // da el id del proximo cliente que se conecta
-    int contador_id_juegos; // da el id de la proxima sala/partida/juego a crearr
+    int contador_id_salas; // da el id de la proxima sala a crearr
     std::mutex mutex;
     //map con el id del cliente y su cola
     std::map<int, std::shared_ptr<ProtocoloCliente>> clientes;
-    std::map<int, std::shared_ptr<Juego>> juegos;
-    std::map<int, std::shared_ptr<Partida>> partidas;
+    std::map<int, std::shared_ptr<Sala>> salas;
 
 public:
     /*Constructor de la clase.*/
@@ -38,12 +37,12 @@ public:
     /*Recibe un socket y agrega un nuevo cliente al sistema con ese socket.*/
     void agregar_cliente(Socket sckt_cliente);
 
-    /*Crea un nuevo juego agregandolo al organizador de juegos y devuelve
-    el id del nuevo juego.*/
-    int crear_juego();
+    /*Crea una nueva sala con un juego agregandola al organizador de juegos y devuelve
+    el id de la nueva sala.*/
+    int crear_sala();
 
-    /*Recibe el id de un juego y lo inicia en otro hilo.*/
-    void iniciar_juego(int id_juego);
+    /*Recibe el id de una sala y e inicia su juego en otro hilo.*/
+    void iniciar_juego(int id_sala);
 
     /*Destructor de la clase.*/
    	~OrganizadorJuegos();
