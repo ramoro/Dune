@@ -6,7 +6,7 @@ link_libraries(${JSONCPP_LIBRARIES})
 
 project(modelo_dune)
 
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -ggdb -O0 -Werror -Wall -pedantic")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -ggdb -O0 -Werror -DNACHO -Wall -pedantic")
 
 add_library(sdldemo STATIC
  src/Armas/arma.cpp
