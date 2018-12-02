@@ -32,8 +32,7 @@ class Juego: public Thread {
     /*Constructor de la clase.*/
     Juego(std::shared_ptr<Partida> part);
 
-    void agregar_jugador(std::shared_ptr<ProtocoloCliente> cliente_jugador,
-	std::string casa);
+    void agregar_jugador(std::shared_ptr<ProtocoloCliente> cliente_jugador);
 
     //virtual 
     void run();

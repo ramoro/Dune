@@ -195,7 +195,7 @@ void UnidadMovible::limpiar_camino() {
 	camino.clear();
 }
 
-std::vector<std::string> UnidadMovible::obtener_casa(){
+std::vector<int> UnidadMovible::obtener_casa(){
 	return casa;
 }
 

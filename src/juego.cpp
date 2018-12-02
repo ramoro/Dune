@@ -27,8 +27,7 @@ cola_recepcion(TAM_COLA), partida(part) {
 }
 	
 //aca nose si pasar la cola xq la uso antes o no usarla y q se creen aca
-void Juego::agregar_jugador(std::shared_ptr<ProtocoloCliente> cliente_jugador,
-std::string casa) {
+void Juego::agregar_jugador(std::shared_ptr<ProtocoloCliente> cliente_jugador) {
   int id_cliente = cliente_jugador->pedir_id();
   // << "id_cliente " << id_cliente << " siendo agregado al juego"<< std::endl;
   this->clientes.emplace(
@@ -38,7 +37,7 @@ std::string casa) {
   this->colas_envio_clientes.emplace(
   std::pair<int, std::shared_ptr<ColaBloqueante>>(id_cliente, cola_bloq));
   cliente_jugador->agregar_colas(cola_bloq, &(this->cola_recepcion));
-  partida->agregar_jugador(id_cliente, casa, this->colas_envio_clientes);
+  partida->agregar_jugador(id_cliente, this->colas_envio_clientes);
 }
 
 
@@ -46,6 +45,8 @@ void Juego::hacer_ajustes_iniciales() {
   for (std::map<int, std::shared_ptr<ProtocoloCliente>>::iterator 
   it = this->clientes.begin(); it != this->clientes.end(); ++it) {
     //(it->second)->agregar_colas(this->colas_envio_clientes.at(it->first), &(this->cola_recepcion));
+   // std::cout << "casa que tendra jugador " << (it->second)->pedir_casa() << std::endl;
+    //partida->asignar_casa_a_jugador((it->second)->pedir_casa(), it->first);
     (it->second)->inicializar();
   }
 
@@ -112,6 +113,10 @@ void Juego::run() {
       } else if (accion == 'v') {
         mutex.lock();
         this->partida->vender_edificio(v[0], this->colas_envio_clientes);
+        mutex.unlock();
+      } else if (accion == 'h') {
+        mutex.lock();
+        this->partida->asignar_casa_a_jugador(v[0], v[1]);
         mutex.unlock();
       } else if (accion == 's') {
         // << "entro a accion salida de cliente "<< v[0] << std::endl;

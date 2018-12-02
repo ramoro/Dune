@@ -28,10 +28,14 @@ class Partida {
 		/*Constructor de la clase.*/
 		Partida();
 
-		/*Recibe un id de un jugador con un string con el nombre de la casa
+		/*Recibe el id de una casa y el id de un jugador y le asigna esa casa
+		al jugador.*/
+		void asignar_casa_a_jugador(int id_casa, int id_jugador);
+
+		/*Recibe un id de un jugador con el id de la casa a la que peretenecera
 		a la que pertenece y agrega a la partida un Jugador
 		con ese id, ademas crea su edificio Centro de Construccion. */
-		void agregar_jugador(int id_jugador, std::string casa_jugador,
+		void agregar_jugador(int id_jugador,
 		std::map<int, std::shared_ptr<ColaBloqueante>> cola_mensajes);
 
 		/*Agrega un edificio segun el id de tipo pasado, asociado al id pasado

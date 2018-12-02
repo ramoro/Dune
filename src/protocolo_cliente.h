@@ -14,6 +14,7 @@ class ProtocoloCliente {
     Socket socket_cliente;
     int id;
     int id_sala_asociada;
+    int casa;
     OrganizadorJuegos &organizador;
     bool jugando;
     bool esperando_en_sala;
@@ -71,10 +72,9 @@ class ProtocoloCliente {
     de un mapa que tiene una sala y el id de esta.*/
     void enviar_mapa_o_sala(std::string nombre, int id);
 
-  private:
-    /*Recibe cierta cantidad de ints a traves del socket y los
-    almacena en un vector que devuelve.*/
-    std::vector<int> recibir_ints(int cant_ints_a_recibir);
+    /*Si el cliente esta en juego habiendo ya elegido una casa
+    devuelve el id de la misma, sino devuelve -1.*/
+    int pedir_casa();
 };
 
 #endif

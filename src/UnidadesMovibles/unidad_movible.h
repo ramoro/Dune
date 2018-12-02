@@ -25,7 +25,7 @@ class UnidadMovible: public ObjetoDune {
 	protected:
 		std::vector<Arma> armas;
 		std::vector<int> ids_tipos_edificios_necesarios;
-		std::vector<std::string> casa;
+		std::vector<int> casa;
 		std::shared_ptr<Estado> estado;
 		int tiempo_acumulado;
 
@@ -157,7 +157,7 @@ class UnidadMovible: public ObjetoDune {
 		virtual bool es_terreno_valido(int terreno) = 0;
 
 		/*Devuelve un vector indicando a que casas pertenece la unidad*/
-		std::vector<std::string> obtener_casa();
+		std::vector<int> obtener_casa();
 
 		/*Recibe el terreno, el mapa y el tiempo que paso y afecta el terreno 
 		donde se encuentra la unidad segun que haga la unidad.*/

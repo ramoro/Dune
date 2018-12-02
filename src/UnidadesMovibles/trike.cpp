@@ -18,7 +18,7 @@ Trike::Trike(int id, int id_duenio, std::pair<int, int> centro,
 		armas.push_back(RifleAsalto(rifle_asalto));
 		for (unsigned int i = 0; i < 
 		config["Trike"]["casas"].size(); i++) {
-			casa.push_back(config["Trike"]["casas"][i].asString());
+			casa.push_back(config["Trike"]["casas"][i].asInt());
 		}
 		for (unsigned int i = 0; i < 
 		config["Trike"]["edificios_necesarios"].size(); i++) {

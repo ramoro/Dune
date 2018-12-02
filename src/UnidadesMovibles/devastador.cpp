@@ -35,7 +35,7 @@ Devastador::Devastador(int id, int id_duenio, std::pair<int, int> centro,
 		
 		for (unsigned int i = 0; i < 
 		config["Devastador"]["casas"].size(); i++) {
-			casa.push_back(config["Devastador"]["casas"][i].asString());
+			casa.push_back(config["Devastador"]["casas"][i].asInt());
 		}	
 		for (unsigned int i = 0;
 		 i < config["Devastador"]["edificios_necesarios"].size(); i++) {

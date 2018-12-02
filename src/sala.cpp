@@ -10,9 +10,8 @@ cantidad_maxima_jugadores(cantidad_maxima_jugadores) {
 	sala_llena = false;
 }
 
-void Sala::agregar_jugador_a_juego(std::shared_ptr<ProtocoloCliente> jugador,
-std::string casa) {
-	juego->agregar_jugador(jugador, casa);
+void Sala::agregar_jugador_a_juego(std::shared_ptr<ProtocoloCliente> jugador) {
+	juego->agregar_jugador(jugador);
 }
 
 void Sala::largar_juego() {

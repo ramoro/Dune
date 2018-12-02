@@ -27,7 +27,7 @@ Config &config) :
 
 		for (unsigned int i = 0; i < 
 		config["Cosechadora"]["casas"].size(); i++) {
-			casa.push_back(config["Cosechadora"]["casas"][i].asString());
+			casa.push_back(config["Cosechadora"]["casas"][i].asInt());
 		}	
 		for (unsigned int i = 0; i < 
 		config["Cosechadora"]["edificios_necesarios"].size(); i++) {

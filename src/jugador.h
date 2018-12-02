@@ -16,7 +16,7 @@ class Jugador {
 	private:
 		std::map<int, int> edificios_por_tipo;
 		int dinero;
-		std::string casa;
+		int casa;
 		int capacidad_especia; //representa todo el espacio que tiene el
 								//jugador para guardar especia
 		int capacidad_especia_disponible; //representa de todo el espacio
@@ -27,7 +27,7 @@ class Jugador {
 
 	public:
 		/*Constructor de la clase.*/
-		Jugador(std::string casa, Config &config);
+		Jugador(Config &config);
 
 		/*Recibe un puntero a un objeto Dune. Se lo agregar al jugador
 		sacandole el dinero correspondiente.*/
@@ -92,7 +92,11 @@ class Jugador {
 		int pedir_dinero();
 
 		/*Devuelve la casa del jugador*/
-		std::string obtener_casa();
+		int obtener_casa();
+
+		/*Recibe un int que resperenta el codigo de una casa
+		y se la asgina al jugador.*/
+		void asignar_casa(int id_casa);
 };
 
 #endif 

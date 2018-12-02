@@ -96,7 +96,7 @@
 		"dimension_ancho": 20,
 		"dimension_alto": 20,
 		"edificios_necesarios": [66],
-		"casas": ["ordos","harkonnen","atreides"]
+		"casas": [103,102,101]
 	},
 	"InfanteriaPesada": {
 		"rango": 60,
@@ -107,7 +107,7 @@
 		"dimension_ancho": 20,
 		"dimension_alto": 20,
 		"edificios_necesarios": [66],
-		"casas": ["ordos","harkonnen","atreides"]
+		"casas": [103,102,101]
 	},
 	"Fremen": {
 		"rango": 3,
@@ -118,7 +118,7 @@
 		"dimension_ancho": 20,
 		"dimension_alto": 20,
 		"edificios_necesarios": [66, 9],
-		"casas": ["atreides"]
+		"casas": [101]
 	},
 	"Sardaukar": {
 		"rango": 3,
@@ -129,7 +129,7 @@
 		"dimension_ancho": 20,
 		"dimension_alto": 20,
 		"edificios_necesarios": [66, 9],
-		"casas": ["harkonnen"]
+		"casas": [102]
 	},
 	"Trike": {
 		"rango": 4,
@@ -140,7 +140,7 @@
 		"dimension_ancho": 20,
 		"dimension_alto": 20,
 		"edificios_necesarios": [4],
-		"casas": ["harkonnen","atreides"]
+		"casas": [102,101]
 	},
 	"Raider": {
 		"rango": 0,
@@ -151,7 +151,7 @@
 		"dimension_ancho": 20,
 		"dimension_alto": 20,
 		"edificios_necesarios": [4],
-		"casas": ["ordos"]
+		"casas": [103]
 	},
 	"Tanque": {
 		"rango": 4,
@@ -162,7 +162,7 @@
 		"dimension_ancho": 20,
 		"dimension_alto": 20,
 		"edificios_necesarios": [5],
-		"casas": ["ordos","atreides","harkonnen"]
+		"casas": [103,101,102]
 	},
 	"Tanque sonico": {
 		"rango": 4,
@@ -173,7 +173,7 @@
 		"dimension_ancho": 20,
 		"dimension_alto": 20,
 		"edificios_necesarios": [5, 9],
-		"casas": ["atreides"]
+		"casas": [101]
 	},
 	"Desviador": {
 		"rango": 50,
@@ -184,7 +184,7 @@
 		"dimension_ancho": 20,
 		"dimension_alto": 20,
 		"edificios_necesarios": [5, 9],
-		"casas": ["ordos"]
+		"casas": [103]
 	},
 	"Devastador": {
 		"rango": 4,
@@ -196,7 +196,7 @@
 		"dimension_alto": 20,
 		"danio_explosion": 20,
 		"edificios_necesarios": [5, 9],
-		"casas": ["harkonnen"]
+		"casas": [102]
 	},
 	"Cosechadora": {
 		"rango": 30,
@@ -207,7 +207,7 @@
 		"dimension_ancho": 20,
 		"dimension_alto": 20,
 		"edificios_necesarios": [5],
-		"casas": ["ordos","harkonnen","atreides"],
+		"casas": [103,102,101],
 		"extraccion_especia_por_segundo": 10,
 		"limite_especia": 300
 	},

@@ -27,10 +27,9 @@ class Sala {
     /*Larga el juego que posee como atributo en un hilo nuevo.*/
     void largar_juego();
 
-    /*Recibe un puntero a un protocolo cliente junto con la casa y 
+    /*Recibe un puntero a un protocolo cliente y 
     lo agrega al juego.*/
-    void agregar_jugador_a_juego(std::shared_ptr<ProtocoloCliente> jugador,
-    std::string casa);
+    void agregar_jugador_a_juego(std::shared_ptr<ProtocoloCliente> jugador);
 
     /*Suma en uno la cantidad de clientes dentro. Si se llego
     a la cantidad maxima de jugadores sala_llena se setea en true.*/

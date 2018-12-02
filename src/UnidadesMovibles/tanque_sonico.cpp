@@ -20,7 +20,7 @@ TanqueSonico::TanqueSonico(int id, int id_duenio, std::pair<int, int> centro,
 		expansion_base_arma_sonica = 50;
 		for (unsigned int i = 0; i < 
 		config["Tanque sonico"]["casas"].size(); i++) {
-			casa.push_back(config["Tanque sonico"]["casas"][i].asString());
+			casa.push_back(config["Tanque sonico"]["casas"][i].asInt());
 		}		
 		for (unsigned int i = 0; i < 
 		config["Tanque sonico"]["edificios_necesarios"].size(); i++) {

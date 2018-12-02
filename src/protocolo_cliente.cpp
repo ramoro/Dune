@@ -14,6 +14,7 @@ socket_cliente(std::move(skt_clt)), id(id), organizador(organizador) {
   this->jugando = false;
   this->esperando_en_sala = false;
   this->id_sala_asociada = -1;
+  this->casa = -1;
 }
 
 void ProtocoloCliente::agregar_colas(std::shared_ptr<ColaBloqueante> cola_env,
@@ -53,7 +54,7 @@ void ProtocoloCliente::enviar_mensajes() {
 	} catch (std::exception &e){
 		std::cerr << e.what() << " En ProtocoloCliente::enviar_mensajes" << std::endl;
 	} catch (...) {
-		// << "Error desconocido en ProtocoloCliente::enviar_mensajes" << std::endl;
+		std::cout << "Error desconocido en ProtocoloCliente::enviar_mensajes" << std::endl;
 	}
 }
 
@@ -94,16 +95,22 @@ void ProtocoloCliente::iniciar_protocolo() {
 				//parametros_recibidos = recibir_ints(1);
 				// << "entro a iniciar juego en inciar_protocolo" << std::endl;
 				organizador.iniciar_juego(id_sala_asociada);
-				int casa = this->socket_cliente.recv_int();//recibo el id de la casa
+				this->casa = this->socket_cliente.recv_int();//recibo el id de la casa
 				std::cout << "recibio casa owner : " << casa <<  std::endl;
 				break;
 			} else if(accion == 'l') {
-				int casa = this->socket_cliente.recv_int();//recibo el id de la casa
+				this->casa = this->socket_cliente.recv_int();//recibo el id de la casa
 				std::cout << "recibio casa no owner: " << casa <<  std::endl;
 
 				break;
 			}
 		}
+
+		MensajeProtocolo msg;
+ 		msg.asignar_accion('h');
+ 		msg.agregar_parametro(casa);
+ 		msg.agregar_parametro(this->id);
+ 		this->cola_recepcion->push(msg);
 
  		while (this->jugando) {
 			MensajeProtocolo mensaje;
@@ -142,16 +149,8 @@ void ProtocoloCliente::iniciar_protocolo() {
 	} catch (std::exception &e){
 		std::cerr << e.what() << " En ProtocoloCliente::recibir_mensajes" << std::endl;
 	} catch (...) {
-		// << "Error desconocido en ProtocoloCliente::recibir_mensajes" << std::endl;
+		std::cout << "Error desconocido en ProtocoloCliente::recibir_mensajes" << std::endl;
 	}
-}
-
-std::vector<int> ProtocoloCliente::recibir_ints(int cantidad_ints_a_recibir) {
-	std::vector<int> parametros_recibidos;
-	for (int i = 0; i < cantidad_ints_a_recibir; ++i) {
-		parametros_recibidos.push_back(this->socket_cliente.recv_int());
-	}
-	return parametros_recibidos;
 }
 
 void ProtocoloCliente::finalizar() {
@@ -190,4 +189,8 @@ void ProtocoloCliente::enviar_mapa_o_sala(std::string nombre, int id) {
 	this->socket_cliente.send_int(nombre.size());
 	this->socket_cliente.send_string(nombre);
 	this->socket_cliente.send_int(id);
+}
+
+int ProtocoloCliente::pedir_casa() {
+	return this->casa;
 }

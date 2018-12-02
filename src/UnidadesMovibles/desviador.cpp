@@ -19,7 +19,7 @@ Desviador::Desviador(int id, int id_duenio, std::pair<int, int> centro,
 		armas.push_back(LanzaMisiles(lanza_misiles));
 		for (unsigned int i = 0; i < 
 		config["Desviador"]["casas"].size(); i++) {
-			casa.push_back(config["Desviador"]["casas"][i].asString());
+			casa.push_back(config["Desviador"]["casas"][i].asInt());
 		}
 		for (unsigned int i = 0; i < 
 		config["Desviador"]["edificios_necesarios"].size(); i++) {

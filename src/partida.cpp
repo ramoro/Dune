@@ -26,6 +26,10 @@ Partida::Partida() {
 	// << "contador_ids_objetos " << contador_ids_objetos << std::endl;
 }
 
+void Partida::asignar_casa_a_jugador(int id_casa, int id_jugador) {
+	jugadores.at(id_jugador).asignar_casa(id_casa);
+}
+
 int Partida::obtener_limite_mapa_fila(){
 	return mapa.pedir_limite_filas();
 }
@@ -34,9 +38,9 @@ int Partida::obtener_limite_mapa_columna(){
 	return mapa.pedir_limite_columnas();
 }
 
-void Partida::agregar_jugador(int id_jugador, std::string casa_jugador, 
+void Partida::agregar_jugador(int id_jugador, 
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
-	Jugador jugador(casa_jugador,config);
+	Jugador jugador(config);
 	jugadores.emplace(std::pair<int, Jugador>(id_jugador, 
 	jugador));
 	std::pair<int,int> ubicacion_centro = ubicar_centro_construccion(id_jugador);

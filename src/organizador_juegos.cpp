@@ -45,8 +45,7 @@ void OrganizadorJuegos::iniciar_juego(int id_sala) {
 	clientes.begin(); it != clientes.end(); ++it) {
 		if (it->second->pedir_id_sala_asociada() == id_sala) {
 			it->second->cambiar_a_modo_juego();
-			salas.at(id_sala)->agregar_jugador_a_juego(it->second,
-			"harkonnen");
+			salas.at(id_sala)->agregar_jugador_a_juego(it->second);
 		}
 	}
 	salas.at(id_sala)->cerrar_sala();
