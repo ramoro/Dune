@@ -4,6 +4,7 @@
 #include <utility>
 #include <map>
 #include <vector>
+#include <set>
 #include "jugador.h"
 #include "mapa.h"
 #include "Edificios/fabrica_edificios.h"
@@ -20,7 +21,6 @@ class Partida {
 		std::map<int, std::shared_ptr<UnidadMovible>> unidades_movibles;
 		FabricaEdificios fabrica_edificios;
 		FabricaUnidadesMovibles fabrica_unidades_movibles;
-		int contador_ids_jugadores;
 		int contador_ids_objetos;
 		Config config;
 
@@ -28,13 +28,10 @@ class Partida {
 		/*Constructor de la clase.*/
 		Partida();
 
-		/*Devuelve el id que pertenece al nuevo cliente 
-		que se agregara a la partida.*/
-		int pedir_id_nuevo_cliente();
-
-		/*Recibe un string con un nombre y agregar a la partida un Jugador
-		con ese nombre, ademas crea su edificio Centro de Construccion. */
-		void agregar_jugador(std::string nombre_jugador,
+		/*Recibe un id de un jugador con un string con el nombre de la casa
+		a la que pertenece y agrega a la partida un Jugador
+		con ese id, ademas crea su edificio Centro de Construccion. */
+		void agregar_jugador(int id_jugador, std::string casa_jugador,
 		std::map<int, std::shared_ptr<ColaBloqueante>> cola_mensajes);
 
 		/*Agrega un edificio segun el id de tipo pasado, asociado al id pasado
@@ -94,6 +91,12 @@ class Partida {
 		void serializar_mensaje_energia(int energia, int id_jugador,
 		std::map<int, std::shared_ptr<ColaBloqueante>> colas);
 
+		/*Recibe el id de un jugador y elimina todos sus objetos dentro
+		de la partida, encolando los mensajes de muerte en las colas
+		recibidas.*/
+		void eliminar_jugador(int id_jugador,
+		std::map<int, std::shared_ptr<ColaBloqueante>> colas);
+
 		/*Recibe una determinada cantidad de tiempo que pasa en el juego
 		y lo actualiza segun cuanto transcurrio, agregando los mensajes
 		correspondientes a la cola bloqueante recibida por parametro.*/
@@ -123,7 +126,7 @@ class Partida {
 		unidad_a_remover);
 
 		/*ubica centro de construccion segun el numero de jugador que sea*/
-		std::pair<int,int> ubicar_centro_construccion();
+		std::pair<int,int> ubicar_centro_construccion(int id_jugador);
 
 		/*busca en que parte de cada esquina colocar el centro de construccion
 		dada una esquina, devuelve el centro donde puede colocarse*/
@@ -139,7 +142,27 @@ class Partida {
 		std::map<int, std::shared_ptr<ColaBloqueante>> colas, 
 		MensajeProtocolo mensaje);
 
+		/*Recibe un set con puntero a edificios y otro con punteros a unidades
+		movibles y elimina de la partida cada uno de ellos.*/
+		void eliminar_objetos_de_sets(std::set<std::shared_ptr<Edificio>> 
+		&edificios_a_eliminar, std::set<std::shared_ptr<UnidadMovible>> 
+		&unidades_a_eliminar, std::map<int, std::shared_ptr<ColaBloqueante>> 
+		colas);
 
+		/*Recibe dos sets a los cuales se les agregaran los edificios y 
+		unidades movibles a eliminar del jugador con la id recibida
+		por parametro. Se encolara a las colas recibidas los mensajes
+		de muerte de estos objetos.*/
+		void agregar_objetos_a_eliminar(std::set<std::shared_ptr<Edificio>> 
+		&edificios_a_eliminar, std::set<std::shared_ptr<UnidadMovible>> 
+		&unidades_a_eliminar, int id_duenio_objetos, 
+		std::map<int, std::shared_ptr<ColaBloqueante>> colas);
+
+		/*Recibe el id de un objeto muerto y crea un mensaje
+		asigandole la accion muerte junto con sus parametros 
+		segun indica el protocolo y lo encola a las colas recibidas.*/
+		void serializar_mensaje_muerte(int id_objeto_a_remover, 
+		std::map<int, std::shared_ptr<ColaBloqueante>> &colas);
 };
 
 #endif 

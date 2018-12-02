@@ -54,12 +54,12 @@ void ObjetoDune::set_centro(std::pair<int, int> centro_nuevo) {
 
 int ObjetoDune::daniar(UnidadMovible* unidad_atacante, 
 int tiempo_transcurrido) {
-	std::cout << "entro en daniar de objeto dune" << std::endl;
+	// << "entro en daniar de objeto dune" << std::endl;
 	return 0;
 }
 
 void ObjetoDune::matar() {
-	std::cout << "Asdas" << std::endl;
+	// << "Asdas" << std::endl;
 }
 
 void ObjetoDune::mensaje_muerte() {
@@ -81,6 +81,6 @@ bool ObjetoDune::esta_fuera_de_juego() {
 	return fuera_de_juego;
 }
 int ObjetoDune::remover_especia(Cosechadora* cosechadora) {
-	std::cout << "entreo a remover especia de objeto dune" << std::endl; 
+	// << "entreo a remover especia de objeto dune" << std::endl; 
 	return 0;
 }

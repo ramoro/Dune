@@ -36,7 +36,7 @@ std::pair<int, int> &pos_final) {
 
 	while(posibles_nodos.size() > 0) {
 		Nodo nodo_evaluado = posibles_nodos[0];
-      std::cout<< "atrapado" << nodo_evaluado.obtener_posicion().first << nodo_evaluado.obtener_posicion().second<< std::endl;
+      //<< "atrapado" << nodo_evaluado.obtener_posicion().first << nodo_evaluado.obtener_posicion().second<< std::endl;
 		int indice_nodo_evaluado = 0;
 		int indice_auxiliar = 0;
 
@@ -63,7 +63,7 @@ std::pair<int, int> &pos_final) {
   			}
   			/*while (!camino.empty()) {
   				Nodo nodo = camino.top();
-  				std::cout << std::get<0>(nodo.obtener_posicion()) << " " << std::get<1>(nodo.obtener_posicion()) << std::endl;
+  				// << std::get<0>(nodo.obtener_posicion()) << " " << std::get<1>(nodo.obtener_posicion()) << std::endl;
   				camino.pop();
   			}*/
 
@@ -97,13 +97,13 @@ std::pair<int, int> &pos_final) {
   			//esa posicion
   			if (mapa.pedir_terreno_baldosa(posicion_adyacente) == 
         PRECIPICIO) {
-          std::cout << "Precipicio " << posicion_adyacente.first << " " << posicion_adyacente.second << std::endl;
+          // << "Precipicio " << posicion_adyacente.first << " " << posicion_adyacente.second << std::endl;
           continue;
         }
 
         if (mapa.esta_ocupada_baldosa(posicion_adyacente) && 
         posicion_adyacente != pos_final) {
-          std::cout << "Esta ocupada " << posicion_adyacente.first << " " << posicion_adyacente.second << std::endl;
+          // << "Esta ocupada " << posicion_adyacente.first << " " << posicion_adyacente.second << std::endl;
           continue;
         }
   			Nodo *nodo_aux = new Nodo(nodo_evaluado);

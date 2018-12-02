@@ -79,7 +79,8 @@ class Mapa {
 
 		/*Recibe el id del objeto y lo elimina tanto del mapa
 		de ids de cada objeto junto con su posicion y de la coordenada
-		donde se encuentra ubicado.*/
+		donde se encuentra ubicado. Si el objeto es una refineria
+		tambien lo elimina del mapa de refinerias.*/
 		void eliminar_objeto(int id_objeto);
 
 		/*Elige un lugar random para hacer emerger al gusano de arena

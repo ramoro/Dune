@@ -31,7 +31,7 @@ Mapa &mapa, int tiempo_transcurrido) {
 		//significa que es la cosechadora la q ataco
 		unidad->afectar_terreno(objeto_destino, mapa, tiempo_transcurrido);
 	} 
-	std::cout << "llego a ataque" << std::endl;
+	// << "llego a ataque" << std::endl;
 	for (std::vector<ObjetoDune*>::iterator it = 
 	unidades_afectadas.begin(); it != unidades_afectadas.end(); ++it) {
 		int vida_restante = (*it)->daniar(unidad, tiempo_transcurrido);

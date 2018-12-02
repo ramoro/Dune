@@ -5,27 +5,25 @@
 #include <memory>
 #include <iostream>
 #include <set>
+#include <stdlib.h> 
 
 #define CODIGO_CREACION_OBJETO_RECHAZADA 'r'
 #define CODIGO_MUERTE_OBJETO 'd'
 #define CODIGO_PERDIO_JUGADOR 'e'
 #define CODIGO_CAMBIO_DINERO 'p'
 #define CODIGO_CAMBIO_ENERGIA 'w'
+#define CODIGO_GANO_JUGADOR 'e'
 #define JUGADOR_NO_ENTRENANDO -1
 #define DISTANCIA_MINIMA_EDIFICIO_ALIADO 7000
+#define CONSTANTE_REDUCCION_TIEMPO 100
 
 Partida::Partida() {
-	contador_ids_jugadores = 0;
 	contador_ids_objetos = 0;
 	Config json("../src/input.json");
 	config = std::move(json);
 	Mapa map(this->config, contador_ids_objetos);
 	mapa = std::move(map);
-	std::cout << "contador_ids_objetos " << contador_ids_objetos << std::endl;
-}
-
-int Partida::pedir_id_nuevo_cliente() {
-	return contador_ids_jugadores;
+	// << "contador_ids_objetos " << contador_ids_objetos << std::endl;
 }
 
 int Partida::obtener_limite_mapa_fila(){
@@ -36,19 +34,26 @@ int Partida::obtener_limite_mapa_columna(){
 	return mapa.pedir_limite_columnas();
 }
 
-void Partida::agregar_jugador(std::string casa_jugador, 
+void Partida::agregar_jugador(int id_jugador, std::string casa_jugador, 
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	Jugador jugador(casa_jugador,config);
-	jugadores.emplace(std::pair<int, Jugador>(contador_ids_jugadores, 
+	jugadores.emplace(std::pair<int, Jugador>(id_jugador, 
 	jugador));
-	std::pair<int,int> ubicacion_centro = ubicar_centro_construccion();
-	std::cout << "centro constuccion en " << ubicacion_centro.first << " " << ubicacion_centro.second << std::endl;
-	agregar_edificio(contador_ids_jugadores, ubicacion_centro, 0, colas_mensajes);
+	std::pair<int,int> ubicacion_centro = ubicar_centro_construccion(id_jugador);
+		MensajeProtocolo mensaje;
+	/*mensaje.asignar_accion('h');
+	mensaje.agregar_parametro(0);
+	mensaje.agregar_parametro(0);
+	mensaje.agregar_parametro(3500);
+	mensaje.agregar_parametro(5000);
+	// << "encolando caracs mapa" << std::endl;
+	colas_mensajes.at(id_jugador)->push(std::move(mensaje));*/
+	// << "centro constuccion en " << ubicacion_centro.first << " " << ubicacion_centro.second << std::endl;
+	agregar_edificio(id_jugador, ubicacion_centro, 0, colas_mensajes);
 #ifdef DEBUG 
 	//agregar_edificio(contador_ids_jugadores, std::pair<int,int>(7,7), 6, cola_mensajes);
 
 #endif
-	contador_ids_jugadores++;
 }
 
 std::pair<int,int> Partida::buscar_ubicacion(std::pair<int,int> esquina){
@@ -56,20 +61,20 @@ std::pair<int,int> Partida::buscar_ubicacion(std::pair<int,int> esquina){
 	esquina.second+=50;
 	return esquina;
 }
-std::pair<int,int> Partida::ubicar_centro_construccion(){
+std::pair<int,int> Partida::ubicar_centro_construccion(int id_jugador){
 	std::pair<int,int> ubicacion_centro;
 	int limite_col = (int)mapa.pedir_limite_columnas();
 	int limite_fil = (int)mapa.pedir_limite_filas();
 
 #ifdef NACHO 
-	std::cout << "limite_col " << limite_col << " limite_fil " << limite_fil << std::endl;
+	// << "limite_col " << limite_col << " limite_fil " << limite_fil << std::endl;
 
-	std::cout << "limite_col_bald " << mapa.pedir_limite_columnas_baldosa() << " limite_fil_bald " << mapa.pedir_limite_filas_baldosa() << std::endl;
+	// << "limite_col_bald " << mapa.pedir_limite_columnas_baldosa() << " limite_fil_bald " << mapa.pedir_limite_filas_baldosa() << std::endl;
 #endif
 
 	int rango_col = limite_col/3;
 	int rango_fil = limite_fil/3;
-	switch (contador_ids_jugadores){
+	switch (id_jugador){
 		case 0:
 		{
 			ubicacion_centro = buscar_ubicacion(std::pair<int,int> (0,0));
@@ -135,7 +140,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		serializar_mensaje_energia(jugadores.at(id_jugador).
 		pedir_energia_disponible(), id_jugador, colas_mensajes);
 	} else {
-		std::cout << "No se pudo construir edificio de tipo " << id_tipo_edificio << std::endl;
+		// << "No se pudo construir edificio de tipo " << id_tipo_edificio << std::endl;
 		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_edificio,
 		id_jugador);
 	}
@@ -163,7 +168,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	int id_edificio_entrenando = jugadores.at(id_jugador).
 	pedir_id_edificio_entrenando();
 	if (id_edificio_entrenando != JUGADOR_NO_ENTRENANDO) {
-		std::cout << "ERROR JUGADRO YA ENTRENANDO" << std::endl;
+		// << "ERROR JUGADRO YA ENTRENANDO" << std::endl;
 		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad,
 		id_jugador);
 	} else {
@@ -171,7 +176,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		se_puede_agregar_unidad(jugadores.at(id_jugador), 
 		id_tipo_unidad, contador_ids_objetos,config));
 		if (!se_puede_agregar) {
-			std::cout << "ERRO no se puede agregar" << std::endl;
+			// << "ERRO no se puede agregar" << std::endl;
 			serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad,
 			id_jugador);
 		} else {
@@ -193,12 +198,15 @@ edificio, int tiempo_transcurrido) {
 	int energia_jugador = jugadores.at(edificio->pedir_id_duenio()).
 	pedir_energia_disponible();
 	if (energia_jugador < 0) {
-		//diminucion del tiempo que paso segun la energia encontra que se tiene
+		tiempo_transcurrido -= abs(energia_jugador/CONSTANTE_REDUCCION_TIEMPO);
+		if (tiempo_transcurrido < 0) {
+			tiempo_transcurrido = 0;
+		}
 	}
 	bool entrenamiento_terminado = edificio->
 	avanzar_tiempo_creacion(tiempo_transcurrido);
 	if (entrenamiento_terminado) {
-		std::cout << "se creo unidad" << std::endl;
+		// << "se creo unidad" << std::endl;
 		std::shared_ptr<UnidadMovible> unidad_nueva = edificio->
 		agregar_unidad(mapa); //VERIFICAR ESTE AGREGADO CON GDB LUEGO
 		unidades_movibles.emplace(std::pair<int, 
@@ -269,11 +277,73 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas) {
 	colas.at(id_jugador)->push(mensaje);
 }
 
+void Partida::eliminar_jugador(int id_jugador,
+std::map<int, std::shared_ptr<ColaBloqueante>> colas) {
+	std::set<std::shared_ptr<Edificio>> edificios_a_eliminar;
+	std::set<std::shared_ptr<UnidadMovible>> unidades_a_eliminar;
+	agregar_objetos_a_eliminar(edificios_a_eliminar, unidades_a_eliminar,
+	id_jugador, colas);
+	eliminar_objetos_de_sets(edificios_a_eliminar, unidades_a_eliminar,
+	colas);
+
+}
+
+void Partida::serializar_mensaje_muerte(int id_objeto_a_remover, 
+std::map<int, std::shared_ptr<ColaBloqueante>> &colas) {
+	MensajeProtocolo mensaje;
+	mensaje.asignar_accion('d');
+	mensaje.agregar_parametro(id_objeto_a_remover);
+	guardar_mensaje_en_colas(colas, mensaje);
+}
+
+void Partida::agregar_objetos_a_eliminar(std::set<std::shared_ptr<Edificio>> 
+&edificios_a_eliminar, std::set<std::shared_ptr<UnidadMovible>> 
+&unidades_a_eliminar, int id_duenio_objetos, 
+std::map<int, std::shared_ptr<ColaBloqueante>> colas) {
+	for (std::map<int, std::shared_ptr<Edificio>>::iterator it_edifs2 = 
+	edificios.begin(); it_edifs2 != edificios.end(); ++it_edifs2) {
+		if ((it_edifs2->second)->pedir_id_duenio() == 
+		id_duenio_objetos) {
+			edificios_a_eliminar.insert(it_edifs2->second);
+			serializar_mensaje_muerte(it_edifs2->second->pedir_id(),
+			colas);
+		}
+	}
+
+	for (std::map<int, std::shared_ptr<UnidadMovible>>::iterator it_unidades =
+	unidades_movibles.begin(); it_unidades != unidades_movibles.end(); 
+	++it_unidades) {
+		if ((it_unidades->second)->pedir_id_duenio() == 
+		id_duenio_objetos) {
+			unidades_a_eliminar.insert(it_unidades->second);
+			serializar_mensaje_muerte(it_unidades->second->pedir_id(),
+			colas);
+		}
+	}
+}
+
+void Partida::eliminar_objetos_de_sets(std::set<std::shared_ptr<Edificio>> 
+&edificios_a_eliminar, std::set<std::shared_ptr<UnidadMovible>> 
+&unidades_a_eliminar, std::map<int, std::shared_ptr<ColaBloqueante>> colas) {
+	for (std::set<std::shared_ptr<Edificio>>::iterator it_edificios = 
+	edificios_a_eliminar.begin(); it_edificios != edificios_a_eliminar.end();
+	++it_edificios) {
+		eliminar_edificio_del_juego(*it_edificios, colas);
+	}
+
+	for (std::set<std::shared_ptr<UnidadMovible>>::iterator it_unidades = 
+	unidades_a_eliminar.begin(); it_unidades != unidades_a_eliminar.end();
+	++it_unidades) {
+		// << "Unidad de tipo " << (*it_unidades)->pedir_id_tipo()<< " e id " << (*it_unidades)->pedir_id() << " murio." <<std::endl;
+		eliminar_unidad_del_juego(*it_unidades);
+	}
+}
+
 void Partida::actualizar_modelo(int tiempo_transcurrido, 
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
-	//std::cout << "ACTUALIZA MODELO con tiempo " << tiempo_transcurrido << std::endl; 
+	//// << "ACTUALIZA MODELO con tiempo " << tiempo_transcurrido << std::endl; 
 	//actualizo salida del gusano
-	mapa.actualizar_salida_gusano(tiempo_transcurrido, colas_mensajes);
+	//mapa.actualizar_salida_gusano(tiempo_transcurrido, colas_mensajes);
 	
 	//por cada jugador me fijo si tiene un id de un edificio
 	//entrenando. De ser asi actualizo la reacion de la
@@ -335,14 +405,14 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 	terrenos_sin_especia.begin(); it_mensajes != 
 	terrenos_sin_especia.end(); ++it_mensajes) {
-		std::cout << "Pasa por verificacion terrenos" << std::endl;
-		std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
+		//// << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
 		guardar_mensaje_en_colas(colas_mensajes, *it_mensajes);
 	}
 	
 
 	std::set<std::shared_ptr<Edificio>> edificios_a_eliminar;
 	std::set<std::shared_ptr<UnidadMovible>> unidades_a_eliminar;
+	std::set<int> jugadores_a_eliminar;
 	//por cada edificio me fijo los mensajes que tiene para enviar
 	//si hay mensaje de muerte se agrega a edificios a eliminar
 	//y en caso de que sea el centro de cosntruccion se agregan
@@ -353,26 +423,14 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		obtener_mensajes_para_mandar();
 		for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 		mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
-			std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
+			// << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
 			if ((*it_mensajes).pedir_accion() == CODIGO_MUERTE_OBJETO) {
 				edificios_a_eliminar.insert(it_edifs->second);
 			} else if ((*it_mensajes).pedir_accion() == CODIGO_PERDIO_JUGADOR) {
 				int id_jugador_afuera = (it_edifs->second)->pedir_id_duenio();
-				for (std::map<int, std::shared_ptr<Edificio>>::iterator it_edifs2 = 
-				edificios.begin(); it_edifs2 != edificios.end(); ++it_edifs2) {
-					if ((it_edifs2->second)->pedir_id_duenio() == 
-					id_jugador_afuera) {
-						edificios_a_eliminar.insert(it_edifs2->second);
-					}
-				}
-				for (std::map<int, std::shared_ptr<UnidadMovible>>::iterator it_unidades = 
-				unidades_movibles.begin(); it_unidades != unidades_movibles.end(); 
-				++it_unidades) {
-					if ((it_unidades->second)->pedir_id_duenio() == 
-					id_jugador_afuera) {
-						unidades_a_eliminar.insert(it_unidades->second);
-					}
-				}
+				agregar_objetos_a_eliminar(edificios_a_eliminar, 
+				unidades_a_eliminar, id_jugador_afuera, colas_mensajes);
+				jugadores_a_eliminar.insert(id_jugador_afuera);
 			}
 			guardar_mensaje_en_colas(colas_mensajes, *it_mensajes);
 		}
@@ -389,7 +447,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 		mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
 			std::vector<int> v = (*it_mensajes).pedir_parametros();
-			std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose de "   << v[0] << " a " << v[1] << std::endl;
+			// << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose de "   << v[0] << " a " << v[1] << std::endl;
 			if ((*it_mensajes).pedir_accion() == CODIGO_MUERTE_OBJETO) {
 				unidades_a_eliminar.insert(it_unidades->second);
 			}
@@ -398,17 +456,20 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		(it_unidades->second)->limpiar_lista_mensajes();
 	}
 
-	for (std::set<std::shared_ptr<Edificio>>::iterator it_edificios = 
-	edificios_a_eliminar.begin(); it_edificios != edificios_a_eliminar.end();
-	++it_edificios) {
-		eliminar_edificio_del_juego(*it_edificios, colas_mensajes);
+	eliminar_objetos_de_sets(edificios_a_eliminar, unidades_a_eliminar,
+	colas_mensajes);
+
+	for (std::set<int>::iterator it_jugadores = jugadores_a_eliminar.begin(); 
+	it_jugadores!= jugadores_a_eliminar.end(); ++it_jugadores) {
+		jugadores.erase(*it_jugadores);
 	}
 
-	for (std::set<std::shared_ptr<UnidadMovible>>::iterator it_unidades = 
-	unidades_a_eliminar.begin(); it_unidades != unidades_a_eliminar.end();
-	++it_unidades) {
-		std::cout << "Unidad de tipo " << (*it_unidades)->pedir_id_tipo()<< " e id " << (*it_unidades)->pedir_id() << " murio." <<std::endl;
-		eliminar_unidad_del_juego(*it_unidades);
+	//significa que queda un jugador y gano
+	if (jugadores.size() == 1) {
+		MensajeProtocolo mensaje;
+		mensaje.asignar_accion(CODIGO_GANO_JUGADOR);
+		mensaje.agregar_parametro(jugadores.begin()->first);
+		guardar_mensaje_en_colas(colas_mensajes, mensaje);
 	}
 }
 

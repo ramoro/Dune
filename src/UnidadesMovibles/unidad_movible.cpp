@@ -51,7 +51,7 @@ int UnidadMovible::pedir_danio(std::string objetivo, int tiempo_transcurrido) {
 		for (int i = 0; i < cantidad_disparos; i++) {
 			danio_total += danio_mayor;
 		}
-		std::cout << "cantidad disparos" << cantidad_disparos << std::endl;
+		// << "cantidad disparos" << cantidad_disparos << std::endl;
 	}
 	return danio_total;
 }
@@ -96,7 +96,7 @@ bool UnidadMovible::se_puede_agregar(Jugador
 }
 
 void UnidadMovible::agregar(Mapa &mapa) {
-	std::cout << "unidad en x " << (this->centro).first << " y " << (this->centro).second << std::endl;
+	// << "unidad en x " << (this->centro).first << " y " << (this->centro).second << std::endl;
 	mapa.agregar_objeto(this, this->id,
 	this->centro,false);
 	estado = estado->cambiar_a_inactividad();
@@ -118,14 +118,14 @@ Mapa &mapa) {
 	//por si sale algo mal y no se vacio del todo el camino
 	//cuando la unidad llego
 	//if (camino.empty()) return;
-//	std::cout << "centro: " << centro.first << centro.second << " de la unidad " << id << std::endl;
+//	// << "centro: " << centro.first << centro.second << " de la unidad " << id << std::endl;
 	if (estado) {
 		std::shared_ptr<Estado> nuevo_estado = estado->actualizar(this, mapa,
 		tiempo_transcurrido);
-		//std::cout << "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
+		//// << "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
 		//si no es null le asigno el nuevo estado
 		if (nuevo_estado) {
-			std::cout << "nuevo estado " << " estado: " << nuevo_estado->pedir_nombre() << std::endl;
+			// << "nuevo estado " << " estado: " << nuevo_estado->pedir_nombre() << std::endl;
 			estado = nuevo_estado;
 		}
 	}
@@ -198,7 +198,7 @@ void UnidadMovible::afectar_terreno(std::shared_ptr<ObjetoDune> terreno,
 Mapa &mapa, int tiempo_transcurrido) {}
 
 int UnidadMovible::depositar_especia_en_segundo() {
-	std::cout << "se llamo a depositar_especia_en_segundo de un mov" 
-	<< std::endl;
+	// << "se llamo a depositar_especia_en_segundo de un mov" 
+	//<< std::endl;
 	return 0;
 }

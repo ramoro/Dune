@@ -75,7 +75,7 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 							terrenos_con_especia.emplace(
 							std::pair<int, std::shared_ptr<Baldosa>>(
 							contador_ids_objetos, bald));
-							//std::cout << "ID ESFUER " << contador_ids_objetos << "con pos x " << i << " pos y " << j<<std::endl;
+							//// << "ID ESFUER " << contador_ids_objetos << "con pos x " << i << " pos y " << j<<std::endl;
 							break;
 						}
 						case CODIGO_ESPECIASUAVE:
@@ -257,7 +257,7 @@ int altura, int base, bool ocupar) {
 			if (ocupar){
 				coordenadas[inicio.first][inicio.second].
 				marcar_como_ocupada();
-				//std::cout << "esta ocupada " << inicio.first << " " << inicio.second << std::endl;
+				//// << "esta ocupada " << inicio.first << " " << inicio.second << std::endl;
 			} else {
 				coordenadas[inicio.first][inicio.second].
 				marcar_como_desocupada();
@@ -367,7 +367,7 @@ bool Mapa::agregado_edificio(ObjetoDune* objeto) {
 	std::vector<ObjetoDune*> unidades_alrededor; 
 	terreno_valido = verificar_terreno_alrededor(posicion_central, 
 	objeto->obtener_altura(), objeto->obtener_base(), CODIGO_ROCA);
-	std::cout << "Terreno valido:" << terreno_valido << " para edificio de tipo " << objeto->pedir_id_tipo() << std::endl;
+	// << "Terreno valido:" << terreno_valido << " para edificio de tipo " << objeto->pedir_id_tipo() << std::endl;
 	//verifico que no haya ninguna unidad o edificio dentro del espacio
 	//donde se quiere poner el objeto
 	if (terreno_valido) {
@@ -379,7 +379,7 @@ bool Mapa::agregado_edificio(ObjetoDune* objeto) {
 	}
 
 	if(unidades_alrededor.empty()) {
-		std::cout << "Terreno vacio para edificio de tipo " << objeto->pedir_id_tipo() << std::endl;
+		// << "Terreno vacio para edificio de tipo " << objeto->pedir_id_tipo() << std::endl;
 		return true;
 	}
 	return false;
@@ -528,23 +528,23 @@ std::pair<int, int> final) {
 	std::pair<int, int> final_baldosa = conversor.de_pixel_a_baldosa(final);
 
 #ifdef NACHO 
-	std::cout << " Final " << final.first << " " << final.second << std::endl; 
-    std::cout << "Quiero ir de  " << inicio_baldosa.first << " " << inicio_baldosa.second << std::endl;
+	// << " Final " << final.first << " " << final.second << std::endl; 
+    // << "Quiero ir de  " << inicio_baldosa.first << " " << inicio_baldosa.second << std::endl;
 
-    std::cout << "Hacia  " << final_baldosa.first << " " << final_baldosa.second << std::endl;
+    // << "Hacia  " << final_baldosa.first << " " << final_baldosa.second << std::endl;
 #endif
 
 
 	std::list<std::pair<int, int>> lista_camino = buscador_mejor_camino.buscar_mejor_camino(*this, inicio_baldosa, final_baldosa);
 
 #ifdef NACHO 
-  	std::cout << "lista_camino contains:";
+  	// << "lista_camino contains:";
 #endif
 
   	for (std::list<std::pair<int, int>>::iterator it=lista_camino.begin(); it != lista_camino.end(); ++it){
   		//obtengo diff para sacar camino en pixeles entre nodos
 #ifdef NACHO
-		std::cout << " inicio_baldosa " << inicio_baldosa.first << " " << inicio_baldosa.second << std::endl; 
+		// << " inicio_baldosa " << inicio_baldosa.first << " " << inicio_baldosa.second << std::endl; 
 #endif
 
   		int diff_first = it->first - inicio_baldosa.first;
@@ -554,14 +554,14 @@ std::pair<int, int> final) {
 		inicio_baldosa.second = it->second;
 
 #ifdef NACHO 
-		std::cout << " Cambio inicio para iteracion posterior" << inicio_baldosa.first << " " << inicio_baldosa.second << std::endl; 
-    	std::cout << ' ' << it->first << ' ' << it->second;
+		// << " Cambio inicio para iteracion posterior" << inicio_baldosa.first << " " << inicio_baldosa.second << std::endl; 
+    	// << ' ' << it->first << ' ' << it->second;
 #endif
 
     	*it = conversor.de_baldosa_a_pixel(*it);
 
 #ifdef NACHO 
-    	std::cout << " Lo transformo a " << it->first << ' ' << it->second << std::endl; 
+    	// << " Lo transformo a " << it->first << ' ' << it->second << std::endl; 
 #endif
 
     	int neg_sec = 0;
@@ -579,7 +579,7 @@ std::pair<int, int> final) {
     		std::pair<int,int> sig(((it->first+=diff_first) + (i*neg_first)),(it->second+=diff_second) + (i*neg_sec));
 
 #ifdef NACHO 
-    		std::cout << " Nuevo first " << sig.first << " " << sig.second << std::endl; 
+    		// << " Nuevo first " << sig.first << " " << sig.second << std::endl; 
 #endif
 
     		lista_camino.insert(it,sig);
@@ -591,7 +591,7 @@ std::pair<int, int> final) {
 				it->second-=diff_second;
 	    	}
 	    	/*if (sig == final){ 
-    			std::cout << "LLege final"  << std::endl; 
+    			// << "LLege final"  << std::endl; 
 	    		break;
 	    	}*/
 		}
@@ -606,7 +606,7 @@ bool Mapa::actualizar_salida_gusano(int tiempo_transcurrido,
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	int salio = gusano.actualizar_salida(tiempo_transcurrido);
 	if (salio) {
-		std::cout << "sale gusano" << std::endl;
+		// << "sale gusano" << std::endl;
 		desenterrar_gusano();
 		MensajeProtocolo mensaje = gusano.
 		serializar_mensaje_salida();
@@ -682,23 +682,30 @@ void Mapa::terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> colas_
 	for (unsigned int i = 0 ; i < baldosas.size() ; i++){
 		for (unsigned int j = 0 ; j < baldosas[0].size() ; j++){
 			std::vector<MensajeProtocolo> mensajes = baldosas[i][j].obtener_mensajes_para_mandar();
-			std::cout << baldosas[i][j].cantidad_mensajes() << std::endl;
+			// << baldosas[i][j].cantidad_mensajes() << std::endl;
 			for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 			mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
 				std::vector<int> v = (*it_mensajes).pedir_parametros();
-				std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << v[4] << v[5] << std::endl;
+				//// << "Mensaje de accion " << (*it_mensajes).pedir_accion() << v[4] << v[5] << std::endl;
 				guardar_mensaje_en_colas(colas_mensajes, *it_mensajes);
 			}
 			baldosas[i][j].limpiar_lista_mensajes();
 		}
 	}
+	/*MensajeProtocolo mensaje;
+	mensaje.asignar_accion('h');
+	mensaje.agregar_parametro(0);
+	mensaje.agregar_parametro(0);
+	mensaje.agregar_parametro(3500);
+	mensaje.agregar_parametro(5000);
+	guardar_mensaje_en_colas(colas_mensajes, mensaje);*/
 }
 
 void Mapa::guardar_mensaje_en_colas(
 std::map<int, std::shared_ptr<ColaBloqueante>> colas,
 MensajeProtocolo mensaje) {
 	char accion = mensaje.pedir_accion();
-	std::cout << "accion gusano : " << accion << std::endl;
+	 std::cout << "accion encolando en mapa: " << accion << std::endl;
 	for (std::map<int, std::shared_ptr<ColaBloqueante>>::iterator
 	it = colas.begin(); it != colas.end(); ++it) {
 		(it->second)->push(std::move(mensaje));

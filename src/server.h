@@ -1,42 +1,28 @@
 #ifndef SERVER_H
 #define SERVER_H
 
-#include <vector>
-#include <mutex>
-#include <thread>
-#include "juego.h"
 #include "Socket.h"
+#include "organizador_juegos.h"
+#include "thread.h"
 
-/*Clase que representa a un server del juego Dune.*/
-class Server {
+/*Clase que representa a un server del juego Dune en la cual se aceptan
+los diferentes cliente que van ingresando al server. Corre en un hilo
+de ejecucion propio.*/
+class Server: public Thread {
 	private:
 		Socket *socket;
-		std::vector<std::thread*> threads;
-		std::vector<std::shared_ptr<Juego>> juegos;
-		bool server_finalizado;
-		std::mutex mutex;
+		OrganizadorJuegos &organizador_juegos;
 
 	public:
 		/*Constructor de la clase.*/
-		Server(char *servicename);
+		Server(char *servicename, int max_cant_escucha_clientes,
+		OrganizadorJuegos &organizador);
 
-		/*Recibe un vector de vectores de int y un codigo indicando si se enviaran
-		edificios o terrenos y se envia toda la data por socket al cliente.*/
-		void enviar_info_vectores_enteros(std::vector<std::vector<int>> &data,
-		char *codigo);
+		/*Metodo que acepta los clientes y los va agregando
+		al organizador del juego.*/
+		void run();
 
-		void aceptar_cliente();
-
-		/*Envia todos los datos del mapa para que el cliente lo pueda 
-		dibujar.*/
-		void enviar_mapa(Socket* otro_socket);
-
-		/*Recibe un puntero al socket de un cliente y ejecuta
-		la accion pedida por el mismo.*/
-		void ejecutar_accion(Socket *otro_socket);
-
-		/*Apaga el servidor joineando todos los hilos y dejando de aceptar
-		clientes.*/
+		/*Apaga el servidor haciendole un shutdown a su socket.*/
 		void apagar();
 
 		/*Destructor de la clase.*/
