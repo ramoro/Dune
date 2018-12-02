@@ -15,13 +15,11 @@
 #define CODIGO_PRECIPICIO 35
 #define CODIGO_ARENA 36
 
-#define PIX 50
 #define LIMITE_ITERACIONES_GUSANO 100
-#define TAM_TERRENO 100
 
 Mapa::Mapa() {}
 
-Mapa::Mapa(Config &root,int &contador_ids_objetos) {
+Mapa::Mapa(Config &root,int &contador_ids_objetos) : cant_pixeles_por_baldosa(root["cant_pixeles_por_baldosa"].asInt()) {
 	for (unsigned int i = 0; i < root["terreno"].size(); i++) {
 		std::vector<Baldosa> fila_baldosa;
 			std::vector<Coordenada> fila;
@@ -32,18 +30,14 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						{
 							Terreno roca(CODIGO_ROCA, root);
 							Baldosa bald(0, roca, contador_ids_objetos,
-							std::pair<int, int> (i*TAM_TERRENO, j*TAM_TERRENO));
-							for (unsigned int q = 0; q < PIX; q++){ 
+							std::pair<int, int> (i*root["tamanio_terreno"].asInt(),
+							 j*root["tamanio_terreno"].asInt()));
+							for (int q = 0; q < root["cant_pixeles_por_baldosa"].asInt(); q++){ 
 								Coordenada coord(0, roca);
 								fila.push_back(coord);
 							}
-							/*
-							if (i%100==0){
-								bald.serializar_mensaje_baldosa();
-							}*/
-							/*if (i==j){
-								bald.serializar_mensaje_baldosa();
-							}*/
+							//bald.serializar_mensaje_baldosa(
+						//		root["tamanio_terreno"].asInt());
 							fila_baldosa.push_back(bald);
 							break;
 						}
@@ -51,13 +45,15 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						{
 							Terreno duna(CODIGO_DUNA, root);
 							Baldosa bald(0, duna, contador_ids_objetos,
-							std::pair<int, int> (i*PIX, j*PIX));
-							for (unsigned int q = 0; q < PIX; q++){ 
+							std::pair<int, int> (i*root["tamanio_terreno"].asInt(),
+							 j*root["tamanio_terreno"].asInt()));
+							for (int q = 0; q < root["cant_pixeles_por_baldosa"].asInt(); q++){ 
 								Coordenada coord(0, duna);
 								fila.push_back(coord);
 							}
 							fila_baldosa.push_back(bald);
-							bald.serializar_mensaje_baldosa();
+							bald.serializar_mensaje_baldosa(
+								root["tamanio_terreno"].asInt());
 							break;
 						}
 						case CODIGO_ESPECIAFUERTE:
@@ -65,12 +61,14 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 							Terreno especiafuerte(CODIGO_ESPECIAFUERTE, root);
 							std::shared_ptr<Baldosa> bald(new 
 							Baldosa(0, especiafuerte, contador_ids_objetos,
-							std::pair<int, int> (i*PIX, j*PIX)));
-							for (unsigned int q = 0; q < PIX; q++){ 
+							std::pair<int, int> (i*root["tamanio_terreno"].asInt(),
+							 j*root["tamanio_terreno"].asInt())));
+							for (int q = 0; q < root["cant_pixeles_por_baldosa"].asInt(); q++){ 
 								Coordenada coord(0, especiafuerte);
 								fila.push_back(coord);
 							}
-							bald->serializar_mensaje_baldosa();
+							bald->serializar_mensaje_baldosa(
+								root["tamanio_terreno"].asInt());
 							fila_baldosa.push_back(*bald);
 							terrenos_con_especia.emplace(
 							std::pair<int, std::shared_ptr<Baldosa>>(
@@ -83,12 +81,14 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 							Terreno especiasuave(CODIGO_ESPECIASUAVE, root);
 							std::shared_ptr<Baldosa> bald(new 
 							Baldosa(0, especiasuave, contador_ids_objetos,
-							std::pair<int, int> (i*PIX, j*PIX)));
-							for (unsigned int q = 0; q < PIX; q++){ 
+							std::pair<int, int> (i*root["tamanio_terreno"].asInt(),
+							 j*root["tamanio_terreno"].asInt())));
+							for (int q = 0; q < root["cant_pixeles_por_baldosa"].asInt(); q++){ 
 								Coordenada coord(0, especiasuave);
 								fila.push_back(coord);
 							}
-							bald->serializar_mensaje_baldosa();
+							bald->serializar_mensaje_baldosa(
+								root["tamanio_terreno"].asInt());
 							fila_baldosa.push_back(*bald);
 							terrenos_con_especia.emplace(
 							std::pair<int, std::shared_ptr<Baldosa>>(
@@ -99,12 +99,14 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						{
 							Terreno cima(CODIGO_CIMA, root);
 							Baldosa bald(0, cima, contador_ids_objetos,
-							std::pair<int, int> (i*PIX, j*PIX));
-							for (unsigned int q = 0; q < PIX; q++){ 
+							std::pair<int, int> (i*root["tamanio_terreno"].asInt(),
+							 j*root["tamanio_terreno"].asInt()));
+							for (int q = 0; q < root["cant_pixeles_por_baldosa"].asInt(); q++){ 
 								Coordenada coord(0, cima);
 								fila.push_back(coord);
 							}
-							bald.serializar_mensaje_baldosa();
+							bald.serializar_mensaje_baldosa(
+								root["tamanio_terreno"].asInt());
 							fila_baldosa.push_back(bald);
 							break;
 						}
@@ -112,36 +114,41 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) {
 						{
 							Terreno precipio(CODIGO_PRECIPICIO, root);
 							Baldosa bald(0, precipio, contador_ids_objetos,
-							std::pair<int, int> (i*PIX, j*PIX));
-							for (unsigned int q = 0; q < PIX; q++){ 
+							std::pair<int, int> (i*root["tamanio_terreno"].asInt(),
+							 j*root["tamanio_terreno"].asInt()));
+							for (int q = 0; q < root["cant_pixeles_por_baldosa"].asInt(); q++){ 
 								Coordenada coord(0, precipio);
 								fila.push_back(coord);
 							}
 							fila_baldosa.push_back(bald);
-							bald.serializar_mensaje_baldosa();
+							bald.serializar_mensaje_baldosa(
+								root["tamanio_terreno"].asInt());
 							break;
 						}
 						default:
 						{
 							Terreno arena(CODIGO_ARENA, root);							
 							Baldosa bald(0, arena, contador_ids_objetos,
-							std::pair<int, int> (i*PIX, j*PIX));
-							for (unsigned int q = 0; q < PIX; q++){ 
+							std::pair<int, int> (i*root["tamanio_terreno"].asInt(),
+							 j*root["tamanio_terreno"].asInt()));
+							for (int q = 0; q < root["cant_pixeles_por_baldosa"].asInt(); q++){ 
 								Coordenada coord(0, arena);
 								fila.push_back(coord);
 							}
 							fila_baldosa.push_back(bald);
-							bald.serializar_mensaje_baldosa();
 							break;
 						}
 					}
 					contador_ids_objetos++;
 			}
-			for (unsigned int p = 0; p < PIX; p++){ 
+			for (int p = 0; p < root["cant_pixeles_por_baldosa"].asInt(); p++){ 
 			coordenadas.push_back(fila);
 		}
 		baldosas.push_back(fila_baldosa);
 	}
+	//cant_pixeles_por_baldosa = root["cant_pixeles_por_baldosa"].asInt();
+	Conversor con(root["cant_pixeles_por_baldosa"].asInt());
+	conversor = std::move(con);
 	Gusano gus(root);
 	gusano = std::move(gus);
 }
@@ -165,10 +172,8 @@ centro_unidad, int altura, int base, bool verificar_asentamiento,
 bool verificar_ataque_a_enemigo, int id_duenio, bool es_gusano) {
 	std::vector<ObjetoDune*> unidades_alrededor;
 	bool espacio_invalido = false;
-
 	for (std::map<int, ObjetoDune*>::iterator it = 
 	mapa_ids_objetos.begin(); it != mapa_ids_objetos.end(); ++it) {
-
 		//veo si el centro del objeto se encuentra dentro del lugar
 		//abarcado por la base y la altura
 		if(esta_dentro((it->second)->obtener_centro(), centro_unidad, 
@@ -239,7 +244,7 @@ int altura, int base, int terreno) {
 	return terreno_adecuado;
 }
 
-void Mapa::marcar_estado_coordenadas_alrededor(std::pair<int, int> pos_central, 
+void Mapa::marcar_estado_baldosas_alrededor(std::pair<int, int> pos_central, 
 int altura, int base, bool ocupar) {
 	std::pair<int, int> inicio((pos_central.first + altura/2) - (altura - 1), 
 	(pos_central.second + base/2) - (base- 1));
@@ -251,20 +256,17 @@ int altura, int base, bool ocupar) {
 				inicio.second++;
 				continue;
 			}
-			
-			//esto del if dsp se podria reemplazar con un metodo de la coord
-			//que le invierta el estado nomas
 			if (ocupar){
-				coordenadas[inicio.first][inicio.second].
-				marcar_como_ocupada();
-				//// << "esta ocupada " << inicio.first << " " << inicio.second << std::endl;
+
+				baldosas[inicio.first][inicio.second].
+				marcar_como_ocupada_edificio();
+				std::cout << "esta ocupada " << inicio.first << " " << inicio.second << std::endl;
 			} else {
-				coordenadas[inicio.first][inicio.second].
+				baldosas[inicio.first][inicio.second].
 				marcar_como_desocupada();
 			}
 			inicio.second++;
 		}
-
 		inicio.second -= base;
 		inicio.first++;
 	}
@@ -272,31 +274,39 @@ int altura, int base, bool ocupar) {
 
 void Mapa::agregar_objeto(ObjetoDune* objeto, int id_objeto, 
 std::pair<int, int> &centro, bool edif) {
-	int base_objeto1 = objeto->obtener_base();
-	int altura_objeto1 = objeto->obtener_altura();
+	int base_objeto = objeto->obtener_base();
+	int altura_objeto = objeto->obtener_altura();
 	coordenadas[centro.first][centro.second].poner_objeto(objeto);
+	std::pair <int,int> bald(conversor.de_pixel_a_baldosa(centro));
 	if (edif){
-		std::pair <int,int> bald(conversor.de_pixel_a_baldosa(centro));
 		baldosas[bald.first][bald.second].poner_edificio(objeto);
+	} else {
+		baldosas[bald.first][bald.second].poner_unidad(objeto);
 	}
 	mapa_ids_objetos.emplace(std::pair<int, 
 	ObjetoDune*>(id_objeto, objeto));
-	marcar_estado_coordenadas_alrededor(centro, altura_objeto1, base_objeto1, 
+	marcar_estado_baldosas_alrededor(bald,
+	 altura_objeto/cant_pixeles_por_baldosa,
+	  base_objeto/cant_pixeles_por_baldosa,
 	true);
 }
 
 void Mapa::eliminar_objeto(int id_objeto) {
 	std::pair<int, int> centro_objeto = (mapa_ids_objetos.at(id_objeto))->
 	obtener_centro();
+	std::pair <int,int> bald(conversor.de_pixel_a_baldosa(centro_objeto));
 	int altura_objeto = (mapa_ids_objetos.at(id_objeto))->
 	obtener_altura();
 	int base_objeto = (mapa_ids_objetos.at(id_objeto))->
 	obtener_base();
-	marcar_estado_coordenadas_alrededor(centro_objeto, altura_objeto,
-	base_objeto, false);
+	marcar_estado_baldosas_alrededor(bald,
+	 altura_objeto/cant_pixeles_por_baldosa,
+	  base_objeto/cant_pixeles_por_baldosa,
+	false);
 	mapa_ids_objetos.erase(id_objeto);
 	coordenadas[centro_objeto.first][centro_objeto.second].
 	sacar_objeto();
+	baldosas[bald.first][bald.second].sacar_objeto();
 	if (refinerias.count(id_objeto) > 0) {
 		refinerias.erase(id_objeto);
 	}
@@ -312,9 +322,6 @@ void Mapa::desenterrar_gusano() {
 		if (limite_salida == LIMITE_ITERACIONES_GUSANO) break;
 		fila_random = rand() % coordenadas.size();
 		columna_random = rand() % coordenadas.size();
-		//fila_random = 525;
-		//columna_random = 175;
-
 		std::pair<int, int> posicion_centro(fila_random, columna_random);
 		bool es_arena = verificar_terreno_alrededor(posicion_centro,
 		gusano.obtener_dimesion_alto(), 
@@ -330,7 +337,6 @@ void Mapa::desenterrar_gusano() {
 		}
 		limite_salida++;
 	}
-	
 	for (std::vector<ObjetoDune*>::iterator it = objetivos.begin();
 	it != objetivos.end(); ++it) {
 		(*it)->matar();
@@ -393,10 +399,15 @@ std::pair<int,int> Mapa::pedir_cercania(int id, int id_objetivo) {
 		centro_objetivo = (mapa_ids_objetos.at(
 		id_objetivo)->obtener_centro());
 	} else {
+//		std::cout << "Mapa::pedir_cercania busco cercania con especia" << std::endl;
 		centro_objetivo = (terrenos_con_especia.at(
 		id_objetivo)->obtener_centro());
 	}
 
+	/*std::pair<int, int> centro_objetivo_baldosa = 
+	conversor.de_pixel_a_baldosa(centro_objetivo);
+	std::pair<int, int> centro_unidad_baldosa = 
+	conversor.de_pixel_a_baldosa(centro_unidad);*/
 	return std::pair<int, int> (abs(centro_unidad.first - 
 	centro_objetivo.first), abs(centro_unidad.second - 
 	centro_objetivo.second));
@@ -412,6 +423,14 @@ bool Mapa::esta_ocupada_coordenada(std::pair<int, int> posicion) {
 
 bool Mapa::esta_ocupada_baldosa(std::pair<int, int> posicion) {
 	return baldosas[posicion.first][posicion.second].esta_ocupada_edificio();
+}
+
+std::pair<int, int> Mapa::de_baldosa_a_pixel(std::pair<int, int> baldosa) {
+	return conversor.de_baldosa_a_pixel(baldosa);
+}
+
+std::pair<int, int> Mapa::de_pixel_a_baldosa(std::pair<int, int> pixel) {
+	return conversor.de_pixel_a_baldosa(pixel);
 }
 
 bool Mapa::esta_dentro_limites(std::pair<int, int> &centro){
@@ -499,18 +518,18 @@ void Mapa::mover_unidad(int id_unidad,
 std::pair<int, int> pos_destino) {
 	std::pair<int, int> centro_unidad = mapa_ids_objetos.at(id_unidad)->
 	obtener_centro();
-	marcar_estado_coordenadas_alrededor(centro_unidad, 
+	/*marcar_estado_coordenadas_alrededor(centro_unidad, 
 	mapa_ids_objetos.at(id_unidad)->obtener_altura(), 
-	mapa_ids_objetos.at(id_unidad)->obtener_base(), false);
+	mapa_ids_objetos.at(id_unidad)->obtener_base(), false);*/
 
 	coordenadas[centro_unidad.first][centro_unidad.second].sacar_objeto();
 
 	coordenadas[pos_destino.first][pos_destino.second].poner_objeto(
 	mapa_ids_objetos.at(id_unidad));
 
-	marcar_estado_coordenadas_alrededor(pos_destino, 
+	/*marcar_estado_coordenadas_alrededor(pos_destino, 
 	mapa_ids_objetos.at(id_unidad)->obtener_altura(), 
-	mapa_ids_objetos.at(id_unidad)->obtener_base(), true);
+	mapa_ids_objetos.at(id_unidad)->obtener_base(), true);*/
 	mapa_ids_objetos.at(id_unidad)->set_centro(pos_destino);
 
 	/*coordenadas[camino[camino.size() / 3].first][camino[camino.size() / 3].
@@ -522,83 +541,96 @@ std::pair<int, int> pos_destino) {
 	return sub_camino;*/
 }
 
+std::list<std::pair<int, int>> Mapa::obtener_camino_misma_baldosa(
+std::pair<int, int> inicio, std::pair<int, int> final, UnidadMovible *unidad){
+	std::list<std::pair<int, int>> dentro_baldosa;
+	std::pair<int, int> pixel(inicio);
+	int diff_first = final.first - inicio.first;
+	int diff_second = final.second - inicio.second;
+    int neg_sec = 1;
+    int neg_first = 1;
+	if (diff_first < 0){
+		diff_first*=-1;
+		neg_first = -1;
+	}
+	if (diff_second < 0){
+		diff_second*=-1;
+		neg_sec = -1;
+	}
+	for (int i = 0; i <= diff_second; i++){
+		for (int j = 0; j <= diff_first; j++){
+			dentro_baldosa.push_back(pixel);
+			if (pixel.first == final.first){
+				break;
+			}
+			pixel.first+=neg_first;
+		}
+		pixel.second+=neg_sec;
+		if (pixel.second == final.second){
+			break;
+		}
+	}
+	return dentro_baldosa;
+}
+
 std::list<std::pair<int, int>> Mapa::obtener_camino(std::pair<int, int> inicio,
-std::pair<int, int> final) {
+std::pair<int, int> final, UnidadMovible *unidad) {
 	std::pair<int, int> inicio_baldosa = conversor.de_pixel_a_baldosa(inicio);
 	std::pair<int, int> final_baldosa = conversor.de_pixel_a_baldosa(final);
-
-#ifdef NACHO 
-	// << " Final " << final.first << " " << final.second << std::endl; 
-    // << "Quiero ir de  " << inicio_baldosa.first << " " << inicio_baldosa.second << std::endl;
-
-    // << "Hacia  " << final_baldosa.first << " " << final_baldosa.second << std::endl;
-#endif
-
-
-	std::list<std::pair<int, int>> lista_camino = buscador_mejor_camino.buscar_mejor_camino(*this, inicio_baldosa, final_baldosa);
-
-#ifdef NACHO 
-  	// << "lista_camino contains:";
-#endif
-
-  	for (std::list<std::pair<int, int>>::iterator it=lista_camino.begin(); it != lista_camino.end(); ++it){
+	//si quiere ir hacia una baldosa invalida directamente la unidad no se mueve
+	if(!unidad->es_terreno_valido(baldosas[final_baldosa.first]
+			[final_baldosa.second].obtener_terreno())){
+		std::list<std::pair<int, int>> mismo_lugar;
+		std::pair<int, int> pixel_actual(inicio);
+		mismo_lugar.push_back(pixel_actual);
+		return mismo_lugar;
+	}
+	if (inicio_baldosa == final_baldosa){
+		return obtener_camino_misma_baldosa(inicio, final, unidad);
+	}
+	std::list<std::pair<int, int>> lista_camino = 
+	buscador_mejor_camino.buscar_mejor_camino(*this, inicio_baldosa,
+	 final_baldosa, unidad);
+  	for (std::list<std::pair<int, int>>::iterator it=lista_camino.begin();
+  	 it != lista_camino.end(); ++it){
   		//obtengo diff para sacar camino en pixeles entre nodos
-#ifdef NACHO
-		// << " inicio_baldosa " << inicio_baldosa.first << " " << inicio_baldosa.second << std::endl; 
-#endif
-
   		int diff_first = it->first - inicio_baldosa.first;
   		int diff_second = it->second - inicio_baldosa.second;
-
   		inicio_baldosa.first = it->first;
 		inicio_baldosa.second = it->second;
-
-#ifdef NACHO 
-		// << " Cambio inicio para iteracion posterior" << inicio_baldosa.first << " " << inicio_baldosa.second << std::endl; 
-    	// << ' ' << it->first << ' ' << it->second;
-#endif
-
     	*it = conversor.de_baldosa_a_pixel(*it);
-
-#ifdef NACHO 
-    	// << " Lo transformo a " << it->first << ' ' << it->second << std::endl; 
-#endif
 
     	int neg_sec = 0;
     	int neg_first = 0;
-
     	if (diff_first == -1){
     		neg_first = 1;
     	}
-
     	if (diff_second == -1){
     		neg_sec = 1;
     	}
 
-    	for(int i = PIX ; i > 0 ; i--){
-    		std::pair<int,int> sig(((it->first+=diff_first) + (i*neg_first)),(it->second+=diff_second) + (i*neg_sec));
-
-#ifdef NACHO 
-    		// << " Nuevo first " << sig.first << " " << sig.second << std::endl; 
-#endif
-
+    	for(int i = cant_pixeles_por_baldosa ; i > 0 ; i--){
+    		std::pair<int,int> sig(((it->first+=diff_first) + (i*neg_first)),
+    			(it->second+=diff_second) + (i*neg_sec));
     		lista_camino.insert(it,sig);
 	    	if (neg_first == 1){
 	    		it->first-=diff_first;
 	    	}
-
 	    	if (neg_sec == 1){
 				it->second-=diff_second;
 	    	}
-	    	/*if (sig == final){ 
-    			// << "LLege final"  << std::endl; 
-	    		break;
-	    	}*/
+
+	    	if (inicio_baldosa == final_baldosa){
+				std::list<std::pair<int, int>> dentro_baldosa = 
+				obtener_camino_misma_baldosa(sig, final, unidad);
+				lista_camino.splice(lista_camino.end(), dentro_baldosa);
+				break;
+	    	}
 		}
-
-
+    	if (inicio_baldosa == final_baldosa){
+    		break;
+    	}
   	}
-
 	return lista_camino;
 }
 
@@ -606,7 +638,6 @@ bool Mapa::actualizar_salida_gusano(int tiempo_transcurrido,
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	int salio = gusano.actualizar_salida(tiempo_transcurrido);
 	if (salio) {
-		// << "sale gusano" << std::endl;
 		desenterrar_gusano();
 		MensajeProtocolo mensaje = gusano.
 		serializar_mensaje_salida();
@@ -654,6 +685,26 @@ int Mapa::calcular_distancia(std::pair<int, int> p1, std::pair<int, int> p2) {
 	(p2.second - p1.second) * (p2.second - p1.second));
 }
 
+std::shared_ptr<Baldosa> Mapa::obtener_especia_cercana(UnidadMovible* unidad){
+//	std::cout << "Mapa::obtener_especia_cercana" << std::endl;
+	for (std::map<int, std::shared_ptr<Baldosa>>::iterator it_baldosas = 
+		terrenos_con_especia.begin(); it_baldosas!=terrenos_con_especia.end();
+		 ++it_baldosas){
+		std::pair <int,int> dist = pedir_cercania(unidad->pedir_id(),
+			it_baldosas->second->pedir_id());
+		if (dist.first < (cant_pixeles_por_baldosa*5) &&
+			dist.second < (cant_pixeles_por_baldosa*5)){
+	//		std::cout << "Mapa::obtener_especia_cercana encontre especia menor a "<< cant_pixeles_por_baldosa*5 <<" pixeles dist" << std::endl;
+			std::shared_ptr<Baldosa> nueva_especia = it_baldosas->second;
+			return nueva_especia;
+		}
+	}
+//
+//	std::cout << "Mapa::obtener_especia_cercana no hay especia cerca perro" << std::endl;
+	return NULL;
+}
+
+
 std::shared_ptr<Baldosa> Mapa::obtener_baldosa_con_especia(
 int id_objeto) {
 	return terrenos_con_especia.at(id_objeto);
@@ -686,7 +737,8 @@ void Mapa::terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> colas_
 			for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 			mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
 				std::vector<int> v = (*it_mensajes).pedir_parametros();
-				//// << "Mensaje de accion " << (*it_mensajes).pedir_accion() << v[4] << v[5] << std::endl;
+
+				//std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << v[4] << v[5] << std::endl;
 				guardar_mensaje_en_colas(colas_mensajes, *it_mensajes);
 			}
 			baldosas[i][j].limpiar_lista_mensajes();
@@ -704,8 +756,6 @@ void Mapa::terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> colas_
 void Mapa::guardar_mensaje_en_colas(
 std::map<int, std::shared_ptr<ColaBloqueante>> colas,
 MensajeProtocolo mensaje) {
-	char accion = mensaje.pedir_accion();
-	 std::cout << "accion encolando en mapa: " << accion << std::endl;
 	for (std::map<int, std::shared_ptr<ColaBloqueante>>::iterator
 	it = colas.begin(); it != colas.end(); ++it) {
 		(it->second)->push(std::move(mensaje));

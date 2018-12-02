@@ -14,7 +14,8 @@ Mapa &mapa, int tiempo_transcurrido) {
 		std::shared_ptr<Inactividad> inactividad(new Inactividad());
 		return inactividad;
 	} else if (posicion_ocupada) {
-		camino = mapa.obtener_camino(unidad->obtener_centro(), camino.back());
+		camino = mapa.obtener_camino(unidad->obtener_centro(), camino.back(),
+			unidad);
 		unidad->asignar_nuevo_camino(camino);
 		//quizas se deberia tener en cuenta un super caso borde que no
 		//se devuelva ningun camino
@@ -23,25 +24,23 @@ Mapa &mapa, int tiempo_transcurrido) {
 	//a avanzar camino deberia pasarle la cantiadd de posiciones que avanzo ene l camino
 	
 	tiempo_transcurrido+=unidad->obtener_tiempo_acumulado();
-	double dist1 = sqrt(abs(unidad->obtener_centro().first - camino.back().first) * abs(unidad->obtener_centro().second - camino.back().second));
-	double dist2 = tiempo_transcurrido * unidad->obtener_velocidad();
+	double dist1 = sqrt(abs(unidad->obtener_centro().first - 
+		camino.back().first) * abs(unidad->obtener_centro().second - 
+		camino.back().second));
+	double dist2 = tiempo_transcurrido * unidad->obtener_velocidad(mapa.pedir_terreno_coordenada(camino.front()));
 
 	if (dist2 <= dist1){
-		//mapa.mover_unidad(unidad->pedir_id(), camino.front());
-		//unidad->avanzar_camino();
-   		//unidad->serializar_mensaje_movimiento(); 
 		unidad->acumular_tiempo(tiempo_transcurrido);
 	} else {
-		//for (int i = 0 ; i < dist1 ; i++){
-			mapa.mover_unidad(unidad->pedir_id(), camino.front());
-			unidad->avanzar_camino();
-	   		unidad->serializar_mensaje_movimiento(); 
-			if (camino.size() == 1) {
-				std::shared_ptr<Inactividad> inactividad(new Inactividad());
-				return inactividad;
-			}
-			unidad->resetear_tiempo_acumulado();
-		//}
+		//std::cout << "Mover UNidad " << camino.front().first << '-' << camino.front().second<< std::endl;
+		mapa.mover_unidad(unidad->pedir_id(), camino.front());
+		unidad->avanzar_camino();
+   		unidad->serializar_mensaje_movimiento(); 
+		if (camino.size() == 1) {
+			std::shared_ptr<Inactividad> inactividad(new Inactividad());
+			return inactividad;
+		}
+		unidad->resetear_tiempo_acumulado();
 	}
 
 

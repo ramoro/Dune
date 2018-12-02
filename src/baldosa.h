@@ -51,7 +51,7 @@ class Baldosa: public ObjetoDune {
 		Precondicion:la coordeanada esta marcada como ocupada.*/
 		void marcar_como_desocupada();
 
-		void serializar_mensaje_baldosa();
+		void serializar_mensaje_baldosa(int cant_pixeles_baldosa);
 
 		/*Se saca al terreno de la baldosa especia si es que tiene
 		segun la cantidad que puede sacar la unidad recibida. Devuelve
@@ -62,6 +62,11 @@ class Baldosa: public ObjetoDune {
 		mas y se avisa armando un mensaje para enviar al cliente.*/
 		virtual void matar();
 
+		/*Obtiene la cantidad de especia que hay en el terreno 
+		dentro de la baldosa*/
+		virtual int obtener_cantidad_especia();
+
+		/*Devuelve la cantidad de mensajes que hay dentro de la baldosa*/
 		int cantidad_mensajes();
 };
 

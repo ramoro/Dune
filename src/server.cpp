@@ -19,7 +19,7 @@ void Server::run() {
   	//partida.agregar_jugador("ordos", &cola);
   	OrganizadorJuegos org;
   	int i = 0;
-  	while (i < 2) {
+  	while (i < 1) {
   		Socket *otro_socket = socket->accept_connection();
   		otro_socket->send_int(i);
   		org.agregar_cliente(std::move(*otro_socket));

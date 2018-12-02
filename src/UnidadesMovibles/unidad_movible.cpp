@@ -9,6 +9,7 @@
 #define CODIGO_ATAQUE 'a'
 #define PASAJE_A_MILISEGS 1000
 #define SEGUNDO_EN_MILIS 1000
+#define CODIGO_DUNA 31
 
 UnidadMovible::UnidadMovible(int rango, int velocidad, 
 double tiempo_creacion, int costo_dinero, int vida, int id, int id_duenio,
@@ -86,7 +87,11 @@ int UnidadMovible::obtener_rango_ataque() {
 	return rango;
 }
 
-int UnidadMovible::obtener_velocidad() {
+int UnidadMovible::obtener_velocidad(int tipo_terreno) {
+	if (tipo_terreno == CODIGO_DUNA){
+		//std::cout << "Mover UNidad sobre duna a velocidad " << velocidad/2 << std::endl;
+		return velocidad/2;
+	}
 	return velocidad;
 }
 
@@ -109,7 +114,7 @@ int UnidadMovible::tiempo_creacion_faltante(int milisegs) {
 
 void UnidadMovible::empezar_a_mover(Mapa &mapa, std::pair<int, int> 
 pos_destino) {
-	camino = mapa.obtener_camino(this->centro, pos_destino);
+	camino = mapa.obtener_camino(this->centro, pos_destino, this);
 	estado = estado->cambiar_a_movimiento();
 }
 
@@ -118,11 +123,11 @@ Mapa &mapa) {
 	//por si sale algo mal y no se vacio del todo el camino
 	//cuando la unidad llego
 	//if (camino.empty()) return;
-//	// << "centro: " << centro.first << centro.second << " de la unidad " << id << std::endl;
+	// << "centro: " << centro.first << centro.second << " de la unidad " << id << std::endl;
 	if (estado) {
 		std::shared_ptr<Estado> nuevo_estado = estado->actualizar(this, mapa,
 		tiempo_transcurrido);
-		//// << "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
+		//std::cout << "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
 		//si no es null le asigno el nuevo estado
 		if (nuevo_estado) {
 			// << "nuevo estado " << " estado: " << nuevo_estado->pedir_nombre() << std::endl;
@@ -154,7 +159,7 @@ std::shared_ptr<ObjetoDune> objetivo) {
 	this->rango) {
 		estado = estado->cambiar_a_movimiento_para_atacar(objetivo);
 		asignar_nuevo_camino(mapa.obtener_camino(this->centro, 
-		objetivo->obtener_centro()));
+		objetivo->obtener_centro(),this));
 	} else {
 		estado = estado->cambiar_a_ataque(objetivo);
 		serializar_mensaje_ataque(objetivo->pedir_id());

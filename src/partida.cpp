@@ -405,7 +405,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 	terrenos_sin_especia.begin(); it_mensajes != 
 	terrenos_sin_especia.end(); ++it_mensajes) {
-		//// << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
+		// << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
 		guardar_mensaje_en_colas(colas_mensajes, *it_mensajes);
 	}
 	
@@ -423,7 +423,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		obtener_mensajes_para_mandar();
 		for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 		mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
-			// << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
+			//std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
 			if ((*it_mensajes).pedir_accion() == CODIGO_MUERTE_OBJETO) {
 				edificios_a_eliminar.insert(it_edifs->second);
 			} else if ((*it_mensajes).pedir_accion() == CODIGO_PERDIO_JUGADOR) {

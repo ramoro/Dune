@@ -85,7 +85,7 @@ class UnidadMovible: public ObjetoDune {
 		int obtener_rango_ataque();
 
 		/*Devuelve la velocidad de la unidad*/
-		int obtener_velocidad();
+		int obtener_velocidad(int tipo_terreno);
 
 		/*Recibe el jugador duenio de la unidad y devuelve true si se puede
 		agregar la nueva unidad al jugador. False en caso contrario.*/
@@ -152,8 +152,11 @@ class UnidadMovible: public ObjetoDune {
 		/*Elimina todas las posiciones de la lista camino.*/
 		void limpiar_camino();
 
+		/*Se fija si el terreno pasado por parametro es valido para
+		esta unidad*/
 		virtual bool es_terreno_valido(int terreno) = 0;
 
+		/*Devuelve un vector indicando a que casas pertenece la unidad*/
 		std::vector<std::string> obtener_casa();
 
 		/*Recibe el terreno, el mapa y el tiempo que paso y afecta el terreno 

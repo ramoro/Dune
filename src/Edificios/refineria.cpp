@@ -34,6 +34,7 @@ void Refineria::actualizar_existencia(Jugador &jugador) {
 }
 
 void Refineria::agregar_especia(int especia) {
+	//std::cout << "Refineria::agregar_especia "<< especia << std::endl;
 	cantidad_especia += especia;
 }
 

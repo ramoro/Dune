@@ -12,6 +12,7 @@
 #include "juego.h"
 #include "cola_bloqueante.h"
 #include "organizador_juegos.h"
+#include "conversor.h"
 
 #define POSICION_INHABILITADA 1
 #define PARAMETROS_ESPERADOS 2
@@ -351,6 +352,14 @@ int main() {
   partida.actualizar_modelo(50.0,&cola) ;
   partida.actualizar_modelo(50.0,&cola) ;
 
-  partida.actualizar_modelo(10.0,&cola) ;
+int main() {
+  Conversor conv;
 
+  std::pair<int,int> baldosa(21,1);
+  std::pair<int,int> pixel1(0,79);
+  std::pair<int,int> pixel2(0,101);
+
+  std::cout << conv.de_baldosa_a_pixel(baldosa).first << " de_baldosa_a_pixel " << conv.de_baldosa_a_pixel(baldosa).second << std::endl;
+  std::cout << conv.de_pixel_a_baldosa(pixel1).first << " de_baldosa_a_pixel " << conv.de_pixel_a_baldosa(pixel1).second << std::endl;
+  std::cout << conv.de_pixel_a_baldosa(pixel2).first << " de_baldosa_a_pixel " << conv.de_pixel_a_baldosa(pixel2).second << std::endl;
 }*/

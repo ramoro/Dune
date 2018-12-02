@@ -6,6 +6,7 @@
 #include <list>
 
 class Mapa;
+class UnidadMovible;
 
 /*Clase que representa un buscador del mejor camino para ir
 desde una posicion a otra. Aplica el algoritmo A*.*/
@@ -16,7 +17,8 @@ class BuscadorMejorCamino {
 		una lista con el mejor/mas rapido camino posible para ir desde
 		el punto inicial al final ,utilizando el algoritmo A*. */
 		std::list<std::pair<int, int>> buscar_mejor_camino(Mapa &mapa, 
-		std::pair<int, int> &pos_inicial, std::pair<int, int> &pos_final);
+		std::pair<int, int> &pos_inicial, std::pair<int, int> &pos_final,
+		 UnidadMovible *unidad);
 
 	private:
 		/*Recibe un vector de nodos y lo recorre deleteando el padre

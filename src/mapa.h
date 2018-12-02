@@ -24,6 +24,7 @@ class Cosechadora;
 /*Clase que representa a un mapa del mundo Dune.*/
 class Mapa {
 	private:
+		int cant_pixeles_por_baldosa;
 		std::vector<std::vector<Coordenada>> coordenadas;
 		std::vector<std::vector<Baldosa>> baldosas;
 		std::map<int, ObjetoDune*> mapa_ids_objetos;
@@ -42,6 +43,14 @@ class Mapa {
 		/*Constructor de la clase.*/
 		Mapa(Config &config, int &contador_ids_objetos);
 
+		/*Ubica para cada pixel pasado por parametro a que baldosa 
+		hace referencia*/
+		std::pair<int,int> de_pixel_a_baldosa(std::pair<int,int> pixel);
+
+		/*Ubica para cada baldosa pasada por parametro a que pixel 
+		hace referencia*/
+		std::pair<int,int> de_baldosa_a_pixel(std::pair<int,int> baldosa);
+		
 		/*Recibe una posicion central de un objeto, su base y su altura y se fija
 		si los puntos que lo rodean son del terreno pasado como string.
 		Devuelve true en caso de que el terreno que ocupa el objeto sea del
@@ -149,7 +158,7 @@ class Mapa {
 		que arman el mejor camino para llegar hasta la posicion destino tambien
 		recibida por parametro.*/
 		std::list<std::pair<int, int>> obtener_camino(std::pair<int, int> inicio,
-		std::pair<int, int> final);
+		std::pair<int, int> final, UnidadMovible *unidad);
 
 		/*Recibe el tiempo transcurrido en ms y actualiza la salida del gusano
 		matando a las unidades que se encuentran en la superficie de salida
@@ -183,16 +192,30 @@ class Mapa {
 		/*Devuelve las refinerias que posee el mapa.*/
 		std::map<int, Refineria*> pedir_refinerias();
 
-		void guardar_mensaje_en_colas(std::map<int, std::shared_ptr<ColaBloqueante>> colas,
-		MensajeProtocolo mensaje);
+		/*Guarda los mensajes en las colas bloqueantes*/
+		void guardar_mensaje_en_colas(std::map<int,
+		 std::shared_ptr<ColaBloqueante>> colas, MensajeProtocolo mensaje);
 
-		void terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes);
+		/*Obtiene los mensajes para enviar a los clientes del terreno del mapa
+		y los serializa */
+		void terreno_inicial(std::map<int,
+		 std::shared_ptr<ColaBloqueante>> colas_mensajes);
 
+		/*Busca segun la posicion de la unidad y las especias que hay en el
+		mapa alguna cercana para ir a cosechar, debe estar cercana a 5
+		baldosas de distancia tanto de X como de Y*/
+		std::shared_ptr<Baldosa> obtener_especia_cercana(UnidadMovible* unidad);
+
+		/*Obtiene el camino dentro de la misma baldosa en coordenadas*/
+		std::list<std::pair<int, int>> obtener_camino_misma_baldosa(
+		std::pair<int, int> inicio, std::pair<int, int> final,
+		 UnidadMovible *unidad);
+		
 	private:
 		/*Recibe la posicion central de un objeto, su base y su altura y
 		setea en ocupadas a todas las coordenadas que ocupa.
 		Precondicion:el objeto puede ser agregado.*/
-		void marcar_estado_coordenadas_alrededor(std::pair<int, int> 
+		void marcar_estado_baldosas_alrededor(std::pair<int, int> 
 		pos_central, int altura, int base, bool ocupar);
 
 		/*Devuelve true si encontro una posicion valida para poner la unidad.
