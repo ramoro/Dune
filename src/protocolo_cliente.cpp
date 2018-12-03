@@ -105,8 +105,10 @@ void ProtocoloCliente::iniciar_protocolo() {
 				std::cout << "recibio casa no owner: " << casa <<  std::endl;
 
 				break;
-			} else if(accion == 'g') {
+			} else if (accion == 'g') {
 
+			} else if (accion == 's') {
+				
 			}
 		}
 
