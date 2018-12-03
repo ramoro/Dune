@@ -23,6 +23,9 @@ class Vehiculo: public UnidadMovible {
 
 		/*valida que el terreno no sea ni precipicio ni cima*/
 		bool es_terreno_valido(int terreno);
+
+		virtual int daniar_devastador(UnidadMovible* unidad_atacante);
+
 };
 
 #endif 

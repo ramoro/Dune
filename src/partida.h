@@ -20,7 +20,6 @@ class Partida {
 		std::map<int, std::shared_ptr<Edificio>> edificios;
 		std::map<int, std::shared_ptr<UnidadMovible>> unidades_movibles;
 		FabricaEdificios fabrica_edificios;
-		FabricaUnidadesMovibles fabrica_unidades_movibles;
 		int contador_ids_objetos;
 		Config config;
 

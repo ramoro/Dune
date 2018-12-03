@@ -17,6 +17,11 @@ int tiempo_transcurrido) {
 	return ObjetoDune::reducir_vida(danio_recibido);
 }
 
+int UnidadInfanteria::daniar_devastador(UnidadMovible* unidad_atacante) {
+	int danio_recibido = unidad_atacante->pedir_danio_explosion("infanteria");
+	return ObjetoDune::reducir_vida(danio_recibido);
+}
+
 bool UnidadInfanteria::es_terreno_valido(int terreno){
 	if (terreno == PRECIPICIO)
 		return false;

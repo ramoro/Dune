@@ -19,7 +19,7 @@ void Server::run() {
   	//partida.agregar_jugador("ordos", &cola);
   	OrganizadorJuegos org;
   	int i = 0;
-  	while (i < 1) {
+  	while (i < 2) {
   		Socket *otro_socket = socket->accept_connection();
   		otro_socket->send_int(i);
   		org.agregar_cliente(std::move(*otro_socket));
@@ -34,7 +34,8 @@ void Server::run() {
   			juegos.push_back(juego);
   			//juegos[0]->agregar_jugador(std::move(*otro_socket), "harkonnen");
   		} else {
-			//juegos[0]->agregar_jugador(std::move(*otro_socket), "ordos");  			
+			juegos[0]->agregar_jugador(std::move(*otro_socket), "atreides");  			
+
   		}		
   		delete otro_socket;
   		i++;

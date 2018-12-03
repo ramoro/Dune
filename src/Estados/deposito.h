@@ -13,7 +13,6 @@ class Deposito: public Estado {
 		Refineria* refineria_deposito;
 		int contador_segundo; //lo cuenta en milisegundos. Al llegar 
 								 //al segundo se reinicia.
-		int tiempo_transcurrido;
 		std::shared_ptr<ObjetoDune> especia_a_volver;
 
 	public:

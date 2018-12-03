@@ -4,22 +4,28 @@
 #include <iostream>
 
 Ataque::Ataque(std::shared_ptr<ObjetoDune> objetivo): 
-objeto_destino(objetivo), pos_a_atacar(objetivo->obtener_centro()) {
+objeto_destino(objetivo), pos_a_atacar(objetivo->obtener_esquina()) {
+	// "Ataque "<< pos_a_atacar.first << '-' << pos_a_atacar.second << std::endl;
 	nombre = "ataque";
 }
 
 std::shared_ptr<Estado> Ataque::actualizar(UnidadMovible *unidad,
 Mapa &mapa, int tiempo_transcurrido) {
-
+	if (objeto_destino->esta_fuera_de_juego()){
+		std::cout << "Ataque::actualizar esta muerta " << std::endl;
+		std::shared_ptr<Inactividad> inactividad (new Inactividad());
+		return inactividad;		
+	}
 	//Primero me fijo si esta lo suficientemente cerca
 	//si no lo esta se devuelve el estado moviendose para atacar
 	std::pair<int, int> cercania = mapa.pedir_cercania(unidad->pedir_id(), 
 	objeto_destino->pedir_id());
+	// "Ataque::actualizar cercania "<< cercania.first << '-' << cercania.second << std::endl;
 	if (cercania.first > unidad->obtener_rango_ataque() 
 	|| cercania.second > unidad->obtener_rango_ataque()) {
 			unidad->asignar_nuevo_camino(mapa.obtener_camino(unidad->
-			obtener_centro(), objeto_destino->obtener_centro(),unidad));
-			//unidad->serializar_mensaje_termino_ataque();
+			obtener_centro(), objeto_destino->obtener_esquina(),unidad));
+			unidad->serializar_mensaje_termino_ataque();
 			std::shared_ptr<MovimientoParaAtacar> movimiento_ataque(new 
 			MovimientoParaAtacar(objeto_destino));
 			return movimiento_ataque;
@@ -31,10 +37,9 @@ Mapa &mapa, int tiempo_transcurrido) {
 		//significa que es la cosechadora la q ataco
 		unidad->afectar_terreno(objeto_destino, mapa, tiempo_transcurrido);
 	} 
-	//std::cout << "llego a ataque" << std::endl;
 	for (std::vector<ObjetoDune*>::iterator it = 
 	unidades_afectadas.begin(); it != unidades_afectadas.end(); ++it) {
-		if ((*it)->pedir_id_duenio() == unidad->pedir_id_duenio()){
+		if (unidad->puede_atacar_aliado()){
 			std::shared_ptr<Inactividad> inactividad (new Inactividad());
 			return inactividad;
 		}

@@ -12,6 +12,9 @@ id(id), id_duenio(id_duenio), base(base), altura(altura), centro(centro) {
 }
 
 int ObjetoDune::reducir_vida(int danio) {
+	if (danio>0){
+		std::cout << "ObjetoDune::reducir_vida id "<< id << '-' << danio << std::endl;
+	}
 	vida -= danio;
 	return vida;
 }
@@ -54,12 +57,16 @@ void ObjetoDune::set_centro(std::pair<int, int> centro_nuevo) {
 
 int ObjetoDune::daniar(UnidadMovible* unidad_atacante, 
 int tiempo_transcurrido) {
+	// "entro en daniar de objeto dune" << std::endl;
+	return 0;
+}
+
+int ObjetoDune::daniar_devastador(UnidadMovible* unidad_atacante) {
 	// << "entro en daniar de objeto dune" << std::endl;
 	return 0;
 }
 
 void ObjetoDune::matar() {
-	// << "Asdas" << std::endl;
 }
 
 void ObjetoDune::mensaje_muerte() {
@@ -81,10 +88,14 @@ bool ObjetoDune::esta_fuera_de_juego() {
 	return fuera_de_juego;
 }
 int ObjetoDune::remover_especia(Cosechadora* cosechadora) {
-	// << "entreo a remover especia de objeto dune" << std::endl; 
 	return 0;
 }
 int ObjetoDune::obtener_cantidad_especia() {
-	std::cout << "entreo a remover especia de objeto dune" << std::endl; 
+	// "entreo a remover especia de objeto dune" << std::endl; 
 	return 0;
+}
+
+std::pair<int,int> ObjetoDune::obtener_esquina(){
+	// "ObjetoDune::obtener_esquina va a obtener_centro " << std::endl;
+	return obtener_centro();
 }

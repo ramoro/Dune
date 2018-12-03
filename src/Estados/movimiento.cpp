@@ -14,6 +14,7 @@ Mapa &mapa, int tiempo_transcurrido) {
 		std::shared_ptr<Inactividad> inactividad(new Inactividad());
 		return inactividad;
 	} else if (posicion_ocupada) {
+		// "Movimiento::actualizar "<< unidad->obtener_centro().first << '-' << unidad->obtener_centro().second << std::endl;
 		camino = mapa.obtener_camino(unidad->obtener_centro(), camino.back(),
 			unidad);
 		unidad->asignar_nuevo_camino(camino);
@@ -32,7 +33,7 @@ Mapa &mapa, int tiempo_transcurrido) {
 	if (dist2 <= dist1){
 		unidad->acumular_tiempo(tiempo_transcurrido);
 	} else {
-		//std::cout << "Mover UNidad " << camino.front().first << '-' << camino.front().second<< std::endl;
+		//// "Mover UNidad " << camino.front().first << '-' << camino.front().second<< std::endl;
 		mapa.mover_unidad(unidad->pedir_id(), camino.front());
 		unidad->avanzar_camino();
    		unidad->serializar_mensaje_movimiento(); 

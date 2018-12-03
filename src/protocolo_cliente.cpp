@@ -30,18 +30,18 @@ void ProtocoloCliente::inicializar() {
 void ProtocoloCliente::enviar_mensajes() {
 	try {
 		while (this->jugando) {
-			//// << "en envio mensaje" << std::endl;
+
 			MensajeProtocolo mensaje = this->cola_envio->pop();
 			/* ver si perdio cliente
 			*/
 			/*ver si gano tambien*/
 			unsigned char accion = mensaje.pedir_accion();
-			//std::cout << "Accion a enviar en protocolo cliente por socket: " << accion << " " << "con parametros:"<<std::endl;
+
 			this->socket_cliente.send_msj(&accion, 1);
 			std::vector<int> parametros = mensaje.pedir_parametros();
 			for (std::vector<int>::iterator it = parametros.begin(); 
 			it != parametros.end(); ++it) {
-				// << *it << std::endl;
+
 				this->socket_cliente.send_int(*it);
 			}
 		}
@@ -54,7 +54,7 @@ void ProtocoloCliente::enviar_mensajes() {
 	} catch (std::exception &e){
 		std::cerr << e.what() << " En ProtocoloCliente::enviar_mensajes" << std::endl;
 	} catch (...) {
-		std::cout << "Error desconocido en ProtocoloCliente::enviar_mensajes" << std::endl;
+		// "Error desconocido en ProtocoloCliente::enviar_mensajes" << std::endl;
 	}
 }
 
@@ -149,7 +149,7 @@ void ProtocoloCliente::iniciar_protocolo() {
 	} catch (std::exception &e){
 		std::cerr << e.what() << " En ProtocoloCliente::recibir_mensajes" << std::endl;
 	} catch (...) {
-		std::cout << "Error desconocido en ProtocoloCliente::recibir_mensajes" << std::endl;
+		// "Error desconocido en ProtocoloCliente::recibir_mensajes" << std::endl;
 	}
 }
 

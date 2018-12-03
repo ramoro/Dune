@@ -45,8 +45,14 @@ int id_tipo_edificio) {
 }
 
 int Edificio::daniar(UnidadMovible* unidad_atacante, int tiempo_transcurrido) {
+	std::cout << "Edificio::daniar " << std::endl;
 	int danio_recibido = unidad_atacante->pedir_danio("edificio", 
 	tiempo_transcurrido);
+	return ObjetoDune::reducir_vida(danio_recibido);
+}
+
+int Edificio::daniar_devastador(UnidadMovible* unidad_atacante) {
+	int danio_recibido = unidad_atacante->pedir_danio_explosion("edificio");
 	return ObjetoDune::reducir_vida(danio_recibido);
 }
 
@@ -127,7 +133,7 @@ std::shared_ptr<UnidadMovible> Edificio::agregar_unidad(Mapa &mapa) {
 }
 
 bool Edificio::avanzar_tiempo_creacion(int tiempo_transcurrido) {
-//	std::cout << "Tiempo transcurrido en ms" << tiempo_transcurrido << std::endl;
+//	// "Tiempo transcurrido en ms" << tiempo_transcurrido << std::endl;
 	if (estado == INACTIVO) {
 		return false;
 	} else {
@@ -165,4 +171,11 @@ int Edificio::calcular_distancia_baldosas(std::pair<int,int> &centro_otro){
 	return sqrt((centro.first - centro_otro.first)*(centro.first - 
 		centro_otro.first) + (centro.second - centro_otro.second)*
 	(centro.second - centro_otro.second));
+}
+
+std::pair<int,int> Edificio::obtener_esquina(){
+	// "Edificio::obtener_esquina centro es "<< centro.first << '-' << centro.second << std::endl;
+	std::pair<int,int> esquina(centro.first-base/2,centro.second-altura/2);
+	// "Edificio::obtener_esquina "<< esquina.first << '-' << esquina.second << std::endl;
+	return esquina;
 }

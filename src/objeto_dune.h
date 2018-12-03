@@ -62,6 +62,9 @@ class ObjetoDune {
 		/*Devuelve el la posicion del centro del objeto.*/
 		std::pair<int, int> obtener_centro();
 
+		/*Devuelve el la posicion del centro del objeto.*/
+		virtual std::pair<int, int> obtener_esquina();
+
 		/*Recibe un id de un jugador y le asigna como duenio
 		al objeto el jugador pasado por parametro.*/
 		void asignar_duenio(int id_nuevo_duenio);
@@ -73,6 +76,8 @@ class ObjetoDune {
 		por la unidad atacante y el tiempo pasado.*/
 		virtual int daniar(UnidadMovible* unidad_atacante, 
 		int tiempo_trasncurrido);
+
+		virtual int daniar_devastador(UnidadMovible* unidad_atacante);
 
 		/*Metodo virtual que mata a la unidad (la setea en estado muerta).*/
 		virtual void matar();

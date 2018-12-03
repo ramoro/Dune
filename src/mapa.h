@@ -210,6 +210,9 @@ class Mapa {
 		std::list<std::pair<int, int>> obtener_camino_misma_baldosa(
 		std::pair<int, int> inicio, std::pair<int, int> final,
 		 UnidadMovible *unidad);
+
+		std::vector<ObjetoDune*> buscar_unidades_devastador(
+	UnidadMovible *unidad);
 		
 	private:
 		/*Recibe la posicion central de un objeto, su base y su altura y

@@ -95,7 +95,11 @@
   			}
   			while (!camino.empty()) {
   				Nodo nodo = camino.top();
+<<<<<<< HEAD
+  				// std::get<0>(nodo.obtener_posicion()) << " " << std::get<1>(nodo.obtener_posicion()) << std::endl;
+=======
   				// << std::get<0>(nodo.obtener_posicion()) << " " << std::get<1>(nodo.obtener_posicion()) << std::endl;
+>>>>>>> 06bd08a765543463964ae6d7bc1bf74607f18923
   				camino.pop();
   			}
   			for (std::vector<Nodo>::iterator it_posibles = posibles_nodos.
@@ -199,7 +203,11 @@
   			delete ((*it_no_agregados).obtener_padre());
   		}
 	}
+<<<<<<< HEAD
+  // "salio" << std::endl;
+=======
   // << "salio" << std::endl;
+>>>>>>> 06bd08a765543463964ae6d7bc1bf74607f18923
 }*/
 /*
 int main() {
@@ -220,7 +228,11 @@ int main() {
 }*/
 /*
 int main(int argc, char* argv[]) {
+<<<<<<< HEAD
+  //// "hola " << std::endl;
+=======
   //// << "hola " << std::endl;
+>>>>>>> 06bd08a765543463964ae6d7bc1bf74607f18923
   //Partida partida;
   //ColaBloqueante cola(10);
   //partida.agregar_jugador("harkonnen", &cola);
@@ -260,7 +272,11 @@ int main(int argc, char* argv[]) {
 int main() {
   //return 0;
   ColaBloqueante cola(100);
+<<<<<<< HEAD
+  // "asd" << std::endl;
+=======
   // << "asd" << std::endl;
+>>>>>>> 06bd08a765543463964ae6d7bc1bf74607f18923
   Partida partida;
   partida.agregar_jugador("harkonnen", &cola);
   partida.agregar_jugador("ordos", &cola);
@@ -310,7 +326,11 @@ int main() {
   partida.agregar_jugador("harkonnen");
   std::pair<int, int> centro(100, 100);
   bool agregado = partida.agregar_edificio(0, centro, 0);
+<<<<<<< HEAD
+  // agregado << std::endl;
+=======
   // << agregado << std::endl;
+>>>>>>> 06bd08a765543463964ae6d7bc1bf74607f18923
 }*/
 
 //MAIN NACHO
@@ -359,7 +379,7 @@ int main() {
   std::pair<int,int> pixel1(0,79);
   std::pair<int,int> pixel2(0,101);
 
-  std::cout << conv.de_baldosa_a_pixel(baldosa).first << " de_baldosa_a_pixel " << conv.de_baldosa_a_pixel(baldosa).second << std::endl;
-  std::cout << conv.de_pixel_a_baldosa(pixel1).first << " de_baldosa_a_pixel " << conv.de_pixel_a_baldosa(pixel1).second << std::endl;
-  std::cout << conv.de_pixel_a_baldosa(pixel2).first << " de_baldosa_a_pixel " << conv.de_pixel_a_baldosa(pixel2).second << std::endl;
+  // conv.de_baldosa_a_pixel(baldosa).first << " de_baldosa_a_pixel " << conv.de_baldosa_a_pixel(baldosa).second << std::endl;
+  // conv.de_pixel_a_baldosa(pixel1).first << " de_baldosa_a_pixel " << conv.de_pixel_a_baldosa(pixel1).second << std::endl;
+  // conv.de_pixel_a_baldosa(pixel2).first << " de_baldosa_a_pixel " << conv.de_pixel_a_baldosa(pixel2).second << std::endl;
 }*/

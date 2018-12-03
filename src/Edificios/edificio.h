@@ -33,6 +33,8 @@ class Edificio: public ObjetoDune {
 		/*Devuelve el aporte energetico del edificio, que puede ser tanto
 		positivo o como negativo (resta energia).*/
 		int obtener_aporte_energetico();
+		
+		virtual int daniar_devastador(UnidadMovible* unidad_atacante);
 
 		/*Recibe el mapa del juego, el jugador al que corresponde el edificio,
 		su id y su id de tipo y lo agrega al juego (al mapa
@@ -87,6 +89,9 @@ class Edificio: public ObjetoDune {
 		/*Metodo virtual puro que actualiza al edificio segun si 
 		ha sido destruido o no.*/
 		virtual void actualizar_existencia(Jugador &jugador) = 0;
+
+		/*Devuelve el la posicion del centro del objeto.*/
+		virtual	std::pair<int, int> obtener_esquina();
 
 		/*Se agrega dentro de la clase ObjetoDune la accion 
 		muerte del edificio dentro del juego y los parametros adjuntos a la 

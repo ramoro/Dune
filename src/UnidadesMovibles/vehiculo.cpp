@@ -16,6 +16,11 @@ int Vehiculo::daniar(UnidadMovible* unidad_atacante, int tiempo_transcurrido) {
 	return ObjetoDune::reducir_vida(danio_recibido);
 }
 
+int Vehiculo::daniar_devastador(UnidadMovible* unidad_atacante) {
+	int danio_recibido = unidad_atacante->pedir_danio_explosion("vehiculo");
+	return ObjetoDune::reducir_vida(danio_recibido);
+}
+
 bool Vehiculo::es_terreno_valido(int terreno){
 	if (terreno == CODIGO_PRECIPICIO || terreno == CODIGO_CIMA)
 		return false;

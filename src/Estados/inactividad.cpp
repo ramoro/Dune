@@ -19,8 +19,8 @@ Mapa &mapa, int tiempo_transcurrido) {
 		}
 		unidad->serializar_mensaje_ataque(objetivo_alrededor[0]->pedir_id());
 		//ACA NO SE SI DEVOLVER NUEVO ESTADO ATACANDOQUIETO O NO
-	}/*} else {
-		//unidad->serializar_mensaje_termino_ataque();
-	}*/
+	} else {
+		unidad->serializar_mensaje_termino_ataque();
+	}
 	return NULL;
 }

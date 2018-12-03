@@ -23,7 +23,6 @@ Partida::Partida() {
 	config = std::move(json);
 	Mapa map(this->config, contador_ids_objetos);
 	mapa = std::move(map);
-	// << "contador_ids_objetos " << contador_ids_objetos << std::endl;
 }
 
 void Partida::asignar_casa_a_jugador(int id_casa, int id_jugador) {
@@ -69,12 +68,6 @@ std::pair<int,int> Partida::ubicar_centro_construccion(int id_jugador){
 	std::pair<int,int> ubicacion_centro;
 	int limite_col = (int)mapa.pedir_limite_columnas();
 	int limite_fil = (int)mapa.pedir_limite_filas();
-
-#ifdef NACHO 
-	// << "limite_col " << limite_col << " limite_fil " << limite_fil << std::endl;
-
-	// << "limite_col_bald " << mapa.pedir_limite_columnas_baldosa() << " limite_fil_bald " << mapa.pedir_limite_filas_baldosa() << std::endl;
-#endif
 
 	int rango_col = limite_col/3;
 	int rango_fil = limite_fil/3;
@@ -144,7 +137,6 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		serializar_mensaje_energia(jugadores.at(id_jugador).
 		pedir_energia_disponible(), id_jugador, colas_mensajes);
 	} else {
-		// << "No se pudo construir edificio de tipo " << id_tipo_edificio << std::endl;
 		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_edificio,
 		id_jugador);
 	}
@@ -172,7 +164,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	int id_edificio_entrenando = jugadores.at(id_jugador).
 	pedir_id_edificio_entrenando();
 	if (id_edificio_entrenando != JUGADOR_NO_ENTRENANDO) {
-		// << "ERROR JUGADRO YA ENTRENANDO" << std::endl;
+
 		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad,
 		id_jugador);
 	} else {
@@ -180,7 +172,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		se_puede_agregar_unidad(jugadores.at(id_jugador), 
 		id_tipo_unidad, contador_ids_objetos,config));
 		if (!se_puede_agregar) {
-			// << "ERRO no se puede agregar" << std::endl;
+
 			serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad,
 			id_jugador);
 		} else {
@@ -210,7 +202,6 @@ edificio, int tiempo_transcurrido) {
 	bool entrenamiento_terminado = edificio->
 	avanzar_tiempo_creacion(tiempo_transcurrido);
 	if (entrenamiento_terminado) {
-		// << "se creo unidad" << std::endl;
 		std::shared_ptr<UnidadMovible> unidad_nueva = edificio->
 		agregar_unidad(mapa); //VERIFICAR ESTE AGREGADO CON GDB LUEGO
 		unidades_movibles.emplace(std::pair<int, 
@@ -345,7 +336,6 @@ void Partida::eliminar_objetos_de_sets(std::set<std::shared_ptr<Edificio>>
 
 void Partida::actualizar_modelo(int tiempo_transcurrido, 
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
-	//// << "ACTUALIZA MODELO con tiempo " << tiempo_transcurrido << std::endl; 
 	//actualizo salida del gusano
 	mapa.actualizar_salida_gusano(tiempo_transcurrido, colas_mensajes);
 	
@@ -409,7 +399,6 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 	terrenos_sin_especia.begin(); it_mensajes != 
 	terrenos_sin_especia.end(); ++it_mensajes) {
-		// << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
 		guardar_mensaje_en_colas(colas_mensajes, *it_mensajes);
 	}
 	
@@ -427,7 +416,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		obtener_mensajes_para_mandar();
 		for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 		mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
-			//std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose" << std::endl;
+
 			if ((*it_mensajes).pedir_accion() == CODIGO_MUERTE_OBJETO) {
 				edificios_a_eliminar.insert(it_edifs->second);
 			} else if ((*it_mensajes).pedir_accion() == CODIGO_PERDIO_JUGADOR) {
@@ -451,7 +440,6 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 		for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 		mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
 			std::vector<int> v = (*it_mensajes).pedir_parametros();
-			// << "Mensaje de accion " << (*it_mensajes).pedir_accion() << " encolandose de "   << v[0] << " a " << v[1] << std::endl;
 			if ((*it_mensajes).pedir_accion() == CODIGO_MUERTE_OBJETO) {
 				unidades_a_eliminar.insert(it_unidades->second);
 			}

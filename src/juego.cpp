@@ -14,7 +14,11 @@ using namespace std::chrono;
 
 /*Juego::Juego(Partida *partida): 
 cola_recepcion(TAM_COLA), partida(partida) {
+<<<<<<< HEAD
+  // "Constructor juego sin socket" << std::endl;
+=======
   // << "Constructor juego sin socket" << std::endl;
+>>>>>>> 06bd08a765543463964ae6d7bc1bf74607f18923
   //this->clientes.push_back(new ProtocoloCliente());
 }*/
 
@@ -25,7 +29,7 @@ cola_recepcion(TAM_COLA), partida(part) {
   //this->clientes.push_back(cliente);
  // partida->agregar_jugador("harkonnen", this->colas_envio_clientes);
 }
-	
+
 //aca nose si pasar la cola xq la uso antes o no usarla y q se creen aca
 void Juego::agregar_jugador(std::shared_ptr<ProtocoloCliente> cliente_jugador) {
   int id_cliente = cliente_jugador->pedir_id();
@@ -80,15 +84,7 @@ void Juego::run() {
     if (!cola_recepcion.vacia()) {
       MensajeProtocolo mensaje = cola_recepcion.pop();
       char accion = mensaje.pedir_accion();
-      // << "Accion desencolada en juego: " << accion << std::endl;
       std::vector<int> v = mensaje.pedir_parametros();
-
-#ifdef NACHO 
-      for (unsigned int aux = 0; aux < v.size(); aux++){
-        // << "vector " << aux << " " << v[aux] << " ";
-      }
-      // << std::endl;
-#endif
 
       if (accion == 'e') {
         mutex.lock();
@@ -96,7 +92,6 @@ void Juego::run() {
         v[1], this->colas_envio_clientes);
         mutex.unlock();
       } else if (accion == 'u') {
-        // << "Parametros inicio entrenamiento unidad: " << v[0] << " "<< v[1] << " "<< v[2] << std::endl;
         mutex.lock();
         this->partida->iniciar_entrenamiento_unidad_movible(v[0], v[1], v[2], 
         this->colas_envio_clientes);
@@ -145,7 +140,5 @@ void Juego::run() {
 
   	std::this_thread::sleep_for(std::chrono::milliseconds(tiempo_sleep));
   }
-  // << "Salio del game loop!" << std::endl;
 }
-
 Juego::~Juego() {}

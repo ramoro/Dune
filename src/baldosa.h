@@ -51,7 +51,11 @@ class Baldosa: public ObjetoDune {
 		Precondicion:la coordeanada esta marcada como ocupada.*/
 		void marcar_como_desocupada();
 
+
 		void serializar_mensaje_baldosa(int cant_pixeles_baldosa);
+
+		/*Devuelve el la posicion del centro del objeto.*/
+		virtual std::pair<int, int> obtener_esquina();
 
 		/*Se saca al terreno de la baldosa especia si es que tiene
 		segun la cantidad que puede sacar la unidad recibida. Devuelve
