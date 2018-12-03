@@ -214,6 +214,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 void Partida::eliminar_edificio_del_juego(std::shared_ptr<Edificio> 
 edificio_a_remover, std::map<int, std::shared_ptr<ColaBloqueante>> 
 colas_mensajes) {
+	edificio_a_remover->poner_fuera_de_juego();
 	int id_duenio = edificio_a_remover->pedir_id_duenio();
 	jugadores.at(edificio_a_remover->pedir_id_duenio()).
 	eliminar_edificio(edificio_a_remover);
@@ -225,6 +226,7 @@ colas_mensajes) {
 
 void Partida::eliminar_unidad_del_juego(std::shared_ptr<UnidadMovible> 
 unidad_a_remover) {
+	unidad_a_remover->poner_fuera_de_juego();
 	unidades_movibles.erase(unidad_a_remover->pedir_id());
 	mapa.eliminar_objeto(unidad_a_remover->pedir_id());
 }

@@ -99,3 +99,7 @@ std::pair<int,int> ObjetoDune::obtener_esquina(){
 	// "ObjetoDune::obtener_esquina va a obtener_centro " << std::endl;
 	return obtener_centro();
 }
+
+void ObjetoDune::poner_fuera_de_juego() {
+	fuera_de_juego = true;
+}

@@ -105,6 +105,9 @@ class ObjetoDune {
 		/*Metodo virtual que en caso de tener especia devuelve la cantidad
 		de la misma*/
 		virtual int obtener_cantidad_especia();
+
+		/*Setea en true la variable fuera de juego.*/
+		void poner_fuera_de_juego();
 };
 
 #endif
