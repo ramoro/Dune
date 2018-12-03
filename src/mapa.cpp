@@ -73,7 +73,6 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) : cant_pixeles_por_baldosa(ro
 							terrenos_con_especia.emplace(
 							std::pair<int, std::shared_ptr<Baldosa>>(
 							contador_ids_objetos, bald));
-							//// "ID ESFUER " << contador_ids_objetos << "con pos x " << i << " pos y " << j<<std::endl;
 							break;
 						}
 						case CODIGO_ESPECIASUAVE:
@@ -274,6 +273,7 @@ int altura, int base, bool ocupar) {
 				continue;
 			}
 			if (ocupar){
+
 				baldosas[inicio.first][inicio.second].
 				marcar_como_ocupada_edificio();
 				// "esta ocupada " << inicio.first << " " << inicio.second << std::endl;
@@ -389,7 +389,6 @@ bool Mapa::agregado_edificio(ObjetoDune* objeto) {
 	std::vector<ObjetoDune*> unidades_alrededor; 
 	terreno_valido = verificar_terreno_alrededor(posicion_central, 
 	objeto->obtener_altura(), objeto->obtener_base(), CODIGO_ROCA);
-	// "Terreno valido:" << terreno_valido << " para edificio de tipo " << objeto->pedir_id_tipo() << std::endl;
 	//verifico que no haya ninguna unidad o edificio dentro del espacio
 	//donde se quiere poner el objeto
 	if (terreno_valido) {
@@ -400,7 +399,6 @@ bool Mapa::agregado_edificio(ObjetoDune* objeto) {
 		return false;
 	}
 	if(unidades_alrededor.empty()) {
-		// "Terreno vacio para edificio de tipo " << objeto->pedir_id_tipo() << std::endl;
 		return true;
 	}
 	return false;
@@ -595,6 +593,7 @@ std::pair<int, int> final, UnidadMovible *unidad) {
   		inicio_baldosa.first = it->first;
 		inicio_baldosa.second = it->second;
     	*it = conversor.de_baldosa_a_pixel(*it);
+
     	int neg_sec = 0;
     	int neg_first = 0;
     	if (diff_first == -1){
@@ -603,6 +602,7 @@ std::pair<int, int> final, UnidadMovible *unidad) {
     	if (diff_second == -1){
     		neg_sec = 1;
     	}
+
     	for(int i = cant_pixeles_por_baldosa ; i > 0 ; i--){
     		std::pair<int,int> sig(((it->first+=diff_first) + (i*neg_first)),
     			(it->second+=diff_second) + (i*neg_sec));
@@ -613,6 +613,7 @@ std::pair<int, int> final, UnidadMovible *unidad) {
 	    	if (neg_sec == 1){
 				it->second-=diff_second;
 	    	}
+
 	    	if (inicio_baldosa == final_baldosa){
 				std::list<std::pair<int, int>> dentro_baldosa = 
 				obtener_camino_misma_baldosa(sig, final, unidad);
@@ -726,16 +727,24 @@ void Mapa::terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> colas_
 	for (unsigned int i = 0 ; i < baldosas.size() ; i++){
 		for (unsigned int j = 0 ; j < baldosas[0].size() ; j++){
 			std::vector<MensajeProtocolo> mensajes = baldosas[i][j].obtener_mensajes_para_mandar();
-			// baldosas[i][j].cantidad_mensajes() << std::endl;
+			// << baldosas[i][j].cantidad_mensajes() << std::endl;
 			for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 			mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
 				std::vector<int> v = (*it_mensajes).pedir_parametros();
-//				// "Mensaje de accion " << (*it_mensajes).pedir_accion() << v[4] << v[5] << std::endl;
+
+				//std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << v[4] << v[5] << std::endl;
 				guardar_mensaje_en_colas(colas_mensajes, *it_mensajes);
 			}
 			baldosas[i][j].limpiar_lista_mensajes();
 		}
 	}
+	/*MensajeProtocolo mensaje;
+	mensaje.asignar_accion('h');
+	mensaje.agregar_parametro(0);
+	mensaje.agregar_parametro(0);
+	mensaje.agregar_parametro(3500);
+	mensaje.agregar_parametro(5000);
+	guardar_mensaje_en_colas(colas_mensajes, mensaje);*/
 }
 
 void Mapa::guardar_mensaje_en_colas(

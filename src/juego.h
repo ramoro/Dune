@@ -13,11 +13,13 @@
 #include "partida.h"
 #include "thread.h"
 
-class Juego {
+class ProtocoloCliente;
+
+class Juego: public Thread {
   private:
     std::map<int, std::shared_ptr<ColaBloqueante>> colas_envio_clientes;
     ColaSegura cola_recepcion;
-    Partida* partida;
+    std::shared_ptr<Partida> partida;
     bool stopped = false;
     bool terminado = false;
     std::map<int,std::shared_ptr<ProtocoloCliente>> clientes;
@@ -28,9 +30,9 @@ class Juego {
    // Juego(Partida *partida);
     
     /*Constructor de la clase.*/
-    Juego(Partida *partida);
+    Juego(std::shared_ptr<Partida> part);
 
-    void agregar_jugador(Socket skt_cliente, std::string casa);
+    void agregar_jugador(std::shared_ptr<ProtocoloCliente> cliente_jugador);
 
     //virtual 
     void run();
@@ -39,7 +41,7 @@ class Juego {
     //void stop();
 
     /*Destructor de la clase.*/
-    //virtual ~Juego();
+    virtual ~Juego();
   
   private:
     /*Prepara las colas para recibir y enviar mensajes.*/

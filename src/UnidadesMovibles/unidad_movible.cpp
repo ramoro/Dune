@@ -108,7 +108,6 @@ bool UnidadMovible::se_puede_agregar(Jugador
 }
 
 void UnidadMovible::agregar(Mapa &mapa) {
-	// "unidad en x " << (this->centro).first << " y " << (this->centro).second << std::endl;
 	mapa.agregar_objeto(this, this->id,
 	this->centro,false);
 	estado = estado->cambiar_a_inactividad();
@@ -130,14 +129,14 @@ Mapa &mapa) {
 	//por si sale algo mal y no se vacio del todo el camino
 	//cuando la unidad llego
 	//if (camino.empty()) return;
-//	// "centro: " << centro.first << centro.second << " de la unidad " << id << std::endl;
+	// << "centro: " << centro.first << centro.second << " de la unidad " << id << std::endl;
 	if (estado) {
 		std::shared_ptr<Estado> nuevo_estado = estado->actualizar(this, mapa,
 		tiempo_transcurrido);
-//		// "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
+		//std::cout << "estado actual de "<< id << " estado: " << estado->pedir_nombre() << std::endl;
 		//si no es null le asigno el nuevo estado
 		if (nuevo_estado) {
-			// "nuevo estado " << " estado: " << nuevo_estado->pedir_nombre() << std::endl;
+			// << "nuevo estado " << " estado: " << nuevo_estado->pedir_nombre() << std::endl;
 			estado = nuevo_estado;
 		}
 	}
@@ -202,7 +201,7 @@ void UnidadMovible::limpiar_camino() {
 	camino.clear();
 }
 
-std::vector<std::string> UnidadMovible::obtener_casa(){
+std::vector<int> UnidadMovible::obtener_casa(){
 	return casa;
 }
 
@@ -210,7 +209,6 @@ void UnidadMovible::afectar_terreno(std::shared_ptr<ObjetoDune> terreno,
 Mapa &mapa, int tiempo_transcurrido) {}
 
 int UnidadMovible::depositar_especia_en_segundo() {
-	// "se llamo a depositar_especia_en_segundo de un mov" 
 	//<< std::endl;
 	return 0;
 }

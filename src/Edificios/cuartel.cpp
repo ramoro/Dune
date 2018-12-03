@@ -4,6 +4,9 @@
 #define CUARTELATREIDES 6
 #define CUARTELHARKONNEN 7
 #define CUARTELORDOS 8
+#define CASA_ATREIDES 101
+#define CASA_HARKONNEN 102
+#define CASA_ORDOS 103
 
 Cuartel::Cuartel(int id, int id_duenio, std::pair<int, int> centro,
  Config &config, int  id_tipo_edificio) :
@@ -17,15 +20,15 @@ Cuartel::Cuartel(int id, int id_duenio, std::pair<int, int> centro,
 
 bool Cuartel::agregar_al_juego(Mapa &mapa, Jugador &jugador, int id_edificio, 
 int id_tipo_edificio) {
-	if (jugador.obtener_casa() == "harkonnen" && 
+	if (jugador.obtener_casa() == CASA_HARKONNEN && 
 		id_tipo_edificio == CUARTELHARKONNEN){
 		return Edificio::agregar(mapa, jugador, id_edificio,
 		 id_tipo_edificio);
-	} else if (jugador.obtener_casa() == "ordos" && 
+	} else if (jugador.obtener_casa() == CASA_ORDOS && 
 		id_tipo_edificio == CUARTELORDOS){
 		return Edificio::agregar(mapa, jugador, id_edificio,
 		 id_tipo_edificio);
-	} else if (jugador.obtener_casa() == "atreides" && 
+	} else if (jugador.obtener_casa() == CASA_ATREIDES && 
 		id_tipo_edificio == CUARTELATREIDES){
 		return Edificio::agregar(mapa, jugador, id_edificio,
 		 id_tipo_edificio);

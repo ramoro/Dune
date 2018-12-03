@@ -1,86 +1,55 @@
 #include "server.h"
-#include <cstdlib>
-#include <functional>
 #include <iostream>
-#include <vector>
-#include "partida.h"
-#include "juego.h"
+#include <ctime>
+#include <chrono>
+#include <ratio>
 //#include "socket_error.h"
 
-#define MOVER 'm'
-#define ATACAR 'a'
-#define CREAR_EDIFICIO 'e'
-#define CREAR_UNIDAD 'u'
+using namespace std::chrono;
 
-Server::Server(char *servicename) {
-	socket = new Socket(servicename, 10);
-	server_finalizado = false;
+Server::Server(char *servicename, int max_cant_escucha_clientes,
+OrganizadorJuegos &organizador): organizador_juegos(organizador) {
+	socket = new Socket(servicename, max_cant_escucha_clientes);
 }
 
-void Server::enviar_info_vectores_enteros(std::vector<std::vector<int>> &data,
-char *codigo) {
-	for (std::vector<std::vector<int>>::iterator it = 
-	data.begin(); it != data.end(); ++it) {
-		socket->send_msj((unsigned char*)codigo, 1);
-		for (std::vector<int>::iterator it2 = (*it).begin();
-		it2 != (*it).end(); ++it2) {
-			socket->send_int(*it2);
-		}
-	}
-}
-
-void Server::aceptar_cliente() {
-	Partida partida;
+void Server::run() {
+	/*Partida partida;
 	std::vector<std::shared_ptr<ColaBloqueante>> colas;
   	//partida.agregar_jugador("harkonnen", colas);
   	//partida.agregar_jugador("ordos", &cola);
+  	OrganizadorJuegos org;
   	int i = 0;
   	while (i < 2) {
   		Socket *otro_socket = socket->accept_connection();
   		otro_socket->send_int(i);
-  		/*otro_socket->send_int(1);
-  		otro_socket->send_int(1);
-  		otro_socket->send_int(150000);
- 		otro_socket->send_int(150000);
- 		int aux = otro_socket->recv_int(); 
- 		aux++;*/
+  		org.agregar_cliente(std::move(*otro_socket));
+  		//otro_socket->send_int(1);
+  		//otro_socket->send_int(1);
+  		//otro_socket->send_int(150000);
+ 		//otro_socket->send_int(150000);
+ 		//int aux = otro_socket->recv_int(); 
+ 		//aux++;
   		if ( i == 0) {
-  			std::shared_ptr<Juego> juego(new Juego(&partida));
+  			std::shared_ptr<Juego> juego(new Juego());
   			juegos.push_back(juego);
-  			juegos[0]->agregar_jugador(std::move(*otro_socket), "harkonnen");
+  			//juegos[0]->agregar_jugador(std::move(*otro_socket), "harkonnen");
   		} else {
 			juegos[0]->agregar_jugador(std::move(*otro_socket), "atreides");  			
+
   		}		
   		delete otro_socket;
   		i++;
   	}
-	juegos[0]->run();
-	
-	
-
-	
-
-
-	//enviar_mapa(otro_socket);
-	/*Partida partida;
-  	partida.agregar_jugador("je");
-  	partida.agregar_jugador("asd");
-  	bool agregado = partida.agregar_edificio(0, std::pair<int, int>(50,50), 6);
-	otro_socket->send_int(1);
-	std::pair<int, std::pair<int,int>> nueva_unidad = partida.agregar_unidad_movible(0, 0);
-	otro_socket->send_int(nueva_unidad.first);//mando id
-	otro_socket->send_int((nueva_unidad.second).first);//mando su coordx
-	otro_socket->send_int((nueva_unidad.second).second);//mando coordy
-	agregado = partida.agregar_edificio(1, std::pair<int, int>(150,150), 6);
-	otro_socket->send_int(1);
-	nueva_unidad = partida.agregar_unidad_movible(0, 2);
-	otro_socket->send_int(nueva_unidad.first);//mando id
-	otro_socket->send_int((nueva_unidad.second).first);//mando su coordx
-	otro_socket->send_int((nueva_unidad.second).second);//mando coordy*/
-
-	
-
-
+	juegos[0]->run();*/
+	while(true) {
+		try {
+			Socket *otro_socket = socket->accept_connection();
+			organizador_juegos.agregar_cliente(std::move(*otro_socket));
+			delete otro_socket;
+		} catch (...) {
+			break;
+		}
+	}
 }
 
 /*void Server::aceptar_cliente() {
@@ -96,48 +65,8 @@ void Server::aceptar_cliente() {
 	}
 }*/
 
-void Server::ejecutar_accion(Socket *otro_socket) {
-	/*while(true) {
-		if(server_finalizado) break;
-		unsigned char *accion;
-  		otro_socket->recv_msj(accion, 1);
-	
-		if (*accion == MOVER) {
-			// "claa" << std::endl;
-		} else if (*accion == ATACAR) {
-			
-		} else if (*accion == CREAR_EDIFICIO) {
-			
-		} else if (*accion == CREAR_UNIDAD) {
-			
-		}
-	}*/
-	delete otro_socket;
-}
-
-void Server::enviar_mapa(Socket* otro_socket) {
-	std::vector<std::vector<int>> edificios = {{0, 0, 1, 300,
-	300, 50, 50}, {1, 1, 1, 300, 300, 1000, 1000}};
-	std::vector<std::vector<int>> terrenos = {{0, 500, 500, 50, 50},
-	{2, 200, 200, 700, 700}};
-	// "envia1" << std::endl;
-	//char codigo_edificio = 'e';
-	//char codigo_terreno = 't';
-	//enviar_info_vectores_enteros(edificios, &codigo_edificio);
-	//enviar_info_vectores_enteros(terrenos, &codigo_terreno);
-	unsigned char codigo = 's';
-	otro_socket->send_msj(&codigo, 1);
-	// "envia2" << std::endl;
-}
-
 void Server::apagar() {
-	server_finalizado = true;
-	unsigned int i = 0;
-	while(i < threads.size()) {
-		threads[i]->join();
-		delete threads[i];
-		i++;
-	}
+	socket->close_socket();
 }
 
 Server::~Server() {

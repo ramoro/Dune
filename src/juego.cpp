@@ -1,9 +1,10 @@
 #include "juego.h"
+#include "conversor.h"
+#include "protocolo_cliente.h"
 #include <iostream>
 #include <ctime>
 #include <chrono>
 #include <ratio>
-#include "conversor.h"
 
 using namespace std::chrono;
 
@@ -13,36 +14,43 @@ using namespace std::chrono;
 
 /*Juego::Juego(Partida *partida): 
 cola_recepcion(TAM_COLA), partida(partida) {
+<<<<<<< HEAD
   // "Constructor juego sin socket" << std::endl;
+=======
+  // << "Constructor juego sin socket" << std::endl;
+>>>>>>> 06bd08a765543463964ae6d7bc1bf74607f18923
   //this->clientes.push_back(new ProtocoloCliente());
 }*/
 
-Juego::Juego(Partida *partida): 
-cola_recepcion(TAM_COLA), partida(partida) {
+Juego::Juego(std::shared_ptr<Partida> part): 
+cola_recepcion(TAM_COLA), partida(part) {
   //std::shared_ptr<ProtocoloCliente> cliente(new 
   //ProtocoloCliente(std::move(skt_cliente)));
   //this->clientes.push_back(cliente);
  // partida->agregar_jugador("harkonnen", this->colas_envio_clientes);
 }
 
-void Juego::agregar_jugador(Socket skt_cliente, std::string casa) {
-  int id_cliente = partida->pedir_id_nuevo_cliente();
-  // "id_cliente " << id_cliente << std::endl;
-  std::shared_ptr<ProtocoloCliente> cliente(new 
-  ProtocoloCliente(std::move(skt_cliente)));
+//aca nose si pasar la cola xq la uso antes o no usarla y q se creen aca
+void Juego::agregar_jugador(std::shared_ptr<ProtocoloCliente> cliente_jugador) {
+  int id_cliente = cliente_jugador->pedir_id();
+  // << "id_cliente " << id_cliente << " siendo agregado al juego"<< std::endl;
   this->clientes.emplace(
-  std::pair<int, std::shared_ptr<ProtocoloCliente>>(id_cliente, cliente));
+  std::pair<int, std::shared_ptr<ProtocoloCliente>>(id_cliente,
+  cliente_jugador));
   std::shared_ptr<ColaBloqueante> cola_bloq(new ColaBloqueante(TAM_COLA));
   this->colas_envio_clientes.emplace(
   std::pair<int, std::shared_ptr<ColaBloqueante>>(id_cliente, cola_bloq));
-  partida->agregar_jugador(casa, this->colas_envio_clientes);
+  cliente_jugador->agregar_colas(cola_bloq, &(this->cola_recepcion));
+  partida->agregar_jugador(id_cliente, this->colas_envio_clientes);
 }
 
 
 void Juego::hacer_ajustes_iniciales() {
   for (std::map<int, std::shared_ptr<ProtocoloCliente>>::iterator 
   it = this->clientes.begin(); it != this->clientes.end(); ++it) {
-    (it->second)->agregar_colas(this->colas_envio_clientes.at(it->first), &(this->cola_recepcion));
+    //(it->second)->agregar_colas(this->colas_envio_clientes.at(it->first), &(this->cola_recepcion));
+   // std::cout << "casa que tendra jugador " << (it->second)->pedir_casa() << std::endl;
+    //partida->asignar_casa_a_jugador((it->second)->pedir_casa(), it->first);
     (it->second)->inicializar();
   }
 
@@ -50,12 +58,19 @@ void Juego::hacer_ajustes_iniciales() {
   this->partida->terreno_inicial(this->colas_envio_clientes);
   this->partida->actualizar_modelo(MILISEGUNDOS_POR_FRAME, this->colas_envio_clientes);
   mutex.unlock();
+    MensajeProtocolo mensaje;
+  mensaje.asignar_accion('h');
+  mensaje.agregar_parametro(0);
+  mensaje.agregar_parametro(0);
+  mensaje.agregar_parametro(3500);
+  mensaje.agregar_parametro(5000);
   MensajeProtocolo msj;
   msj.asignar_accion('x');
   for (std::map<int, std::shared_ptr<ColaBloqueante>>::iterator it =
   this->colas_envio_clientes.begin(); it != 
   this->colas_envio_clientes.end(); ++it) {
-    // "Se encolo la x de inicio de juego" << std::endl;
+    // << "Se encolo la x de inicio de juego" << std::endl;
+    (it->second)->push(mensaje);
     (it->second)->push(msj);
   }
 }
@@ -69,14 +84,10 @@ void Juego::run() {
     if (!cola_recepcion.vacia()) {
       MensajeProtocolo mensaje = cola_recepcion.pop();
       char accion = mensaje.pedir_accion();
-      // "Accion desencolada en juego: " << accion << std::endl;
       std::vector<int> v = mensaje.pedir_parametros();
 
 #ifdef NACHO 
       for (unsigned int aux = 0; aux < v.size(); aux++){
-        // "vector " << aux << " " << v[aux] << " ";
-      }
-      // std::endl;
 #endif
 
       if (accion == 'e') {
@@ -85,7 +96,6 @@ void Juego::run() {
         v[1], this->colas_envio_clientes);
         mutex.unlock();
       } else if (accion == 'u') {
-        // "Parametros inicio entrenamiento unidad: " << v[0] << " "<< v[1] << " "<< v[2] << std::endl;
         mutex.lock();
         this->partida->iniciar_entrenamiento_unidad_movible(v[0], v[1], v[2], 
         this->colas_envio_clientes);
@@ -103,9 +113,12 @@ void Juego::run() {
         mutex.lock();
         this->partida->vender_edificio(v[0], this->colas_envio_clientes);
         mutex.unlock();
+      } else if (accion == 'h') {
+        mutex.lock();
+        this->partida->asignar_casa_a_jugador(v[0], v[1]);
+        mutex.unlock();
       } else if (accion == 's') {
-        // "entro a accion salida de cliente "<< v[0] << std::endl;
-
+        this->partida->eliminar_jugador(v[0], this->colas_envio_clientes);
         this->colas_envio_clientes.at(v[0])->cerrar();
         this->clientes.at(v[0])->finalizar();
         this->colas_envio_clientes.erase(v[0]);
@@ -128,5 +141,6 @@ void Juego::run() {
 
   	std::this_thread::sleep_for(std::chrono::milliseconds(tiempo_sleep));
   }
-  // "Salio del game loop!" << std::endl;
 }
+
+Juego::~Juego() {}

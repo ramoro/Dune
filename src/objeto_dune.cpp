@@ -62,11 +62,11 @@ int tiempo_transcurrido) {
 }
 
 int ObjetoDune::daniar_devastador(UnidadMovible* unidad_atacante) {
+	// << "entro en daniar de objeto dune" << std::endl;
 	return 0;
 }
 
 void ObjetoDune::matar() {
-	// "Asdas" << std::endl;
 }
 
 void ObjetoDune::mensaje_muerte() {
@@ -88,7 +88,6 @@ bool ObjetoDune::esta_fuera_de_juego() {
 	return fuera_de_juego;
 }
 int ObjetoDune::remover_especia(Cosechadora* cosechadora) {
-	// "entreo a remover especia de objeto dune" << std::endl; 
 	return 0;
 }
 int ObjetoDune::obtener_cantidad_especia() {

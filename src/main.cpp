@@ -11,9 +11,16 @@
 #include "server.h"
 #include "juego.h"
 #include "cola_bloqueante.h"
+#include "organizador_juegos.h"
 #include "conversor.h"
 
 #define POSICION_INHABILITADA 1
+#define PARAMETROS_ESPERADOS 2
+#define OK 0
+#define ERROR_CANT_PARAMETROS -1
+#define ERROR_EN_SERVIDOR -2
+#define CANT_MAX_ESCUCHA_CLIENTES 30
+#define CODIGO_SALIDA "cerrar"
 
 /*int main(int argc, char* argv[]) {
  Config config("../src/input.json");
@@ -88,7 +95,11 @@
   			}
   			while (!camino.empty()) {
   				Nodo nodo = camino.top();
+<<<<<<< HEAD
   				// std::get<0>(nodo.obtener_posicion()) << " " << std::get<1>(nodo.obtener_posicion()) << std::endl;
+=======
+  				// << std::get<0>(nodo.obtener_posicion()) << " " << std::get<1>(nodo.obtener_posicion()) << std::endl;
+>>>>>>> 06bd08a765543463964ae6d7bc1bf74607f18923
   				camino.pop();
   			}
   			for (std::vector<Nodo>::iterator it_posibles = posibles_nodos.
@@ -192,7 +203,11 @@
   			delete ((*it_no_agregados).obtener_padre());
   		}
 	}
+<<<<<<< HEAD
   // "salio" << std::endl;
+=======
+  // << "salio" << std::endl;
+>>>>>>> 06bd08a765543463964ae6d7bc1bf74607f18923
 }*/
 /*
 int main() {
@@ -211,9 +226,13 @@ int main() {
  // partida.actualizar_modelo(1000, colas);
   //partida.actualizar_modelo(80,colas);
 }*/
-
+/*
 int main(int argc, char* argv[]) {
+<<<<<<< HEAD
   //// "hola " << std::endl;
+=======
+  //// << "hola " << std::endl;
+>>>>>>> 06bd08a765543463964ae6d7bc1bf74607f18923
   //Partida partida;
   //ColaBloqueante cola(10);
   //partida.agregar_jugador("harkonnen", &cola);
@@ -223,13 +242,41 @@ int main(int argc, char* argv[]) {
   Server server(argv[1]);
   server.aceptar_cliente();
 }
+*/
+int main(int argc, char* argv[]) {
+  if (argc != PARAMETROS_ESPERADOS) {
+    return ERROR_CANT_PARAMETROS;
+  }
+  OrganizadorJuegos organizador;
+  
+  try {
+    Server server(argv[1], CANT_MAX_ESCUCHA_CLIENTES, organizador);
+    server.start();
 
+    std::string mensaje_cierre;
+    while (std::getline(std::cin, mensaje_cierre)){
+      if (mensaje_cierre == CODIGO_SALIDA){
+        server.apagar();
+        break;
+      }
+    }
+    server.join();
+  } catch (...) {
+    return ERROR_EN_SERVIDOR;
+  }
+
+  return OK;
+}
 
 /*
 int main() {
   //return 0;
   ColaBloqueante cola(100);
+<<<<<<< HEAD
   // "asd" << std::endl;
+=======
+  // << "asd" << std::endl;
+>>>>>>> 06bd08a765543463964ae6d7bc1bf74607f18923
   Partida partida;
   partida.agregar_jugador("harkonnen", &cola);
   partida.agregar_jugador("ordos", &cola);
@@ -279,11 +326,53 @@ int main() {
   partida.agregar_jugador("harkonnen");
   std::pair<int, int> centro(100, 100);
   bool agregado = partida.agregar_edificio(0, centro, 0);
+<<<<<<< HEAD
   // agregado << std::endl;
+=======
+  // << agregado << std::endl;
+>>>>>>> 06bd08a765543463964ae6d7bc1bf74607f18923
 }*/
 
 //MAIN NACHO
-/*int main() {
+/*nt main() {
+  Partida partida;
+
+  ColaBloqueante cola(100);
+
+  partida.agregar_jugador("ordos",&cola);
+  partida.agregar_jugador("harkonnen",&cola);
+  //std::pair<int, int> centro(100, 100);
+  //bool agregado = partida.agregar_edificio(0, centro, 0);
+  //// << agregado << std::endl;
+  //std::pair<int, std::pair<int ,int>> nueva_unidad = partida.agregar_unidad_movible(2,0);
+  //// << "ID nueva unidad " << nueva_unidad.first << std::endl;
+
+  //partida.agregar_edificio(0, std::pair<int, int>(400,400), 4);
+  //partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
+  // partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
+  partida.agregar_edificio(0, std::pair<int, int>(7,7), 4,&cola);
+  //partida.agregar_edificio(0, std::pair<int, int>(13,13), 4,&cola);
+
+
+  partida.agregar_edificio(1, std::pair<int, int>(10,5), 4,&cola);
+
+  //partida.agregar_edificio(0, std::pair<int, int>(500,500), 5);
+  //partida.agregar_edificio(0, std::pair<int, int>(700,700), 7);
+
+  for (int i = 0; i < 2 ; i++) {
+    partida.iniciar_entrenamiento_unidad_movible(15,366,0,&cola);
+    partida.actualizar_modelo(20000.0,&cola) ;
+  }
+
+  //partida.comenzar_movimiento_unidad(365,std::pair<int, int>(3,3));
+  
+  partida.atacar_objeto(367,366);
+
+  partida.actualizar_modelo(50.0,&cola) ;
+  partida.actualizar_modelo(50.0,&cola) ;
+  partida.actualizar_modelo(50.0,&cola) ;
+
+int main() {
   Conversor conv;
 
   std::pair<int,int> baldosa(21,1);

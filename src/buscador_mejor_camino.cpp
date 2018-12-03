@@ -64,7 +64,11 @@ std::list<std::pair<int, int>> BuscadorMejorCamino::buscar_mejor_camino
   			}
   			/*while (!camino.empty()) {
   				Nodo nodo = camino.top();
+<<<<<<< HEAD
   				// std::get<0>(nodo.obtener_posicion()) << " " << std::get<1>(nodo.obtener_posicion()) << std::endl;
+=======
+  				// << std::get<0>(nodo.obtener_posicion()) << " " << std::get<1>(nodo.obtener_posicion()) << std::endl;
+>>>>>>> 06bd08a765543463964ae6d7bc1bf74607f18923
   				camino.pop();
   			}*/
 
@@ -103,7 +107,6 @@ std::list<std::pair<int, int>> BuscadorMejorCamino::buscar_mejor_camino
 
         if (mapa.esta_ocupada_baldosa(posicion_adyacente) && 
         posicion_adyacente != pos_final) {
-          //// "Esta ocupada " << posicion_adyacente.first << " " << posicion_adyacente.second << std::endl;
           continue;
         }
   			Nodo *nodo_aux = new Nodo(nodo_evaluado);

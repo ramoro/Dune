@@ -9,8 +9,6 @@
 Es un centro de entrenamiento de las unidades de infantería.
 Cada casa tiene un cuarte que la distingue.*/
 class Cuartel: public Edificio{
-	private:
-		std::string casa;
 	public:
 		/*Constructor de la clase. Recibe un string con el nombre
 		de la casa a la que pertenece.*/

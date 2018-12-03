@@ -80,7 +80,11 @@ void Baldosa::serializar_mensaje_baldosa(int cant_pixeles_baldosa) {
 }
 
 int Baldosa::cantidad_mensajes(){
+<<<<<<< HEAD
 	//// mensaje.pedir_accion() << std::cout;
+=======
+	//// << mensaje.pedir_accion() << //;
+>>>>>>> 06bd08a765543463964ae6d7bc1bf74607f18923
 	return mensajes.size();
 }
 

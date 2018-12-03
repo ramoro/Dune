@@ -18,7 +18,7 @@ centro, Config &config) :
 		armas.push_back(RifleAsalto(rifle));
 		for (unsigned int i = 0; i < 
 		config["InfanteriaLigera"]["casas"].size(); i++) {
-			casa.push_back(config["InfanteriaLigera"]["casas"][i].asString());
+			casa.push_back(config["InfanteriaLigera"]["casas"][i].asInt());
 		}	
 		for (unsigned int i = 0; i < 
 		config["InfanteriaLigera"]["edificios_necesarios"].size(); i++) {

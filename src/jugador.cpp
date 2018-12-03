@@ -6,12 +6,13 @@
 
 #define NO_ESTA_ENTRENANDO -1
 
-Jugador::Jugador(std::string casa, Config &config): casa(casa) {
+Jugador::Jugador(Config &config) {
 	dinero = config["Jugadores"].get("dinero", 0).asInt();
 	capacidad_especia = 0;
 	capacidad_especia_disponible = 0;
 	energia_disponible = 0;
 	id_edificio_entrenando_unidad = -1;
+	casa = -1;
 }
 
 void Jugador::agregar_edificio(Edificio* edificio, 
@@ -36,7 +37,6 @@ void Jugador::eliminar_edificio(std::shared_ptr<Edificio> edificio) {
 }
 
 void Jugador::aumentar_dinero(int valor) {
-	//// "se aumento dinero" << std::endl;
 	dinero += valor;
 }
 
@@ -60,11 +60,9 @@ void Jugador::reducir_capacidad_especia(int cap_a_reducir) {
 }
 
 bool Jugador::agregada_unidad(UnidadMovible* unidad) {
-	std::vector<std::string> casas= unidad->obtener_casa();
+	std::vector<int> casas= unidad->obtener_casa();
 	if (unidad->obtener_costo() > dinero || (std::find(casas.begin(),
 	 casas.end(), casa) == casas.end())){
-			// " El edificio no pertenece a la casa " <<
-	//		 casa << std::endl;
 		return false;
 	}
 	bool creacion = true;
@@ -80,19 +78,16 @@ bool Jugador::agregada_unidad(UnidadMovible* unidad) {
 			} else if ((edificios_por_tipo.count(8) > 0) && (edificios_por_tipo.at(8) > 0)){
 				continue;
 			} else {
-				// " NO existe cuartel " << std::endl;
 				creacion = false;
 				break;
 			}
 		} else {
 			if (edificios_por_tipo.count(*it) == 0) {
-				// " NO existen edificios necesarios " << std::endl;
 				creacion = false;
 				break;
 			}
 			if (edificios_por_tipo.at(*it) == 0) {
 				creacion = false;
-				// " NO existen edificios necesarios 2 " << std::endl;
 				break;
 			}
 		}
@@ -131,6 +126,10 @@ int Jugador::pedir_dinero() {
 	return dinero;
 }
 
-std::string Jugador::obtener_casa() {
+int Jugador::obtener_casa() {
 	return casa;
+}
+
+void Jugador::asignar_casa(int id_casa) {
+	casa = id_casa;
 }

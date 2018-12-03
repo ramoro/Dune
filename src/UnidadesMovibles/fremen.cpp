@@ -21,7 +21,7 @@ Fremen::Fremen(int id, int id_duenio, std::pair<int, int> centro,
 		armas.push_back(LanzaMisiles(lanza_misiles));
 		for (unsigned int i = 0; i < 
 		config["Fremen"]["casas"].size(); i++) {
-			casa.push_back(config["Fremen"]["casas"][i].asString());
+			casa.push_back(config["Fremen"]["casas"][i].asInt());
 		}	
 		for (unsigned int i = 0; i < 
 		config["Fremen"]["edificios_necesarios"].size(); i++) {
