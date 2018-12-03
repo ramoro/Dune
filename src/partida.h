@@ -117,10 +117,10 @@ class Partida {
 		int obtener_limite_mapa_columna();
 		
 	private:
-		/*Recibe el puntero al edificio a actualizar el tiempo de entenamiento
-		y el tiempo pasado.*/
+		/*Recibe el puntero al edificio a actualizar, el tiempo transcurrido
+		y el id del tipo de la unidad a avanzarle el tiempo de entrenamiento.*/
 		void actualizar_creacion_unidades(std::shared_ptr<Edificio> 
-		edificio, int tiempo_transcurrido);
+		edificio, int tiempo_transcurrido, int id_tipo_unidad);
 
 		/*Recibe un puntero a un edificio y lo elimina completamente del 
 		juego, encolando el mensaje de cambio de energia en la cola

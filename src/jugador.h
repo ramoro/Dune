@@ -5,6 +5,7 @@
 #include <map>
 #include <vector>
 #include <memory>
+#include <list>
 #include "observador.h"
 #include "config.h"
 
@@ -23,7 +24,9 @@ class Jugador {
 										//que tiene el jugador para guardar
 										//especia solo el disponible
 		int energia_disponible;
-		int id_edificio_entrenando_unidad;
+		std::map<int, int> unidades_entrenando; //posee como claves
+		//el tipo de unidad siendo entre nada y como valor el id
+		//del edificio que la entrena
 
 	public:
 		/*Constructor de la clase.*/
@@ -70,19 +73,19 @@ class Jugador {
 		tiene generando.*/
 		int pedir_energia_disponible();
 
-		/*Recibe el id de un edificio y se lo asgina al jugador
-		como el edificio que actualmente esta entrenando
-		una unidad.*/
-		void agregar_edificio_entrenando(int id_edificio);
+		/*Recibe el id del tipo de una unidad y el id del edificio
+		que lo esta entrenando y los agrega al map de unidades
+		entrenando.*/
+		void agregar_tipo_unidad_entrenando(int id_tipo_unidad,
+		int id_edificio_que_entrena);
 
-		/*Pone al id del edificio entrenando como -1, que significa
-		que no tiene en ese momento ningun edificio entrenando a alguna
-		unidad.*/
-		void setear_no_entrenando();
+		/*Recibe el id del tipo de una unidad y la saca del
+		map de unidades entrenandose.*/
+		void sacar_tipo_unidad_entrenandose(int id_tipo_unidad);
 
-		/*Devuelve el id del edificio del jugado que esta entrenando o -1
-		en caso de no estar entrenando unidades.*/
-		int pedir_id_edificio_entrenando();
+		/*Devuelve true si el id del tipo de unidad pasado por
+		parametro esta siendo entrenado por el jugador.*/
+		bool tiene_tipo_de_unidad_entrenando(int id_tipo_unidad);
 
 		/*Recibe una cantidad de especia y la agrega al jugador.
 		Devuelve la cantidad de especia que pudo ser agregada.*/
@@ -97,6 +100,10 @@ class Jugador {
 		/*Recibe un int que resperenta el codigo de una casa
 		y se la asgina al jugador.*/
 		void asignar_casa(int id_casa);
+
+		/*Devuelve el map con los ids de los tipos de unidades
+		que el jugador esta entrenando.*/
+		std::map<int ,int> pedir_unidades_entrenandose();
 };
 
 #endif 

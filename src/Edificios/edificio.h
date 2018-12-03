@@ -5,6 +5,7 @@
 #include <memory>
 #include <vector>
 #include <list>
+#include <map>
 #include "../objeto_dune.h"
 #include "../jugador.h"
 #include "../mapa.h"
@@ -18,7 +19,7 @@ class Edificio: public ObjetoDune {
 		std::pair<int, int> dimension;
 		float porcentaje_recuperacion;
 		FabricaUnidadesMovibles fabrica_unidades_movibles;
-		std::shared_ptr<UnidadMovible> unidad_entrenando;
+		std::map<int, std::shared_ptr<UnidadMovible>> unidades_entrenando;
 	
 	protected:
 		int estado;	
@@ -73,15 +74,19 @@ class Edificio: public ObjetoDune {
 		void serializar_mensaje_creacion_objeto(std::shared_ptr<ObjetoDune> 
 		unidad);
 
-		/*Recibe el mapa del juego y agrega la unidad al mapa. Devuelve
+		/*Recibe el mapa del juego y el id del tipo de la unidad que se
+		estaba entrenando y se quier agregar y se la agrega al mapa. Devuelve
 		el puntero a la nueva unidad creada.*/
-		std::shared_ptr<UnidadMovible> agregar_unidad(Mapa &mapa); 
+		std::shared_ptr<UnidadMovible> agregar_unidad(Mapa &mapa, 
+		int id_tipo_unidad); 
 
-		/*Recibe un tiempo para reducir el tiempo de entrenamiento
-		faltante en caso de que se este entrenando a una unidad. Devuelve
+		/*Recibe un un id de tipo de una unidad y un tiempo para reducir el 
+		tiempo de entrenamiento
+		faltante en caso de que se este entrenando a alguna unidad. Devuelve
 		false si no se esta entrenando una unidad o si no se termino
-		de entrenar la que se estaba entrenando. True en caso contrario.*/
-		bool avanzar_tiempo_creacion(int tiempo_transcurrido);
+		de entrenar la que se pidio que se entrene. True en caso contrario.*/
+		bool avanzar_tiempo_creacion(int tiempo_transcurrido, 
+		int id_tipo_unidad);
 
 		/*Setea el estado del edificio en destruido.*/
 		virtual void matar();

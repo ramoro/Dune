@@ -22,7 +22,7 @@ OrganizadorJuegos &organizador): organizador_juegos(organizador) {
 	while ((Directorio = readdir(ID_Directorio)) != NULL) {
 		std::cout << Directorio->d_name << "\n";
 		if (strlen(Directorio->d_name) < MINIMA_LONGITUD_NOMBRE_MAPA) continue;
-		//organizador_juegos.agregar_mapa(Directorio->d_name);
+		organizador_juegos.agregar_mapa(Directorio->d_name);
 	}
 }
 

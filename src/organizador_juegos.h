@@ -22,6 +22,7 @@ class OrganizadorJuegos {
 private:
     int contador_id_clientes; // da el id del proximo cliente que se conecta
     int contador_id_salas; // da el id de la proxima sala a crearr
+    int contador_id_mapas;
     std::mutex mutex;
     std::map<int, std::shared_ptr<ProtocoloCliente>> clientes;
     std::map<int, std::shared_ptr<Sala>> salas;
@@ -58,30 +59,8 @@ public:
     /*Destructor de la clase.*/
    	~OrganizadorJuegos();
 
-   /* // Agrega un nuevo cliente a la lista de clientes activos
-    UserProxy* addClient(Socket& socket);
-
-    // Crea una nueva sala con el nombre especificado y el nombre de map
-    // especificado. La sala se borrará unicamente cuando quede vacía.
-    // Devuelve el ID de la sala creada.
-    int createRoom(std::string& roomName, std::string& mapName);
-
-    // Agrega el usuario a la sala pasada.
-    // Devuelve true si lo pudo agregar exitosamente; false si no existe
-    // la sala o ya se encuentra llena.
-    bool userJoinRoom(int userId, int roomId);
-
-    // Funcion que llama una partida. Le pasa el objeto PlayerProxy al sistema
-    // indicandole que ese jugador dejo la partida y aun esta vigente la
-    // conexion, por lo que debe tratarlo como si estuviese en el menu de salas.
-    // Se crea un UserProxy, para interactuar dentro de este escenario.
-    void playerLeaveRoom(PlayerProxy* player);
-
-    // Devuelve un vector con informacion sobre las salas activas. El vector
-    // es de la forma id1, info1,..., idN, infoN. 
-    std::vector<std::string> roomsInfo();
-
-    ~TDSystem(); // Destructor*/
+    /*Recibe el nombre de un mapa y lo agrega a la clase.*/
+    void agregar_mapa(std::string nombre_mapa);
 };
 
 

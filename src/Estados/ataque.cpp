@@ -13,6 +13,7 @@ std::shared_ptr<Estado> Ataque::actualizar(UnidadMovible *unidad,
 Mapa &mapa, int tiempo_transcurrido) {
 	if (objeto_destino->esta_fuera_de_juego()){
 		std::cout << "Ataque::actualizar esta muerta " << std::endl;
+		unidad->serializar_mensaje_termino_ataque();
 		std::shared_ptr<Inactividad> inactividad (new Inactividad());
 		return inactividad;		
 	}
@@ -40,6 +41,7 @@ Mapa &mapa, int tiempo_transcurrido) {
 	for (std::vector<ObjetoDune*>::iterator it = 
 	unidades_afectadas.begin(); it != unidades_afectadas.end(); ++it) {
 		if (unidad->puede_atacar_aliado()){
+			unidad->serializar_mensaje_termino_ataque();
 			std::shared_ptr<Inactividad> inactividad (new Inactividad());
 			return inactividad;
 		}
@@ -49,6 +51,7 @@ Mapa &mapa, int tiempo_transcurrido) {
 			//en caso de matar al objeto que fue a atacar queda en estado
 			//inactivo la unidad
 			if (objeto_destino->pedir_id() == (*it)->pedir_id()) {
+				unidad->serializar_mensaje_termino_ataque();
 				std::shared_ptr<Inactividad> inactividad(new Inactividad());
 				return inactividad;
 			}

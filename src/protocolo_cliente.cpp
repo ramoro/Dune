@@ -6,7 +6,9 @@
 #include <iostream>
 #include <list>
 
-//ProtocoloCliente::ProtocoloCliente() : organizador() {}
+#define CODIGO_ASIGNAR_CASA 'h'
+#define CODIGO_PETICION_LISTA_MAPAS 'p'
+#define CODIGO_FIN_LISTA 'f'
 
 ProtocoloCliente::ProtocoloCliente(Socket skt_clt, int id,
 OrganizadorJuegos &organizador) : 
@@ -67,21 +69,21 @@ void ProtocoloCliente::iniciar_protocolo() {
 			this->socket_cliente.recv_msj(&accion, 1);
 			std::vector<int> parametros_recibidos;
 			std::cout << "accion en esperando sala " << accion << " de cliente " << this->id << std::endl;
-			if (accion == 'p') {
+			if (accion == CODIGO_PETICION_LISTA_MAPAS) {
 				organizador.recorrer_mapas_para_enviar(this->id);
-				accion = 'f';
+				accion = CODIGO_FIN_LISTA;
 				this->socket_cliente.send_msj(&accion, 1);
 				std::cout << "se enviaron mapas" << std::endl;
 			} else if (accion == 'm') {
-				int id_mapa = this->socket_cliente.recv_int(); //recibo id mapa elegido
-				int max_jugadores = this->socket_cliente.recv_int(); //recibo maxs jugadores
+				int id_mapa = this->socket_cliente.recv_int();
+				int max_jugadores = this->socket_cliente.recv_int();
 				id_sala_asociada = organizador.crear_sala(id_mapa, 
 				max_jugadores);
 				accion = 'o';
 				this->socket_cliente.send_msj(&accion, 1);
 			} else if (accion == 'n') {
 				organizador.recorrer_salas_para_enviar(this->id);
-				accion = 'f';
+				accion = CODIGO_FIN_LISTA;
 				this->socket_cliente.send_msj(&accion, 1);
 			} else if (accion == 'j') {
 				std::cout << "entro a join " << std::endl;
@@ -103,11 +105,13 @@ void ProtocoloCliente::iniciar_protocolo() {
 				std::cout << "recibio casa no owner: " << casa <<  std::endl;
 
 				break;
+			} else if(accion == 'g') {
+
 			}
 		}
 
 		MensajeProtocolo msg;
- 		msg.asignar_accion('h');
+ 		msg.asignar_accion(CODIGO_ASIGNAR_CASA);
  		msg.agregar_parametro(casa);
  		msg.agregar_parametro(this->id);
  		this->cola_recepcion->push(msg);

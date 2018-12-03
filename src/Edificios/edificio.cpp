@@ -78,8 +78,11 @@ int id_tipo_unidad, int id_unidad, Config &config) {
 	if (ptr_unidad->se_puede_agregar(jugador)) {
 		jugador.reducir_dinero(ptr_unidad->obtener_costo());
 		estado = ENTRENANDO;
-		unidad_entrenando = ptr_unidad;
-		jugador.agregar_edificio_entrenando(this->id);
+		unidades_entrenando.emplace(
+		std::pair<int, std::shared_ptr<UnidadMovible>>(id_tipo_unidad, 
+		ptr_unidad));
+		jugador.agregar_tipo_unidad_entrenando(id_tipo_unidad,
+		this->id);
 		return true;
 	}
 	return false;
@@ -116,28 +119,33 @@ std::shared_ptr<ObjetoDune> objeto) {
 	}*/
 }
 
-std::shared_ptr<UnidadMovible> Edificio::agregar_unidad(Mapa &mapa) {
+std::shared_ptr<UnidadMovible> Edificio::agregar_unidad(Mapa &mapa, 
+int id_tipo_unidad) {
 	std::pair<int, int> pos_central;
 	if (!mapa.ubicar_unidad(this->id, pos_central, 
-		unidad_entrenando)) {
+		unidades_entrenando.at(id_tipo_unidad))) {
 	}
 
-	unidad_entrenando->set_centro(pos_central);
-	unidad_entrenando->agregar(mapa);
+	unidades_entrenando.at(id_tipo_unidad)->set_centro(pos_central);
+	unidades_entrenando.at(id_tipo_unidad)->agregar(mapa);
 
-	std::shared_ptr<UnidadMovible> unidad_nueva = unidad_entrenando;
+	std::shared_ptr<UnidadMovible> unidad_nueva = unidades_entrenando.
+	at(id_tipo_unidad);
 	serializar_mensaje_creacion_objeto(unidad_nueva);
-	unidad_entrenando = NULL;
-	estado = INACTIVO;
+	unidades_entrenando.erase(id_tipo_unidad);
+	if (unidades_entrenando.empty()) {
+		estado = INACTIVO;
+	}
 	return unidad_nueva;
 }
 
-bool Edificio::avanzar_tiempo_creacion(int tiempo_transcurrido) {
+bool Edificio::avanzar_tiempo_creacion(int tiempo_transcurrido, 
+int id_tipo_unidad) {
 //	// "Tiempo transcurrido en ms" << tiempo_transcurrido << std::endl;
 	if (estado == INACTIVO) {
 		return false;
 	} else {
-		int tiempo_faltante = unidad_entrenando->
+		int tiempo_faltante = unidades_entrenando.at(id_tipo_unidad)->
 		tiempo_creacion_faltante(tiempo_transcurrido);
 		if (tiempo_faltante <= 0) {
 			return true;

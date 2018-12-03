@@ -13,7 +13,6 @@
 #define CODIGO_CAMBIO_DINERO 'p'
 #define CODIGO_CAMBIO_ENERGIA 'w'
 #define CODIGO_GANO_JUGADOR 'e'
-#define JUGADOR_NO_ENTRENANDO -1
 #define DISTANCIA_MINIMA_EDIFICIO_ALIADO 7000
 #define CONSTANTE_REDUCCION_TIEMPO 100
 
@@ -155,10 +154,8 @@ int id_objeto_atacado) {
 void Partida::iniciar_entrenamiento_unidad_movible(int id_tipo_unidad, 
 int id_edificio, int id_jugador, 
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
-	int id_edificio_entrenando = jugadores.at(id_jugador).
-	pedir_id_edificio_entrenando();
-	if (id_edificio_entrenando != JUGADOR_NO_ENTRENANDO) {
-
+	if (jugadores.at(id_jugador).
+	tiene_tipo_de_unidad_entrenando(id_tipo_unidad)) {
 		serializar_mensaje_rechazo_creacion(colas_mensajes, id_tipo_unidad,
 		id_jugador);
 	} else {
@@ -184,7 +181,7 @@ int id_unidad, std::pair<int, int> posicion_destino) {
 }
 
 void Partida::actualizar_creacion_unidades(std::shared_ptr<Edificio> 
-edificio, int tiempo_transcurrido) {
+edificio, int tiempo_transcurrido, int id_tipo_unidad) {
 	int energia_jugador = jugadores.at(edificio->pedir_id_duenio()).
 	pedir_energia_disponible();
 	if (energia_jugador < 0) {
@@ -194,14 +191,15 @@ edificio, int tiempo_transcurrido) {
 		}
 	}
 	bool entrenamiento_terminado = edificio->
-	avanzar_tiempo_creacion(tiempo_transcurrido);
+	avanzar_tiempo_creacion(tiempo_transcurrido, id_tipo_unidad);
 	if (entrenamiento_terminado) {
 		std::shared_ptr<UnidadMovible> unidad_nueva = edificio->
-		agregar_unidad(mapa); //VERIFICAR ESTE AGREGADO CON GDB LUEGO
+		agregar_unidad(mapa, id_tipo_unidad);
 		unidades_movibles.emplace(std::pair<int, 
 		std::shared_ptr<UnidadMovible>> (unidad_nueva->pedir_id(), 
 		unidad_nueva));
-		jugadores.at(edificio->pedir_id_duenio()).setear_no_entrenando();
+		jugadores.at(edificio->pedir_id_duenio()).
+		sacar_tipo_unidad_entrenandose(unidad_nueva->pedir_id_tipo());
 	}
 }
 
@@ -338,17 +336,21 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	//unidad que tenga en entrenamiento
 	for (std::map<int, Jugador>::iterator it_jugadores = 
 	jugadores.begin(); it_jugadores != jugadores.end(); ++it_jugadores) {
-		int id_edificio_entrenando = (it_jugadores->second).
-		pedir_id_edificio_entrenando();
-		if (id_edificio_entrenando != -1) {
+		std::map<int, int> unidades_entrenandose = it_jugadores->second.
+		pedir_unidades_entrenandose();
+		for (std::map<int, int>::iterator it_entrenamiento = 
+		unidades_entrenandose.begin(); it_entrenamiento != 
+		unidades_entrenandose.end(); ++it_entrenamiento) {
 			//verificacion por si un edificio esta creando una unidad
 			//y lo destruyen
-			if (edificios.count(id_edificio_entrenando) < 0) {
-				(it_jugadores->second).setear_no_entrenando();
+			if (edificios.count(it_entrenamiento->second) < 0) {
+				(it_jugadores->second).sacar_tipo_unidad_entrenandose(
+				it_entrenamiento->first);
 				continue;
 			}
-			actualizar_creacion_unidades(edificios.at(id_edificio_entrenando),
-			tiempo_transcurrido);
+			actualizar_creacion_unidades(edificios.
+			at(it_entrenamiento->second), tiempo_transcurrido, 
+			it_entrenamiento->first);
 		}
 	}
 

@@ -8,6 +8,7 @@
 OrganizadorJuegos::OrganizadorJuegos() {
 	contador_id_clientes = 1;
 	contador_id_salas = 0;
+	contador_id_mapas = 0;
 	mapas.emplace(std::pair<int, std::string> (0, "nacho"));
 	mapas.emplace(std::pair<int, std::string> (1, "cabeza"));
 	mapas.emplace(std::pair<int, std::string> (2, "de"));
@@ -76,6 +77,12 @@ void OrganizadorJuegos::recorrer_salas_para_enviar(int id_cliente) {
 void OrganizadorJuegos::agregar_cliente_a_sala(int id_sala) {
 	std::unique_lock<std::mutex> lock(mutex);
 	salas.at(id_sala)->agregar_cliente();
+}
+
+void OrganizadorJuegos::agregar_mapa(std::string nombre_mapa) {
+	mapas.emplace(std::pair<int, std::string> (contador_id_mapas, 
+	nombre_mapa));
+	contador_id_mapas++;
 }
 
 OrganizadorJuegos::~OrganizadorJuegos() {

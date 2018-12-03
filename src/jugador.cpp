@@ -11,7 +11,6 @@ Jugador::Jugador(Config &config) {
 	capacidad_especia = 0;
 	capacidad_especia_disponible = 0;
 	energia_disponible = 0;
-	id_edificio_entrenando_unidad = -1;
 	casa = -1;
 }
 
@@ -99,16 +98,19 @@ int Jugador::pedir_energia_disponible() {
 	return energia_disponible;
 }
 
-void Jugador::agregar_edificio_entrenando(int id_edificio) {
-	id_edificio_entrenando_unidad = id_edificio;
+void Jugador::agregar_tipo_unidad_entrenando(int id_tipo_unidad, 
+int id_edificio_que_entrena) {
+	unidades_entrenando.emplace(std::pair<int, int>(id_tipo_unidad,
+	id_edificio_que_entrena));
 }
 
-void Jugador::setear_no_entrenando() {
-	id_edificio_entrenando_unidad = NO_ESTA_ENTRENANDO;
+void Jugador::sacar_tipo_unidad_entrenandose(int id_tipo_unidad) {
+	unidades_entrenando.erase(id_tipo_unidad);
 }
 
-int Jugador::pedir_id_edificio_entrenando() {
-	return id_edificio_entrenando_unidad;
+bool Jugador::tiene_tipo_de_unidad_entrenando(int id_tipo_unidad) {
+	if (unidades_entrenando.count(id_tipo_unidad) > 0) return true;
+	return false;
 }
 
 int Jugador::agregar_especia(int cant_especia) {
@@ -132,4 +134,8 @@ int Jugador::obtener_casa() {
 
 void Jugador::asignar_casa(int id_casa) {
 	casa = id_casa;
+}
+
+std::map<int ,int> Jugador::pedir_unidades_entrenandose() {
+	return unidades_entrenando;
 }
