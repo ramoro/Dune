@@ -289,7 +289,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas) {
 	id_jugador, colas);
 	eliminar_objetos_de_sets(edificios_a_eliminar, unidades_a_eliminar,
 	colas);
-
+	jugadores.erase(id_jugador);
 }
 
 void Partida::serializar_mensaje_muerte(int id_objeto_a_remover, 
@@ -347,7 +347,7 @@ void Partida::actualizar_modelo(int tiempo_transcurrido,
 std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	//// << "ACTUALIZA MODELO con tiempo " << tiempo_transcurrido << std::endl; 
 	//actualizo salida del gusano
-	//mapa.actualizar_salida_gusano(tiempo_transcurrido, colas_mensajes);
+	mapa.actualizar_salida_gusano(tiempo_transcurrido, colas_mensajes);
 	
 	//por cada jugador me fijo si tiene un id de un edificio
 	//entrenando. De ser asi actualizo la reacion de la

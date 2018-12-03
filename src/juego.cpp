@@ -52,7 +52,7 @@ void Juego::hacer_ajustes_iniciales() {
 
   mutex.lock();
   this->partida->terreno_inicial(this->colas_envio_clientes);
-  this->partida->actualizar_modelo(MILISEGUNDOS_POR_FRAME, this->colas_envio_clientes);
+  this->partida->actualizar_modelo(0, this->colas_envio_clientes);
   mutex.unlock();
     MensajeProtocolo mensaje;
   mensaje.asignar_accion('h');
@@ -120,7 +120,9 @@ void Juego::run() {
         mutex.unlock();
       } else if (accion == 's') {
         // << "entro a accion salida de cliente "<< v[0] << std::endl;
+        mutex.lock();
         this->partida->eliminar_jugador(v[0], this->colas_envio_clientes);
+        mutex.unlock();
         this->colas_envio_clientes.at(v[0])->cerrar();
         this->clientes.at(v[0])->finalizar();
         this->colas_envio_clientes.erase(v[0]);
