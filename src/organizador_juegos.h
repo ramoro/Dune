@@ -15,12 +15,9 @@ class ProtocoloCliente;
 class Juego;
 class Sala;
 
-/******************************** OrganizadorJuegos ********************************
- Clase monitor, que controla la informacion de cada una de las conexiones
- de jugadores que estan siendo llevadas a cabo, las salas activas y las
- partidas en progreso.
- *************************************************************************/
-/*Clase monitor*/
+/*Clase monitor que se encarga de proteger las salas y los mapas
+y se encarga de la creacion de salas, union de jugadores e inicio 
+de partidas. Ademas de que almacena mapas nuevos.*/
 class OrganizadorJuegos {
 private:
     int contador_id_clientes; // da el id del proximo cliente que se conecta

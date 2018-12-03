@@ -2,6 +2,8 @@
 #include "cola_cerrada_error.h"
 #include <iostream>
 
+/*Codigo obtenido del docente Martin Di Paola.*/
+
 ColaBloqueante::ColaBloqueante(const unsigned int max_size) : 
 max_size(max_size) {}
         

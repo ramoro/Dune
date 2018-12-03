@@ -12,23 +12,8 @@ using namespace std::chrono;
 #define SEGUNDOS_POR_FRAME 1.f/20
 #define MILISEGUNDOS_POR_FRAME (1.f/20 * 1000)
 
-/*Juego::Juego(Partida *partida): 
-cola_recepcion(TAM_COLA), partida(partida) {
-<<<<<<< HEAD
-  // "Constructor juego sin socket" << std::endl;
-=======
-  // << "Constructor juego sin socket" << std::endl;
->>>>>>> 06bd08a765543463964ae6d7bc1bf74607f18923
-  //this->clientes.push_back(new ProtocoloCliente());
-}*/
-
 Juego::Juego(std::shared_ptr<Partida> part): 
-cola_recepcion(TAM_COLA), partida(part) {
-  //std::shared_ptr<ProtocoloCliente> cliente(new 
-  //ProtocoloCliente(std::move(skt_cliente)));
-  //this->clientes.push_back(cliente);
- // partida->agregar_jugador("harkonnen", this->colas_envio_clientes);
-}
+cola_recepcion(TAM_COLA), partida(part) {}
 
 //aca nose si pasar la cola xq la uso antes o no usarla y q se creen aca
 void Juego::agregar_jugador(std::shared_ptr<ProtocoloCliente> cliente_jugador) {
@@ -128,7 +113,6 @@ void Juego::run() {
       break;
     }
 
-    //ver si juego termino*/
     mutex.lock();
     this->partida->actualizar_modelo(MILISEGUNDOS_POR_FRAME, this->colas_envio_clientes);
     mutex.unlock();

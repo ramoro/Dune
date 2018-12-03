@@ -54,7 +54,7 @@ void ProtocoloCliente::enviar_mensajes() {
 	} catch (std::exception &e){
 		std::cerr << e.what() << " En ProtocoloCliente::enviar_mensajes" << std::endl;
 	} catch (...) {
-		// "Error desconocido en ProtocoloCliente::enviar_mensajes" << std::endl;
+		std::cout << "Error desconocido en ProtocoloCliente::enviar_mensajes" << std::endl;
 	}
 }
 
@@ -132,12 +132,6 @@ void ProtocoloCliente::iniciar_protocolo() {
 			for (int i = 0; i < cantidad_ints_a_recibir; ++i) {
 				mensaje.agregar_parametro(this->socket_cliente.recv_int());
 			}
-			/*if (!list_mensajes.empty()) {
-				MensajeProtocolo msj = list_mensajes.front();
-				list_mensajes.pop_front();
-				this->cola_recepcion->push(msj);
-			}*/
-			//// << accion << std::endl;
 
 			this->cola_recepcion->push(mensaje);
 
@@ -149,7 +143,7 @@ void ProtocoloCliente::iniciar_protocolo() {
 	} catch (std::exception &e){
 		std::cerr << e.what() << " En ProtocoloCliente::recibir_mensajes" << std::endl;
 	} catch (...) {
-		// "Error desconocido en ProtocoloCliente::recibir_mensajes" << std::endl;
+		std::cout << "Error desconocido en ProtocoloCliente::recibir_mensajes" << std::endl;
 	}
 }
 

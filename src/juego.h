@@ -26,9 +26,6 @@ class Juego: public Thread {
     std::mutex mutex;
 
   public:
-
-   // Juego(Partida *partida);
-    
     /*Constructor de la clase.*/
     Juego(std::shared_ptr<Partida> part);
 

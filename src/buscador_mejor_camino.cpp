@@ -11,6 +11,10 @@
 //SI ES CIMA SOLO PUEDE PASAR UNIDADES DE INFANTERIA
 //USAR ALGO COMO DEFINE PARA LAS 8 DIRECCIONES (TYPEDEF SEGUN FEDE)
 
+/*Este algoritmo se hizo tomando como base el extraido en: 
+https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2
+*/
+
 void BuscadorMejorCamino::delete_vector_nodos(std::vector<Nodo> nodos) {
   for (std::vector<Nodo>::iterator it = nodos.begin(); it != nodos.end();
   ++it) {

@@ -1,15 +1,29 @@
 #include "server.h"
 #include <iostream>
-#include <ctime>
-#include <chrono>
-#include <ratio>
+#include <stdlib.h>
+#include <dirent.h>
+#include <unistd.h>
+#include <sys/types.h>
 //#include "socket_error.h"
 
-using namespace std::chrono;
+#define MINIMA_LONGITUD_NOMBRE_MAPA 4
 
 Server::Server(char *servicename, int max_cant_escucha_clientes,
 OrganizadorJuegos &organizador): organizador_juegos(organizador) {
 	socket = new Socket(servicename, max_cant_escucha_clientes);
+	/*Codigo para leer los nombres de los archivos de un directorio
+	extraido de: http://www.forosdelweb.com/f96/
+	como-obtener-nombre-directorio-contenido-1073420/
+	*/
+	DIR *ID_Directorio;
+	dirent *Directorio;
+	ID_Directorio = opendir("../mapas");
+        
+	while ((Directorio = readdir(ID_Directorio)) != NULL) {
+		std::cout << Directorio->d_name << "\n";
+		if (strlen(Directorio->d_name) < MINIMA_LONGITUD_NOMBRE_MAPA) continue;
+		//organizador_juegos.agregar_mapa(Directorio->d_name);
+	}
 }
 
 void Server::run() {

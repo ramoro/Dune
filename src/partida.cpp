@@ -44,13 +44,7 @@ std::map<int, std::shared_ptr<ColaBloqueante>> colas_mensajes) {
 	jugador));
 	std::pair<int,int> ubicacion_centro = ubicar_centro_construccion(id_jugador);
 		MensajeProtocolo mensaje;
-	/*mensaje.asignar_accion('h');
-	mensaje.agregar_parametro(0);
-	mensaje.agregar_parametro(0);
-	mensaje.agregar_parametro(3500);
-	mensaje.agregar_parametro(5000);
-	// << "encolando caracs mapa" << std::endl;
-	colas_mensajes.at(id_jugador)->push(std::move(mensaje));*/
+	
 	// << "centro constuccion en " << ubicacion_centro.first << " " << ubicacion_centro.second << std::endl;
 	agregar_edificio(id_jugador, ubicacion_centro, 0, colas_mensajes);
 #ifdef DEBUG 
