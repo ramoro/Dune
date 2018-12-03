@@ -1,5 +1,5 @@
-#include "inactividad.h"
-#include <list>	
+#include "inactividad.h"	
+#include "ataque_quieto.h"
 
 std::shared_ptr<Estado> Inactividad::actualizar(UnidadMovible *unidad,
 Mapa &mapa, int tiempo_transcurrido) {
@@ -12,15 +12,10 @@ Mapa &mapa, int tiempo_transcurrido) {
 	unidad->pedir_id_duenio(), false);
 
 	if(!objetivo_alrededor.empty()) {
-		int vida_restante = objetivo_alrededor[0]->daniar(unidad,
-		tiempo_transcurrido);
-		if (vida_restante <= 0) {
-			objetivo_alrededor[0]->matar();
-		}
+		std::shared_ptr<AtaqueQuieto> ataque_quieto(new AtaqueQuieto(
+		objetivo_alrededor[0]));
 		unidad->serializar_mensaje_ataque(objetivo_alrededor[0]->pedir_id());
-		//ACA NO SE SI DEVOLVER NUEVO ESTADO ATACANDOQUIETO O NO
-	} /*else {
-		unidad->serializar_mensaje_termino_ataque();
-	}*/
+		return ataque_quieto;
+	}
 	return NULL;
 }
