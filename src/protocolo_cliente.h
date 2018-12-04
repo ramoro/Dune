@@ -78,6 +78,10 @@ class ProtocoloCliente {
     /*Joinea el hilo de envios que se esta usando para enviar y recibir
     mensajes en la parte de espera antes de jugar.*/
     void joinear_hilo_espera_a_jugar();
+
+    /*Devuelve true si no esta jugando el cliente, false
+    en caso contrario.*/
+    bool esta_esperando_para_jugar();
 };
 
 #endif

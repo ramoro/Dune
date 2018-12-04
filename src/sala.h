@@ -18,7 +18,7 @@ class Sala {
     int cantidad_maxima_jugadores;
     int cantidad_jugadores_dentro;
     bool sala_llena;
-    bool juego_empezado;
+     bool juego_empezado;
 
   public:
     /*Constructor de la clase.*/
@@ -47,16 +47,17 @@ class Sala {
     una.*/
     void cerrar_sala();
 
-    /*Resta en uno la cantidad de jugadores dentro de la sala.*/
-    void sacar_cliente();
-
     /*Devuelve true si el juego empezo, false en caso contario.*/
     bool tiene_juego_empezado();
 
     /*Joinea el hilo del juego.*/
     void joinear_juego();
 
-   //~Sala();
+    /*Resta en uno la cantidad de jugadores dentro de la sala.*/
+    void sacar_cliente();
+
+    /*Destructor de la clase.*/
+    ~Sala();
 
 
 };

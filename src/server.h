@@ -4,7 +4,6 @@
 #include "Socket.h"
 #include "organizador_juegos.h"
 #include "thread.h"
-#include <thread>
 
 /*Clase que representa a un server del juego Dune en la cual se aceptan
 los diferentes cliente que van ingresando al server. Corre en un hilo

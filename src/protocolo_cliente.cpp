@@ -108,6 +108,7 @@ void ProtocoloCliente::iniciar_protocolo() {
 			} else if (accion == 'g') {
 
 			} else if (accion == 's') {
+				this->jugando = false;
 				organizador.desconectar_cliente(this->id);
 				break;
 			}
@@ -135,7 +136,6 @@ void ProtocoloCliente::iniciar_protocolo() {
 			} else if (accion == 'e') {
 				cantidad_ints_a_recibir = 4;
 			} else if (accion == 'v' || accion == 's') {
-				std::cout << "recibio la s " << std::endl;
 				cantidad_ints_a_recibir = 1;
 			}
 
@@ -200,7 +200,12 @@ int ProtocoloCliente::pedir_casa() {
 }
 
 void ProtocoloCliente::joinear_hilo_espera_a_jugar() {
+	this->esperando_en_sala = false;
 	std::cout <<"entro a joinear" << std::endl;
 	this->t_recibos.join();
 	std::cout << "Saliio de joinear" << std::endl;
+}
+
+bool ProtocoloCliente::esta_esperando_para_jugar() {
+	return this->esperando_en_sala;
 }

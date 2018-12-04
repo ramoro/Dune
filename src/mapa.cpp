@@ -36,8 +36,8 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) : cant_pixeles_por_baldosa(ro
 								Coordenada coord(0, roca);
 								fila.push_back(coord);
 							}
-							//bald.serializar_mensaje_baldosa(
-						//		root["tamanio_terreno"].asInt());
+							bald.serializar_mensaje_baldosa(
+								root["tamanio_terreno"].asInt());
 							fila_baldosa.push_back(bald);
 							break;
 						}
@@ -51,9 +51,9 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) : cant_pixeles_por_baldosa(ro
 								Coordenada coord(0, duna);
 								fila.push_back(coord);
 							}
-							fila_baldosa.push_back(bald);
 							bald.serializar_mensaje_baldosa(
 								root["tamanio_terreno"].asInt());
+							fila_baldosa.push_back(bald);
 							break;
 						}
 						case CODIGO_ESPECIAFUERTE:
@@ -119,9 +119,9 @@ Mapa::Mapa(Config &root,int &contador_ids_objetos) : cant_pixeles_por_baldosa(ro
 								Coordenada coord(0, precipio);
 								fila.push_back(coord);
 							}
-							fila_baldosa.push_back(bald);
 							bald.serializar_mensaje_baldosa(
 								root["tamanio_terreno"].asInt());
+							fila_baldosa.push_back(bald);
 							break;
 						}
 						default:
