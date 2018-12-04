@@ -26,6 +26,7 @@ class Partida {
 	public:
 		/*Constructor de la clase.*/
 		Partida();
+		Partida(std::string nombre_mapa);
 
 		/*Recibe el id de una casa y el id de un jugador y le asigna esa casa
 		al jugador.*/

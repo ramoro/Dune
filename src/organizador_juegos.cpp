@@ -29,7 +29,7 @@ void OrganizadorJuegos::agregar_cliente(Socket sckt_cliente) {
 
 int OrganizadorJuegos::crear_sala(int id_mapa, int max_jugadores) {
 	std::unique_lock<std::mutex> lock(mutex);
-	std::shared_ptr<Partida> part(new Partida());
+	std::shared_ptr<Partida> part(new Partida(mapas[id_mapa]));
 	std::shared_ptr<Juego> juego_nuevo(new Juego(part));
 	std::shared_ptr<Sala> sala_nueva(new Sala(juego_nuevo, part, 
 	mapas.at(id_mapa), max_jugadores));

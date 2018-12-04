@@ -16,11 +16,11 @@
 #define DISTANCIA_MINIMA_EDIFICIO_ALIADO 7000
 #define CONSTANTE_REDUCCION_TIEMPO 100
 
-Partida::Partida() {
+Partida::Partida(std::string nombre_mapa) {
 	contador_ids_objetos = 0;
 	Config json("../src/input.json");
 	config = std::move(json);
-	Mapa map(this->config, contador_ids_objetos);
+	Mapa map(nombre_mapa,this->config, contador_ids_objetos);
 	mapa = std::move(map);
 }
 
