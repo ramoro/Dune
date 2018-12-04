@@ -568,8 +568,11 @@ std::pair<int, int> final, UnidadMovible *unidad) {
 	std::pair<int, int> inicio_baldosa = conversor.de_pixel_a_baldosa(inicio);
 	std::pair<int, int> final_baldosa = conversor.de_pixel_a_baldosa(final);
 
-	// "Quiero ir desde " << inicio_baldosa.first << '-' << inicio_baldosa.second << std::endl;
-	// "Quiero ir hacia " << final_baldosa.first << '-' << final_baldosa.second << std::endl;
+/*	std::cout << "Quiero ir desde " << inicio.first << '-' << inicio.second << std::endl;
+	std::cout << "Quiero ir hacia " << final.first << '-' << final.second << std::endl;
+
+	std::cout << "Quiero ir desde " << inicio_baldosa.first << '-' << inicio_baldosa.second << std::endl;
+	std::cout << "Quiero ir hacia " << final_baldosa.first << '-' << final_baldosa.second << std::endl;*/
 
 	//si quiere ir hacia una baldosa invalida directamente la unidad no se mueve
 	if(!unidad->es_terreno_valido(baldosas[final_baldosa.first]
@@ -579,12 +582,18 @@ std::pair<int, int> final, UnidadMovible *unidad) {
 		mismo_lugar.push_back(pixel_actual);
 		return mismo_lugar;
 	}
+
+	std::list<std::pair<int, int>> primer_baldosa;
+	primer_baldosa.merge(obtener_camino_misma_baldosa(inicio, final, unidad));
 	if (inicio_baldosa == final_baldosa){
-		return obtener_camino_misma_baldosa(inicio, final, unidad);
+		return primer_baldosa;
 	}
 	std::list<std::pair<int, int>> lista_camino = 
 	buscador_mejor_camino.buscar_mejor_camino(*this, inicio_baldosa,
 	 final_baldosa, unidad);
+
+	//primer_baldosa.splice(lista_camino.begin(), obtener_camino_misma_baldosa(inicio, conversor.de_baldosa_a_pixel(inicio_baldosa), unidad));
+
   	for (std::list<std::pair<int, int>>::iterator it=lista_camino.begin();
   	 it != lista_camino.end(); ++it){
   		//obtengo diff para sacar camino en pixeles entre nodos
@@ -618,6 +627,7 @@ std::pair<int, int> final, UnidadMovible *unidad) {
 				std::list<std::pair<int, int>> dentro_baldosa = 
 				obtener_camino_misma_baldosa(sig, final, unidad);
 				lista_camino.splice(lista_camino.end(), dentro_baldosa);
+				primer_baldosa.splice(lista_camino.end(), lista_camino);
 				break;
 	    	}
 		}
@@ -625,7 +635,7 @@ std::pair<int, int> final, UnidadMovible *unidad) {
     		break;
     	}
   	}
-	return lista_camino;
+	return primer_baldosa;
 }
 
 bool Mapa::actualizar_salida_gusano(int tiempo_transcurrido,
