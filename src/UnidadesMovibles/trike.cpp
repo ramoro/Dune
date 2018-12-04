@@ -6,13 +6,16 @@
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Trike::Trike(int id, int id_duenio, std::pair<int, int> centro,
  Config &config) : 
-	Vehiculo(config["Trike"].get("rango", 0).asInt(),
+	Vehiculo(config["Trike"].get("rango", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(),
 	 config["Trike"].get("velocidad", 0).asInt(),
 	 config["Trike"].get("tiempo_entrenamiento", 0).asFloat(),
 	 config["Trike"].get("costo", 0).asInt(), 
 	 config["Trike"].get("puntos_vida", 0).asInt(), id, id_duenio, 
-	 config["Trike"].get("dimension_ancho", 0).asInt(),
-	 config["Trike"].get("dimension_alto", 0).asInt(), centro) {
+	 config["Trike"].get("dimension_ancho", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(),
+	 config["Trike"].get("dimension_alto", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(), centro) {
 		id_tipo = ID_TRIKE;
 		RifleAsalto rifle_asalto(config);
 		armas.push_back(RifleAsalto(rifle_asalto));

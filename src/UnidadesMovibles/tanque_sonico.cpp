@@ -6,13 +6,16 @@
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 TanqueSonico::TanqueSonico(int id, int id_duenio, std::pair<int, int> centro,
  Config &config) : 
-	Vehiculo(config["Tanque sonico"].get("rango", 0).asInt(),
+	Vehiculo(config["Tanque sonico"].get("rango", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(),
 	 config["Tanque sonico"].get("velocidad", 0).asInt(),
 	 config["Tanque sonico"].get("tiempo_entrenamiento", 0).asFloat(),
 	 config["Tanque sonico"].get("costo", 0).asInt(), 
 	 config["Tanque sonico"].get("puntos_vida", 0).asInt(), id, id_duenio, 
-	 config["Tanque sonico"].get("dimension_ancho", 0).asInt(),
-	 config["Tanque sonico"].get("dimension_alto", 0).asInt(), centro) {
+	 config["Tanque sonico"].get("dimension_ancho", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(),
+	 config["Tanque sonico"].get("dimension_alto", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(), centro) {
 		id_tipo = ID_TANQUE_SONICO;
 		OndaSonido arma_ondas_sonidos(config);
 		armas.push_back(OndaSonido(arma_ondas_sonidos));

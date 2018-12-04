@@ -7,13 +7,16 @@
 
 Cosechadora::Cosechadora(int id, int id_duenio, std::pair<int, int> centro,
 Config &config) : 
-	Vehiculo(config["Cosechadora"].get("rango", 0).asInt(),
+	Vehiculo(config["Cosechadora"].get("rango", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(),
 	 config["Cosechadora"].get("velocidad", 0).asInt(),
 	 config["Cosechadora"].get("tiempo_entrenamiento", 0).asFloat(),
 	 config["Cosechadora"].get("costo", 0).asInt(), 
 	 config["Cosechadora"].get("puntos_vida", 0).asInt(), id, id_duenio, 
-	 config["Cosechadora"].get("dimension_ancho", 0).asInt(),
-	 config["Cosechadora"].get("dimension_alto", 0).asInt(), centro) {
+	 config["Cosechadora"].get("dimension_ancho", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(),
+	 config["Cosechadora"].get("dimension_alto", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(), centro) {
 		id_tipo = ID_COSECHADORA;
 		contador_segundo = 0;
 		especia_encima = 0;

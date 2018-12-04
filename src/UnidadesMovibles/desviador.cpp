@@ -7,13 +7,16 @@
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Desviador::Desviador(int id, int id_duenio, std::pair<int, int> centro,
  Config &config) : 
-	Vehiculo(config["Desviador"].get("rango", 0).asInt(),
+	Vehiculo(config["Desviador"].get("rango", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(),
 	 config["Desviador"].get("velocidad", 0).asInt(),
 	 config["Desviador"].get("tiempo_entrenamiento", 0).asFloat(),
 	 config["Desviador"].get("costo", 0).asInt(), 
 	 config["Desviador"].get("puntos_vida", 0).asInt(), id, id_duenio, 
-	 config["Desviador"].get("dimension_ancho", 0).asInt(),
-	 config["Desviador"].get("dimension_alto", 0).asInt(), centro) {
+	 config["Desviador"].get("dimension_ancho", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(),
+	 config["Desviador"].get("dimension_alto", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(), centro) {
 		id_tipo = ID_DESVIADOR;
 		LanzaMisiles lanza_misiles(config);
 		armas.push_back(LanzaMisiles(lanza_misiles));

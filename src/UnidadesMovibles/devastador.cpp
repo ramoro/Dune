@@ -7,13 +7,16 @@
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Devastador::Devastador(int id, int id_duenio, std::pair<int, int> centro,
  Config &config) : 
-	Vehiculo(config["Devastador"].get("rango", 0).asInt(),
+	Vehiculo(config["Devastador"].get("rango", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(),
 	 config["Devastador"].get("velocidad", 0).asInt(),
 	 config["Devastador"].get("tiempo_entrenamiento", 0).asFloat(),
 	 config["Devastador"].get("costo", 0).asInt(), 
 	 config["Devastador"].get("puntos_vida", 0).asInt(), id, id_duenio, 
-	 config["Devastador"].get("dimension_ancho", 0).asInt(),
-	 config["Devastador"].get("dimension_alto", 0).asInt(), centro) {
+	 config["Devastador"].get("dimension_ancho", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(),
+	 config["Devastador"].get("dimension_alto", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(), centro) {
 		id_tipo = ID_DEVASTADOR;
 		danio_explosion = config["Devastador"].get("danio_explosion", 0).asInt();
 		CanionPlasma canion_plasma(config);
@@ -29,9 +32,11 @@ Devastador::Devastador(int id, int id_duenio, std::pair<int, int> centro,
 		config_explosion.push_back(
 		config["Explosion"].get("bonificacion_danio_infanteria", 1).asInt());
 		config_explosion.push_back(
-		config["Explosion"].get("dimension_alto", 100).asInt());
+		config["Explosion"].get("dimension_alto", 100).asInt()
+	 *config["cant_pixeles_por_baldosa"].asInt());
 		config_explosion.push_back(
-		config["Explosion"].get("dimension_ancho", 100).asInt());
+		config["Explosion"].get("dimension_ancho", 100).asInt()
+	 *config["cant_pixeles_por_baldosa"].asInt());
 		
 		for (unsigned int i = 0; i < 
 		config["Devastador"]["casas"].size(); i++) {

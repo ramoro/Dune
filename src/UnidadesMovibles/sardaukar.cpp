@@ -7,13 +7,16 @@
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Sardaukar::Sardaukar(int id, int id_duenio, std::pair<int, int> centro,
  Config &config) : 
-	UnidadInfanteria(config["Sardaukar"].get("rango", 0).asInt(),
+	UnidadInfanteria(config["Sardaukar"].get("rango", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(),
 	 config["Sardaukar"].get("velocidad", 0).asInt(), 
 	 config["Sardaukar"].get("tiempo_entrenamiento", 0).asInt(), 
 	 config["Sardaukar"].get("costo", 0).asInt(), 
 	 config["Sardaukar"].get("puntos_vida", 0).asInt(), id, id_duenio, 
-	 config["Sardaukar"].get("dimension_ancho", 0).asInt(), 
-	 config["Sardaukar"].get("dimension_alto", 0).asInt(), centro) {
+	 config["Sardaukar"].get("dimension_ancho", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(), 
+	 config["Sardaukar"].get("dimension_alto", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(), centro) {
 		id_tipo = ID_SARDAUKAR;
 		RifleAsalto rifle_asalto(config);
 		LanzaMisiles lanza_misiles(config);

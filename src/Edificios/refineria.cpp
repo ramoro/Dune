@@ -8,8 +8,10 @@ Refineria::Refineria(int id, int id_duenio, std::pair<int, int> centro,
 	Edificio(config["Refineria"].get("aporte_energetico", 0).asInt(),
 	 config["Refineria"].get("costo", 0).asInt(),
 	 config["Refineria"].get("puntos_estructura", 0).asInt(),
-	  id, id_duenio, config["Refineria"].get("dimension_ancho", 0).asInt(),
-	   config["Refineria"].get("dimension_alto", 0).asInt(), centro) {
+	  id, id_duenio, config["Refineria"].get("dimension_ancho", 0).asInt()
+	 *config["cant_pixeles_por_baldosa"].asInt(),
+	   config["Refineria"].get("dimension_alto", 0).asInt()
+	 *config["cant_pixeles_por_baldosa"].asInt(), centro) {
 		capacidad =  config["Refineria"].get("capacidad", 0).asInt();
 		id_tipo = ID_REFINERIA;
 		cantidad_especia = 0;

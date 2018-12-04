@@ -6,13 +6,16 @@
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 InfanteriaLigera::InfanteriaLigera(int id, int id_duenio, std::pair<int, int>
 centro, Config &config) : 
-	UnidadInfanteria(config["InfanteriaLigera"].get("rango", 0).asInt(),
+	UnidadInfanteria(config["InfanteriaLigera"].get("rango", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(),
 	 config["InfanteriaLigera"].get("velocidad", 0).asInt(), 
 	 config["InfanteriaLigera"].get("tiempo_entrenamiento", 0).asInt(), 
 	 config["InfanteriaLigera"].get("costo", 0).asInt(), 
 	 config["InfanteriaLigera"].get("puntos_vida", 0).asInt(), id, id_duenio, 
-	 config["InfanteriaLigera"].get("dimension_ancho", 0).asInt(), 
-	 config["InfanteriaLigera"].get("dimension_alto", 0).asInt(), centro) {
+	 config["InfanteriaLigera"].get("dimension_ancho", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(), 
+	 config["InfanteriaLigera"].get("dimension_alto", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(), centro) {
 		id_tipo = ID_INFANTERIA_LIGERA;
 		RifleAsalto rifle(config);
 		armas.push_back(RifleAsalto(rifle));

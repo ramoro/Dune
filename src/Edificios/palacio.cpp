@@ -8,8 +8,10 @@ Palacio::Palacio(int id, int id_duenio, std::pair<int, int> centro,
 	Edificio(config["Palacio"].get("aporte_energetico", 0).asInt(),
 	 config["Palacio"].get("costo", 0).asInt(),
 	 config["Palacio"].get("puntos_estructura", 0).asInt(),
-	  id, id_duenio, config["Palacio"].get("dimension_ancho", 0).asInt(),
-	   config["Palacio"].get("dimension_alto", 0).asInt(), centro) {
+	  id, id_duenio, config["Palacio"].get("dimension_ancho", 0).asInt()
+	 *config["cant_pixeles_por_baldosa"].asInt(),
+	   config["Palacio"].get("dimension_alto", 0).asInt()
+	 *config["cant_pixeles_por_baldosa"].asInt(), centro) {
 		id_tipo = ID_PALACIO;
 	}
 

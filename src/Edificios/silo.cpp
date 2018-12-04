@@ -7,8 +7,10 @@ Silo::Silo(int id, int id_duenio, std::pair<int, int> centro, Config &config) :
 	Edificio(config["Silo"].get("aporte_energetico", 0).asInt(),
 	 config["Silo"].get("costo", 0).asInt(),
 	 config["Silo"].get("puntos_estructura", 0).asInt(),
-	  id, id_duenio, config["Silo"].get("dimension_ancho", 0).asInt(),
-	   config["Silo"].get("dimension_alto", 0).asInt(), centro) {
+	  id, id_duenio, config["Silo"].get("dimension_ancho", 0).asInt()
+	 *config["cant_pixeles_por_baldosa"].asInt(),
+	   config["Silo"].get("dimension_alto", 0).asInt()
+	 *config["cant_pixeles_por_baldosa"].asInt(), centro) {
 		capacidad = config["Silo"].get("capacidad", 0).asInt();
 		id_tipo = ID_SILO;
 	}

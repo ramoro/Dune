@@ -7,13 +7,16 @@
 //DATOS DE INICIALIZACION HARCODEADOS (VAN A VENIR DEL ARCHIVO CONFIG)
 Fremen::Fremen(int id, int id_duenio, std::pair<int, int> centro,
  Config &config) : 
-	UnidadInfanteria(config["Fremen"].get("rango", 0).asInt(),
+	UnidadInfanteria(config["Fremen"].get("rango", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(),
 	 config["Fremen"].get("velocidad", 0).asInt(), 
 	 config["Fremen"].get("tiempo_entrenamiento", 0).asInt(), 
 	 config["Fremen"].get("costo", 0).asInt(), 
 	 config["Fremen"].get("puntos_vida", 0).asInt(), id, id_duenio, 
-	 config["Fremen"].get("dimension_ancho", 0).asInt(), 
-	 config["Fremen"].get("dimension_alto", 0).asInt(), centro) {
+	 config["Fremen"].get("dimension_ancho", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(), 
+	 config["Fremen"].get("dimension_alto", 0).asFloat()
+	 *config["cant_pixeles_por_baldosa"].asInt(), centro) {
 		id_tipo = ID_FREMEN;
 		RifleAsalto rifle_asalto(config);
 		LanzaMisiles lanza_misiles(config);
