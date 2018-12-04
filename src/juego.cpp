@@ -43,12 +43,12 @@ void Juego::hacer_ajustes_iniciales() {
   this->partida->terreno_inicial(this->colas_envio_clientes);
   this->partida->actualizar_modelo(0, this->colas_envio_clientes);
   mutex.unlock();
-    MensajeProtocolo mensaje;
+  MensajeProtocolo mensaje;
   mensaje.asignar_accion('h');
   mensaje.agregar_parametro(0);
   mensaje.agregar_parametro(0);
-  mensaje.agregar_parametro(3500);
-  mensaje.agregar_parametro(5000);
+  mensaje.agregar_parametro(partida->obtener_limite_mapa_fila());
+  mensaje.agregar_parametro(partida->obtener_limite_mapa_columna());
   MensajeProtocolo msj;
   msj.asignar_accion('x');
   for (std::map<int, std::shared_ptr<ColaBloqueante>>::iterator it =
