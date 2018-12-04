@@ -35,13 +35,16 @@ class Mapa {
 		Gusano gusano;
 		std::map<int, Refineria*> refinerias;
 		std::map<int, std::shared_ptr<Baldosa>> terrenos_con_especia;
+		std::map<int, std::pair<int,int>> centros;
 
 	public:
 		/*Constructor de la clase.*/
 		Mapa();
 
 		/*Constructor de la clase.*/
-		Mapa(Config &config, int &contador_ids_objetos);
+		Mapa(std::string, Config &config, int &contador_ids_objetos);
+
+		std::pair<int,int> obtener_centro_construccion(int id_jugador);
 
 		/*Ubica para cada pixel pasado por parametro a que baldosa 
 		hace referencia*/
