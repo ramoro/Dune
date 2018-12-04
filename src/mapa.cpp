@@ -367,11 +367,13 @@ void Mapa::desenterrar_gusano() {
 }
 
 unsigned int Mapa::pedir_limite_filas() {
+	std::cout << "pedir_limite_filas " << coordenadas.size() << std::endl;
 	return coordenadas.size();
 }
 
 unsigned int Mapa::pedir_limite_columnas() {
-	return (coordenadas[coordenadas.size() - 1]).size();
+	std::cout << "pedir_limite_coolumnas " << coordenadas[0].size() << std::endl;
+	return coordenadas[0].size();
 }
 
 int Mapa::pedir_terreno_coordenada(std::pair<int, int> posicion) {
