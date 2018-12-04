@@ -5,6 +5,7 @@
 #include "organizador_juegos.h"
 #include <iostream>
 #include <list>
+#include <fstream>
 
 #define CODIGO_ASIGNAR_CASA 'h'
 #define CODIGO_PETICION_LISTA_MAPAS 'p'
@@ -103,10 +104,10 @@ void ProtocoloCliente::iniciar_protocolo() {
 			} else if(accion == 'l') {
 				this->casa = this->socket_cliente.recv_int();//recibo el id de la casa
 				std::cout << "recibio casa no owner: " << casa <<  std::endl;
-
 				break;
 			} else if (accion == 'g') {
-
+				guardar_mapa();
+				continue;
 			} else if (accion == 's') {
 				organizador.desconectar_cliente(this->id);
 				break;
@@ -164,6 +165,21 @@ void ProtocoloCliente::finalizar() {
 	// << "joineo cola envios" << std::endl;
 	this->t_recibos.join();
 	// << "joineo cola recibo" << std::endl;
+}
+
+void ProtocoloCliente::guardar_mapa() {
+	std::string nombre_mapa = "mapa_" + 
+	std::to_string(id_sala_asociada) + '-' + std::to_string(id) +".json";
+	std::ofstream archivo_a_escribir;
+	archivo_a_escribir.open("../mapas/" + nombre_mapa);
+	int cant_lineas = this->socket_cliente.recv_int();
+	for (int i = 0 ; i < cant_lineas ; i++){
+		int linea_size = this->socket_cliente.recv_int();		
+		std::string linea;
+		this->socket_cliente.recv_string(linea_size, linea);	
+		archivo_a_escribir << linea << std::endl;
+	}
+	archivo_a_escribir.close();
 }
 
 int ProtocoloCliente::pedir_id() {

@@ -28,6 +28,8 @@ class ProtocoloCliente {
     ProtocoloCliente(Socket skt_clt, int id, 
     OrganizadorJuegos &organizador);
 
+    void guardar_mapa();
+
     /*Recibe dos puntero a dos colas bloqueantes. Una
     para envio de mensajes y la otra para el recibo de 
     estos.*/
