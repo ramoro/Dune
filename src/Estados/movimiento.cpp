@@ -33,7 +33,7 @@ Mapa &mapa, int tiempo_transcurrido) {
 	if (dist2 <= dist1){
 		unidad->acumular_tiempo(tiempo_transcurrido);
 	} else {
-		//// "Mover UNidad " << camino.front().first << '-' << camino.front().second<< std::endl;
+		//std::cout << "Mover UNidad " << camino.front().first << '-' << camino.front().second<< std::endl;
 		mapa.mover_unidad(unidad->pedir_id(), camino.front());
 		unidad->avanzar_camino();
    		unidad->serializar_mensaje_movimiento(); 

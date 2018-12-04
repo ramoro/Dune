@@ -583,14 +583,16 @@ std::pair<int, int> final, UnidadMovible *unidad) {
 		return mismo_lugar;
 	}
 
-	std::list<std::pair<int, int>> primer_baldosa;
-	primer_baldosa.merge(obtener_camino_misma_baldosa(inicio, final, unidad));
 	if (inicio_baldosa == final_baldosa){
-		return primer_baldosa;
+		std::list<std::pair<int, int>> misma_baldosa = obtener_camino_misma_baldosa(inicio, final, unidad);
+		return misma_baldosa;
 	}
 	std::list<std::pair<int, int>> lista_camino = 
 	buscador_mejor_camino.buscar_mejor_camino(*this, inicio_baldosa,
 	 final_baldosa, unidad);
+
+	std::list<std::pair<int, int>> primer_baldosa;
+	primer_baldosa.merge(obtener_camino_misma_baldosa(inicio, conversor.de_baldosa_a_pixel(inicio_baldosa), unidad));
 
 	//primer_baldosa.splice(lista_camino.begin(), obtener_camino_misma_baldosa(inicio, conversor.de_baldosa_a_pixel(inicio_baldosa), unidad));
 
@@ -627,7 +629,8 @@ std::pair<int, int> final, UnidadMovible *unidad) {
 				std::list<std::pair<int, int>> dentro_baldosa = 
 				obtener_camino_misma_baldosa(sig, final, unidad);
 				lista_camino.splice(lista_camino.end(), dentro_baldosa);
-				primer_baldosa.splice(lista_camino.end(), lista_camino);
+				primer_baldosa.splice(primer_baldosa.end(), lista_camino);
+				return primer_baldosa;
 				break;
 	    	}
 		}

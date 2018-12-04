@@ -107,7 +107,7 @@ this->ptr->ai_protocol);
 
 
 void Socket::send_msj(unsigned char *text,int size){
-	std::cout << "enviar char " << *text << std::endl;
+	//std::cout << "enviar char " << *text << std::endl;
 	int bytes_sent=0;
 	bool still_open=true;
 	while((size>bytes_sent)&&(still_open)){
@@ -143,7 +143,7 @@ int Socket::recv_msj(unsigned char *text,int max){
 void Socket::send_string(std::string text){
 	//unsigned char **t=reinterpret_cast<unsigned char**>(&text);
 	//this->send_msj(*t,size);
-	std::cout << "string enviado " << text << std::endl;
+	//std::cout << "string enviado " << text << std::endl;
 	this->send_msj((unsigned char*)text.c_str(), text.length());
 }
 
@@ -178,7 +178,7 @@ int Socket::recv_int(){
 
 
 void Socket::send_int(int number){
-	std::cout << "int enviado " << number <<std::endl;
+	//std::cout << "int enviado " << number <<std::endl;
 	unsigned char size=(unsigned char)sizeof(int);
 	this->send_msj(&size,1);
 	int to_send=htonl(number);
