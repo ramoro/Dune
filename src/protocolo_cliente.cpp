@@ -79,7 +79,7 @@ void ProtocoloCliente::iniciar_protocolo() {
 				int id_mapa = this->socket_cliente.recv_int();
 				int max_jugadores = this->socket_cliente.recv_int();
 				id_sala_asociada = organizador.crear_sala(id_mapa, 
-				max_jugadores);
+				max_jugadores, this->id);
 				accion = 'o';
 				this->socket_cliente.send_msj(&accion, 1);
 			} else if (accion == 'n') {
@@ -224,4 +224,10 @@ void ProtocoloCliente::joinear_hilo_espera_a_jugar() {
 
 bool ProtocoloCliente::esta_esperando_para_jugar() {
 	return this->esperando_en_sala;
+}
+
+void ProtocoloCliente::enviar_sala_eliminada() {
+	id_sala_asociada = -1;
+	unsigned char accion = 'd';
+	this->socket_cliente.send_msj(&accion, 1);
 }

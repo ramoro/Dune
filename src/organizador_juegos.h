@@ -38,9 +38,9 @@ public:
 
     /*Crea una nueva sala con el nombre el mapa que le corresponde
     al id recibido y con la cantidad maxima de jugadores recibida y
-    crea un juego agregandolselo.
+    crea un juego agregandolselo. Se le asigna el id del que la creo.
     Devuelve el id de la nueva sala.*/
-    int crear_sala(int id_mapa, int max_jugadores);
+    int crear_sala(int id_mapa, int max_jugadores, int id_creador);
 
     /*Recibe el id de una sala y e inicia su juego en otro hilo.*/
     void iniciar_juego(int id_sala);

@@ -84,6 +84,10 @@ class ProtocoloCliente {
     /*Devuelve true si no esta jugando el cliente, false
     en caso contrario.*/
     bool esta_esperando_para_jugar();
+
+    /*Envia al cliente la accion que indica que la sala
+    en la que estaba ya no existe mas.*/
+    void enviar_sala_eliminada();
 };
 
 #endif

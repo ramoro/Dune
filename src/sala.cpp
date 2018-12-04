@@ -3,9 +3,9 @@
 #include "protocolo_cliente.h"
 
 Sala::Sala(std::shared_ptr<Juego> juego, std::shared_ptr<Partida> partida,
-std::string nombre_mapa, int cantidad_maxima_jugadores):
+std::string nombre_mapa, int cantidad_maxima_jugadores, int id_creador):
 juego(juego), partida(partida), nombre_mapa(nombre_mapa), 
-cantidad_maxima_jugadores(cantidad_maxima_jugadores) {
+cantidad_maxima_jugadores(cantidad_maxima_jugadores), id_creador(id_creador) {
 	cantidad_jugadores_dentro = 1;
 	sala_llena = false;
 	juego_empezado = false;
@@ -50,6 +50,10 @@ void Sala::joinear_juego() {
 void Sala::sacar_cliente() {
 	cantidad_jugadores_dentro -= 1;
 	sala_llena = false;
+}
+
+int Sala::pedir_id_creador() {
+	return id_creador;
 }
 
 Sala::~Sala() {

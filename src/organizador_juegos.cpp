@@ -23,12 +23,13 @@ void OrganizadorJuegos::agregar_cliente(Socket sckt_cliente) {
 	cliente_nuevo->iniciar_protocolo_en_salas();
 }
 
-int OrganizadorJuegos::crear_sala(int id_mapa, int max_jugadores) {
+int OrganizadorJuegos::crear_sala(int id_mapa, int max_jugadores,
+int cliente_creador) {
 	std::unique_lock<std::mutex> lock(mutex);
 	std::shared_ptr<Partida> part(new Partida(mapas.at(id_mapa)));
 	std::shared_ptr<Juego> juego_nuevo(new Juego(part));
 	std::shared_ptr<Sala> sala_nueva(new Sala(juego_nuevo, part, 
-	mapas.at(id_mapa), max_jugadores));
+	mapas.at(id_mapa), max_jugadores, cliente_creador));
 	salas.emplace(std::pair<int, std::shared_ptr<Sala>>(contador_id_salas,
   	sala_nueva));
 	int id_sala_nueva = contador_id_salas;
@@ -87,6 +88,16 @@ void OrganizadorJuegos::desconectar_cliente(int id_cliente) {
 	clientes_desconectados.insert(clientes.at(id_cliente));
 	if (id_sala_asociada != -1) {
 		salas.at(id_sala_asociada)->sacar_cliente();
+		if(id_cliente == salas.at(id_sala_asociada)->pedir_id_creador()) {
+			for(std::map<int, std::shared_ptr<ProtocoloCliente>>::iterator it =
+			clientes.begin(); it != clientes.end(); it++) {
+				if(it->second->pedir_id_sala_asociada() == id_sala_asociada &&
+				it->second->pedir_id() != id_cliente) {
+					it->second->enviar_sala_eliminada();
+				}
+			}
+			salas.erase(id_sala_asociada);
+		}	
 	}
 	clientes.erase(id_cliente);
 }

@@ -16,14 +16,15 @@ class Sala {
     std::shared_ptr<Partida> partida;
     std::string nombre_mapa;
     int cantidad_maxima_jugadores;
+    int id_creador;
     int cantidad_jugadores_dentro;
     bool sala_llena;
-     bool juego_empezado;
+    bool juego_empezado;
 
   public:
     /*Constructor de la clase.*/
     Sala(std::shared_ptr<Juego> juego, std::shared_ptr<Partida> partida,
-    std::string nombre_mapa, int cantidad_maxima_jugadores);
+    std::string nombre_mapa, int cantidad_maxima_jugadores, int id_creador);
 
     /*Larga el juego que posee como atributo en un hilo nuevo.*/
     void largar_juego();
@@ -55,6 +56,9 @@ class Sala {
 
     /*Resta en uno la cantidad de jugadores dentro de la sala.*/
     void sacar_cliente();
+
+    /*Devuelve el id del creador de la sala.*/
+    int pedir_id_creador();
 
     /*Destructor de la clase.*/
     ~Sala();
