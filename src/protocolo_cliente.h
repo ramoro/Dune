@@ -74,6 +74,10 @@ class ProtocoloCliente {
     /*Si el cliente esta en juego habiendo ya elegido una casa
     devuelve el id de la misma, sino devuelve -1.*/
     int pedir_casa();
+
+    /*Joinea el hilo de envios que se esta usando para enviar y recibir
+    mensajes en la parte de espera antes de jugar.*/
+    void joinear_hilo_espera_a_jugar();
 };
 
 #endif

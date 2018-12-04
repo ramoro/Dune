@@ -92,7 +92,9 @@ add_library(sdldemo STATIC
  src/Estados/movimiento_para_depositar.cpp
  src/Estados/movimiento_para_depositar.h
  src/Estados/deposito.cpp
- src/Estados/deposito.h 
+ src/Estados/deposito.h
+ src/Estados/ataque_quieto.cpp
+ src/Estados/ataque_quieto.h
 )
 set(CMAKE_BUILD_TYPE Debug)
 # Agrego la carpeta con los headers autogenerados a los includes

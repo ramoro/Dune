@@ -8,6 +8,7 @@ juego(juego), partida(partida), nombre_mapa(nombre_mapa),
 cantidad_maxima_jugadores(cantidad_maxima_jugadores) {
 	cantidad_jugadores_dentro = 1;
 	sala_llena = false;
+	juego_empezado = false;
 }
 
 void Sala::agregar_jugador_a_juego(std::shared_ptr<ProtocoloCliente> jugador) {
@@ -15,6 +16,7 @@ void Sala::agregar_jugador_a_juego(std::shared_ptr<ProtocoloCliente> jugador) {
 }
 
 void Sala::largar_juego() {
+	juego_empezado = true;
 	juego->start();
 }
 
@@ -37,6 +39,19 @@ void Sala::cerrar_sala() {
 	sala_llena = true;
 }
 
-Sala::~Sala() {
+void Sala::sacar_cliente() {
+	cantidad_jugadores_dentro -= 1;
+}
+
+bool Sala::tiene_juego_empezado() {
+	return juego_empezado;
+}
+
+void Sala::joinear_juego() {
 	juego->join();
 }
+
+/*Sala::~Sala() {
+	juego->join();
+}
+*/

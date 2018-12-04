@@ -108,15 +108,18 @@ void ProtocoloCliente::iniciar_protocolo() {
 			} else if (accion == 'g') {
 
 			} else if (accion == 's') {
-				
+				organizador.desconectar_cliente(this->id);
+				break;
 			}
 		}
 
-		MensajeProtocolo msg;
- 		msg.asignar_accion(CODIGO_ASIGNAR_CASA);
- 		msg.agregar_parametro(casa);
- 		msg.agregar_parametro(this->id);
- 		this->cola_recepcion->push(msg);
+		if (this->jugando) {
+			MensajeProtocolo msg;
+ 			msg.asignar_accion(CODIGO_ASIGNAR_CASA);
+ 			msg.agregar_parametro(casa);
+ 			msg.agregar_parametro(this->id);
+ 			this->cola_recepcion->push(msg);
+ 		}
 
  		while (this->jugando) {
 			MensajeProtocolo mensaje;
@@ -132,6 +135,7 @@ void ProtocoloCliente::iniciar_protocolo() {
 			} else if (accion == 'e') {
 				cantidad_ints_a_recibir = 4;
 			} else if (accion == 'v' || accion == 's') {
+				std::cout << "recibio la s " << std::endl;
 				cantidad_ints_a_recibir = 1;
 			}
 
@@ -193,4 +197,10 @@ void ProtocoloCliente::enviar_mapa_o_sala(std::string nombre, int id) {
 
 int ProtocoloCliente::pedir_casa() {
 	return this->casa;
+}
+
+void ProtocoloCliente::joinear_hilo_espera_a_jugar() {
+	std::cout <<"entro a joinear" << std::endl;
+	this->t_recibos.join();
+	std::cout << "Saliio de joinear" << std::endl;
 }

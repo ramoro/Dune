@@ -16,6 +16,7 @@ OrganizadorJuegos::OrganizadorJuegos() {
 }
 
 void OrganizadorJuegos::agregar_cliente(Socket sckt_cliente) {
+	std::unique_lock<std::mutex> lock(mutex);
 	int id_cliente = contador_id_clientes;
 	sckt_cliente.send_int(id_cliente);
     std::shared_ptr<ProtocoloCliente> cliente_nuevo(new 
@@ -85,9 +86,27 @@ void OrganizadorJuegos::agregar_mapa(std::string nombre_mapa) {
 	contador_id_mapas++;
 }
 
+void OrganizadorJuegos::desconectar_cliente(int id_cliente) {
+	std::unique_lock<std::mutex> lock(mutex);
+	int id_sala_asociada = clientes.at(id_cliente)->pedir_id_sala_asociada();
+	clientes_desconectados.push_back(clientes.at(id_cliente));
+	if (id_sala_asociada != -1) {
+		salas.at(id_sala_asociada)->sacar_cliente();
+	}
+	clientes.erase(id_cliente);
+}
+
 OrganizadorJuegos::~OrganizadorJuegos() {
-	/*for (std::map<int, std::shared_ptr<Juego>>::iterator it = 
-	juegos.begin(); it != juegos.end(); ++it) {
-		it->second->join();
-	}*/
+
+	for (std::map<int, std::shared_ptr<Sala>>::iterator it = 
+	salas.begin(); it != salas.end(); ++it) {
+		if (it->second->tiene_juego_empezado()) {
+			it->second->joinear_juego();
+		}
+	}
+	for(std::vector<std::shared_ptr<ProtocoloCliente>>::iterator it =
+	clientes_desconectados.begin(); it != clientes_desconectados.end(); it++) {
+		std::cout << "destructor org juegos" << std::endl;
+		(*it)->joinear_hilo_espera_a_jugar();
+	}
 }
