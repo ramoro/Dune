@@ -12,6 +12,7 @@ OrganizadorJuegos::OrganizadorJuegos() {
 }
 
 void OrganizadorJuegos::agregar_cliente(Socket sckt_cliente) {
+	std::unique_lock<std::mutex> lock(mutex);
 	int id_cliente = contador_id_clientes;
 	sckt_cliente.send_int(id_cliente);
     std::shared_ptr<ProtocoloCliente> cliente_nuevo(new 
@@ -77,6 +78,7 @@ void OrganizadorJuegos::agregar_cliente_a_sala(int id_sala) {
 }
 
 void OrganizadorJuegos::agregar_mapa(std::string nombre_mapa) {
+	std::unique_lock<std::mutex> lock(mutex);
 	mapas.emplace(std::pair<int, std::string> (contador_id_mapas, 
 	nombre_mapa));
 	contador_id_mapas++;
@@ -103,6 +105,7 @@ void OrganizadorJuegos::desconectar_cliente(int id_cliente) {
 }
 
 void OrganizadorJuegos::apagar() {
+	std::unique_lock<std::mutex> lock(mutex);
 	for (std::map<int, std::shared_ptr<ProtocoloCliente>>::iterator it = 
 	clientes.begin(); it != clientes.end(); ++it) {
 		if(it->second->esta_esperando_para_jugar()) {
@@ -114,7 +117,6 @@ void OrganizadorJuegos::apagar() {
 OrganizadorJuegos::~OrganizadorJuegos() {
 	for(std::set<std::shared_ptr<ProtocoloCliente>>::iterator it =
 	clientes_desconectados.begin(); it != clientes_desconectados.end(); it++) {
-		std::cout << "destructor org juegos" << std::endl;
 		(*it)->joinear_hilo_espera_a_jugar();
 	}
 }

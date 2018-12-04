@@ -11,6 +11,15 @@ using namespace std::chrono;
 #define TAM_COLA 600
 #define SEGUNDOS_POR_FRAME 1.f/20
 #define MILISEGUNDOS_POR_FRAME (1.f/20 * 1000)
+#define CODIGO_DIMESIONES_MAPA 'h'
+#define CODIGO_JUEGO_LISTO 'x'
+#define CODIGO_CREACION_EDIFICIO 'e'
+#define CODIGO_CREACION_UNIDAD 'u'
+#define CODIGO_MOVIMIENTO 'm'
+#define CODIGO_ATAQUE 'a'
+#define CODIGO_VENTA 'v'
+#define CODIGO_ASIGNAR_CASA 'h'
+#define CODIGO_SALIR 's'
 
 Juego::Juego(std::shared_ptr<Partida> part): 
 cola_recepcion(TAM_COLA), partida(part) {}
@@ -33,9 +42,6 @@ void Juego::agregar_jugador(std::shared_ptr<ProtocoloCliente> cliente_jugador) {
 void Juego::hacer_ajustes_iniciales() {
   for (std::map<int, std::shared_ptr<ProtocoloCliente>>::iterator 
   it = this->clientes.begin(); it != this->clientes.end(); ++it) {
-    //(it->second)->agregar_colas(this->colas_envio_clientes.at(it->first), &(this->cola_recepcion));
-   // std::cout << "casa que tendra jugador " << (it->second)->pedir_casa() << std::endl;
-    //partida->asignar_casa_a_jugador((it->second)->pedir_casa(), it->first);
     (it->second)->inicializar();
   }
 
@@ -44,13 +50,13 @@ void Juego::hacer_ajustes_iniciales() {
   this->partida->actualizar_modelo(0, this->colas_envio_clientes);
   mutex.unlock();
   MensajeProtocolo mensaje;
-  mensaje.asignar_accion('h');
+  mensaje.asignar_accion(CODIGO_DIMESIONES_MAPA);
   mensaje.agregar_parametro(0);
   mensaje.agregar_parametro(0);
   mensaje.agregar_parametro(partida->obtener_limite_mapa_fila());
   mensaje.agregar_parametro(partida->obtener_limite_mapa_columna());
   MensajeProtocolo msj;
-  msj.asignar_accion('x');
+  msj.asignar_accion(CODIGO_JUEGO_LISTO);
   for (std::map<int, std::shared_ptr<ColaBloqueante>>::iterator it =
   this->colas_envio_clientes.begin(); it != 
   this->colas_envio_clientes.end(); ++it) {
@@ -71,35 +77,34 @@ void Juego::run() {
       char accion = mensaje.pedir_accion();
       std::vector<int> v = mensaje.pedir_parametros();
 
-      if (accion == 'e') {
+      if (accion == CODIGO_CREACION_EDIFICIO) {
         mutex.lock();
         this->partida->agregar_edificio(v[0],std::pair<int, int> (v[2], v[3]),
         v[1], this->colas_envio_clientes);
         mutex.unlock();
-      } else if (accion == 'u') {
+      } else if (accion == CODIGO_CREACION_UNIDAD) {
         mutex.lock();
         this->partida->iniciar_entrenamiento_unidad_movible(v[0], v[1], v[2], 
         this->colas_envio_clientes);
         mutex.unlock(); 
-      } else if (accion == 'm') {
+      } else if (accion == CODIGO_MOVIMIENTO) {
         mutex.lock();
         this->partida->comenzar_movimiento_unidad(v[0],
         std::pair<int, int> (v[1], v[2]));
         mutex.unlock();
-      } else if (accion == 'a') {
+      } else if (accion == CODIGO_ATAQUE) {
         mutex.lock();
         this->partida->atacar_objeto(v[0], v[1]);
         mutex.unlock();
-      } else if (accion == 'v') {
+      } else if (accion == CODIGO_VENTA) {
         mutex.lock();
         this->partida->vender_edificio(v[0], this->colas_envio_clientes);
         mutex.unlock();
-      } else if (accion == 'h') {
+      } else if (accion == CODIGO_ASIGNAR_CASA) {
         mutex.lock();
         this->partida->asignar_casa_a_jugador(v[0], v[1]);
         mutex.unlock();
-      } else if (accion == 's') {
-        // << "entro a accion salida de cliente "<< v[0] << std::endl;
+      } else if (accion == CODIGO_SALIR) {
         mutex.lock();
         this->partida->eliminar_jugador(v[0], this->colas_envio_clientes);
         mutex.unlock();

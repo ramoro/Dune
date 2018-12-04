@@ -7,10 +7,6 @@
 #define PRECIPICIO 35
 #define CIMA 34
 
-//FALTA VERIFICAR QUE EL ESPACIOA DODNE ME MUEVO NO ESTE OCUPADO Y QUE
-//SI ES CIMA SOLO PUEDE PASAR UNIDADES DE INFANTERIA
-//USAR ALGO COMO DEFINE PARA LAS 8 DIRECCIONES (TYPEDEF SEGUN FEDE)
-
 /*Este algoritmo se hizo tomando como base el extraido en: 
 https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2
 */
@@ -44,7 +40,7 @@ std::list<std::pair<int, int>> BuscadorMejorCamino::buscar_mejor_camino
      // std::cout<< "atrapado" << nodo_evaluado.obtener_posicion().first << nodo_evaluado.obtener_posicion().second<< std::endl;
 		int indice_nodo_evaluado = 0;
 		int indice_auxiliar = 0;
-
+    
 		//Me quedo con el nodo de menor valor F
 		for (std::vector<Nodo>::iterator it = posibles_nodos.begin(); 
   		it != posibles_nodos.end(); ++it) {
@@ -66,15 +62,6 @@ std::list<std::pair<int, int>> BuscadorMejorCamino::buscar_mejor_camino
   				camino.push(nodo_actual);
   				nodo_actual = *(nodo_actual.obtener_padre());
   			}
-  			/*while (!camino.empty()) {
-  				Nodo nodo = camino.top();
-<<<<<<< HEAD
-  				// std::get<0>(nodo.obtener_posicion()) << " " << std::get<1>(nodo.obtener_posicion()) << std::endl;
-=======
-  				// << std::get<0>(nodo.obtener_posicion()) << " " << std::get<1>(nodo.obtener_posicion()) << std::endl;
->>>>>>> 06bd08a765543463964ae6d7bc1bf74607f18923
-  				camino.pop();
-  			}*/
 
         delete_vector_nodos(posibles_nodos);
         delete_vector_nodos(nodos_visitados);

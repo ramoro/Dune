@@ -2,6 +2,8 @@
 #include "cola_cerrada_error.h"
 #include <iostream>
 
+#define CODIGO_CERRAR_COLA 'n'
+
 /*Codigo obtenido del docente Martin Di Paola.*/
 
 ColaBloqueante::ColaBloqueante(const unsigned int max_size) : 
@@ -29,7 +31,7 @@ MensajeProtocolo ColaBloqueante::pop() {
     }
 
     const MensajeProtocolo mensaje = q.front();
-    if (mensaje.pedir_accion() == 'n') {
+    if (mensaje.pedir_accion() == CODIGO_CERRAR_COLA) {
         throw ColaCerradaError("cola cerrada");
     }
     q.pop();

@@ -126,10 +126,6 @@ pos_destino) {
 
 void UnidadMovible::actualizar_unidad(int tiempo_transcurrido, 
 Mapa &mapa) {
-	//por si sale algo mal y no se vacio del todo el camino
-	//cuando la unidad llego
-	//if (camino.empty()) return;
-	// << "centro: " << centro.first << centro.second << " de la unidad " << id << std::endl;
 	if (estado) {
 		std::shared_ptr<Estado> nuevo_estado = estado->actualizar(this, mapa,
 		tiempo_transcurrido);

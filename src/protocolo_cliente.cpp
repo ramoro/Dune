@@ -10,6 +10,22 @@
 #define CODIGO_ASIGNAR_CASA 'h'
 #define CODIGO_PETICION_LISTA_MAPAS 'p'
 #define CODIGO_FIN_LISTA 'f'
+#define CODIGO_OKEY 'o'
+#define CODIGO_CREACION_SALA 'm'
+#define CODIGO_LISTA_SALAS 'n'
+#define CODIGO_UNION_SALA 'j'
+#define CODIGO_INICIO_JUEGO 'i'
+#define CODIGO_ASIGNAR_CASA_INVITADO 'l'
+#define CODIGO_GUARDAR_MAPA 'g'
+#define CODIGO_SALIR 's'
+#define CODIGO_MOVIMIENTO 'm'
+#define CODIGO_CREACION_UNIDAD 'u'
+#define CODIGO_ATACAR 'a'
+#define CODIGO_CREACION_EDIFICIO 'e'
+#define CODIGO_VENDER 'v'
+#define CODIGO_ENVIO_MAPA_O_SALA 'm'
+#define CODIGO_JUEGO_LISTO 'r'
+#define CODIGO_AVISO_SALA_ELIMINADA 'd'
 
 ProtocoloCliente::ProtocoloCliente(Socket skt_clt, int id,
 OrganizadorJuegos &organizador) : 
@@ -35,9 +51,6 @@ void ProtocoloCliente::enviar_mensajes() {
 		while (this->jugando) {
 
 			MensajeProtocolo mensaje = this->cola_envio->pop();
-			/* ver si perdio cliente
-			*/
-			/*ver si gano tambien*/
 			unsigned char accion = mensaje.pedir_accion();
 
 			this->socket_cliente.send_msj(&accion, 1);
@@ -64,51 +77,47 @@ void ProtocoloCliente::enviar_mensajes() {
 void ProtocoloCliente::iniciar_protocolo() {
 	try {
 		while (this->esperando_en_sala) {
-			// << "esperando en sala" << std::endl;
 			unsigned char accion;
 			if(!this->esperando_en_sala) break;
 			this->socket_cliente.recv_msj(&accion, 1);
 			std::vector<int> parametros_recibidos;
-			std::cout << "accion en esperando sala " << accion << " de cliente " << this->id << std::endl;
+
 			if (accion == CODIGO_PETICION_LISTA_MAPAS) {
 				organizador.recorrer_mapas_para_enviar(this->id);
 				accion = CODIGO_FIN_LISTA;
 				this->socket_cliente.send_msj(&accion, 1);
-				std::cout << "se enviaron mapas" << std::endl;
-			} else if (accion == 'm') {
+			
+			} else if (accion == CODIGO_CREACION_SALA) {
 				int id_mapa = this->socket_cliente.recv_int();
 				int max_jugadores = this->socket_cliente.recv_int();
 				id_sala_asociada = organizador.crear_sala(id_mapa, 
 				max_jugadores, this->id);
-				accion = 'o';
+				accion = CODIGO_OKEY;
 				this->socket_cliente.send_msj(&accion, 1);
-			} else if (accion == 'n') {
+			} else if (accion == CODIGO_LISTA_SALAS) {
 				organizador.recorrer_salas_para_enviar(this->id);
 				accion = CODIGO_FIN_LISTA;
 				this->socket_cliente.send_msj(&accion, 1);
-			} else if (accion == 'j') {
-				std::cout << "entro a join " << std::endl;
+			} else if (accion == CODIGO_UNION_SALA) {
+		
 				id_sala_asociada = this->socket_cliente.recv_int();
-				std::cout << "recibio id partida" << std::endl;
+				
 				organizador.agregar_cliente_a_sala(id_sala_asociada);
-				accion = 'o';
+				accion = CODIGO_OKEY;
 				this->socket_cliente.send_msj(&accion, 1);
-				//recibo id mapa,
-			} else if (accion == 'i') {
-				//parametros_recibidos = recibir_ints(1);
-				// << "entro a iniciar juego en inciar_protocolo" << std::endl;
+			} else if (accion == CODIGO_INICIO_JUEGO) {
 				organizador.iniciar_juego(id_sala_asociada);
 				this->casa = this->socket_cliente.recv_int();//recibo el id de la casa
-				std::cout << "recibio casa owner : " << casa <<  std::endl;
+				
 				break;
-			} else if(accion == 'l') {
+			} else if(accion == CODIGO_ASIGNAR_CASA_INVITADO) {
 				this->casa = this->socket_cliente.recv_int();//recibo el id de la casa
-				std::cout << "recibio casa no owner: " << casa <<  std::endl;
+				
 				break;
-			} else if (accion == 'g') {
+			} else if (accion == CODIGO_GUARDAR_MAPA) {
 				guardar_mapa();
 				continue;
-			} else if (accion == 's') {
+			} else if (accion == CODIGO_SALIR) {
 				this->jugando = false;
 				organizador.desconectar_cliente(this->id);
 				break;
@@ -127,16 +136,16 @@ void ProtocoloCliente::iniciar_protocolo() {
 			MensajeProtocolo mensaje;
 			unsigned char accion;
 			this->socket_cliente.recv_msj(&accion, 1);
-			std::cout << "entro en jugando cliente de id "<< this->id << std::endl;
+
 			mensaje.asignar_accion(accion);
 			int cantidad_ints_a_recibir = 0;
-			if (accion == 'm' || accion == 'u') {
+			if (accion == CODIGO_MOVIMIENTO || accion == CODIGO_CREACION_UNIDAD) {
 				cantidad_ints_a_recibir = 3;
-			} else if (accion == 'a') {
+			} else if (accion ==  CODIGO_ATACAR) {
 				cantidad_ints_a_recibir = 2;
-			} else if (accion == 'e') {
+			} else if (accion == CODIGO_CREACION_EDIFICIO) {
 				cantidad_ints_a_recibir = 4;
-			} else if (accion == 'v' || accion == 's') {
+			} else if (accion == CODIGO_VENDER || accion == CODIGO_SALIR) {
 				cantidad_ints_a_recibir = 1;
 			}
 
@@ -160,11 +169,8 @@ void ProtocoloCliente::iniciar_protocolo() {
 
 void ProtocoloCliente::finalizar() {
 	this->jugando = false;
-	//<< "entro a finalizar" << std::endl;
 	this->t_envios.join();
-	// << "joineo cola envios" << std::endl;
 	this->t_recibos.join();
-	// << "joineo cola recibo" << std::endl;
 }
 
 void ProtocoloCliente::guardar_mapa() {
@@ -199,12 +205,12 @@ void ProtocoloCliente::cambiar_a_modo_juego() {
 	this->esperando_en_sala = false;
 	this->jugando = true;
 
-	unsigned char accion = 'r';
+	unsigned char accion = CODIGO_JUEGO_LISTO;
 	this->socket_cliente.send_msj(&accion, 1);
 }
 
 void ProtocoloCliente::enviar_mapa_o_sala(std::string nombre, int id) {
-	unsigned char accion = 'm';
+	unsigned char accion = CODIGO_ENVIO_MAPA_O_SALA;
 	this->socket_cliente.send_msj(&accion, 1);
 	this->socket_cliente.send_int(nombre.size());
 	this->socket_cliente.send_string(nombre);
@@ -217,9 +223,8 @@ int ProtocoloCliente::pedir_casa() {
 
 void ProtocoloCliente::joinear_hilo_espera_a_jugar() {
 	this->esperando_en_sala = false;
-	std::cout <<"entro a joinear" << std::endl;
 	this->t_recibos.join();
-	std::cout << "Saliio de joinear" << std::endl;
+
 }
 
 bool ProtocoloCliente::esta_esperando_para_jugar() {
@@ -228,6 +233,6 @@ bool ProtocoloCliente::esta_esperando_para_jugar() {
 
 void ProtocoloCliente::enviar_sala_eliminada() {
 	id_sala_asociada = -1;
-	unsigned char accion = 'd';
+	unsigned char accion = CODIGO_AVISO_SALA_ELIMINADA;
 	this->socket_cliente.send_msj(&accion, 1);
 }

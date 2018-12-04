@@ -17,7 +17,11 @@ void Sala::agregar_jugador_a_juego(std::shared_ptr<ProtocoloCliente> jugador) {
 
 void Sala::largar_juego() {
 	juego_empezado = true;
-	juego->start();
+	try {
+		juego->start();
+	} catch(...) {
+		std::cout << "Error desconocido en Sala::largar_juego" << std::endl;
+	}
 }
 
 void Sala::agregar_cliente() {

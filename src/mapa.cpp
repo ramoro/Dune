@@ -577,12 +577,6 @@ std::pair<int, int> final, UnidadMovible *unidad) {
 	std::pair<int, int> inicio_baldosa = conversor.de_pixel_a_baldosa(inicio);
 	std::pair<int, int> final_baldosa = conversor.de_pixel_a_baldosa(final);
 
-/*	std::cout << "Quiero ir desde " << inicio.first << '-' << inicio.second << std::endl;
-	std::cout << "Quiero ir hacia " << final.first << '-' << final.second << std::endl;
-
-	std::cout << "Quiero ir desde " << inicio_baldosa.first << '-' << inicio_baldosa.second << std::endl;
-	std::cout << "Quiero ir hacia " << final_baldosa.first << '-' << final_baldosa.second << std::endl;*/
-
 	//si quiere ir hacia una baldosa invalida directamente la unidad no se mueve
 	if(!unidad->es_terreno_valido(baldosas[final_baldosa.first]
 			[final_baldosa.second].obtener_terreno())){
@@ -749,24 +743,14 @@ void Mapa::terreno_inicial(std::map<int, std::shared_ptr<ColaBloqueante>> colas_
 	for (unsigned int i = 0 ; i < baldosas.size() ; i++){
 		for (unsigned int j = 0 ; j < baldosas[0].size() ; j++){
 			std::vector<MensajeProtocolo> mensajes = baldosas[i][j].obtener_mensajes_para_mandar();
-			// << baldosas[i][j].cantidad_mensajes() << std::endl;
 			for (std::vector<MensajeProtocolo>::iterator it_mensajes = 
 			mensajes.begin(); it_mensajes != mensajes.end(); ++it_mensajes) {
 				std::vector<int> v = (*it_mensajes).pedir_parametros();
-
-				//std::cout << "Mensaje de accion " << (*it_mensajes).pedir_accion() << v[4] << v[5] << std::endl;
 				guardar_mensaje_en_colas(colas_mensajes, *it_mensajes);
 			}
 			baldosas[i][j].limpiar_lista_mensajes();
 		}
 	}
-	/*MensajeProtocolo mensaje;
-	mensaje.asignar_accion('h');
-	mensaje.agregar_parametro(0);
-	mensaje.agregar_parametro(0);
-	mensaje.agregar_parametro(3500);
-	mensaje.agregar_parametro(5000);
-	guardar_mensaje_en_colas(colas_mensajes, mensaje);*/
 }
 
 void Mapa::guardar_mensaje_en_colas(
