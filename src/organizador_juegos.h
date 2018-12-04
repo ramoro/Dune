@@ -27,7 +27,7 @@ private:
     std::map<int, std::shared_ptr<ProtocoloCliente>> clientes;
     std::map<int, std::shared_ptr<Sala>> salas;
     std::map<int, std::string> mapas;
-    std::vector<std::shared_ptr<ProtocoloCliente>> clientes_desconectados;
+    std::set<std::shared_ptr<ProtocoloCliente>> clientes_desconectados;
 
 public:
     /*Constructor de la clase.*/
@@ -57,16 +57,20 @@ public:
     de clientes que tiene dentro.*/
     void agregar_cliente_a_sala(int id_sala);
 
-    /*Recibe el nombre de un mapa y lo agrega a la clase.*/
-    void agregar_mapa(std::string nombre_mapa);
-
     /*Recibe el id de un cliente y lo agrega al vector de clientes
     desconectados, sacandolo de la sala en la que esta
     si es que esta en alguna.*/
     void desconectar_cliente(int id_cliente);
 
+    /*Agarra a todos los clientes que estan en la espera de jugar
+    y los pone como desconectados.*/
+    void apagar();
+
+    /*Recibe el nombre de un mapa y lo agrega a la clase.*/
+    void agregar_mapa(std::string nombre_mapa);
+
     /*Destructor de la clase.*/
-   	~OrganizadorJuegos();
+    ~OrganizadorJuegos();
 };
 
 

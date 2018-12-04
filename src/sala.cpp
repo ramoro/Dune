@@ -39,10 +39,6 @@ void Sala::cerrar_sala() {
 	sala_llena = true;
 }
 
-void Sala::sacar_cliente() {
-	cantidad_jugadores_dentro -= 1;
-}
-
 bool Sala::tiene_juego_empezado() {
 	return juego_empezado;
 }
@@ -51,7 +47,13 @@ void Sala::joinear_juego() {
 	juego->join();
 }
 
-/*Sala::~Sala() {
-	juego->join();
+void Sala::sacar_cliente() {
+	cantidad_jugadores_dentro -= 1;
+	sala_llena = false;
 }
-*/
+
+Sala::~Sala() {
+	if (juego_empezado) {
+		juego->join();
+	}
+}
