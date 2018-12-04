@@ -28,7 +28,11 @@ Mapa &mapa, int tiempo_transcurrido) {
 	double dist1 = sqrt(abs(unidad->obtener_centro().first - 
 		camino.back().first) * abs(unidad->obtener_centro().second - 
 		camino.back().second));
-	double dist2 = tiempo_transcurrido * unidad->obtener_velocidad(mapa.pedir_terreno_coordenada(camino.front()));
+	double velocidad = unidad->obtener_velocidad(mapa.pedir_terreno_coordenada(camino.front()));
+	if (velocidad == 0){
+		velocidad = 1;
+	}
+	double dist2 = tiempo_transcurrido * velocidad;
 
 	if (dist2 <= dist1){
 		unidad->acumular_tiempo(tiempo_transcurrido);

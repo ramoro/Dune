@@ -20,7 +20,6 @@ class Juego: public Thread {
     std::map<int, std::shared_ptr<ColaBloqueante>> colas_envio_clientes;
     ColaSegura cola_recepcion;
     std::shared_ptr<Partida> partida;
-    bool stopped = false;
     bool terminado = false;
     std::map<int,std::shared_ptr<ProtocoloCliente>> clientes;
     std::mutex mutex;

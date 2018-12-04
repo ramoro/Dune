@@ -20,8 +20,10 @@
 
 //DATOS DEL GUSANO VIENEN DEL CONFIG
 Gusano::Gusano(Config &config) {
-	dimension_ancho = config["Gusano"].get("dimension_ancho", 0).asInt();
-	dimension_alto = config["Gusano"].get("dimension_alto", 0).asInt();
+	dimension_ancho = config["Gusano"].get("dimension_ancho", 0).asInt()*
+	config["cant_pixeles_por_baldosa"].asInt();
+	dimension_alto = config["Gusano"].get("dimension_alto", 0).asInt()*
+	config["cant_pixeles_por_baldosa"].asInt();
 	tiempo_salida =  config["Gusano"].get("tiempo_salida_segs", 0).asInt() 
 	* PASAJE_A_MILISEGS;
 	contador_salida = tiempo_salida;

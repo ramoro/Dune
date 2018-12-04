@@ -240,7 +240,7 @@
 	"Gusano": {
 		"dimension_ancho": 3,
 		"dimension_alto": 3,
-		"tiempo_salida_segs": 60
+		"tiempo_salida_segs": 10
 	},
 	"Explosion Devastador": {
 		"dimension_ancho": 2,

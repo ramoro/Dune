@@ -94,7 +94,7 @@ int UnidadMovible::obtener_rango_ataque() {
 	return rango;
 }
 
-int UnidadMovible::obtener_velocidad(int tipo_terreno) {
+double UnidadMovible::obtener_velocidad(int tipo_terreno) {
 	if (tipo_terreno == CODIGO_DUNA){
 		//// "Mover UNidad sobre duna a velocidad " << velocidad/2 << std::endl;
 		return velocidad/2;

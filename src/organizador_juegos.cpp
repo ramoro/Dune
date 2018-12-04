@@ -9,10 +9,6 @@ OrganizadorJuegos::OrganizadorJuegos() {
 	contador_id_clientes = 1;
 	contador_id_salas = 0;
 	contador_id_mapas = 0;
-	mapas.emplace(std::pair<int, std::string> (0, "nacho"));
-	mapas.emplace(std::pair<int, std::string> (1, "cabeza"));
-	mapas.emplace(std::pair<int, std::string> (2, "de"));
-	mapas.emplace(std::pair<int, std::string> (3, "pija"));
 }
 
 void OrganizadorJuegos::agregar_cliente(Socket sckt_cliente) {
@@ -29,7 +25,7 @@ void OrganizadorJuegos::agregar_cliente(Socket sckt_cliente) {
 
 int OrganizadorJuegos::crear_sala(int id_mapa, int max_jugadores) {
 	std::unique_lock<std::mutex> lock(mutex);
-	std::shared_ptr<Partida> part(new Partida(mapas[id_mapa]));
+	std::shared_ptr<Partida> part(new Partida(mapas.at(id_mapa)));
 	std::shared_ptr<Juego> juego_nuevo(new Juego(part));
 	std::shared_ptr<Sala> sala_nueva(new Sala(juego_nuevo, part, 
 	mapas.at(id_mapa), max_jugadores));

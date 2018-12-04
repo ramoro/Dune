@@ -7,7 +7,7 @@ std::shared_ptr<Estado> AtaqueQuieto::actualizar(UnidadMovible *unidad,
 Mapa &mapa, int tiempo_transcurrido) {
 	nombre = "ataque quieto";
 	if (objetivo->esta_fuera_de_juego()){
-		std::cout << "Ataque::actualizar esta muerta " << std::endl;
+		//std::cout << "Ataque::actualizar esta muerta " << std::endl;
 		unidad->serializar_mensaje_termino_ataque();
 		std::shared_ptr<Inactividad> inactividad (new Inactividad());
 		return inactividad;		

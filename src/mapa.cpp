@@ -21,7 +21,7 @@ Mapa::Mapa() {}
 
 Mapa::Mapa(std::string nombre_mapa, Config &config,int &contador_ids_objetos){
  	std::cout << "Mapa elegido es " << nombre_mapa << std::endl;
-	Config mapa_json("../mapas/" + nombre_mapa + ".json");
+	Config mapa_json("../mapas/" + nombre_mapa);
 	std::cout << mapa_json["name"].asString() << std::endl;
 	cant_pixeles_por_baldosa = config["cant_pixeles_por_baldosa"].asInt();
 	for (unsigned int i = 0; i < mapa_json["terreno"].size(); i++) {

@@ -24,6 +24,7 @@ OrganizadorJuegos &organizador): organizador_juegos(organizador) {
 		if (strlen(Directorio->d_name) < MINIMA_LONGITUD_NOMBRE_MAPA) continue;
 		organizador_juegos.agregar_mapa(Directorio->d_name);
 	}
+	closedir(ID_Directorio);
 }
 
 void Server::run() {
